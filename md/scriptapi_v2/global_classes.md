@@ -9,7 +9,7 @@ List of arguments:
 
 Example:
 ```js
-Chat.print("Axolotl")
+Chat.print("Axolotl are epic!")
 ```
 
 ## Setting
