@@ -9,3 +9,4 @@ We appreciate anyone who is willing to help us expand the documentation. If you 
 - Using HTML inside markdown files is possible but please try using markdown whenever possible.
 - Syntax highlighting is being made possible by [PrismJS](https://prismjs.com/).
 - All images must be placed inside the `images` folder. Use `$images$` to reference it.
+- Do not use `#` (h1).
