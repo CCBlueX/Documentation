@@ -3,8 +3,6 @@ This tutorial will show you how to install LiquidBounce. We assume that you have
 
 LiquidBounce is a [Forge](https://files.minecraftforge.net/) client. This means that the installation procedure is very similar to that of regular Forge mods. Below we will also cover how you can install [OptiFine](https://optifine.net/home) to improve Minecraft's performance and benefit from additional graphical features such as shaders.
 
-Alternatively, you also have the option of using the LiquidLauncher, which was specially developed for LiquidBounce. It will take most of the steps described below off your hands. You can download it [here](https://liquidbounce.net/download).
-
 <div class="fluid-width-video-wrapper" style="padding-top: 50%;">
     <iframe class="video js-responsive-video" src="https://www.youtube.com/embed/t47_U7f_ccg?showinfo=0" style="border:0" allowfullscreen="" id="fitvid0"></iframe>
 </div>
