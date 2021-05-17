@@ -1,5 +1,5 @@
 ## How to install LiquidBounce
-For most users, it is recommended to install LiquidBounce through our custom launcher instead of doing it manually. It takes the entire installation off your hands and will always automatically update to the latest LiquidBounce version in the future. You can get it from the [downloads page](https://liquidbounce.net/download).
+**For most users, it is recommended to install LiquidBounce through our custom launcher instead of doing it manually. It takes the entire installation off your hands and will always automatically update to the latest LiquidBounce version in the future. You can get it from the [downloads page](https://liquidbounce.net/download).**
 
 This tutorial will guide you through the installation of LiquidBounce. We assume that you already have Minecraft installed and are using the default Minecraft launcher. If the latter is not the case, certain steps of this tutorial may be slightly different for you. Below you will additionally find a video which covers everything described in this tutorial as well. However, keep in mind that the video only describes the installation of LiquidBounce 1.8.9. So if you want to install LiquidBounce 1.12.2 or one of the nightly versions for Fabric, you might be better off reading this tutorial.
 
