@@ -36,20 +36,20 @@ Theoretically, the installation of OptiFine is optional but it's **highly** reco
 ![]($images$/main-menu-large.png)
 
 ## Installing LiquidBounce next-gen preview versions
-At the moment we are working on a completely new version of LiquidBounce for Minecraft 1.8.9 - 1.16.5 which is no longer built around Forge but the [Fabric modding API](https://fabricmc.net/). It is still in early development so bugs are common and many features are still missing. If you want to give it a try already, you can install it by following these steps. **Only use this version if you know what you are doing!**
-1. [Download](https://fabricmc.net/use/) and install the latest version of the Fabric mod loader for Minecraft 1.16.5.
+At the moment we are working on a completely new version of LiquidBounce for Minecraft 1.8.9 - 1.17.1 which is no longer built around Forge but the [Fabric modding API](https://fabricmc.net/). It is still in early development so bugs are common and many features are still missing. If you want to give it a try already, you can install it by following these steps. **Only use this version if you know what you are doing!**
+1. [Download](https://fabricmc.net/use/) and install the latest version of the Fabric mod loader for Minecraft 1.17.1.
 2. Open the Minecraft launcher, switch over to the `Installations` tab, hover over the profile created by the Fabric installer and press the folder icon to the left of the `Play` button to open the Minecraft directory in your file explorer.
 3. If there isn't a folder called `mods` already, create it.
 4. [Download](https://liquidbounce.net/download) the latest nighly build of LiquidBounce next-gen and open it.
 5. Extract the jar file from the archive to the `mods` folder.
-6. [Download](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin) the latest version of the Fabric Language Kotlin mod for Minecraft 1.16.5 and place it in the `mods` folder as well.
+6. [Download](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin) the latest version of the Fabric Language Kotlin mod for Minecraft 1.17.1 and place it in the `mods` folder as well.
 7. Launch Fabric by selecting the corresponding profile inside the launcher and pressing `Play`. If everything worked out, LiquidBounce should now be installed!
 
 ### Installing recommended mods
 There are various mods we highly recommend when using LiquidBounce next-gen. They can be installed by simply downloading them and copying them to the `mods` folder just like you did with LiquidBounce itself.
 - [Sodium](https://www.curseforge.com/minecraft/mc-mods/sodium) to massively improve performance.
 - [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) as many other mods depend on it.
-- [multiconnect](https://www.curseforge.com/minecraft/mc-mods/multiconnect) allows you to join Minecraft 1.8.9 - 1.16.5 servers.
+- [multiconnect](https://www.curseforge.com/minecraft/mc-mods/multiconnect) allows you to join Minecraft 1.8.9 - 1.17.1 servers.
 - [Lithium](https://www.curseforge.com/minecraft/mc-mods/lithium) to improve performance further.
 - [Phosphor](https://www.curseforge.com/minecraft/mc-mods/phosphor) to improve Minecraft's lighting engine.
 - [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu) gives you a list of all installed mods similar to Forge.
