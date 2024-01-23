@@ -1,6 +1,7 @@
 {
     "Tutorials": {
         "Installation": "tutorials/installation.md",
+        "LiquidLauncher": "tutorials/liquidlauncher.md",
         "Installing a Script": "tutorials/script_installation.md"
     },
     "CustomHUD": {
