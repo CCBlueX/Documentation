@@ -3,7 +3,7 @@
 		<i class="fa fa-times"></i>
 	</span>
 	<h4 class="note-title"> Warning </h4>
-	<p class="note-description">This tutorial will guide you through the process of installing LiquidBounce manually. For most users, it is recommended to use LiquidLauncher instead. You can download it <a href="/downloads">here</a>. For more information on LiquidLauncher, click <a href="docs/Tutorials/LiquidLauncher">here</a>.</p>
+	<p class="note-description">This tutorial will guide you through the process of installing LiquidBounce manually. For most users, it is recommended to use LiquidLauncher instead. You can download it <a href="/download">here</a>. For more information on LiquidLauncher, click <a href="docs/Tutorials/LiquidLauncher">here</a>.</p>
 </div>
 
 
