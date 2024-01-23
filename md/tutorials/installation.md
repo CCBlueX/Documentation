@@ -1,6 +1,13 @@
-## How to install LiquidBounce manually
+<div class="note js-note">
+	<span class="note-close js-close">
+		<i class="fa fa-times"></i>
+	</span>
+	<h4 class="note-title"> Warning </h4>
+	<p class="note-description">This tutorial will guide you through the process of installing LiquidBounce manually. For most users, it is recommended to use LiquidLauncher instead. You can download it <a href="/downloads">here</a>. For more information on LiquidLauncher, click <a href="docs/Tutorials/LiquidLauncher">here</a>.</p>
+</div>
 
-**This tutorial will guide you through the process of installing LiquidBounce manually. For most users, it is recommended to use LiquidLauncher instead. You can download it [here](/downloads). For more information on LiquidLauncher, click [here](docs/Tutorials/LiquidLauncher).**
+
+## How to install LiquidBounce manually
 
 This tutorial will guide you through the manual installation of LiquidBounce. We assume that you already have Minecraft installed and are using the official Minecraft launcher made by Mojang. If the latter is not the case, certain steps of this tutorial may differ slightly for you. 
 
