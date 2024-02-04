@@ -5,20 +5,20 @@ The InteractionUtil class provides various methods for interacting with the envi
 ### Method summary
 
 #### `InteractionUtil.attackEntity(entity: Entity, swing: boolean, keepSprint: boolean): void`
-Attempts to attack the given entity. \
+Attempts to attack the given entity. <br>
 List of parameters:
 - `entity`, the entity to attack.
 - `swing`, whether to swing the players hand when attacking.
 - `keepSpring`, whether to keep sprinting while attacking.
 
 #### `InteractionUtil.interactEntity(entity: Entity, hand: Hand): void`
-Attempts to interact with the given entity. \
+Attempts to interact with the given entity. <br>
 List of parameters:
 - `entity`, the entity to interact with.
 - `hand`, the hand to use to interact with the entity (main hand or off hand).
 
 #### `InteractionUtil.useItem(hand: Hand): void`
-Uses the item currently in the given hand. \
+Uses the item currently in the given hand. <br>
 List of parameters:
 - `hand`, the hand holding the item to use (main hand or off hand).
 
