@@ -16,15 +16,15 @@ Makes the player strafe.
 #### `MovementUtil.strafeWithSpeed(speed: float): void`
 Makes the player strafe with a given speed. <br>
 List of parameters:
-- `speed`, the in-air speed of the player while strafing.
+- *speed*, the in-air speed of the player while strafing.
 
 #### `MovementUtil.strafeWithStrength(strength: float): void`
 Makes the player strafe with a given strength. <br>
 List of parameters:
-- `strength`, the stremgth to strafe with.
+- *strength*, the stremgth to strafe with.
 
 #### `MovementUtil.strafeWithSpeedAndStrength(speed: float, strength: float): void`
-Combination of `MovementUtil::strafeWithSpeed` and `MovementUtil::strafeWithStrength`. <br>
+Combination of *MovementUtil::strafeWithSpeed* and *MovementUtil::strafeWithStrength*. <br>
 List of parameters:
-- `speed`, the in-air speed of the player while strafing.
-- `strength`, the stremgth to strafe with.
+- *speed*, the in-air speed of the player while strafing.
+- *strength*, the stremgth to strafe with.

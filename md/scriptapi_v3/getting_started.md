@@ -24,7 +24,7 @@ const script = registerScript({
 
 When registering a new module, some information must be provided, which is then displayed in LiquidBounce's GUIs. The required details include a name, a description, and a category under which the module should appear in the client's ClickGUI / TabGUI. For more information on supported details and a list of all available categories, click [here](#). TODO
 
-Our module will be called `MyModule` and will belong to the `Misc` category. Add the following code to your script file to register it.
+Our module will be called *MyModule* and will belong to the *Misc* category. Add the following code to your script file to register it.
 
 ```js
 script.registerModule({
@@ -36,7 +36,7 @@ script.registerModule({
 });
 ```
 
-The argument passed to `registerModule`'s callback function contains the instance of the module that was registered. If we ran the client now, we would find our module in the `Misc` category but enabling it wouldn't do anything yet.
+The argument passed to `registerModule`'s callback function contains the instance of the module that was registered. If we ran the client now, we would find our module in the *Misc* category but enabling it wouldn't do anything yet.
 
 ### Listening for events
 
@@ -48,7 +48,7 @@ mod.on("enable", () => {
 });
 ```
 
-Now, every time we enable our module, `Axolotls are great!` will be displayed in the chat (It will not be sent to the server).
+Now, every time we enable our module, *Axolotls are great!* will be displayed in the chat (It will not be sent to the server).
 
 A plethora of additional events are supported by the API and serve different purposes. The most commonly used events are:
 - `enable`: Called whenever the module is enabled.
@@ -61,7 +61,7 @@ The full list of supported events can be found [here](#). TODO
 
 Another way of introducing new functionality is through client commands. Commands usually accept arguments, process them in some way and then perform an action once. Unlike modules, they are not intended to run for extended periods of time.
 
-Similarly to modules, commands have to be registered with the client. The code shown below will introduce a new command called `addition` or `add` which accepts two integer parameters, adds them and prints them to the chat.
+Similarly to modules, commands have to be registered with the client. The code shown below will introduce a new command called *addition* or *add* which accepts two integer parameters, adds them and prints them to the chat.
 
 ```js
 script.registerCommand({
@@ -130,7 +130,7 @@ script.registerCommand({
 });
 ```
 
-To run the script, place it inside the `scripts` directory located in the `LiquidBounce` directory which in turn can be found in the `.minecraft` directory of your installation. When using LiquidLauncher, simply press the directory icon with the arrow in the top right corner next to the `Data location` field in the launcher's settings window to open the data diretory in your file manager. Once you ran the game, open up a single player world and open the ClickGUI. You should find `MyModule` in the `Misc` category and sending `.addition 1 2` into the chat should execute your command and yield `3` as a result.
+To run the script, place it inside the *scripts* directory located in the *LiquidBounce* directory which in turn can be found in the *.minecraft* directory of your installation. When using LiquidLauncher, simply press the directory icon with the arrow in the top right corner next to the *Data location* field in the launcher's settings window to open the data diretory in your file manager. Once you ran the game, open up a single player world and open the ClickGUI. You should find *MyModule* in the *Misc* category and sending *.addition 1 2* into the chat should execute your command and yield *3* as a result.
 
 ## Examples
 A repository with additional examples can be found on our [GitHub page](https://github.com/CCBlueX/LiquidScript).
