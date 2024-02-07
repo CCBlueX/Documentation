@@ -17,6 +17,8 @@ fastSwing.value; // true
 fastSwing.value = false;
 ```
 
+<hr>
+
 #### `float(name: string, default: float, range: [float], suffix: string = ""): Value`
 Creates a new float setting (a floating-point value between *min* and *max*). <br>
 List of parameters:
@@ -31,6 +33,8 @@ const range = Setting.float("Range", 3.0, [0.5, 8.0], "blocks");
 range.value; // 3.0
 range.value = 2.3;
 ```
+
+<hr>
 
 #### `Setting.floatRange(name: string, default: [float], range: [float], suffix: String = ""): Value`
 Creates a new float setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
@@ -47,6 +51,8 @@ randomness.value; // [2.3, 7.8]
 randomness.value = [2, 4.34];
 ```
 
+<hr>
+
 #### `Setting.int(name: string, default: int, range: [int], suffix: string = ""): Value`
 Creates a new integer setting (an integer value between *min* and *max*). <br>
 List of parameters:
@@ -61,6 +67,8 @@ const expand = Setting.int("Expand", 4, [0, 10], "blocks");
 expand.value; // 4
 expand.value = 7;
 ```
+
+<hr>
 
 #### `Setting.intRange(name: string, default: [int], range: [int], suffix: string = "")`
 Creates a new integer setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
@@ -77,6 +85,8 @@ cps.value; // [4, 10]
 cps.value = [5, 12];
 ```
 
+<hr>
+
 #### `Setting.key(name: string, default: int): Value`
 Creates a keyboard key value. Refer to the [this gist](https://gist.github.com/Mumfrey/5cfc3b7e14fef91b6fa56470dc05218a) for information on key codes. <br>
 List of parameters:
@@ -90,6 +100,8 @@ bind.value; // 53
 bind.value = 54;
 ```
 
+<hr>
+
 #### `Setting.text(name: String, default: String): Value`
 Creates text value. <br>
 List of parameters:
@@ -102,6 +114,8 @@ const message = Setting.text("Message", "This is a default message.");
 message.value; // "This is a default message."
 message.value = "This is another message";
 ```
+
+<hr>
 
 #### `Setting.textArray(name: string, default: [string]): Value`
 Creates text value. <br>

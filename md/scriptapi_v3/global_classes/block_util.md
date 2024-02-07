@@ -11,10 +11,14 @@ List of parameters:
 - *y*, y coordinate of the position.
 - *z*, z coordinate of the position.
 
+<hr>
+
 #### `BlockUtil.getBlock(blockPos: BlockPos): Block`
 Returns the *Block* at the given *BlockPos*. <br>
 List of parameters:
 - *blockPos*, the position to get the block at.
+
+<hr>
 
 #### `BlockUtil.getState(blockPos: BlockPos): BlockState`
 Returns the *BlockState* of the block at the given *BlockPos*. <br>

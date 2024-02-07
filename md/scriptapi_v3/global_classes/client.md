@@ -14,8 +14,12 @@ List of parameters:
 #### `Client.eventManager`
 Manages game events. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/EventManager.kt) for more information.
 
+<hr>
+
 ### `Client.configSystem`
 Manages client configurations. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/config/ConfigSystem.kt) for more information.
+
+<hr>
 
 ### `Client.moduleManager`
 Manages modules (cheats). See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ModuleManager.kt) for more information.
@@ -32,12 +36,17 @@ Getting all available module categories.
 const categories = client.moduleManager.getCategories(); // ["Movement", "Combat", "Render", ...]
 ```
 
+<hr>
 
 ### `Client.commandManager`
 Manages client commands. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/command/CommandManager.kt) for more information.
 
+<hr>
+
 ### `Client.scriptManager`
 Manages installed scripts. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/script/ScriptManager.kt) for more information.
+
+<hr>
 
 ### `Client.combatManager`
 Manages rotations for combat. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/utils/combat/CombatUtils.kt) for more information.

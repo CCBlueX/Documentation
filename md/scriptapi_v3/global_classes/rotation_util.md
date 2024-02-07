@@ -11,10 +11,14 @@ List of parameters:
 - *range*, the maximum distance the entity can be away to still face it.
 - *throughWallsRange*, the maximum distance through walls the entity can be away to still face it.
 
+<hr>
+
 #### `RotationUtil.newRotationEntity(entity: Entity): Rotation`
 Returns the necessary rotation to face the given entity. <br>
 List of parameters:
 - *entity*, the entity to face.
+
+<hr>
 
 #### `RotationUtil.aimAtRotation(rotation: Rotation, fixVelocity: boolean): Rotation`
 Applies the given rotation to the player. <br>
