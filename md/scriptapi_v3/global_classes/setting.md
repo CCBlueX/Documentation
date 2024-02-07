@@ -17,74 +17,64 @@ fastSwing.value; // true
 fastSwing.value = false;
 ```
 
-#### `Setting.float(name: string, default: float, min: float, max: float, suffix: string = ""): Value`
+#### `float(name: string, default: float, range: [float], suffix: string = ""): Value`
 Creates a new float setting (a floating-point value between *min* and *max*). <br>
 List of parameters:
 - *name*, name of the setting.
 - *default*, default value of the setting.
-- *min*, lowest value the setting can be set to.
-- *max*, highest value the setting can be set to.
+- *range*, array containing min and max values.
 - *suffix*, displayed next to the current value to describe its unit.
 
 **Example:**
 ```js
-const range = Setting.float("Range", 3.0, 0.5, 8.0, "blocks");
+const range = Setting.float("Range", 3.0, [0.5, 8.0], "blocks");
 range.value; // 3.0
-range.value = 1.2;
+range.value = 2.3;
 ```
 
-#### `Setting.floatRange(name: string, lowDefault: float, highDefault: float, min: float, max: float, suffix: String = ""): Value`
+#### `Setting.floatRange(name: string, default: [float], range: [float], suffix: String = ""): Value`
 Creates a new float setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
 List of parameters:
 - *name*, name of the setting.
-- *lowDefault*, default low value of the setting.
-- *highDefault*, default high value of the setting.
-- *min*, lowest value the setting can be set to.
-- *max*, highest value the setting can be set to.
+- *default*, array containing low and high value.
+- *range*, array containing min and max values.
 - *suffix*, displayed next to the current value to describe its unit.
 
 **Example:**
 ```js
-const randomness = Setting.floatRange("Randomness", 2.3, 7.8, 0.0, 10.0, "jitter");
-randomness.lowValue; // 2.3
-randomness.highValue; // 7.8
-randomness.lowValue = 4.2;
-randomness.highValue = 5.12;
+const randomness = Setting.floatRange("Randomness", [2.3, 7.8], [0.0, 10.0], "jitter");
+randomness.value; // [2.3, 7.8]
+randomness.value = [2, 4.34];
 ```
 
-#### `Setting.int(name: string, default: int, min: int, max: int, suffix: string = ""): Value`
+#### `Setting.int(name: string, default: int, range: [int], suffix: string = ""): Value`
 Creates a new integer setting (an integer value between *min* and *max*). <br>
 List of parameters:
 - *name*, name of the setting.
 - *default*, default value of the setting.
-- *min*, lowest value the setting can be set to.
-- *max*, highest value the setting can be set to.
+- *range*, array containing min and max values.
 - *suffix*, displayed next to the current value to describe its unit.
 
 **Example:**
 ```js
-const expand = Setting.int("Expand", 4, 0, 10, "blocks");
+const expand = Setting.int("Expand", 4, [0, 10], "blocks");
 expand.value; // 4
 expand.value = 7;
 ```
 
-#### `Setting.intRange(name: string, lowDefault: int, highDefault: int, min: int, max: int, suffix: String = "")`
+#### `Setting.intRange(name: string, default: [int], range: [int], suffix: string = "")`
 Creates a new integer setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
 List of parameters:
 - *name*, name of the setting.
-- *lowDefault*, default low value of the setting.
-- *highDefault*, default high value of the setting.
-- *min*, lowest value the setting can be set to.
-- *max*, highest value the setting can be set to.
+- *default*, array containing low and high value.
+- *range*, array containing min and max values.
 - *suffix*, displayed next to the current value to describe its unit.
 
 **Example:**
 ```js
-const cps = Setting.intRange("CPS", 5, 10, 0, 20, "cps");
-cps.lowValue; // 5
-cps.highValue; // 10
-cps.lowValue = 4;
-cps.highValue = 17;
+const cps = Setting.intRange("CPS", [4, 10], [0, 20], "cps");
+cps.value; // [4, 10]
+cps.value = [5, 12];
 ```
 
 #### `Setting.key(name: string, default: int): Value`
@@ -96,7 +86,7 @@ List of parameters:
 **Example:**
 ```js
 const bind = Setting.key("Bind", 53); // 53 is slash
-bind.value; // true
+bind.value; // 53
 bind.value = 54;
 ```
 
@@ -124,4 +114,53 @@ List of parameters:
 const messages = Setting.textArray("Messages", ["This is a message", "This is another message"]);
 messages.value; // ["This is a message", "This is another message"]
 messages.value = [...message.value, "This is a third message."];
+```
+
+### Example script
+
+This script contains all setting types and can be used as a reference.
+
+```js
+const script = registerScript({
+    name: "MyScript",
+    version: "1.0.0",
+    authors: ["My Name"]
+});
+
+script.registerModule({
+    name: "MyModule",
+    category: "Misc",
+    description: "An example module created with LiquidBounce's script API.",
+    settings: {
+        fastSwing: Setting.boolean("FastSwing", true),
+        range: Setting.float("Range", 3.0, [0.5, 8.0], "blocks"),
+        randomness: Setting.floatRange("Randomness", [2.3, 7.8], [0.0, 10.0], "jitter"),
+        expand: Setting.int("Expand", 4, [0, 10], "blocks"),
+        cps: Setting.intRange("CPS", [5, 10], [0, 20], "cps"),
+        bind: Setting.key("Bind", 53),
+        message: Setting.text("Message", "This is a default message."),
+        messages: Setting.textArray("Messages", ["This is a message", "This is another message"]),
+    }
+}, (mod) => {
+    mod.on("enable", () => {
+        Client.displayChatMessage(`FastSwing: ${mod.settings.fastSwing.value}`);
+        Client.displayChatMessage(`Range: ${mod.settings.range.value}`);
+        Client.displayChatMessage(`Randomness: ${mod.settings.randomness.value}`);
+        Client.displayChatMessage(`Expand: ${mod.settings.expand.value}`);
+        Client.displayChatMessage(`CPS: ${mod.settings.cps.value}`);
+        Client.displayChatMessage(`Bind: ${mod.settings.bind.value}`);
+        Client.displayChatMessage(`Message: ${mod.settings.message.value}`);
+        Client.displayChatMessage(`Messages: ${mod.settings.messages.value}`);
+
+        mod.settings.fastSwing.value = false;
+        mod.settings.range.value = 2.3;
+        mod.settings.randomness.value = [2, 4.34];
+        mod.settings.expand.value = 2;
+        mod.settings.cps.value = [5, 12];
+        mod.settings.bind.value = 11;
+        mod.settings.message.value = "Axolotls are cool";
+        mod.settings.messages.value = ["New message 1", "New message 2"];
+    });
+});
+
 ```
