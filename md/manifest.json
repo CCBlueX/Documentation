@@ -31,6 +31,7 @@
     },
     "ScriptAPI (nextgen)": {
         "Getting Started": "scriptapi_v3/getting_started.md",
+        "Using Java Classes": "scriptapi_v3/using_java_classes.md",
         "Global Classes": {
             "BlockUtil": "scriptapi_v3/global_classes/block_util.md",
             "Client": "scriptapi_v3/global_classes/client.md",
@@ -39,7 +40,9 @@
             "MovementUtil": "scriptapi_v3/global_classes/movement_util.md",
             "NetworkUtil": "scriptapi_v3/global_classes/network_util.md",
             "ReflectionUtil": "scriptapi_v3/global_classes/reflection_util.md",
-            "RotationUtil": "scriptapi_v3/global_classes/rotation_util.md"
-        }
+            "RotationUtil": "scriptapi_v3/global_classes/rotation_util.md",
+            "Setting": "scriptapi_v3/global_classes/setting.md"
+        },
+        "Global Instances": "scriptapi_v3/global_instances.md"
     }
 }

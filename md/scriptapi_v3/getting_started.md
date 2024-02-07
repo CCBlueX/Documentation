@@ -74,7 +74,7 @@ script.registerCommand({
         },
         {
             name: "local",
-            required: false,
+            required: true,
         }
     ],
     onExecute(arg1, arg2) {
@@ -105,7 +105,7 @@ script.registerModule({
     description: "An example module created with LiquidBounce's script API."
 }, (mod) => {
     mod.on("enable", () => {
-        client.displayChatMessage("§aAxolotls are great!");
+        Client.displayChatMessage("§aAxolotls are great!");
     });
 });
 
