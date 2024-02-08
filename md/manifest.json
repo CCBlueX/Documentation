@@ -39,6 +39,7 @@
             "ItemUtil": "scriptapi_v3/global_classes/item_util.md",
             "MovementUtil": "scriptapi_v3/global_classes/movement_util.md",
             "NetworkUtil": "scriptapi_v3/global_classes/network_util.md",
+            "ParameterValidator": "scriptapi_v3/global_classes/parameter_validator.md",
             "ReflectionUtil": "scriptapi_v3/global_classes/reflection_util.md",
             "RotationUtil": "scriptapi_v3/global_classes/rotation_util.md",
             "Setting": "scriptapi_v3/global_classes/setting.md"

@@ -61,7 +61,7 @@ The full list of supported events can be found [here](#). TODO
 
 Another way of introducing new functionality is through client commands. Commands usually accept arguments, process them in some way and then perform an action once. Unlike modules, they are not intended to run for extended periods of time.
 
-Similarly to modules, commands have to be registered with the client. The code shown below will introduce a new command called *addition* or *add* which accepts two integer parameters, adds them and prints them to the chat.
+Similarly to modules, commands have to be registered with the client. The code shown below will introduce a new command called *addition* or *add* which accepts two integer parameters, adds them and prints them to the chat. The `validate` function can be used to ensure a parameter adheres to certain rules. In this case, it must be an integer. `ParameterValidator.integer` will also convert the parameter to an integer, so we don't have to manually parse it in `onExecute`. For more information on parameter validation, click [here](#TODO).
 
 ```js
 script.registerCommand({
@@ -69,18 +69,18 @@ script.registerCommand({
     aliases: ["add"],
     parameters: [
         {
-            name: "name",
+            name: "a",
             required: true,
+            validate: ParameterValidator.integer
         },
         {
-            name: "local",
+            name: "b",
             required: true,
+            validate: ParameterValidator.integer
         }
     ],
     onExecute(arg1, arg2) {
-        const a = parseInt(arg1);
-        const b = parseInt(arg2);
-        Client.displayChatMessage(`Result of ${a} + ${b} is ${a + b}`);
+        Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
     }
 });
 ```
@@ -114,19 +114,19 @@ script.registerCommand({
     aliases: ["add"],
     parameters: [
         {
-            name: "name",
+            name: "a",
             required: true,
+            validate: ParameterValidator.integer
         },
         {
-            name: "local",
+            name: "b",
             required: true,
+            validate: ParameterValidator.integer
         }
     ],
     onExecute(arg1, arg2) {
-        const a = parseInt(arg1);
-        const b = parseInt(arg2);
-        Client.displayChatMessage(`Result of ${a} + ${b} is ${a + b}`);
-    },
+        Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+    }
 });
 ```
 
