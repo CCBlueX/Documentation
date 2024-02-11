@@ -14,9 +14,9 @@ The first thing every script should do is registering itself with the client pro
 
 ```js
 const script = registerScript({
-    name: "MyScript",
-    version: "1.0.0",
-    authors: ["My Name"]
+  name: "MyScript",
+  version: "1.0.0",
+  authors: ["My Name"]
 });
 ```
 
@@ -28,9 +28,9 @@ Our module will be called *MyModule* and will belong to the *Misc* category. Add
 
 ```js
 script.registerModule({
-    name: "MyModule",
-    category: "Misc", // Movement, Combat, Renderr, ...
-    description: "An example module created with LiquidBounce's script API."
+  name: "MyModule",
+  category: "Misc", // Movement, Combat, Renderr, ...
+  description: "An example module created with LiquidBounce's script API."
 }, (mod) => {
 
 });
@@ -44,7 +44,7 @@ To actually make our module do something, we have to start listening for events 
 
 ```js
 mod.on("enable", () => {
-    Client.displayChatMessage("§aAxolotls are great!");
+  Client.displayChatMessage("§aAxolotls are great!");
 });
 ```
 
@@ -65,23 +65,22 @@ Similarly to modules, commands have to be registered with the client. The code s
 
 ```js
 script.registerCommand({
-    name: "addition",
-    aliases: ["add"],
-    parameters: [
-        {
-            name: "a",
-            required: true,
-            validate: ParameterValidator.integer
-        },
-        {
-            name: "b",
-            required: true,
-            validate: ParameterValidator.integer
-        }
-    ],
-    onExecute(arg1, arg2) {
-        Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+  name: "addition",
+  aliases: ["add"],
+  parameters: [{
+      name: "a",
+      required: true,
+      validate: ParameterValidator.integer
+    },
+    {
+      name: "b",
+      required: true,
+      validate: ParameterValidator.integer
     }
+  ],
+  onExecute(arg1, arg2) {
+    Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+  }
 });
 ```
 
@@ -94,39 +93,38 @@ Here is the full code of the script we just wrote:
 
 ```js
 const script = registerScript({
-    name: "MyScript",
-    version: "1.0.0",
-    authors: ["My Name"]
+  name: "MyScript",
+  version: "1.0.0",
+  authors: ["My Name"]
 });
 
 script.registerModule({
-    name: "MyModule",
-    category: "Misc", // Movement, Combat, Render, ...
-    description: "An example module created with LiquidBounce's script API."
+  name: "MyModule",
+  category: "Misc", // Movement, Combat, Render, ...
+  description: "An example module created with LiquidBounce's script API."
 }, (mod) => {
-    mod.on("enable", () => {
-        Client.displayChatMessage("§aAxolotls are great!");
-    });
+  mod.on("enable", () => {
+    Client.displayChatMessage("§aAxolotls are great!");
+  });
 });
 
 script.registerCommand({
-    name: "addition",
-    aliases: ["add"],
-    parameters: [
-        {
-            name: "a",
-            required: true,
-            validate: ParameterValidator.integer
-        },
-        {
-            name: "b",
-            required: true,
-            validate: ParameterValidator.integer
-        }
-    ],
-    onExecute(arg1, arg2) {
-        Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+  name: "addition",
+  aliases: ["add"],
+  parameters: [{
+      name: "a",
+      required: true,
+      validate: ParameterValidator.integer
+    },
+    {
+      name: "b",
+      required: true,
+      validate: ParameterValidator.integer
     }
+  ],
+  onExecute(arg1, arg2) {
+    Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+  }
 });
 ```
 

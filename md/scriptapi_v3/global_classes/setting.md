@@ -136,45 +136,44 @@ This script contains all setting types and can be used as a reference.
 
 ```js
 const script = registerScript({
-    name: "MyScript",
-    version: "1.0.0",
-    authors: ["My Name"]
+  name: "MyScript",
+  version: "1.0.0",
+  authors: ["My Name"]
 });
 
 script.registerModule({
-    name: "MyModule",
-    category: "Misc",
-    description: "An example module created with LiquidBounce's script API.",
-    settings: {
-        fastSwing: Setting.boolean("FastSwing", true),
-        range: Setting.float("Range", 3.0, [0.5, 8.0], "blocks"),
-        randomness: Setting.floatRange("Randomness", [2.3, 7.8], [0.0, 10.0], "jitter"),
-        expand: Setting.int("Expand", 4, [0, 10], "blocks"),
-        cps: Setting.intRange("CPS", [5, 10], [0, 20], "cps"),
-        bind: Setting.key("Bind", 53),
-        message: Setting.text("Message", "This is a default message."),
-        messages: Setting.textArray("Messages", ["This is a message", "This is another message"]),
-    }
+  name: "MyModule",
+  category: "Misc",
+  description: "An example module created with LiquidBounce's script API.",
+  settings: {
+    fastSwing: Setting.boolean("FastSwing", true),
+    range: Setting.float("Range", 3.0, [0.5, 8.0], "blocks"),
+    randomness: Setting.floatRange("Randomness", [2.3, 7.8], [0.0, 10.0], "jitter"),
+    expand: Setting.int("Expand", 4, [0, 10], "blocks"),
+    cps: Setting.intRange("CPS", [5, 10], [0, 20], "cps"),
+    bind: Setting.key("Bind", 53),
+    message: Setting.text("Message", "This is a default message."),
+    messages: Setting.textArray("Messages", ["This is a message", "This is another message"]),
+  }
 }, (mod) => {
-    mod.on("enable", () => {
-        Client.displayChatMessage(`FastSwing: ${mod.settings.fastSwing.value}`);
-        Client.displayChatMessage(`Range: ${mod.settings.range.value}`);
-        Client.displayChatMessage(`Randomness: ${mod.settings.randomness.value}`);
-        Client.displayChatMessage(`Expand: ${mod.settings.expand.value}`);
-        Client.displayChatMessage(`CPS: ${mod.settings.cps.value}`);
-        Client.displayChatMessage(`Bind: ${mod.settings.bind.value}`);
-        Client.displayChatMessage(`Message: ${mod.settings.message.value}`);
-        Client.displayChatMessage(`Messages: ${mod.settings.messages.value}`);
+  mod.on("enable", () => {
+    Client.displayChatMessage(`FastSwing: ${mod.settings.fastSwing.value}`);
+    Client.displayChatMessage(`Range: ${mod.settings.range.value}`);
+    Client.displayChatMessage(`Randomness: ${mod.settings.randomness.value}`);
+    Client.displayChatMessage(`Expand: ${mod.settings.expand.value}`);
+    Client.displayChatMessage(`CPS: ${mod.settings.cps.value}`);
+    Client.displayChatMessage(`Bind: ${mod.settings.bind.value}`);
+    Client.displayChatMessage(`Message: ${mod.settings.message.value}`);
+    Client.displayChatMessage(`Messages: ${mod.settings.messages.value}`);
 
-        mod.settings.fastSwing.value = false;
-        mod.settings.range.value = 2.3;
-        mod.settings.randomness.value = [2, 4.34];
-        mod.settings.expand.value = 2;
-        mod.settings.cps.value = [5, 12];
-        mod.settings.bind.value = 11;
-        mod.settings.message.value = "Axolotls are cool";
-        mod.settings.messages.value = ["New message 1", "New message 2"];
-    });
+    mod.settings.fastSwing.value = false;
+    mod.settings.range.value = 2.3;
+    mod.settings.randomness.value = [2, 4.34];
+    mod.settings.expand.value = 2;
+    mod.settings.cps.value = [5, 12];
+    mod.settings.bind.value = 11;
+    mod.settings.message.value = "Axolotls are cool";
+    mod.settings.messages.value = ["New message 1", "New message 2"];
+  });
 });
-
 ```

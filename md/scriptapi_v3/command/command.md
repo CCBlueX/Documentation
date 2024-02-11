@@ -45,17 +45,15 @@ LiquidBounce's script API provides a set of builtin validators for common use ca
 **Example:** Command using the built-in *module* validator.
 ```js
 script.registerCommand({
-    name: "description",
-    parameters: [
-        {
-            name: "module",
-            required: true,
-            validate: ParameterValidator.module,
-        }
-    ],
-    onExecute(mod) {
-        Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description}'`);
-    }
+  name: "description",
+  parameters: [{
+    name: "module",
+    required: true,
+    validate: ParameterValidator.module,
+  }],
+  onExecute(mod) {
+    Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description}'`);
+  }
 });
 ```
 
@@ -69,8 +67,8 @@ Writing a custom validator involves creating a function which accepts the raw st
 If the argument has been accepted, an object of the following structure has to be returned:
 ```js
 {
-    accept: true,
-    value: processedArgument
+  accept: true,
+  value: processedArgument
 }
 ```
 
@@ -78,8 +76,8 @@ If the argument has been rejected, an object of the following structure has to b
 ```js
 
 {
-    accept: false,
-    error: "Argument did not fulfill expected criteria"
+  accept: false,
+  error: "Argument did not fulfill expected criteria"
 }
 ```
 
@@ -87,30 +85,28 @@ If the argument has been rejected, an object of the following structure has to b
 
 ```js
 script.registerCommand({
-    name: "integer",
-    parameters: [
-        {
-            name: "value",
-            required: true,
-            validate(arg) {
-                const integerRegex = /^-?\d+$/;
-                if (integerRegex.test(arg)) {
-                    return {
-                        accept: true,
-                        value: parseInt(arg),
-                    };
-                } else {
-                    return {
-                        accept: false,
-                        error: `'${arg}' is not a valid integer`
-                    };
-                }
-            }
-        }
-    ],
-    onExecute(integer) {
-        Client.displayChatMessage(`typeof ${integer} is ${typeof integer}`);
+  name: "integer",
+  parameters: [{
+    name: "value",
+    required: true,
+    validate(arg) {
+      const integerRegex = /^-?\d+$/;
+      if (integerRegex.test(arg)) {
+        return {
+          accept: true,
+          value: parseInt(arg),
+        };
+      } else {
+        return {
+          accept: false,
+          error: `'${arg}' is not a valid integer`
+        };
+      }
     }
+  }],
+  onExecute(integer) {
+    Client.displayChatMessage(`typeof ${integer} is ${typeof integer}`);
+  }
 });
 ```
 
@@ -123,32 +119,30 @@ Command parameters support tab autocomplete when implemented. To do so, `getComp
 ```js
 const acceptedAnimals = ["Axolotl", "Capybara", "Snek"];
 script.registerCommand({
-    name: "animal",
-    parameters: [
-        {
-            name: "value",
-            required: true,
-            validate(arg) {
-                if (acceptedAnimals.includes(arg)) {
-                    return {
-                        accept: true,
-                        value: arg,
-                    };
-                } else {
-                    return {
-                        accept: false,
-                        error: `Only the following animals are acceptable: ${acceptedAnimals.join(", ")}`,
-                    };
-                }
-            },
-            getCompletions(begin, args) {
-                return acceptedAnimals.filter(a => a.startsWith(begin));
-            }
-        }
-    ],
-    onExecute(animal) {
-        Client.displayChatMessage(`Petting the ${animal}`);
+  name: "animal",
+  parameters: [{
+    name: "value",
+    required: true,
+    validate(arg) {
+      if (acceptedAnimals.includes(arg)) {
+        return {
+          accept: true,
+          value: arg,
+        };
+      } else {
+        return {
+          accept: false,
+          error: `Only the following animals are acceptable: ${acceptedAnimals.join(", ")}`,
+        };
+      }
+    },
+    getCompletions(begin, args) {
+      return acceptedAnimals.filter(a => a.startsWith(begin));
     }
+  }],
+  onExecute(animal) {
+    Client.displayChatMessage(`Petting the ${animal}`);
+  }
 });
 ```
 
@@ -159,90 +153,81 @@ The following example command uses all supported API features. It may be used as
 ```js
 const acceptedAnimals = ["Axolotl", "Capybara", "Snek"];
 script.registerCommand({
-    name: "myCommand",
-    aliases: ["exampleCommand", "sampleCMD"], // .exampleCommand and .sampleCommand will both work to execute this command.
-    hub: true, // .myCommand is not executable directly. It only serves a hub holding subcommands.
-    subcommands: [
-        {
-            name: "math",
-            hub: true,
-            subcommands: [
-                {
-                    name: "div",
-                    aliases: ["divide"],
-                    parameters: [
-                        {
-                            name: "x",
-                            required: true,
-                            validate: ParameterValidator.integer
-                        },
-                                        {
-                            name: "y",
-                            required: true,
-                            validate: ParameterValidator.integer
-                        }
-                    ],
-                    onExecute(x, y) {
-                        Client.displayChatMessage(`${x} divided by ${y} is ${x / y}`);
-                    }
-                },
-                {
-                    name: "sqrt",
-                    parameters: [
-                        {
-                            name: "x",
-                            required: true,
-                            validate: ParameterValidator.positiveInteger
-                        }
-                    ],
-                    onExecute(x) {
-                        Client.displayChatMessage(`Square root of ${x} is ${Math.sqrt(x)}`);
-                    }
-                },
-                {
-                    name: "sum",
-                    parameters: [
-                        {
-                            name: "numbers",
-                            required: true,
-                            vararg: true,
-                            validate: ParameterValidator.integer
-                        }
-                    ],
-                    onExecute(args) {
-                        Client.displayChatMessage(`Sum ${args.join(" + ")} is ${args.reduce((s, a) => s + a, 0)}`);
-                    }
-                }
-            ]
+  name: "myCommand",
+  aliases: ["exampleCommand", "sampleCMD"], // .exampleCommand and .sampleCommand will both work to execute this command.
+  hub: true, // .myCommand is not executable directly. It only serves a hub holding subcommands.
+  subcommands: [{
+      name: "math",
+      hub: true,
+      subcommands: [{
+          name: "div",
+          aliases: ["divide"],
+          parameters: [{
+              name: "x",
+              required: true,
+              validate: ParameterValidator.integer
+            },
+            {
+              name: "y",
+              required: true,
+              validate: ParameterValidator.integer
+            }
+          ],
+          onExecute(x, y) {
+            Client.displayChatMessage(`${x} divided by ${y} is ${x / y}`);
+          }
         },
         {
-            name: "animal",
-            parameters: [
-                {
-                    name: "value",
-                    required: true,
-                    validate(arg) {
-                        if (acceptedAnimals.includes(arg)) {
-                            return {
-                                accept: true,
-                                value: arg,
-                            };
-                        } else {
-                            return {
-                                accept: false,
-                                error: `Only the following animals are acceptable: ${acceptedAnimals.join(", ")}`,
-                            };
-                        }
-                    },
-                    getCompletions(begin, args) {
-                        return acceptedAnimals.filter(a => a.startsWith(begin));
-                    }
-                }
-            ],
-            onExecute(animal) {
-                Client.displayChatMessage(`Petting the ${animal}`);
-            }
+          name: "sqrt",
+          parameters: [{
+            name: "x",
+            required: true,
+            validate: ParameterValidator.positiveInteger
+          }],
+          onExecute(x) {
+            Client.displayChatMessage(`Square root of ${x} is ${Math.sqrt(x)}`);
+          }
+        },
+        {
+          name: "sum",
+          parameters: [{
+            name: "numbers",
+            required: true,
+            vararg: true,
+            validate: ParameterValidator.integer
+          }],
+          onExecute(args) {
+            Client.displayChatMessage(`Sum ${args.join(" + ")} is ${args.reduce((s, a) => s + a, 0)}`);
+          }
         }
-    ]
+      ]
+    },
+    {
+      name: "animal",
+      parameters: [{
+        name: "value",
+        required: true,
+        validate(arg) {
+          if (acceptedAnimals.includes(arg)) {
+            return {
+              accept: true,
+              value: arg,
+            };
+          } else {
+            return {
+              accept: false,
+              error: `Only the following animals are acceptable: ${acceptedAnimals.join(", ")}`,
+            };
+          }
+        },
+        getCompletions(begin, args) {
+          return acceptedAnimals.filter(a => a.startsWith(begin));
+        }
+      }],
+      onExecute(animal) {
+        Client.displayChatMessage(`Petting the ${animal}`);
+      }
+    }
+  ]
 });
 ```

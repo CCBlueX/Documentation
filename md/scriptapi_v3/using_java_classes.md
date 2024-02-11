@@ -6,7 +6,6 @@ Imports a Java class. <br>
 List of parameters:
 - className, the fully qualified-name of the class to be imported.
 
-**Examples:**
 #### Using classes from the Java standard library
 ```js
 const File = Java.type("java.io.File");
@@ -15,8 +14,8 @@ const StandardCharsets = Java.type("java.nio.charset.StandardCharsets");
 
 // Reads a file and returns its contents.
 function readFile(path) {
-    const file = new File(path);
-    return FileUtils.readFileToString(file, StandardCharsets.ISO_8859_1);
+  const file = new File(path);
+  return FileUtils.readFileToString(file, StandardCharsets.ISO_8859_1);
 }
 ```
 
@@ -26,12 +25,12 @@ const C00Handshake = Java.type("net.minecraft.network.handshake.client.C00Handsh
 
 ...
 
-module.on("packet", (eventData) => {
-    const packet = eventData.getPacket();
+mod.on("packet", (eventData) => {
+  const packet = eventData.getPacket();
 
-    if (packet instanceof C00Handshake) {
-        Client.displayChatMessage("Performing handshake.");
-    }
+  if (packet instanceof C00Handshake) {
+    Client.displayChatMessage("Performing handshake.");
+  }
 });
 ```
 

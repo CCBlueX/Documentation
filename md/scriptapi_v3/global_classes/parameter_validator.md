@@ -20,17 +20,15 @@ List of parameters:
 
 ```js
 script.registerCommand({
-    name: "description",
-    parameters: [
-        {
-            name: "module",
-            required: true,
-            validate: ParameterValidator.module,
-        }
-    ],
-    onExecute(mod) {
-        Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description}'`);
-    }
+  name: "description",
+  parameters: [{
+    name: "module",
+    required: true,
+    validate: ParameterValidator.module,
+  }],
+  onExecute(mod) {
+    Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description}'`);
+  }
 });
 ```
 
@@ -45,23 +43,22 @@ List of parameters:
 
 ```js
 script.registerCommand({
-    name: "addition",
-    aliases: ["add"],
-    parameters: [
-        {
-            name: "a",
-            required: true,
-            validate: ParameterValidator.integer
-        },
-        {
-            name: "b",
-            required: true,
-            validate: ParameterValidator.integer
-        }
-    ],
-    onExecute(arg1, arg2) {
-        Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+  name: "addition",
+  aliases: ["add"],
+  parameters: [{
+      name: "a",
+      required: true,
+      validate: ParameterValidator.integer
+    },
+    {
+      name: "b",
+      required: true,
+      validate: ParameterValidator.integer
     }
+  ],
+  onExecute(arg1, arg2) {
+    Client.displayChatMessage(`Result of ${arg1} + ${arg2} is ${arg1 + arg2}`);
+  }
 });
 ```
 
