@@ -1,6 +1,6 @@
 ## ParameterValidator
 
-The ParameterValidator class contains various builtin validation methods for client command parameters. A validation function ensures the given parameter satisfies its requirements and can also perform a parameter conversion. For example, `ParameterValidator.module` ensures the given parameter is the name of an existing module and passes the modules instance to `onExecute` in place of the string provided by the user.
+The ParameterValidator class contains various builtin validation methods for client command parameters. A validation function ensures the given parameter satisfies its requirements and can also perform a parameter transformation. For example, `ParameterValidator.module` ensures the given parameter is the name of an existing module and passes the modules instance to `onExecute` in place of the string provided by the user.
 
 ### Method summary
 

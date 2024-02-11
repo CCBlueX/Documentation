@@ -44,6 +44,7 @@
             "RotationUtil": "scriptapi_v3/global_classes/rotation_util.md",
             "Setting": "scriptapi_v3/global_classes/setting.md"
         },
-        "Global Instances": "scriptapi_v3/global_instances.md"
+        "Global Instances": "scriptapi_v3/global_instances.md",
+        "Creating Commands": "scriptapi_v3/command/command.md"
     }
 }
