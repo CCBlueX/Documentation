@@ -19,21 +19,6 @@ function readFile(path) {
 }
 ```
 
-#### Using Minecraft classes
-```js
-const C00Handshake = Java.type("net.minecraft.network.handshake.client.C00Handshake");
-
-...
-
-mod.on("packet", (eventData) => {
-  const packet = eventData.getPacket();
-
-  if (packet instanceof C00Handshake) {
-    Client.displayChatMessage("Performing handshake.");
-  }
-});
-```
-
 For more information, please check out the [official GraalJS documentation](https://www.graalvm.org/latest/reference-manual/js/JavaInteroperability/#access-java-from-javascript) on the topic. It provides detailed instructions on how to use this functionality including many examples.
 
 
