@@ -257,7 +257,11 @@ script.registerModule({
       name: "Key",
       default: 260
     }),
-    message: Setting.textArray({
+    message: Setting.text({
+      name: "Message",
+      default: "This is a default message."
+    }),
+    messages: Setting.textArray({
       name: "Messages",
       default: ["This is a message", "This is another message"]
     }),
@@ -266,7 +270,6 @@ script.registerModule({
       default: "Capybara",
       choices: ["Axolotl", "Capybara", "Snek"]
     })
-    messages: Setting.textArray("Messages", ["This is a message", "This is another message"]),
   }
 }, (mod) => {
   mod.on("enable", () => {
