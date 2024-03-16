@@ -6,19 +6,19 @@ Commands created using the script API behave exactly like builtin commands. In c
 
 Just like modules, commands have to be registered with the client. This must be done by calling `registerCommand` on your script's instance passing an object containing various options.
 ```js
-script.registerCommand({ option: value });
+script.registerCommand(options);
 ```
 
 The object passed to `registerCommand` may contain the following options:
 
-| Propery     | Description                                                                 | Required | Type     | Default |
-|-------------|-----------------------------------------------------------------------------|----------|----------|---------|
-| name        | Primary name of the command.                                                | Yes      | string   |         |
-| onExecute   | Function called when the command is executed.                               | Yes      | function |         |
-| aliases     | Array containing additional names of the command.                           | No       | array    | []      |
-| parameters  | Array containing parameters of the command. Refer to 'Creating parameters'. | No       | array    | []      |
-| hub         | Whether this command is a hub command. Hub commands cannot be executed.     | No       | boolean  | false   |
-| subcommands | Array containing additional subcommands.                                    | No       | array    | []      |
+| Property     | Description                                                                 | Required | Type     | Default |
+|--------------|-----------------------------------------------------------------------------|----------|----------|---------|
+| name         | Primary name of the command.                                                | Yes      | string   |         |
+| onExecute    | Function called when the command is executed.                               | Yes      | function |         |
+| aliases      | Array containing additional names of the command.                           | No       | array    | []      |
+| parameters   | Array containing parameters of the command. Refer to 'Creating parameters'. | No       | array    | []      |
+| hub          | Whether this command is a hub command. Hub commands cannot be executed.     | No       | boolean  | false   |
+| subcommands  | Array containing additional subcommands.                                    | No       | array    | []      |
 
 ### Creating parameters
 
@@ -26,13 +26,13 @@ Parameters accept arguments passed in by the user. By default, no validation is 
 
 Parameters are created as JavaScript objects and may have the following options:
 
-| Propery        | Description                                                                                      | Required | Type     | Default |
-|----------------|--------------------------------------------------------------------------------------------------|----------|----------|---------|
-| name           | Name of the parameter.                                                                           | Yes      | string   |         |
-| required       | Whether the parameter is required or optional.                                                   | No       | boolean  | false   |
-| vararg         | Whether this parameter accept a variable amount of arguments. Only possible with last parameter. | No       | boolean  | false   |
-| getCompletions | Function returning completion candidates for partial input.                                      | No       | function |         |
-| validate       | Function validating the parameter and possibly applying transformations.                         | No       | function |         |
+| Property        | Description                                                                                      | Required | Type     | Default |
+|-----------------|--------------------------------------------------------------------------------------------------|----------|----------|---------|
+| name            | Name of the parameter.                                                                           | Yes      | string   |         |
+| required        | Whether the parameter is required or optional.                                                   | No       | boolean  | false   |
+| vararg          | Whether this parameter accept a variable amount of arguments. Only possible with last parameter. | No       | boolean  | false   |
+| getCompletions  | Function returning completion candidates for partial input.                                      | No       | function |         |
+| validate        | Function validating the parameter and possibly applying transformations.                         | No       | function |         |
 
 ### Using validators
 

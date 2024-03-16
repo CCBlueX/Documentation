@@ -14,22 +14,7 @@
         "Overview": "autosettings/overview.md",
         "Local Settings": "autosettings/local.md"
     },
-    "ScriptAPI (legacy)": {
-        "Getting Started": "scriptapi_v2/getting_started.md",
-        "Using Java Classes": "scriptapi_v2/using_java_classes.md",
-        "Registering a Script": "scriptapi_v2/registering_script.md",
-        "Global Classes": "scriptapi_v2/global_classes.md",
-        "Global Instances": "scriptapi_v2/global_instances.md",
-        "Creating Modules": {
-            "Overview": "scriptapi_v2/module/overview.md",
-            "Supported Events": "scriptapi_v2/module/module_events.md",
-            "Settings": "scriptapi_v2/module/module_settings.md"
-        },
-        "Creating Commands": "scriptapi_v2/command/overview.md",
-        "Creating Inventory Tabs": "scriptapi_v2/tab/overview.md",
-        "Setting up Babel": "scriptapi_v2/babel_setup.md"
-    },
-    "ScriptAPI (nextgen)": {
+    "Script API": {
         "Getting Started": "scriptapi_v3/getting_started.md",
         "Using Java Classes": "scriptapi_v3/using_java_classes.md",
         "Global Classes": {
@@ -45,6 +30,9 @@
             "Setting": "scriptapi_v3/global_classes/setting.md"
         },
         "Global Instances": "scriptapi_v3/global_instances.md",
+        "Creating Modules": {
+            "Overview": "scriptapi_v3/module/overview.md"
+        },
         "Creating Commands": "scriptapi_v3/command/command.md"
     }
 }
