@@ -7,6 +7,7 @@ The Setting class provides methods for creating module settings. Refer to [here]
 #### `Setting.boolean(options: Object): Value`
 Creates a new boolean setting (either on or off). <br>
 Parameter properties:
+
 | Property | Description                                | Type    |
 |----------|--------------------------------------------|---------|
 | name     | Name under which the setting is displayed. | string  |
@@ -27,6 +28,7 @@ fastSwing.value = false;
 #### `float(options: Object): Value`
 Creates a new float setting (a floating-point value between *min* and *max*). <br>
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
@@ -51,6 +53,7 @@ range.value = 2.3;
 #### `Setting.floatRange(options: Object): Value`
 Creates a new float setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
@@ -75,6 +78,7 @@ randomness.value = [2, 4.34];
 #### `Setting.int(options: Object): Value`
 Creates a new integer setting (an integer value between *min* and *max*). <br>
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
@@ -99,6 +103,7 @@ expand.value = 7;
 #### `Setting.intRange(options: Object)`
 Creates a new integer setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
@@ -123,6 +128,7 @@ cps.value = [5, 12];
 #### `Setting.key(options: Object): Value`
 Creates a keyboard key value. Refer to the [this gist](https://gist.github.com/Mumfrey/5cfc3b7e14fef91b6fa56470dc05218a) for information on key codes. <br>
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
@@ -143,6 +149,7 @@ key.value = 265;
 #### `Setting.text(object: Object): Value`
 Creates text value. <br>
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
@@ -167,6 +174,7 @@ List of parameters:
 - *default*, default value of the setting.
 
 Parameter properties:
+
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
