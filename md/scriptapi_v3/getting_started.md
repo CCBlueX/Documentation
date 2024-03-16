@@ -1,6 +1,6 @@
 ## Introduction
 
-LiquidBounce's script API is based on [GraalJS](https://github.com/oracle/graaljs), an *ECMAScript 2023 compliant JavaScript implementation built on [GraalVM](https://www.graalvm.org)*. GraalVM's [polyglot functionality](https://www.graalvm.org/latest/reference-manual/polyglot-programming/) enables saemless interoperation between scripts written in JavaScript and the client written in Java and Kotlin. This integration facilitates easy access and utilization of Java's and Minecraft's classes, methods, and fields, making development particularly intuitive for those already familiar with Minecraft modding.
+LiquidBounce's script API is based on [GraalJS](https://github.com/oracle/graaljs), an *ECMAScript 2023 compliant JavaScript implementation built on [GraalVM](https://www.graalvm.org)*. GraalVM's [polyglot functionality](https://www.graalvm.org/latest/reference-manual/polyglot-programming/) enables seamless interoperation between scripts written in JavaScript and the client written in Java and Kotlin. This integration facilitates easy access and utilization of Java's and Minecraft's classes, methods, and fields, making development particularly intuitive for those already familiar with Minecraft modding.
 
 ## Getting started with development
 
