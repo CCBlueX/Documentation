@@ -22,7 +22,7 @@ const script = registerScript({
 
 ### Creating a new module
 
-When registering a new module, some information must be provided, which is then displayed in LiquidBounce's GUIs. The required details include a name, a description, and a category under which the module should appear in the client's ClickGUI / TabGUI. For more information on supported details and a list of all available categories, click [here](#). TODO
+When registering a new module, some information must be provided, which is then displayed in LiquidBounce's GUIs. The required details include a name, a description, and a category under which the module should appear in the client's ClickGUI / TabGUI. For more information on supported details and a list of all available categories, click [here](/docs/Script%20API/Creating%20Modules/Overview).
 
 Our module will be called *MyModule* and will belong to the *Misc* category. Add the following code to your script file to register it.
 
@@ -55,13 +55,13 @@ A plethora of additional events are supported by the API and serve different pur
 - `disable`: Called whenever the module is disabled.
 - `playerTick`: Called once every game tick (~20 times per second).
 
-The full list of supported events can be found [here](#). TODO
+The full list of supported events can be found [here](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
 
 ### Creating a command
 
 Another way of introducing new functionality is through client commands. Commands usually accept arguments, process them in some way and then perform an action once. Unlike modules, they are not intended to run for extended periods of time.
 
-Similarly to modules, commands have to be registered with the client. The code shown below will introduce a new command called *addition* or *add* which accepts two integer parameters, adds them and prints them to the chat. The `validate` function can be used to ensure a parameter adheres to certain rules. In this case, it must be an integer. `ParameterValidator.integer` will also convert the parameter to an integer, so we don't have to manually parse it in `onExecute`. For more information on parameter validation, click [here](#TODO).
+Similarly to modules, commands have to be registered with the client. The code shown below will introduce a new command called *addition* or *add* which accepts two integer parameters, adds them and prints them to the chat. The `validate` function can be used to ensure a parameter adheres to certain rules. In this case, it must be an integer. `ParameterValidator.integer` will also convert the parameter to an integer, so we don't have to manually parse it in `onExecute`. For more information on parameter validation, click [here](/Script%20API/Global%20Classes/ParameterValidator).
 
 ```js
 script.registerCommand({
@@ -84,7 +84,7 @@ script.registerCommand({
 });
 ```
 
-For more details on command creation, click [here](#). TODO
+For more details on command creation, click [here](/docs/Script%20API/Creating%20Commands).
 
 
 ### Final script

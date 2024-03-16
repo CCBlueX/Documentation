@@ -40,7 +40,7 @@ Validators may be used to ensure an argument provided by the user is of the expe
 
 #### Using builtin validators
 
-LiquidBounce's script API provides a set of builtin validators for common use cases. For more information on builtin validators, click [here](#TODO).
+LiquidBounce's script API provides a set of builtin validators for common use cases. For more information on builtin validators, click [here](/Script%20API/Global%20Classes/ParameterValidator).
 
 **Example:** Command using the built-in *module* validator.
 ```js
@@ -81,7 +81,7 @@ If the argument has been rejected, an object of the following structure has to b
 }
 ```
 
-**Example:** Implementing an integer validator. Note that the script API offers a built-in validator for this purpose. See [here](#Todo).
+**Example:** Implementing an integer validator. Note that the script API offers a built-in validator for this purpose. See [here](/Script%20API/Global%20Classes/ParameterValidator).
 
 ```js
 script.registerCommand({

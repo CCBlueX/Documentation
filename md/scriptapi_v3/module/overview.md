@@ -37,7 +37,7 @@ The argument passed to the `callback` function contains the instance of the modu
 
 Settings can be used to allow the user to adjust the module's behavior to their needs. LiquidBounce's script API offers many different types of settings fulfilling differtent purposes. Each setting must be passed to `registerModule` in the `settings` object. The settings key represents the internal name of the setting under which it can later be accessed in your code.
 
-For a full list of available settings, click [here](#TODO).
+For a full list of available settings, click [here](/docs/Script%20API/Global%20Classes/Setting).
 
 #### Events
 
