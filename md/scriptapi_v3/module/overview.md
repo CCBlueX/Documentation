@@ -60,7 +60,10 @@ script.registerModule({
     category: "Misc",
     description: "Just a demonstration.",
     settings: {
-        myBooleanSetting: Setting.boolean("MySetting", true)
+        myBooleanSetting: Setting.boolean({
+            name: "MySetting",
+            default: true
+        })
     }
 }, mod => {
     mod.on("enable", () => {
