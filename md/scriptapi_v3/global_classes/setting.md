@@ -186,6 +186,8 @@ messages.value; // ["This is a message", "This is another message"]
 messages.value = [...message.value, "This is a third message."];
 ```
 
+<hr>
+
 #### `Setting.choose(object: Object): Value`
 Creates a choose list value (drop down). <br>
 Parameter properties:
