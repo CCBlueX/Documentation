@@ -169,10 +169,6 @@ message.value = "This is another message";
 
 #### `Setting.textArray(object: Object): Value`
 Creates text value. <br>
-List of parameters:
-- *name*, name of the setting.
-- *default*, default value of the setting.
-
 Parameter properties:
 
 | Property | Description                                                          | Type     |
@@ -188,6 +184,27 @@ const messages = Setting.textArray({
 });
 messages.value; // ["This is a message", "This is another message"]
 messages.value = [...message.value, "This is a third message."];
+```
+
+#### `Setting.choose(object: Object): Value`
+Creates a choose list value (drop down). <br>
+Parameter properties:
+
+| Property | Description                                                          | Type     |
+|----------|----------------------------------------------------------------------|----------|
+| name     | Name under which the setting is displayed.                           | string   |
+| default  | The setting's initial values.                                        | string   |
+| choices  | Possible values.                                                     | string[] |
+
+**Example:**
+```js
+const animal = Setting.choose({
+    name: "Animal",
+    default: "Capybara",
+    choices: ["Axolotl", "Capybara", "Snek"]
+});
+animal.value; // Capybara
+animal.value = "Axolotl";
 ```
 
 ### Example script
@@ -242,6 +259,11 @@ script.registerModule({
       name: "Messages",
       default: ["This is a message", "This is another message"]
     }),
+    animal: Setting.choose({
+      name: "Animal",
+      default: "Capybara",
+      choices: ["Axolotl", "Capybara", "Snek"]
+    })
     messages: Setting.textArray("Messages", ["This is a message", "This is another message"]),
   }
 }, (mod) => {
@@ -254,6 +276,7 @@ script.registerModule({
     Client.displayChatMessage(`Key: ${mod.settings.key.value}`);
     Client.displayChatMessage(`Message: ${mod.settings.message.value}`);
     Client.displayChatMessage(`Messages: ${mod.settings.messages.value}`);
+    Client.displayChatMessage(`Animal: ${mod.settings.animal.value}`);
 
     mod.settings.fastSwing.value = false;
     mod.settings.range.value = 2.3;
@@ -263,6 +286,7 @@ script.registerModule({
     mod.settings.key.value = 265;
     mod.settings.message.value = "Axolotls are cool";
     mod.settings.messages.value = ["New message 1", "New message 2"];
+    mod.settings.animal.value = "Axolotl";
   });
 });
 ```
