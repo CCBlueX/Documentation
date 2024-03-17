@@ -2,6 +2,7 @@
     "Tutorials": {
         "Installation": "tutorials/installation.md",
         "LiquidLauncher": "tutorials/liquidlauncher.md",
+        "Fixing hosts file issues": "tutorials/hosts_file.md",
         "Installing a Script": "tutorials/script_installation.md"
     },
     "CustomHUD": {
