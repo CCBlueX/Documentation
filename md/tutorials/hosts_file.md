@@ -6,7 +6,7 @@ Some alternative Minecraft authentication services like [EasyMC](https://easymc.
 - "The authentication servers are currently not reachable."
 - "Please switch to Mojang mode."
 - "Not authenticated with minecraft.net."
-- It may also prevent LiquidLauncher from working properly.
+- It may also prevent LiquidLauncher from working properly ("An error with the client occured: Connection to https://launchermeta.mojang.com/ failed.").
 
 To reset your hosts file and fix these issues, follow the these instructions for your respective operating system.
 
