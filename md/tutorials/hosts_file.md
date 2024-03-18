@@ -1,4 +1,4 @@
-## How to fix hosts file issues with LiquidLauncher
+## How to fix a proken hosts file
 
 Some alternative Minecraft authentication services like [EasyMC](https://easymc.io/) and [TheAltening](https://thealtening.com/) may make changes to your system's [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)). These can cause error messages like the following:
 
