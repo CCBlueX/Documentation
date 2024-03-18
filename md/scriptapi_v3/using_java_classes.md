@@ -1,5 +1,5 @@
 ## Using Java classes
-As established in the [Getting Started Guide](/docs/ScriptAPI/Getting%20Started), the [GraalJS](https://github.com/oracle/graaljs) JavaScript engine used by LiquidBounce's script API allows easy interoperation with Java code. Classes from the game and the Java standard library can be imported and used similarly to how you would in Java. This functionality greatly facilitates the development of powerful scripts. Basically anything possible by modifying LiquidBounce's source code can also be done using a script.
+As established in the [Getting Started Guide](/docs/Script%20API/Getting%20Started), the [GraalJS](https://github.com/oracle/graaljs) JavaScript engine used by LiquidBounce's script API allows easy interoperation with Java code. Classes from the game and the Java standard library can be imported and used similarly to how you would in Java. This functionality greatly facilitates the development of powerful scripts. Basically anything possible by modifying LiquidBounce's source code can also be done using a script.
 
 ### Java.type(className : string): Class
 Imports a Java class. <br>

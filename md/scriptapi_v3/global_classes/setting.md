@@ -1,6 +1,6 @@
 ## Setting
 
-The Setting class provides methods for creating module settings. Refer to [here](/Script%20API/Creating%20Modules/Overview) for information how to integrate them with modules.
+The Setting class provides methods for creating module settings. Refer to [here](/docs/Script%20API/Creating%20Modules/Overview) for information how to integrate them with modules.
 
 ### Method summary
 
