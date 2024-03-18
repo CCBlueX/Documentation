@@ -1,7 +1,7 @@
 ## CustomHUD
 LiquidBounce allows you to configure the HUD of the client entirely according to your preferences. To accomplish this, the client provides a unique feature called CustomHUD. It can be accessed by opening the ClickGUI (bound to RSHIFT by default) and then clicking the blue button with brush on it in the lower left corner of the screen.
 
-![Screenshot of CustomHUD]($images$/customhud.jpg)
+![Screenshot of CustomHUD](/images/customhud.jpg)
 
 From this menu you can now make the desired changes to the HUD. It is possible to rearrange existing components or to add completely new ones.
 #### Adjust existing elements

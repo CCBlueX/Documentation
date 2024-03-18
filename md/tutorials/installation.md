@@ -33,7 +33,7 @@ The following list contains various mods we highly recommend installing alongsid
 - [Lithium](https://modrinth.com/mod/lithium) to improve performance further.
 - [Mod Menu](https://modrinth.com/mod/modmenu) gives you a list of all installed mods similar to Forge.
 
-![nextgen]($images$/nextgen-main-menu.jpg)
+![nextgen](/images/nextgen-main-menu.jpg)
 
 ## Installing LiquidBounce legacy (Forge)
 
@@ -66,4 +66,4 @@ Theoretically, the installation of OptiFine is optional but it's **highly** reco
 3. Copy the downloaded jar file to the same *mods* folder where you also placed the LiquidBounce jar file.
 4. Launch Forge again. To make sure, OptiFine is installed properly, open the video settings and verify that it says *OptiFine* in the bottom left corner.
 
-![nextgen]($images$/forge-main-menu.png)
+![nextgen](/images/forge-main-menu.png)

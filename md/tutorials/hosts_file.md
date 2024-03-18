@@ -12,7 +12,7 @@ To reset your hosts file and fix these issues, follow the following instructions
 
 ### On Windows
 1. Search for *notepad* in start menu, right-click it, and run it as an administrator. <br>
-![versions](/images/hosts_file/step_1.png)
+![versions](images/hosts_file/step_1.png)
 
 2. Click *Yes* to allow the program to make changes to your device. <br>
 ![versions](/images/hosts_file/step_2.png)

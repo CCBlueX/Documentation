@@ -2,11 +2,11 @@
 
 We recommend using LiquidLauncher to install LiquidBounce. It is a custom Minecraft launcher we designed speficially to make installing and updating our client as straightforward as possible. Simply download the version for your respective operating system from the [downloads](/download) page on our website and install it. After the installation, you should find a new shortcut on your desktop (on Windows only) and in your start menu. Run it and sign in either with your Microsoft account or an offline account to get started. 
 
-![liquidlauncher]($images$/liquidlauncher-main.png)
+![liquidlauncher](/images/liquidlauncher-main.png)
 
 ## Version configuration
 
-![versions]($images$/liquidlauncher-versions.png)
+![versions](/images/liquidlauncher-versions.png)
 
 ### Selecting a LiquidBounce version
 

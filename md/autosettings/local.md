@@ -7,10 +7,10 @@ The command that makes all this possible is `.localautosettings`. Just like the 
 With the command `.localautosettings save <name>` you can save your current configuration in a file with the specified name. This file will be saved locally on your hard disk in the LiquidBounce folder. If you are using LiquidBounce 1.8.9 and have not changed the default installation path, it should be located in `%appdata%/.minecraft/LiquidBounce-1.8/settings` under Windows.<br>
 If you want to share your configuration with a particular person, you can send him the created file, which he can then store in his settings folder and load with the load sub-command explained below.
 
-![LocalAutoSettings Save]($images$/localsettings_save.png)
+![LocalAutoSettings Save](/images/localsettings_save.png)
 
 ### How to load an existing configuration
 To restore a configuration you or someone else has previously saved, make sure that the corresponding file is located in the settings folder. If it is, you can reapply it with the load sub-command. The syntax is as follows: `.localautosettings load <name>`. You replace `<name>` with the name of the configuration file you want to load. <br>
 An application example would look like this: `.localautosettings load my_server_config.`
 
-![LocalAutoSettings Load]($images$/localsettings_load.png)
+![LocalAutoSettings Load](/images/localsettings_load.png)

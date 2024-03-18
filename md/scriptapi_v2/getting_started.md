@@ -8,7 +8,7 @@
 
 ## ScriptManager
 The ScriptManager serves as an overview of all currently installed scripts, their authors and installed version. Additionally, it allows the user to import additional scripts and to delete already installed ones. The import button can import single JavaScript files as well as zip archives. The latter is especially convenient if the project consists of multiple files.
-![ScriptManager]($images$/scriptmanager.png)
+![ScriptManager](/images/scriptmanager.png)
 
 ## Getting started with developing
 LiquidBounce's script API is based on [Nashorn](https://docs.oracle.com/javase/10/nashorn/introduction.htm#JSNUG136), an ECMAScript (in the following referred to as JavaScript) engine written entirely in Java. Nashorn compiles JavaScript to regular Java bytecode and subsequently loads it dynamically into the Java runtime. The outstanding feature of this engine is that (almost) all Java features can be accessed directly. Thus, it is also possible to access Minecraft classes, methods and fields very easily, which is why the API should immediately look familiar to anyone who has ever worked with [MCP](http://www.modcoderpack.com/).

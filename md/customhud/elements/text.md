@@ -31,4 +31,4 @@ To change the size of a text element, press and hold the mouse over that element
 - `X/Y/Z: %x%/%y%/%z%`
 - `FPS: %fps%`
 
-![Example]($images$/customhud_variables.png)
+![Example](/images/customhud_variables.png)

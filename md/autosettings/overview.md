@@ -12,10 +12,10 @@ The AutoSettings command has two sub-commands, which are explained below.
 #### .autosettings list
 When you execute this command, you will obtain a list of available configurations, which you can subsequently load using their respective names.
 
-![AutoSettings List]($images$/autosettings_list.png)
+![AutoSettings List](/images/autosettings_list.png)
 
 #### .autosettings load <name>
 With this command you can now actually load and apply a pre-made configuration. `<name>` is a placeholder for the name of an available configuration that you know exists based on the previous command. <br>
 An example of using this command would be `.autosettings load hypixel` to apply the current Hypixel configuration.
 
-![AutoSettings Load]($images$/autosettings_load.png)
+![AutoSettings Load](/images/autosettings_load.png)

@@ -1,7 +1,7 @@
 ## ScriptManager
 The ScriptManager serves as an overview of all installed scripts, their author and current version. It also allows importing additional scripts and deleting already installed ones. The Import button allows you to import single script files as well as compressed zip packages cotaining multiple script files.
 
-![scriptmanager]($images$/scriptmanager.png)
+![scriptmanager](/images/scriptmanager.png)
 
 ## Getting started with developing
 LiquidBounce's script API is based on Nashorn, a JavaScript implementation written entirely in Java. Nashorn compiles scripts to regular byte code and loads it into the runtime using a class loader. 
