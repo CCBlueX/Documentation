@@ -8,7 +8,7 @@ Some alternative Minecraft authentication services like [EasyMC](https://easymc.
 - "Not authenticated with minecraft.net."
 - It may also prevent LiquidLauncher from working properly.
 
-To reset your hosts file and fix these issues, follow the following instructions.
+To reset your hosts file and fix these issues, follow the these instructions for your respective operating system.
 
 ### On Windows
 1. Search for *notepad* in start menu, right-click it, and run it as an administrator. <br>
