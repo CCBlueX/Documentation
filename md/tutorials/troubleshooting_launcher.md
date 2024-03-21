@@ -2,43 +2,6 @@
 
 Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through [email](mailto:support@liquidbounce.net) or on our [Discord](/discord) after you verified that all the poissble solutions listed here didn't solve your problem.
 
-### Fixing issues with the DNS server
-
-DNS servers resolve domain names to their corresponding IP address. A misconfigured DNS server can lead to connection issues. We recommend using 1.1.1.1, a DNS server provided by Cloudflare. To set a DNS server, please follow these instructions:
-
-#### On Windows 11
-
-1. Go to *Settings*.
-2. Select *Network & internet*
-3. Select Wi-Fi or Ethernet depending on your connection.
-4. If you selected Wi-Fi in the previous step, click *Properties of [your wifi's name]*.
-5. Under DNS server assignment, select *Edit*.
-6. From the drop-down menu, select *Manual*.
-7. Turn on the IPv4 toggle switch.
-8. Under Preferred DNS, enter `1.1.1.1` and `1.0.0.1`.
-9. Hit *Save* and restart your computer.
-
-#### On Windows 10, 8 & 7
-
-1. Open the control panel.
-2. Select *Network and Sharing Center*.
-3. Click *Change adapter settings* on the left side of the window.
-4. Double click your current internet connection whether it’s Wi-Fi or Ethernet.
-5. Click *Properties* in the window that popped up.
-6. Select *Internet Protocol Version 4 (TCP/IPv4)* from the list under *This connection uses the following items*.
-7. Press *Properties*.
-8. Change the radio button to *Use the following DNS server addresses*.
-9. Enter `1.1.1.1` as preferred DNS and `1.0.0.1` as alternate DNS.
-10. Press *OK* and restart your computer
-
-####  On macOS
-
-Please follow [this guide](https://support.apple.com/guide/mac-help/change-dns-settings-on-mac-mh14127/mac) provided by Apple.
-
-#### On Linux
-
-DNS configuration varies depending on your distribution and desktop environment. Please lookup a matching guide yourself. Since you are a Linux user, you probably know how to use a search engine.
-
 ### Fixing issues with the system's hosts file
 
 Some alternative Minecraft authentication services like [EasyMC](https://easymc.io/) and [TheAltening](https://thealtening.com/) may make changes to your system's [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)). These can cause error messages like the following:
@@ -86,3 +49,42 @@ The problems should now be resolved.
 
 #### References
 These instructions are based on the ones provided by [sparkuniverse.notion.site](https://sparkuniverse.notion.site/Reverse-changes-by-pirated-versions-2348b6082efa4a0cb59173e965bb5616).
+
+<hr>
+
+### Fixing issues with the DNS server
+
+DNS servers resolve domain names to their corresponding IP address. A misconfigured DNS server can lead to connection issues. We recommend using 1.1.1.1, a DNS server provided by Cloudflare. To set a DNS server, please follow these instructions:
+
+#### On Windows 11
+
+1. Go to *Settings*.
+2. Select *Network & internet*
+3. Select Wi-Fi or Ethernet depending on your connection.
+4. If you selected Wi-Fi in the previous step, click *Properties of [your wifi's name]*.
+5. Under DNS server assignment, select *Edit*.
+6. From the drop-down menu, select *Manual*.
+7. Turn on the IPv4 toggle switch.
+8. Under Preferred DNS, enter `1.1.1.1` and `1.0.0.1`.
+9. Hit *Save* and restart your computer.
+
+#### On Windows 10, 8 & 7
+
+1. Open the control panel.
+2. Select *Network and Sharing Center*.
+3. Click *Change adapter settings* on the left side of the window.
+4. Double click your current internet connection whether it’s Wi-Fi or Ethernet.
+5. Click *Properties* in the window that popped up.
+6. Select *Internet Protocol Version 4 (TCP/IPv4)* from the list under *This connection uses the following items*.
+7. Press *Properties*.
+8. Change the radio button to *Use the following DNS server addresses*.
+9. Enter `1.1.1.1` as preferred DNS and `1.0.0.1` as alternate DNS.
+10. Press *OK* and restart your computer
+
+####  On macOS
+
+Please follow [this guide](https://support.apple.com/guide/mac-help/change-dns-settings-on-mac-mh14127/mac) provided by Apple.
+
+#### On Linux
+
+DNS configuration varies depending on your distribution and desktop environment. Please lookup a matching guide yourself. Since you are a Linux user, you probably know how to use a search engine.
