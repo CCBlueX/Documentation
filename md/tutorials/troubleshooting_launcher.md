@@ -2,6 +2,16 @@
 
 Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through [email](mailto:support@liquidbounce.net) or on our [Discord](/discord) after you verified that all the poissble solutions listed here didn't solve your problem.
 
+### LiquidBounce download does not finish (SmartScreen issue)
+
+This is a known bug on Windows 10. We are currently working on a proper fix. For now, please disable Windows Smart Screen to solve the issue. You can do so by following these steps:
+
+1. Open the start menu and search for *Windows Security*.
+2. Open the program and select *App & browser control*.
+3. Click *Reputation based protection settings*.
+4. Uncheck *Check apps and files* and *SmartScreen for Microsoft Edge*.
+5. Restart your computer and try again.
+
 ### Fixing issues with the system's hosts file
 
 Some alternative Minecraft authentication services like [EasyMC](https://easymc.io/) and [TheAltening](https://thealtening.com/) may make changes to your system's [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)). These can cause error messages like the following:
