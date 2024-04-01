@@ -20,7 +20,7 @@ The object passed to `registerModule` may contain the following options:
 | tag         | Additional text displayed next to the module name in the ArrayList. May be used to display the current mode, for example. | No       | string | ""      |
 | settings    | An object containing the settings of the module.                                                                          | No       | object | {}      |
 
-`category` may be one of thw following:
+`category` may be one of the following:
 - Client
 - Combat
 - Exploit
