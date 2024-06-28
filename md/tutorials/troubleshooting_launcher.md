@@ -21,6 +21,7 @@ Some alternative Minecraft authentication services like [EasyMC](https://easymc.
 - "Please switch to Mojang mode."
 - "Not authenticated with minecraft.net."
 - It may also prevent LiquidLauncher from working properly ("An error with the client occured: Connection to https://launchermeta.mojang.com/ failed.").
+- java.net.ConnectException: Connection refused: getsockopt
 
 To reset your hosts file and fix these issues, follow the these instructions for your respective operating system.
 
@@ -39,7 +40,14 @@ To reset your hosts file and fix these issues, follow the these instructions for
 6. Open the file called *hosts*. <br>
 ![versions](/images/hosts_file/step_4.png)
 
-7. Remove all lines containing either *mojang* or *minecraft*. <br>
+7. Remove all lines containing one of the following words: <br>
+
+- minecraft
+- mojang
+- microsoft
+- xbox
+- live
+
 ![versions](/images/hosts_file/step_5.png)
 
 8. Save the file and restart your computer.
