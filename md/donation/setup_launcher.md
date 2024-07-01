@@ -12,6 +12,8 @@ To disable the ads, follow these steps:
 6. Enable the `Skip advertisements` setting.
 7. All ads should now be disabled!
 
+![LiquidLauncher Donator](/images/liquidlauncher_donator.png)
+
 ### This is not working!
 
 1. Make sure you have properly linked your transfer code to a LiquidBounce account.
