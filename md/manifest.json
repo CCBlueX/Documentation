@@ -36,5 +36,9 @@
             "Overview": "scriptapi_v3/module/overview.md"
         },
         "Creating Commands": "scriptapi_v3/command/command.md"
+    },
+    "Donation": {
+        "Cape Setup": "donation/setup_cape.md",
+        "Launcher Setup": "donation/setup_launcher.md"
     }
 }
