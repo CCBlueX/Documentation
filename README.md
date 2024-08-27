@@ -1,6 +1,6 @@
 # Documentation
 This repository contains the files used to generate the documentation on our homepage. \
-Example: https://liquidbounce.net/docs/ScriptAPI/Getting%20Started
+Example: https://liquidbounce.net/docs/Script%20API/Getting%20Started
 
 ## Contributing
 We appreciate anyone who is willing to help us expand the documentation. If you want to contribute, please consider the following points:
