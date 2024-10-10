@@ -4,16 +4,16 @@ The following tutorial will guide you through the process of setting up your don
 
 ### Instructions for LiquidBounce Nextgen (recommended)
 
-1. Launch LiquidBounce.
-2. In the main menu, press the button labeled `LiqudidBounce` and then `ClickGUI`.
-3. Locate the module called `Cape Transfer`.
-4. Expand its settings by right clicking it, and expanding the setting called `Cape`.
-5. Enter your transfer code in the field called `Token`. You can find this token either on the website you were redirected to after your payment or in the confirmation email we sent you.
-6. Enable the module.
-7. Login to an account using the built-in Account Manager (pen icon next to your avatar in the main menu).
-8. Join a server and your cape should be visible.
+1. Link your donation to a [LiquidBounce account](https://user.liquidbounce.net/). See [here](/docs/Donation/Launcher%20Setup) for more information.
+2. Launch LiquidBounce.
+3. Join a server or a singleplayer word.
+4. Send `.client account login` into the chat.
+5. A browser window should open. Login to your LiquidBounce account.
+6. If everything went accordingly, you should now be logged in and your cape should be enabled. Make sure it says `Donation Perks: Yes` in the chat message.
 
-### Instruction for LiquidBounce Legacy
+![donator_login_command](/images/donator_login_command.png)
+
+### Instructions for LiquidBounce Legacy
 
 1. Launch LiquidBounce.
 2. In the main menu, press the button labeled `Alt Manager`.
