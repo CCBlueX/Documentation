@@ -4,7 +4,7 @@ Donators may disable advertisements on the launcher entirely. If you have not do
 
 To disable the ads, follow these steps:
 
-1. Create a [LiquidBounce account](https://user.liquidbounce.net/) and link your transfer code in the `Donator Cape` section. You can find the transfer code either on the website you were redirected to after your donation or in the confirmation email we sent you.
+1. Create a [LiquidBounce account](https://user.liquidbounce.net/) and link your transfer code in the `Cosmetics` section. You can find the transfer code either on the website you were redirected to after your donation or in the confirmation email we sent you.
 2. Run LiquidLauncher.
 3. Press the cog icon in the upper right corner of the window to open the settings.
 4. Switch to the `Donator` tab.

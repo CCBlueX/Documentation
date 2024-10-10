@@ -4,7 +4,7 @@ The following tutorial will guide you through the process of setting up your don
 
 ### Instructions for LiquidBounce Nextgen (recommended)
 
-1. Link your donation to a [LiquidBounce account](https://user.liquidbounce.net/). See [here](/docs/Donation/Launcher%20Setup) for more information.
+1. Link your donation to a [LiquidBounce account](https://user.liquidbounce.net/). See [here](/docs/Donation/Launcher%20Setup) for more information. You can also customize your cape in the user panel.
 2. Launch LiquidBounce.
 3. Join a server or a singleplayer word.
 4. Send `.client account login` into the chat.
