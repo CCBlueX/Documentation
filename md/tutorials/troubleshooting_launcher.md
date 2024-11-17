@@ -14,7 +14,7 @@ This is a known bug on Windows 10. We are currently working on a proper fix. For
 
 ### Fixing issues with the system's hosts file
 
-Some alternative Minecraft authentication services like [EasyMC](https://easymc.io/) and [TheAltening](https://thealtening.com/) may make changes to your system's [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)). These can cause error messages like the following:
+Some alternative Minecraft authentication services like [TheAltening](https://thealtening.com/) may make changes to your system's [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)). These can cause error messages like the following:
 
 - "The authentication servers are down for maintenance."
 - "The authentication servers are currently not reachable."

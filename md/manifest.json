@@ -3,8 +3,7 @@
         "Installation": "tutorials/installation.md",
         "LiquidLauncher": "tutorials/liquidlauncher.md",
         "Fixing LiquidLauncher": "tutorials/troubleshooting_launcher.md",
-        "Installing a Script": "tutorials/script_installation.md",
-        "Using EasyMC accounts": "tutorials/easymc.md"
+        "Installing a Script": "tutorials/script_installation.md"
     },
     "CustomHUD": {
         "Overview": "customhud/overview.md",
