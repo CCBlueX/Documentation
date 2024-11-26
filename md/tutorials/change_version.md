@@ -5,14 +5,14 @@ Sometimes, you might need to change your protocol version in LiquidBounce to ens
 - **Incompatible client message:** If the server says your client is **NOT** compatible:  
   ![Incompatible Client](/images/incompatible_client.png)
 
-- **Protocol mismatch in AutoConfig:** If AutoConfig shows your protocol version is **NOT** matching:  
+- **AutoConfig suggests using a different version:** If AutoConfig shows your protocol version is **NOT** matching:  
   ![Incompatible Config](/images/incompatible_config.png)
 
 ---
 
 ### Situation 1: Server has ViaVersion Installed
 
-- **Recommended Action:** Use the newest Minecraft version when connecting.  
+- **What to Do:** Use the newest Minecraft version when connecting.  
   - With the newest version, the server can recognize you're on a modern client and adjust anti-cheat checks accordingly.  
     This will improve compatibility with their anti-cheat and reduce false flags, or even allow for bypasses.
 
