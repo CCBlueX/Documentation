@@ -34,11 +34,6 @@ Sometimes, you might need to change your protocol version in LiquidBounce to ens
 
 ![Version Selector](/images/version_selector.png)
 
-### Situation 3: AutoConfig Suggests Using a Different Version
-
-- **What to Do:** Follow the same steps as in **Situation 2**.  
-  - Use the **Version Selector** in the top-right corner of the Multiplayer menu.  
-
 ---
 
 By following these steps, you can adjust your protocol version and join any server!
