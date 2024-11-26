@@ -2,12 +2,6 @@
 
 Sometimes, you might need to change your protocol version in LiquidBounce to ensure compatibility with the server you're trying to join.
 
-- **Incompatible client message:** If the server says your client is **NOT** compatible:  
-  ![Incompatible Client](/images/incompatible_client.png)
-
-- **AutoConfig suggests using a different version:** If AutoConfig shows your protocol version is **NOT** matching:  
-  ![Incompatible Config](/images/incompatible_config.png)
-
 ---
 
 ### Situation 1: Server has ViaVersion Installed
@@ -19,6 +13,8 @@ Sometimes, you might need to change your protocol version in LiquidBounce to ens
 ---
 
 ### Situation 2: Server has **NO** ViaVersion Installed
+
+![Incompatible Client](/images/incompatible_client.png)
 
 - **What to Do:** Use the Version Selector in LiquidBounce.  
   - You'll find it in the **top-right corner of the Multiplayer menu**.  
@@ -33,6 +29,13 @@ Sometimes, you might need to change your protocol version in LiquidBounce to ens
   - **Special Versions:** Snapshots, April Fools, and Combat Tests.  
 
 ![Version Selector](/images/version_selector.png)
+
+### Situation 3: AutoConfig Suggests Using a Different Version
+
+![Incompatible Config](/images/incompatible_config.png)
+
+- **What to Do:** Follow the same steps as in **Situation 2**.  
+  - Use the **Version Selector** in the top-right corner of the Multiplayer menu.  
 
 ---
 
