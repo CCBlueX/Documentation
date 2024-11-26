@@ -22,8 +22,7 @@ Sometimes, you might need to change your protocol version in LiquidBounce to ens
 
 - **What to Do:** Use the Version Selector in LiquidBounce.  
   - You'll find it in the **top-right corner of the Multiplayer menu**.  
-  - Select the version required by the server, and ViaFabricPlus will adapt to mimic that version.  
-    > Note: This is not a perfect version replication but works for most cases.  
+  - Select the version required by the server, and ViaFabricPlus will change your game to mimic that version.  
 
 - **Technical Info:** This feature uses **[ViaFabricPlus](https://modrinth.com/mod/viafabricplus)**, a Fabric mod that enables connecting to almost any Minecraft server version. It includes numerous gameplay fixes for compatibility, such as movement, block/entity collisions, and rendering adjustments. ViaFabricPlus supports:  
   - **Release:** 1.0.0 - 1.21.3  
@@ -32,8 +31,6 @@ Sometimes, you might need to change your protocol version in LiquidBounce to ens
   - **Classic:** c0.0.15 - c0.30 (including CPE)  
   - **Bedrock:** 1.21.30 (limited feature support)  
   - **Special Versions:** Snapshots, April Fools, and Combat Tests.  
-
-  > *Disclaimer:* This mod is not guaranteed to work with anti-cheat systems on all servers. Use with caution.
 
 ![Version Selector](/images/version_selector.png)
 
