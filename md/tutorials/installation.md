@@ -34,8 +34,7 @@ The following list contains various mods we highly recommend installing alongsid
 - [Sodium](https://modrinth.com/mod/sodium) to massively improve performance.
 - [Fabric API](https://modrinth.com/mod/fabric-api) as many other mods depend on it.
 - [ViaFabricPlus](https://modrinth.com/mod/viafabricplus) allows you to connect to all servers running Minecraft 1.7 and above.
-- [Lithium](https://modrinth.com/mod/lithium) to improve performance further.
-- [Mod Menu](https://modrinth.com/mod/modmenu) gives you a list of all installed mods similar to Forge.
+- [No Chat Reports](https://modrinth.com/mod/no-chat-reports/versions) to prevent other players from reporting your chat messages.
 
 ![nextgen](/images/nextgen-main-menu.jpg)
 
