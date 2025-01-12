@@ -1,6 +1,6 @@
 ## Troubleshooting LiquidLauncher
 
-Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through [email](mailto:support@liquidbounce.net) or on our [Discord](/discord) after you verified that all the poissble solutions listed here didn't solve your problem.
+Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through our [contact page](https://ccbluex.net/contact) or on our [Discord](/discord) after you verified that all the possible solutions listed here didn't solve your problem.
 
 ### LiquidBounce download does not finish (SmartScreen issue)
 
