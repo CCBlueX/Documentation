@@ -19,4 +19,4 @@ To disable the ads, follow these steps:
 1. Make sure you have properly linked your transfer code to a LiquidBounce account.
 2. Restart the launcher.
 3. Logout and login with your LiquidBounce account again.
-4. Contact us via email ([support@liquidbounce.net](mailto:support@liquidbounce.net)) or [Discord](https://liquidbounce.net/discord).
+4. Contact us via our [contact page](https://ccbluex.net/contact) or [Discord](https://liquidbounce.net/discord).

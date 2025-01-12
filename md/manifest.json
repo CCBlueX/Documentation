@@ -37,8 +37,8 @@
         },
         "Creating Commands": "scriptapi_v3/command/command.md"
     },
-    "Donation": {
-        "Cape Setup": "donation/setup_cape.md",
-        "Launcher Setup": "donation/setup_launcher.md"
+    "Premium": {
+        "Cosmetics Setup": "premium/setup_cosmetics.md",
+        "Launcher Setup": "premium/setup_launcher.md"
     }
 }
