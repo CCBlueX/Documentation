@@ -6,15 +6,9 @@
         "Installing a Script": "tutorials/script_installation.md",
         "Changing Version": "tutorials/change_version.md"
     },
-    "CustomHUD": {
-        "Overview": "customhud/overview.md",
-        "Elements": {
-            "Text": "customhud/elements/text.md"
-        }
-    },
-    "AutoSettings": {
-        "Overview": "autosettings/overview.md",
-        "Local Settings": "autosettings/local.md"
+    "Auto Config": {
+        "Overview": "autoconfig/overview.md",
+        "Local Config": "autoconfig/local.md"
     },
     "Script API": {
         "Getting Started": "scriptapi_v3/getting_started.md",
