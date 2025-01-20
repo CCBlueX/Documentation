@@ -10,6 +10,10 @@
         "Overview": "autoconfig/overview.md",
         "Local Config": "autoconfig/local.md"
     },
+    "Theme System": {
+        "Overview": "theme/overview.md",
+        "HUD Customization": "theme/hud-customization.md"
+    },
     "Script API": {
         "Getting Started": "scriptapi_v3/getting_started.md",
         "Using Java Classes": "scriptapi_v3/using_java_classes.md",
