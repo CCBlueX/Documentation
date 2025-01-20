@@ -1,5 +1,5 @@
 ## Auto Config
-With the help of Auto Config you can save a specific configuration and reload it later without having to manually adjust all settings again (see [Local Config](docs/AutoConfig/Local%20Config) for how to save configurations). For example, if you have spent time configuring each module to bypass on a particular server, you can simply save the current configuration so that you can easily reload it the next time you play on the server. 
+With the help of Auto Config you can save a specific configuration and reload it later without having to manually adjust all settings again (see [Local Config](docs/Auto20Config/Local%20Config) for how to save configurations). For example, if you have spent time configuring each module to bypass on a particular server, you can simply save the current configuration so that you can easily reload it the next time you play on the server. 
 
 There are two different types of configurations: those that you have saved locally on your hard disk and those that you can load from our public [repository](https://github.com/CCBlueX/LiquidCloud/tree/main/LiquidBounce/settings/nextgen) containing settings for many large servers. You can also upload locally saved configurations you created to the aforementioned repository to share them with the community.
 
