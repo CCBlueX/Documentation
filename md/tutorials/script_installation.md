@@ -37,6 +37,25 @@ You can find scripts in our [community forum's script section](https://forum.liq
 
 ![Script Directory](/images/script-directory.png)
 
+#### Improving Script Performance
+
+LiquidBounce's script performance is significantly enhanced when using GraalVM compared to other JREs. Benchmark tests have shown that scripts run considerably faster with GraalVM. \
+To achieve optimal script performance, you have two options to use GraalVM:
+
+1. **Using LiquidLauncher (Recommended)**
+   - Open LiquidLauncher settings
+   - Navigate to the JRE selection dropdown
+   - Select GraalVM instead of Temurin
+   
+   ![JRE Selection](/images/launcher-jre-selection.png)
+
+2. **Manual GraalVM Installation**
+   - Download GraalVM directly from [GraalVM's official website](https://www.graalvm.org/downloads/)
+   - Install and configure it as your Java runtime in your Minecraft launcher
+   - Launch LiquidBounce using the GraalVM installation
+
+*Source: [A Simple Benchmark Performance Test for LiquidBounce's ScriptAPI](https://forum.liquidbounce.net/topic/8391/a-simple-benchmark-performance-test-for-liquidbounce-s-scriptapi)*
+
 ### Developing Scripts
 LiquidBounce's script API is based on GraalJS, an ECMAScript 2023 compliant JavaScript implementation built on GraalVM. This allows scripts to seamlessly interact with the client's Java and Kotlin codebase, making it particularly intuitive for those familiar with Minecraft modding.
 
