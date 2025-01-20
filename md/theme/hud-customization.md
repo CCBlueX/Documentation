@@ -5,7 +5,11 @@
 		<i class="fa fa-times"></i>
 	</span>
 	<h4 class="note-title"> Note </h4>
-	<p class="note-description">Currently, there is no easy-to-use Custom HUD system implemented. The only way to customize the HUD appearance beyond the options below is by modifying the current theme.</p>
+	<p class="note-description">
+		It is not currently possible to change the components of the HUD as the Custom HUD system is still being implemented.
+		The only way to customise the appearance of the HUD beyond the options below is to change the current theme.
+		We plan to implement more extensive HUD customisation options in future updates. Stay tuned!
+	</p>
 </div>
 
 ### Basic HUD Configuration
@@ -23,5 +27,3 @@ To access the HUD configuration screen:
 3. Here you can drag components around and toggle them using the checkboxes
 
 ![HUD Configuration](/images/hud-configuration.png)
-
-We plan to implement more extensive HUD customization options in future updates. Stay tuned for announcements about these features!
