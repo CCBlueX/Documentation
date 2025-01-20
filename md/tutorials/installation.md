@@ -36,7 +36,7 @@ The following list contains various mods we highly recommend installing alongsid
 - [ViaFabricPlus](https://modrinth.com/mod/viafabricplus) allows you to connect to all servers running Minecraft 1.7 and above.
 - [No Chat Reports](https://modrinth.com/mod/no-chat-reports/versions) to prevent other players from reporting your chat messages.
 
-![nextgen](/images/nextgen-main-menu.jpg)
+![nextgen](/images/nextgen-main-menu.png)
 
 ## Installing LiquidBounce legacy (Forge)
 
