@@ -33,7 +33,8 @@
         "Creating Modules": {
             "Overview": "scriptapi_v3/module/overview.md"
         },
-        "Creating Commands": "scriptapi_v3/command/command.md"
+        "Creating Commands": "scriptapi_v3/command/command.md",
+        "Debugging": "scriptapi_v3/debugging.md"
     },
     "Premium": {
         "Cosmetics Setup": "premium/setup_cosmetics.md",
