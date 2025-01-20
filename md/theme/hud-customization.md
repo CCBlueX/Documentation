@@ -13,7 +13,7 @@ While custom HUD components are not yet available, you can still customize your 
 
 1. **Moving Components**: You can move any HUD component to your desired position on the screen
 2. **Toggling Elements**: Each HUD component can be individually toggled on or off
-3. **Theme-based Appearance**: The look of your HUD components is determined by your selected [theme](docs/Theme/Overview)
+3. **Theme-based Appearance**: The look of your HUD components is determined by your selected [theme](docs/Theme%20System/Overview)
 
 ### HUD Editor
 To access the HUD configuration screen:
