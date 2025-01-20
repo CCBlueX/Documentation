@@ -39,8 +39,7 @@ You can find scripts in our [community forum's script section](https://forum.liq
 
 ### Improving Script Performance
 
-LiquidBounce's script performance is significantly enhanced when using GraalVM compared to other JREs. Benchmark tests have shown that scripts run considerably faster with GraalVM. \
-To achieve optimal script performance, you have two options to use GraalVM:
+LiquidBounce's script performance is significantly enhanced when using GraalVM compared to other JREs. Benchmark tests have shown that scripts run considerably faster with GraalVM. You have two options to use GraalVM:
 
 1. **Using LiquidLauncher (Recommended)**
    - Open LiquidLauncher settings
