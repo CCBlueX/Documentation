@@ -39,9 +39,3 @@ For IDE integration (like VS Code):
 ```
 
 2. Configure your IDE to connect to localhost:9229
-
-## Troubleshooting
-
-- "Debug port already in use": Choose a different port
-- Connection failed: Verify port availability and firewall settings
-- Breakpoints not working: Check if script is properly loaded
