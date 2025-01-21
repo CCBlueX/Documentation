@@ -7,7 +7,7 @@ The commands that make all this possible are explained in the following sections
 The following commands are available for managing your local configurations:
 
 #### `.localconfig save <name> [binds]`
-With this command you can save your current configuration in a file with the specified name. This file will be saved locally on your hard disk in the LiquidBounce configs folder (usually located at %AppData%/liquidlauncher/gameDir/nextgen/LiquidBounce/configs). You can optionally include binds in the saved configuration by adding the 'binds' parameter.<br>
+With this command you can save your current configuration in a file with the specified name. This file will be saved locally on your hard disk in the LiquidBounce configs folder. You can optionally include binds in the saved configuration by adding the 'binds' parameter.<br>
 If you want to share your configuration with a particular person, you can send them the created file, which they can then store in their configs folder and load with the load command explained below.
 
 ![LocalConfig Save](/images/localconfig-save.png)
@@ -18,6 +18,6 @@ To restore a configuration you or someone else has previously saved, make sure t
 ![LocalConfig Load](/images/localconfig-load.png)
 
 #### `.localconfig browse`
-This command will open the directory containing your local configurations (usually located at %AppData%/liquidlauncher/gameDir/nextgen/LiquidBounce/configs).
+This command will open the directory containing your local configurations (usually located at `%AppData%/CCBlueX/LiquidLauncher/gameDir/nextgen/LiquidBounce/configs`).
 
 Please note that the Auto Config module will only detect and use online configs from the repository, not local configs.
