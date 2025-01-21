@@ -73,7 +73,7 @@ script.registerModule({
     });
 
     mod.on("key", event => {
-        Client.printChatMessage(`${event.getKey().getTranslationKey()} has been pressed.`);
+        Client.displayChatMessage(`${event.getKey().getTranslationKey()} has been pressed.`);
     });
 });
 ```

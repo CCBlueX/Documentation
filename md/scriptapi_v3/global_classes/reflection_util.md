@@ -11,13 +11,6 @@ List of parameters:
 
 <hr>
 
-#### `ReflectionUtil.classByObject(obj: object): Class`
-Returns the class of an object. <br>
-List of parameters:
-- *obj*, the object to return the class of.
-
-<hr>
-
 #### `ReflectionUtil.newInstance(clazz: Class, ...args: object): object`
 Creates a new instance of the given class with the given arguments. <br>
 List of parameters:
