@@ -11,7 +11,7 @@ List of parameters:
 
 ### Field summary
 
-#### `Client.eventManager`
+### `Client.eventManager`
 Manages game events. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/EventManager.kt) for more information.
 
 <hr>
