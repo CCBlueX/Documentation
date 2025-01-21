@@ -1,21 +1,61 @@
-## How to install LiquidBounce scripts
-LiquidBounce provides an interface that allows third-party developers from our community to enhance the client with new features. This interface is used by so-called scripts, which are written in JavaScript. If you would like to learn more about the technical aspects of this feature or to develop your own scripts, the documentation will help you. This tutorial only covers the installation of already existing scripts.
+## Scripts
+LiquidBounce provides an interface that allows third-party developers from our community to enhance the client with new features using JavaScript scripts. These scripts can add various functionalities - from simple [macros](https://forum.liquidbounce.net/topic/8354/script-macros) to complex features like an [NES Emulator](https://forum.liquidbounce.net/topic/8352/script-nes-emulator).
 
-There are essentially two ways to install a script. Both are outlined below, with the first method being recommended for newcomers.
+### Managing Scripts
+The following commands are available to manage your scripts:
 
-### Method 1: Using the import feature
-LiquidBounce has a simple functionality that allows you to import single script files as well as whole zip archives with numerous files. Please make sure that your game is **not** in full screen mode during the following process.
-1. Find a script that you want to install. If you don't know where to get scripts from, take a look at [this page](https://liquidbounce.net/scripts/) or the respective category in our [forum](https://forums.ccbluex.net/category/9/scripts).
-2. Launch LiquidBounce.
-3. In the main menu first press on `Mods` and then on `Scripts`. This menu lists all installed scripts including name, author and current version number.
-4. Select the file you want to import in the file dialog. Single scripts as well as whole zip archives can be imported. If no errors have occurred, the script should now also be listed.
-5. It is recommended that you restart the client now to ensure that the script is fully loaded and no unforeseen problems arise.
+#### .script list
+Shows a list of all installed scripts.
 
-That's it! The script should now be fully installed.
+![Script List](/images/script-list.png)
 
-### Method 2: Manual installation
-It is also possible to install scripts manually by copying them into their designated folder. This method is recommended if you already know a bit about the installation process and want to shorten it.
-1. Open the Scripts folder. It is located in the LiquidBounce directory, which in turn is located in the Minecraft directory by default. If you use the default launcher, you can usually find it at `%appdata%/.minecraft` on Windows. If you use our LiquidLauncher instead, you can find it at `%appdata%/.LiquidLauncher/gameDir`.
-2. Copy the script file you want to install into this folder. If it is a zip file, extract it first.
-3. Launch LiquidBounce.
-4. Navigate to the script manager screen and make sure the script has been loaded sucessfully.
+#### .script browse
+Opens the scripts folder where all your scripts are stored. This is the easiest way to access the scripts directory.
+
+#### .script load <name>
+Loads a specific script. Replace `<name>` with the script's filename.
+
+#### .script unload <name>
+Unloads a specific script. Replace `<name>` with the script's filename.
+
+#### .script reload
+Reloads all scripts. Use this command after adding new scripts to load them into the client.
+
+#### .script edit <name>
+Opens a script in your default text editor for modifications.
+
+#### .script debug <name> [protocol] [suspend on start] [inspect internals] [port]
+Enables DevTools debugging for a specific script. Additional parameters can be configured for debugging purposes.
+
+### Installing Scripts
+You can find scripts in our [community forum's script section](https://forum.liquidbounce.net/category/25/scripts). To install a script:
+
+1. Type `.script browse` to open the scripts folder
+2. Copy the script file into this folder (if it's a zip file, extract it first)
+3. Type `.script reload` to load the new script
+4. Use `.script list` to verify the script was loaded successfully
+
+![Script Directory](/images/script-directory.png)
+
+### Improving Script Performance
+
+LiquidBounce's script performance is significantly enhanced when using GraalVM compared to other JREs. Benchmark tests have shown that scripts run considerably faster with GraalVM. You have two options to use GraalVM:
+
+1. **Using LiquidLauncher (Recommended)**
+   - Open LiquidLauncher settings
+   - Navigate to the JRE selection dropdown
+   - Select GraalVM instead of Temurin
+   
+   ![JRE Selection](/images/launcher-jre-selection.png)
+
+2. **Manual GraalVM Installation**
+   - Download GraalVM directly from [GraalVM's official website](https://www.graalvm.org/downloads/)
+   - Install and configure it as your Java runtime in your Minecraft launcher
+   - Launch LiquidBounce using the GraalVM installation
+
+*Source: [A Simple Benchmark Performance Test for LiquidBounce's ScriptAPI](https://forum.liquidbounce.net/topic/8391/a-simple-benchmark-performance-test-for-liquidbounce-s-scriptapi)*
+
+### Developing Scripts
+LiquidBounce's script API is based on GraalJS, an ECMAScript 2023 compliant JavaScript implementation built on GraalVM. This allows scripts to seamlessly interact with the client's Java and Kotlin codebase, making it particularly intuitive for those familiar with Minecraft modding.
+
+If you're interested in developing your own scripts, please refer to our [Script API documentation](docs/Script%20API/Getting%20Started) for detailed information on how to create and develop scripts.

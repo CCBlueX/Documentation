@@ -6,15 +6,13 @@
         "Installing a Script": "tutorials/script_installation.md",
         "Changing Version": "tutorials/change_version.md"
     },
-    "CustomHUD": {
-        "Overview": "customhud/overview.md",
-        "Elements": {
-            "Text": "customhud/elements/text.md"
-        }
+    "Auto Config": {
+        "Overview": "autoconfig/overview.md",
+        "Local Config": "autoconfig/local.md"
     },
-    "AutoSettings": {
-        "Overview": "autosettings/overview.md",
-        "Local Settings": "autosettings/local.md"
+    "Theme System": {
+        "Overview": "theme/overview.md",
+        "HUD Customization": "theme/hud-customization.md"
     },
     "Script API": {
         "Getting Started": "scriptapi_v3/getting_started.md",
@@ -35,10 +33,11 @@
         "Creating Modules": {
             "Overview": "scriptapi_v3/module/overview.md"
         },
-        "Creating Commands": "scriptapi_v3/command/command.md"
+        "Creating Commands": "scriptapi_v3/command/command.md",
+        "Debugging": "scriptapi_v3/debugging.md"
     },
-    "Donation": {
-        "Cape Setup": "donation/setup_cape.md",
-        "Launcher Setup": "donation/setup_launcher.md"
+    "Premium": {
+        "Cosmetics Setup": "premium/setup_cosmetics.md",
+        "Launcher Setup": "premium/setup_launcher.md"
     }
 }
