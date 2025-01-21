@@ -32,13 +32,14 @@ Applies the specified theme. For example: `.client theme set jellobounce`
 	<p class="note-description">Custom Theme support is currently an experimental feature. The Marketplace for Automatic Theme Updates is still in development.</p>
 </div>
 
-You can install custom themes from the community. Here are some available themes:
+#### How To Install
+You can install custom themes from the community.
 
-#### Catppuccin Theme
-1. Visit the [Catppuccin theme repository](https://github.com/liquidsquid1/catppuccin-lb/releases)
+1. Visit the releases page of the theme.
 2. Download the latest release
-3. Choose your preferred color palette
-4. Extract the content of the ZIP file to your themes folder
+3. Extract the content of the ZIP file to your themes folder
+4. Start LiquidBounce
+5. Type `.client theme set <name>`
 
 #### JelloBounce Theme
 Here's how the JelloBounce theme changes the appearance of various GUIs:
@@ -47,10 +48,9 @@ Here's how the JelloBounce theme changes the appearance of various GUIs:
 ![JelloBounce ClickGUI](/images/jellobounce-clickgui.png)
 ![JelloBounce Main Menu](/images/jellobounce-mainmenu.png)
 
-The [JelloBounce theme repository](https://github.com/larryngton2/jellobounce/tree/v2) requires manual building for the latest version:
-1. Clone the repository
-2. Run `npm i`
-3. Run `npm run build`
-4. Copy the `dist` folder to your themes directory
+[Releases](https://github.com/larryngton2/jellobounce/releases)
+
+#### Catppuccin Theme
+[Releases](https://github.com/liquidsquid1/catppuccin-lb/releases)
 
 For most users, we recommend waiting for the upcoming Marketplace feature which will simplify the theme installation process.
