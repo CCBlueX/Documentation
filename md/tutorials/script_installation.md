@@ -4,27 +4,27 @@ LiquidBounce provides an interface that allows third-party developers from our c
 ### Managing Scripts
 The following commands are available to manage your scripts:
 
-#### .script list
+#### `.script list`
 Shows a list of all installed scripts.
 
 ![Script List](/images/script-list.png)
 
-#### .script browse
+#### `.script browse`
 Opens the scripts folder where all your scripts are stored. This is the easiest way to access the scripts directory.
 
-#### .script load <name>
+#### `.script load <name>`
 Loads a specific script. Replace `<name>` with the script's filename.
 
-#### .script unload <name>
+#### `.script unload <name>`
 Unloads a specific script. Replace `<name>` with the script's filename.
 
-#### .script reload
+#### `.script reload`
 Reloads all scripts. Use this command after adding new scripts to load them into the client.
 
-#### .script edit <name>
+#### `.script edit <name>`
 Opens a script in your default text editor for modifications.
 
-#### .script debug <name> [protocol] [suspend on start] [inspect internals] [port]
+#### `.script debug <name> [protocol] [suspend on start] [inspect internals] [port]`
 Enables DevTools debugging for a specific script. Additional parameters can be configured for debugging purposes.
 
 ### Installing Scripts

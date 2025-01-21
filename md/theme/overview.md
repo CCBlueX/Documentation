@@ -1,7 +1,7 @@
 ## Theme System
 LiquidBounce features a Theme System that allows you to customize the appearance of the client. The theme affects all graphical user interfaces (GUIs) throughout the client, including but not limited to the HUD, ClickGUI, main menu, and any other visual elements.
 
-### Default Theme
+### LiquidBounce Theme
 The default theme of LiquidBounce provides a clean and modern look:
 
 ![Default HUD](/images/liquidbounce-hud.png)
@@ -11,23 +11,16 @@ The default theme of LiquidBounce provides a clean and modern look:
 ### Using Themes
 You can manage themes using the following commands:
 
-#### .client theme list
+#### `.client theme list`
 This command displays all available themes that are installed in your themes directory.
 
-#### .client theme browse
+#### `.client theme browse`
 Opens your themes directory (shown below) where themes are stored:
 
 ![Themes Directory](/images/themes-directory.png)
 
-#### .client theme set <name>
+#### `.client theme set <name>`
 Applies the specified theme. For example: `.client theme set jellobounce`
-
-### JelloBounce Theme Example
-Here's how the JelloBounce theme changes the appearance of various GUIs:
-
-![JelloBounce HUD](/images/jellobounce-hud.png)
-![JelloBounce ClickGUI](/images/jellobounce-clickgui.png)
-![JelloBounce Main Menu](/images/jellobounce-mainmenu.png)
 
 ### Custom Themes
 
@@ -48,6 +41,12 @@ You can install custom themes from the community. Here are some available themes
 4. Extract the content of the ZIP file to your themes folder
 
 #### JelloBounce Theme
+Here's how the JelloBounce theme changes the appearance of various GUIs:
+
+![JelloBounce HUD](/images/jellobounce-hud.png)
+![JelloBounce ClickGUI](/images/jellobounce-clickgui.png)
+![JelloBounce Main Menu](/images/jellobounce-mainmenu.png)
+
 The [JelloBounce theme repository](https://github.com/larryngton2/jellobounce/tree/v2) requires manual building for the latest version:
 1. Clone the repository
 2. Run `npm i`
