@@ -24,7 +24,7 @@ LiquidBounce nextgen is currently still in active development but has matured to
 3. If you do not see a folder called *mods*, create it.
 4. [Download](/download) the the latest version of LiquidBounce nextgen found under the section labeled *Manual Installation* (Press *Show nightly builds* to see pre-releases).
 5. Extract the jar file from the archive you just downloaded to the *mods* directory.
-6. [Download](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin) the latest version of the Fabric Language Kotlin mod and place it in the *mods* directory as well.
+6. Download [Fabric API](https://modrinth.com/mod/fabric-api/) and [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) and place them in the *mods* directory as well.
 7. Launch Fabric by selecting the corresponding profile inside the launcher and pressing Play. If everything worked out, LiquidBounce should now be installed!
 
 ### Installing recommended mods
@@ -32,7 +32,6 @@ LiquidBounce nextgen is currently still in active development but has matured to
 The following list contains various mods we highly recommend installing alongside LiquidBounce. They can be installed by simply downloading them and copying them to the mods folder just like you did with LiquidBounce itself.
 
 - [Sodium](https://modrinth.com/mod/sodium) to massively improve performance.
-- [Fabric API](https://modrinth.com/mod/fabric-api) as many other mods depend on it.
 - [ViaFabricPlus](https://modrinth.com/mod/viafabricplus) allows you to connect to all servers running Minecraft 1.7 and above.
 - [No Chat Reports](https://modrinth.com/mod/no-chat-reports/versions) to prevent other players from reporting your chat messages.
 
