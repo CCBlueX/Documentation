@@ -2,6 +2,12 @@
 
 Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through our [contact page](https://ccbluex.net/contact) or on our [Discord](/discord) after you verified that all the possible solutions listed here didn't solve your problem.
 
+### LiquidLauncher does not show up (Windows)
+
+This is a known issue if you've previously uninstalled Microsoft Edge or used so-called Windows debloat tools. LiquidLauncher uses [Edge Webview2](https://developer.microsoft.com/de-de/microsoft-edge/webview2/) to run - which is a core feature of your Windows operating system.
+
+To fix this problem, you can simply download and install [Microsoft Webview2](https://developer.microsoft.com/de-de/microsoft-edge/webview2/?form=MA13LH#download). After that, your launcher will appear as expected.
+
 ### LiquidBounce download does not finish (SmartScreen issue)
 
 This is a known bug on Windows 10. We are currently working on a proper fix. For now, please disable Windows Smart Screen to solve the issue. You can do so by following these steps:
