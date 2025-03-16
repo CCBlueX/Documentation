@@ -18,7 +18,28 @@ This is a known bug on Windows 10. We are currently working on a proper fix. For
 4. Uncheck *Check apps and files* and *SmartScreen for Microsoft Edge*.
 5. Restart your computer and try again.
 
-### Fixing issues with the system's hosts file
+### Failed to establish connection with LiquidBounce API
+
+##### Using Cloudflare WARP
+
+Cloudflare WARP is a free VPN service that can help resolve connection issues with the LiquidBounce API. Here's how to set it up:
+
+1. Download Cloudflare WARP from the [official website](https://1.1.1.1/).
+2. Install the application by following the on-screen instructions.
+3. Once installed, open the Cloudflare WARP application.
+4. Click on the "Connect" button to establish a VPN connection.
+5. After the connection is established, restart LiquidLauncher.
+
+If you're still experiencing issues after using Cloudflare WARP, try the following:
+
+1. Open the Cloudflare WARP application settings.
+2. Navigate to "Preferences" or "Settings" depending on your operating system.
+3. Enable "WARP+" mode if available or try switching between different WARP modes.
+4. Restart your computer and try launching LiquidLauncher again.
+
+Using a VPN like Cloudflare WARP can help bypass network restrictions or resolve routing issues that might be preventing LiquidLauncher from connecting to the LiquidBounce API.
+
+#### Fixing issues with the system's hosts file
 
 Some alternative Minecraft authentication services like [TheAltening](https://thealtening.com/) may make changes to your system's [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)). These can cause error messages like the following:
 
@@ -76,7 +97,7 @@ These instructions are based on the ones provided by [sparkuniverse.notion.site]
 
 <hr>
 
-### Fixing issues with the DNS server
+#### Fixing issues with the DNS server
 
 DNS servers resolve domain names to their corresponding IP address. A misconfigured DNS server can lead to connection issues. We recommend using 1.1.1.1, a DNS server provided by Cloudflare. To set a DNS server, please follow these instructions:
 
