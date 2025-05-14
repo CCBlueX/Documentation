@@ -42,6 +42,14 @@
     },
     "Baritone": {
         "Installation": "baritone/installation.md",
-        "Usage": "baritone/usage.md"
+        "Usage": {
+            "Overview": "baritone/usage/overview.md",
+            "Mining": "baritone/usage/mining.md",
+            "Farming": "baritone/usage/farming.md",
+            "Exploring": "baritone/usage/exploring.md",
+            "Fighting": "baritone/usage/fighting.md",
+            "Building": "baritone/usage/building.md",
+            "Settings": "baritone/usage/settings.md"
+        }
     }
 }
