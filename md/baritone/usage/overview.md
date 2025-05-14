@@ -4,17 +4,6 @@ Baritone uses a command prefix system to distinguish its commands from regular c
 
 > **Note:** You can use commands directly in chat. Be careful with typos, as they will be sent to public chat if you make mistakes.
 
-## Usage Documentation
-
-Learn more about specific Baritone features:
-
-- [Movement & Pathfinding](movement.md) - Navigation and path control
-- [Mining](mining.md) - Automated mining
-- [Farming & Resource Gathering](farming.md) - Automated farming
-- [Combat & PvP](fighting.md) - Automated combat
-- [Building & Construction](building.md) - Schematic building and construction
-- [Settings & Configuration](settings.md) - Customizing Baritone behavior
-
 ## Basic Command Usage
 
 <video src="/images/baritone/commands/usage.mp4" controls width="600">Your browser does not support the video tag.</video>
