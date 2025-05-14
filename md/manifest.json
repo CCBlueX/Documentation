@@ -41,6 +41,7 @@
         "Launcher Setup": "premium/setup_launcher.md"
     },
     "Baritone": {
-        "Installation": "baritone/installation.md"
+        "Installation": "baritone/installation.md",
+        "Usage": "baritone/usage.md"
     }
 }
