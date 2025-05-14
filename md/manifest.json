@@ -39,5 +39,8 @@
     "Premium": {
         "Cosmetics Setup": "premium/setup_cosmetics.md",
         "Launcher Setup": "premium/setup_launcher.md"
+    },
+    "Baritone": {
+        "Installation": "baritone/installation.md"
     }
 }
