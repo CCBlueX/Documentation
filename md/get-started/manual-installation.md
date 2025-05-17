@@ -1,4 +1,4 @@
-## How to install LiquidBounce manually
+# How to install LiquidBounce manually
 
 This tutorial will guide you through the manual installation of LiquidBounce. We assume that you already have Minecraft installed and are using the official Minecraft launcher made by Mojang. If the latter is not the case, certain steps of this tutorial may differ slightly for you. 
 

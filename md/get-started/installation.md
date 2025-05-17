@@ -1,4 +1,4 @@
-# Installing LiquidBounce
+# How to install LiquidBounce
 
 This guide will walk you through the process of installing LiquidBounce using LiquidLauncher, the recommended and easiest way to get started.
 
