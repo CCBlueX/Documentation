@@ -1,7 +1,7 @@
 {
     "Get Started": {
         "Installation": "get-started/installation.md",
-        "Manual Installation": "tutorials/manual-installation.md"
+        "Manual Installation": "get-started/manual-installation.md"
     },
     "Tutorials": {
         "LiquidLauncher": "tutorials/liquidlauncher.md",
