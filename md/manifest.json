@@ -1,9 +1,11 @@
 {
+    "Get Started": {
+        "Installation": "get-started/installation.md",
+        "Manual Installation": "tutorials/manual-installation.md"
+    },
     "Tutorials": {
-        "Installation": "tutorials/installation.md",
         "LiquidLauncher": "tutorials/liquidlauncher.md",
         "Fixing LiquidLauncher": "tutorials/troubleshooting_launcher.md",
-        "Installing a Script": "tutorials/script_installation.md",
         "Changing Version": "tutorials/change_version.md"
     },
     "Auto Config": {
@@ -15,6 +17,7 @@
         "HUD Customization": "theme/hud-customization.md"
     },
     "Script API": {
+        "Installation": "scriptapi_v3/installation.md",
         "Getting Started": "scriptapi_v3/getting_started.md",
         "Using Java Classes": "scriptapi_v3/using_java_classes.md",
         "Global Classes": {
