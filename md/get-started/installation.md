@@ -49,7 +49,7 @@ Follow the installation wizard that appears:
    
    ![Installation Complete](/images/get-started/installation/8-install-window-finish-install.png)
 
-### 3. Configure Your Account
+### 3. Sign-In Into Your Account
 
 1. Open LiquidLauncher after installation completes
    
@@ -118,9 +118,9 @@ Follow the installation wizard that appears:
 
 ## Next Steps
 
-Congratulations! You've successfully installed LiquidBounce. To learn how to use the client's features, check out our [Getting Started Guide](/docs/get-started/using-liquidbounce).
+Congratulations! You've successfully installed LiquidBounce. To learn how to use the client's features, check out our [Getting Started Guide](/docs/get-started/usage).
 
-## Alternative Installation Methods
+## Manual Installation
 
 If you prefer not to use LiquidLauncher, you can manually install LiquidBounce. See our [Manual Installation Guide](/docs/get-started/manual-installation) for detailed instructions.
 
