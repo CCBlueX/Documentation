@@ -6,6 +6,7 @@
     "Tutorials": {
         "LiquidLauncher": "tutorials/liquidlauncher.md",
         "Fixing LiquidLauncher": "tutorials/troubleshooting_launcher.md",
+        "LiquidLauncher On MacOS": "tutorials/liquidlauncher-macos-gatekeeper.md",
         "Changing Version": "tutorials/change_version.md"
     },
     "Auto Config": {
