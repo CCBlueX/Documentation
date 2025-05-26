@@ -38,7 +38,8 @@
             "Overview": "scriptapi_v3/module/overview.md"
         },
         "Creating Commands": "scriptapi_v3/command/command.md",
-        "Debugging": "scriptapi_v3/debugging.md"
+        "Debugging": "scriptapi_v3/debugging.md",
+        "TypeScript Support": "scriptapi_v3/typescript_support.md"
     },
     "Premium": {
         "Cosmetics Setup": "premium/setup_cosmetics.md",
