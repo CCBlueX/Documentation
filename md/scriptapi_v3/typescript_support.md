@@ -68,6 +68,8 @@ npx tsc --init
 }
 ```
 
+Note: we currently only support commonjs for now, esm support will be added in future.
+
 ![source-mapping](/images/script-source-mapping-in-debugger.png)
 *Working source map, allows you to place breakpoints in typescript source code*
 
@@ -129,6 +131,8 @@ script.registerModule({
 ```bash
 npx tsc --watch
 ```
+
+Note: it is expected that the tsc will flush your console output with a bunch of errors, this is due to our imperfect type definitions, we will fix this in future (might not be so soon though).
 
 2. Your compiled JavaScript files will appear in the `dist` directory (or your configured output directory)
 3. Load the scripts in LiquidBounce using `.script reload`
