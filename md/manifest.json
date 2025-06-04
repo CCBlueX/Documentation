@@ -22,6 +22,7 @@
         "Getting Started": "scriptapi_v3/getting_started.md",
         "Using Java Classes": "scriptapi_v3/using_java_classes.md",
         "Global Classes": {
+            "AsyncUtil": "scriptapi_v3/global_classes/async_util.md",
             "BlockUtil": "scriptapi_v3/global_classes/block_util.md",
             "Client": "scriptapi_v3/global_classes/client.md",
             "InteractionUtil": "scriptapi_v3/global_classes/interaction_util.md",
