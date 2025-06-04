@@ -1,8 +1,8 @@
 ## AsyncUtil
 
-The AsyncUtil class provides various methods for asynchronous tasks with [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) in JavaScript.
+The `AsyncUtil` class offers a set of utilities for handling asynchronous operations using [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) in JavaScript.
 
-All handlers of command an module (including `onEnable` and `onDisable`) can be [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) like following code:
+All command and module handlers (including `onEnable` and `onDisable`) can be written as [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), like in the following examples:
 
 ```js
 const onEnable = async () => {
@@ -20,13 +20,13 @@ module.on("chatReceive", async (event) => {
 });
 ```
 
-Note: because `Promise` doesn't support cancellation, the async functions already running won't be cancelled if you disable the module.
+**Note:** Since Promise does not support cancellation, any async function that has already started will continue running even if the module is disabled.
 
-Unlike **V8** or **Node**, **GraalJS** doesn't have [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout), [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval) nor [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
-On your browser, they are attached on [window object](https://developer.mozilla.org/en-US/docs/Web/API/Window).
-We provide functions for delay using promises and the game's render thread event loop.
+Unlike browsers or Node.js, GraalJS does not support web APIs such as  [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout), [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval), or  [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). These are typically available on the [Window object](https://developer.mozilla.org/en-US/docs/Web/API/Window) object in browsers.
 
-This class also contains function for HTTP requests using [OkHttp](https://github.com/square/okhttp), wich is used extensively in this mod:
+Instead, this utility provides delay and timing functions that work within the game's render thread event loop.
+
+Additionally, AsyncUtil includes support for making HTTP requests using [OkHttp](https://github.com/square/okhttp), which is widely used in this mod:
 
 ```js
 const test = "Guten Tag!";
@@ -39,7 +39,7 @@ const response = await AsyncUtil.request((builder) => {
 const code = response.code(); // No await here!
 ```
 
-We also provide function to run tasks on given [ExecutorService](https://docs.oracle.com/javase/8/docs/api/?java/util/concurrent/ExecutorService.html) with coroutine-style result:
+You can also run tasks asynchronously on a specified [ExecutorService](https://docs.oracle.com/javase/8/docs/api/?java/util/concurrent/ExecutorService.html), with coroutine-style results:
 
 ```js
 const result = await AsyncUtil.launch(() => {
@@ -49,41 +49,58 @@ const result = await AsyncUtil.launch(() => {
 Chat.displayChatMessage(result);
 ```
 
-### Method summary
+### Method Summary
 
-*All of these methods resolve or reject the Promise on the render thread.*
+*All methods resolve or reject their Promises on the render thread.*
+
+<hr>
 
 #### `AsyncUtil.ticks(n: int): Promise<int>`
-Creates a `Promise` which will be resolved after `n` tick(s). Its value equals to `n`. <br>
-List of parameters:
-- *n*, ticks to wait. If `n <= 0`, it returns `Promise.resolve(0)`.
+
+Returns a `Promise` that resolves after `n` game ticks. The resolved value is the number of ticks waited.
+
+**Parameters:**
+
+* `n`: Number of ticks to wait. If `n <= 0`, it immediately resolves with `0`.
 
 <hr>
 
 #### `AsyncUtil.until(condition: () => boolean): Promise<int>`
-Creates a `Promise` which will be resolved when `condition` returns `true`. Its value is ticks during waiting. <br>
-List of parameters:
-- *condition*, resolve condition. It will be executed every tick.
+
+Returns a `Promise` that resolves when the `condition` function returns `true`. The resolved value is the number of ticks waited.
+
+**Parameters:**
+
+* `condition`: A function that is evaluated every tick. When it returns `true`, the promise resolves.
 
 <hr>
 
 #### `AsyncUtil.conditional(n: int, breakLoop: () => boolean): Promise<int>`
-Creates a `Promise` which will be resolved when `breakLoop` returns `true` or it has passed `n` tick(s). Its value is ticks during waiting. <br>
-List of parameters:
-- *n*, max ticks to be waited.
-- *breakLoop*, resolve condition. It will be executed every tick.
+
+Returns a `Promise` that resolves when either the `breakLoop` function returns `true`, or `n` ticks have passed. Whichever comes first. The resolved value is the number of ticks waited.
+
+**Parameters:**
+
+* `n`: Maximum number of ticks to wait.
+* `breakLoop`: A condition function evaluated each tick. If it returns `true`, the promise resolves early.
 
 <hr>
 
 #### `AsyncUtil.request(block: (Request.Builder) => void): Promise<Response>`
-Creates a `Promise` for HTTP request. Its value is the [Response](https://github.com/square/okhttp/blob/master/okhttp/src/commonJvmAndroid/kotlin/okhttp3/Response.kt). <br>
-List of parameters:
-- *block*, building callback for [Request.Builder](https://github.com/square/okhttp/blob/5eecd519aa1a5100fcca08431bfd9c9b85a465a9/okhttp/src/commonJvmAndroid/kotlin/okhttp3/Request.kt).
+
+Creates a `Promise` that performs an HTTP request and resolves with the resulting [Response](https://github.com/square/okhttp/blob/master/okhttp/src/commonJvmAndroid/kotlin/okhttp3/Response.kt).
+
+**Parameters:**
+
+* `block`: A callback function used to configure the [Request.Builder](https://github.com/square/okhttp/blob/5eecd519aa1a5100fcca08431bfd9c9b85a465a9/okhttp/src/commonJvmAndroid/kotlin/okhttp3/Request.kt).
 
 <hr>
 
 #### `AsyncUtil.launch<T>(executor: ExecutorService, block: () => T): Promise<T>`
-Creates a `Promise` which will be resolved after async task `block` is finished or failed. Its value is the result of `block`. <br>
-List of parameters:
-- *executor*, optional, the task will run on it. Defaults to Main worker of Minecraft (on 1.21.x).
-- *block*, the task callback.
+
+Runs a task asynchronously on a given `ExecutorService`, returning a `Promise` that resolves with the result of the task.
+
+**Parameters:**
+
+* `executor`: *(Optional)* The `ExecutorService` to run the task on. Defaults to Minecraft's main worker (for version 1.21.x).
+* `block`: A function containing the code to execute asynchronously.
