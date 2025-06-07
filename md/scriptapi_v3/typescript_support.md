@@ -80,7 +80,7 @@ Note: we currently only support commonjs for now, esm support will be added in f
 3. Extract the downloaded zip file to a directory (e.g., `./jvm-types`)
 4. Install the type definitions:
 ```bash
-npm install file:./jvm-types --no-save
+npm install jvm-types
 ```
 
 ### Step 3: Configure Output Directory (Optional)
