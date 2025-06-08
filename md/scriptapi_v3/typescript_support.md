@@ -137,7 +137,7 @@ Note: it is expected that the tsc will flush your console output with a bunch of
 2. Your compiled JavaScript files will appear in the `dist` directory (or your configured output directory)
 3. Load the scripts in LiquidBounce using `.script reload`
 
-## Hot Reload Development
+## Hot Reload Development (Optional)
 
 For faster development cycles, you can enable hot reload:
 
@@ -150,7 +150,8 @@ npm install minecraft-lbng-types --save-dev
 
 2. Start the hot reload watcher:
 ```bash
-npx lb-hotreload-watch
+npx lb-hotreload-watch path/to/your/dist # default to ./dist if you don't specify
+
 ```
 
 3. Copy the hot reloader script to your LiquidBounce scripts directory:
@@ -162,6 +163,37 @@ npx lb-hotreload-watch
 5. Start modifying your existing scripts - changes will be automatically reloaded!
 
 **Note:** Hot reload currently works with existing scripts only, not newly created ones. It is almost the same with a `.script reload` on your changed script, with the exception that it will presever the debug options for your script.
+
+## Use npm ecosystem packages (partially) (Optional)
+
+1. install your dependencies with `npm install <package>`
+    - eg. `npm install typscript`
+2. write ts scripts with typescript support
+    - eg. 
+    ```typescript
+    import { SyntaxKind, tokenToString } from 'typescript';
+
+
+    const script = registerScript.apply({
+        name: "node-ecosystem-demo",
+        version: "1.0.0",
+        authors: ["commandblock2"]
+    });
+
+    script.registerModule({
+        name: "example-node-ecosystem-demo-module",
+        description: "Ths is an minimal example module for the node ecosystem demo",
+        category: "Client",
+
+    }, (mod) => {
+        mod.on("enable", () => {
+            Client.displayChatMessage(`All keywords in ts are ${Array.from({ length: SyntaxKind.LastKeyword - SyntaxKind.FirstKeyword + 1 }, (_, i) => tokenToString(SyntaxKind.FirstKeyword + i)).filter(Boolean)}`)
+        })
+    })
+    ```
+3. copy the `node_modules` folder into your LiquidBounce source folder or it's parent folder. (Better to link it with symlink if you are on linux, eg `ln -s path/to/your/development/repo/node_modules/ node_modules`,in liquidbounce script folder or liquidbounce folder)
+4. it's going to be slow, this specific script is indeed slow (probably slower than nodejs) and most likely many package that uses node.js api, like `assert`, `process`, etc... will fail to load (it needs to use nodejs api which no existing implementation exists on graaljs yet(correct me if wrong by updaing this doc), use browserfied version if that package ever has one)
+I discovered this when trying to installing `@types/reserved-keywords` and `reserved-keywords`, but it didn't work because it `require('assert')` on the first line, so I just went use `typescript instead`
 
 ## IDE Configuration
 
@@ -180,6 +212,8 @@ The TypeScript language server may occasionally struggle with the large JVM code
 
 - **Reload the window:** `Ctrl+Shift+P` → "Developer: Reload Window"
 - **Restart TypeScript server:** `Ctrl+Shift+P` → "TypeScript: Restart TS Server"
+
+There are also other cases where auto-importing might not be able to list that specific type you are trying to import, in that case you might have to import them manually.
 
 ## Common TypeScript Issues
 
@@ -211,7 +245,7 @@ GraalJS bean access may have different naming conventions than the TypeScript de
 ## Current Limitations
 
 - **Type checking accuracy:** Definitions are optimized for autocompletion over strict type checking
-- **Large codebase performance:** May cause IDE performance issues
+- **Auto importing issues:** IDE might have difficulties in auto-importing classes.
 - **JVM/TypeScript model differences:** Some Java concepts don't translate perfectly to TypeScript
 - **Development environment dependency:** Type definitions must be generated in a development environment
 
