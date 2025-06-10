@@ -190,8 +190,9 @@ npx lb-hotreload-watch path/to/your/dist # default to ./dist if you don't specif
     })
     ```
 3. copy the `node_modules` folder into your LiquidBounce source folder or it's parent folder. (Better to link it with symlink if you are on linux, eg `ln -s path/to/your/development/repo/node_modules/ node_modules`,in liquidbounce script folder or liquidbounce folder)
-4. it's going to be slow, this specific script is indeed slow (probably slower than nodejs) and most likely many package that uses node.js api, like `assert`, `process`, etc... will fail to load (it needs to use nodejs api which no existing implementation exists on graaljs yet(correct me if wrong by updaing this doc), use browserfied version if that package ever has one)
-I discovered this when trying to installing `@types/reserved-keywords` and `reserved-keywords`, but it didn't work because it `require('assert')` on the first line, so I just went use `typescript instead`
+4. it's going to be slow, this specific script is indeed slow (probably slower than nodejs) and most likely many package that uses node.js api(`assert`, `process`) will fail to load. Currently graaljs does not provide these api, so you might have to use a browserfied version if that package ever has one.  
+
+I discovered this when trying to installing `@types/reserved-keywords` and `reserved-keywords`, but it didn't work because `require('assert')` was on the first line of their package, so I just went use `typescript` instead
 
 ## IDE Configuration
 
@@ -255,7 +256,7 @@ GraalJS bean access may have different naming conventions than the TypeScript de
 It was generated from forked a ts-generator that orignally only works with field generation. And [the fork](https://github.com/commandblock2/ts-generator) is modified to generate both field and method definitions. It uses kotlin reflection api (mostly) to generate typescript definition files, it also uses java reflection sometimes somwhere to check if the names are actually correct (kotlin reflection sometimes see things differently, like `Unit` for kotlin but `void` for java). So it is expected to generate definitions that are not 100% accurate and it some times fails to process some classes (like java.util.Map), but what it generates should be there on jvm (little bit of false negatives but no false positives observed so far).
 I do plan to retire this generator and instead use a graaljs based script for fully accurate definitions in the future (which might have even worse performance, current one is already bad enough).
 
-There are also a part of the definitions are maintained manually, like some of `Settings.boolean` and other things that are presented as `org.graalvm.polyglot.Value` for graaljs (which they are actually js objects, and can be properlly represented as typescript type). These(including those embedded variable/class access like `mc`) are implemented with [typescript declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation).
+There is also a part of the definitions is maintained manually, like some of `Settings.boolean` and other things that are presented as `org.graalvm.polyglot.Value` for graaljs (which they are actually js objects, and can be properlly represented as typescript type). These (plus embedded variable/class access like `mc`) are implemented with [typescript declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation).
 
 ### Modifications on LiquidBounce
 A embedded javascript file was evaluated before evaluating the user created js, this redirects any `require()` call that starts with `jvm-types/` to `Java.type()` call in graaljs (with a additional step replacing '/' to '.'). Your typescript statement  
@@ -269,7 +270,7 @@ If it does not start with the prefix, it just goes on and calls the original req
 
 ## Why this, not a custom typescript compiler?
 Using a custom typescript compiler would indeed be a much cleaner solution to this problem than embedding a snippet to support js compiled from typescript. We actually tried to use a custom typescript compiler at first, but ultimately we found that this approach turned out to be 
-- very slow (`tsc --watch` can almost respond in instant now compared to at least 2 seconds before),
+- very slow (`tsc --watch` can almost respond in instant now compared to at least 2 seconds if we use a custom compiler script),
 - difficult to maintain. (600 lines of code and transformed more than we would like to)
 - source mapping unfriendly (so that you can no longer see the typescript in chromium's debugger, or you can see a mismatched one)
 
