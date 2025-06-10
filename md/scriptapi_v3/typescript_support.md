@@ -1,7 +1,7 @@
 # Experimental TypeScript Support
 
 > **⚠️ EXPERIMENTAL FEATURE**  
-> TypeScript support is currently experimental and unofficial. Use at your own risk! This feature is not endorsed by Mojang or Fabric developers.
+> TypeScript support is currently experimental and unofficial. Use at your own risk! This feature is not endorsed by Mojang or Fabric developers (ofc it is not).
 
 ![Experimental TypeScript Support](/images/script-type-support.png)
 
@@ -75,13 +75,11 @@ Note: we currently only support commonjs for now, esm support will be added in f
 
 ### Step 2: Install Type Definitions
 
-1. Visit the [minecraft-LBNG-types GitHub Actions page](https://github.com/commandblock2/minecraft-LBNG-types/actions)
-2. Download the latest `jvm-types` artifact
-3. Extract the downloaded zip file to a directory (e.g., `./jvm-types`)
-4. Install the type definitions:
+1. Install the type definitions with npm:
 ```bash
 npm install jvm-types
 ```
+The package is a bit large, around 80M decompressed, it might take a while but by my test it worked.
 
 ### Step 3: Configure Output Directory (Optional)
 
@@ -245,9 +243,39 @@ GraalJS bean access may have different naming conventions than the TypeScript de
 ## Current Limitations
 
 - **Type checking accuracy:** Definitions are optimized for autocompletion over strict type checking
-- **Auto importing issues:** IDE might have difficulties in auto-importing classes.
-- **JVM/TypeScript model differences:** Some Java concepts don't translate perfectly to TypeScript
+- **Auto importing issues:** IDE might have difficulties in auto-importing classes
+- **JVM/TypeScript model differences:** Some Java concepts don't translate perfectly to TypeScript (eg. typescript interfaces has NO static methods but java/kt does)
 - **Development environment dependency:** Type definitions must be generated in a development environment
+- **No async/await support:** No async/await support in the generated typescript files, it instead just generates Promises
+
+
+## How this is implemented
+
+### Typescript definition generation
+It was generated from forked a ts-generator that orignally only works with field generation. And [the fork](https://github.com/commandblock2/ts-generator) is modified to generate both field and method definitions. It uses kotlin reflection api (mostly) to generate typescript definition files, it also uses java reflection sometimes somwhere to check if the names are actually correct (kotlin reflection sometimes see things differently, like `Unit` for kotlin but `void` for java). So it is expected to generate definitions that are not 100% accurate and it some times fails to process some classes (like java.util.Map), but what it generates should be there on jvm (little bit of false negatives but no false positives observed so far).
+I do plan to retire this generator and instead use a graaljs based script for fully accurate definitions in the future (which might have even worse performance, current one is already bad enough).
+
+There are also a part of the definitions are maintained manually, like some of `Settings.boolean` and other things that are presented as `org.graalvm.polyglot.Value` for graaljs (which they are actually js objects, and can be properlly represented as typescript type). These(including those embedded variable/class access like `mc`) are implemented with [typescript declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation).
+
+### Modifications on LiquidBounce
+A embedded javascript file was evaluated before evaluating the user created js, this redirects any `require()` call that starts with `jvm-types/` to `Java.type()` call in graaljs (with a additional step replacing '/' to '.'). Your typescript statement  
+`import { HttpServer } from "jvm-types/com/sun/net/httpserver/HttpServer";` will be compiled by vanilla typescript compiler to  
+`const HttpServer_1 = require("jvm-types/com/sun/net/httpserver/HttpServer");`,  
+where the `require` function will see it starts with `jvm-types/` and instead call  
+`Java.type(com.sun.net.httpserver.HttpServer)` and return a object  
+`{ HttpServer: Java.type("com.sun.net.http.httpserver.HttpServer") }` which can be used like any other object a `require()` call would return.
+
+If it does not start with the prefix, it just goes on and calls the original require function provided by graaljs.
+
+## Why this, not a custom typescript compiler?
+Using a custom typescript compiler would indeed be a much cleaner solution to this problem than embedding a snippet to support js compiled from typescript. We actually tried to use a custom typescript compiler at first, but ultimately we found that this approach turned out to be 
+- very slow (`tsc --watch` can almost respond in instant now compared to at least 2 seconds before),
+- difficult to maintain. (600 lines of code and transformed more than we would like to)
+- source mapping unfriendly (so that you can no longer see the typescript in chromium's debugger, or you can see a mismatched one)
+
+Our current embedded script is less than 50 lines(with all the comments) and it only intecepts prefix with `jvm-types/`, which is extremely unlikely to be used by other npm package or other scripts, so in general it's what we can do best here.
+
+However, if you are experienced and you do know how to make things right with a cleaner solution, please feel free to contribute!
 
 ## Getting Help
 
