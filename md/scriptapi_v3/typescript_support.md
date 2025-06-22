@@ -104,6 +104,9 @@ Create a new file `src/minimal.ts`:
 
 ```typescript
 import { Matrix2d } from "jvm-types/org/joml/Matrix2d";
+// your script should have at least 1 single import or export statement to be recognized as a module or the compiler will treat it as a script instead
+// you can also use the `export {}` to make it a module if you want it to be clean
+// Those embedded definitions like `registerScript` will be automatically imported by the compiler if your .ts file is treated as a module.
 
 const script = registerScript.apply({
     name: "example-minimal",
@@ -259,7 +262,7 @@ I do plan to retire this generator and instead use a graaljs based script for fu
 There is also a part of the definitions is maintained manually, like some of `Settings.boolean` and other things that are presented as `org.graalvm.polyglot.Value` for graaljs (which they are actually js objects, and can be properlly represented as typescript type). These (plus embedded variable/class access like `mc`) are implemented with [typescript declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation).
 
 ### Modifications on LiquidBounce
-A embedded javascript file was evaluated before evaluating the user created js, this redirects any `require()` call that starts with `jvm-types/` to `Java.type()` call in graaljs (with a additional step replacing '/' to '.'). Your typescript statement  
+Mixins for the `require` function was written to inject calls to the require function, this redirects any `require()` call that starts with `jvm-types/` to `Java.type()` call in graaljs (with a additional step replacing '/' to '.'). Your typescript statement  
 `import { HttpServer } from "jvm-types/com/sun/net/httpserver/HttpServer";` will be compiled by vanilla typescript compiler to  
 `const HttpServer_1 = require("jvm-types/com/sun/net/httpserver/HttpServer");`,  
 where the `require` function will see it starts with `jvm-types/` and instead call  
@@ -273,8 +276,6 @@ Using a custom typescript compiler would indeed be a much cleaner solution to th
 - very slow (`tsc --watch` can almost respond in instant now compared to at least 2 seconds if we use a custom compiler script),
 - difficult to maintain. (600 lines of code and transformed more than we would like to)
 - source mapping unfriendly (so that you can no longer see the typescript in chromium's debugger, or you can see a mismatched one)
-
-Our current embedded script is less than 50 lines(with all the comments) and it only intecepts prefix with `jvm-types/`, which is extremely unlikely to be used by other npm package or other scripts, so in general it's what we can do best here.
 
 However, if you are experienced and you do know how to make things right with a cleaner solution, please feel free to contribute!
 
