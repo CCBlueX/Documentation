@@ -79,7 +79,7 @@ Note: we currently only support commonjs for now, esm support will be added in f
 
 1. Install the type definitions with npm:
 ```bash
-npm install jvm-types
+npm install jvm-types@next
 ```
 The package is a bit large, around 80M decompressed, it might take a while but by my test it worked.
 
