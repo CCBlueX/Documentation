@@ -62,7 +62,10 @@ npx tsc --init
         // if you ever need to connect to the debugger
         "inlineSourceMap": true, 
         "inlineSources": true,
-        "strict": false
+        "strict": false,
+        "types": ["jvm-types"] 
+        // we explicitly acknoledge that we import global ambient types from jvm-types package
+        // or ["jvm-types-next"] if you want to use up-to-date package
     },
     "include": ["src/**/*"]
 }
@@ -78,6 +81,10 @@ Note: we currently only support commonjs for now, esm support will be added in f
 1. Install the type definitions with npm:
 ```bash
 npm install jvm-types
+```
+or
+```bash
+npm install jvm-types-next # if you want to have a more up-to-date
 ```
 The package is a bit large, around 80M decompressed, it might take a while but by my test it worked.
 
