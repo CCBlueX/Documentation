@@ -79,7 +79,7 @@ Note: we currently only support commonjs for now, esm support will be added in f
 
 1. Install the type definitions with npm:
 ```bash
-npm install jvm-types@next
+npm install jvm-types@next # or just `npm install jvm-types` if you want to sync with LiquidBounce's release.
 ```
 The package is a bit large, around 80M decompressed, it might take a while but by my test it worked.
 
