@@ -4,9 +4,12 @@ LiquidBounce features a Theme System that allows you to customize the appearance
 ### LiquidBounce Theme
 The default theme of LiquidBounce provides a clean and modern look:
 
-![Default HUD](/images/liquidbounce-hud.png)
-![Default ClickGUI](/images/liquidbounce-clickgui.png)
-![Default Main Menu](/images/liquidbounce-mainmenu.png)
+![Default HUD](/images/theme/liquidbounce/hud.png)
+![Default ClickGUI](/images/theme/liquidbounce/clickgui.png)
+![Default Main Menu](/images/theme/liquidbounce/mainmenu.png)
+
+The LiquidBounce theme is included in LiquidBounce. However, if you want to create your own theme,
+Feel free to fork the [repository](https://github.com/CCBlueX/LiquidBounce-Theme).
 
 ### Using Themes
 You can manage themes using the following commands:
@@ -44,11 +47,11 @@ You can install custom themes from the community.
 #### JelloBounce Theme
 Here's how the JelloBounce theme changes the appearance of various GUIs:
 
-![JelloBounce HUD](/images/jellobounce-hud.png)
-![JelloBounce ClickGUI](/images/jellobounce-clickgui.png)
-![JelloBounce Main Menu](/images/jellobounce-mainmenu.png)
+![JelloBounce HUD](/images/theme/jellobounce/hud.png)
+![JelloBounce ClickGUI](/images/theme/jellobounce/clickgui.png)
+![JelloBounce Main Menu](/images/theme/jellobounce/mainmenu.png)
 
-[Releases](https://github.com/larryngton2/jellobounce/releases)
+[Repository](https://github.com/CCBlueX/LiquidBounce-Theme-JelloBounce)
 
 #### Catppuccin Theme
 [Releases](https://github.com/liquidsquid1/catppuccin-lb/releases)
