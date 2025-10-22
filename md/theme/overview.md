@@ -22,7 +22,7 @@ The easiest way to install themes is through the built-in Marketplace:
    - This displays all themes available in the marketplace
 
 2. **Install a theme**: Click on your desired theme, which will run:
-   - `.marketplace install <id>`
+   - `.marketplace subscribe <id>`
    - The theme will be automatically downloaded and installed
 
 3. **Apply the theme**: After installation, use:
@@ -36,14 +36,14 @@ The easiest way to install themes is through the built-in Marketplace:
 ![JelloBounce ClickGUI](/images/theme/jellobounce/clickgui.png)
 ![JelloBounce Main Menu](/images/theme/jellobounce/mainmenu.png)
 
-Install with: `.marketplace install 265`  
+Install with: `.marketplace subscribe 265`  
 [Repository](https://github.com/CCBlueX/LiquidBounce-Theme-JelloBounce)
 
 #### BeautifyV2 Theme
 ![BeautifyV2 HUD](/images/theme/beautifyv2/ingame-hud.png)
 ![BeautifyV2 ClickGUI](/images/theme/beautifyv2/ingame-clickgui.png)
 
-Install with: `.marketplace install 581`  
+Install with: `.marketplace subscribe 581`  
 [Repository](https://github.com/CCBlueX/LiquidBounce-Theme-BeautifyV2)
 
 #### Wurst Theme
@@ -51,7 +51,7 @@ Install with: `.marketplace install 581`
 ![Wurst ClickGUI](/images/theme/wurst/clickgui.png)
 ![Wurst Main Menu](/images/theme/wurst/title.png)
 
-Install with: `.marketplace install 561`  
+Install with: `.marketplace subscribe 561`  
 [Repository](https://github.com/CCBlueX/LiquidBounce-Theme-Wurst)
 
 ### Creating Your Own Theme
