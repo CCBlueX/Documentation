@@ -95,8 +95,6 @@ For developers who want to create custom themes:
 
 5. **Publish to Marketplace**:
    - Once your theme is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
-5. **Publish to Marketplace**:
-   - Once your theme is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
 
 ### Security Warning
 
