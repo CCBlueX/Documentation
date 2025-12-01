@@ -10,35 +10,31 @@ To fix this problem, you can simply download and install [Microsoft Webview2](ht
 
 ### LiquidLauncher does not show up (Linux with Wayland)
 
-If you're using Linux with Wayland (especially with NVIDIA graphics), you may encounter an error that prevents LiquidLauncher from starting:
+If you're using *Linux with Wayland* (especially with *NVIDIA* graphics), you may encounter this error:
 
 ```
 Gdk-Message: Error 71 (Protocol error) dispatching to Wayland display.
 ```
 
-This is a known upstream issue with WebKit2GTK on Wayland, particularly affecting NVIDIA GPU users. The error occurs due to problems with DMA-BUF rendering in the WebKit engine.
-
-To fix this issue, you need to disable DMA-BUF rendering by setting an environment variable before launching LiquidLauncher:
+This is a known upstream *WebKit2GTK* issue on Wayland. To fix it, launch LiquidLauncher with the following environment variable:
 
 ```bash
 WEBKIT_DISABLE_DMABUF_RENDERER=1 ./LiquidLauncher
 ```
 
-If you're launching LiquidLauncher from a desktop entry or application menu, you can make this permanent by editing the launcher's desktop file:
+**To make this permanent**, edit your LiquidLauncher *desktop file* (usually in `~/.local/share/applications/`):
 
-1. Locate your LiquidLauncher desktop file (usually in `~/.local/share/applications/` or `/usr/share/applications/`)
-2. Edit the `Exec=` line to include the environment variable:
-   ```
-   Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /path/to/LiquidLauncher
-   ```
+```
+Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /path/to/LiquidLauncher
+```
 
-Alternatively, you can add this environment variable to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.) to apply it system-wide:
+*Alternatively*, add this to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
 
 ```bash
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
 ```
 
-For more information about this issue, see [this GitHub issue](https://github.com/tauri-apps/tauri/issues/10702#issuecomment-2935208923).
+For more information, see [this GitHub issue](https://github.com/tauri-apps/tauri/issues/10702#issuecomment-2935208923).
 
 ### LiquidBounce download does not finish (SmartScreen issue)
 
