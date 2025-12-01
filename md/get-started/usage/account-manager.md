@@ -87,8 +87,6 @@ If you log into other accounts (Microsoft, TheAltening, Cracked, Session) and la
 
 ![Restore Original Account](/images/get-started/account-manager/restore-account.png)
 
-This is useful if you temporarily test alts or cracked accounts but want to safely return to your main account afterwards without manually searching for the original account.
-
 ## Quick Account Changer
 
 The **Quick Account Changer** allows you to switch between stored accounts with as few clicks as possible.
