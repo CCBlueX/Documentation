@@ -1,6 +1,6 @@
 # Troubleshooting FPS Drops & Freezing
 
-If you're experiencing frame rate drops or freezing when interacting with LiquidBounce's visual elements (such as the HUD, ClickGUI, or menu), this guide will help you resolve the issue.
+If you're experiencing frame rate drops or freezing with LiquidBounce, whether while playing or when interacting with the GUI (HUD, ClickGUI, menu), this guide will help you resolve the issue.
 
 ## 1. Check RAM Allocation
 
