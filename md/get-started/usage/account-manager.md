@@ -45,14 +45,14 @@ After this, the Title screen’s account panel will show your Microsoft username
 
 ### TheAltening Login
 
-Use this if you have alt tokens from **thealtening.com**.
+Use this if you have alt tokens from **[thealtening.com](https://thealtening.com)**.
 
 1. In the **Account Manager**, click **Add Account** → **TheAltening**.
 2. Enter the **token** provided by TheAltening.
 3. Confirm to save the account.
 4. Select the account from the list to log in.
 
-> Make sure you are using tokens from the official **thealtening.com** website to avoid invalid or unsafe accounts.
+> Make sure you are using tokens from the official **[thealtening.com](https://thealtening.com)** website to avoid invalid or unsafe accounts.
 
 ### Cracked (Offline) Login
 
