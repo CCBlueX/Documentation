@@ -41,7 +41,7 @@ Use this if you own Minecraft on a Microsoft account.
 After this, the Title screen’s account panel will show your Microsoft username and indicate that you are logged in via Microsoft.
 
 > If you encounter issues when signing in with **Microsoft** or **Session**, see
-> [Fixing issues with the system's hosts file](/docs/fixing-liquidlauncher#fixing-issues-with-the-systems-hosts-file).
+> [Fixing issues with the system's hosts file](/docs/tutorials/fixing-liquidlauncher#fixing-issues-with-the-systems-hosts-file).
 
 ### TheAltening Login
 
