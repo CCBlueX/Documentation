@@ -118,7 +118,11 @@ Follow the installation wizard that appears:
 
 ## Next Steps
 
-Congratulations! You've successfully installed LiquidBounce. To learn how to use the client's features, check out our [Getting Started Guide](/docs/get-started/usage).
+Congratulations! You've successfully installed LiquidBounce. To learn how to use the client, start with the introduction and then read the following guides:
+
+- [Introduction](/docs/get-started/usage/introduction)
+- [Using the Account Manager](/docs/get-started/usage/account-manager)
+- [Using the ClickGUI](/docs/get-started/usage/clickgui)
 
 ## Manual Installation
 

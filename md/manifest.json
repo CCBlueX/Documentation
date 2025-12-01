@@ -1,7 +1,12 @@
 {
     "Get Started": {
         "Installation": "get-started/installation.md",
-        "Manual Installation": "get-started/manual-installation.md"
+        "Manual Installation": "get-started/manual-installation.md",
+        "Usage": {
+            "Introduction": "get-started/usage/introduction.md",
+            "Account Manager": "get-started/usage/account-manager.md",
+            "ClickGUI": "get-started/usage/clickgui.md"
+        }
     },
     "Tutorials": {
         "LiquidLauncher": "tutorials/liquidlauncher.md",
