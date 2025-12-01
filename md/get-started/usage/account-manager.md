@@ -79,8 +79,6 @@ Session (also known as **access token**) lets you log in using an already obtain
 
 ## Restoring the Original Game Account
 
-If you started LiquidBounce while already logged into Minecraft (for example via the official launcher), LiquidBounce keeps track of that **original account** and allows you to restore it with a single click.
-
 If you log into other accounts (Microsoft, TheAltening, Cracked, Session) and later want to return to the account that was active when you launched the game:
 
 1. Open the **Account Manager**.
