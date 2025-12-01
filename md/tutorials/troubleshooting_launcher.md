@@ -2,6 +2,18 @@
 
 Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through our [contact page](https://ccbluex.net/contact) or on our [Discord](/discord) after you verified that all the possible solutions listed here didn't solve your problem.
 
+### Table of Contents
+
+- [LiquidLauncher does not show up (Windows)](#liquidlauncher-does-not-show-up-windows)
+- [LiquidLauncher does not show up (Linux with Wayland)](#liquidlauncher-does-not-show-up-linux-with-wayland)
+- [LiquidBounce download does not finish (SmartScreen issue)](#liquidbounce-download-does-not-finish-smartscreen-issue)
+- [Failed to establish connection with LiquidBounce API](#failed-to-establish-connection-with-liquidbounce-api)
+  - [Using Cloudflare WARP](#using-cloudflare-warp)
+  - [Fixing issues with the system's hosts file](#fixing-issues-with-the-systems-hosts-file)
+  - [Fixing issues with the DNS server](#fixing-issues-with-the-dns-server)
+
+---
+
 ### LiquidLauncher does not show up (Windows)
 
 This is a known issue if you've previously uninstalled Microsoft Edge or used so-called Windows debloat tools. LiquidLauncher uses [Edge Webview2](https://developer.microsoft.com/de-de/microsoft-edge/webview2/) to run - which is a core feature of your Windows operating system.

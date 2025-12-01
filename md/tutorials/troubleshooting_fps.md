@@ -2,6 +2,20 @@
 
 If you're experiencing frame rate drops or freezing with LiquidBounce, whether while playing or when interacting with the GUI (HUD, ClickGUI, menu), this guide will help you resolve the issue.
 
+## Table of Contents
+
+1. [Check RAM Allocation](#1-check-ram-allocation)
+2. [Check RAM Speed (Critical)](#2-check-ram-speed-critical)
+3. [Verify GPU is Being Used](#3-verify-gpu-is-being-used)
+4. [Update GPU Drivers](#4-update-gpu-drivers)
+5. [Enable Accelerated Rendering (Windows Only)](#5-enable-accelerated-rendering-windows-only)
+6. [Optimize HUD and Theme Settings](#6-optimize-hud-and-theme-settings)
+7. [Limit GUI Renderer FPS](#7-limit-gui-renderer-fps)
+8. [Remove Conflicting Mods](#8-remove-conflicting-mods)
+9. [Reduce Rendering Quality (Last Resort)](#9-reduce-rendering-quality-last-resort)
+
+---
+
 ## 1. Check RAM Allocation
 
 Insufficient RAM allocation is one of the most common causes of performance issues. Ensure Java has enough memory allocated:
