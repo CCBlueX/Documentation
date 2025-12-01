@@ -3,12 +3,12 @@
 The **Account Manager** allows you to:
 
 - Log in with different account types:
-  - **Microsoft**
-  - **TheAltening** (thealtening.com)
-  - **Cracked (offline)**
-  - **Session / Access Token**
-- Restore the account you started the game with.
-- Quickly switch between saved accounts.
+   - [**Microsoft**](#microsoft-login)
+   - [**TheAltening**](#thealtening-login)
+   - [**Cracked (offline)**](#cracked-offline-login)
+   - [**Session / Access Token**](#session--access-token-login)
+- [Restore](#restoring-the-original-game-account) the account you started the game with.
+- [Quickly switch](#quick-account-changer) between saved accounts.
 
 ## Opening the Account Manager
 
