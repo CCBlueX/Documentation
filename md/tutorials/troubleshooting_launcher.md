@@ -8,6 +8,38 @@ This is a known issue if you've previously uninstalled Microsoft Edge or used so
 
 To fix this problem, you can simply download and install [Microsoft Webview2](https://developer.microsoft.com/de-de/microsoft-edge/webview2/?form=MA13LH#download). After that, your launcher will appear as expected.
 
+### LiquidLauncher does not show up (Linux with Wayland)
+
+If you're using Linux with Wayland (especially with NVIDIA graphics), you may encounter an error that prevents LiquidLauncher from starting:
+
+```
+Gdk-Message: Error 71 (Protocol error) dispatching to Wayland display.
+```
+
+This is a known upstream issue with WebKit2GTK on Wayland, particularly affecting NVIDIA GPU users. The error occurs due to problems with DMA-BUF rendering in the WebKit engine.
+
+To fix this issue, you need to disable DMA-BUF rendering by setting an environment variable before launching LiquidLauncher:
+
+```bash
+WEBKIT_DISABLE_DMABUF_RENDERER=1 ./LiquidLauncher
+```
+
+If you're launching LiquidLauncher from a desktop entry or application menu, you can make this permanent by editing the launcher's desktop file:
+
+1. Locate your LiquidLauncher desktop file (usually in `~/.local/share/applications/` or `/usr/share/applications/`)
+2. Edit the `Exec=` line to include the environment variable:
+   ```
+   Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /path/to/LiquidLauncher
+   ```
+
+Alternatively, you can add this environment variable to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.) to apply it system-wide:
+
+```bash
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+```
+
+For more information about this issue, see [this GitHub issue](https://github.com/tauri-apps/tauri/issues/10702#issuecomment-2935208923).
+
 ### LiquidBounce download does not finish (SmartScreen issue)
 
 This is a known bug on Windows 10. We are currently working on a proper fix. For now, please disable Windows Smart Screen to solve the issue. You can do so by following these steps:
