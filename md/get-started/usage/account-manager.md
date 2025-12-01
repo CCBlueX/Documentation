@@ -8,7 +8,7 @@ The **Account Manager** allows you to:
    - [**Cracked (offline)**](#cracked-offline-login)
    - [**Session / Access Token**](#session--access-token-login)
 - [Restore](#restoring-the-original-game-account) the account you started the game with.
-- [Quickly switch](#quick-account-changer) between saved accounts.
+- [Quickly switch](#account-selector) between saved accounts.
 
 ## Opening the Account Manager
 
@@ -87,11 +87,11 @@ If you log into other accounts (Microsoft, TheAltening, Cracked, Session) and la
 
 ![Restore Original Account](/images/get-started/account-manager/restore-account.png)
 
-## Quick Account Changer
+## Account Selector
 
-The **Quick Account Changer** allows you to switch between stored accounts with as few clicks as possible.
+The **Account Selector** allows you to switch between stored accounts with as few clicks as possible.
 
-### Opening the Quick Account Changer
+### Opening the Account Selector
 
 1. On the Title screen, look at the **top-right account panel**.
 2. Click anywhere on the **entire account box** (not the individual arrow or pen icons).
@@ -105,17 +105,13 @@ This behavior is demonstrated in the video and screenshot below.
 
 ### Switching Accounts Quickly
 
-1. In the Quick Account Changer overlay, click the account you want to use:
-   - Microsoft accounts will show their Microsoft username.
-   - TheAltening, Cracked, and Session entries will show their respective usernames.
-2. The client will:
-   - Log out of your current session.
-   - Log into the **selected account**.
-   - Update the **username** shown in the top-right panel.
+1. In the Account Selector overlay, each entry shows the **Minecraft username** with the **account type** below it (for example "Microsoft", "TheAltening", "Cracked", or "Session").
+2. Click the entry for the account you want to use.
+3. The client switches from your current session to the selected account.
 
 The whole process only takes a moment and does not require opening the full Account Manager window.
 
-> Use the full Account Manager to add new accounts or manage many accounts, and use the **Quick Account Changer** for everyday switching between a small set of commonly used accounts.
+> Use the full Account Manager to add new accounts or manage many accounts, and use the **Account Selector** for everyday switching between a small set of commonly used accounts.
 
 ## Random Cracked Username (Arrow Icon)
 
