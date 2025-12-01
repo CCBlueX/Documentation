@@ -31,6 +31,6 @@ Think of this page as your hub: from here you can reach all important guides and
 - The **top right** shows your **current account**:
   - Clicking the **pen icon** opens the Account Manager.
   - Clicking the **arrow icon** creates a **random cracked username**.
-  - Clicking anywhere on the **whole account box** opens the **Quick Account Changer**.
+  - Clicking anywhere on the **whole account box** opens the **Account Selector**.
 
 From here, follow the links above to dive deeper into each feature.
