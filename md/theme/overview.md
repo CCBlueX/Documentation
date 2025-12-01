@@ -12,7 +12,7 @@ The default theme of LiquidBounce provides a clean and modern look:
 ![Default ClickGUI](/images/theme/liquidbounce/clickgui.png)
 ![Default Main Menu](/images/theme/liquidbounce/mainmenu.png)
 
-The LiquidBounce theme is included in LiquidBounce. However, if you want to create your own theme, see the "Creating Your Own Theme" section below.
+The LiquidBounce theme is included in LiquidBounce. However, if you want to create your own theme, see the [Creating Your Own Theme](#creating-your-own-theme) section below.
 
 ### Installing Themes from Marketplace
 

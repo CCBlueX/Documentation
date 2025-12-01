@@ -192,7 +192,7 @@ For more information about the theme system, visit: [Theme System Overview](/doc
 
 Disabling HUD components you don't use can improve performance:
 
-1. Go to **HUD** → **Components** → **Name of the Theme** (e.g., LiquidBounce)
+1. Go to **HUD** → **Themes** → **Name of the Theme** (e.g., LiquidBounce)  → **Components**
 2. Review all enabled HUD elements
 3. Disable components you don't need
 

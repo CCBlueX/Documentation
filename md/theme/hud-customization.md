@@ -1,29 +1,29 @@
 ## HUD Customization
 
-<div class="note js-note">
-	<span class="note-close js-close">
-		<i class="fa fa-times"></i>
-	</span>
-	<h4 class="note-title"> Note </h4>
-	<p class="note-description">
-		It is not currently possible to change the components of the HUD as the Custom HUD system is still being implemented.
-		The only way to customise the appearance of the HUD beyond the options below is to change the current theme.
-		We plan to implement more extensive HUD customisation options in future updates. Stay tuned!
-	</p>
-</div>
+The HUD comes with componenents that show information on your screen. You can customize which components are visible and where they appear.
 
-### Basic HUD Configuration
-While custom HUD components are not yet available, you can still customize your HUD in several ways:
+### Configure your HUD Components
 
-1. **Moving Components**: You can move any HUD component to your desired position on the screen
-2. **Toggling Components**: Each HUD component can be individually toggled on or off
-3. **Theme-based Appearance**: The look of your HUD components is determined by your selected [theme](docs/Theme%20System/Overview)
+1. Press **RIGHT SHIFT** to open the ClickGUI
+2. Navigate to **Render** → **HUD**
 
-### HUD Editor
-To access the HUD configuration screen:
+![HUD Configuration Small](/images/hud-configuration-small.png)
 
-1. Press the RIGHT SHIFT key to open the ClickGUI
-2. Navigate to the HUD tab
-3. Here you can drag components around and toggle them using the checkboxes
+3. Click on **Themes** → **Name of the Theme** (e.g., LiquidBounce) → **Components**
 
 ![HUD Configuration](/images/hud-configuration.png)
+
+From here, you can enable/disable components and adjust their positions.
+
+### Use a different HUD look
+
+The available HUD components and their look are determined by your active [theme](/docs/theme-system/overview). To change the appearance or add components, switch to a different theme from the [Marketplace](/docs/theme-system/overview#installing-themes-from-marketplace) or create your own following the [theme development guide](/docs/theme-system/overview#creating-your-own-theme).
+
+**LiquidBounce Theme:**
+![LiquidBounce HUD](/images/hud/liquidbounce-hud.png)
+
+**JelloBounce Theme:**
+![JelloBounce HUD](/images/hud/jello-hud.png)
+
+**BeautifyV2 Theme:**
+![BeautifyV2 HUD](/images/hud/beautify-hud.png)
