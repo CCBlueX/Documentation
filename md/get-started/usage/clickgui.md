@@ -76,7 +76,6 @@ When you are done configuring, you can simply close the settings view by right c
 
 To close the ClickGUI:
 
-- Press **RIGHT SHIFT** again, or
-- Use the same keybind you used to open it.
+- Press **ESC**.
 
-Once closed, you are back in the game or main menu with your modules running according to the configuration you just set up.
+Once closed, you are back in the game or main menu with your configured hacks.
