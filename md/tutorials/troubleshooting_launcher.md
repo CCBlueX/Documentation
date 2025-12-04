@@ -16,9 +16,9 @@ Use the following guide to troubleshoot common issues with LiquidLauncher. Only 
 
 ### LiquidLauncher does not show up (Windows)
 
-This is a known issue if you've previously uninstalled Microsoft Edge or used so-called Windows debloat tools. LiquidLauncher uses [Edge Webview2](https://developer.microsoft.com/de-de/microsoft-edge/webview2/) to run - which is a core feature of your Windows operating system.
+This is a known issue if you've previously uninstalled Microsoft Edge or used so-called Windows debloat tools. LiquidLauncher uses [Edge Webview2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) to run - which is a core feature of your Windows operating system.
 
-To fix this problem, you can simply download and install [Microsoft Webview2](https://developer.microsoft.com/de-de/microsoft-edge/webview2/?form=MA13LH#download). After that, your launcher will appear as expected.
+To fix this problem, you can simply download and install [Microsoft Webview2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH#download). After that, your launcher will appear as expected.
 
 ### LiquidLauncher does not show up (Linux with Wayland)
 
