@@ -1,7 +1,6 @@
 # Introduction
 
-After installing LiquidBounce and launching the game for the first time, you’ll be greeted by the **LiquidBounce Title Screen**.  
-Think of this page as your hub: from here you can reach all important guides and features.
+After installing LiquidBounce and launching the game, you’ll be greeted by the **LiquidBounce Title Screen**.
 
 ## Where to go next
 
