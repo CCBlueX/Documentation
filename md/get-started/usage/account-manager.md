@@ -6,7 +6,7 @@ The **Account Manager** allows you to:
    - [**Microsoft**](#microsoft-login)
    - [**TheAltening**](#thealtening-login)
    - [**Cracked (offline)**](#cracked-offline-login)
-   - [**Session / Access Token**](#session--access-token-login)
+   - [**Session / Access Token**](#session-access-token-login)
 - [Restore](#restoring-the-original-game-account) the account you started the game with.
 - [Quickly switch](#account-selector) between saved accounts.
 
