@@ -57,6 +57,9 @@ A plethora of additional events are supported by the API and serve different pur
 
 The full list of supported events can be found [here](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
 
+All event handlers can be `async` function (including `enable` or `disable`).
+Unfortunately, we can't cancel a `Promise` in JavaScript (unlike Kotlin's `Job` or Java's `Future`). So you need to manually check if your module is still running after `await` operations.
+
 ### Creating a command
 
 Another way of introducing new functionality is through client commands. Commands usually accept arguments, process them in some way and then perform an action once. Unlike modules, they are not intended to run for extended periods of time.
@@ -130,5 +133,10 @@ script.registerCommand({
 
 To run the script, place it inside the *scripts* directory located in the *LiquidBounce* directory which in turn can be found in the *.minecraft* directory of your installation. When using LiquidLauncher, simply press the directory icon with the arrow in the top right corner next to the *Data location* field in the launcher's settings window to open the data diretory in your file manager. Once you ran the game, open up a single player world and open the ClickGUI. You should find *MyModule* in the *Misc* category and sending *.addition 1 2* into the chat should execute your command and yield *3* as a result.
 
+## Additional documentation
+
+There is [Dokka documentation](https://ccbluex.github.io/LiquidBounce/) for the client. You need to invoke them in Java style. (Sadly it's not supported to invoke `suspend` functions in JS)
+
 ## Examples
+
 A repository with additional examples can be found on our [GitHub page](https://github.com/CCBlueX/LiquidScript).
