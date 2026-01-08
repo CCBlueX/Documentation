@@ -46,6 +46,8 @@ If you're not using LiquidLauncher or need a specific version of Baritone, you c
 | [1.21.6 Forge](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-forge-1.15.0.jar) | [1.21.6 Fabric](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-fabric-1.15.0.jar) | [1.21.6 NeoForge](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-neoforge-1.15.0.jar) |
 | [1.21.7 Forge](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-forge-1.15.0.jar) | [1.21.7 Fabric](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-fabric-1.15.0.jar) | [1.21.7 NeoForge](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-neoforge-1.15.0.jar) |
 | [1.21.8 Forge](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-forge-1.15.0.jar) | [1.21.8 Fabric](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-fabric-1.15.0.jar) | [1.21.8 NeoForge](https://github.com/cabaletta/baritone/releases/download/v1.15.0/baritone-api-neoforge-1.15.0.jar) |
+| - | [1.21.11 Fabric](https://maven.ccbluex.net/releases/baritone/baritone-fabric/1.21.11-1.11.1-12-g2748d587/baritone-fabric-1.21.11-1.11.1-12-g2748d587.jar)* | - |
+
 
 *This is an unofficial version.
 
