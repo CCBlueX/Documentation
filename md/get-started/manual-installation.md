@@ -8,7 +8,7 @@ This tutorial will guide you through the manual installation of LiquidBounce. We
     <iframe width="560" height="315" src="https://www.youtube.com/embed/i_r1i4m-NZc?si=eQlG3oC_3d1Vbp25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-LiquidBounce Nextgen is our most recent client with active development. It is based on 1.21.4, but compatible with all Minecraft versions and features a modern user interface, improved performance and enhanced modules. To install it manually, follow the instructions below.
+LiquidBounce Nextgen is our most recent client with active development. It is based on 1.21.11, but compatible with all Minecraft versions and features a modern user interface, improved performance and enhanced modules. To install it manually, follow the instructions below.
 
 1. [Download](https://fabricmc.net/use/installer/) and install the latest version of the Fabric mod loader on your system.
 2. Run the Minecraft launcher, switch to the *Installations* tab, hover over the profile the Fabric installer just created and press the directory icon that appeared to the right of the button labeled *Play*. This will open the Minecraft installation directory in your file explorer.
