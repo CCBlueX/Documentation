@@ -6,7 +6,7 @@ LiquidBounce's script API is based on [GraalJS](https://github.com/oracle/graalj
 
 To begin, create a new file with a `.mjs` extension (for example, `my_script.mjs`) and open it in your preferred code editor (such as [Visual Studio Code](https://code.visualstudio.com/)). This file will encompass  the entire code covered in this introduction. The script we are going to write will introduce a new module that prints a string to the chat upon activation and a client command that adds two numbers.
 
-Documentation of classes, methods and fields of the Minecraft client can be found [here](https://maven.fabricmc.net/docs/yarn-1.20.4+build.3/index.html).
+Documentation of classes, methods and fields of the Minecraft client can be found [here](https://mappings.dev/1.21.11).
 
 ### Registering the script
 
