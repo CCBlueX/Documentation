@@ -4,7 +4,7 @@ The following tutorial will guide you through the process of setting up your pre
 
 ### Instructions for LiquidBounce Nextgen (recommended)
 
-1. Link your premium purchase to a [LiquidBounce account](https://user.liquidbounce.net/). See [here](/docs/Premium/Launcher%20Setup) for more information. You can also customize your cosmetics in the user panel.
+1. Link your premium purchase to a [LiquidBounce account](https://liquidbounce.net/premium). See [here](/docs/Premium/Launcher%20Setup) for more information. You can also customize your cosmetics in the user panel.
 2. Launch LiquidBounce.
 3. Join a server or a singleplayer world.
 4. Send `.client account login` into the chat.
