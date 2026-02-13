@@ -37,15 +37,18 @@ Bind a module to a keyboard key.
 
 **Parameters:**
 - `module` (required) — The module to bind.
-- `key` (required) — The key name (e.g. `leftalt`, `r`, `mouse4`). Use `none` to unbind.
+- `key` (required) — The key name. Common formats: `r`, `y`, `left.control`, `right.alt`, `keypad.4`, `mouse4`. Use `none` to unbind.
 - `action` (optional) — The bind action: `Toggle` (default) or `Hold`.
-- `modifiers` (optional, vararg) — Modifier keys: `Shift`, `Ctrl`, `Alt`.
+- `modifiers` (optional, vararg) — Modifier keys: `Alt`, `Control`, `Shift`, `Super`.
 
 **Example:**
 ```
-.bind KillAura r
-.bind Speed leftalt Hold
-.bind Fly g Toggle Ctrl
+.bind KillAura left.control
+.bind fly right.alt Toggle
+.bind fly y
+.bind fly y Hold
+.bind fly y Toggle
+.bind fly keypad.4
 ```
 
 ---
@@ -90,9 +93,14 @@ Manage your friend list. Friends can be excluded from combat targeting.
 **Example:**
 ```
 .friend add Steve
-.friend add "Senk Ju" SJ
+.friend add Steve
+.friend add SenkJu "Senk Ju"
 .friend remove Steve
 ```
+
+> **Note:** Use double quotes around arguments that contain spaces, for example `.friend add SenkJu "Senk Ju"`.
+
+> Minecraft usernames cannot contain spaces — `.friend add "Senk Ju"` is not a valid username. Quotes are useful for aliases or display names when the command supports them.
 
 ---
 
@@ -150,14 +158,16 @@ Get or set module settings (values).
 - `.value reset-all <path>` — Reset all settings in a value group to their defaults.
 
 **Parameters:**
-- `path` — The dot-separated path to the setting (e.g. `KillAura.Range`).
+- `path` — The dot-separated path to the setting (for example: `modules.killaura.range`, `modules.aspect.ratio`, or `settings.commands.prefix`). The path can reference module values, global settings, or other configuration paths.
 - `value` — The new value to set.
 
 **Example:**
 ```
-.value set KillAura.Range 4.5
-.value reset KillAura.Range
-.value reset-all KillAura
+.value set modules.killaura.range 4.5
+.value set modules.aspect.ratio 2
+.value set settings.commands.prefix !
+.value reset modules.killaura.range
+.value reset-all modules.killaura
 ```
 
 ---

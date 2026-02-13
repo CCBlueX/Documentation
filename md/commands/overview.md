@@ -31,11 +31,15 @@ Type commands in the Minecraft chat window. The command prefix (default: `.`) mu
 
 ```
 .toggle KillAura
-.bind Speed leftalt
-.friend add "Senk Ju"
-.value set KillAura.Range 4.5
+.bind Speed left.alt
+.friend add SenkJu
+.friend add SenkJu "Senk Ju"
+.value set modules.killaura.range 4.5
+.value set settings.commands.prefix !
 ```
 
-> **Note:** Use double quotes around arguments that contain spaces, e.g. `.friend add "Senk Ju"`.
+> **Note:** Use double quotes around arguments that contain spaces, for example `.friend add SenkJu "Senk Ju"`.
+
+> Minecraft usernames cannot contain spaces — the example `.friend add "Senk Ju"` as a username is invalid. Quotes are useful for aliases or display names when the command supports them.
 
 **Total: 40 commands**
