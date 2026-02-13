@@ -18,7 +18,7 @@ After installing LiquidBounce and launching the game, you’ll be greeted by the
 
 - **Using a Proxy (Proxy Manager)**  
   Connect via SOCKS5/HTTP proxies (for example through [liquidproxy.net](https://liquidproxy.net)) to change your IP before joining servers.  
-  → (Guide coming soon: Proxy Manager usage)
+  → See [Using the Proxy Manager](/docs/get-started/usage/proxy-manager)
 
 ## Title
 

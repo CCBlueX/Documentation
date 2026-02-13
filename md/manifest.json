@@ -5,7 +5,8 @@
         "Usage": {
             "Introduction": "get-started/usage/introduction.md",
             "Account Manager": "get-started/usage/account-manager.md",
-            "ClickGUI": "get-started/usage/clickgui.md"
+            "ClickGUI": "get-started/usage/clickgui.md",
+            "Proxy Manager": "get-started/usage/proxy-manager.md"
         }
     },
     "Tutorials": {
@@ -13,7 +14,8 @@
         "LiquidLauncher On MacOS": "tutorials/liquidlauncher-macos-gatekeeper.md",
         "Fixing LiquidLauncher": "tutorials/troubleshooting_launcher.md",
         "Fixing FPS": "tutorials/troubleshooting_fps.md",
-        "Changing Version": "tutorials/change_version.md"
+        "Changing Version": "tutorials/change_version.md",
+        "LiquidProxy": "tutorials/liquidproxy.md"
     },
     "Auto Config": {
         "Overview": "autoconfig/overview.md",
