@@ -52,7 +52,7 @@ This method works with **any** Minecraft Java Edition client and does not requir
 2. In a client with a Proxy Manager (such as LiquidBounce), open the **Proxy Manager** and add a new proxy with the credentials from the dashboard.
 3. Select the proxy and join your target server normally.
 
-For more details on using the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/get-started/usage/proxy-manager).
+For more details on using the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/usage/proxy-manager).
 
 ### Proxy Locations
 

@@ -1,0 +1,25 @@
+## DankBobbing
+
+Increases the view bobbing effect.
+
+**Category:** Fun  
+**Enabled by default:** No  
+
+### Settings
+
+Below is the complete tree of all configurable settings for this module.
+
+```
+└── Motion (Decimal | default: 5.0 | range: 1.0..50.0)
+```
+
+### Settings Details
+
+- **Motion** (Decimal) — default: `5.0`; range: `1.0` – `50.0`
+
+### Screenshots
+
+*Screenshots for DankBobbing will be added in a future update.*
+
+---
+*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Ffun%2FModuleDankBobbing.kt)*

@@ -1,0 +1,443 @@
+## AutoRod
+
+Automatically uses fishing rod for combat.
+
+**Category:** Combat  
+**Enabled by default:** No  
+
+### Settings
+
+Below is the complete tree of all configurable settings for this module.
+
+```
+├── GravityType (Choice | default: LINEAR | options: Linear, Projectile)
+├── Range (Decimal Range | default: 3.5..5.0 | range: 2.0..10.0)
+├── ScanExtraRange (Decimal Range | default: 0.0..0.0 | range: 0.0..5.0)
+├── MaxEnemiesNearby (Integer | default: 1 | range: 0..10)
+├── MinHealth (Decimal | default: 10.0 | range: 1.0..20.0)
+├── MinTargetHealth (Decimal | default: 4.0 | range: 1.0..20.0)
+├── Requires (Multi-Select | options: Click, Weapon, VanillaName, NotBreaking)
+├── Ignore (Multi-Select | options: OpenInventory, UsingItem, HoldingConsumable)
+├── HoldingItemsForIgnore (Registry List)
+├── Target (Setting Group)
+│   ├── FOV (Decimal | default: 180.0 | range: 0.0..180.0)
+│   ├── HurtTime (Integer | default: 10 | range: 0..10)
+│   └── Priority (Multi-Select | default: [Type, Distance] | options: Type, Health, Distance, Direction, HurtTime, Age)
+├── AimPoint (Setting Group)
+│   ├── ExemptBoxParts (Multi-Select | options: Head, Body, Feet)
+│   ├── ExemptBestHitVector (Toggleable Group | default: off)
+│   │   ├── Enabled (Toggle | default: false)
+│   │   ├── Vertical (Decimal | default: 0.2 | range: 0.0..1.0)
+│   │   └── Horizontal (Decimal | default: 0.1 | range: 0.0..1.0)
+│   ├── Gaussian (Toggleable Group | default: off)
+│   │   ├── Enabled (Toggle | default: false)
+│   │   ├── YawOffset (Decimal Range | default: 0.0..0.0 | range: 0.0..1.0)
+│   │   ├── PitchOffset (Decimal Range | default: 0.0..0.0 | range: 0.0..1.0)
+│   │   ├── Chance (Integer | default: 100 | range: 0..100 | %)
+│   │   ├── Speed (Decimal Range | default: 0.1..0.2 | range: 0.01..1.0)
+│   │   ├── Tolerance (Decimal | default: 0.05 | range: 0.01..0.1)
+│   │   └── Dynamic (Toggleable Group | default: off)
+│   │       ├── Enabled (Toggle | default: false)
+│   │       ├── HurtTime (Integer | default: 10 | range: 0..10)
+│   │       ├── YawFactor (Decimal | default: 0.0 | range: 0.0..10.0 | x)
+│   │       ├── PitchFactor (Decimal | default: 0.0 | range: 0.0..10.0 | x)
+│   │       ├── Speed (Decimal Range | default: 0.5..0.75 | range: 0.01..1.0)
+│   │       └── Tolerance (Decimal | default: 0.1 | range: 0.01..0.1)
+│   ├── Lazy (Toggleable Group | default: off)
+│   │   ├── Enabled (Toggle | default: false)
+│   │   └── Threshold (Decimal Range | default: 0.1..0.2 | range: 0.01..0.4 | m)
+│   └── Delay (Toggleable Group | default: off)
+│       ├── Enabled (Toggle | default: false)
+│       └── Delay (Integer Range | default: 2..4 | range: 0..5 | ticks)
+├── Rotations (Setting Group)
+│   ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
+│   │   ├── [Mode: Linear]
+│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
+│   │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
+│   │   ├── [Mode: Sigmoid]
+│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
+│   │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
+│   │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
+│   │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
+│   │   └── [Mode: Acceleration]
+│   │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
+│   │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
+│   │       ├── DynamicAccel (Toggleable Group | default: off)
+│   │       │   ├── Enabled (Toggle | default: false)
+│   │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
+│   │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
+│   │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
+│   │       ├── AccelerationError (Toggleable Group | default: on)
+│   │       │   ├── Enabled (Toggle | default: true)
+│   │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
+│   │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
+│   │       ├── ConstantError (Toggleable Group | default: on)
+│   │       │   ├── Enabled (Toggle | default: true)
+│   │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
+│   │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
+│   │       └── SigmoidDeceleration (Toggleable Group | default: off)
+│   │           ├── Enabled (Toggle | default: false)
+│   │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
+│   │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
+│   ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
+│   ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
+│   └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
+├── AimOffThreshold (Decimal | default: 5.0 | range: 2.0..10.0)
+├── SwingMode (Choice | default: DO_NOT_HIDE | options: DoNotHide, HideForBoth, HideForClient, HideForServer)
+├── TargetRendering (Toggleable Group | default: on)
+│   ├── Enabled (Toggle | default: true)
+│   └── Mode (Mode Selector | default: Image | modes: Legacy, Circle, Image, GlowingCircle, Ghost, Text2D, Arrow)
+│       ├── [Mode: Legacy]
+│       │   ├── Size (Decimal | default: 0.5 | range: 0.1..2.0)
+│       │   ├── Height (Decimal | default: 0.1 | range: 0.02..2.0)
+│       │   ├── Color (Color)
+│       │   └── ExtraYOffset (Decimal | default: 0.1 | range: 0.0..1.0)
+│       ├── [Mode: Circle]
+│       │   ├── Radius (Decimal | default: 0.85 | range: 0.1..2.0)
+│       │   ├── InnerRadius (Decimal | default: 0.0 | range: 0.0..2.0)
+│       │   ├── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
+│       │   │   ├── [Mode: Feet]
+│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │   │   ├── [Mode: Top]
+│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │   │   ├── [Mode: Relative]
+│       │   │   │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
+│       │   │   └── [Mode: Animated]
+│       │   │       ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
+│       │   │       ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
+│       │   │       ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
+│       │   │       └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
+│       │   ├── OuterColor (Color)
+│       │   ├── InnerColor (Color)
+│       │   └── Color (Color)
+│       ├── [Mode: Image]
+│       │   ├── Source (Mode Selector | default: Custom | modes: Custom, Builtin)
+│       │   │   ├── [Mode: Custom]
+│       │   │   │   └── File (File)
+│       │   │   └── [Mode: Builtin]
+│       │   │       └── Preset (Choice | default: MARKER1 | options: Marker1, Marker2)
+│       │   ├── Scale (2D Position)
+│       │   ├── ColorModulator (Color)
+│       │   ├── Rotate (Setting Group)
+│       │   │   ├── Period (Integer | default: 1000 | range: 10..20000 | ms)
+│       │   │   ├── Symmetric (Toggle | default: true)
+│       │   │   └── Curve (Curve)
+│       │   └── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
+│       │       ├── [Mode: Feet]
+│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │       ├── [Mode: Top]
+│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │       ├── [Mode: Relative]
+│       │       │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
+│       │       └── [Mode: Animated]
+│       │           ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
+│       │           ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
+│       │           ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
+│       │           └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
+│       ├── [Mode: GlowingCircle]
+│       │   ├── Radius (Decimal | default: 0.85 | range: 0.1..2.0)
+│       │   ├── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
+│       │   │   ├── [Mode: Feet]
+│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │   │   ├── [Mode: Top]
+│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │   │   ├── [Mode: Relative]
+│       │   │   │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
+│       │   │   └── [Mode: Animated]
+│       │   │       ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
+│       │   │       ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
+│       │   │       ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
+│       │   │       └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
+│       │   ├── OuterColor (Color)
+│       │   ├── GlowColor (Color)
+│       │   ├── GlowHeight (Decimal | default: 0.3 | range: -1.0..1.0)
+│       │   └── Color (Color)
+│       ├── [Mode: Ghost]
+│       │   ├── Color (Color)
+│       │   ├── Size (Decimal | default: 0.5 | range: 0.4..0.7)
+│       │   └── Length (Integer | default: 25 | range: 15..40)
+│       ├── [Mode: Text2D]
+│       │   ├── Scale (Decimal | default: 1.0 | range: 0.01..10.0)
+│       │   ├── Shadow (Toggle | default: true)
+│       │   ├── Color (Color)
+│       │   ├── Text (Editable List)
+│       │   └── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
+│       │       ├── [Mode: Feet]
+│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │       ├── [Mode: Top]
+│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       │       ├── [Mode: Relative]
+│       │       │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
+│       │       └── [Mode: Animated]
+│       │           ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
+│       │           ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
+│       │           ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
+│       │           └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
+│       └── [Mode: Arrow]
+│           ├── Color (Color)
+│           ├── OutlineColor (Color)
+│           └── Size (Decimal | default: 1.5 | range: 0.5..20.0)
+├── HitTimeout (Integer | default: 30 | range: 5..200 | ticks)
+├── PullOnOutOfRange (Toggle | default: true)
+├── SlotResetDelay (Integer Range | default: 0..0 | range: 0..20 | ticks)
+└── Cooldown (Integer Range | default: 4..8 | range: 1..50 | ticks)
+```
+
+### Settings Details
+
+- **GravityType** (Choice) — default: `LINEAR`; options: `Linear`, `Projectile` — Determines the aiming calculation method: linear look direction or projectile trajectory.
+- **Range** (Decimal Range) — default: `3.5` – `5.0`; range: `2.0` – `10.0` — Target detection range in blocks.
+- **ScanExtraRange** (Decimal Range) — default: `0.0` – `0.0`; range: `0.0` – `5.0` — Random extra range added to the scan distance.
+- **MaxEnemiesNearby** (Integer) — default: `1`; range: `0` – `10` — Maximum number of nearby enemies allowed before activating (0 means no limit).
+- **MinHealth** (Decimal) — default: `10.0`; range: `1.0` – `20.0` — Minimum player health required to use the rod.
+- **MinTargetHealth** (Decimal) — default: `4.0`; range: `1.0` – `20.0` — Minimum target health required before throwing the rod.
+- **Requires** (Multi-Select) — options: `Click`, `Weapon`, `VanillaName`, `NotBreaking` — Conditions that must be met before the module activates.
+- **Ignore** (Multi-Select) — options: `OpenInventory`, `UsingItem`, `HoldingConsumable` — Conditions that disable the module when active.
+- **HoldingItemsForIgnore** (Registry List) — Items that prevent rod usage when held (e.g., bows, crossbows, tridents).
+#### Target
+
+> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+
+#### AimPoint
+
+> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
+
+#### Rotations
+
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+
+##### AngleSmooth
+
+Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
+
+###### Mode: Linear
+
+- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
+- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
+
+###### Mode: Sigmoid
+
+- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
+- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
+- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
+- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
+
+###### Mode: Acceleration
+
+- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
+- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
+###### DynamicAccel
+
+A toggleable group of settings (default: disabled).
+
+- **Enabled** (Toggle) — default: `false`
+- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
+- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
+- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
+
+###### AccelerationError
+
+A toggleable group of settings (default: enabled).
+
+- **Enabled** (Toggle) — default: `true`
+- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
+- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
+
+###### ConstantError
+
+A toggleable group of settings (default: enabled).
+
+- **Enabled** (Toggle) — default: `true`
+- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
+- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
+
+###### SigmoidDeceleration
+
+A toggleable group of settings (default: disabled).
+
+- **Enabled** (Toggle) — default: `false`
+- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
+- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
+
+
+- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
+- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
+- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
+
+- **AimOffThreshold** (Decimal) — default: `5.0`; range: `2.0` – `10.0` — Maximum rotation error in degrees allowed before casting the rod.
+- **SwingMode** (Choice) — default: `DO_NOT_HIDE`; options: `DoNotHide`, `HideForBoth`, `HideForClient`, `HideForServer` — Controls arm swing animation visibility when using the rod.
+#### TargetRendering
+
+> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared/target-rendering).
+
+###### Mode: Legacy
+
+- **Size** (Decimal) — default: `0.5`; range: `0.1` – `2.0`
+- **Height** (Decimal) — default: `0.1`; range: `0.02` – `2.0`
+- **Color** (Color)
+- **ExtraYOffset** (Decimal) — default: `0.1`; range: `0.0` – `1.0`
+
+###### Mode: Circle
+
+- **Radius** (Decimal) — default: `0.85`; range: `0.1` – `2.0`
+- **InnerRadius** (Decimal) — default: `0.0`; range: `0.0` – `2.0`
+###### HeightMode
+
+Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
+
+###### Mode: Feet
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Top
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Relative
+
+- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
+
+###### Mode: Animated
+
+- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
+- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
+- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
+- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
+
+- **OuterColor** (Color)
+- **InnerColor** (Color)
+- **Color** (Color)
+
+###### Mode: Image
+
+###### Source
+
+Select a mode for this feature. Available modes: **Custom**, **Builtin**. Default: **Custom**.
+
+###### Mode: Custom
+
+- **File** (File)
+
+###### Mode: Builtin
+
+- **Preset** (Choice) — default: `MARKER1`; options: `Marker1`, `Marker2`
+
+- **Scale** (2D Position)
+- **ColorModulator** (Color)
+###### Rotate
+
+A group of related settings.
+
+- **Period** (Integer) — default: `1000`; range: `10` – `20000`; unit: ms
+- **Symmetric** (Toggle) — default: `true`
+- **Curve** (Curve)
+
+###### HeightMode
+
+Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
+
+###### Mode: Feet
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Top
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Relative
+
+- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
+
+###### Mode: Animated
+
+- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
+- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
+- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
+- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
+
+
+###### Mode: GlowingCircle
+
+- **Radius** (Decimal) — default: `0.85`; range: `0.1` – `2.0`
+###### HeightMode
+
+Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
+
+###### Mode: Feet
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Top
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Relative
+
+- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
+
+###### Mode: Animated
+
+- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
+- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
+- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
+- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
+
+- **OuterColor** (Color)
+- **GlowColor** (Color)
+- **GlowHeight** (Decimal) — default: `0.3`; range: `-1.0` – `1.0`
+- **Color** (Color)
+
+###### Mode: Ghost
+
+- **Color** (Color)
+- **Size** (Decimal) — default: `0.5`; range: `0.4` – `0.7`
+- **Length** (Integer) — default: `25`; range: `15` – `40`
+
+###### Mode: Text2D
+
+- **Scale** (Decimal) — default: `1.0`; range: `0.01` – `10.0`
+- **Shadow** (Toggle) — default: `true`
+- **Color** (Color)
+- **Text** (Editable List)
+###### HeightMode
+
+Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
+
+###### Mode: Feet
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Top
+
+- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
+
+###### Mode: Relative
+
+- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
+
+###### Mode: Animated
+
+- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
+- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
+- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
+- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
+
+
+###### Mode: Arrow
+
+- **Color** (Color)
+- **OutlineColor** (Color)
+- **Size** (Decimal) — default: `1.5`; range: `0.5` – `20.0`
+
+
+- **HitTimeout** (Integer) — default: `30`; range: `5` – `200`; unit: ticks — Ticks to wait for the hook to land or hit before pulling it back.
+- **PullOnOutOfRange** (Toggle) — default: `true` — Pulls the rod back if the target moves out of range.
+- **SlotResetDelay** (Integer Range) — default: `0` – `0`; range: `0` – `20`; unit: ticks — Delay in ticks before resetting the hotbar slot after use.
+- **Cooldown** (Integer Range) — default: `4` – `8`; range: `1` – `50`; unit: ticks — Ticks between rod casting attempts.
+
+### Screenshots
+
+*Screenshots for AutoRod will be added in a future update.*
+
+---
+*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoRod.kt)*
