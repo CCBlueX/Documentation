@@ -35,9 +35,19 @@ LiquidProxy does **not** require a separate download. Once you have an active su
 2. Choose a **location** (for example Frankfurt, London, Los Angeles).
 3. Connect using one of two methods:
 
+If your Minecraft client supports a Proxy Manager, Method 1 (Proxy Credentials) is recommended; otherwise use Method 2 (Route Address).
+
 > For a video walkthrough, see the [LiquidProxy setup tutorial](https://www.youtube.com/watch?v=W0dSieDq2qQ).
 
-#### Method 1: Route Address (Recommended)
+#### Method 1: Proxy Credentials (Recommended when the client supports a Proxy Manager)
+
+1. On the LiquidProxy dashboard, copy your **proxy credentials** (host, port, username, password).
+2. In a client with a Proxy Manager (such as LiquidBounce), open the **Proxy Manager** and add a new proxy with the credentials from the dashboard.
+3. Select the proxy and join your target server normally.
+
+For more details on using the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/usage/proxy-manager).
+
+#### Method 2: Route Address
 
 1. On the LiquidProxy dashboard, create a **route address** for your target server.
 2. Copy the route address.
@@ -45,14 +55,6 @@ LiquidProxy does **not** require a separate download. Once you have an active su
 4. Join the server through the route address — your connection will automatically be proxied.
 
 This method works with **any** Minecraft Java Edition client and does not require a Proxy Manager.
-
-#### Method 2: Proxy Credentials
-
-1. On the LiquidProxy dashboard, copy your **proxy credentials** (host, port, username, password).
-2. In a client with a Proxy Manager (such as LiquidBounce), open the **Proxy Manager** and add a new proxy with the credentials from the dashboard.
-3. Select the proxy and join your target server normally.
-
-For more details on using the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/usage/proxy-manager).
 
 ### Proxy Locations
 
