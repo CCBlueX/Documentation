@@ -6,11 +6,11 @@ After installing LiquidBounce and launching the game, you’ll be greeted by the
 
 - **Using the Account Manager**  
   Manage Microsoft, TheAltening, Cracked and Session accounts, restore your original account, and quickly switch between them.  
-  → See [Using the Account Manager](/docs/get-started/usage/account-manager)
+  → See [Using the Account Manager](/docs/usage/account-manager)
 
 - **Configuring Modules with ClickGUI**  
   Enable and configure combat, movement, render and utility modules before or while playing.  
-  → See [Using the ClickGUI](/docs/get-started/usage/clickgui)
+  → See [Using the ClickGUI](/docs/usage/clickgui)
 
 - **Customizing Your HUD and Theme**  
   Change the appearance of your HUD, main menu and ClickGUI using themes and HUD components.  
@@ -18,7 +18,7 @@ After installing LiquidBounce and launching the game, you’ll be greeted by the
 
 - **Using a Proxy (Proxy Manager)**  
   Connect via SOCKS5/HTTP proxies (for example through [liquidproxy.net](https://liquidproxy.net)) to change your IP before joining servers.  
-  → (Guide coming soon: Proxy Manager usage)
+  → See [Using the Proxy Manager](/docs/usage/proxy-manager)
 
 ## Title
 
