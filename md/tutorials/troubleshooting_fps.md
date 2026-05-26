@@ -7,11 +7,11 @@ If you're experiencing frame rate drops or freezing with LiquidBounce, whether w
 1. [Check RAM Allocation](#1-check-ram-allocation)
 2. [Check RAM Speed (Critical)](#2-check-ram-speed-critical)
 3. [Verify GPU is Being Used](#3-verify-gpu-is-being-used)
-4. [Update GPU Drivers](#4-update-gpu-drivers)
-5. [Enable Accelerated Rendering (Windows Only)](#5-enable-accelerated-rendering-windows-only)
-6. [Optimize HUD and Theme Settings](#6-optimize-hud-and-theme-settings)
-7. [Limit GUI Renderer FPS](#7-limit-gui-renderer-fps)
-8. [Remove Conflicting Mods](#8-remove-conflicting-mods)
+4. [Update GPU Drivers (Critical)](#4-update-gpu-drivers)
+5. [Remove Conflicting Mods](#5-remove-conflicting-mods)
+6. [Enable Accelerated Paint (Critical)](#6-enable-accelerated-paint)
+7. [Optimize HUD and Theme Settings](#7-optimize-hud-and-theme-settings)
+8. [Limit GUI Renderer FPS](#8-limit-gui-renderer-fps)
 9. [Reduce Rendering Quality (Last Resort)](#9-reduce-rendering-quality-last-resort)
 
 ---
@@ -162,21 +162,31 @@ Outdated GPU drivers can cause performance issues and compatibility problems:
 2. Use the auto-detect tool or manually select your GPU
 3. Download and install the latest driver
 
-## 5. Enable Accelerated Rendering (Windows Only)
+## 5. Remove Conflicting Mods
 
-For Windows users, enabling accelerated rendering can significantly improve performance:
+Third-party mods can cause performance issues or conflicts with LiquidBounce:
 
-1. Go to **HUD** → **Global Renderer** → **Accelerated (BETA)**
-2. Enable it
+1. Create a backup of your mods folder
+2. Remove all mods except LiquidBounce and it's dependencies
+3. Test if the FPS issue persists
+4. If the issue is resolved, add mods back one by one to identify the mod causing the issue.
+
+## 6. Enable Accelerated Paint
+
+Enabling this feature can significantly improve performance. It is enabled by default when known to be compatible.
+
+If not, follow these steps:
+1. Open **ClickGUI** (_RSHIFT_)
+2. Go to **Settings** → **Gui Renderer** → **Accelerated Paint**
+3. Enable it
 
 **Important Notes:**
-- **Windows only:** This feature is only supported on Windows systems
+- **Windows and Linux only:** This feature is only supported on Windows and Linux systems. 
 - **AMD GPU users:** There is a known [VRAM leak bug](https://github.com/chromiumembedded/cef/issues/3968) that may cause VRAM to fill up after extended use. Monitor your VRAM usage.
-- **NVIDIA GPU users:** This option generally works well and is recommended
 - **Intel GPU users:** This feature is not currently supported due to [driver issues](https://github.com/IGCIT/Intel-GPU-Community-Issue-Tracker-IGCIT/issues/1143)
-- **Experimental:** This feature is still in beta, so report any issues you encounter
+- **X11 users:** This feature is only supported on Linux when using Wayland. X11 is NOT supported.
 
-## 6. Optimize HUD and Theme Settings
+## 7. Optimize HUD and Theme Settings
 
 #### Use Default Theme
 
@@ -198,7 +208,7 @@ Disabling HUD components you don't use can improve performance:
 
 For detailed information on HUD customization, visit: [HUD Customization](/docs/theme-system/hud-customization)
 
-## 7. Limit GUI Renderer FPS
+## 8. Limit GUI Renderer FPS
 
 The GUI renderer can consume excessive resources if left uncapped. Limiting it to 60 FPS can significantly improve performance:
 
@@ -210,20 +220,12 @@ The GUI renderer can consume excessive resources if left uncapped. Limiting it t
 1. Go to **ClickGUI** → **Renderer** → **FPS**
 2. Set the FPS limit to `60`
 
-## 8. Remove Conflicting Mods
-
-Third-party mods can cause performance issues or conflicts with LiquidBounce:
-
-1. Create a backup of your mods folder
-2. Remove all mods except LiquidBounce and it's dependencies
-3. Test if the FPS issue persists
-4. If the issue is resolved, add mods back one by one to identify the mod causing the issue.
-
 ## 9. Reduce Rendering Quality (Last Resort)
 
 If nothing else helps and you're still experiencing severe performance issues, you can reduce the rendering quality. **This will make the GUIs look significantly worse** (rendering at half resolution), but it can drastically improve performance:
 
-1. Go to **HUD** → **Global Renderer** → **Quality**
+1. Open **ClickGUI** (_RSHIFT_)
+2. Go to **Settings** → **Gui Renderer** → **Quality**
 2. Lower the quality setting
 
 **Warning:** This is a last resort option as it notably degrades visual quality. Only use this if all other solutions have failed.
