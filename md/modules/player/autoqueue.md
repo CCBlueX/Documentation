@@ -10,6 +10,7 @@ Automatically enters mini game queues on servers.
 Below is the complete tree of all configurable settings for this module.
 
 ```
+├── Pause (Multi-Select | default: [ClickGuiOpen, ChatScreenOpen, ContainerScreenOpen, PauseScreenOpen] | options: ClickGuiOpen, ChatScreenOpen, ContainerScreenOpen, PauseScreenOpen)
 └── Presets (Mode Selector | default: HypixelSW | modes: HypixelSW, GommeDuels, Custom)
     ├── [Mode: HypixelSW]
     │   └── GameMode (Choice | default: NORMAL | options: Normal, Insane)
@@ -57,6 +58,8 @@ Below is the complete tree of all configurable settings for this module.
 ```
 
 ### Settings Details
+
+- **Pause** (Multi-Select) — default: all; options: `ClickGuiOpen`, `ChatScreenOpen`, `ContainerScreenOpen`, `PauseScreenOpen` — Screens whose presence temporarily pauses queue detection (so it doesn't fire while you have a menu open).
 
 #### Presets
 
@@ -157,4 +160,4 @@ A toggleable group of settings (default: enabled).
 *Screenshots for AutoQueue will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoQueue.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoQueue.kt)*

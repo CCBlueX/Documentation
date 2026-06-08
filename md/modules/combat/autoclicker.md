@@ -22,7 +22,7 @@ Below is the complete tree of all configurable settings for this module.
 │   ├── DelayOnBroken (Toggle | default: true)
 │   ├── Objective (Choice | default: ANY | options: Enemy, Entity, Block, Any)
 │   ├── OnItemUse (Choice | default: WAIT | options: Wait, Stop, Ignore)
-│   ├── Weapon (Choice | default: ANY | options: Sword, Axe, Both, Any)
+│   ├── Weapon (Multi-Select | default: [Any] | options: Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect)
 │   ├── Criticals (Choice | default: SMART | options: Smart, Ignore, Always)
 │   └── DelayPostStopUse (Integer | default: 0 | range: 0..20 | ticks)
 └── Use (Toggleable Group | default: off)
@@ -52,7 +52,7 @@ A toggleable group of settings (default: enabled).
 - **DelayOnBroken** (Toggle) — default: `true` — Adds a 300ms delay after breaking a block to prevent attack spam.
 - **Objective** (Choice) — default: `ANY`; options: `Enemy`, `Entity`, `Block`, `Any` — Determines what type of object triggers automatic clicking.
 - **OnItemUse** (Choice) — default: `WAIT`; options: `Wait`, `Stop`, `Ignore` — Controls behavior when an item is being used: wait, stop using, or ignore.
-- **Weapon** (Choice) — default: `ANY`; options: `Sword`, `Axe`, `Both`, `Any` — Restricts automatic clicking to specific weapon types held in the main hand.
+- **Weapon** (Multi-Select) — default: `Any`; options: `Any`, `Sword`, `Axe`, `Mace`, `Spear`, `Pickaxe`, `Shovel`, `Hoe`, `Knockback`, `FireAspect` — Restricts automatic clicking to specific weapon types held in the main hand. Cannot be empty.
 - **Criticals** (Choice) — default: `SMART`; options: `Smart`, `Ignore`, `Always` — Controls when to wait for critical hit opportunities before attacking.
 - **DelayPostStopUse** (Integer) — default: `0`; range: `0` – `20`; unit: ticks — Delay in ticks after stopping item usage before resuming attacks.
 
@@ -77,4 +77,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for AutoClicker will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoClicker.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoClicker.kt)*

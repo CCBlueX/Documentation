@@ -10,7 +10,7 @@ Modifies the amount of velocity you take.
 Below is the complete tree of all configurable settings for this module.
 
 ```
-├── Mode (Mode Selector | default: Modify | modes: Modify, Reversal, Strafe, JumpReset, Lag, Hypixel, Dexland, Hylex, BlocksMC, Grim2371, Grim2344-117, AAC4.4.2, Intave)
+├── Mode (Mode Selector | default: Modify | modes: Modify, Reversal, Strafe, JumpReset, Lag, Reduce, Hypixel, Dexland, Hylex, BlocksMC, Grim2371, Grim2344-117, AAC4.4.2, Intave)
 │   ├── [Mode: Modify]
 │   │   ├── Horizontal (Decimal | default: 0.0 | range: -1.0..1.0)
 │   │   ├── Vertical (Decimal | default: 0.0 | range: -1.0..1.0)
@@ -19,7 +19,8 @@ Below is the complete tree of all configurable settings for this module.
 │   │   ├── Chance (Integer | default: 100 | range: 0..100 | %)
 │   │   ├── Filter (Choice | default: ALWAYS | options: Always, OnGround, InAir)
 │   │   ├── OnlyMove (Toggle | default: false)
-│   │   └── TransactionBuffer (Integer | default: 0 | range: 0..3)
+│   │   ├── TransactionBuffer (Integer | default: 0 | range: 0..3)
+│   │   └── ConsiderExplosion (Toggle | default: true)
 │   ├── [Mode: Reversal]
 │   │   ├── Delay (Integer | default: 2 | range: 1..5 | ticks)
 │   │   ├── XModifier (Decimal | default: 0.5 | range: 0.0..1.0)
@@ -42,7 +43,19 @@ Below is the complete tree of all configurable settings for this module.
 │   │       └── UntilJump (Integer Range | default: 2..2 | range: 0..20 | ticks)
 │   ├── [Mode: Lag]
 │   │   ├── LagTime (Integer Range | default: 5..5 | range: 1..20 | ticks)
-│   │   └── JumpReset (Toggle | default: false)
+│   │   ├── JumpReset (Toggle | default: false)
+│   │   └── ConsiderExplosion (Toggle | default: true)
+│   ├── [Mode: Reduce]
+│   │   ├── AttackCount (Integer Range | default: 3..3 | range: 0..20)
+│   │   ├── LagTargetRange (Decimal Range | default: 2.0..6.0 | range: 0.0..20.0)
+│   │   ├── LagMaxDelay (Integer | default: 10 | range: 1..1000 | ticks)
+│   │   ├── LagRequireKillAura (Toggle | default: false)
+│   │   ├── Horizontal (Decimal | default: 0.6 | range: 0.0..1.0)
+│   │   ├── Vertical (Decimal | default: 1.0 | range: 0.0..1.0)
+│   │   └── Debug (Toggleable Group | default: off)
+│   │       ├── Enabled (Toggle | default: false)
+│   │       ├── ChatMessage (Toggle | default: false)
+│   │       └── Notification (Toggle | default: false)
 │   ├── [Mode: Dexland]
 │   │   ├── HReduce (Decimal | default: 0.3 | range: 0.0..1.0)
 │   │   └── AttacksToWork (Integer | default: 4 | range: 1..10)
@@ -70,7 +83,7 @@ Below is the complete tree of all configurable settings for this module.
 
 #### Mode
 
-Select a mode for this feature. Available modes: **Modify**, **Reversal**, **Strafe**, **JumpReset**, **Lag**, **Hypixel**, **Dexland**, **Hylex**, **BlocksMC**, **Grim2371**, **Grim2344-117**, **AAC4.4.2**, **Intave**. Default: **Modify**.
+Select a mode for this feature. Available modes: **Modify**, **Reversal**, **Strafe**, **JumpReset**, **Lag**, **Reduce**, **Hypixel**, **Dexland**, **Hylex**, **BlocksMC**, **Grim2371**, **Grim2344-117**, **AAC4.4.2**, **Intave**. Default: **Modify**.
 
 ##### Mode: Modify
 
@@ -82,6 +95,7 @@ Select a mode for this feature. Available modes: **Modify**, **Reversal**, **Str
 - **Filter** (Choice) — default: `ALWAYS`; options: `Always`, `OnGround`, `InAir` — Condition filter for when velocity modification applies.
 - **OnlyMove** (Toggle) — default: `false` — Only applies modification when the player is moving.
 - **TransactionBuffer** (Integer) — default: `0`; range: `0` – `3` — Number of transaction packets to buffer before applying velocity.
+- **ConsiderExplosion** (Toggle) — default: `true` — When enabled, knockback that comes from explosions (TNT, crystals) is still treated as velocity to modify; disable to leave explosion knockback untouched.
 
 ##### Mode: Reversal
 
@@ -125,6 +139,19 @@ A toggleable group of settings (default: enabled).
 
 - **LagTime** (Integer Range) — default: `5` – `5`; range: `1` – `20`; unit: ticks — Duration in ticks to delay knockback packets.
 - **JumpReset** (Toggle) — default: `false` — Jumps when the lag period ends to reduce remaining velocity.
+- **ConsiderExplosion** (Toggle) — default: `true` — Also lag back knockback that comes from explosions (TNT, crystals).
+
+##### Mode: Reduce
+
+Holds back incoming knockback packets and re-applies a scaled-down version, reducing how far you get knocked. Works best together with KillAura.
+
+- **AttackCount** (Integer Range) — default: `3` – `3`; range: `0` – `20` — Number of attacks after which the held-back velocity is released.
+- **LagTargetRange** (Decimal Range) — default: `2.0` – `6.0`; range: `0.0` – `20.0` — Distance to a target within which the lag/reduce is allowed to trigger.
+- **LagMaxDelay** (Integer) — default: `10`; range: `1` – `1000`; unit: ticks — Maximum number of ticks knockback is held back before being released.
+- **LagRequireKillAura** (Toggle) — default: `false` — Only reduce velocity while KillAura is actively fighting.
+- **Horizontal** (Decimal) — default: `0.6`; range: `0.0` – `1.0` — Horizontal knockback multiplier applied on release.
+- **Vertical** (Decimal) — default: `1.0`; range: `0.0` – `1.0` — Vertical knockback multiplier applied on release.
+- **Debug** (Toggleable Group, default: off) — Prints debug output: **ChatMessage** sends it to chat, **Notification** shows a notification.
 
 ##### Mode: Dexland
 
@@ -173,4 +200,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for Velocity will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleVelocity.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleVelocity.kt)*

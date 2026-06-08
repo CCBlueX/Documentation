@@ -26,7 +26,7 @@ Below is the complete tree of all configurable settings for this module.
 │   ├── Sideways (Decimal | default: 1.0 | range: 0.0..1.0)
 │   ├── NoBlockInteract (Toggleable Group | default: on)
 │   │   └── Enabled (Toggle | default: true)
-│   └── Mode (Mode Selector | default: None | modes: None, Grim2360, Grim2364-1.8, InvalidHand, Grim2371, Intave14, Release)
+│   └── Mode (Mode Selector | default: None | modes: None, Grim2360, Grim2364-1.8, InvalidHand, Grim2371, Jump, Intave14, Release)
 │       ├── [Mode: Intave14]
 │       │   └── Mode (Choice | default: RELEASE | options: Release, New)
 ├── Bow (Toggleable Group | default: on)
@@ -106,7 +106,11 @@ A toggleable group of settings (default: enabled).
 
 ##### Mode
 
-Select a mode for this feature. Available modes: **None**, **Grim2360**, **Grim2364-1.8**, **InvalidHand**, **Grim2371**, **Intave14**, **Release**. Default: **None**.
+Select a mode for this feature. Available modes: **None**, **Grim2360**, **Grim2364-1.8**, **InvalidHand**, **Grim2371**, **Jump**, **Intave14**, **Release**. Default: **None**.
+
+###### Mode: Jump
+
+Jumps while consuming an item — useful against anti-cheats that fail to slow jumping players. This mode has no extra settings.
 
 ###### Mode: Intave14
 
@@ -206,4 +210,4 @@ A toggleable group of settings (default: enabled).
 *Screenshots for NoSlow will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleNoSlow.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleNoSlow.kt)*

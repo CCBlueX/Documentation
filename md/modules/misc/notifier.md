@@ -14,6 +14,10 @@ Below is the complete tree of all configurable settings for this module.
 ├── JoinMessageFormat (Text)
 ├── LeaveMessages (Toggle | default: true)
 ├── LeaveMessageFormat (Text)
+├── GameModeMessages (Toggle | default: false)
+├── ItemConsumptionMessages (Toggle | default: true)
+├── HeldItemMessages (Toggle | default: false)
+├── TotemPopMessages (Toggle | default: true)
 └── UseNotification (Toggle | default: false)
 ```
 
@@ -23,6 +27,10 @@ Below is the complete tree of all configurable settings for this module.
 - **JoinMessageFormat** (Text)
 - **LeaveMessages** (Toggle) — default: `true`
 - **LeaveMessageFormat** (Text)
+- **GameModeMessages** (Toggle) — default: `false` — Notifies you when a player's game mode changes (e.g. survival to spectator).
+- **ItemConsumptionMessages** (Toggle) — default: `true` — Notifies you when a nearby player finishes consuming an item (eating, drinking a potion, etc.).
+- **HeldItemMessages** (Toggle) — default: `false` — Notifies you when a nearby player switches the item they are holding.
+- **TotemPopMessages** (Toggle) — default: `true` — Notifies you when a player pops a Totem of Undying, with a running pop counter.
 - **UseNotification** (Toggle) — default: `false`
 
 ### Screenshots
@@ -30,4 +38,4 @@ Below is the complete tree of all configurable settings for this module.
 *Screenshots for Notifier will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleNotifier.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleNotifier.kt)*

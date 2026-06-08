@@ -11,6 +11,7 @@ Below is the complete tree of all configurable settings for this module.
 
 ```
 ├── OnlyVisual (Toggle | default: false)
+├── FakeOnPressing (Toggle | default: false)
 ├── HideShieldSlot (Toggle | default: false)
 ├── ApplyToThirdPersonView (Toggle | default: true)
 └── AlwaysHideShield (Toggle | default: false)
@@ -19,6 +20,7 @@ Below is the complete tree of all configurable settings for this module.
 ### Settings Details
 
 - **OnlyVisual** (Toggle) — default: `false` — Only shows the blocking animation without sending blocking packets.
+- **FakeOnPressing** (Toggle) — default: `false` — Shows the blocking animation simply while you hold the use key, even when not actually blocking.
 - **HideShieldSlot** (Toggle) — default: `false` — Hides the shield in the offhand slot when a sword is held.
 - **ApplyToThirdPersonView** (Toggle) — default: `true` — Applies the sword-blocking pose in third-person view.
 - **AlwaysHideShield** (Toggle) — default: `false` — Always hides the offhand shield regardless of main-hand item.
@@ -28,4 +30,4 @@ Below is the complete tree of all configurable settings for this module.
 *Screenshots for SwordBlock will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleSwordBlock.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleSwordBlock.kt)*

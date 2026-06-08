@@ -31,6 +31,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── Blocks (Registry List)
 ├── SwapPreviousDelay (Integer | default: 20 | range: 1..100 | ticks)
 ├── RequireSneaking (Toggle | default: false)
+├── NotDuringCombat (Toggle | default: false)
 └── RequireNearBed (Toggleable Group | default: off)
     ├── Enabled (Toggle | default: false)
     └── Distance (Decimal | default: 10.0 | range: 3.0..50.0)
@@ -78,6 +79,7 @@ A toggleable group of settings (default: disabled).
 
 - **SwapPreviousDelay** (Integer) — default: `20`; range: `1` – `100`; unit: ticks
 - **RequireSneaking** (Toggle) — default: `false`
+- **NotDuringCombat** (Toggle) — default: `false` — Stops switching tools while you are in combat, so it doesn't interfere with fighting.
 #### RequireNearBed
 
 A toggleable group of settings (default: disabled).
@@ -91,4 +93,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for AutoTool will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleAutoTool.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleAutoTool.kt)*

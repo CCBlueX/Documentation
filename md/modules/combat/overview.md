@@ -2,7 +2,7 @@
 
 Combat modules enhance your fighting capabilities. They automate attacks, improve aim, manage armor, and give you an edge in PvP encounters.
 
-There are **26** modules in this category:
+There are **28** modules in this category:
 
 - [Aimbot](/docs/Modules/Combat/Aimbot) — Automatically faces targets nearby.
 - [AutoArmor](/docs/Modules/Combat/AutoArmor) — Automatically equips the best armor in your inventory.
@@ -17,6 +17,7 @@ There are **26** modules in this category:
 - [Backtrack](/docs/Modules/Combat/Backtrack) — Causes targets to lag allowing you to attack them more efficiently.
 - [Criticals](/docs/Modules/Combat/Criticals) — Automatically deals critical damage every time you attack an entity.
 - [CrystalAura](/docs/Modules/Combat/CrystalAura) — Automatically places and destroys end crystals.
+- [DroneControl](/docs/Modules/Combat/DroneControl) — Remotely aim and fire a bow at targets from a control panel.
 - [ElytraTarget](/docs/Modules/Combat/ElytraTarget) — Following the target on elytra.
 - [FakeLag](/docs/Modules/Combat/FakeLag) — Holds back packets so as to prevent you from being hit by an enemy.
 - [Hitbox](/docs/Modules/Combat/Hitbox) — Enlarges the hit box of targets.
@@ -24,6 +25,7 @@ There are **26** modules in this category:
 - [KillAura](/docs/Modules/Combat/KillAura) — Automatically attacks enemies around you.
 - [MaceKill](/docs/Modules/Combat/MaceKill) — Instant kill when using the Mace
 - [NoMissCooldown](/docs/Modules/Combat/NoMissCooldown) — Disables 1.8 hit cooldown or cancels missed attacks entirely.
+- [ProjectileAimbot](/docs/Modules/Combat/ProjectileAimbot) — Automatically aims your held projectile at the best target.
 - [SuperKnockback](/docs/Modules/Combat/SuperKnockback) — Increases knockback dealt to other entities.
 - [SwordBlock](/docs/Modules/Combat/SwordBlock) — Enables 1.8 sword blocking on servers using ViaVersion
 - [TickBase](/docs/Modules/Combat/TickBase) — Buffer ticks to get early hits on an enemy.
@@ -32,4 +34,4 @@ There are **26** modules in this category:
 - [Velocity](/docs/Modules/Combat/Velocity) — Modifies the amount of velocity you take.
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-06-08*

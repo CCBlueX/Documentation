@@ -1,6 +1,6 @@
 ## StorageESP
 
-Highlights all blocks that can contain items allowing you to see them rough walls.
+Highlights all blocks that can contain items, allowing you to see them through walls.
 
 **Category:** Render  
 **Enabled by default:** No  
@@ -14,6 +14,10 @@ Below is the complete tree of all configurable settings for this module.
 │   ├── [Mode: Box]
 │   │   └── Outline (Toggle | default: true)
 ├── Chest (Toggleable Group | default: on)
+│   ├── Enabled (Toggle | default: true)
+│   ├── Color (Color)
+│   └── Tracers (Toggle | default: false)
+├── Barrel (Toggleable Group | default: on)
 │   ├── Enabled (Toggle | default: true)
 │   ├── Color (Color)
 │   └── Tracers (Toggle | default: false)
@@ -50,6 +54,7 @@ Below is the complete tree of all configurable settings for this module.
 │   ├── Color (Color)
 │   └── Tracers (Toggle | default: false)
 ├── RequiresChestStealer (Toggle | default: false)
+├── MergeAdjacent (Toggle | default: false)
 └── DistanceFade (Setting Group)
     ├── NearStart (Decimal | default: 0.0 | range: 0.0..512.0)
     ├── NearEnd (Decimal | default: 0.0 | range: 0.0..512.0)
@@ -74,6 +79,14 @@ A toggleable group of settings (default: enabled).
 - **Enabled** (Toggle) — default: `true` — Enables highlighting for chests.
 - **Color** (Color) — Sets the highlight color for chests.
 - **Tracers** (Toggle) — default: `false` — Draws tracer lines to chests.
+
+#### Barrel
+
+A toggleable group of settings (default: enabled).
+
+- **Enabled** (Toggle) — default: `true` — Enables highlighting for barrels.
+- **Color** (Color) — Sets the highlight color for barrels.
+- **Tracers** (Toggle) — default: `false` — Draws tracer lines to barrels.
 
 #### EnderChest
 
@@ -140,6 +153,7 @@ A toggleable group of settings (default: enabled).
 - **Tracers** (Toggle) — default: `false` — Draws tracer lines to shelves.
 
 - **RequiresChestStealer** (Toggle) — default: `false` — Only activates StorageESP when ChestStealer module is running.
+- **MergeAdjacent** (Toggle) — default: `false` — Merges touching storage blocks into a single combined shape.
 #### DistanceFade
 
 A group of related settings.
@@ -155,4 +169,4 @@ A group of related settings.
 *Screenshots for StorageESP will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleStorageESP.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleStorageESP.kt)*

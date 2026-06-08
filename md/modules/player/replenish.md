@@ -18,6 +18,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
 ├── ItemThreshold (Integer | default: 5 | range: 0..63)
 ├── Delay (Integer | default: 40 | range: 0..1000 | ms)
+├── ReplenishEmpty (Toggle | default: true)
 ├── Features (Multi-Select | default: [CleanUp] | options: CleanUp, UsePickupAll, UseSwap)
 └── InsideOf (Multi-Select | options: Chests, Inventories)
 ```
@@ -36,6 +37,7 @@ A group of related settings. *Shared setting group — configured identically ac
 
 - **ItemThreshold** (Integer) — default: `5`; range: `0` – `63` — Item count at or below which a hotbar slot is refilled.
 - **Delay** (Integer) — default: `40`; range: `0` – `1000`; unit: ms — Milliseconds to wait between replenish actions.
+- **ReplenishEmpty** (Toggle) — default: `true` — Also refill a hotbar slot when it has become completely empty, not only when it drops below the threshold.
 - **Features** (Multi-Select) — default: `CleanUp`; options: `CleanUp`, `UsePickupAll`, `UseSwap` — Refill strategies to use (CleanUp prioritizes small stacks, UseSwap swaps full stacks, UsePickupAll merges stacks).
 - **InsideOf** (Multi-Select) — options: `Chests`, `Inventories` — Allows replenishing while inside chest or inventory screens.
 
@@ -44,4 +46,4 @@ A group of related settings. *Shared setting group — configured identically ac
 *Screenshots for Replenish will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleReplenish.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleReplenish.kt)*

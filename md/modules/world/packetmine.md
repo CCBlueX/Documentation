@@ -64,6 +64,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
 ├── IgnoreOpenInventory (Toggle | default: true)
 ├── BreakDamage (Decimal | default: 1.0 | range: 0.0..2.0)
+├── PostBreakDelay (Integer | default: 6 | range: 0..10 | ticks)
 ├── AbortAlwaysDown (Toggle | default: false)
 ├── SelectDelay (Integer | default: 200 | range: 0..400 | ms)
 └── TargetRendering (Toggleable Group | default: on)
@@ -182,6 +183,7 @@ A toggleable group of settings (default: disabled).
 
 - **IgnoreOpenInventory** (Toggle) — default: `true`
 - **BreakDamage** (Decimal) — default: `1.0`; range: `0.0` – `2.0`
+- **PostBreakDelay** (Integer) — default: `6`; range: `0` – `10`; unit: ticks — Ticks to wait after breaking a block before starting on the next one.
 - **AbortAlwaysDown** (Toggle) — default: `false`
 - **SelectDelay** (Integer) — default: `200`; range: `0` – `400`; unit: ms
 #### TargetRendering
@@ -207,4 +209,4 @@ A toggleable group of settings (default: enabled).
 *Screenshots for PacketMine will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModulePacketMine.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModulePacketMine.kt)*

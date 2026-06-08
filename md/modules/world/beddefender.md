@@ -11,6 +11,7 @@ Below is the complete tree of all configurable settings for this module.
 
 ```
 ├── MaxLayers (Integer | default: 1 | range: 1..5)
+├── AllowChests (Toggle | default: false)
 ├── SelfBed (Mode Selector | default: None | modes: None, Color, SpawnLocation, Manual)
 │   ├── [Mode: Color]
 │   │   └── Slots (Multi-Select | default: [Head] | options: Feet, Legs, Chest, Head)
@@ -148,6 +149,7 @@ Below is the complete tree of all configurable settings for this module.
 ### Settings Details
 
 - **MaxLayers** (Integer) — default: `1`; range: `1` – `5`
+- **AllowChests** (Toggle) — default: `false` — Also use chests as defensive blocks, treating them as full blocks when placing.
 #### SelfBed
 
 Select a mode for this feature. Available modes: **None**, **Color**, **SpawnLocation**, **Manual**. Default: **None**.
@@ -383,4 +385,4 @@ A toggleable group of settings (default: enabled).
 *Screenshots for BedDefender will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleBedDefender.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleBedDefender.kt)*

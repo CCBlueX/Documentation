@@ -73,7 +73,7 @@ Below is the complete tree of all configurable settings for this module.
 │   │   └── Timer (Toggle | default: true)
 │   ├── [Mode: BlocksMC]
 │   │   └── RoundStrafeYaw (Toggle | default: false)
-├── Not (Multi-Select | default: [DuringScaffold] | options: WhileUsingItem, DuringScaffold, WhileSneaking)
+├── Not (Multi-Select | default: [DuringScaffold] | options: WhileUsingItem, DuringScaffold, WhileSneaking, IsFallFlying, IsInLiquid)
 ├── AvoidEdgeBump (Toggle | default: true)
 ├── OnlyInCombat (Toggleable Group | default: off)
 │   ├── Enabled (Toggle | default: false)
@@ -335,7 +335,7 @@ A toggleable group of settings (default: enabled).
 
 - **RoundStrafeYaw** (Toggle) — default: `false`
 
-- **Not** (Multi-Select) — default: `DuringScaffold`; options: `WhileUsingItem`, `DuringScaffold`, `WhileSneaking`
+- **Not** (Multi-Select) — default: `DuringScaffold`; options: `WhileUsingItem`, `DuringScaffold`, `WhileSneaking`, `IsFallFlying`, `IsInLiquid`
 - **AvoidEdgeBump** (Toggle) — default: `true`
 #### OnlyInCombat
 
@@ -610,4 +610,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for Speed will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleSpeed.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleSpeed.kt)*

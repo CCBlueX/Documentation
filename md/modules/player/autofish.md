@@ -15,9 +15,12 @@ Below is the complete tree of all configurable settings for this module.
 ├── SoundDistance (Toggleable Group | default: on)
 │   ├── Enabled (Toggle | default: true)
 │   └── MaxDistance (Decimal | default: 1.0 | range: 0.0..10.0 | blocks)
-└── RecastRod (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    └── Delay (Integer Range | default: 15..20 | range: 10..30 | ticks)
+├── RecastRod (Toggleable Group | default: on)
+│   ├── Enabled (Toggle | default: true)
+│   └── Delay (Integer Range | default: 15..20 | range: 10..30 | ticks)
+└── AutoCastRod (Toggleable Group | default: off)
+    ├── Enabled (Toggle | default: false)
+    └── Delay (Integer Range | default: 15..20 | range: 0..30 | ticks)
 ```
 
 ### Settings Details
@@ -38,10 +41,17 @@ A toggleable group of settings (default: enabled).
 - **Enabled** (Toggle) — default: `true`
 - **Delay** (Integer Range) — default: `15` – `20`; range: `10` – `30`; unit: ticks — Ticks to wait before recasting the rod after reeling in.
 
+#### AutoCastRod
+
+A toggleable group of settings (default: disabled).
+
+- **Enabled** (Toggle) — default: `false`
+- **Delay** (Integer Range) — default: `15` – `20`; range: `0` – `30`; unit: ticks — Ticks to wait before automatically casting the rod when no hook is active.
+
 
 ### Screenshots
 
 *Screenshots for AutoFish will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoFish.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoFish.kt)*

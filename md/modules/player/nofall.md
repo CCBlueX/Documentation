@@ -10,7 +10,7 @@ Protects you from taking fall damage.
 Below is the complete tree of all configurable settings for this module.
 
 ```
-├── Mode (Mode Selector | default: SpoofGround | modes: SpoofGround, SpoofLanding, NoGround, Packet, PacketJump, MLG, Rettungsplatform, Spartan524Flag, Vulcan277, VulcanTP288, Verus, ForceJump, Cancel, Blink, HypixelPacket, Hypixel, BlocksMC, Grim2371-1.9+)
+├── Mode (Mode Selector | default: SpoofGround | modes: SpoofGround, SpoofLanding, NoGround, Packet, PacketJump, MLG, Mount, Rettungsplatform, Spartan524Flag, Vulcan277, VulcanTP288, Verus, ForceJump, Cancel, Blink, HypixelPacket, Hypixel, BlocksMC, Grim2371-1.9+)
 │   ├── [Mode: SpoofGround]
 │   │   ├── FallDistance (Mode Selector | default: Smart | modes: Smart, Constant)
 │   │   │   └── [Mode: Constant]
@@ -72,6 +72,13 @@ Below is the complete tree of all configurable settings for this module.
 │   │   └── PickUpWater (Toggleable Group | default: on)
 │   │       ├── Enabled (Toggle | default: true)
 │   │       └── PickupSpan (Integer Range | default: 200..1000 | range: 0..10000 | ms)
+│   ├── [Mode: Mount]
+│   │   ├── MinFallDistance (Decimal | default: 5.0 | range: 2.0..50.0)
+│   │   ├── SearchRange (Decimal | default: 4.5 | range: 1.0..8.0)
+│   │   ├── RetryDelay (Integer | default: 2 | range: 0..20 | ticks)
+│   │   └── AutoDismount (Toggleable Group | default: off)
+│   │       ├── Enabled (Toggle | default: false)
+│   │       └── Delay (Integer Range | default: 0..0 | range: 0..20 | ticks)
 │   ├── [Mode: VulcanTP288]
 │   │   └── VoidLevel (Integer | default: 0 | range: -256..0)
 │   ├── [Mode: ForceJump]
@@ -96,7 +103,7 @@ Below is the complete tree of all configurable settings for this module.
 
 #### Mode
 
-Select a mode for this feature. Available modes: **SpoofGround**, **SpoofLanding**, **NoGround**, **Packet**, **PacketJump**, **MLG**, **Rettungsplatform**, **Spartan524Flag**, **Vulcan277**, **VulcanTP288**, **Verus**, **ForceJump**, **Cancel**, **Blink**, **HypixelPacket**, **Hypixel**, **BlocksMC**, **Grim2371-1.9+**. Default: **SpoofGround**.
+Select a mode for this feature. Available modes: **SpoofGround**, **SpoofLanding**, **NoGround**, **Packet**, **PacketJump**, **MLG**, **Mount**, **Rettungsplatform**, **Spartan524Flag**, **Vulcan277**, **VulcanTP288**, **Verus**, **ForceJump**, **Cancel**, **Blink**, **HypixelPacket**, **Hypixel**, **BlocksMC**, **Grim2371-1.9+**. Default: **SpoofGround**.
 
 ##### Mode: SpoofGround
 
@@ -227,6 +234,15 @@ A toggleable group of settings (default: enabled).
 - **PickupSpan** (Integer Range) — default: `200` – `1000`; range: `0` – `10000`; unit: ms
 
 
+##### Mode: Mount
+
+When you are about to take fall damage, finds and rides a nearby mount (e.g. a boat or animal) to cancel the fall.
+
+- **MinFallDistance** (Decimal) — default: `5.0`; range: `2.0` – `50.0` — Minimum fall distance before the module tries to mount.
+- **SearchRange** (Decimal) — default: `4.5`; range: `1.0` – `8.0` — How far to look for a rideable entity.
+- **RetryDelay** (Integer) — default: `2`; range: `0` – `20`; unit: ticks — Delay between mount attempts.
+- **AutoDismount** (Toggleable Group, default: off) — Automatically dismounts again after landing, after the configured **Delay** (default `0`–`0` ticks).
+
 ##### Mode: VulcanTP288
 
 - **VoidLevel** (Integer) — default: `0`; range: `-256` – `0`
@@ -266,4 +282,4 @@ Select a mode for this feature. Available modes: **Smart**, **Constant**. Defaul
 *Screenshots for NoFall will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleNoFall.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleNoFall.kt)*

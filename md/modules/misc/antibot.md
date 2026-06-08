@@ -32,7 +32,8 @@ Below is the complete tree of all configurable settings for this module.
 │   │       ├── Enabled (Toggle | default: true)
 │   │       ├── Length (Integer Range | default: 3..16 | range: 1..32)
 │   │       └── ValidateChars (Multi-Select | default: [Vanilla] | options: Vanilla, Cyrillic, CJKUnifiedIdeographs)
-└── LiteralNPC (Toggle | default: false)
+├── LiteralNPC (Toggle | default: false)
+└── NotInTabList (Toggle | default: false)
 ```
 
 ### Settings Details
@@ -85,10 +86,11 @@ A toggleable group of settings (default: enabled).
 
 
 - **LiteralNPC** (Toggle) — default: `false`
+- **NotInTabList** (Toggle) — default: `false` — Treats players who are not present in the tab list as bots.
 
 ### Screenshots
 
 *Screenshots for AntiBot will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleAntiBot.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleAntiBot.kt)*

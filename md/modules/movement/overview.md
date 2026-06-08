@@ -2,7 +2,7 @@
 
 Movement modules modify how your character moves through the world. They enable flying, faster movement, climbing walls, and bypassing movement restrictions.
 
-There are **37** modules in this category:
+There are **38** modules in this category:
 
 - [AirJump](/docs/Modules/Movement/AirJump) — Allows you to jump mid-air.
 - [Anchor](/docs/Modules/Movement/Anchor) — Pulls you into safe holes for crystal PvP.
@@ -31,6 +31,7 @@ There are **37** modules in this category:
 - [Parkour](/docs/Modules/Movement/Parkour) — Automatically jumps at the very edge of a block.
 - [ReverseStep](/docs/Modules/Movement/ReverseStep) — Makes you step down blocks faster.
 - [SafeWalk](/docs/Modules/Movement/SafeWalk) — Prevents you from falling down block (as if you were sneaking).
+- [SnapTap](/docs/Modules/Movement/SnapTap) — Prioritizes the last pressed movement key (SOCD / null-movement).
 - [Sneak](/docs/Modules/Movement/Sneak) — Automatically makes you sneak constantly.
 - [Speed](/docs/Modules/Movement/Speed) — Allows you to run faster.
 - [Spider](/docs/Modules/Movement/Spider) — Allows you to climb walls like spiderman.
@@ -43,4 +44,4 @@ There are **37** modules in this category:
 - [VehicleControl](/docs/Modules/Movement/VehicleControl) — Allows you to fly and speed while riding an entity (like boats or horses).
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-06-08*

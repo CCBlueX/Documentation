@@ -10,9 +10,13 @@ Disables slow down caused by webs.
 Below is the complete tree of all configurable settings for this module.
 
 ```
-└── Mode (Mode Selector | default: Air | modes: Air, Grim2365, Intave14, Strafe)
+└── Mode (Mode Selector | default: Air | modes: Air, Grim2365, Intave14, PlaceWater, Strafe)
     ├── [Mode: Grim2365]
     │   └── BreakOnWorld (Toggle | default: true)
+    ├── [Mode: PlaceWater]
+    │   ├── Rotations (Setting Group → see Shared: Rotations)
+    │   └── Pickup (Toggleable Group | default: on)
+    │       └── PickupSpan (Decimal Range | default: 0.8..3.0 | range: 0.5..20.0 | s)
     └── [Mode: Strafe]
         ├── Strength (Decimal | default: 0.23 | range: 0.01..0.8)
         ├── MotionY (Toggleable Group | default: off)
@@ -30,6 +34,17 @@ Select a mode for this feature. Available modes: **Air**, **Grim2365**, **Intave
 ##### Mode: Grim2365
 
 - **BreakOnWorld** (Toggle) — default: `true` — Also removes the web block client-side to bypass BadPacketsX checks.
+
+##### Mode: PlaceWater
+
+Places a water bucket on the web to wash it away, then picks the water back up.
+
+- **Rotations** (Setting Group) — controls how the aim moves toward the placement. See [Shared: Rotations](/docs/modules/shared/rotations).
+###### Pickup
+
+A toggleable group of settings (default: enabled).
+
+- **PickupSpan** (Decimal Range) — default: `0.8` – `3.0`; range: `0.5` – `20.0`; unit: s — Time window in which the placed water is collected again.
 
 ##### Mode: Strafe
 
@@ -49,4 +64,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for NoWeb will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2Fnoweb%2FModuleNoWeb.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2Fnoweb%2FModuleNoWeb.kt)*

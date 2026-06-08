@@ -134,7 +134,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── Delay (Toggleable Group | default: off)
 │       ├── Enabled (Toggle | default: false)
 │       └── Delay (Integer Range | default: 2..4 | range: 0..5 | ticks)
-├── Requires (Multi-Select | options: Click, Weapon, VanillaName, NotBreaking)
+├── Requires (Multi-Select | options: Click, Weapon, EmptyHand, VanillaName, NotBreaking)
 ├── AngleSmooth (Mode Selector | default: Interpolation | modes: Interpolation, Sigmoid, Linear)
 │   ├── [Mode: Interpolation]
 │   │   ├── HorizontalSpeed (Integer Range | default: 80..85 | range: 1..100 | %)
@@ -149,6 +149,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── [Mode: Linear]
 │       ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
 │       └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
+├── Axis (Multi-Select | default: [Horizontal, Vertical] | options: Horizontal, Vertical)
 └── Ignore (Multi-Select | options: Screen, Container)
 ```
 
@@ -336,7 +337,7 @@ Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**
 
 > For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
 
-- **Requires** (Multi-Select) — options: `Click`, `Weapon`, `VanillaName`, `NotBreaking` — Conditions that must be met before the aimbot activates.
+- **Requires** (Multi-Select) — options: `Click`, `Weapon`, `EmptyHand`, `VanillaName`, `NotBreaking` — Conditions that must be met before the aimbot activates.
 #### AngleSmooth
 
 > For details on AngleSmooth settings, see [Shared: Rotations](/docs/modules/shared/rotations).
@@ -362,6 +363,7 @@ Select a mode for this feature. Available modes: **Interpolation**, **Sigmoid**,
 - **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
 - **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
 
+- **Axis** (Multi-Select) — default: `Horizontal`, `Vertical`; options: `Horizontal`, `Vertical` — Which rotation axes the aimbot is allowed to adjust (horizontal yaw and/or vertical pitch).
 - **Ignore** (Multi-Select) — options: `Screen`, `Container` — Prevents aiming when specific screens or containers are open.
 
 ### Screenshots
@@ -369,4 +371,4 @@ Select a mode for this feature. Available modes: **Interpolation**, **Sigmoid**,
 *Screenshots for Aimbot will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAimbot.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAimbot.kt)*

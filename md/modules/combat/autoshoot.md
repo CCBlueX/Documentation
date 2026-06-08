@@ -175,7 +175,7 @@ Below is the complete tree of all configurable settings for this module.
 │           ├── OutlineColor (Color)
 │           └── Size (Decimal | default: 1.5 | range: 0.5..20.0)
 ├── SelectSlotAutomatically (Toggle | default: true)
-├── TicksUntillSlotReset (Integer | default: 1 | range: 0..20)
+├── TicksUntilSlotReset (Integer | default: 1 | range: 0..20)
 ├── ConsiderInventory (Toggle | default: true)
 ├── RequiresKillAura (Toggle | default: false)
 ├── NotDuringCombat (Toggle | default: false)
@@ -431,7 +431,7 @@ Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**
 
 
 - **SelectSlotAutomatically** (Toggle) — default: `true` — Automatically selects the throwable item slot if not currently held.
-- **TicksUntillSlotReset** (Integer) — default: `1`; range: `0` – `20` — Number of ticks before the slot selection resets to the previous slot.
+- **TicksUntilSlotReset** (Integer) — default: `1`; range: `0` – `20` — Number of ticks before the slot selection resets to the previous slot.
 - **ConsiderInventory** (Toggle) — default: `true` — Includes inventory status when applying rotation targets.
 - **RequiresKillAura** (Toggle) — default: `false` — Only shoots when the KillAura module is enabled.
 - **NotDuringCombat** (Toggle) — default: `false` — Disables auto-shooting when the CombatManager detects active combat.
@@ -442,4 +442,4 @@ Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**
 *Screenshots for AutoShoot will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoShoot.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoShoot.kt)*

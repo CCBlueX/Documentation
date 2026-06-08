@@ -10,6 +10,7 @@ Makes it look as if you were teleporting to other players.
 Below is the complete tree of all configurable settings for this module.
 
 ```
+├── Directions (Multi-Select | default: [Outgoing] | options: Incoming, Outgoing)
 ├── Dummy (Toggle | default: false)
 ├── Ambush (Toggle | default: false)
 ├── AutoDisable (Toggle | default: true)
@@ -21,6 +22,7 @@ Below is the complete tree of all configurable settings for this module.
 
 ### Settings Details
 
+- **Directions** (Multi-Select) — default: `Outgoing`; options: `Incoming`, `Outgoing` — Which packet directions to hold back. `Outgoing` blinks your own actions; `Incoming` also holds back packets coming from the server. Cannot be empty.
 - **Dummy** (Toggle) — default: `false` — Spawns a fake player clone at your original position.
 - **Ambush** (Toggle) — default: `false` — Automatically disables Blink when you interact with an entity.
 - **AutoDisable** (Toggle) — default: `true` — Disables the module after an auto reset is triggered.
@@ -38,4 +40,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for Blink will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleBlink.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleBlink.kt)*

@@ -130,7 +130,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── Delay (Toggleable Group | default: off)
 │       ├── Enabled (Toggle | default: false)
 │       └── Delay (Integer Range | default: 2..4 | range: 0..5 | ticks)
-├── Requires (Multi-Select | options: Click, Weapon, VanillaName, NotBreaking)
+├── Requires (Multi-Select | options: Click, Weapon, EmptyHand, VanillaName, NotBreaking)
 ├── Raycast (Choice | default: TRACE_ALL | options: None, Enemy, All)
 ├── Criticals (Choice | default: SMART | options: Smart, Ignore, Always)
 ├── KeepSprint (Toggle | default: true)
@@ -139,13 +139,16 @@ Below is the complete tree of all configurable settings for this module.
 ├── AutoBlocking (Toggleable Group | default: off)
 │   ├── Enabled (Toggle | default: false)
 │   ├── BlockMode (Choice | default: INTERACT | options: Basic, Interact, Hypixel, Fake)
+│   ├── SimulateVanillaUse (Toggle | default: true)
 │   ├── UnblockMode (Choice | default: STOP_USING_ITEM | options: StopUsingItem, ChangeSlot, SwapHand, None)
-│   ├── TickOff (Integer Range | default: 0..0 | range: 0..5 | ticks)
-│   ├── TickOn (Integer Range | default: 0..0 | range: 0..5 | ticks)
+│   ├── Reblock (Integer Range | default: 0..0 | range: 0..3 | ticks)
+│   ├── PauseOnUnblock (Integer Range | default: 0..0 | range: 0..3 | ticks)
 │   ├── Chance (Decimal | default: 100.0 | range: 0.0..100.0 | %)
 │   ├── Blink (Integer | default: 0 | range: 0..10 | ticks)
+│   ├── PrioritizeBlocking (Toggle | default: true)
 │   ├── OnScanRange (Toggle | default: true)
-│   └── OnlyWhenInDanger (Toggle | default: false)
+│   ├── OnlyWhenInDanger (Toggle | default: false)
+│   └── AssumeShield (Toggle | default: false)
 ├── TargetRendering (Toggleable Group | default: on)
 │   ├── Enabled (Toggle | default: true)
 │   └── Mode (Mode Selector | default: Image | modes: Legacy, Circle, Image, GlowingCircle, Ghost, Text2D, Arrow)
@@ -441,7 +444,7 @@ A toggleable group of settings (default: disabled).
 
 > For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
 
-- **Requires** (Multi-Select) — options: `Click`, `Weapon`, `VanillaName`, `NotBreaking` — Conditions that must be met before KillAura attacks.
+- **Requires** (Multi-Select) — options: `Click`, `Weapon`, `EmptyHand`, `VanillaName`, `NotBreaking` — Conditions that must be met before KillAura attacks.
 - **Raycast** (Choice) — default: `TRACE_ALL`; options: `None`, `Enemy`, `All` — Determines raycast filtering mode: none, enemies only, or all entities.
 - **Criticals** (Choice) — default: `SMART`; options: `Smart`, `Ignore`, `Always` — Controls when to wait for critical hit opportunities before attacking.
 - **KeepSprint** (Toggle) — default: `true` — Maintains sprint state during attacks instead of slowing down.
@@ -453,13 +456,16 @@ A toggleable group of settings (default: disabled).
 
 - **Enabled** (Toggle) — default: `false`
 - **BlockMode** (Choice) — default: `INTERACT`; options: `Basic`, `Interact`, `Hypixel`, `Fake` — Method used to activate shield blocking.
+- **SimulateVanillaUse** (Toggle) — default: `true` — Mimics the vanilla use-item action (tries main hand, then offhand) when blocking.
 - **UnblockMode** (Choice) — default: `STOP_USING_ITEM`; options: `StopUsingItem`, `ChangeSlot`, `SwapHand`, `None` — Method used to stop blocking before attacking.
-- **TickOff** (Integer Range) — default: `0` – `0`; range: `0` – `5`; unit: ticks — Ticks to stay unblocked before attacking.
-- **TickOn** (Integer Range) — default: `0` – `0`; range: `0` – `5`; unit: ticks — Ticks to wait before re-blocking after attacking.
+- **Reblock** (Integer Range) — default: `0` – `0`; range: `0` – `3`; unit: ticks — Ticks to wait before re-blocking after attacking (formerly `TickOn`).
+- **PauseOnUnblock** (Integer Range) — default: `0` – `0`; range: `0` – `3`; unit: ticks — Ticks to stay unblocked before attacking (formerly `TickOff`).
 - **Chance** (Decimal) — default: `100.0`; range: `0.0` – `100.0`; unit: % — Probability of auto-blocking per attack cycle.
 - **Blink** (Integer) — default: `0`; range: `0` – `10`; unit: ticks — Ticks to delay packets while blocking for anti-cheat bypass.
+- **PrioritizeBlocking** (Toggle) — default: `true` — Lowers your click rate when needed so blocking takes priority over attacking.
 - **OnScanRange** (Toggle) — default: `true` — Starts blocking when a target is within scan range, not just attack range.
 - **OnlyWhenInDanger** (Toggle) — default: `false` — Only blocks when the player is in danger of being hit.
+- **AssumeShield** (Toggle) — default: `false` — For 1.9+ clients on a 1.8 server: assume the server gives an offhand shield while using an item.
 
 #### TargetRendering
 
@@ -703,4 +709,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for KillAura will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleKillAura.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleKillAura.kt)*

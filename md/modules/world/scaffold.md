@@ -22,7 +22,10 @@ Below is the complete tree of all configurable settings for this module.
 │   ├── SlotResetDelay (Integer | default: 5 | range: 0..40 | ticks)
 │   └── DoNotUseBelowCount (Integer | default: 1 | range: 0..64)
 ├── Prediction (Toggleable Group | default: on)
-│   └── Enabled (Toggle | default: true)
+│   ├── Enabled (Toggle | default: true)
+│   ├── BootstrapBackoff (Decimal | default: 0.2 | range: 0.0..0.4)
+│   ├── PredictionCutoffDistance (Decimal | default: 0.05 | range: 0.0..0.3)
+│   └── WarmupPlacements (Integer | default: 2 | range: 0..4)
 ├── Technique (Mode Selector | default: Normal | modes: Normal, Expand, GodBridge, Breezily)
 │   ├── [Mode: Normal]
 │   │   ├── RotationMode (Choice | default: STABILIZED | options: Center, Random, Stabilized, NearestRotation, ReverseYaw, DiagonalYaw, AngleYaw, EdgePoint)
@@ -179,9 +182,12 @@ A toggleable group of settings (default: enabled).
 
 #### Prediction
 
-A toggleable group of settings (default: enabled).
+A toggleable group of settings (default: enabled). Predicts your future position so blocks are placed ahead of you.
 
 - **Enabled** (Toggle) — default: `true`
+- **BootstrapBackoff** (Decimal) — default: `0.2`; range: `0.0` – `0.4` — How far the initial prediction stays behind the detected edge before placement history exists.
+- **PredictionCutoffDistance** (Decimal) — default: `0.05`; range: `0.0` – `0.3` — How close to the edge you can get before future-position prediction is disabled.
+- **WarmupPlacements** (Integer) — default: `2`; range: `0` – `4` — How many recorded placements are blended in before switching fully to history-based prediction.
 
 #### Technique
 
@@ -434,4 +440,4 @@ A toggleable group of settings (default: enabled).
 *Screenshots for Scaffold will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleScaffold.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleScaffold.kt)*

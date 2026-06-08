@@ -20,7 +20,13 @@ Below is the complete tree of all configurable settings for this module.
 │   ├── SpectralArrows (Toggle | default: true)
 │   └── ArrowsWithEffects (Toggle | default: true)
 ├── ShowTridents (Toggle | default: true)
-├── Mode (Mode Selector | default: Glow | modes: Glow, Box)
+├── Mode (Mode Selector | default: Glow | modes: Glow, Box, Legacy2D)
+│   ├── [Mode: Box]
+│   │   └── MergeIntersecting (Toggle | default: false)
+│   └── [Mode: Legacy2D]
+│       ├── Scale (Decimal | default: 0.1 | range: 0.02..0.3)
+│       ├── YOffset (Decimal | default: 0.0 | range: -1.0..1.0)
+│       └── BackgroundAlpha (Integer | default: 150 | range: 0..255)
 └── ColorMode (Mode Selector | default: Static | modes: Static, Rainbow)
     ├── [Mode: Static]
     │   └── Color (Color)
@@ -44,7 +50,19 @@ A toggleable group of settings (default: enabled).
 - **ShowTridents** (Toggle) — default: `true` — Shows thrown tridents on the ground.
 #### Mode
 
-Select a mode for this feature. Available modes: **Glow**, **Box**. Default: **Glow**.
+Select a mode for this feature. Available modes: **Glow**, **Box**, **Legacy2D**. Default: **Glow**.
+
+##### Mode: Box
+
+- **MergeIntersecting** (Toggle) — default: `false` — Merges overlapping item boxes into a single outline.
+
+##### Mode: Legacy2D
+
+Classic flat box rendered around the item (the old 2D style).
+
+- **Scale** (Decimal) — default: `0.1`; range: `0.02` – `0.3` — Size of the legacy box.
+- **YOffset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0` — Vertical offset of the legacy box.
+- **BackgroundAlpha** (Integer) — default: `150`; range: `0` – `255` — Opacity of the box background fill.
 
 #### ColorMode
 
@@ -59,4 +77,4 @@ Select a mode for this feature. Available modes: **Static**, **Rainbow**. Defaul
 *Screenshots for ItemESP will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleItemESP.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleItemESP.kt)*

@@ -68,7 +68,8 @@ Below is the complete tree of all configurable settings for this module.
 ├── Gapple (Toggleable Group | default: on)
 │   ├── Enabled (Toggle | default: true)
 │   ├── Health (Integer | default: 40 | range: 1..100 | %HP)
-│   └── ConsiderAbsorption (Toggle | default: true)
+│   ├── ConsiderAbsorption (Toggle | default: true)
+│   └── Enchanted (Toggle | default: true)
 ├── AutoSwap (Toggleable Group | default: on)
 │   ├── Enabled (Toggle | default: true)
 │   ├── DelayIn (Integer Range | default: 1..1 | range: 0..20 | ticks)
@@ -267,6 +268,7 @@ A toggleable group of settings (default: enabled).
 - **Enabled** (Toggle) — default: `true`
 - **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
 - **ConsiderAbsorption** (Toggle) — default: `true`
+- **Enchanted** (Toggle) — default: `true` — Also eat enchanted golden apples ("god apples"), not just regular golden apples.
 
 #### AutoSwap
 
@@ -363,4 +365,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for AutoBuff will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoBuff.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoBuff.kt)*

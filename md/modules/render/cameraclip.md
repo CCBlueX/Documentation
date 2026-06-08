@@ -11,6 +11,9 @@ Below is the complete tree of all configurable settings for this module.
 
 ```
 ├── CameraDistance (Decimal | default: 4.0 | range: 1.0..48.0)
+├── Animation (Toggleable Group | default: on)
+│   ├── Enabled (Toggle | default: true)
+│   └── Speed (Decimal | default: 0.6 | range: 0.1..1.0)
 └── ScrollAdjust (Toggleable Group | default: on)
     ├── Enabled (Toggle | default: true)
     ├── Modifier (Key)
@@ -22,6 +25,14 @@ Below is the complete tree of all configurable settings for this module.
 ### Settings Details
 
 - **CameraDistance** (Decimal) — default: `4.0`; range: `1.0` – `48.0` — Distance of the third-person camera from the player.
+
+#### Animation
+
+A toggleable group of settings (default: enabled). Smoothly animates the camera moving in and out instead of snapping.
+
+- **Enabled** (Toggle) — default: `true`
+- **Speed** (Decimal) — default: `0.6`; range: `0.1` – `1.0` — How quickly the camera distance animates.
+
 #### ScrollAdjust
 
 A toggleable group of settings (default: enabled).
@@ -38,4 +49,4 @@ A toggleable group of settings (default: enabled).
 *Screenshots for CameraClip will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2Fcameraclip%2FModuleCameraClip.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2Fcameraclip%2FModuleCameraClip.kt)*

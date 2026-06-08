@@ -15,7 +15,8 @@ Below is the complete tree of all configurable settings for this module.
 ├── OuterColor (Color)
 ├── AnimCurve (Choice | default: QUAD_OUT | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
 ├── HueOffsetAnim (Integer | default: 63 | range: -360..360)
-└── Lifetime (Integer | default: 15 | range: 1..30)
+├── Lifetime (Integer | default: 15 | range: 1..30)
+└── CanBeCovered (Toggle | default: false)
 ```
 
 ### Settings Details
@@ -26,10 +27,11 @@ Below is the complete tree of all configurable settings for this module.
 - **AnimCurve** (Choice) — default: `QUAD_OUT`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None` — Easing function for the expansion animation.
 - **HueOffsetAnim** (Integer) — default: `63`; range: `-360` – `360` — Hue shift applied over the animation lifetime.
 - **Lifetime** (Integer) — default: `15`; range: `1` – `30` — Duration in ticks before the circle fades away.
+- **CanBeCovered** (Toggle) — default: `false` — When enabled, the effect can be hidden behind blocks; when disabled it is drawn through walls.
 
 ### Screenshots
 
 *Screenshots for JumpEffect will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleJumpEffect.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleJumpEffect.kt)*

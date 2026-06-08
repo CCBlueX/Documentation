@@ -6,6 +6,7 @@ The Target setting group appears in the following modules:
 - [KillAura](/docs/modules/combat/killaura) (adds IgnoreShield)
 - [Aimbot](/docs/modules/combat/aimbot) (adds Range)
 - [AutoShoot](/docs/modules/combat/autoshoot) (adds Range)
+- [ProjectileAimbot](/docs/modules/combat/projectileaimbot)
 - [AutoRod](/docs/modules/combat/autorod)
 - [CrystalAura](/docs/modules/combat/crystalaura) (adds Range)
 - [ElytraTarget](/docs/modules/combat/elytra-target)
@@ -43,4 +44,4 @@ Some modules extend the Target group with additional settings that are not part 
 - **IgnoreShield** — KillAura adds this boolean (default: true) to control whether entities holding a shield that would block the attack are excluded from targeting. When enabled, shielding entities are still valid targets. When disabled, entities that would block the hit are skipped unless the player is holding an axe or AutoWeapon will switch to one.
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-06-08*

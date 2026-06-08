@@ -2,7 +2,7 @@
 
 Render modules change what you see on screen. They add ESP overlays, modify visual effects, customize the HUD, and improve visual information.
 
-There are **58** modules in this category:
+There are **59** modules in this category:
 
 - [Animations](/docs/Modules/Render/Animations) — Allows you to modify many of game's animations.
 - [AntiBlind](/docs/Modules/Render/AntiBlind) — Protects you from potentially annoying screen effects that obscure your view.
@@ -12,6 +12,7 @@ There are **58** modules in this category:
 - [BetterChat](/docs/Modules/Render/BetterChat) — Improvements to the in-game chat.
 - [BetterInventory](/docs/Modules/Render/BetterInventory) — Additional inventory-related visual features.
 - [BetterTab](/docs/Modules/Render/BetterTab) — Multiple improvements to the tab list.
+- [BetterTitle](/docs/Modules/Render/BetterTitle) — Improvements to the title and subtitle, including auto-translation.
 - [BlockESP](/docs/Modules/Render/BlockESP) — Allows you to see selected blocks through walls.
 - [BlockOutline](/docs/Modules/Render/BlockOutline) — Changes the way Minecraft highlights blocks.
 - [Breadcrumbs](/docs/Modules/Render/Breadcrumbs) — Leaves a trace behind you.
@@ -19,7 +20,7 @@ There are **58** modules in this category:
 - [Chams](/docs/Modules/Render/Chams) — Renders player's through walls.
 - [ClickGUI](/docs/Modules/Render/ClickGUI) — Shows you an easy to use menu to toggle and configure modules.
 - [CombineMobs](/docs/Modules/Render/CombineMobs) — Combines cramped entities.
-- [Crosshair](/docs/Modules/Render/Crosshair) — liquidbounce.module.crosshair.description
+- [Crosshair](/docs/Modules/Render/Crosshair) — Changes the style of your crosshair.
 - [CrystalView](/docs/Modules/Render/CrystalView) — Tweaks how crystal models behave.
 - [CustomAmbience](/docs/Modules/Render/CustomAmbience) — Allows you to override the world ambience.
 - [DamageParticles](/docs/Modules/Render/DamageParticles) — Show health changes of entities.
@@ -64,4 +65,4 @@ There are **58** modules in this category:
 - [Zoom](/docs/Modules/Render/Zoom) — Allows you to make everything in your world appear smaller or bigger.
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-06-08*

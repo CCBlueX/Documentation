@@ -10,7 +10,7 @@ Automatically selects the best weapon in your hotbar.
 Below is the complete tree of all configurable settings for this module.
 
 ```
-├── Preferred (Choice | default: SWORD | options: Any, Knockback, Sword, Axe, Mace, Spear, None)
+├── Preferred (Multi-Select | default: [Sword] | options: Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect)
 ├── AutoShieldBreak (Toggle | default: true)
 ├── AutoMace (Toggle | default: true)
 ├── SwitchBack (Integer | default: 20 | range: 1..300 | ticks)
@@ -19,7 +19,7 @@ Below is the complete tree of all configurable settings for this module.
 
 ### Settings Details
 
-- **Preferred** (Choice) — default: `SWORD`; options: `Any`, `Knockback`, `Sword`, `Axe`, `Mace`, `Spear`, `None` — Preferred weapon type to select from the hotbar.
+- **Preferred** (Multi-Select) — default: `Sword`; options: `Any`, `Sword`, `Axe`, `Mace`, `Spear`, `Pickaxe`, `Shovel`, `Hoe`, `Knockback`, `FireAspect` — Which weapon types to prefer when selecting from the hotbar.
 - **AutoShieldBreak** (Toggle) — default: `true` — Automatically switches to an axe when the target is blocking with a shield.
 - **AutoMace** (Toggle) — default: `true` — Automatically switches to a mace when a smash attack is possible.
 - **SwitchBack** (Integer) — default: `20`; range: `1` – `300`; unit: ticks — Ticks before reverting to the previous hotbar slot after switching.
@@ -30,4 +30,4 @@ Below is the complete tree of all configurable settings for this module.
 *Screenshots for AutoWeapon will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoWeapon.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoWeapon.kt)*

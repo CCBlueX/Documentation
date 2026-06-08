@@ -31,7 +31,8 @@ Below is the complete tree of all configurable settings for this module.
         │   └── VertexColor (Color)
         ├── Entity (Toggleable Group | default: on)
         │   ├── Enabled (Toggle | default: true)
-        │   └── Scale (Decimal | default: 1.0 | range: 0.25..4.0)
+        │   ├── Scale (Decimal | default: 1.0 | range: 0.25..4.0)
+        │   └── OutOfBounds (Choice | default: NONE | options: None, All)
         ├── Compass (Toggleable Group | default: off)
         │   ├── Enabled (Toggle | default: false)
         │   └── Placement (Choice | default: TOP_LEFT | options: TopLeft, TopRight, BottomLeft, BottomRight)
@@ -88,6 +89,7 @@ A toggleable group of settings (default: enabled).
 
 - **Enabled** (Toggle) — default: `true`
 - **Scale** (Decimal) — default: `1.0`; range: `0.25` – `4.0`
+- **OutOfBounds** (Choice) — default: `NONE`; options: `None`, `All` — Draws markers at the minimap edge for entities outside its view. `All` marks every tracked entity.
 
 ###### Compass
 
@@ -111,4 +113,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for HUD will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleHud.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleHud.kt)*

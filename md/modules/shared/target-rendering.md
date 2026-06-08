@@ -87,6 +87,23 @@ Sub-settings:
 | OutlineColor | Color | Transparent | — | Outline color of the triangle. Hidden when transparent. |
 | Size | Float | 1.5 | 0.5–20.0 | Scale factor for the triangle dimensions. |
 
+**Hearts** - Renders a ring of 2D heart icons orbiting the target, drawn with a signed-distance-field shader so they stay crisp at any size. Health hearts are tinted by the chosen color and absorption hearts are gold; when `DynamicCount` is on the number of hearts reflects the target's current health and absorption (including partial hearts).
+
+Sub-settings:
+
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Color | Color | White (alpha 180) | — | Color of the health hearts. Absorption hearts are always gold. |
+| DynamicCount | Boolean | true | — | When enabled, the number of hearts matches the target's actual health and absorption. When disabled, a fixed **HeartCount** is shown. |
+| HeartCount | Int | 10 | 1–32 | Fixed number of hearts to display when **DynamicCount** is off. |
+| YOffset | Float | 0.1 | -1.0–3.0 | Vertical offset of the heart ring relative to the target. |
+| Size | Float | 0.15 | 0.05–1.0 | Size of each heart. |
+| Orbit → Radius | Float | 0.5 | 0.1–1.0 | Radius of the orbit ring around the target. |
+| Orbit → Speed | Float | 35 | -360–360 deg/s | Rotation speed of the orbit. Negative values reverse direction. |
+| Orbit → SqueezeStrength | Float | 0.25 | 0.0–1.0 | How much the ring is flattened (squeezed) as it rotates. |
+| Orbit → SqueezeSpeed | Int | 2 | 1–4 | Speed of the squeeze animation. |
+| CanBeCovered | Boolean | false | — | When disabled, the hearts are drawn through walls; when enabled they can be hidden behind blocks. |
+
 ### HeightMode (shared sub-mode)
 
 Used by Circle, Image, GlowingCircle, and Text2D to determine the vertical world position at which the indicator is rendered relative to the target entity.
@@ -123,4 +140,4 @@ No additional settings.
 | GlowOffset | Float | -1.0 | -3.1–3.1 | Phase offset applied to the sine wave when calculating the glow height for GlowingCircle. |
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-06-08*

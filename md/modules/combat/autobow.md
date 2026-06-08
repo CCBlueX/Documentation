@@ -20,6 +20,7 @@ Below is the complete tree of all configurable settings for this module.
 │   └── UsePrechargedCrossbow (Toggle | default: false)
 ├── BowAimbot (Toggleable Group | default: on)
 │   ├── Enabled (Toggle | default: true)
+│   ├── ThroughWalls (Toggle | default: true)
 │   ├── Target (Setting Group)
 │   │   ├── FOV (Decimal | default: 180.0 | range: 0.0..180.0)
 │   │   ├── HurtTime (Integer | default: 10 | range: 0..10)
@@ -178,6 +179,7 @@ A toggleable group of settings (default: enabled).
 A toggleable group of settings (default: enabled).
 
 - **Enabled** (Toggle) — default: `true`
+- **ThroughWalls** (Toggle) — default: `true` — Allows the bow aimbot to aim at targets that are behind blocks.
 ##### Target
 
 > For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
@@ -426,4 +428,4 @@ A toggleable group of settings (default: disabled).
 *Screenshots for AutoBow will be added in a future update.*
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoBow.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoBow.kt)*
