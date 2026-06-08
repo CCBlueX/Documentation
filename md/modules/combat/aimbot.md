@@ -158,7 +158,7 @@ Below is the complete tree of all configurable settings for this module.
 - **Range** (Decimal) — default: `4.2`; range: `1.0` – `8.0` — Maximum distance in blocks at which the module can target entities.
 #### Target
 
-> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
 
 - **FOV** (Decimal) — default: `180.0`; range: `0.0` – `180.0`
 - **HurtTime** (Integer) — default: `10`; range: `0` – `10`
@@ -166,7 +166,7 @@ Below is the complete tree of all configurable settings for this module.
 
 #### TargetRendering
 
-> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared/target-rendering).
+> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering).
 
 - **Enabled** (Toggle) — default: `true`
 ##### Mode
@@ -335,12 +335,12 @@ Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**
 
 #### AimPoint
 
-> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
+> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared-settings/aim-point).
 
 - **Requires** (Multi-Select) — options: `Click`, `Weapon`, `EmptyHand`, `VanillaName`, `NotBreaking` — Conditions that must be met before the aimbot activates.
 #### AngleSmooth
 
-> For details on AngleSmooth settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on AngleSmooth settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 Select a mode for this feature. Available modes: **Interpolation**, **Sigmoid**, **Linear**. Default: **Interpolation**.
 

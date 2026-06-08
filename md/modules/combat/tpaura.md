@@ -36,7 +36,7 @@ Below is the complete tree of all configurable settings for this module.
 - **AttackRange** (Decimal) — default: `4.2`; range: `3.0` – `5.0` — Maximum distance from the desync position at which enemies can be attacked.
 #### Clicker
 
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared/clicker).
+> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
 
 #### Mode
 
@@ -53,7 +53,7 @@ Select a mode for this feature. Available modes: **AStar**, **Immediate**. Defau
 
 #### Target
 
-> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
 
 
 ### Screenshots

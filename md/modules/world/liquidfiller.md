@@ -28,7 +28,7 @@ Below is the complete tree of all configurable settings for this module.
 
 #### Placer
 
-> The block placement settings (range, rotations, swing, delays, etc.) are the shared **Block Placer** group. See [Shared: Block Placer](/docs/modules/shared/block-placer).
+> The block placement settings (range, rotations, swing, delays, etc.) are the shared **Block Placer** group. See [Shared: Block Placer](/docs/modules/shared-settings/block-placer).
 
 ### Screenshots
 

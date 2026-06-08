@@ -258,7 +258,7 @@ A toggleable group of settings (default: enabled).
 - **Speed** (Decimal) — default: `1.0`; range: `0.5` – `2.0` — Flight speed after the enderpearl teleport.
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 
 ##### Mode: AirWalk
@@ -290,7 +290,7 @@ A toggleable group of settings (default: enabled).
 
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 - **Pitch** (Decimal) — default: `90.0`; range: `0.0` – `90.0` — Pitch angle to aim at when throwing the fireball.
 - **Backwards** (Toggle) — default: `true` — Rotates the player to face backwards before throwing.
@@ -319,7 +319,7 @@ A toggleable group of settings (default: enabled).
 
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 - **Pitch** (Decimal) — default: `90.0`; range: `0.0` – `90.0` — Pitch angle to aim at when throwing the fireball.
 

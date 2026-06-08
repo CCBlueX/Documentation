@@ -182,11 +182,11 @@ A toggleable group of settings (default: enabled).
 - **ThroughWalls** (Toggle) — default: `true` — Allows the bow aimbot to aim at targets that are behind blocks.
 ##### Target
 
-> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
 
 ##### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 ###### AngleSmooth
 
@@ -248,7 +248,7 @@ A toggleable group of settings (default: disabled).
 
 ##### TargetRendering
 
-> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared/target-rendering).
+> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering).
 
 ###### Mode: Legacy
 

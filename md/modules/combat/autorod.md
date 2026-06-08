@@ -196,15 +196,15 @@ Below is the complete tree of all configurable settings for this module.
 - **HoldingItemsForIgnore** (Registry List) — Items that prevent rod usage when held (e.g., bows, crossbows, tridents).
 #### Target
 
-> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
 
 #### AimPoint
 
-> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
+> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared-settings/aim-point).
 
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 ##### AngleSmooth
 
@@ -268,7 +268,7 @@ A toggleable group of settings (default: disabled).
 - **SwingMode** (Choice) — default: `DO_NOT_HIDE`; options: `DoNotHide`, `HideForBoth`, `HideForClient`, `HideForServer` — Controls arm swing animation visibility when using the rod.
 #### TargetRendering
 
-> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared/target-rendering).
+> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering).
 
 ###### Mode: Legacy
 

@@ -46,7 +46,7 @@ A toggleable group of settings (default: enabled).
 - **Enabled** (Toggle) — default: `true`
 ##### Clicker
 
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared/clicker).
+> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
 
 - **RequiresNoInput** (Toggle) — default: `false` — When enabled, attacks trigger without holding the attack key.
 - **DelayOnBroken** (Toggle) — default: `true` — Adds a 300ms delay after breaking a block to prevent attack spam.
@@ -63,7 +63,7 @@ A toggleable group of settings (default: disabled).
 - **Enabled** (Toggle) — default: `false`
 ##### Clicker
 
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared/clicker).
+> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
 
 - **HoldingItemsForIgnore** (Registry List) — Items that disable clicking when held (e.g., water buckets, ender pearls).
 - **BlocksForIgnore** (Registry List) — Blocks that disable clicking when aimed at (e.g., doors, fence gates, trapdoors).

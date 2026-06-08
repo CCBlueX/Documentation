@@ -18,11 +18,11 @@ Below is the complete tree of all configurable settings for this module.
 
 #### Target
 
-> Selects which entity to aim at. These are the shared target settings. See [Shared: Target](/docs/modules/shared/target).
+> Selects which entity to aim at. These are the shared target settings. See [Shared: Target](/docs/modules/shared-settings/target).
 
 #### Rotations
 
-> Controls how the server-side aim moves toward the target. These are the shared rotation settings. See [Shared: Rotations](/docs/modules/shared/rotations).
+> Controls how the server-side aim moves toward the target. These are the shared rotation settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 ### Screenshots
 

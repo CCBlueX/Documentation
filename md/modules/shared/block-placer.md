@@ -26,13 +26,13 @@ Some modules rename the group (for example LiquidFiller calls it **Placer**), bu
 | Sneak | Integer Range | 1..1 | 0..10 ticks | How long to keep sneaking when placing against an interactable block (chest, furnace, etc.) so it is not opened instead of built on. |
 | Ignore | Multi-Select | [] | OpenInventory, UsingItem | Situations in which the module should keep placing anyway: while an inventory is open, and/or while you are using an item. |
 | SlotResetDelay | Integer Range | 4..6 | 0..40 ticks | Delay before switching your hotbar slot back after a placement. |
-| RotationMode | Mode | Normal | Normal, NoRotation | **Normal** rotates toward each placement using the shared [Rotations](/docs/modules/shared/rotations) settings. **NoRotation** places without rotating (the server is not told you looked at the block). |
+| RotationMode | Mode | Normal | Normal, NoRotation | **Normal** rotates toward each placement using the shared [Rotations](/docs/modules/shared-settings/rotations) settings. **NoRotation** places without rotating (the server is not told you looked at the block). |
 | Support | Toggleable Group | off* | — | Places a support block first when the target position has nothing to place against. *Only available in modules that allow support placements; disabled and hidden otherwise.* |
 | CrystalDestroyer | Toggleable Group | — | — | Destroys end crystals that are blocking a placement before placing. |
-| TargetRendering | Toggleable Group | — | — | Renders the positions that are queued to be placed. Uses the [TargetRendering](/docs/modules/shared/target-rendering)-style placement renderer. |
+| TargetRendering | Toggleable Group | — | — | Renders the positions that are queued to be placed. Uses the [TargetRendering](/docs/modules/shared-settings/target-rendering)-style placement renderer. |
 | PlacedRendering | Toggleable Group | — | — | Renders positions that were just placed (fades out). |
 
-> For rotation tuning, see [Rotations](/docs/modules/shared/rotations). For the placement preview boxes, see [TargetRendering](/docs/modules/shared/target-rendering).
+> For rotation tuning, see [Rotations](/docs/modules/shared-settings/rotations). For the placement preview boxes, see [TargetRendering](/docs/modules/shared-settings/target-rendering).
 
 ---
 *Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Futils%2Fblock%2Fplacer%2FBlockPlacer.kt)*

@@ -188,20 +188,20 @@ Below is the complete tree of all configurable settings for this module.
 - **GravityType** (Choice) — default: `AUTO`; options: `Auto`, `Linear`, `Projectile` — Gravity calculation mode; Auto selects Linear for regular items and Projectile for eggs/snowballs.
 #### Clicker
 
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared/clicker).
+> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
 
 - **Range** (Decimal Range) — default: `3.0` – `6.0`; range: `1.0` – `256.0` — Maximum distance to detect and target enemies.
 #### Target
 
-> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
 
 #### AimPoint
 
-> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
+> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared-settings/aim-point).
 
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 ##### AngleSmooth
 
@@ -265,7 +265,7 @@ A toggleable group of settings (default: disabled).
 - **SwingMode** (Choice) — default: `DO_NOT_HIDE`; options: `DoNotHide`, `HideForBoth`, `HideForClient`, `HideForServer` — Controls arm swing animation visibility when throwing items.
 #### TargetRendering
 
-> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared/target-rendering).
+> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering).
 ##### Mode
 
 Select a mode for this feature. Available modes: **Legacy**, **Circle**, **Image**, **GlowingCircle**, **Ghost**, **Text2D**, **Arrow**. Default: **Image**.

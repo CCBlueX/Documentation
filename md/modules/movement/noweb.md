@@ -39,7 +39,7 @@ Select a mode for this feature. Available modes: **Air**, **Grim2365**, **Intave
 
 Places a water bucket on the web to wash it away, then picks the water back up.
 
-- **Rotations** (Setting Group) — controls how the aim moves toward the placement. See [Shared: Rotations](/docs/modules/shared/rotations).
+- **Rotations** (Setting Group) — controls how the aim moves toward the placement. See [Shared: Rotations](/docs/modules/shared-settings/rotations).
 ###### Pickup
 
 A toggleable group of settings (default: enabled).

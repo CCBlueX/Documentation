@@ -73,7 +73,7 @@ Select a mode for this feature. Available modes: **NoCheatPlusBoost**, **NoCheat
 
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 - **Charged** (Integer) — default: `4`; range: `3` – `20` — Number of ticks the bow must be charged before shooting.
 - **Speed** (Decimal) — default: `2.5`; range: `0.0` – `20.0` — Horizontal boost speed applied after the bow boost.

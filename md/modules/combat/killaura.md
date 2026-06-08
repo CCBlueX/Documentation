@@ -293,7 +293,7 @@ Below is the complete tree of all configurable settings for this module.
 
 #### Clicker
 
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared/clicker).
+> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
 
 ##### ItemCooldown
 
@@ -316,7 +316,7 @@ A group of related settings.
 
 #### Target
 
-> For details on Target settings, see [Shared: Target](/docs/modules/shared/target).
+> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
 
 - **FOV** (Decimal) — default: `180.0`; range: `0.0` – `180.0`
 - **HurtTime** (Integer) — default: `10`; range: `0` – `10`
@@ -325,7 +325,7 @@ A group of related settings.
 
 #### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 ##### AngleSmooth
 
@@ -442,7 +442,7 @@ A toggleable group of settings (default: disabled).
 
 #### AimPoint
 
-> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared/aim-point).
+> For details on AimPoint settings, see [Shared: AimPoint](/docs/modules/shared-settings/aim-point).
 
 - **Requires** (Multi-Select) — options: `Click`, `Weapon`, `EmptyHand`, `VanillaName`, `NotBreaking` — Conditions that must be met before KillAura attacks.
 - **Raycast** (Choice) — default: `TRACE_ALL`; options: `None`, `Enemy`, `All` — Determines raycast filtering mode: none, enemies only, or all entities.
@@ -469,7 +469,7 @@ A toggleable group of settings (default: disabled).
 
 #### TargetRendering
 
-> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared/target-rendering).
+> For details on TargetRendering settings, see [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering).
 
 ###### Mode: Legacy
 

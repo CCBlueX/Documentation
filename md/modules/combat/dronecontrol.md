@@ -17,7 +17,7 @@ Below is the complete tree of all configurable settings for this module.
 
 #### Rotations
 
-> Controls how the server-side aim moves toward the target. These are the shared rotation settings. See [Shared: Rotations](/docs/modules/shared/rotations).
+> Controls how the server-side aim moves toward the target. These are the shared rotation settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 ### Frequently Asked Questions
 

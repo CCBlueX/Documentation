@@ -65,7 +65,7 @@ A toggleable group of settings (default: enabled). When enabled, rotates your vi
 - **Enabled** (Toggle) — default: `true` — Enables server-side rotation for aiming.
 ##### Rotations
 
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared/rotations).
+> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
 
 
 #### Limits
