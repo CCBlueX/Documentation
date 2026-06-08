@@ -1,443 +1,94 @@
 ## Scaffold
 
-Automatically places blocks beneath your feet allowing you to walk across gaps.
+Scaffold automatically bridges for you. As you walk forward over a gap, it places blocks into the empty space beneath your feet so you can keep moving without manually aiming down and clicking. It's the go-to tool for bridging across voids, building paths in BedWars-style games, or covering open ground quickly and consistently.
 
-**Category:** World  
-**Enabled by default:** No  
+The **Technique** setting picks how you bridge: *Normal* handles everyday bridging, while *GodBridge* and *Breezily* are fast, sprint-friendly diagonal styles, and *Expand* reaches out to place a run of blocks ahead of you. Holding jump with a **Tower** mode selected lets you stack straight up. A large set of optional toggles — **Strafe**, **Acceleration**, **SpeedLimiter**, **SprintControl** and **StrafeOnJump** — tune how fast you move and how your movement looks to anti-cheats, while **Blink** can briefly hold back your packets to hide placements.
+
+Scaffold also bundles convenience features so you don't need extra modules running: it can pull in [SafeWalk](/docs/modules/movement/safewalk) edge protection, an [Eagle](/docs/modules/player/eagle)-style auto-sneak so you don't slip off, and an **AutoSpeed** toggle that temporarily enables [Speed](/docs/modules/movement/speed) while you bridge. AutoBlock automatically grabs a suitable block from your inventory, and the built-in **Ledge** helper jumps or sneaks at edges to keep you from falling.
+
+**Category:** World
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Delay (Integer Range | default: 0..0 | range: 0..40 | ticks)
-├── MinDist (Decimal | default: 0.0 | range: 0.0..0.25)
-├── Timer (Decimal | default: 1.0 | range: 0.01..10.0)
-├── BlockItemSelection (Setting Group)
-│   ├── Disallowed (Registry List)
-│   └── Unfavorable (Registry List)
-├── AutoBlock (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Always (Toggle | default: false)
-│   ├── SlotResetDelay (Integer | default: 5 | range: 0..40 | ticks)
-│   └── DoNotUseBelowCount (Integer | default: 1 | range: 0..64)
-├── Prediction (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── BootstrapBackoff (Decimal | default: 0.2 | range: 0.0..0.4)
-│   ├── PredictionCutoffDistance (Decimal | default: 0.05 | range: 0.0..0.3)
-│   └── WarmupPlacements (Integer | default: 2 | range: 0..4)
-├── Technique (Mode Selector | default: Normal | modes: Normal, Expand, GodBridge, Breezily)
-│   ├── [Mode: Normal]
-│   │   ├── RotationMode (Choice | default: STABILIZED | options: Center, Random, Stabilized, NearestRotation, ReverseYaw, DiagonalYaw, AngleYaw, EdgePoint)
-│   │   ├── RequiresSight (Toggle | default: false)
-│   │   ├── Eagle (Toggleable Group | default: off)
-│   │   │   ├── Enabled (Toggle | default: false)
-│   │   │   ├── BlocksToEagle (Integer Range | default: 0..0 | range: 0..10)
-│   │   │   ├── EdgeDistance (Decimal | default: 0.01 | range: 0.01..1.3)
-│   │   │   └── OnlyOnGround (Toggle | default: true)
-│   │   ├── Telly (Toggleable Group | default: off)
-│   │   │   ├── Enabled (Toggle | default: false)
-│   │   │   ├── ResetMode (Choice | default: RESET | options: Reverse, Reset)
-│   │   │   ├── Straight (Integer | default: 0 | range: 0..5 | ticks)
-│   │   │   ├── Jump (Integer Range | default: 0..0 | range: 0..10 | ticks)
-│   │   │   └── AimOnTower (Toggle | default: true)
-│   │   ├── Down (Toggleable Group | default: off)
-│   │   │   └── Enabled (Toggle | default: false)
-│   │   ├── StabilizeMovement (Toggleable Group | default: on)
-│   │   │   └── Enabled (Toggle | default: true)
-│   │   ├── Ceiling (Toggleable Group | default: off)
-│   │   │   └── Enabled (Toggle | default: false)
-│   │   └── HeadHitter (Toggleable Group | default: off)
-│   │       └── Enabled (Toggle | default: false)
-│   ├── [Mode: Expand]
-│   │   └── Length (Integer | default: 4 | range: 1..10 | blocks)
-│   ├── [Mode: GodBridge]
-│   │   ├── Modes (Multi-Select | default: [Jump] | options: Jump, Sneak, StopInput, Backwards)
-│   │   ├── ForceSneakBelowCount (Integer | default: 3 | range: 0..10)
-│   │   └── SneakTime (Integer Range | default: 1..1 | range: 1..10)
-│   └── [Mode: Breezily]
-│       └── EdgeDistance (Decimal Range | default: 0.45..0.5 | range: 0.25..0.5 | blocks)
-├── SameY (Choice | default: OFF | options: Off, On, Falling, Hypixel)
-├── Tower (Mode Selector | default: None | modes: None, Motion, Pulldown, Karhu, Vulcan, Hypixel)
-│   ├── [Mode: Motion]
-│   │   ├── Motion (Decimal | default: 0.42 | range: 0.0..1.0)
-│   │   ├── TriggerHeight (Decimal | default: 0.78 | range: 0.76..1.0)
-│   │   └── Slow (Decimal | default: 1.0 | range: 0.0..3.0)
-│   ├── [Mode: Pulldown]
-│   │   └── Trigger (Decimal | default: 0.1 | range: 0.0..0.2 | Y/v)
-│   ├── [Mode: Karhu]
-│   │   ├── Timer (Decimal | default: 5.0 | range: 0.1..10.0)
-│   │   ├── Trigger (Decimal | default: 0.06 | range: 0.0..0.2 | Y/v)
-│   │   └── Pulldown (Toggle | default: true)
-├── SafeWalk (Mode Selector | default: Safe | modes: None, Safe, OnEdge)
-│   └── [Mode: OnEdge]
-│       ├── Distance (Decimal | default: 0.1 | range: 0.1..0.5)
-│       ├── Keep (Integer Range | default: 1..2 | range: 1..20 | ticks)
-│       ├── Mode (Choice | default: STOP | options: Stop, Invert, Center)
-│       ├── Sneak (Integer Range | default: 0..0 | range: 0..20 | ticks)
-│       └── Jump (Toggle | default: false)
-├── Swing (Choice | default: DO_NOT_HIDE | options: DoNotHide, HideForBoth, HideForClient, HideForServer)
-├── Rotations (Setting Group)
-│   ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │   ├── [Mode: Linear]
-│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   ├── [Mode: Sigmoid]
-│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   └── [Mode: Acceleration]
-│   │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │       │   ├── Enabled (Toggle | default: false)
-│   │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       ├── AccelerationError (Toggleable Group | default: on)
-│   │       │   ├── Enabled (Toggle | default: true)
-│   │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       ├── ConstantError (Toggleable Group | default: on)
-│   │       │   ├── Enabled (Toggle | default: true)
-│   │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │           ├── Enabled (Toggle | default: false)
-│   │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   ├── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-│   ├── ConsiderInventory (Toggle | default: false)
-│   └── RotationTiming (Choice | default: NORMAL | options: Normal, OnTick, OnTickSnap)
-├── SprintControl (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── Client (Choice | default: DO_NOT_CHANGE | options: DoNotChange, ForceSprint, ForceNoSprint, NoSprintOnPlace, NoSprintOnGround)
-│   └── Server (Choice | default: DO_NOT_CHANGE | options: DoNotChange, ForceSprint, ForceNoSprint, NoSprintOnPlace, NoSprintOnGround)
-├── SimulatePlacementAttempts (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── Clicker (Setting Group)
-│   │   ├── CPS (Integer Range | default: 5..8 | range: 1..100 | clicks)
-│   │   └── Technique (Choice | default: STABILIZED | options: Stabilized, Efficient, Spamming, DoubleClick, Drag, Butterfly, NormalDistribution)
-│   └── FailedAttemptsOnly (Toggle | default: true)
-├── Acceleration (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── SpeedMultiplier (Decimal | default: 0.6 | range: 0.1..3.0)
-│   └── OnlyOnGround (Toggle | default: false)
-├── Strafe (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── Speed (Decimal | default: 0.247 | range: 0.0..5.0)
-│   ├── Hypixel (Toggle | default: false)
-│   └── OnlyOnGround (Toggle | default: false)
-├── StrafeOnJump (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── StraightSpeed (Decimal Range | default: 0.48..0.49 | range: 0.1..1.0)
-│   └── DiagonalSpeed (Decimal Range | default: 0.48..0.49 | range: 0.1..1.0)
-├── SpeedLimiter (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   └── SpeedLimit (Decimal | default: 0.11 | range: 0.01..0.4)
-├── Blink (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── Time (Integer Range | default: 50..250 | range: 0..3000 | ms)
-│   └── FlushOn (Multi-Select | options: Place, Towering, Sneaking, NotSneaking, OnGround, InAir)
-├── AutoSpeed (Toggle | default: false)
-├── Ledge (Toggle | default: true)
-└── Render (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    ├── Clump (Toggle | default: true)
-    ├── StartSize (Decimal | default: 1.0 | range: 0.0..2.0)
-    ├── StartCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── EndSize (Decimal | default: 0.8 | range: 0.0..2.0)
-    ├── EndCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── FadeInCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── FadeOutCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── InTime (Integer | default: 500 | range: 0..5000 | ms)
-    ├── OutTime (Integer | default: 500 | range: 0..5000 | ms)
-    ├── Color (Color)
-    └── OutlineColor (Color)
-```
-
-### Settings Details
-
-- **Delay** (Integer Range) — default: `0` – `0`; range: `0` – `40`; unit: ticks
-- **MinDist** (Decimal) — default: `0.0`; range: `0.0` – `0.25`
-- **Timer** (Decimal) — default: `1.0`; range: `0.01` – `10.0`
-#### BlockItemSelection
-
-A group of related settings.
-
-- **Disallowed** (Registry List)
-- **Unfavorable** (Registry List)
-
-#### AutoBlock
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Always** (Toggle) — default: `false`
-- **SlotResetDelay** (Integer) — default: `5`; range: `0` – `40`; unit: ticks
-- **DoNotUseBelowCount** (Integer) — default: `1`; range: `0` – `64`
-
-#### Prediction
-
-A toggleable group of settings (default: enabled). Predicts your future position so blocks are placed ahead of you.
-
-- **Enabled** (Toggle) — default: `true`
-- **BootstrapBackoff** (Decimal) — default: `0.2`; range: `0.0` – `0.4` — How far the initial prediction stays behind the detected edge before placement history exists.
-- **PredictionCutoffDistance** (Decimal) — default: `0.05`; range: `0.0` – `0.3` — How close to the edge you can get before future-position prediction is disabled.
-- **WarmupPlacements** (Integer) — default: `2`; range: `0` – `4` — How many recorded placements are blended in before switching fully to history-based prediction.
-
-#### Technique
-
-Select a mode for this feature. Available modes: **Normal**, **Expand**, **GodBridge**, **Breezily**. Default: **Normal**.
-
-##### Mode: Normal
-
-- **RotationMode** (Choice) — default: `STABILIZED`; options: `Center`, `Random`, `Stabilized`, `NearestRotation`, `ReverseYaw`, `DiagonalYaw`, `AngleYaw`, `EdgePoint`
-- **RequiresSight** (Toggle) — default: `false`
-###### Eagle
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **BlocksToEagle** (Integer Range) — default: `0` – `0`; range: `0` – `10`
-- **EdgeDistance** (Decimal) — default: `0.01`; range: `0.01` – `1.3`
-- **OnlyOnGround** (Toggle) — default: `true`
-
-###### Telly
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **ResetMode** (Choice) — default: `RESET`; options: `Reverse`, `Reset`
-- **Straight** (Integer) — default: `0`; range: `0` – `5`; unit: ticks
-- **Jump** (Integer Range) — default: `0` – `0`; range: `0` – `10`; unit: ticks
-- **AimOnTower** (Toggle) — default: `true`
-
-###### Down
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-
-###### StabilizeMovement
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### Ceiling
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-
-###### HeadHitter
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-
-
-##### Mode: Expand
-
-- **Length** (Integer) — default: `4`; range: `1` – `10`; unit: blocks
-
-##### Mode: GodBridge
-
-- **Modes** (Multi-Select) — default: `Jump`; options: `Jump`, `Sneak`, `StopInput`, `Backwards`
-- **ForceSneakBelowCount** (Integer) — default: `3`; range: `0` – `10`
-- **SneakTime** (Integer Range) — default: `1` – `1`; range: `1` – `10`
-
-##### Mode: Breezily
-
-- **EdgeDistance** (Decimal Range) — default: `0.45` – `0.5`; range: `0.25` – `0.5`; unit: blocks
-
-- **SameY** (Choice) — default: `OFF`; options: `Off`, `On`, `Falling`, `Hypixel`
-#### Tower
-
-Select a mode for this feature. Available modes: **None**, **Motion**, **Pulldown**, **Karhu**, **Vulcan**, **Hypixel**. Default: **None**.
-
-##### Mode: Motion
-
-- **Motion** (Decimal) — default: `0.42`; range: `0.0` – `1.0`
-- **TriggerHeight** (Decimal) — default: `0.78`; range: `0.76` – `1.0`
-- **Slow** (Decimal) — default: `1.0`; range: `0.0` – `3.0`
-
-##### Mode: Pulldown
-
-- **Trigger** (Decimal) — default: `0.1`; range: `0.0` – `0.2`; unit: Y/v
-
-##### Mode: Karhu
-
-- **Timer** (Decimal) — default: `5.0`; range: `0.1` – `10.0`
-- **Trigger** (Decimal) — default: `0.06`; range: `0.0` – `0.2`; unit: Y/v
-- **Pulldown** (Toggle) — default: `true`
-
-#### SafeWalk
-
-Select a mode for this feature. Available modes: **None**, **Safe**, **OnEdge**. Default: **Safe**.
-
-##### Mode: OnEdge
-
-- **Distance** (Decimal) — default: `0.1`; range: `0.1` – `0.5`
-- **Keep** (Integer Range) — default: `1` – `2`; range: `1` – `20`; unit: ticks
-- **Mode** (Choice) — default: `STOP`; options: `Stop`, `Invert`, `Center`
-- **Sneak** (Integer Range) — default: `0` – `0`; range: `0` – `20`; unit: ticks
-- **Jump** (Toggle) — default: `false`
-
-- **Swing** (Choice) — default: `DO_NOT_HIDE`; options: `DoNotHide`, `HideForBoth`, `HideForClient`, `HideForServer`
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-- **ConsiderInventory** (Toggle) — default: `false`
-- **RotationTiming** (Choice) — default: `NORMAL`; options: `Normal`, `OnTick`, `OnTickSnap`
-
-#### SprintControl
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Client** (Choice) — default: `DO_NOT_CHANGE`; options: `DoNotChange`, `ForceSprint`, `ForceNoSprint`, `NoSprintOnPlace`, `NoSprintOnGround`
-- **Server** (Choice) — default: `DO_NOT_CHANGE`; options: `DoNotChange`, `ForceSprint`, `ForceNoSprint`, `NoSprintOnPlace`, `NoSprintOnGround`
-
-#### SimulatePlacementAttempts
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-##### Clicker
-
-A group of related settings.
-
-- **CPS** (Integer Range) — default: `5` – `8`; range: `1` – `100`; unit: clicks
-- **Technique** (Choice) — default: `STABILIZED`; options: `Stabilized`, `Efficient`, `Spamming`, `DoubleClick`, `Drag`, `Butterfly`, `NormalDistribution`
-
-- **FailedAttemptsOnly** (Toggle) — default: `true`
-
-#### Acceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **SpeedMultiplier** (Decimal) — default: `0.6`; range: `0.1` – `3.0`
-- **OnlyOnGround** (Toggle) — default: `false`
-
-#### Strafe
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Speed** (Decimal) — default: `0.247`; range: `0.0` – `5.0`
-- **Hypixel** (Toggle) — default: `false`
-- **OnlyOnGround** (Toggle) — default: `false`
-
-#### StrafeOnJump
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **StraightSpeed** (Decimal Range) — default: `0.48` – `0.49`; range: `0.1` – `1.0`
-- **DiagonalSpeed** (Decimal Range) — default: `0.48` – `0.49`; range: `0.1` – `1.0`
-
-#### SpeedLimiter
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **SpeedLimit** (Decimal) — default: `0.11`; range: `0.01` – `0.4`
-
-#### Blink
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Time** (Integer Range) — default: `50` – `250`; range: `0` – `3000`; unit: ms
-- **FlushOn** (Multi-Select) — options: `Place`, `Towering`, `Sneaking`, `NotSneaking`, `OnGround`, `InAir`
-
-- **AutoSpeed** (Toggle) — default: `false`
-- **Ledge** (Toggle) — default: `true`
-#### Render
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Clump** (Toggle) — default: `true`
-- **StartSize** (Decimal) — default: `1.0`; range: `0.0` – `2.0`
-- **StartCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **EndSize** (Decimal) — default: `0.8`; range: `0.0` – `2.0`
-- **EndCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **FadeInCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **FadeOutCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **InTime** (Integer) — default: `500`; range: `0` – `5000`; unit: ms
-- **OutTime** (Integer) — default: `500`; range: `0` – `5000`; unit: ms
-- **Color** (Color)
-- **OutlineColor** (Color)
-
-
-### Screenshots
-
-*Screenshots for Scaffold will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Delay | Integer Range | 0..0 | 0..40 ticks | Adds a wait between placements; raise it to slow down and look more human. |
+| MinDist | Decimal | 0.0 | 0.0..0.25 | Requires the placement point to be at least this far from your eyes before a block is placed. |
+| Timer | Decimal | 1.0 | 0.01..10.0 | Speeds up or slows down the game clock while bridging; above 1.0 places blocks faster. |
+| BlockItemSelection | Setting Group | — | — | Controls which blocks Scaffold is allowed to use. |
+| BlockItemSelection → Disallowed | Registry List | — | — | Blocks that will never be placed or counted as building material (e.g. TNT, cobwebs). |
+| BlockItemSelection → Unfavorable | Registry List | — | — | Blocks used only as a last resort when nothing better is available (e.g. crafting tables). |
+| AutoBlock | Toggleable Group | On | — | Automatically selects and holds a placeable block from your hotbar/inventory. |
+| AutoBlock → Always | Toggle | true | — | Keeps a block held at all times rather than only switching at the moment of placing. |
+| AutoBlock → SlotResetDelay | Integer | 0 | 0..40 ticks | How long to wait before switching your hotbar slot back after placing. |
+| AutoBlock → DoNotUseBelowCount | Integer | 5 | 0..64 | Avoids using a stack once it drops to this size, saving your last few blocks. |
+| Prediction | Toggleable Group | On | — | Aims ahead to where you'll actually stand when the block is placed, for smoother bridging. |
+| Prediction → BootstrapBackoff | Decimal | 0.2 | 0.0..0.4 | How far behind the detected edge the early prediction sits before placement history builds up. |
+| Prediction → PredictionCutoffDistance | Decimal | 0.05 | 0.0..0.3 | How close to the edge you can get before future-position prediction is switched off. |
+| Prediction → WarmupPlacements | Integer | 2 | 0..4 | How many recorded placements it takes to blend fully into history-based prediction. |
+| Technique | Mode Selector | Normal | — | Chooses the overall bridging style. |
+| Technique → [Normal] → RotationMode | Choice | Stabilized | Center, Random, Stabilized, NearestRotation, ReverseYaw, DiagonalYaw, AngleYaw, EdgePoint | How your aim is positioned on the block face while placing. |
+| Technique → [Normal] → RequiresSight | Toggle | true | — | Only places when the target block is actually in line of sight. |
+| Technique → [Normal] → Eagle | Toggleable Group | Off | — | Auto-sneaks at edges so you don't fall off while placing. |
+| Technique → [Normal] → Eagle → BlocksToEagle | Integer Range | 0..0 | 0..10 | How many blocks to place between each sneak cycle. |
+| Technique → [Normal] → Eagle → EdgeDistance | Decimal Range | 0.01..0.05 | 0.01..1.3 | How close to the edge you must be before it sneaks. |
+| Technique → [Normal] → Eagle → OnlyOnGround | Toggle | true | — | Only sneaks while standing on the ground. |
+| Technique → [Normal] → Telly | Toggleable Group | Off | — | Jumps while moving for a faster, "telly bridge" style. |
+| Technique → [Normal] → Telly → ResetMode | Choice | Reset | Reverse, Reset | How your aim resets between jumps. |
+| Technique → [Normal] → Telly → Straight | Integer | 1 | 0..5 ticks | Air-time window used to decide whether you're bridging straight. |
+| Technique → [Normal] → Telly → Jump | Integer Range | 0..0 | 0..10 ticks | Delay before each jump. |
+| Technique → [Normal] → Telly → AimOnTower | Toggle | true | — | Keeps aiming at blocks while towering up. |
+| Technique → [Normal] → Down | Toggleable Group | Off | — | Lets you bridge downward by sneaking. |
+| Technique → [Normal] → StabilizeMovement | Toggleable Group | Off | — | Nudges your movement back toward the ideal line to keep placements centered. |
+| Technique → [Normal] → Ceiling | Toggleable Group | Off | — | Builds a ceiling above you instead of a floor. |
+| Technique → [Normal] → HeadHitter | Toggleable Group | Off | — | Auto-jumps into blocks above your head when bridging under a low ceiling. |
+| Technique → [Expand] → Length | Integer | 5 | 1..10 blocks | How far ahead the expand technique reaches to place blocks. |
+| Technique → [GodBridge] → Modes | Multi-Select | [Jump] | Jump, Sneak, StopInput, Backwards | Which actions are used to stay on the ledge while god-bridging. |
+| Technique → [GodBridge] → ForceSneakBelowCount | Integer | 5 | 0..10 | Forces a sneak instead of other actions once your block count drops this low. |
+| Technique → [GodBridge] → SneakTime | Integer Range | 1..1 | 1..10 | How long each forced sneak lasts. |
+| Technique → [Breezily] → EdgeDistance | Decimal Range | 0.4..0.45 | 0.25..0.5 blocks | How far from the edge the breezily technique repositions you sideways. |
+| SameY | Choice | Off | Off, On, Falling, Hypixel | Keeps placements on a single height level instead of stepping down. |
+| Tower | Mode Selector | None | — | How Scaffold builds straight up when you hold jump. |
+| Tower → [Motion] → Motion | Decimal | 0.42 | 0.0..1.0 | Upward boost applied each tower step. |
+| Tower → [Motion] → TriggerHeight | Decimal | 0.78 | 0.76..1.0 | How high above the jump point you must rise before the next boost. |
+| Tower → [Motion] → Slow | Decimal | 0.6 | 0.0..3.0 | Horizontal slowdown while towering to keep you centered. |
+| Tower → [Pulldown] → Trigger | Decimal | 0.1 | 0.0..0.2 Y/v | Vertical speed at which you get pulled back down for the next placement. |
+| Tower → [Karhu] → Timer | Decimal | 1.0 | 0.1..10.0 | Game-clock speed used during this tower mode. |
+| Tower → [Karhu] → Trigger | Decimal | 0.06 | 0.0..0.2 Y/v | Vertical speed at which the pulldown kicks in. |
+| Tower → [Karhu] → Pulldown | Toggle | true | — | Pulls you back down after each rise to place the next block. |
+| SafeWalk | Mode Selector | None | None, Safe, OnEdge | Stops you walking off edges while bridging. |
+| SafeWalk → [OnEdge] → Distance | Decimal Range | 0.1..0.15 | 0.05..0.5 | How close to the edge the protection activates. |
+| SafeWalk → [OnEdge] → Keep | Integer Range | 1..2 | 1..20 ticks | How long the edge reaction is held. |
+| SafeWalk → [OnEdge] → Mode | Choice | Stop | Stop, Invert, Center | How your movement is corrected at the edge. |
+| SafeWalk → [OnEdge] → Sneak | Integer Range | 0..0 | 0..20 ticks | How long to sneak when reaching an edge. |
+| SafeWalk → [OnEdge] → Jump | Toggle | false | — | Allows jumping as part of the edge reaction. |
+| Swing | Choice | HideForClient | DoNotHide, HideForBoth, HideForClient, HideForServer | Controls whether your hand-swing animation is shown to you and/or the server. |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| SprintControl | Toggleable Group | Off | — | Forces sprinting on or off independently for the client and server. |
+| SprintControl → Client | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint, NoSprintOnPlace, NoSprintOnGround | How sprinting is handled on your own (visual) side. |
+| SprintControl → Server | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint, NoSprintOnPlace, NoSprintOnGround | How sprinting is reported to the server. |
+| SimulatePlacementAttempts | Toggleable Group | Off | — | Sends extra interaction clicks to mimic a real player placing blocks. |
+| SimulatePlacementAttempts → Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| SimulatePlacementAttempts → FailedAttemptsOnly | Toggle | false | — | Only simulates clicks that wouldn't actually place a block. |
+| Acceleration | Toggleable Group | Off | — | Multiplies your horizontal speed while bridging. |
+| Acceleration → SpeedMultiplier | Decimal | 1.11 | 0.1..3.0 | How much your movement speed is scaled. |
+| Acceleration → OnlyOnGround | Toggle | true | — | Only applies the boost while on the ground. |
+| Strafe | Toggleable Group | Off | — | Continuously adjusts your velocity to keep a steady bridging speed. |
+| Strafe → Speed | Decimal | 0.19 | 0.0..5.0 | Target movement speed while strafing. |
+| Strafe → Hypixel | Toggle | false | — | Uses speed values tuned to pass on Hypixel. |
+| Strafe → OnlyOnGround | Toggle | true | — | Only strafes while on the ground. |
+| StrafeOnJump | Toggleable Group | Off | — | Applies a speed burst each time you jump while bridging. |
+| StrafeOnJump → StraightSpeed | Decimal Range | 0.48..0.49 | 0.1..1.0 | Speed applied when moving straight. |
+| StrafeOnJump → DiagonalSpeed | Decimal Range | 0.48..0.49 | 0.1..1.0 | Speed applied when moving diagonally. |
+| SpeedLimiter | Toggleable Group | Off | — | Caps your bridging speed by cutting movement when you go too fast. |
+| SpeedLimiter → SpeedLimit | Decimal | 0.12 | 0.01..0.4 | The maximum horizontal speed allowed. |
+| Blink | Toggleable Group | Off | — | Briefly holds back your outgoing packets around placements to hide them. |
+| Blink → Time | Integer Range | 0..0 | 0..3000 ms | How long packets are held after each placement. |
+| Blink → FlushOn | Multi-Select | [] | Place, Towering, Sneaking, NotSneaking, OnGround, InAir | Conditions that immediately release the held packets. |
+| AutoSpeed | Toggle | false | — | Temporarily enables [Speed](/docs/modules/movement/speed) while Scaffold is active. |
+| Ledge | Toggle | true | — | Auto-jumps or auto-sneaks at edges so you don't fall while placing. |
+| Render | Toggleable Group | On | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleScaffold.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*

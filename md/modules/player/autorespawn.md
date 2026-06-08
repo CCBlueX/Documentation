@@ -1,25 +1,17 @@
 ## AutoRespawn
 
-Automatically respawns you after dying.
+AutoRespawn takes the waiting out of dying. The moment the death screen appears, the module respawns you automatically and closes the screen, so you're back in the world without clicking the "Respawn" button yourself. It's handy on PvP and survival servers where dying often means a race back to your loot or your teammates — every saved fraction of a second counts.
 
-**Category:** Player  
-**Enabled by default:** No  
+Internally it watches for the game's [DeathScreen and immediately calls respawn](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoRespawn.kt#L38-L47). Note that the respawn button isn't actually clickable for the first 20 ticks (one second) after death; if you respawn faster than the server expects, use the **Delay** setting to hold off for a set number of ticks before triggering. With the default of 0, it fires as soon as the screen is detected.
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Delay (Integer | default: 0 | range: 0..20 | ticks)
-```
-
-### Settings Details
-
-- **Delay** (Integer) — default: `0`; range: `0` – `20`; unit: ticks — Ticks to wait before automatically respawning after the death screen appears.
-
-### Screenshots
-
-*Screenshots for AutoRespawn will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Delay | Integer | 0 | 0..20 | How long to wait, in ticks, after the death screen appears before respawning. The respawn button only becomes clickable 20 ticks after death, so increase this if respawning instantly causes issues. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoRespawn.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoRespawn.kt)*

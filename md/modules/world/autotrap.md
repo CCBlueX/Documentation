@@ -1,152 +1,25 @@
 ## AutoTrap
 
-Automatically sets targets on fire or traps them in cobwebs.
+AutoTrap is a combat-utility module that punishes nearby enemies by placing hazardous blocks underneath them — either setting them on fire (lava or flint and steel) or trapping them in cobwebs. It's most useful in PvP situations where you want to lock down or chip away at an opponent without relying solely on your sword: webs slow and pin a target so they can't escape your KillAura, while ignition deals damage over time and pressures players who are low on health or out of food.
 
-**Category:** World  
-**Enabled by default:** No  
+Rather than naively spamming blocks, AutoTrap predicts where a jumping or falling enemy is about to land and lays the trap there. It runs a [player movement simulation](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/traps/TrapPlayerSimulation.kt#L91-L133) over the next ~25 ticks, only committing once it has enough consistent evidence (low landing-position variance) that the prediction is reliable. The module first tries the [web planner, then falls back to ignition](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt#L88-L107), picking placement faces that overlap the predicted target box.
+
+To avoid wasting your attack rhythm, placements are deliberately timed: when KillAura is mid-combat, AutoTrap [waits for a "propitious moment"](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt#L159-L173) — slotting the block in during recovery so it doesn't cancel a charged or critical hit. After a successful placement it pauses for the configured Delay before acting again. Note that ignition is skipped for targets already on fire, and both trap types require the appropriate items (cobweb, or lava bucket / flint and steel) in your hotbar or offhand.
+
+**Category:** World
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Range (Decimal Range | default: 3.0..4.5 | range: 2.0..6.0)
-├── Delay (Integer | default: 20 | range: 0..400 | ticks)
-├── IgnoreOpenInventory (Toggle | default: true)
-├── Ignite (Toggleable Group | default: on)
-│   └── Enabled (Toggle | default: true)
-├── AutoWeb (Toggleable Group | default: on)
-│   └── Enabled (Toggle | default: true)
-├── Target (Setting Group)
-│   ├── FOV (Decimal | default: 180.0 | range: 0.0..180.0)
-│   ├── HurtTime (Integer | default: 10 | range: 0..10)
-│   └── Priority (Multi-Select | default: [Type, Health] | options: Type, Health, Distance, Direction, HurtTime, Age)
-└── Rotations (Setting Group)
-    ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-    │   ├── [Mode: Linear]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   ├── [Mode: Sigmoid]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    │   └── [Mode: Acceleration]
-    │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── DynamicAccel (Toggleable Group | default: off)
-    │       │   ├── Enabled (Toggle | default: false)
-    │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-    │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       ├── AccelerationError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       ├── ConstantError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       └── SigmoidDeceleration (Toggleable Group | default: off)
-    │           ├── Enabled (Toggle | default: false)
-    │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-    ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-    └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-```
-
-### Settings Details
-
-- **Range** (Decimal Range) — default: `3.0` – `4.5`; range: `2.0` – `6.0`
-- **Delay** (Integer) — default: `20`; range: `0` – `400`; unit: ticks
-- **IgnoreOpenInventory** (Toggle) — default: `true`
-#### Ignite
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-#### AutoWeb
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-#### Target
-
-A group of related settings.
-
-- **FOV** (Decimal) — default: `180.0`; range: `0.0` – `180.0`
-- **HurtTime** (Integer) — default: `10`; range: `0` – `10`
-- **Priority** (Multi-Select) — default: `Type`, `Health`; options: `Type`, `Health`, `Distance`, `Direction`, `HurtTime`, `Age`
-
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-### Screenshots
-
-*Screenshots for AutoTrap will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Range | Decimal Range | 3.0..4.5 | 2.0..6.0 | Distance window (in blocks) used to acquire targets for trapping. |
+| Delay | Integer | 20 | 0..400 | Cooldown in ticks to wait after a successful placement before trapping again. |
+| IgnoreOpenInventory | Toggle | true | — | When enabled, AutoTrap keeps working while a container/inventory screen is open. Disable it to pause trapping (and to consider the open inventory) while a screen is up. |
+| Ignite | Toggleable Group | on | — | Enables the fire trap, placing lava or flint and steel at targets to set them ablaze. Targets already on fire are skipped. |
+| AutoWeb | Toggleable Group | on | — | Enables the cobweb trap, placing cobwebs at targets to slow and pin them in place. |
+| Target | Setting Group | — | — | See [Shared: Target](/docs/modules/shared-settings/target). |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleAutoTrap.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt)*

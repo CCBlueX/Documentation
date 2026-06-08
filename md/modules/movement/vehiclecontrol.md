@@ -1,63 +1,29 @@
 ## VehicleControl
 
-Allows you to fly and speed while riding an entity (like boats or horses).
+VehicleControl gives you full aerial and speed control while riding any vehicle — boats, horses, minecarts, striders, pigs, and more. Once enabled, your movement keys drive the vehicle in every direction: hold Jump to rise, hold Sneak to descend, and walk keys to travel horizontally. A configurable Glide value produces a slight passive descent when you are not actively pressing any vertical key, preventing the vehicle from shooting upward uncontrollably. Positive Glide values make the vehicle gently rise on its own instead.
 
-**Category:** Movement  
-**Enabled by default:** No  
+Two speed tiers let you tune travel pace precisely. BaseSpeed applies at all times; when you hold the sprint key the module switches to the (much faster) SprintSpeed values instead, giving you a quick boost for open-air travel. Enabling MouseControl makes the vehicle yaw track your look direction, so you can steer with your mouse exactly like walking on foot. If you prefer the vehicle to stay perfectly level during sprints, toggle NoGlideOnSpring to suppress the passive vertical drift whenever sprint speeds are active.
+
+The Rehook sub-group is an anti-cheat bypass. When enabled it rhythmically dismounts you from the vehicle for a brief window and then immediately remounts, cycling on a tick-based schedule controlled by UnhookAfter and HookAfter. This disrupts the continuous riding signature that some anti-cheat plugins use to flag vehicle flight. While VehicleControl is active, dismounting mid-air is blocked — you can only sneak off a vehicle when it is on the ground or in water, so accidental drops are avoided. See also [VehicleBoost](/docs/modules/movement/vehicleboost) for a complementary approach to vehicle speed.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Glide (Decimal | default: -0.15 | range: -0.3..0.3)
-├── MouseControl (Toggle | default: false)
-├── NoGlideOnSpring (Toggle | default: false)
-├── BaseSpeed (Setting Group)
-│   ├── Horizontal (Decimal | default: 0.5 | range: 0.1..10.0)
-│   └── Vertical (Decimal | default: 0.35 | range: 0.1..10.0)
-├── SprintSpeed (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Horizontal (Decimal | default: 5.0 | range: 0.1..10.0)
-│   └── Vertical (Decimal | default: 2.0 | range: 0.1..10.0)
-└── Rehook (Toggleable Group | default: off)
-    ├── Enabled (Toggle | default: false)
-    ├── UnhookAfter (Integer | default: 4 | range: 1..10)
-    └── HookAfter (Integer | default: 2 | range: 1..10)
-```
-
-### Settings Details
-
-- **Glide** (Decimal) — default: `-0.15`; range: `-0.3` – `0.3` — Vertical drift speed when no vertical input is given and not in water.
-- **MouseControl** (Toggle) — default: `false` — Steers the vehicle using the player's mouse direction.
-- **NoGlideOnSpring** (Toggle) — default: `false` — Disables vertical glide when sprinting.
-#### BaseSpeed
-
-A group of related settings.
-
-- **Horizontal** (Decimal) — default: `0.5`; range: `0.1` – `10.0` — Base horizontal movement speed for the vehicle.
-- **Vertical** (Decimal) — default: `0.35`; range: `0.1` – `10.0` — Base vertical movement speed for the vehicle.
-
-#### SprintSpeed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles faster vehicle speed when sprint key is held.
-- **Horizontal** (Decimal) — default: `5.0`; range: `0.1` – `10.0` — Horizontal speed when sprinting in a vehicle.
-- **Vertical** (Decimal) — default: `2.0`; range: `0.1` – `10.0` — Vertical speed when sprinting in a vehicle.
-
-#### Rehook
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Toggles automatic re-hooking to bypass anti-cheat detection.
-- **UnhookAfter** (Integer) — default: `4`; range: `1` – `10` — Ticks to wait before unhooking from the vehicle.
-- **HookAfter** (Integer) — default: `2`; range: `1` – `10` — Ticks to wait before re-hooking to the vehicle.
-
-
-### Screenshots
-
-*Screenshots for VehicleControl will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Glide | Decimal | -0.15 | -0.3 – 0.3 | Passive vertical velocity applied when the vehicle is not in water and no vertical key is pressed. Negative values cause a slow descent; positive values cause a slow ascent. |
+| MouseControl | Toggle | false | — | Rotates the vehicle to match your look direction each tick, enabling full mouse-steered flight. |
+| NoGlideOnSpring | Toggle | false | — | Suppresses the Glide effect while the sprint key is held, keeping the vehicle at a constant altitude during sprint-speed movement. |
+| BaseSpeed → Horizontal | Decimal | 0.5 | 0.1 – 10.0 | Horizontal movement speed applied when not sprinting. |
+| BaseSpeed → Vertical | Decimal | 0.35 | 0.1 – 10.0 | Vertical movement speed (Jump / Sneak) applied when not sprinting. |
+| SprintSpeed | Toggleable Group | on | — | When enabled, replaces BaseSpeed values with the speeds below while the sprint key is held. |
+| SprintSpeed → Horizontal | Decimal | 5.0 | 0.1 – 10.0 | Horizontal movement speed while sprinting. |
+| SprintSpeed → Vertical | Decimal | 2.0 | 0.1 – 10.0 | Vertical movement speed while sprinting. |
+| Rehook | Toggleable Group | off | — | Periodically dismounts and re-mounts the vehicle on a fixed tick schedule to help evade anti-cheat detection of sustained vehicle flight. |
+| Rehook → UnhookAfter | Integer | 4 | 1 – 10 | Number of ticks to remain mounted before the module dismounts you during each rehook cycle. |
+| Rehook → HookAfter | Integer | 2 | 1 – 10 | Number of ticks to wait after dismounting before re-mounting during each rehook cycle. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleVehicleControl.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleVehicleControl.kt)*

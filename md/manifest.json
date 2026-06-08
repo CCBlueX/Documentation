@@ -38,6 +38,15 @@
     "Modules": {
         "Overview": "modules/overview.md",
         "Shared Settings": {
+            "Range": "modules/shared/range.md",
+            "Renderer": "modules/shared/renderer.md",
+            "AutoWalk": "modules/shared/autowalk.md",
+            "CheckScreenTitle": "modules/shared/checkscreentitle.md",
+            "CheckScreenHandlerType": "modules/shared/checkscreenhandlertype.md",
+            "ScrollAdjust": "modules/shared/scrolladjust.md",
+            "Placement Rendering": "modules/shared/placement-rendering.md",
+            "DistanceFade": "modules/shared/distancefade.md",
+            "AimPoint": "modules/shared/aim-point.md",
             "Block Placer": "modules/shared/block-placer.md",
             "Clicker": "modules/shared/clicker.md",
             "Rotations": "modules/shared/rotations.md",

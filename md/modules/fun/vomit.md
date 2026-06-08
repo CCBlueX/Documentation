@@ -1,39 +1,19 @@
 ## Vomit
 
-Vomit items out of your inventory.
+Vomit continuously throws items out of your inventory in a random order, creating the visual effect of your character vomiting its entire inventory onto the ground. Each tick, a random occupied slot is picked and its stack is dropped — making it a chaotic and entertaining way to clear your inventory or just mess around on a server.
 
-**Category:** Fun  
-**Enabled by default:** No  
+In **survival mode**, the module picks random non-empty slots from your inventory (or from an open container if your inventory is already empty) and drops them one by one. In **creative mode**, it instead spawns random block stacks out of thin air and immediately throws them, so the "vomiting" never stops regardless of what you're carrying.
+
+The speed and timing of drops are governed by the Inventory Constraints settings below, so you can tune how fast items fly out.
+
+**Category:** Fun
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Constraints (Setting Group)
-    ├── StartDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-    ├── ClickDelay (Integer Range | default: 2..4 | range: 0..20 | ticks)
-    ├── CloseDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-    ├── MissChance (Integer Range | default: 0..0 | range: 0..100 | %)
-    └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
-```
-
-### Settings Details
-
-#### Constraints
-
-A group of related settings.
-
-- **StartDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **ClickDelay** (Integer Range) — default: `2` – `4`; range: `0` – `20`; unit: ticks
-- **CloseDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **MissChance** (Integer Range) — default: `0` – `0`; range: `0` – `100`; unit: %
-- **Requires** (Multi-Select) — options: `NoMovement`, `NoRotation`, `InventoryOpen`
-
-
-### Screenshots
-
-*Screenshots for Vomit will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---------|------|---------|-------|-------------|
+| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Ffun%2FModuleVomit.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/fun/ModuleVomit.kt)*

@@ -7,17 +7,9 @@ A bow aimbot you operate from a free-camera "drone" control panel. Enabling the 
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Rotations (Setting Group → see Shared: Rotations)
-```
-
-### Settings Details
-
-#### Rotations
-
-> Controls how the server-side aim moves toward the target. These are the shared rotation settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations).
+| Setting | Type | Default | Range | Description |
+|---------|------|---------|-------|-------------|
+| Rotations | Setting Group | — | — | Rotations settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ### Frequently Asked Questions
 

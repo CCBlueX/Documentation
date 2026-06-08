@@ -1,48 +1,25 @@
 ## Clip
 
-Allows you to clip through blocks.
+Clip lets you slip through solid blocks by teleporting yourself a set distance in the direction you're moving. It's handy for getting past walls, floors, or ceilings that would normally stop you, and it works by snapping your position forward rather than walking through gradually.
 
-**Category:** Movement  
-**Enabled by default:** No  
+It offers two modes. **Fancy** is the smarter, continuous option: while you press into a wall (or hold jump/sneak against a ceiling or floor), it scans for the nearest open space on the other side and clips you there, repeating as long as you keep moving. It also shows ▲/▼ markers next to your crosshair to indicate which vertical clips are currently available, and it stays out of the way while [Fly](/docs/modules/movement/fly) is active. **Old** is a one-shot teleport: the moment you enable the module it jumps you a fixed horizontal and vertical distance based on where you're facing, then turns itself back off.
+
+Because clipping moves you in ways the server doesn't expect, results depend heavily on the server's anti-cheat — expect it to fail or flag you on stricter setups.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Choice (Mode Selector | default: Fancy | modes: Fancy, Old)
-    ├── [Mode: Fancy]
-    │   ├── Horizontal (Integer | default: 0 | range: 0..6)
-    │   ├── Vertical (Integer | default: 5 | range: 0..6)
-    │   └── RequiresStandOn (Toggle | default: true)
-    └── [Mode: Old]
-        ├── Horizontal (Decimal | default: 0.0 | range: -10.0..10.0)
-        ├── Vertical (Decimal | default: 5.0 | range: -10.0..10.0)
-        └── ResetVelocity (Toggle | default: true)
-```
-
-### Settings Details
-
-#### Choice
-
-Select a mode for this feature. Available modes: **Fancy**, **Old**. Default: **Fancy**.
-
-##### Mode: Fancy
-
-- **Horizontal** (Integer) — default: `0`; range: `0` – `6` — Number of blocks to search horizontally when clipping through walls.
-- **Vertical** (Integer) — default: `5`; range: `0` – `6` — Number of blocks to search vertically when clipping through floors or ceilings.
-- **RequiresStandOn** (Toggle) — default: `true` — Requires a solid block below the destination to clip into.
-
-##### Mode: Old
-
-- **Horizontal** (Decimal) — default: `0.0`; range: `-10.0` – `10.0` — Distance to teleport in the direction you are facing.
-- **Vertical** (Decimal) — default: `5.0`; range: `-10.0` – `10.0` — Distance to teleport vertically.
-- **ResetVelocity** (Toggle) — default: `true` — Resets your velocity to zero after clipping.
-
-
-### Screenshots
-
-*Screenshots for Clip will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Choice | Mode Selector | Fancy | Fancy, Old | Chooses how clipping works: continuous wall-scanning (Fancy) or a single fixed teleport (Old). |
+| Choice → [Fancy] → Horizontal | Integer | 5 | 0..6 | Maximum number of blocks to clip forward when pushing into a wall. |
+| Choice → [Fancy] → Vertical | Integer | 5 | 0..6 | Maximum number of blocks to clip up or down when holding jump or sneak. |
+| Choice → [Fancy] → RequiresStandOn | Toggle | true | — | Only clips to spots where there's solid ground to stand on, avoiding teleporting into mid-air. |
+| Choice → [Old] → Horizontal | Decimal | 0.0 | -10.0..10.0 | Distance to teleport forward (relative to your facing) when the module is enabled. |
+| Choice → [Old] → Vertical | Decimal | 5.0 | -10.0..10.0 | Distance to teleport up (or down, if negative) when the module is enabled. |
+| Choice → [Old] → ResetVelocity | Toggle | true | — | Cancels your momentum after the teleport so you don't keep sliding. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleClip.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/exploit/ModuleClip.kt)*

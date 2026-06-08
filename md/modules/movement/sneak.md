@@ -1,36 +1,21 @@
 ## Sneak
 
-Automatically makes you sneak constantly.
+Sneak automatically holds the sneak key for you at all times, keeping your character in a crouched state without any manual input. This is useful for preventing accidental falls off edges, staying silent while exploring, or maintaining a sneaking appearance in general gameplay.
 
-**Category:** Movement  
-**Enabled by default:** No  
+Three modes control how the sneak state is communicated to the server. **Legit** overrides the movement input directly, making it behave as close to a real keypress as possible — it also has an optional sub-setting to only activate sneaking when you are standing on magma blocks, protecting you from their damage without crouching everywhere else. **Vanilla** forces the sneak flag inside the outgoing movement packet each tick. **Switch** uses a legacy packet-based start/stop sneak approach and is only compatible with servers running a version earlier than 1.21.6 when connected via ViaFabricPlus.
+
+The **NotDuringMove** toggle lets you disable automatic sneaking while you are actively walking or running, so the module only crouches when you are standing still — handy if you want edge protection without the movement speed penalty of permanent sneaking.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Mode (Mode Selector | default: Vanilla | modes: Legit, Vanilla, Switch)
-│   ├── [Mode: Legit]
-│   │   └── OnMagmaBlocksOnly (Toggle | default: false)
-└── NotDuringMove (Toggle | default: false)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **Legit**, **Vanilla**, **Switch**. Default: **Vanilla**.
-
-##### Mode: Legit
-
-- **OnMagmaBlocksOnly** (Toggle) — default: `false` — Only sneaks when standing on or near magma blocks to prevent damage.
-
-- **NotDuringMove** (Toggle) — default: `false` — Disables sneaking while the player is moving.
-
-### Screenshots
-
-*Screenshots for Sneak will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | Vanilla | Legit, Vanilla, Switch | Selects how the sneak state is applied. |
+| Mode → [Legit] → OnMagmaBlocksOnly | Toggle | false | — | When enabled in Legit mode, sneaking is only applied while you are standing on a magma block, protecting you from its damage. |
+| NotDuringMove | Toggle | false | — | When enabled, automatic sneaking is suppressed while you are moving. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleSneak.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleSneak.kt)*

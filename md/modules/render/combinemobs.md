@@ -1,27 +1,18 @@
 ## CombineMobs
 
-Combines cramped entities.
+CombineMobs cleans up your view when lots of entities of the same type are packed into the same spot. Instead of drawing every crammed mob on top of one another, it renders a single entity and shows a count of how many are grouped together. This is great for high-traffic servers and old anarchy spawns (like 2b2t) where huge stacks of mobs cause clutter and frame drops.
 
-**Category:** Render  
-**Enabled by default:** No  
+By default it works on living mobs (animals and monsters). Baby and adult mobs are kept in separate groups, so a stack of chickens won't be merged with a stack of baby chickens. If you also want to fold together armor stands or minecarts that pile up in the same place, enable the matching options below.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── CombineArmorStands (Toggle | default: false)
-└── CombineMinecarts (Toggle | default: false)
-```
-
-### Settings Details
-
-- **CombineArmorStands** (Toggle) — default: `false` — Also combines armor stands that share the same block position.
-- **CombineMinecarts** (Toggle) — default: `false` — Also combines minecarts that share the same block position.
-
-### Screenshots
-
-*Screenshots for CombineMobs will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| CombineArmorStands | Toggle | false | — | Also combines armor stands that are crammed together into a single rendered stand with a count. |
+| CombineMinecarts | Toggle | false | — | Also combines minecarts that are crammed together into a single rendered minecart with a count. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleCombineMobs.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleCombineMobs.kt)*

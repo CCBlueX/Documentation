@@ -1,51 +1,29 @@
 ## Particles
 
-Displays particles when attacking an entity.
+Particles adds a visual flair to your attacks by spawning decorative 2D shapes at the point of impact each time you hit an entity. The particles fly outward, obey gravity, bounce off solid blocks, and then gradually fade away — giving your combat a stylised, eye-catching look without affecting gameplay mechanics.
 
-**Category:** Render  
-**Enabled by default:** No  
+You can choose any combination of eleven particle shapes (stars, hearts, lightning bolts, and more), tune how many spawn per hit, set their size and colour, and control exactly how they move and bounce through the world. Because the effect is purely cosmetic and rendered client-side only, it has no impact on server-side behaviour or performance beyond your own frame rate.
+
+Particles work well alongside other visual combat modules such as [HitFX](/docs/modules/render/hitfx) and [DamageParticles](/docs/modules/render/damageparticles) if you want a richer hit-feedback experience.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Size (Decimal | default: 1.0 | range: 0.5..2.0)
-├── Count (Integer Range | default: 2..10 | range: 2..30 | particles)
-├── RandomParticleRotation (Toggle | default: true)
-├── Physical (Setting Group)
-│   ├── Motion (Decimal | default: 15.0 | range: 1.0..30.0)
-│   ├── BounceX (Decimal | default: 0.8 | range: 0.0..1.0)
-│   ├── BounceY (Decimal | default: 0.6 | range: 0.0..1.0)
-│   ├── BounceZ (Decimal | default: 0.8 | range: 0.0..1.0)
-│   ├── Drag (Decimal | default: 0.99 | range: 0.0..1.0)
-│   └── GravityFactor (Decimal | default: 0.8 | range: 0.0..1.0)
-├── Color (Color)
-└── Particle (Multi-Select | default: [Star] | options: Orbiz, Star, Dollar, Crown, Heart, Lightning, Line, Point, Rhombus, Snowflake, Spark)
-```
-
-### Settings Details
-
-- **Size** (Decimal) — default: `1.0`; range: `0.5` – `2.0` — Sets the visual size of each particle.
-- **Count** (Integer Range) — default: `2` – `10`; range: `2` – `30`; unit: particles — Sets the number of particles spawned per hit.
-- **RandomParticleRotation** (Toggle) — default: `true` — Applies a random rotation to each particle.
-#### Physical
-
-A group of related settings.
-
-- **Motion** (Decimal) — default: `15.0`; range: `1.0` – `30.0` — Controls the horizontal speed multiplier of particles.
-- **BounceX** (Decimal) — default: `0.8`; range: `0.0` – `1.0` — Sets the velocity retention factor when bouncing on the X axis.
-- **BounceY** (Decimal) — default: `0.6`; range: `0.0` – `1.0` — Sets the velocity retention factor when bouncing on the Y axis.
-- **BounceZ** (Decimal) — default: `0.8`; range: `0.0` – `1.0` — Sets the velocity retention factor when bouncing on the Z axis.
-- **Drag** (Decimal) — default: `0.99`; range: `0.0` – `1.0` — Applies velocity drag on particles when bouncing off surfaces.
-- **GravityFactor** (Decimal) — default: `0.8`; range: `0.0` – `1.0` — Scales the gravity effect on particles.
-
-- **Color** (Color) — Sets the color of the particles.
-- **Particle** (Multi-Select) — default: `Star`; options: `Orbiz`, `Star`, `Dollar`, `Crown`, `Heart`, `Lightning`, `Line`, `Point`, `Rhombus`, `Snowflake`, `Spark` — Selects which particle textures to use.
-
-### Screenshots
-
-*Screenshots for Particles will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Size | Decimal | 1.0 | 0.5 – 2.0 | Controls the base size of each particle. Higher values produce larger shapes. |
+| Count | Integer Range | 2..10 | 2..30 particles | The random range for how many particles are spawned per hit. A value is picked randomly within this range on each attack. |
+| RandomParticleRotation | Toggle | true | — | When enabled, each particle is assigned a random initial rotation angle. When disabled, all particles face the same fixed direction. |
+| Physical → Motion | Decimal | 15.0 | 1.0 – 30.0 | Multiplier applied to horizontal velocity when particles move. Higher values make particles shoot out faster and travel further. |
+| Physical → BounceX | Decimal | 0.8 | 0.0 – 1.0 | Fraction of horizontal (X-axis) velocity retained after bouncing off a block face. 1.0 means a perfect elastic bounce; 0.0 stops the particle dead. |
+| Physical → BounceY | Decimal | 0.6 | 0.0 – 1.0 | Fraction of vertical (Y-axis) velocity retained after bouncing off a floor or ceiling. |
+| Physical → BounceZ | Decimal | 0.8 | 0.0 – 1.0 | Fraction of horizontal (Z-axis) velocity retained after bouncing off a block face. |
+| Physical → Drag | Decimal | 0.99 | 0.0 – 1.0 | Velocity multiplier applied to horizontal movement on each tick after a ground collision. Values below 1.0 cause particles to slow down as they slide. |
+| Physical → GravityFactor | Decimal | 0.8 | 0.0 – 1.0 | Controls how strongly gravity pulls particles downward each tick. 0.0 makes particles float; 1.0 applies maximum gravitational pull. |
+| Color | Color | — | — | Tint colour applied to all spawned particles. The colour's alpha channel also controls opacity. |
+| Particle | Multi-Select | Star | Orbiz, Star, Dollar, Crown, Heart, Lightning, Line, Point, Rhombus, Snowflake, Spark | One or more particle shapes to use. When multiple shapes are selected, each spawned particle picks one at random from your selection. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleParticles.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleParticles.kt)*

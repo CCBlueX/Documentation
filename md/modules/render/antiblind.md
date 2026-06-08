@@ -1,27 +1,20 @@
 ## AntiBlind
 
-Protects you from potentially annoying screen effects that obscure your view.
+AntiBlind cleans up your screen by hiding the visual effects and overlays that can get in the way during gameplay — things like the blindness and darkness effects, the nausea (portal) wobble, the pumpkin blur when wearing a carved pumpkin, fog from liquids and powder snow, and full-screen overlays from portals or clipping into walls. Many of these are blocked by default, so the moment you enable the module your view becomes a lot clearer.
 
-**Category:** Render  
-**Enabled by default:** No  
+The **DoRender** setting works as a "keep visible" list: every entry you leave enabled stays rendered as normal, while anything you remove from the list gets hidden. To block an annoying effect, take it off the list; to bring something back, add it again. By default the list keeps useful visuals (armor, sign text, boss bars, map contents, and similar) while leaving the disorienting effects switched off. If you want permanent map-wide brightness instead, pair this with [FullBright](/docs/modules/render/fullbright).
+
+**FireOpacity** controls how see-through the fire overlay is when you catch fire. Lower values fade the flames out of your view so they don't block your screen, while 100% leaves them fully visible.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── DoRender (Multi-Select | default: [Armor, MobInSpawner, EnchantTableBook, EatParticles, BlockBreakParticles, BlockBreakOverlay, Title, MapContents, MapMarkers, FallingBlocks, BeaconBeams, SkylightUpdates, GuiBackground, SpyglassOverlay, SignText, InvisibleEntities, BossBars, ExplosionParticles, WorldBorder] | options: Blinding, Darkness, Nausea, Armor, MobInSpawner, EnchantTableBook, EatParticles, BlockBreakParticles, BlockBreakOverlay, Title, PumpkinBlur, LiquidsFog, PowderSnowFog, FloatingItems, MapContents, MapMarkers, PortalOverlay, WallOverlay, FallingBlocks, BeaconBeams, SkylightUpdates, GuiBackground, SpyglassOverlay, SignText, InvisibleEntities, BossBars, ExplosionParticles, WorldBorder)
-└── FireOpacity (Integer | default: 100 | range: 0..100 | %)
-```
-
-### Settings Details
-
-- **DoRender** (Multi-Select) — default: `Armor`, `MobInSpawner`, `EnchantTableBook`, `EatParticles`, `BlockBreakParticles`, `BlockBreakOverlay`, `Title`, `MapContents`, `MapMarkers`, `FallingBlocks`, `BeaconBeams`, `SkylightUpdates`, `GuiBackground`, `SpyglassOverlay`, `SignText`, `InvisibleEntities`, `BossBars`, `ExplosionParticles`, `WorldBorder`; options: `Blinding`, `Darkness`, `Nausea`, `Armor`, `MobInSpawner`, `EnchantTableBook`, `EatParticles`, `BlockBreakParticles`, `BlockBreakOverlay`, `Title`, `PumpkinBlur`, `LiquidsFog`, `PowderSnowFog`, `FloatingItems`, `MapContents`, `MapMarkers`, `PortalOverlay`, `WallOverlay`, `FallingBlocks`, `BeaconBeams`, `SkylightUpdates`, `GuiBackground`, `SpyglassOverlay`, `SignText`, `InvisibleEntities`, `BossBars`, `ExplosionParticles`, `WorldBorder` — Selects which visual effects to keep rendering when the module is active.
-- **FireOpacity** (Integer) — default: `100`; range: `0` – `100`; unit: % — Adjusts the opacity of the on-screen fire overlay.
-
-### Screenshots
-
-*Screenshots for AntiBlind will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| DoRender | Multi-Select | Armor, MobInSpawner, EnchantTableBook, EatParticles, BlockBreakParticles, BlockBreakOverlay, Title, MapContents, MapMarkers, FallingBlocks, BeaconBeams, SkylightUpdates, GuiBackground, SpyglassOverlay, SignText, InvisibleEntities, BossBars, ExplosionParticles | Blinding, Darkness, Nausea, Armor, MobInSpawner, EnchantTableBook, EatParticles, BlockBreakParticles, BlockBreakOverlay, Title, PumpkinBlur, LiquidsFog, PowderSnowFog, FloatingItems, MapContents, MapMarkers, PortalOverlay, WallOverlay, FallingBlocks, BeaconBeams, SkylightUpdates, GuiBackground, SpyglassOverlay, SignText, InvisibleEntities, BossBars, ExplosionParticles, WorldBorder | Choose which effects and overlays stay visible. Anything left enabled renders normally; anything removed is hidden. |
+| FireOpacity | Integer | 20% | 0–100% | How visible the fire overlay is when you're burning. Lower values fade the flames so they obscure less of your screen. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleAntiBlind.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAntiBlind.kt)*

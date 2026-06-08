@@ -1,29 +1,21 @@
 ## XRay
 
-Only renders selected blocks.
+XRay hides every block in the world except the ones on your allow-list, letting you see ores, chests, and other valuable blocks straight through solid terrain. It is one of the most effective tools for locating resources quickly, especially when caving or strip-mining in the deep-slate layer where diamond and ancient debris are found.
 
-**Category:** Render  
-**Enabled by default:** No  
+By default, the block list already includes all overworld and Nether ores (including their deepslate variants), every storage block (chests, shulker boxes, hoppers, etc.), liquids, portals, and a range of utility blocks. You can customise this list at any time using the in-game `/xray` command — add or remove individual blocks to tune exactly what gets shown. Enabling [FullBright](/docs/modules/render/fullbright) behaviour is built in so your targets are always clearly lit, and the optional **ExposedOnly** filter narrows the view further to blocks that have at least one non-solid neighbour, cutting down visual noise in densely packed ore clusters.
+
+If you want highlights rather than hiding everything else, consider pairing XRay with [BlockESP](/docs/modules/render/blockesp), which draws outlines around specific blocks without affecting normal world rendering.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── FullBright (Toggle | default: true)
-├── ExposedOnly (Toggle | default: false)
-└── Blocks (Registry List)
-```
-
-### Settings Details
-
-- **FullBright** (Toggle) — default: `true` — Applies full brightness to XRay blocks seen through walls.
-- **ExposedOnly** (Toggle) — default: `false` — Only renders blocks that have at least one non-solid neighbor.
-- **Blocks** (Registry List) — Defines which blocks remain visible through XRay.
-
-### Screenshots
-
-*Screenshots for XRay will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| FullBright | Toggle | true | — | Renders all visible blocks at full brightness so highlighted targets are never obscured by darkness. |
+| ExposedOnly | Toggle | false | — | When enabled, only shows blocks that are exposed to at least one non-solid neighbouring block, reducing clutter from fully buried blocks. |
+| Blocks | Registry List | — | — | The list of blocks that XRay will render. All other blocks are hidden. Pre-populated with ores, storage blocks, liquids, portals, and other notable blocks; fully customisable. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleXRay.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleXRay.kt)*

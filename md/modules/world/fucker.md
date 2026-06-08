@@ -1,203 +1,39 @@
 ## Fucker
 
-Destroys or interacts with selected blocks around you.
+Fucker automatically destroys (or right-click *uses*) specific blocks near you. Its most common job is breaking enemy **beds** in Bedwars-style games, but it also targets things like dragon eggs out of the box — and you can point it at any block type you like. When enabled, it scans for valid targets within reach, turns toward the closest one, and starts breaking it without you having to aim or click.
 
-**Category:** World  
-**Enabled by default:** No  
+It can reach targets you can see directly, and — depending on your settings — work toward targets that are walled off by clearing a path or punching an opening first. It plays nicely with related tools: when [PacketMine](/docs/modules/world/packetmine) is running it hands off the actual mining, it uses [AutoTool](/docs/modules/world/autotool)'s slots to judge mining speed, and it pauses while [Blink](/docs/modules/player/blink) is active.
+
+To keep you from wrecking your own bed, the **SelfBed** option offers several ways to recognize and skip it. You can also let Fucker's aiming take priority over [KillAura](/docs/modules/combat/killaura) so it stays focused on breaking instead of fighting.
+
+**Category:** World
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Range (Decimal | default: 5.0 | range: 1.0..6.0)
-├── WallRange (Decimal | default: 0.0 | range: 0.0..6.0)
-├── Entrance (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   └── BreakFree (Toggle | default: true)
-├── Surroundings (Toggle | default: true)
-├── Targets (Registry List)
-├── Delay (Integer | default: 0 | range: 0..20 | ticks)
-├── Action (Choice | default: DESTROY | options: Destroy, Use)
-├── ForceImmediateBreak (Toggle | default: false)
-├── IgnoreOpenInventory (Toggle | default: true)
-├── IgnoreUsingItem (Toggle | default: true)
-├── PrioritizeOverKillAura (Toggle | default: false)
-├── SelfBed (Mode Selector | default: None | modes: None, Color, SpawnLocation, Manual)
-│   ├── [Mode: Color]
-│   │   └── Slots (Multi-Select | default: [Head] | options: Feet, Legs, Chest, Head)
-│   ├── [Mode: SpawnLocation]
-│   │   └── BedDistance (Decimal | default: 24.0 | range: 16.0..48.0)
-│   └── [Mode: Manual]
-│       ├── Track (Key)
-│       └── Untrack (Key)
-├── Rotations (Setting Group)
-│   ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │   ├── [Mode: Linear]
-│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   ├── [Mode: Sigmoid]
-│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   └── [Mode: Acceleration]
-│   │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │       │   ├── Enabled (Toggle | default: false)
-│   │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       ├── AccelerationError (Toggleable Group | default: on)
-│   │       │   ├── Enabled (Toggle | default: true)
-│   │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       ├── ConstantError (Toggleable Group | default: on)
-│   │       │   ├── Enabled (Toggle | default: true)
-│   │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │           ├── Enabled (Toggle | default: false)
-│   │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-└── TargetRendering (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    ├── Clump (Toggle | default: true)
-    ├── StartSize (Decimal | default: 1.0 | range: 0.0..2.0)
-    ├── StartCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── EndSize (Decimal | default: 0.8 | range: 0.0..2.0)
-    ├── EndCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── FadeInCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── FadeOutCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── InTime (Integer | default: 500 | range: 0..5000 | ms)
-    ├── OutTime (Integer | default: 500 | range: 0..5000 | ms)
-    ├── Color (Color)
-    └── OutlineColor (Color)
-```
-
-### Settings Details
-
-- **Range** (Decimal) — default: `5.0`; range: `1.0` – `6.0`
-- **WallRange** (Decimal) — default: `0.0`; range: `0.0` – `6.0`
-#### Entrance
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **BreakFree** (Toggle) — default: `true`
-
-- **Surroundings** (Toggle) — default: `true`
-- **Targets** (Registry List)
-- **Delay** (Integer) — default: `0`; range: `0` – `20`; unit: ticks
-- **Action** (Choice) — default: `DESTROY`; options: `Destroy`, `Use`
-- **ForceImmediateBreak** (Toggle) — default: `false`
-- **IgnoreOpenInventory** (Toggle) — default: `true`
-- **IgnoreUsingItem** (Toggle) — default: `true`
-- **PrioritizeOverKillAura** (Toggle) — default: `false`
-#### SelfBed
-
-Select a mode for this feature. Available modes: **None**, **Color**, **SpawnLocation**, **Manual**. Default: **None**.
-
-##### Mode: Color
-
-- **Slots** (Multi-Select) — default: `Head`; options: `Feet`, `Legs`, `Chest`, `Head`
-
-##### Mode: SpawnLocation
-
-- **BedDistance** (Decimal) — default: `24.0`; range: `16.0` – `48.0`
-
-##### Mode: Manual
-
-- **Track** (Key)
-- **Untrack** (Key)
-
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-#### TargetRendering
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Clump** (Toggle) — default: `true`
-- **StartSize** (Decimal) — default: `1.0`; range: `0.0` – `2.0`
-- **StartCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **EndSize** (Decimal) — default: `0.8`; range: `0.0` – `2.0`
-- **EndCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **FadeInCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **FadeOutCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **InTime** (Integer) — default: `500`; range: `0` – `5000`; unit: ms
-- **OutTime** (Integer) — default: `500`; range: `0` – `5000`; unit: ms
-- **Color** (Color)
-- **OutlineColor** (Color)
-
-
-### Screenshots
-
-*Screenshots for Fucker will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Range | Decimal | 4.0 | 1.0–6.0 | How far (in blocks) Fucker will reach to find and break a target you can see. |
+| WallRange | Decimal | 0.0 | 0.0–6.0 | Maximum distance for targets you have no direct line of sight to. Left at 0, the module won't break blocks it can't see. Capped to Range. |
+| Entrance | Toggleable Group | On | — | Treats a target as reachable if it has any open (air) side, even one you can't see, and breaks it as if it were in plain view. Handy on servers like Hypixel and CubeCraft. |
+| Entrance → BreakFree | Toggle | true | — | If the target has no opening, breaks the weakest neighboring block first to create one. |
+| Surroundings | Toggle | false | — | Allows breaking blocks that stand in the way in order to clear a path to a hidden target. |
+| Targets | Registry List | — | — | The blocks Fucker will break or use. Defaults to all beds and dragon eggs. |
+| Delay | Integer | 1 | 0–20 (ticks) | Ticks to wait when switching between targets or after a use action. Higher values slow it down. |
+| Action | Choice | Destroy | Destroy, Use | Whether to break the target (Destroy) or right-click interact with it (Use). |
+| ForceImmediateBreak | Toggle | false | — | Tries to break the block in a single tick where possible, instead of the normal gradual mining process. |
+| IgnoreOpenInventory | Toggle | false | — | Keeps working even while a chest or other inventory screen is open. |
+| IgnoreUsingItem | Toggle | true | — | Keeps working while you're using an item (eating, drinking, drawing a bow, etc.). |
+| PrioritizeOverKillAura | Toggle | true | — | Gives Fucker's aiming priority over [KillAura](/docs/modules/combat/killaura), so it focuses on breaking rather than attacking. |
+| ChestAsFullBlock | Toggle | false | — | Treats chests as a full cube when working out reach and pathing, useful when a chest sits right against the target. |
+| SelfBed | Mode Selector | SpawnLocation | None, Color, SpawnLocation, Manual | How your own bed is recognized so it gets left alone. None disables protection, Color matches by armor color, SpawnLocation uses your spawn point, Manual lets you mark beds yourself. |
+| SelfBed → [Color] → Slots | Multi-Select | Head | Feet, Legs, Chest, Head | Which armor slots to read the team color from when identifying your bed. |
+| SelfBed → [Color] → Loose | Toggle | false | — | Uses looser color matching when deciding which bed is yours. |
+| SelfBed → [SpawnLocation] → BedDistance | Decimal | 24.0 | 16.0–48.0 | Maximum distance from your spawn point for a bed to count as yours. |
+| SelfBed → [Manual] → Track | Key | — | — | Key to manually mark a bed as your own. |
+| SelfBed → [Manual] → Untrack | Key | — | — | Key to remove a manual mark from a bed. |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| TargetRendering | Toggleable Group | On | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleFucker.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/fucker/ModuleFucker.kt)*

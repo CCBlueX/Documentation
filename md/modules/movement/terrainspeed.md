@@ -1,94 +1,33 @@
 ## TerrainSpeed
 
-Allows you to move faster on specific surfaces.
+TerrainSpeed bundles movement improvements for three specific surfaces — ladders/vines, ice, and water — into a single module. Each sub-system can be toggled independently, so you can enable only the surfaces that are relevant to your situation without affecting the others.
 
-**Category:** Movement  
-**Enabled by default:** No  
+**FastClimb** makes you ascend ladders and vines faster. The *Motion* mode applies a configurable upward velocity each tick while you're pressed against a climbable block, giving you a smooth boost that can be tuned to avoid anti-cheat flags. The *Clip* mode instead instantly teleports you to the top of the climbable section the moment you press forward — much faster, but more likely to be detected on protected servers. **IceSpeed** overrides the slipperiness of all ice variants (regular, packed, blue, and frosted), letting you control how quickly you accelerate and decelerate. Enabling its **Motion** sub-option also multiplies your horizontal momentum each tick you're on ice, so you start gliding at full pace right away.
+
+**WaterSpeed** replaces your default swim velocity while submerged. **AutoSwim** keeps the swim-up input held automatically so you stay near the water's surface without needing to hold Jump. **BaseSpeed** sets your horizontal and vertical velocities for normal swimming, while **SprintSpeed** (active when you hold Sprint) lets you set a separate, typically higher pair of values for sprinting through water.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── FastClimb (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Mode (Mode Selector | default: Motion | modes: Motion, Clip)
-│       ├── [Mode: Motion]
-│       │   └── Motion (Decimal | default: 0.2872 | range: 0.1..0.5)
-├── IceSpeed (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Slipperiness (Decimal | default: 0.6 | range: 0.3..1.0)
-│   └── Motion (Toggleable Group | default: off)
-│       ├── Enabled (Toggle | default: false)
-│       └── Motion (Decimal | default: 0.5 | range: 0.2..1.5)
-└── WaterSpeed (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    ├── AutoSwim (Toggle | default: true)
-    ├── BaseSpeed (Setting Group)
-    │   ├── Horizontal (Decimal | default: 0.44 | range: 0.1..10.0)
-    │   └── Vertical (Decimal | default: 0.44 | range: 0.1..10.0)
-    └── SprintSpeed (Toggleable Group | default: on)
-        ├── Enabled (Toggle | default: true)
-        ├── Horizontal (Decimal | default: 1.0 | range: 0.1..10.0)
-        └── Vertical (Decimal | default: 1.0 | range: 0.1..10.0)
-```
-
-### Settings Details
-
-#### FastClimb
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles the fast climb feature.
-##### Mode
-
-Select a mode for this feature. Available modes: **Motion**, **Clip**. Default: **Motion**.
-
-###### Mode: Motion
-
-- **Motion** (Decimal) — default: `0.2872`; range: `0.1` – `0.5` — Upward climb speed applied when on a ladder with horizontal collision.
-
-
-#### IceSpeed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles the ice speed feature.
-- **Slipperiness** (Decimal) — default: `0.6`; range: `0.3` – `1.0` — Overrides the slipperiness value for ice blocks.
-##### Motion
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Toggles the additional horizontal motion multiplier on ice.
-- **Motion** (Decimal) — default: `0.5`; range: `0.2` – `1.5` — Horizontal motion multiplier applied when moving on ice.
-
-
-#### WaterSpeed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles the water speed feature.
-- **AutoSwim** (Toggle) — default: `true` — Automatically holds jump to swim upward when in water.
-##### BaseSpeed
-
-A group of related settings.
-
-- **Horizontal** (Decimal) — default: `0.44`; range: `0.1` – `10.0` — Base horizontal speed in water.
-- **Vertical** (Decimal) — default: `0.44`; range: `0.1` – `10.0` — Base vertical speed in water.
-
-##### SprintSpeed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles faster speed when sprinting in water.
-- **Horizontal** (Decimal) — default: `1.0`; range: `0.1` – `10.0` — Horizontal speed when sprinting in water.
-- **Vertical** (Decimal) — default: `1.0`; range: `0.1` – `10.0` — Vertical speed when sprinting in water.
-
-
-
-### Screenshots
-
-*Screenshots for TerrainSpeed will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| FastClimb | Toggleable Group | off | — | Climb ladders and vines faster. Enable to activate the sub-settings below. |
+| FastClimb → Mode | Mode Selector | Motion | — | Climbing algorithm: *Motion* applies a per-tick upward velocity (more anti-cheat friendly); *Clip* teleports you to the top of the climbable section instantly. |
+| FastClimb → Mode → [Motion] → Motion | Decimal | 0.2872 | 0.1 – 0.5 | Upward velocity applied each tick while on a climbable block. Higher values climb faster. |
+| IceSpeed | Toggleable Group | on | — | Modifies movement on ice blocks. Enable to activate the sub-settings below. |
+| IceSpeed → Slipperiness | Decimal | 0.57 | 0.3 – 1.0 | Overrides the slipperiness of ice blocks. Lower values reduce sliding and let you control direction more easily. |
+| IceSpeed → Motion | Toggleable Group | off | — | When enabled, multiplies your horizontal momentum each tick you are on ice, boosting your glide speed. |
+| IceSpeed → Motion → Motion | Decimal | 0.5 | 0.2 – 1.5 | Horizontal momentum multiplier applied per tick on ice. |
+| WaterSpeed | Toggleable Group | on | — | Overrides your swim velocity while submerged. Enable to activate the sub-settings below. |
+| WaterSpeed → AutoSwim | Toggle | true | — | Automatically holds the swim-up input while in water so you stay near the surface without pressing Jump. |
+| WaterSpeed → BaseSpeed | Setting Group | — | — | Swim speed used during normal (non-sprint) movement in water. |
+| WaterSpeed → BaseSpeed → Horizontal | Decimal | 0.44 | 0.1 – 10.0 | Horizontal swim speed while not sprinting. |
+| WaterSpeed → BaseSpeed → Vertical | Decimal | 0.44 | 0.1 – 10.0 | Vertical swim speed (Jump to rise, Sneak to sink) while not sprinting. |
+| WaterSpeed → SprintSpeed | Toggleable Group | on | — | When enabled, uses a separate set of speeds while Sprint is held in water. |
+| WaterSpeed → SprintSpeed → Horizontal | Decimal | 1.0 | 0.1 – 10.0 | Horizontal swim speed while sprinting. |
+| WaterSpeed → SprintSpeed → Vertical | Decimal | 1.0 | 0.1 – 10.0 | Vertical swim speed while sprinting. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2Fterrainspeed%2FModuleTerrainSpeed.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/terrainspeed/ModuleTerrainSpeed.kt)*

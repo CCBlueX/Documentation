@@ -1,34 +1,18 @@
 ## FullBright
 
-Makes the world a brighter place.
+FullBright removes the darkness from the game world, letting you see clearly in caves, dungeons, deep water, and at night without torches, potions, or other light sources. It's handy for exploring, mining, and spotting players or mobs hiding in the shadows.
 
-**Category:** Render  
-**Enabled by default:** No  
+You can choose how the brightness is applied with the **Mode** setting. **Gamma** smoothly raises the in-game brightness slider beyond its normal limit, giving a flat, evenly-lit look. **NightVision** instead applies the Night Vision effect, which brightens everything while keeping the game's natural color tint and a more vanilla feel. Pick whichever look you prefer.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Mode (Mode Selector | default: Gamma | modes: Gamma, NightVision)
-    ├── [Mode: Gamma]
-    │   └── Brightness (Integer | default: 15 | range: 1..15)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **Gamma**, **NightVision**. Default: **Gamma**.
-
-##### Mode: Gamma
-
-- **Brightness** (Integer) — default: `15`; range: `1` – `15` — Target gamma brightness level.
-
-
-### Screenshots
-
-*Screenshots for FullBright will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | Gamma | Gamma, NightVision | Chooses how the world is brightened. |
+| Mode → Gamma → Brightness | Integer | 15 | 1..15 | How bright the world becomes when using Gamma mode; higher values mean a brighter view. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleFullBright.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleFullBright.kt)*

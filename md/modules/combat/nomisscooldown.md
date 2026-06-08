@@ -1,27 +1,20 @@
 ## NoMissCooldown
 
-Disables 1.8 hit cooldown or cancels missed attacks entirely.
+NoMissCooldown gives you finer control over what happens when you swing and miss an attack in Minecraft 1.9+ combat. Normally, missing a hit triggers a brief cooldown before you can deal full damage again — this module lets you suppress that penalty or stop the swing packet from being sent in the first place.
 
-**Category:** Combat  
-**Enabled by default:** No  
+The two settings work independently and can be combined. **Remove Attack Cooldown** prevents the miss from resetting your attack cooldown timer, so your weapon stays at full charge and you can immediately land a full-damage hit on your next swing. **Cancel Attack On Miss** takes a different approach: instead of ignoring the cooldown penalty, it suppresses the attack packet entirely when no target is hit, meaning the server never sees the wasted swing at all. This can be useful for reducing detection surface on servers that flag excessive miss rates.
+
+Both options are most effective alongside modules that help you land hits reliably, such as [KillAura](/docs/modules/combat/killaura), [Reach](/docs/modules/player/reach), or [Criticals](/docs/modules/combat/criticals).
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── RemoveAttackCooldown (Toggle | default: true)
-└── CancelAttackOnMiss (Toggle | default: false)
-```
-
-### Settings Details
-
-- **RemoveAttackCooldown** (Toggle) — default: `true` — Removes the 10-tick cooldown penalty applied when you miss an attack.
-- **CancelAttackOnMiss** (Toggle) — default: `false` — Cancels the attack entirely when it would miss, preventing the cooldown from triggering.
-
-### Screenshots
-
-*Screenshots for NoMissCooldown will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| RemoveAttackCooldown | Toggle | false | — | When enabled, missing an attack does not trigger the 10-tick attack cooldown reset, keeping your weapon at full charge. |
+| CancelAttackOnMiss | Toggle | true | — | When enabled, swings that do not connect with a target are cancelled entirely and not sent to the server. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleNoMissCooldown.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleNoMissCooldown.kt)*

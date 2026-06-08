@@ -1,136 +1,23 @@
 ## ProjectilePuncher
 
-Shoots back incoming projectiles around you.
+ProjectilePuncher automatically deflects dangerous incoming projectiles — specifically ghast fireballs and shulker bullets — by punching them back before they can hit you. When one of these projectiles is detected within range and heading in your direction, the module aims at it and attacks, sending it back the way it came.
 
-**Category:** World  
-**Enabled by default:** No  
+The module only targets projectiles that are actually on a collision course with you, so it won't waste clicks on fireballs flying past harmlessly. Aim corrections are handled smoothly through the [Shared: Rotations](/docs/modules/shared-settings/rotations) system, and click timing is controlled by the [Shared: Clicker](/docs/modules/shared-settings/clicker) group, letting you tune the attack rate to suit your needs or bypass anti-cheat checks.
+
+This module pairs well with [CrystalAura](/docs/modules/combat/crystalaura) and other combat modules when fighting in the Nether or End where ghasts and shulkers are common threats.
+
+**Category:** World
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Clicker (Setting Group)
-│   ├── CPS (Integer Range | default: 5..8 | range: 1..60 | clicks)
-│   ├── Technique (Choice | default: STABILIZED | options: Stabilized, Efficient, Spamming, DoubleClick, Drag, Butterfly, NormalDistribution)
-│   └── AttackCooldown (Toggle | default: true)
-├── Range (Decimal | default: 3.0 | range: 3.0..6.0)
-├── SwingMode (Choice | default: DO_NOT_HIDE | options: DoNotHide, HideForBoth, HideForClient, HideForServer)
-├── IgnoreOpenInventory (Toggle | default: true)
-└── Rotations (Setting Group)
-    ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-    │   ├── [Mode: Linear]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   ├── [Mode: Sigmoid]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    │   └── [Mode: Acceleration]
-    │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── DynamicAccel (Toggleable Group | default: off)
-    │       │   ├── Enabled (Toggle | default: false)
-    │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-    │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       ├── AccelerationError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       ├── ConstantError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       └── SigmoidDeceleration (Toggleable Group | default: off)
-    │           ├── Enabled (Toggle | default: false)
-    │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-    ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-    └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-```
-
-### Settings Details
-
-#### Clicker
-
-A group of related settings.
-
-- **CPS** (Integer Range) — default: `5` – `8`; range: `1` – `60`; unit: clicks
-- **Technique** (Choice) — default: `STABILIZED`; options: `Stabilized`, `Efficient`, `Spamming`, `DoubleClick`, `Drag`, `Butterfly`, `NormalDistribution`
-- **AttackCooldown** (Toggle) — default: `true`
-
-- **Range** (Decimal) — default: `3.0`; range: `3.0` – `6.0`
-- **SwingMode** (Choice) — default: `DO_NOT_HIDE`; options: `DoNotHide`, `HideForBoth`, `HideForClient`, `HideForServer`
-- **IgnoreOpenInventory** (Toggle) — default: `true`
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-### Screenshots
-
-*Screenshots for ProjectilePuncher will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Range | Decimal | 3.0 | 3.0..6.0 | Maximum distance (in blocks) at which incoming projectiles will be targeted and punched. |
+| SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Controls how the arm swing animation is shown when attacking a projectile. |
+| IgnoreOpenInventory | Toggle | true | — | When enabled, the module will still aim and attack projectiles even if you have an inventory screen open. |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleProjectilePuncher.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleProjectilePuncher.kt)*

@@ -1,216 +1,40 @@
 ## AutoFarm
 
-Automatically farms crops.
+AutoFarm does the tedious work of harvesting and replanting for you. When enabled, it scans nearby blocks for fully grown crops — wheat, carrots, potatoes, beetroot, nether wart, cocoa, melons, pumpkins, sugar cane, cactus, bamboo, kelp and sweet berries — aims at them, and harvests each one automatically. It also replants seeds on empty farmland and soul sand, and can apply bone meal to speed crops along, so a field can keep producing with little input from you.
 
-**Category:** World  
-**Enabled by default:** No  
+It works best when you stand within reach of your crops, but it can also walk between targets and pick up dropped produce when the AutoWalk group is turned on. You can cap things so it stops once your inventory fills up, and there are built-in visuals that highlight ready, plantable and currently targeted blocks so you can see exactly what it's doing.
+
+Note that AutoFarm pauses while you have a container open (like a chest or your inventory) and while [Blink](/docs/modules/player/blink) is active, so it won't interfere with those.
+
+**Category:** World
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Range (Decimal | default: 5.0 | range: 1.0..6.0)
-├── WallRange (Decimal | default: 0.0 | range: 0.0..6.0)
-├── InteractDelay (Integer Range | default: 2..3 | range: 1..15 | ticks)
-├── DisableOnFullInventory (Toggle | default: false)
-├── UseFortune (Toggle | default: true)
-├── AutoWalk (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── Auto (Multi-Select | default: [Jump, Swim, Sprint] | options: Jump, Swim, Sprint)
-│   ├── MinimumDistance (Decimal | default: 2.0 | range: 1.0..4.0)
-│   ├── ToPlant (Toggle | default: true)
-│   └── ToItems (Toggleable Group | default: on)
-│       ├── Enabled (Toggle | default: true)
-│       ├── Range (Decimal | default: 20.0 | range: 8.0..64.0)
-│       ├── Items (Registry List)
-│       └── Filter (Choice | default: BLACKLIST | options: Whitelist, Blacklist)
-├── AutoPlant (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── SwapBackDelay (Integer Range | default: 1..2 | range: 1..20 | ticks)
-├── AutoUseBoneMeal (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── UseDelay (Integer Range | default: 20..200 | range: 0..20000 | ms)
-│   └── SwapBackDelay (Integer Range | default: 1..2 | range: 1..20 | ticks)
-├── Visualize (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Path (Toggleable Group | default: on)
-│   │   ├── Enabled (Toggle | default: true)
-│   │   └── PathColor (Color)
-│   └── Blocks (Toggleable Group | default: on)
-│       ├── Enabled (Toggle | default: true)
-│       ├── Outline (Toggle | default: true)
-│       ├── ReadyColor (Color)
-│       ├── PlaceColor (Color)
-│       ├── Range (Integer | default: 50 | range: 10..128)
-│       ├── Rainbow (Toggle | default: false)
-│       └── PlaceTargets (Multi-Select | default: [Farmland, SoulSand, JungleLogs] | options: Farmland, SoulSand, JungleLogs)
-└── Rotations (Setting Group)
-    ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-    │   ├── [Mode: Linear]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   ├── [Mode: Sigmoid]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    │   └── [Mode: Acceleration]
-    │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── DynamicAccel (Toggleable Group | default: off)
-    │       │   ├── Enabled (Toggle | default: false)
-    │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-    │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       ├── AccelerationError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       ├── ConstantError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       └── SigmoidDeceleration (Toggleable Group | default: off)
-    │           ├── Enabled (Toggle | default: false)
-    │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-    ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-    └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-```
-
-### Settings Details
-
-- **Range** (Decimal) — default: `5.0`; range: `1.0` – `6.0`
-- **WallRange** (Decimal) — default: `0.0`; range: `0.0` – `6.0`
-- **InteractDelay** (Integer Range) — default: `2` – `3`; range: `1` – `15`; unit: ticks
-- **DisableOnFullInventory** (Toggle) — default: `false`
-- **UseFortune** (Toggle) — default: `true`
-#### AutoWalk
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Auto** (Multi-Select) — default: `Jump`, `Swim`, `Sprint`; options: `Jump`, `Swim`, `Sprint`
-- **MinimumDistance** (Decimal) — default: `2.0`; range: `1.0` – `4.0`
-- **ToPlant** (Toggle) — default: `true`
-##### ToItems
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Range** (Decimal) — default: `20.0`; range: `8.0` – `64.0`
-- **Items** (Registry List)
-- **Filter** (Choice) — default: `BLACKLIST`; options: `Whitelist`, `Blacklist`
-
-
-#### AutoPlant
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **SwapBackDelay** (Integer Range) — default: `1` – `2`; range: `1` – `20`; unit: ticks
-
-#### AutoUseBoneMeal
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **UseDelay** (Integer Range) — default: `20` – `200`; range: `0` – `20000`; unit: ms
-- **SwapBackDelay** (Integer Range) — default: `1` – `2`; range: `1` – `20`; unit: ticks
-
-#### Visualize
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Path
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **PathColor** (Color)
-
-##### Blocks
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Outline** (Toggle) — default: `true`
-- **ReadyColor** (Color)
-- **PlaceColor** (Color)
-- **Range** (Integer) — default: `50`; range: `10` – `128`
-- **Rainbow** (Toggle) — default: `false`
-- **PlaceTargets** (Multi-Select) — default: `Farmland`, `SoulSand`, `JungleLogs`; options: `Farmland`, `SoulSand`, `JungleLogs`
-
-
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-### Screenshots
-
-*Screenshots for AutoFarm will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Range | Decimal | 5.0 | 1.0..6.0 | How far away (in blocks) crops can be to be harvested or planted. |
+| WallRange | Decimal | 0.0 | 0.0..6.0 | How far it may reach for targets that are behind walls or otherwise out of direct line of sight. Capped at Range. |
+| InteractDelay | Integer Range | 2..3 | 1..15 | Ticks to wait after each interaction. A random value in this range is picked each time for more natural pacing. |
+| DisableOnFullInventory | Toggle | false | — | Turns AutoFarm off and shows a notification when your inventory has no free space. |
+| UseFortune | Toggle | true | — | Silently switches to a Fortune-enchanted tool before breaking crops to increase drops. |
+| AutoWalk | Toggleable Group | Off | — | See [Shared: AutoWalk](/docs/modules/shared-settings/autowalk). |
+| AutoPlant | Toggleable Group | On | — | Replants seeds, nether wart and cocoa on empty farmland, soul sand and jungle logs. |
+| AutoPlant → SwapBackDelay | Integer Range | 1..2 | 1..20 | Ticks to wait before switching back from the seed slot after planting. |
+| AutoUseBoneMeal | Toggleable Group | Off | — | Applies bone meal from your hotbar or offhand to nearby crops that can still grow. |
+| AutoUseBoneMeal → UseDelay | Integer Range | 20..200 | 0..20000 | Delay (in milliseconds) between bone meal uses, randomized within the range. |
+| AutoUseBoneMeal → SwapBackDelay | Integer Range | 1..2 | 1..20 | Ticks to wait before switching back from the bone meal slot after use. |
+| Visualize | Toggleable Group | On | — | Master toggle for AutoFarm's on-screen highlights. |
+| Visualize → Path | Toggleable Group | On | — | Draws a line to the block AutoWalk is heading toward. |
+| Visualize → Path → PathColor | Color | — | — | Color of the walk path line. |
+| Visualize → Blocks | Toggleable Group | On | — | Highlights tracked crops and plantable spots in the world. |
+| Visualize → Blocks → Outline | Toggle | true | — | Draws an outline around highlighted blocks. |
+| Visualize → Blocks → ReadyColor | Color | — | — | Color used for blocks that are ready to harvest. |
+| Visualize → Blocks → PlaceColor | Color | — | — | Color used for spots where crops can be planted. |
+| Visualize → Blocks → Range | Integer | 50 | 10..128 | How far (in blocks) the highlights are drawn around you. |
+| Visualize → Blocks → Rainbow | Toggle | false | — | Cycles the highlight colors through a rainbow instead of the set colors. |
+| Visualize → Blocks → PlaceTargets | Multi-Select | [Farmland, SoulSand, JungleLogs] | [Farmland, SoulSand, JungleLogs] | Which plantable surfaces to highlight. |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleAutoFarm.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/autofarm/ModuleAutoFarm.kt)*

@@ -1,64 +1,28 @@
 ## TpAura
 
-Automatically teleports and attacks enemies around you.
+TpAura automatically teleports your character to nearby enemies and attacks them, all without physically moving your visible position. When active, the module finds valid targets around you, packet-teleports to their location to land a hit, and then returns you to your original position — making it appear as though you never moved. A wireframe ghost of your actual network position is rendered in-world so you can track where the server thinks you are.
 
-**Category:** Combat  
-**Enabled by default:** No  
+Two movement strategies are available. **AStar** mode uses pathfinding to navigate around obstacles on the way to the target, sending position packets block-by-block along the calculated route. It respects terrain and can optionally teleport you back to your starting point after the attack. **Immediate** mode skips pathfinding entirely and jumps straight to the nearest target in a single sequence of packets, best suited for open environments where nothing stands between you and the enemy.
+
+Because TpAura relies on sending rapid position packets, servers with strong anti-cheat may issue a setback (a server-side correction). When this happens, a chat message will warn you and the teleport is cancelled automatically. Pairing this module with [AntiBot](/docs/modules/misc/antibot) is recommended to avoid wasting attacks on fake players.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── AttackRange (Decimal | default: 4.2 | range: 3.0..5.0)
-├── Clicker (Setting Group)
-│   ├── CPS (Integer Range | default: 5..8 | range: 1..60 | clicks)
-│   ├── Technique (Choice | default: STABILIZED | options: Stabilized, Efficient, Spamming, DoubleClick, Drag, Butterfly, NormalDistribution)
-│   ├── ItemCooldown (Setting Group)
-│   │   └── Minimum (Decimal Range | default: 1.0..1.0 | range: 0.0..2.0)
-│   └── AttackCooldown (Toggle | default: true)
-├── Mode (Mode Selector | default: AStar | modes: AStar, Immediate)
-│   ├── [Mode: AStar]
-│   │   ├── MaximumDistance (Integer | default: 95 | range: 50..250)
-│   │   ├── MaximumCost (Integer | default: 250 | range: 50..500)
-│   │   ├── TickDistance (Integer | default: 3 | range: 1..7)
-│   │   ├── AllowDiagonal (Toggle | default: false)
-│   │   ├── TpBack (Toggle | default: true)
-│   │   └── Stick (Integer | default: 5 | range: 1..10 | ticks)
-└── Target (Setting Group)
-    ├── FOV (Decimal | default: 180.0 | range: 0.0..180.0)
-    ├── HurtTime (Integer | default: 10 | range: 0..10)
-    └── Priority (Multi-Select | default: [Type, HurtTime] | options: Type, Health, Distance, Direction, HurtTime, Age)
-```
-
-### Settings Details
-
-- **AttackRange** (Decimal) — default: `4.2`; range: `3.0` – `5.0` — Maximum distance from the desync position at which enemies can be attacked.
-#### Clicker
-
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
-
-#### Mode
-
-Select a mode for this feature. Available modes: **AStar**, **Immediate**. Default: **AStar**.
-
-##### Mode: AStar
-
-- **MaximumDistance** (Integer) — default: `95`; range: `50` – `250` — Maximum pathfinding distance in blocks to search for a route to the target.
-- **MaximumCost** (Integer) — default: `250`; range: `50` – `500` — Maximum A* path cost before the search is abandoned.
-- **TickDistance** (Integer) — default: `3`; range: `1` – `7` — Number of path nodes to traverse per teleport packet.
-- **AllowDiagonal** (Toggle) — default: `false` — Allows diagonal movement in the A* pathfinding.
-- **TpBack** (Toggle) — default: `true` — Teleports back to the original position after attacking.
-- **Stick** (Integer) — default: `5`; range: `1` – `10`; unit: ticks — Ticks to remain at the target position before teleporting back.
-
-#### Target
-
-> For details on Target settings, see [Shared: Target](/docs/modules/shared-settings/target).
-
-
-### Screenshots
-
-*Screenshots for TpAura will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| AttackRange | Decimal | 4.2 | 3.0–5.0 | Maximum distance from your teleported position at which an enemy can be attacked. |
+| Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Mode | Mode Selector | AStar | AStar, Immediate | Selects the teleportation strategy used to reach targets. |
+| Mode → [AStar] → MaximumDistance | Integer | 95 | 50–250 | Maximum block distance from you within which targets will be considered for pathfinding. |
+| Mode → [AStar] → MaximumCost | Integer | 250 | 50–500 | Maximum pathfinding cost allowed; higher values permit longer or more complex routes. |
+| Mode → [AStar] → TickDistance | Integer | 3 | 1–7 | Number of path blocks to bundle into a single position packet per step, controlling teleport granularity. |
+| Mode → [AStar] → AllowDiagonal | Toggle | false | — | When enabled, the pathfinder may move diagonally between blocks. |
+| Mode → [AStar] → TpBack | Toggle | true | — | When enabled, you are teleported back to your original position after the attack. |
+| Mode → [AStar] → Stick | Integer | 5 | 1–10 (ticks) | How many ticks to remain at the target's location before returning. |
+| Target | Setting Group | — | — | See [Shared: Target](/docs/modules/shared-settings/target). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleTPAura.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/tpaura/ModuleTpAura.kt)*

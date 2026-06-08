@@ -1,25 +1,17 @@
 ## Aspect
 
-Adjust the horizontal stretching.
+Aspect lets you stretch or squash your game view horizontally without touching your in-game FOV. Lowering the ratio narrows everything into a tall, pinched look, while raising it widens the world so it spills out toward the edges of your screen — a quick way to get a fisheye or stretched effect for visibility or just for style.
 
-**Category:** Render  
-**Enabled by default:** No  
+By default the ratio sits at 100%, which is the normal, untouched view. Drag it below 100% to compress the picture inward, or above 100% to stretch it wider. The change applies the moment the module is enabled, so you can dial in the exact amount of distortion you want and see it instantly.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Ratio (Integer | default: 100 | range: 1..300 | %)
-```
-
-### Settings Details
-
-- **Ratio** (Integer) — default: `100`; range: `1` – `300`; unit: % — Horizontal aspect ratio multiplier as a percentage of the default.
-
-### Screenshots
-
-*Screenshots for Aspect will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Ratio | Integer | 100 | 1..300 (%) | How much the view is stretched horizontally. 100% is normal; lower values pinch the view inward and higher values widen it. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleAspect.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAspect.kt)*

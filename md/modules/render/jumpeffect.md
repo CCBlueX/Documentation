@@ -1,37 +1,25 @@
 ## JumpEffect
 
-Shows an effect beneath your feet when jumping.
+JumpEffect renders a glowing gradient ring on the ground beneath your feet each time you jump. The ring expands outward and fades away over a short time, adding a stylish visual flourish to your movement without affecting gameplay in any way.
 
-**Category:** Render  
-**Enabled by default:** No  
+You can fully customise the look of the effect: change the inner and outer ring colours, adjust how large the ring grows, control how long it lingers, and choose an easing curve to shape the expansion animation. The hue shift option lets the colour rotate as the ring plays out, producing a rainbow-like sweep for every jump.
+
+By default the effect always renders on top of blocks — disable **CanBeCovered** to let blocks occlude it for a more grounded look.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── EndRadius (Decimal Range | default: 0.15..0.8 | range: 0.0..3.0)
-├── InnerColor (Color)
-├── OuterColor (Color)
-├── AnimCurve (Choice | default: QUAD_OUT | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-├── HueOffsetAnim (Integer | default: 63 | range: -360..360)
-├── Lifetime (Integer | default: 15 | range: 1..30)
-└── CanBeCovered (Toggle | default: false)
-```
-
-### Settings Details
-
-- **EndRadius** (Decimal Range) — default: `0.15` – `0.8`; range: `0.0` – `3.0` — Inner and outer radius of the circle at full expansion.
-- **InnerColor** (Color) — Color at the center of the jump circle.
-- **OuterColor** (Color) — Color at the outer edge of the jump circle.
-- **AnimCurve** (Choice) — default: `QUAD_OUT`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None` — Easing function for the expansion animation.
-- **HueOffsetAnim** (Integer) — default: `63`; range: `-360` – `360` — Hue shift applied over the animation lifetime.
-- **Lifetime** (Integer) — default: `15`; range: `1` – `30` — Duration in ticks before the circle fades away.
-- **CanBeCovered** (Toggle) — default: `false` — When enabled, the effect can be hidden behind blocks; when disabled it is drawn through walls.
-
-### Screenshots
-
-*Screenshots for JumpEffect will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| EndRadius | Decimal Range | 0.15..0.8 | 0.0..3.0 | The inner-to-outer radius range the ring expands to at the end of its animation. |
+| InnerColor | Color | — | — | Colour at the centre of the gradient ring. |
+| OuterColor | Color | — | — | Colour at the outer edge of the gradient ring. |
+| AnimCurve | Choice | QuadOut | Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None | Easing curve that controls how the ring expands over its lifetime. |
+| HueOffsetAnim | Integer | 63 | -360..360 | How many degrees to shift the hue across the animation. Set to 0 to disable hue animation. |
+| Lifetime | Integer | 15 | 1..30 | How many ticks the ring stays visible before fully fading out. |
+| CanBeCovered | Toggle | false | — | When enabled, blocks in the world can occlude the ring. When disabled, the ring always renders on top of geometry. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleJumpEffect.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleJumpEffect.kt)*

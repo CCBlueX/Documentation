@@ -1,29 +1,21 @@
 ## AutoLeave
 
-Automatically leaves the server whenever your health goes below the certain threshold.
+AutoLeave watches your health and pulls you off the server the moment things get dangerous. As soon as your health drops to or below the configured threshold, the module disconnects you automatically — handy on combat servers where a clutch escape is better than a death and the loot loss that comes with it.
 
-**Category:** Combat  
-**Enabled by default:** No  
+You can fine-tune how aggressively it reacts with the **Delay** setting, and choose *how* you leave with **Mode**: a clean quit, or one of several deliberately malformed actions that force the server to kick you. AutoLeave ignores the threshold in singleplayer, in creative mode, and while you're holding a Totem of Undying, since in those cases you're not at real risk of dying.
+
+Once it triggers and you leave, the module disables itself so it won't keep firing.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Health (Decimal | default: 8.0 | range: 0.0..20.0 | HP)
-├── Delay (Integer Range | default: 0..0 | range: 0..60 | ticks)
-└── Mode (Choice | default: QUIT | options: Quit, InvalidPacket, SelfHurt, IllegalChat, IllegalSwitchitem, IllegalInteract)
-```
-
-### Settings Details
-
-- **Health** (Decimal) — default: `8.0`; range: `0.0` – `20.0`; unit: HP — Health threshold below which you will leave the server.
-- **Delay** (Integer Range) — default: `0` – `0`; range: `0` – `60`; unit: ticks — Number of consecutive ticks the condition must be met before leaving.
-- **Mode** (Choice) — default: `QUIT`; options: `Quit`, `InvalidPacket`, `SelfHurt`, `IllegalChat`, `IllegalSwitchitem`, `IllegalInteract` — Method used to disconnect from the server.
-
-### Screenshots
-
-*Screenshots for AutoLeave will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Health | Decimal | 8.0 | 0.0..20.0 HP | The health threshold that triggers leaving. When your health reaches or falls below this value, AutoLeave activates. |
+| Delay | Integer Range | 0..0 | 0..60 ticks | How long your health must stay at or below the threshold before you actually leave, in ticks. A random value is picked from this range each time, and the timer resets if your health recovers. |
+| Mode | Choice | Quit | Quit, InvalidPacket, SelfHurt, IllegalChat, IllegalSwitchitem, IllegalInteract | How you disconnect. *Quit* leaves the server normally, while the other modes deliberately trigger a server-side kick (via an invalid packet, self-damage, illegal chat, an illegal item switch, or an illegal interaction) so it looks like a connection issue rather than a manual leave. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoLeave.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleAutoLeave.kt)*

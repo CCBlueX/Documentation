@@ -1,27 +1,18 @@
 ## ItemScroller
 
-Quickly moves items in the inventory with the SHIFT and LMB pressed
+ItemScroller lets you quickly move items through your inventory by holding **Shift** and **left-clicking** while scrolling over inventory slots. Instead of individually shift-clicking each slot, you can sweep your cursor across multiple items in one smooth motion to transfer them all rapidly.
 
-**Category:** Misc  
-**Enabled by default:** No  
+This is especially handy when looting chests, sorting your inventory, or quickly moving stacks between containers. The **Delay** setting introduces a small randomised pause between each click action, which helps the behaviour look more natural on servers with anti-cheat detection.
+
+**Category:** Misc
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── ClickMode (Choice | default: QUICK_MOVE | options: QuickMove)
-└── Delay (Integer Range | default: 2..3 | range: 0..20 | ticks)
-```
-
-### Settings Details
-
-- **ClickMode** (Choice) — default: `QUICK_MOVE`; options: `QuickMove`
-- **Delay** (Integer Range) — default: `2` – `3`; range: `0` – `20`; unit: ticks
-
-### Screenshots
-
-*Screenshots for ItemScroller will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| ClickMode | Choice | QuickMove | — | Determines how items are moved when scrolling. `QuickMove` performs a shift-click (quick move) on each slot you hover over. |
+| Delay | Integer Range | 2..3 | 0..20 ticks | A randomised delay between successive scroll-triggered click actions. Higher values add more time between clicks; set to `0..0` for no delay. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleItemScroller.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleItemScroller.kt)*

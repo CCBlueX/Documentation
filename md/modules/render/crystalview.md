@@ -1,31 +1,22 @@
 ## CrystalView
 
-Tweaks how crystal models behave.
+CrystalView lets you change how nearby End Crystals are drawn so they're easier to read at a glance — useful in crystal PvP where stacked or oddly placed crystals can clutter your view. You can shrink the model, reposition it, and tone down or speed up its motion to suit your taste.
 
-**Category:** Render  
-**Enabled by default:** No  
+Lower the **Size** and adjust **YTranslate** to keep crystals from overlapping each other or your aim, and use **SpinSpeed** and **Bounce** to control the spinning and floating animation. This pairs naturally with [CrystalAura](/docs/modules/combat/crystalaura) when you want a cleaner picture of the crystals being placed and broken around you.
+
+This is a purely visual tweak — it changes only how crystals look on your screen and has no effect on hitboxes or gameplay.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Size (Decimal | default: 0.3 | range: 0.1..1.5)
-├── YTranslate (Decimal | default: -0.5 | range: -2.0..2.0)
-├── SpinSpeed (Decimal | default: 0.0 | range: 0.0..5.0)
-└── Bounce (Decimal | default: 0.25 | range: -1.0..1.0)
-```
-
-### Settings Details
-
-- **Size** (Decimal) — default: `0.3`; range: `0.1` – `1.5` — Scale factor for the end crystal model.
-- **YTranslate** (Decimal) — default: `-0.5`; range: `-2.0` – `2.0` — Vertical translation offset for the crystal model.
-- **SpinSpeed** (Decimal) — default: `0.0`; range: `0.0` – `5.0` — Rotation speed of the crystal's outer shell.
-- **Bounce** (Decimal) — default: `0.25`; range: `-1.0` – `1.0` — Amplitude of the crystal's bobbing animation.
-
-### Screenshots
-
-*Screenshots for CrystalView will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Size | Decimal | 0.3 | 0.1..1.5 | Scales the rendered crystal model larger or smaller. |
+| YTranslate | Decimal | -0.5 | -2.0..2.0 | Shifts the crystal up or down from its normal position. |
+| SpinSpeed | Decimal | 0.0 | 0.0..5.0 | Controls how fast the crystal spins; set to 0 to stop it spinning entirely. |
+| Bounce | Decimal | 0.25 | -1.0..1.0 | Adjusts the up-and-down floating motion of the crystal. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleCrystalView.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleCrystalView.kt)*

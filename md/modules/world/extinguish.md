@@ -1,132 +1,23 @@
 ## Extinguish
 
-Automatically extinguishes yourself when on fire.
+Extinguish keeps you from burning to death by automatically placing a water source at your feet the moment you catch fire. As soon as the flames go out, it scoops the water back up so you don't leave a puddle behind or flood the area. This makes it handy on servers where fire, lava splashes, or flint-and-steel traps are common.
 
-**Category:** World  
-**Enabled by default:** No  
+To work, you need a water bucket in your hotbar or offhand (and an empty bucket if you want the water cleaned up afterward). The module aims at the placement spot for you, waits out a short cooldown between uses, and won't act if you already have Fire Resistance. Note that it can't place water in dimensions where water evaporates, such as the Nether.
+
+By default it holds off while you're fighting, so it won't interrupt a clutch moment by swapping to a bucket — turn that off if you'd rather always douse the fire immediately.
+
+**Category:** World
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Cooldown (Decimal | default: 1.0 | range: 0.0..20.0 | s)
-├── NotDuringCombat (Toggle | default: true)
-├── Pickup (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── PickupSpan (Decimal Range | default: 0.1..10.0 | range: 0.0..20.0 | s)
-└── Rotations (Setting Group)
-    ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-    │   ├── [Mode: Linear]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   ├── [Mode: Sigmoid]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    │   └── [Mode: Acceleration]
-    │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── DynamicAccel (Toggleable Group | default: off)
-    │       │   ├── Enabled (Toggle | default: false)
-    │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-    │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       ├── AccelerationError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       ├── ConstantError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       └── SigmoidDeceleration (Toggleable Group | default: off)
-    │           ├── Enabled (Toggle | default: false)
-    │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-    ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-    └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-```
-
-### Settings Details
-
-- **Cooldown** (Decimal) — default: `1.0`; range: `0.0` – `20.0`; unit: s
-- **NotDuringCombat** (Toggle) — default: `true`
-#### Pickup
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **PickupSpan** (Decimal Range) — default: `0.1` – `10.0`; range: `0.0` – `20.0`; unit: s
-
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-### Screenshots
-
-*Screenshots for Extinguish will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Cooldown | Decimal | 1.0s | 0.0–20.0s | Minimum delay between extinguish actions, preventing it from placing water too rapidly. |
+| NotDuringCombat | Toggle | true | — | Stops the module from acting while you are in combat, so it won't interrupt a fight to grab a bucket. |
+| Pickup | Toggleable Group | On | — | After extinguishing, automatically picks the water back up with an empty bucket. |
+| Pickup → PickupSpan | Decimal Range | 0.1–10.0s | 0.0–20.0s | The time window after placement during which the water is eligible to be picked back up. |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleExtinguish.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleExtinguish.kt)*

@@ -1,31 +1,22 @@
 ## HitFX
 
-Hitting a target triggers a special effect.
+HitFX turns a successful hit on another player or mob into a little celebration. Whenever you land an attack, it can spawn particles around your target and play a fun sound effect, so combat feels more rewarding and your hits are easier to register at a glance.
 
-**Category:** Render  
-**Enabled by default:** No  
+You can pick which particles appear (from blood splatters to fire, hearts, water, smoke, magic sparkles, or crit stars) and how many of them burst out per hit. On top of that, HitFX offers two separate sound pools: one for the sounds played when you hit someone, and a personal one that only plays for you. Mix and match the playful built-in sounds to taste — leave a list empty to skip that part of the effect entirely.
+
+This is purely a cosmetic, client-side feature: it changes what you see and hear, not how your attacks behave. It pairs nicely with other visual touches like [DamageParticles](/docs/modules/render/damageparticles) and [Animations](/docs/modules/render/animations).
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Particle (Multi-Select | default: [Fire] | options: Blood, Fire, Heart, Water, Smoke, Magic, Crits)
-├── ParticleAmount (Integer Range | default: 1..1 | range: 1..20)
-├── OtherSound (Multi-Select | default: [Pop] | options: Hit, Orb, Bonk, Boykisser, Bring, Glass, Click, Meow, Moan, MagicSquash, NYA, Pop, Soft, Squash, Tung, UWU)
-└── SelfSound (Multi-Select | default: [Boykisser] | options: Hit, Orb, Bonk, Boykisser, Bring, Glass, Click, Meow, Moan, MagicSquash, NYA, Pop, Soft, Squash, Tung, UWU)
-```
-
-### Settings Details
-
-- **Particle** (Multi-Select) — default: `Fire`; options: `Blood`, `Fire`, `Heart`, `Water`, `Smoke`, `Magic`, `Crits` — Particle effects to spawn on hit.
-- **ParticleAmount** (Integer Range) — default: `1` – `1`; range: `1` – `20` — Number of particles spawned per hit.
-- **OtherSound** (Multi-Select) — default: `Pop`; options: `Hit`, `Orb`, `Bonk`, `Boykisser`, `Bring`, `Glass`, `Click`, `Meow`, `Moan`, `MagicSquash`, `NYA`, `Pop`, `Soft`, `Squash`, `Tung`, `UWU` — Sound played when hitting another entity.
-- **SelfSound** (Multi-Select) — default: `Boykisser`; options: `Hit`, `Orb`, `Bonk`, `Boykisser`, `Bring`, `Glass`, `Click`, `Meow`, `Moan`, `MagicSquash`, `NYA`, `Pop`, `Soft`, `Squash`, `Tung`, `UWU` — Sound played when you are hit.
-
-### Screenshots
-
-*Screenshots for HitFX will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Particle | Multi-Select | [Fire] | Blood, Fire, Heart, Water, Smoke, Magic, Crits | Which particle effects can appear when you hit a target. One is picked at random per particle spawned; leave empty for no particles. |
+| ParticleAmount | Integer Range | 1..1 | 1..20 | How many particles to spawn per hit. A random value within this range is chosen each time. |
+| OtherSound | Multi-Select | [Bonk, Click, Moan, UWU] | Hit, Orb, Bonk, Boykisser, Bring, Glass, Click, Meow, Moan, MagicSquash, NYA, Pop, Soft, Squash, Tung, UWU | Pool of sounds that can play when you hit a target. One sound is chosen at random per hit; leave empty for silence. |
+| SelfSound | Multi-Select | [Boykisser] | Hit, Orb, Bonk, Boykisser, Bring, Glass, Click, Meow, Moan, MagicSquash, NYA, Pop, Soft, Squash, Tung, UWU | Personal pool of sounds played just for you on a hit. One is chosen at random; leave empty for none. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2Fhitfx%2FModuleHitFX.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/hitfx/ModuleHitFX.kt)*

@@ -1,39 +1,19 @@
 ## ElytraSwap
 
-Allows to quickly replace the chestplate with an elytra and vice versa.
+ElytraSwap lets you instantly switch between your chestplate and an elytra with a single action. When you trigger it, the module looks at your hotbar, main inventory, and offhand for the appropriate item and swaps it onto your chest slot for you — no need to open your inventory and drag items around. If your chest slot is empty it equips an elytra; if you're wearing an elytra it puts your chestplate back on; and if you're wearing a chestplate it switches to your elytra.
 
-**Category:** Player  
-**Enabled by default:** No  
+This is handy for situations where you constantly alternate between fighting in full armor and flying with an elytra, letting you change gear in a fraction of a second. The module only picks an elytra that isn't about to break, so it won't equip a worn-out wing.
+
+ElytraSwap performs its swap once and then disables itself automatically, so you simply re-enable it (for example with a bind) each time you want to switch. It also turns itself off when you leave a server.
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Constraints (Setting Group)
-    ├── StartDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-    ├── ClickDelay (Integer Range | default: 2..4 | range: 0..20 | ticks)
-    ├── CloseDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-    ├── MissChance (Integer Range | default: 0..0 | range: 0..100 | %)
-    └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
-```
-
-### Settings Details
-
-#### Constraints
-
-A group of related settings. *Shared setting group — configured identically across modules that use inventory actions.*
-
-- **StartDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **ClickDelay** (Integer Range) — default: `2` – `4`; range: `0` – `20`; unit: ticks
-- **CloseDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **MissChance** (Integer Range) — default: `0` – `0`; range: `0` – `100`; unit: %
-- **Requires** (Multi-Select) — options: `NoMovement`, `NoRotation`, `InventoryOpen`
-
-
-### Screenshots
-
-*Screenshots for ElytraSwap will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleElytraSwap.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleElytraSwap.kt)*

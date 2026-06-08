@@ -1,25 +1,19 @@
 ## MaceKill
 
-Instant kill when using the Mace
+MaceKill dramatically amplifies the Mace's fall-damage mechanic by faking a large fall height at the moment you swing it. In vanilla Minecraft, the Mace deals bonus damage based on how far you've fallen before hitting an enemy — MaceKill spoofs that distance on the server so you deal massive, potentially one-shot damage without needing to actually fall from height.
 
-**Category:** Combat  
-**Enabled by default:** No  
+Enable this module whenever you have a Mace in hand and want to delete targets instantly. It activates automatically when you attack with the Mace; no additional setup is required. Keep in mind this relies on a packet-level exploit and may be detectable or blocked on anti-cheat protected servers.
+
+The **FallHeight** setting controls how many blocks of simulated fall the module tries to fake. The actual height used may be slightly lower if blocks above your head would obstruct the teleport path — MaceKill automatically finds the highest unobstructed height up to your configured value.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── FallHeight (Integer | default: 22 | range: 1..170)
-```
-
-### Settings Details
-
-- **FallHeight** (Integer) — default: `22`; range: `1` – `170` — Spoofed fall height in blocks used to calculate mace smash damage.
-
-### Screenshots
-
-*Screenshots for MaceKill will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| FallHeight | Integer | 22 | 1–170 | The maximum number of blocks of fall height to simulate when attacking with the Mace. Higher values deal more damage; the module automatically reduces this if blocks are in the way. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleMaceKill.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleMaceKill.kt)*

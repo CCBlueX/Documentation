@@ -7,22 +7,10 @@ Automatically aims your held projectile weapon at the best nearby target. It cal
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Target (Setting Group → see Shared: Target)
-└── Rotations (Setting Group → see Shared: Rotations)
-```
-
-### Settings Details
-
-#### Target
-
-> Selects which entity to aim at. These are the shared target settings. See [Shared: Target](/docs/modules/shared-settings/target).
-
-#### Rotations
-
-> Controls how the server-side aim moves toward the target. These are the shared rotation settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations).
+| Setting | Type | Default | Range | Description |
+|---------|------|---------|-------|-------------|
+| Target | Setting Group | — | — | Target settings. See [Shared: Target](/docs/modules/shared-settings/target). |
+| Rotations | Setting Group | — | — | Rotations settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ### Screenshots
 

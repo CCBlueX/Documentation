@@ -1,159 +1,28 @@
 ## FastExp
 
-Automatically repairs your armor.
+FastExp automatically repairs your Mending-enchanted gear by tossing experience bottles while you hold the keybind. As long as you have bottles o' enchanting in your hotbar or offhand, it looks down and throws them for you so the released experience orbs flow straight into your damaged armor (and the item in your other hand), saving you from spamming the use key.
 
-**Category:** Player  
-**Enabled by default:** No  
+By default the module only works when it's worth it: it waits until something is actually worn down before it starts, and it stops once your gear is patched up so you don't burn bottles after every couple of hits. You can also have it briefly hold off during combat and tweak how fast bottles are thrown, making it suitable for both quiet downtime repairs and quick top-ups mid-fight.
+
+Note that FastExp turns itself off when you leave a server, and it only repairs items carrying the Mending enchantment.
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Rotate (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Rotations (Setting Group)
-│       ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│       │   ├── [Mode: Linear]
-│       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   ├── [Mode: Sigmoid]
-│       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│       │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│       │   └── [Mode: Acceleration]
-│       │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│       │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│       │       ├── DynamicAccel (Toggleable Group | default: off)
-│       │       │   ├── Enabled (Toggle | default: false)
-│       │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│       │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│       │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│       │       ├── AccelerationError (Toggleable Group | default: on)
-│       │       │   ├── Enabled (Toggle | default: true)
-│       │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       ├── ConstantError (Toggleable Group | default: on)
-│       │       │   ├── Enabled (Toggle | default: true)
-│       │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│       │           ├── Enabled (Toggle | default: false)
-│       │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│       │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│       ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│       ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│       └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-├── NoWaste (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── MinDurabilityToStartRepair (Integer | default: 64 | range: 0..2048)
-│   └── MaxDurabilityToContinueRepair (Integer | default: 85 | range: 1..100 | %)
-├── ThrowMode (Mode Selector | default: Normal | modes: Normal, Fast)
-│   ├── [Mode: Normal]
-│   │   └── TicksPerItem (Decimal Range | default: 2.0..3.0 | range: 0.5..10.0 | ticks)
-│   └── [Mode: Fast]
-│       └── ItemsPerTick (Decimal Range | default: 3.0..5.0 | range: 0.5..16.0)
-├── CombatPauseTime (Integer | default: 0 | range: 0..40 | ticks)
-└── SlotResetDelay (Integer Range | default: 0..0 | range: 0..40 | ticks)
-```
-
-### Settings Details
-
-#### Rotate
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Rotations
-
-A group of related settings. *Shared setting group — configured identically across modules that use rotations.*
-
-###### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-#### NoWaste
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **MinDurabilityToStartRepair** (Integer) — default: `64`; range: `0` – `2048` — Durability threshold below which the module starts throwing experience bottles.
-- **MaxDurabilityToContinueRepair** (Integer) — default: `85`; range: `1` – `100`; unit: % — Maximum durability percentage at which repair continues after an interruption.
-
-#### ThrowMode
-
-Select a mode for this feature. Available modes: **Normal**, **Fast**. Default: **Normal**.
-
-##### Mode: Normal
-
-- **TicksPerItem** (Decimal Range) — default: `2.0` – `3.0`; range: `0.5` – `10.0`; unit: ticks — Ticks to wait between each experience bottle throw.
-
-##### Mode: Fast
-
-- **ItemsPerTick** (Decimal Range) — default: `3.0` – `5.0`; range: `0.5` – `16.0` — Number of experience bottles thrown per tick.
-
-- **CombatPauseTime** (Integer) — default: `0`; range: `0` – `40`; unit: ticks — Ticks to pause combat actions before throwing bottles.
-- **SlotResetDelay** (Integer Range) — default: `0` – `0`; range: `0` – `40`; unit: ticks — Ticks to wait before switching back to the original hotbar slot.
-
-### Screenshots
-
-*Screenshots for FastExp will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Rotate | Toggleable Group | On | — | Looks straight down before throwing so the experience orbs land near you for absorption. |
+| Rotate → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| NoWaste | Toggleable Group | On | — | Only throws as many bottles as needed to repair your gear, instead of throwing endlessly. |
+| NoWaste → MinDurabilityToStartRepair | Integer | 64 | 0..2048 | Starts repairing once at least one item drops to this many durability points or lower. |
+| NoWaste → MaxDurabilityToContinueRepair | Integer | 85 | 1..100% | Will resume an interrupted repair only while an item is still at or below this percentage of durability, preventing constant tiny top-ups. |
+| ThrowMode | Mode Selector | Normal | Normal, Fast | How quickly experience bottles are thrown. |
+| ThrowMode → Normal → TicksPerItem | Decimal Range | 2.0..3.0 | 0.5..10.0 ticks | A bottle is thrown roughly once every this many ticks, picked at random within the range for a more natural pace. |
+| ThrowMode → Fast → ItemsPerTick | Decimal Range | 3.0..5.0 | 0.5..16.0 | Throws this many bottles every tick for much faster repairs, picked at random within the range. |
+| CombatPauseTime | Integer | 0 | 0..40 ticks | Pauses combat-related actions for this many ticks whenever bottles are thrown. |
+| SlotResetDelay | Integer Range | 0..0 | 0..40 ticks | Delay before switching back from the bottle slot after use, randomized within the range. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleFastExp.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleFastExp.kt)*

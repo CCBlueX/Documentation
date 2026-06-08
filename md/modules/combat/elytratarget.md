@@ -1,349 +1,38 @@
 ## ElytraTarget
 
-Following the target on elytra.
+ElytraTarget turns your elytra into a homing missile against another player. While you're gliding, it automatically steers your view toward the selected target and keeps you pointed at them, even as they move and try to juke you. It's designed to work hand-in-hand with [KillAura](/docs/modules/combat/killaura), so you can chase a target down in the air and land hits without manually fighting the elytra's momentum.
 
-**Category:** Combat  
-**Enabled by default:** No  
+To keep your speed up during the chase, it can fire fireworks for you on a timer (see AutoFirework below), and it can predict where a fleeing target is heading so you aim slightly ahead of them instead of trailing behind. The module only does its work while you are actually fall-flying — if you aren't gliding, it stays idle.
+
+Use it when you want aggressive aerial pursuit: pick your target with the shared [Target](/docs/modules/shared-settings/target) settings, take off, and let ElytraTarget handle the steering and rocket spam while you focus on clicking.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Target (Setting Group)
-│   ├── FOV (Decimal | default: 180.0 | range: 0.0..180.0)
-│   ├── HurtTime (Integer | default: 10 | range: 0..10)
-│   └── Priority (Multi-Select | default: [Type, Health] | options: Type, Health, Distance, Direction, HurtTime, Age)
-├── Rotations (Setting Group)
-│   ├── Sharp (Toggle | default: false)
-│   ├── IgnoreKillAuraRotation (Toggle | default: true)
-│   ├── Look (Toggle | default: false)
-│   ├── AutoDistance (Toggle | default: true)
-│   ├── Prediction (Toggleable Group | default: on)
-│   │   ├── Enabled (Toggle | default: true)
-│   │   ├── Mode (Choice | default: SIMPLE | options: Simple, WithGravity)
-│   │   ├── GlidingOnly (Toggle | default: true)
-│   │   └── Multiplier (Decimal Range | default: 1.8..2.0 | range: 0.5..3.0)
-│   └── RotateAt (Choice | default: EYES | options: Eyes, Center)
-├── AutoFirework (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── UseMode (Choice | default: NORMAL | options: Normal, Packet)
-│   ├── ExtraDistance (Decimal | default: 50.0 | range: 5.0..100.0 | m)
-│   ├── SlotResetDelay (Integer Range | default: 0..0 | range: 0..20 | ticks)
-│   ├── SyncCooldownWithKillAura (Toggle | default: false)
-│   └── Cooldown (Integer Range | default: 8..10 | range: 1..50 | ticks)
-├── TargetRendering (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Mode (Mode Selector | default: Image | modes: Legacy, Circle, Image, GlowingCircle, Ghost, Text2D, Arrow)
-│       ├── [Mode: Legacy]
-│       │   ├── Size (Decimal | default: 0.5 | range: 0.1..2.0)
-│       │   ├── Height (Decimal | default: 0.1 | range: 0.02..2.0)
-│       │   ├── Color (Color)
-│       │   └── ExtraYOffset (Decimal | default: 0.1 | range: 0.0..1.0)
-│       ├── [Mode: Circle]
-│       │   ├── Radius (Decimal | default: 0.85 | range: 0.1..2.0)
-│       │   ├── InnerRadius (Decimal | default: 0.0 | range: 0.0..2.0)
-│       │   ├── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
-│       │   │   ├── [Mode: Feet]
-│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │   │   ├── [Mode: Top]
-│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │   │   ├── [Mode: Relative]
-│       │   │   │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
-│       │   │   └── [Mode: Animated]
-│       │   │       ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
-│       │   │       ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
-│       │   │       ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
-│       │   │       └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
-│       │   ├── OuterColor (Color)
-│       │   ├── InnerColor (Color)
-│       │   └── Color (Color)
-│       ├── [Mode: Image]
-│       │   ├── Source (Mode Selector | default: Custom | modes: Custom, Builtin)
-│       │   │   ├── [Mode: Custom]
-│       │   │   │   └── File (File)
-│       │   │   └── [Mode: Builtin]
-│       │   │       └── Preset (Choice | default: MARKER1 | options: Marker1, Marker2)
-│       │   ├── Scale (2D Position)
-│       │   ├── ColorModulator (Color)
-│       │   ├── Rotate (Setting Group)
-│       │   │   ├── Period (Integer | default: 1000 | range: 10..20000 | ms)
-│       │   │   ├── Symmetric (Toggle | default: true)
-│       │   │   └── Curve (Curve)
-│       │   └── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
-│       │       ├── [Mode: Feet]
-│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │       ├── [Mode: Top]
-│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │       ├── [Mode: Relative]
-│       │       │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
-│       │       └── [Mode: Animated]
-│       │           ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
-│       │           ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
-│       │           ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
-│       │           └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
-│       ├── [Mode: GlowingCircle]
-│       │   ├── Radius (Decimal | default: 0.85 | range: 0.1..2.0)
-│       │   ├── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
-│       │   │   ├── [Mode: Feet]
-│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │   │   ├── [Mode: Top]
-│       │   │   │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │   │   ├── [Mode: Relative]
-│       │   │   │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
-│       │   │   └── [Mode: Animated]
-│       │   │       ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
-│       │   │       ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
-│       │   │       ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
-│       │   │       └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
-│       │   ├── OuterColor (Color)
-│       │   ├── GlowColor (Color)
-│       │   ├── GlowHeight (Decimal | default: 0.3 | range: -1.0..1.0)
-│       │   └── Color (Color)
-│       ├── [Mode: Ghost]
-│       │   ├── Color (Color)
-│       │   ├── Size (Decimal | default: 0.5 | range: 0.4..0.7)
-│       │   └── Length (Integer | default: 25 | range: 15..40)
-│       ├── [Mode: Text2D]
-│       │   ├── Scale (Decimal | default: 1.0 | range: 0.01..10.0)
-│       │   ├── Shadow (Toggle | default: true)
-│       │   ├── Color (Color)
-│       │   ├── Text (Editable List)
-│       │   └── HeightMode (Mode Selector | default: Feet | modes: Feet, Top, Relative, Health, Animated)
-│       │       ├── [Mode: Feet]
-│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │       ├── [Mode: Top]
-│       │       │   └── Offset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       │       ├── [Mode: Relative]
-│       │       │   └── Height (Decimal | default: 0.5 | range: -0.5..1.5)
-│       │       └── [Mode: Animated]
-│       │           ├── Speed (Decimal | default: 0.18 | range: 0.01..1.0)
-│       │           ├── HeightMultiplier (Decimal | default: 0.4 | range: 0.1..1.0)
-│       │           ├── HeightOffset (Decimal | default: 1.3 | range: 0.0..2.0)
-│       │           └── GlowOffset (Decimal | default: -1.0 | range: -3.1..3.1)
-│       └── [Mode: Arrow]
-│           ├── Color (Color)
-│           ├── OutlineColor (Color)
-│           └── Size (Decimal | default: 1.5 | range: 0.5..20.0)
-├── Safe (Toggle | default: true)
-└── AlwaysGlide (Toggle | default: false)
-```
-
-### Settings Details
-
-#### Target
-
-A group of related settings.
-
-- **FOV** (Decimal) — default: `180.0`; range: `0.0` – `180.0`
-- **HurtTime** (Integer) — default: `10`; range: `0` – `10`
-- **Priority** (Multi-Select) — default: `Type`, `Health`; options: `Type`, `Health`, `Distance`, `Direction`, `HurtTime`, `Age`
-
-#### Rotations
-
-A group of related settings.
-
-- **Sharp** (Toggle) — default: `false`
-- **IgnoreKillAuraRotation** (Toggle) — default: `true`
-- **Look** (Toggle) — default: `false`
-- **AutoDistance** (Toggle) — default: `true`
-##### Prediction
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Mode** (Choice) — default: `SIMPLE`; options: `Simple`, `WithGravity`
-- **GlidingOnly** (Toggle) — default: `true`
-- **Multiplier** (Decimal Range) — default: `1.8` – `2.0`; range: `0.5` – `3.0`
-
-- **RotateAt** (Choice) — default: `EYES`; options: `Eyes`, `Center`
-
-#### AutoFirework
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **UseMode** (Choice) — default: `NORMAL`; options: `Normal`, `Packet`
-- **ExtraDistance** (Decimal) — default: `50.0`; range: `5.0` – `100.0`; unit: m
-- **SlotResetDelay** (Integer Range) — default: `0` – `0`; range: `0` – `20`; unit: ticks
-- **SyncCooldownWithKillAura** (Toggle) — default: `false`
-- **Cooldown** (Integer Range) — default: `8` – `10`; range: `1` – `50`; unit: ticks
-
-#### TargetRendering
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Mode
-
-Select a mode for this feature. Available modes: **Legacy**, **Circle**, **Image**, **GlowingCircle**, **Ghost**, **Text2D**, **Arrow**. Default: **Image**.
-
-###### Mode: Legacy
-
-- **Size** (Decimal) — default: `0.5`; range: `0.1` – `2.0`
-- **Height** (Decimal) — default: `0.1`; range: `0.02` – `2.0`
-- **Color** (Color)
-- **ExtraYOffset** (Decimal) — default: `0.1`; range: `0.0` – `1.0`
-
-###### Mode: Circle
-
-- **Radius** (Decimal) — default: `0.85`; range: `0.1` – `2.0`
-- **InnerRadius** (Decimal) — default: `0.0`; range: `0.0` – `2.0`
-###### HeightMode
-
-Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
-
-###### Mode: Feet
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Top
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Relative
-
-- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
-
-###### Mode: Animated
-
-- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
-- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
-- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
-- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
-
-- **OuterColor** (Color)
-- **InnerColor** (Color)
-- **Color** (Color)
-
-###### Mode: Image
-
-###### Source
-
-Select a mode for this feature. Available modes: **Custom**, **Builtin**. Default: **Custom**.
-
-###### Mode: Custom
-
-- **File** (File)
-
-###### Mode: Builtin
-
-- **Preset** (Choice) — default: `MARKER1`; options: `Marker1`, `Marker2`
-
-- **Scale** (2D Position)
-- **ColorModulator** (Color)
-###### Rotate
-
-A group of related settings.
-
-- **Period** (Integer) — default: `1000`; range: `10` – `20000`; unit: ms
-- **Symmetric** (Toggle) — default: `true`
-- **Curve** (Curve)
-
-###### HeightMode
-
-Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
-
-###### Mode: Feet
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Top
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Relative
-
-- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
-
-###### Mode: Animated
-
-- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
-- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
-- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
-- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
-
-
-###### Mode: GlowingCircle
-
-- **Radius** (Decimal) — default: `0.85`; range: `0.1` – `2.0`
-###### HeightMode
-
-Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
-
-###### Mode: Feet
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Top
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Relative
-
-- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
-
-###### Mode: Animated
-
-- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
-- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
-- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
-- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
-
-- **OuterColor** (Color)
-- **GlowColor** (Color)
-- **GlowHeight** (Decimal) — default: `0.3`; range: `-1.0` – `1.0`
-- **Color** (Color)
-
-###### Mode: Ghost
-
-- **Color** (Color)
-- **Size** (Decimal) — default: `0.5`; range: `0.4` – `0.7`
-- **Length** (Integer) — default: `25`; range: `15` – `40`
-
-###### Mode: Text2D
-
-- **Scale** (Decimal) — default: `1.0`; range: `0.01` – `10.0`
-- **Shadow** (Toggle) — default: `true`
-- **Color** (Color)
-- **Text** (Editable List)
-###### HeightMode
-
-Select a mode for this feature. Available modes: **Feet**, **Top**, **Relative**, **Health**, **Animated**. Default: **Feet**.
-
-###### Mode: Feet
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Top
-
-- **Offset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0`
-
-###### Mode: Relative
-
-- **Height** (Decimal) — default: `0.5`; range: `-0.5` – `1.5`
-
-###### Mode: Animated
-
-- **Speed** (Decimal) — default: `0.18`; range: `0.01` – `1.0`
-- **HeightMultiplier** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
-- **HeightOffset** (Decimal) — default: `1.3`; range: `0.0` – `2.0`
-- **GlowOffset** (Decimal) — default: `-1.0`; range: `-3.1` – `3.1`
-
-
-###### Mode: Arrow
-
-- **Color** (Color)
-- **OutlineColor** (Color)
-- **Size** (Decimal) — default: `1.5`; range: `0.5` – `20.0`
-
-
-- **Safe** (Toggle) — default: `true`
-- **AlwaysGlide** (Toggle) — default: `false`
-
-### Screenshots
-
-*Screenshots for ElytraTarget will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Target | Setting Group | — | — | See [Shared: Target](/docs/modules/shared-settings/target). |
+| Rotations | Setting Group | — | — | Controls how your view is steered toward the target while gliding. |
+| Rotations → Sharp | Toggle | false | — | Makes the aiming turn faster and more aggressive instead of smoothly tracking. |
+| Rotations → IgnoreKillAuraRotation | Toggle | true | — | Lets ElytraTarget keep steering your flight even while [KillAura](/docs/modules/combat/killaura) is setting its own attack rotations, so the two don't fight each other. |
+| Rotations → Look | Toggle | false | — | Turns your actual camera toward the target instead of only adjusting your movement direction silently. |
+| Rotations → AutoDistance | Toggle | true | — | Eases your aim when you get very close to the target to avoid overshooting and flying past them. |
+| Rotations → Prediction | Toggleable Group | On | — | Aims ahead of the target based on their movement so you intercept rather than chase. |
+| Rotations → Prediction → Mode | Choice | Simple | Simple, WithGravity | How the target's future position is estimated. WithGravity also accounts for the target falling. |
+| Rotations → Prediction → GlidingOnly | Toggle | true | — | Only predicts ahead when the target is themselves gliding on an elytra. |
+| Rotations → Prediction → Multiplier | Decimal Range | 1.0..1.1 | 0.5..3.0 | How far ahead of the target you aim; higher leads the target more. A random value in this range is used. |
+| Rotations → RotateAt | Choice | Eyes | Eyes, Center | Whether to aim at the target's eyes or the middle of their body. |
+| AutoFirework | Toggleable Group | On | — | Automatically uses firework rockets to keep your speed up during the chase. |
+| AutoFirework → UseMode | Choice | Normal | Normal, Packet | How the firework is used — Normal swaps and uses it, Packet sends the use directly without a visible swap. |
+| AutoFirework → ExtraDistance | Decimal | 50.0 | 5.0..100.0 m | Distance threshold to the target; when farther than this, the longer cooldown is used so rockets are spent more sparingly. |
+| AutoFirework → SlotResetDelay | Integer Range | 0..0 | 0..20 ticks | Delay before switching back from the firework slot, picked randomly within this range. |
+| AutoFirework → SyncCooldownWithKillAura | Toggle | false | — | Times firework use around [KillAura](/docs/modules/combat/killaura)'s attacks so rockets aren't fired mid-hit. |
+| AutoFirework → Cooldown | Integer Range | 8..10 | 1..50 ticks | How long to wait between fireworks, chosen randomly within this range. |
+| TargetRendering | Toggleable Group | On | — | See [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering). |
+| Safe | Toggle | true | — | Nudges you slightly upward when you're about to collide with terrain, helping you avoid crashing into blocks during the chase. |
+| AlwaysGlide | Toggle | false | — | Keeps you gliding toward the target even when you would otherwise stop fall-flying. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleElytraTarget.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/elytratarget/ModuleElytraTarget.kt)*

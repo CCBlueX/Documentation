@@ -1,69 +1,36 @@
 ## InventoryCleaner
 
-Automatically sorts your inventory and drops unnecessary items.
+InventoryCleaner automatically organises your inventory while you play. It moves items into the hotbar slots you configure, merges partial stacks together to free up space, and throws out anything it considers surplus — all without you having to open your inventory manually. This makes it especially useful in fast-paced scenarios such as PvP or [Scaffold](/docs/modules/world/scaffold) bridging, where a tidy hotbar directly affects your reaction time.
 
-**Category:** Player  
-**Enabled by default:** No  
+You control exactly what goes where by assigning an item category to each of the nine hotbar slots and the off-hand. Any item type not assigned to a slot — and not needed to satisfy a quantity limit — will be dropped. If [Offhand](/docs/modules/player/offhand) is active at the same time, InventoryCleaner leaves the off-hand slot alone so the two modules do not conflict. Armor slots are also left untouched; use [AutoArmor](/docs/modules/combat/autoarmor) for those.
+
+Quantity caps let you decide how much of a given consumable type to keep. Once the cap is reached, excess items are discarded. Setting a cap to its maximum value effectively means "keep everything of that type", while setting it to 0 tells the module to throw all of them away.
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| MaximumBlocks | Integer | 512 | 0–2500 | Maximum number of block items to keep. Surplus blocks are dropped. |
+| MaximumArrows | Integer | 128 | 0–2500 | Maximum number of arrows to keep across all arrow types. |
+| MaximumThrowables | Integer | 64 | 0–600 | Maximum number of throwable items (snowballs, eggs, wind charges) to keep. |
+| MaximumFoodPoints | Integer | 200 | 0–2000 | Maximum total food nutrition points worth of food items to keep. |
+| Greedy | Toggle | true | — | When enabled, the module replaces items already in a hotbar slot with a better version of the same category if one is available in your inventory. |
+| OffHandItem | Choice | Shield | — | Item category to place in the off-hand slot. |
+| SlotItem-1 | Choice | Weapon | — | Item category to place in hotbar slot 1. |
+| SlotItem-2 | Choice | Bow | — | Item category to place in hotbar slot 2. |
+| SlotItem-3 | Choice | Pickaxe | — | Item category to place in hotbar slot 3. |
+| SlotItem-4 | Choice | Axe | — | Item category to place in hotbar slot 4. |
+| SlotItem-5 | Choice | None | — | Item category to place in hotbar slot 5. |
+| SlotItem-6 | Choice | Potion | — | Item category to place in hotbar slot 6. |
+| SlotItem-7 | Choice | Food | — | Item category to place in hotbar slot 7. |
+| SlotItem-8 | Choice | Block | — | Item category to place in hotbar slot 8. |
+| SlotItem-9 | Choice | Block | — | Item category to place in hotbar slot 9. |
 
-```
-├── Constraints (Setting Group)
-│   ├── StartDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│   ├── ClickDelay (Integer Range | default: 2..4 | range: 0..20 | ticks)
-│   ├── CloseDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│   ├── MissChance (Integer Range | default: 0..0 | range: 0..100 | %)
-│   └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
-├── MaximumBlocks (Integer | default: 512 | range: 0..2500)
-├── MaximumArrows (Integer | default: 128 | range: 0..2500)
-├── MaximumThrowables (Integer | default: 64 | range: 0..600)
-├── MaximumFoodPoints (Integer | default: 200 | range: 0..2000)
-├── Greedy (Toggle | default: true)
-├── OffHandItem (Choice | default: SHIELD | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-1 (Choice | default: WEAPON | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-2 (Choice | default: BOW | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-3 (Choice | default: PICKAXE | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-4 (Choice | default: AXE | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-5 (Choice | default: NONE | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-6 (Choice | default: POTION | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-7 (Choice | default: FOOD | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-├── SlotItem-8 (Choice | default: BLOCK | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-└── SlotItem-9 (Choice | default: BLOCK | options: Sword, Weapon, Spear, Mace, Bow, Crossbow, Axe, Pickaxe, Shovel, Hoe, Rod, Shield, Water, Lava, Milk, Pearl, Gapple, Food, Potion, Block, Throwables, Ignore, None)
-```
-
-### Settings Details
-
-#### Constraints
-
-A group of related settings.
-
-- **StartDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **ClickDelay** (Integer Range) — default: `2` – `4`; range: `0` – `20`; unit: ticks
-- **CloseDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **MissChance** (Integer Range) — default: `0` – `0`; range: `0` – `100`; unit: %
-- **Requires** (Multi-Select) — options: `NoMovement`, `NoRotation`, `InventoryOpen`
-
-- **MaximumBlocks** (Integer) — default: `512`; range: `0` – `2500`
-- **MaximumArrows** (Integer) — default: `128`; range: `0` – `2500`
-- **MaximumThrowables** (Integer) — default: `64`; range: `0` – `600`
-- **MaximumFoodPoints** (Integer) — default: `200`; range: `0` – `2000`
-- **Greedy** (Toggle) — default: `true`
-- **OffHandItem** (Choice) — default: `SHIELD`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-1** (Choice) — default: `WEAPON`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-2** (Choice) — default: `BOW`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-3** (Choice) — default: `PICKAXE`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-4** (Choice) — default: `AXE`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-5** (Choice) — default: `NONE`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-6** (Choice) — default: `POTION`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-7** (Choice) — default: `FOOD`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-8** (Choice) — default: `BLOCK`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-- **SlotItem-9** (Choice) — default: `BLOCK`; options: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore`, `None`
-
-### Screenshots
-
-*Screenshots for InventoryCleaner will be added in a future update.*
+Available item categories for slot and off-hand settings: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore` (leave slot untouched), `None` (no preference, slot may be used for overflow).
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleInventoryCleaner.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/invcleaner/ModuleInventoryCleaner.kt)*

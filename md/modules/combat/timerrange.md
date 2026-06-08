@@ -1,49 +1,31 @@
 ## TimerRange
 
-Accelerates the game time when being within the range of an enemy.
+TimerRange dynamically adjusts the game's internal tick speed based on how close you are to an enemy. Unlike the flat [Timer](/docs/modules/world/timer) module which runs at a constant speed, TimerRange is reactive: it idles at a slightly reduced speed when no enemies are nearby, ramps up to a strong boost when you close in on a target, and pauses entirely if you get very close. This lets you land hits faster during the critical moments of a fight while spending most of your time at a less suspicious speed.
 
-**Category:** Combat  
-**Enabled by default:** No  
+A built-in balance system tracks the "debt" accumulated from running the timer above normal. Once that debt reaches the `TimerBalanceLimit`, the module automatically throttles back to `BalanceLimitSpeed` and waits for it to recover, preventing extended high-speed periods that could trigger anti-cheat systems. If `PauseOnFlag` is on, any server-issued position correction resets the balance counter to its maximum, giving the module time to cool down naturally after being flagged.
+
+By default, `RequiresKillAura` is enabled, meaning TimerRange only activates when [KillAura](/docs/modules/combat/killaura) is running and has an active target locked. This keeps the boost tightly coupled to actual combat engagement rather than firing whenever any player happens to wander nearby.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Chance (Integer | default: 100 | range: 0..100 | %)
-├── TimerBalanceLimit (Decimal | default: 20.0 | range: 0.0..50.0)
-├── NormalSpeed (Decimal | default: 0.9 | range: 0.1..10.0)
-├── InRangeSpeed (Decimal | default: 0.95 | range: 0.1..10.0)
-├── BalanceLimitSpeed (Decimal | default: 0.99 | range: 0.1..1.0)
-├── BoostTimer (Decimal | default: 2.0 | range: 0.1..10.0)
-├── BalanceRecoveryIncrement (Decimal | default: 1.0 | range: 1.0..10.0)
-├── DistanceToSpeedUp (Decimal | default: 3.5 | range: 0.0..10.0)
-├── DistanceToPause (Decimal | default: 3.0 | range: 0.0..10.0)
-├── DistanceToStartWorking (Decimal | default: 100.0 | range: 0.0..500.0)
-├── PauseOnFlag (Toggle | default: true)
-├── OnlyOnGround (Toggle | default: false)
-└── RequiresKillAura (Toggle | default: true)
-```
-
-### Settings Details
-
-- **Chance** (Integer) — default: `100`; range: `0` – `100`; unit: % — Probability that the timer speed change is applied each tick.
-- **TimerBalanceLimit** (Decimal) — default: `20.0`; range: `0.0` – `50.0` — Maximum timer balance before speed-up is throttled.
-- **NormalSpeed** (Decimal) — default: `0.9`; range: `0.1` – `10.0` — Timer speed when an enemy is in working range but not yet close enough to boost.
-- **InRangeSpeed** (Decimal) — default: `0.95`; range: `0.1` – `10.0` — Timer speed applied when close to an enemy and the balance limit has been reached.
-- **BalanceLimitSpeed** (Decimal) — default: `0.99`; range: `0.1` – `1.0` — Slow-down timer speed applied when the balance drops below the limit.
-- **BoostTimer** (Decimal) — default: `2.0`; range: `0.1` – `10.0` — Timer speed multiplier applied when within speed-up distance and balance is available.
-- **BalanceRecoveryIncrement** (Decimal) — default: `1.0`; range: `1.0` – `10.0` — Divisor for how quickly the timer balance recovers each tick.
-- **DistanceToSpeedUp** (Decimal) — default: `3.5`; range: `0.0` – `10.0` — Distance to the enemy at which the boost timer speed activates.
-- **DistanceToPause** (Decimal) — default: `3.0`; range: `0.0` – `10.0` — Distance to the enemy at which timer returns to normal (1.0×) speed.
-- **DistanceToStartWorking** (Decimal) — default: `100.0`; range: `0.0` – `500.0` — Maximum distance to any enemy for the module to be active at all.
-- **PauseOnFlag** (Toggle) — default: `true` — Resets the timer balance when a server position correction is received.
-- **OnlyOnGround** (Toggle) — default: `false` — Only modifies timer speed while the player is on the ground.
-- **RequiresKillAura** (Toggle) — default: `true` — Only activates when KillAura is running and has a target.
-
-### Screenshots
-
-*Screenshots for TimerRange will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Chance | Integer | 100 | 0..100 % | Probability per tick that the timer boost is applied when an enemy is in range. Values below 100 make the boost intermittent, which can appear more natural to anti-cheat. |
+| TimerBalanceLimit | Decimal | 20.0 | 0.0..50.0 | How much timer-speed "debt" can accumulate before the module throttles down to `BalanceLimitSpeed`. Higher values allow longer boost windows before the cooldown phase begins. |
+| NormalSpeed | Decimal | 0.9 | 0.1..10.0 | Timer multiplier applied when an enemy is detected within `DistanceToStartWorking` but still outside `DistanceToSpeedUp`. The default of 0.9× slightly slows the game in the approach phase. |
+| InRangeSpeed | Decimal | 0.95 | 0.1..10.0 | Timer multiplier used once the balance limit has been exhausted during a boost sequence — a reduced in-combat speed to help the balance recover while still providing a minor edge. |
+| BalanceLimitSpeed | Decimal | 0.99 | 0.1..1.0 | Timer multiplier applied while the internal balance counter is below `TimerBalanceLimit`. Keeps the game running just under normal speed to let the balance recover gradually. |
+| BoostTimer | Decimal | 2.0 | 0.1..10.0 | Timer multiplier applied when an enemy is within `DistanceToSpeedUp` and the balance has not yet been exhausted. This is the main combat-speed boost. |
+| BalanceRecoveryIncrement | Decimal | 1.0 | 1.0..10.0 | Controls how quickly the internal balance counter recovers when the timer is at or below normal. Higher values speed up recovery, allowing more frequent boost windows. |
+| DistanceToSpeedUp | Decimal | 3.5 | 0.0..10.0 | Distance (in blocks) at which the full `BoostTimer` speed activates. Enemies closer than this value trigger the boost. |
+| DistanceToPause | Decimal | 3.0 | 0.0..10.0 | Distance (in blocks) below which the timer resets to exactly 1.0× regardless of other settings. Prevents over-speeding at point-blank range. |
+| DistanceToStartWorking | Decimal | 100.0 | 0.0..500.0 | Maximum detection radius (in blocks). TimerRange has no effect at all if the nearest enemy is farther away than this value. |
+| PauseOnFlag | Toggle | true | — | When enabled, resets the balance timer to its maximum upon receiving a server position-correction packet, pausing further boosts and reducing the chance of a follow-up flag. |
+| OnlyOnGround | Toggle | false | — | When enabled, the module only applies timer changes while you are standing on solid ground. |
+| RequiresKillAura | Toggle | true | — | When enabled, TimerRange only activates while [KillAura](/docs/modules/combat/killaura) is running and has an active target. Disabling this allows TimerRange to operate independently. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleTimerRange.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleTimerRange.kt)*

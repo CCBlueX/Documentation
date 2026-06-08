@@ -1,368 +1,66 @@
 ## AutoBuff
 
-Automatically buffs yourself using various items.
+AutoBuff keeps you topped up by automatically using or throwing buff items the moment you need them — healing soups, golden apples, enchanted player heads, and potions. Turn on the buff types you want, and it watches your health and surroundings, then drinks, eats, or splashes the right item for the situation without you having to manage your hotbar.
 
-**Category:** Player  
-**Enabled by default:** No  
+Each buff type is its own toggle with its own trigger conditions. Health-based buffs (Soup, Head, Gapple) only fire once your health drops to the threshold you set, while the potion options (Pot, Drink) react to which effects you're missing. When the needed item isn't in your hotbar, [AutoSwap](#) can silently switch to it, and Refill can quick-move spare buff items up from your main inventory so you never run dry mid-fight.
+
+Use it on Kit-PvP, UHC, or survival servers where staying buffed is the difference in a fight. If you'd rather it back off while you're trading hits, the CombatPauseTime and NotDuringCombat options let you hold buffs until combat settles. For automatic eating to fill your hunger bar instead, see [SmartEat](/docs/modules/player/smarteat).
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Soup (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Health (Integer | default: 40 | range: 1..100 | %HP)
-│   ├── ConsiderAbsorption (Toggle | default: true)
-│   └── DropAfterUse (Toggleable Group | default: on)
-│       ├── Enabled (Toggle | default: true)
-│       ├── AssumeEmptyBowl (Toggle | default: true)
-│       └── Wait (Integer Range | default: 1..2 | range: 1..20 | ticks)
-├── Head (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Health (Integer | default: 40 | range: 1..100 | %HP)
-│   ├── ConsiderAbsorption (Toggle | default: true)
-│   ├── MaxAbsorption (Decimal | default: 1.0 | range: 0.0..8.0)
-│   └── Cooldown (Decimal | default: 0.0 | range: 0.0..120.0 | s)
-├── Pot (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Potions (Setting Group)
-│   │   ├── Health (Toggleable Group | default: on)
-│   │   │   ├── Enabled (Toggle | default: true)
-│   │   │   └── Health (Integer | default: 40 | range: 1..100 | %HP)
-│   │   ├── Regen (Toggleable Group | default: on)
-│   │   │   ├── Enabled (Toggle | default: true)
-│   │   │   └── Health (Integer | default: 40 | range: 1..100 | %HP)
-│   │   ├── Strength (Toggleable Group | default: on)
-│   │   │   └── Enabled (Toggle | default: true)
-│   │   ├── Speed (Toggleable Group | default: on)
-│   │   │   └── Enabled (Toggle | default: true)
-│   │   ├── FireResistance (Toggleable Group | default: on)
-│   │   │   └── Enabled (Toggle | default: true)
-│   │   ├── JumpBoost (Toggleable Group | default: on)
-│   │   │   └── Enabled (Toggle | default: true)
-│   │   └── WaterBreathing (Toggleable Group | default: on)
-│   │       └── Enabled (Toggle | default: true)
-│   ├── TillGroundDistance (Decimal | default: 2.0 | range: 1.0..5.0)
-│   ├── DoNotBenefitOthers (Toggle | default: true)
-│   └── AllowLingering (Toggle | default: false)
-├── Drink (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Potions (Setting Group)
-│       ├── Health (Toggleable Group | default: on)
-│       │   ├── Enabled (Toggle | default: true)
-│       │   └── Health (Integer | default: 40 | range: 1..100 | %HP)
-│       ├── Regen (Toggleable Group | default: on)
-│       │   ├── Enabled (Toggle | default: true)
-│       │   └── Health (Integer | default: 40 | range: 1..100 | %HP)
-│       ├── Strength (Toggleable Group | default: on)
-│       │   └── Enabled (Toggle | default: true)
-│       ├── Speed (Toggleable Group | default: on)
-│       │   └── Enabled (Toggle | default: true)
-│       ├── FireResistance (Toggleable Group | default: on)
-│       │   └── Enabled (Toggle | default: true)
-│       ├── JumpBoost (Toggleable Group | default: on)
-│       │   └── Enabled (Toggle | default: true)
-│       └── WaterBreathing (Toggleable Group | default: on)
-│           └── Enabled (Toggle | default: true)
-├── Gapple (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Health (Integer | default: 40 | range: 1..100 | %HP)
-│   ├── ConsiderAbsorption (Toggle | default: true)
-│   └── Enchanted (Toggle | default: true)
-├── AutoSwap (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── DelayIn (Integer Range | default: 1..1 | range: 0..20 | ticks)
-│   └── DelayOut (Integer Range | default: 1..1 | range: 0..20 | ticks)
-├── Refill (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Constraints (Setting Group)
-│       ├── StartDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│       ├── ClickDelay (Integer Range | default: 2..4 | range: 0..20 | ticks)
-│       ├── CloseDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│       ├── MissChance (Integer Range | default: 0..0 | range: 0..100 | %)
-│       └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
-├── Rotations (Setting Group)
-│   ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │   ├── [Mode: Linear]
-│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   ├── [Mode: Sigmoid]
-│   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   └── [Mode: Acceleration]
-│   │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │       │   ├── Enabled (Toggle | default: false)
-│   │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       ├── AccelerationError (Toggleable Group | default: on)
-│   │       │   ├── Enabled (Toggle | default: true)
-│   │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       ├── ConstantError (Toggleable Group | default: on)
-│   │       │   ├── Enabled (Toggle | default: true)
-│   │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │           ├── Enabled (Toggle | default: false)
-│   │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   ├── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-│   └── RotationTiming (Choice | default: NORMAL | options: Normal, OnTick, OnUse)
-├── CombatPauseTime (Integer | default: 0 | range: 0..40 | ticks)
-└── NotDuringCombat (Toggle | default: false)
-```
-
-### Settings Details
-
-#### Soup
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-- **ConsiderAbsorption** (Toggle) — default: `true`
-##### DropAfterUse
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **AssumeEmptyBowl** (Toggle) — default: `true`
-- **Wait** (Integer Range) — default: `1` – `2`; range: `1` – `20`; unit: ticks
-
-
-#### Head
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-- **ConsiderAbsorption** (Toggle) — default: `true`
-- **MaxAbsorption** (Decimal) — default: `1.0`; range: `0.0` – `8.0`
-- **Cooldown** (Decimal) — default: `0.0`; range: `0.0` – `120.0`; unit: s
-
-#### Pot
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Potions
-
-A group of related settings.
-
-###### Health
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-
-###### Regen
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-
-###### Strength
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### Speed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### FireResistance
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### JumpBoost
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### WaterBreathing
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-
-- **TillGroundDistance** (Decimal) — default: `2.0`; range: `1.0` – `5.0`
-- **DoNotBenefitOthers** (Toggle) — default: `true`
-- **AllowLingering** (Toggle) — default: `false`
-
-#### Drink
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Potions
-
-A group of related settings.
-
-###### Health
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-
-###### Regen
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-
-###### Strength
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### Speed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### FireResistance
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### JumpBoost
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-###### WaterBreathing
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-
-
-
-#### Gapple
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Health** (Integer) — default: `40`; range: `1` – `100`; unit: %HP
-- **ConsiderAbsorption** (Toggle) — default: `true`
-- **Enchanted** (Toggle) — default: `true` — Also eat enchanted golden apples ("god apples"), not just regular golden apples.
-
-#### AutoSwap
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **DelayIn** (Integer Range) — default: `1` – `1`; range: `0` – `20`; unit: ticks
-- **DelayOut** (Integer Range) — default: `1` – `1`; range: `0` – `20`; unit: ticks
-
-#### Refill
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Constraints
-
-A group of related settings.
-
-- **StartDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **ClickDelay** (Integer Range) — default: `2` – `4`; range: `0` – `20`; unit: ticks
-- **CloseDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **MissChance** (Integer Range) — default: `0` – `0`; range: `0` – `100`; unit: %
-- **Requires** (Multi-Select) — options: `NoMovement`, `NoRotation`, `InventoryOpen`
-
-
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-- **RotationTiming** (Choice) — default: `NORMAL`; options: `Normal`, `OnTick`, `OnUse`
-
-- **CombatPauseTime** (Integer) — default: `0`; range: `0` – `40`; unit: ticks
-- **NotDuringCombat** (Toggle) — default: `false`
-
-### Screenshots
-
-*Screenshots for AutoBuff will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Soup | Toggleable Group | Off | — | Heals you by eating mushroom stew when your health is low. |
+| Soup → Health | Integer | 40 | 1..100 %HP | Trigger soup once health falls to this percent of your max. |
+| Soup → ConsiderAbsorption | Toggle | true | — | Counts absorption (yellow) hearts toward your health when deciding whether to eat. |
+| Soup → DropAfterUse | Toggleable Group | On | — | Drops the empty bowl after eating so it doesn't clutter your slot. |
+| Soup → DropAfterUse → AssumeEmptyBowl | Toggle | true | — | Drops right away assuming the bowl is now empty, instead of waiting to confirm. |
+| Soup → DropAfterUse → Wait | Integer Range | 1..2 | 1..20 ticks | Random delay before dropping the bowl. |
+| Head | Toggleable Group | Off | — | Eats a player head for instant healing when your health is low. |
+| Head → Health | Integer | 40 | 1..100 %HP | Trigger the head once health falls to this percent of your max. |
+| Head → ConsiderAbsorption | Toggle | true | — | Counts absorption (yellow) hearts toward your health when deciding whether to eat. |
+| Head → MaxAbsorption | Decimal | 1.0 | 0.0..8.0 | Only eats while your current absorption is at or below this amount. |
+| Head → Cooldown | Decimal | 0.0 | 0.0..120.0 s | Minimum wait between eating heads. |
+| Pot | Toggleable Group | On | — | Throws splash potions at your feet to apply missing beneficial effects. |
+| Pot → Potions | Setting Group | — | — | Choose which effects AutoBuff will splash for. |
+| Pot → Potions → Health | Toggleable Group | On | — | Splashes Instant Health when you're hurt. |
+| Pot → Potions → Health → Health | Integer | 40 | 1..100 %HP | Trigger a health splash once health falls to this percent of your max. |
+| Pot → Potions → Regen | Toggleable Group | On | — | Splashes Regeneration when you're hurt and don't have it. |
+| Pot → Potions → Regen → Health | Integer | 40 | 1..100 %HP | Trigger a regen splash once health falls to this percent of your max. |
+| Pot → Potions → Strength | Toggleable Group | On | — | Splashes Strength when you don't have the effect. |
+| Pot → Potions → Speed | Toggleable Group | On | — | Splashes Speed when you don't have the effect. |
+| Pot → Potions → FireResistance | Toggleable Group | On | — | Splashes Fire Resistance when you don't have the effect. |
+| Pot → Potions → JumpBoost | Toggleable Group | On | — | Splashes Jump Boost when you don't have the effect. |
+| Pot → Potions → WaterBreathing | Toggleable Group | On | — | Splashes Water Breathing when you don't have the effect. |
+| Pot → TillGroundDistance | Decimal | 2.0 | 1.0..5.0 | Only throws when you're within this many blocks of the ground, so the splash lands on you. |
+| Pot → DoNotBenefitOthers | Toggle | false | — | Holds the throw if a nearby enemy would also catch the effect. |
+| Pot → AllowLingering | Toggle | false | — | Also allows lingering potions, not just splash potions. |
+| Drink | Toggleable Group | Off | — | Drinks regular (non-splash) potions to apply missing beneficial effects. |
+| Drink → Potions | Setting Group | — | — | Choose which effects AutoBuff will drink for. |
+| Drink → Potions → Health | Toggleable Group | On | — | Drinks an Instant Health potion when you're hurt. |
+| Drink → Potions → Health → Health | Integer | 40 | 1..100 %HP | Trigger a health drink once health falls to this percent of your max. |
+| Drink → Potions → Regen | Toggleable Group | On | — | Drinks a Regeneration potion when you're hurt and don't have it. |
+| Drink → Potions → Regen → Health | Integer | 40 | 1..100 %HP | Trigger a regen drink once health falls to this percent of your max. |
+| Drink → Potions → Strength | Toggleable Group | On | — | Drinks a Strength potion when you don't have the effect. |
+| Drink → Potions → Speed | Toggleable Group | On | — | Drinks a Speed potion when you don't have the effect. |
+| Drink → Potions → FireResistance | Toggleable Group | On | — | Drinks a Fire Resistance potion when you don't have the effect. |
+| Drink → Potions → JumpBoost | Toggleable Group | On | — | Drinks a Jump Boost potion when you don't have the effect. |
+| Drink → Potions → WaterBreathing | Toggleable Group | On | — | Drinks a Water Breathing potion when you don't have the effect. |
+| Gapple | Toggleable Group | Off | — | Eats a golden apple when your health is low. |
+| Gapple → Health | Integer | 40 | 1..100 %HP | Trigger the apple once health falls to this percent of your max. |
+| Gapple → ConsiderAbsorption | Toggle | true | — | Counts absorption (yellow) hearts toward your health when deciding whether to eat. |
+| Gapple → Enchanted | Toggle | true | — | Also allows enchanted golden apples, not just regular ones. |
+| AutoSwap | Toggleable Group | Off | — | Silently switches to the needed buff item if it isn't already selected, then switches back. |
+| AutoSwap → DelayIn | Integer Range | 1..1 | 0..20 ticks | Random wait after swapping to the item before using it. |
+| AutoSwap → DelayOut | Integer Range | 1..1 | 0..20 ticks | Random wait after using the item before swapping back. |
+| Refill | Toggleable Group | On | — | Moves spare buff items from your inventory into the hotbar to keep you stocked. |
+| Refill → Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| CombatPauseTime | Integer | 2 | 0..40 ticks | Pauses combat actions for this long when a buff is used. |
+| NotDuringCombat | Toggle | false | — | Stops buffing entirely while you're in combat. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoBuff.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autobuff/ModuleAutoBuff.kt)*

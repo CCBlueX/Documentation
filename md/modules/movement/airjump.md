@@ -1,25 +1,19 @@
 ## AirJump
 
-Allows you to jump mid-air.
+AirJump lets you jump again while you're already off the ground, giving you extra height or a second boost without touching solid ground. It's handy for reaching ledges, crossing small gaps, or stringing together moves that a normal single jump can't pull off.
 
-**Category:** Movement  
-**Enabled by default:** No  
+The behavior depends on the selected **Mode**. *JumpFreely* removes the limit entirely, so you can keep jumping in the air as many times as you like. *DoubleJump* grants exactly one extra jump after leaving the ground, resetting once you land again. *GhostBlock* lets you stand on an invisible block while holding the jump key, so you can hover or climb upward as long as you keep jumping.
+
+Because this gives obvious non-vanilla movement, it can look suspicious on servers with strict anti-cheat. Pair it with modules like [HighJump](/docs/modules/movement/highjump) or [Fly](/docs/modules/movement/fly) for more dramatic vertical mobility.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Mode (Choice | default: JUMP_FREELY | options: JumpFreely, DoubleJump, GhostBlock)
-```
-
-### Settings Details
-
-- **Mode** (Choice) — default: `JUMP_FREELY`; options: `JumpFreely`, `DoubleJump`, `GhostBlock` — Selects the air jump behavior: JumpFreely allows unlimited mid-air jumps, DoubleJump allows one extra jump before landing, and GhostBlock places an invisible solid block below you when holding jump.
-
-### Screenshots
-
-*Screenshots for AirJump will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Choice | GhostBlock | JumpFreely, DoubleJump, GhostBlock | How the mid-air jump works: *JumpFreely* allows unlimited air jumps, *DoubleJump* grants one extra jump per landing, and *GhostBlock* places an invisible block under you while you hold the jump key. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleAirJump.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleAirJump.kt)*

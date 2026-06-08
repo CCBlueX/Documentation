@@ -1,127 +1,20 @@
 ## NoRotateSet
 
-Prevents the server from being able to rotate your head.
+NoRotateSet prevents the server from forcibly rotating your head. Normally, certain server-side events — such as getting hit, mounting an entity, or specific plugin actions — can snap your view to a new direction without your input. With this module active, those forced rotations are suppressed, keeping your aim and perspective under your control at all times.
 
-**Category:** Player  
-**Enabled by default:** No  
+The module offers two approaches. **SilentAccept** (the default) quietly acknowledges the server's rotation packets without actually applying them to your view, which is the least detectable option. **ResetRotation** instead resets your head back to where it was immediately after any forced rotation is applied; this mode exposes additional [Rotations](/docs/modules/shared-settings/rotations) settings so you can fine-tune how smoothly and accurately the counter-rotation is performed.
+
+This module pairs well with combat modules such as [KillAura](/docs/modules/combat/killaura) or [Aimbot](/docs/modules/combat/aimbot), where a sudden server-imposed rotation could otherwise throw off your aim mid-fight.
+
+**Category:** Player
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Mode (Mode Selector | default: SilentAccept | modes: SilentAccept, ResetRotation)
-    └── [Mode: ResetRotation]
-        └── Rotations (Setting Group)
-            ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-            │   ├── [Mode: Linear]
-            │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-            │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-            │   ├── [Mode: Sigmoid]
-            │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-            │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-            │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-            │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-            │   └── [Mode: Acceleration]
-            │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-            │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-            │       ├── DynamicAccel (Toggleable Group | default: off)
-            │       │   ├── Enabled (Toggle | default: false)
-            │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-            │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-            │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-            │       ├── AccelerationError (Toggleable Group | default: on)
-            │       │   ├── Enabled (Toggle | default: true)
-            │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-            │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-            │       ├── ConstantError (Toggleable Group | default: on)
-            │       │   ├── Enabled (Toggle | default: true)
-            │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-            │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-            │       └── SigmoidDeceleration (Toggleable Group | default: off)
-            │           ├── Enabled (Toggle | default: false)
-            │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-            │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-            ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-            ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-            └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **SilentAccept**, **ResetRotation**. Default: **SilentAccept**.
-
-##### Mode: ResetRotation
-
-###### Rotations
-
-A group of related settings. *Shared setting group — configured identically across modules that use rotations.*
-
-###### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-
-### Screenshots
-
-*Screenshots for NoRotateSet will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | SilentAccept | — | Controls how forced server rotations are handled. `SilentAccept` acknowledges them silently without moving your view; `ResetRotation` snaps your view back after a forced rotation is applied. |
+| Mode → [ResetRotation] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleNoRotateSet.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleNoRotateSet.kt)*

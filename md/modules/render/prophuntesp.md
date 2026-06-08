@@ -1,55 +1,20 @@
 ## ProphuntESP
 
-Shows you props in Prophunt.
+ProphuntESP helps you locate hidden props on Prophunt servers by highlighting positions where disguised players are likely to be. In Prophunt, players disguise themselves as blocks or objects — but when they move, they reveal themselves through falling-block entities and block update packets sent by the server. This module listens for those telltale signals and renders a highlight over the affected positions so you can track them down.
 
-**Category:** Render  
-**Enabled by default:** No  
+You can choose which types of events to watch: **FallingBlocks** tracks entities that are physically falling through the air (a common giveaway when a prop jumps or drops), **BlockUpdates** catches single-block change packets (triggered when a prop swaps disguise or moves in place), and **ChunkDeltaUpdates** catches bulk multi-block change packets that cover the same behaviour across a wider area. All three are enabled by default for maximum coverage. The highlights are rendered using the **RenderBlockUpdates** group, which you can customise or disable entirely if you only want detection without a visual overlay.
+
+This module is purely passive — it does not interact with or attack other players. Use it alongside [ESP](/docs/modules/render/esp) or [Tracers](/docs/modules/render/tracers) for a fuller picture of where players are hiding.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Tracking (Multi-Select | default: [FallingBlocks, BlockUpdates, ChunkDeltaUpdates] | options: FallingBlocks, BlockUpdates, ChunkDeltaUpdates)
-└── RenderBlockUpdates (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    ├── Clump (Toggle | default: true)
-    ├── StartSize (Decimal | default: 1.0 | range: 0.0..2.0)
-    ├── StartCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── EndSize (Decimal | default: 0.8 | range: 0.0..2.0)
-    ├── EndCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── FadeInCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── FadeOutCurve (Choice | default: LINEAR | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-    ├── InTime (Integer | default: 500 | range: 0..5000 | ms)
-    ├── OutTime (Integer | default: 500 | range: 0..5000 | ms)
-    ├── Color (Color)
-    └── OutlineColor (Color)
-```
-
-### Settings Details
-
-- **Tracking** (Multi-Select) — default: `FallingBlocks`, `BlockUpdates`, `ChunkDeltaUpdates`; options: `FallingBlocks`, `BlockUpdates`, `ChunkDeltaUpdates`
-#### RenderBlockUpdates
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Clump** (Toggle) — default: `true`
-- **StartSize** (Decimal) — default: `1.0`; range: `0.0` – `2.0`
-- **StartCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **EndSize** (Decimal) — default: `0.8`; range: `0.0` – `2.0`
-- **EndCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **FadeInCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **FadeOutCurve** (Choice) — default: `LINEAR`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None`
-- **InTime** (Integer) — default: `500`; range: `0` – `5000`; unit: ms
-- **OutTime** (Integer) — default: `500`; range: `0` – `5000`; unit: ms
-- **Color** (Color)
-- **OutlineColor** (Color)
-
-
-### Screenshots
-
-*Screenshots for ProphuntESP will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Tracking | Multi-Select | FallingBlocks, BlockUpdates, ChunkDeltaUpdates | FallingBlocks, BlockUpdates, ChunkDeltaUpdates | Which event types to monitor for hidden props. Select any combination of falling-block entities, single block update packets, and chunk-section (multi-block) update packets. |
+| RenderBlockUpdates | Toggleable Group | on | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering) |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleProphuntESP.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleProphuntESP.kt)*

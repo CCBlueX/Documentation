@@ -1,417 +1,94 @@
 ## Fly
 
-Allows you to fly in survival mode.
+Fly lets you move freely through the air in survival mode, where the game would normally keep you on the ground. Because flying is one of the most heavily watched-for cheats, Fly ships with a large list of **modes**: some are generic (Vanilla, Creative, Jetpack, Enderpearl, AirWalk, Explosion, Fireball), while most others are hand-tuned to slip past one specific anti-cheat or server — Vulcan, Grim, Spartan, Sentinel, Verus, NCP, Hypixel and Hycraft. Pick the mode that matches where you're playing: a mode built for one anti-cheat will usually flag instantly on another, so the right choice is more important than any single speed value.
 
-**Category:** Movement  
-**Enabled by default:** No  
+Many of these modes rely on tricks like taking a hit, throwing an item, or desyncing your position, so they only fly for a limited time or distance before turning themselves off again. A few — such as Sentinel20thApr and NcpClip — work best with [PingSpoof](/docs/modules/exploit/pingspoof) enabled, and some will switch it on for you automatically. The Sentinel modes also disable [Speed](/docs/modules/movement/speed) while active to avoid conflicts. The Visuals group keeps your movement looking smooth to nearby players.
+
+By default Fly turns itself off the instant the server drags you back to an earlier position (a "setback"), which is a common sign you've been caught — this stops you fighting an anti-cheat that's already onto you. Pair it with [NoFall](/docs/modules/player/nofall) so you don't take damage when you eventually land.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Mode (Mode Selector | default: Vanilla | modes: Vanilla, Creative, Jetpack, Enderpearl, AirWalk, Explosion, Fireball, Vulcan277, Vulcan286-113, Vulcan286-18, Vulcan286-Teleport-18, Grim2859-V, Grim2373Jan15, Spartan524, Sentinel20thApr, Sentinel27thJan, Sentinel10thMar, Sentinel26thDec, VerusB3896Damage, VerusB3896Flat, NcpClip, Hypixel, HypixelFlat, HycraftDamage)
-│   ├── [Mode: Vanilla]
-│   │   ├── Glide (Decimal | default: 0.0 | range: -1.0..1.0)
-│   │   ├── BypassVanillaCheck (Toggle | default: true)
-│   │   ├── BaseSpeed (Setting Group)
-│   │   │   ├── Horizontal (Decimal | default: 0.44 | range: 0.1..10.0)
-│   │   │   └── Vertical (Decimal | default: 0.44 | range: 0.1..10.0)
-│   │   └── SprintSpeed (Toggleable Group | default: on)
-│   │       ├── Enabled (Toggle | default: true)
-│   │       ├── Horizontal (Decimal | default: 1.0 | range: 0.1..10.0)
-│   │       └── Vertical (Decimal | default: 1.0 | range: 0.1..10.0)
-│   ├── [Mode: Creative]
-│   │   ├── Speed (Decimal | default: 0.1 | range: 0.1..5.0)
-│   │   ├── SprintSpeed (Toggleable Group | default: on)
-│   │   │   ├── Enabled (Toggle | default: true)
-│   │   │   └── Speed (Decimal | default: 0.1 | range: 0.1..5.0)
-│   │   ├── MaxVelocity (Decimal | default: 4.0 | range: 1.0..20.0)
-│   │   ├── BypassVanillaCheck (Toggle | default: true)
-│   │   └── ForceFlight (Toggle | default: true)
-│   ├── [Mode: Enderpearl]
-│   │   ├── Speed (Decimal | default: 1.0 | range: 0.5..2.0)
-│   │   └── Rotations (Setting Group)
-│   │       ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │       │   ├── [Mode: Linear]
-│   │       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │       │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │       │   ├── [Mode: Sigmoid]
-│   │       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │       │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │       │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │       │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │       │   └── [Mode: Acceleration]
-│   │       │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │       │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │       │       │   ├── Enabled (Toggle | default: false)
-│   │       │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │       │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │       │       ├── AccelerationError (Toggleable Group | default: on)
-│   │       │       │   ├── Enabled (Toggle | default: true)
-│   │       │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │       ├── ConstantError (Toggleable Group | default: on)
-│   │       │       │   ├── Enabled (Toggle | default: true)
-│   │       │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │       │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │       │           ├── Enabled (Toggle | default: false)
-│   │       │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │       │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │       ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   │       ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   │       └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-│   ├── [Mode: AirWalk]
-│   │   └── OnGround (Toggle | default: true)
-│   ├── [Mode: Explosion]
-│   │   ├── Vertical (Decimal | default: 4.0 | range: 0.0..10.0)
-│   │   ├── StartStrafe (Decimal | default: 1.0 | range: 0.6..4.0)
-│   │   └── StrafeDecrease (Decimal | default: 0.005 | range: 0.001..0.1)
-│   ├── [Mode: Fireball]
-│   │   ├── Technique (Mode Selector | default: Legit | modes: Legit, Custom)
-│   │   │   ├── [Mode: Legit]
-│   │   │   │   ├── Sprint (Toggle | default: true)
-│   │   │   │   ├── StopMove (Toggle | default: true)
-│   │   │   │   ├── Jump (Toggleable Group | default: on)
-│   │   │   │   │   ├── Enabled (Toggle | default: true)
-│   │   │   │   │   └── Delay (Integer | default: 3 | range: 0..20 | ticks)
-│   │   │   │   └── Rotations (Setting Group)
-│   │   │   │       ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │   │   │       │   ├── [Mode: Linear]
-│   │   │   │       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │       │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │       │   ├── [Mode: Sigmoid]
-│   │   │   │       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │       │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │       │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   │       │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   │   │       │   └── [Mode: Acceleration]
-│   │   │   │       │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │   │   │       │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │   │   │       │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │   │   │       │       │   ├── Enabled (Toggle | default: false)
-│   │   │   │       │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │   │   │       │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │   │   │       │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │   │   │       │       ├── AccelerationError (Toggleable Group | default: on)
-│   │   │   │       │       │   ├── Enabled (Toggle | default: true)
-│   │   │   │       │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       │       ├── ConstantError (Toggleable Group | default: on)
-│   │   │   │       │       │   ├── Enabled (Toggle | default: true)
-│   │   │   │       │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │   │   │       │           ├── Enabled (Toggle | default: false)
-│   │   │   │       │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   │       │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   │   │       ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   │   │   │       ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   │   │   │       ├── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-│   │   │   │       ├── Pitch (Decimal | default: 90.0 | range: 0.0..90.0)
-│   │   │   │       └── Backwards (Toggle | default: true)
-│   │   │   └── [Mode: Custom]
-│   │   │       ├── DisableDelay (Integer | default: 10 | range: 0..20)
-│   │   │       ├── ThrowDelay (Integer | default: 2 | range: 0..20)
-│   │   │       ├── Sprint (Toggle | default: true)
-│   │   │       ├── StopMove (Toggle | default: true)
-│   │   │       ├── Jump (Toggleable Group | default: on)
-│   │   │       │   ├── Enabled (Toggle | default: true)
-│   │   │       │   └── JumpDelay (Integer | default: 1 | range: 0..20 | ticks)
-│   │   │       ├── YVelocity (Toggleable Group | default: on)
-│   │   │       │   ├── Enabled (Toggle | default: true)
-│   │   │       │   ├── Velocity (Decimal | default: 0.0 | range: -5.0..5.0)
-│   │   │       │   └── Delay (Integer | default: 0 | range: 0..20 | ticks)
-│   │   │       └── Rotations (Setting Group)
-│   │   │           ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │   │           │   ├── [Mode: Linear]
-│   │   │           │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │           │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │           │   ├── [Mode: Sigmoid]
-│   │   │           │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │           │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │           │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │           │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   │           │   └── [Mode: Acceleration]
-│   │   │           │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │   │           │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │   │           │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │   │           │       │   ├── Enabled (Toggle | default: false)
-│   │   │           │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │   │           │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │   │           │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │   │           │       ├── AccelerationError (Toggleable Group | default: on)
-│   │   │           │       │   ├── Enabled (Toggle | default: true)
-│   │   │           │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │           │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │           │       ├── ConstantError (Toggleable Group | default: on)
-│   │   │           │       │   ├── Enabled (Toggle | default: true)
-│   │   │           │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │           │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │           │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │   │           │           ├── Enabled (Toggle | default: false)
-│   │   │           │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │           │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   │           ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   │   │           ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   │   │           ├── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-│   │   │           └── Pitch (Decimal | default: 90.0 | range: 0.0..90.0)
-│   │   ├── Trigger (Mode Selector | default: Instant | modes: Instant, OnEdge)
-│   │   │   └── [Mode: OnEdge]
-│   │   │       └── EdgeDistance (Decimal | default: 0.01 | range: 0.01..0.5)
-│   │   └── SlotResetDelay (Integer Range | default: 4..6 | range: 0..40 | ticks)
-│   ├── [Mode: Vulcan286-18]
-│   │   ├── Timer (Decimal | default: 2.5 | range: 1.0..2.5)
-│   │   └── AutoDisable (Toggle | default: false)
-│   ├── [Mode: Grim2859-V]
-│   │   ├── Toggle (Integer | default: 0 | range: 0..100)
-│   │   └── Timer (Decimal | default: 0.446 | range: 0.1..1.0)
-│   ├── [Mode: Grim2373Jan15]
-│   │   ├── AutoLagInAir (Toggle | default: true)
-│   │   └── AirTick (Integer | default: 3 | range: 0..12 | ticks)
-│   ├── [Mode: Sentinel20thApr]
-│   │   ├── HorizontalSpeed (Decimal | default: 3.5 | range: 0.1..10.0)
-│   │   ├── ConstantSpeed (Toggle | default: false)
-│   │   ├── VerticalSpeed (Decimal | default: 0.7 | range: 0.1..1.0)
-│   │   ├── ReboostTicks (Integer | default: 30 | range: 10..50)
-│   │   ├── BoostOnce (Toggle | default: false)
-│   │   └── Nostalgia (Toggle | default: false)
-│   ├── [Mode: Sentinel27thJan]
-│   │   └── HorizontalSpeed (Decimal Range | default: 0.33..0.34 | range: 0.1..1.0)
-│   ├── [Mode: Sentinel10thMar]
-│   │   ├── Height (Decimal | default: 0.42 | range: 0.1..1.0)
-│   │   ├── Speed (Decimal | default: 0.35 | range: 0.1..1.0)
-│   │   └── Ticks (Integer | default: 11 | range: 1..20)
-│   ├── [Mode: Sentinel26thDec]
-│   │   ├── HorizontalSpeed (Decimal | default: 3.5 | range: 0.1..10.0)
-│   │   ├── VerticalSpeed (Decimal | default: 0.7 | range: 0.1..5.0)
-│   │   ├── Ticks (Integer | default: 20 | range: 10..50)
-│   │   ├── Timer (Decimal | default: 0.5 | range: 0.1..1.0)
-│   │   └── Nostalgia (Toggle | default: false)
-│   ├── [Mode: VerusB3896Flat]
-│   │   └── Timer (Decimal | default: 5.0 | range: 1.0..20.0)
-│   ├── [Mode: NcpClip]
-│   │   ├── Speed (Decimal | default: 7.5 | range: 2.0..10.0)
-│   │   ├── AdditionalEntry (Decimal | default: 2.0 | range: 0.0..2.0)
-│   │   ├── Timer (Decimal | default: 0.4 | range: 0.1..1.0)
-│   │   ├── Strafe (Toggle | default: true)
-│   │   ├── Clipping (Decimal | default: -0.5 | range: -1.0..1.0)
-│   │   ├── Blink (Toggle | default: false)
-│   │   ├── FallDamage (Toggle | default: false)
-│   │   └── MaximumDistance (Decimal | default: 200.0 | range: 0.1..500.0)
-│   ├── [Mode: Hypixel]
-│   │   └── Timer (Decimal | default: 1.0 | range: 0.1..1.0)
-│   ├── [Mode: HypixelFlat]
-│   │   ├── Timer (Decimal | default: 1.0 | range: 0.1..1.0)
-│   │   └── Speed (Decimal | default: 1.66 | range: 0.8..2.0)
-├── Visuals (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Stride (Toggle | default: true)
-└── DisableOnSetback (Toggle | default: false)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **Vanilla**, **Creative**, **Jetpack**, **Enderpearl**, **AirWalk**, **Explosion**, **Fireball**, **Vulcan277**, **Vulcan286-113**, **Vulcan286-18**, **Vulcan286-Teleport-18**, **Grim2859-V**, **Grim2373Jan15**, **Spartan524**, **Sentinel20thApr**, **Sentinel27thJan**, **Sentinel10thMar**, **Sentinel26thDec**, **VerusB3896Damage**, **VerusB3896Flat**, **NcpClip**, **Hypixel**, **HypixelFlat**, **HycraftDamage**. Default: **Vanilla**.
-
-##### Mode: Vanilla
-
-- **Glide** (Decimal) — default: `0.0`; range: `-1.0` – `1.0` — Vertical velocity when not pressing jump or sneak (negative falls, positive rises).
-- **BypassVanillaCheck** (Toggle) — default: `true` — Periodically dips slightly to bypass the vanilla server fly detection.
-###### BaseSpeed
-
-A group of related settings.
-
-- **Horizontal** (Decimal) — default: `0.44`; range: `0.1` – `10.0` — Base horizontal flight speed.
-- **Vertical** (Decimal) — default: `0.44`; range: `0.1` – `10.0` — Base vertical flight speed.
-
-###### SprintSpeed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables a separate speed when sprinting.
-- **Horizontal** (Decimal) — default: `1.0`; range: `0.1` – `10.0` — Horizontal speed while sprinting.
-- **Vertical** (Decimal) — default: `1.0`; range: `0.1` – `10.0` — Vertical speed while sprinting.
-
-
-##### Mode: Creative
-
-- **Speed** (Decimal) — default: `0.1`; range: `0.1` – `5.0` — Creative flight speed multiplier.
-###### SprintSpeed
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables a separate speed when sprinting in creative fly mode.
-- **Speed** (Decimal) — default: `0.1`; range: `0.1` – `5.0` — Creative flight speed while sprinting.
-
-- **MaxVelocity** (Decimal) — default: `4.0`; range: `1.0` – `20.0` — Maximum allowed velocity to prevent rubberbanding.
-- **BypassVanillaCheck** (Toggle) — default: `true` — Periodically dips slightly to bypass the vanilla server fly detection.
-- **ForceFlight** (Toggle) — default: `true` — Forces the player's flight ability to stay enabled.
-
-##### Mode: Enderpearl
-
-- **Speed** (Decimal) — default: `1.0`; range: `0.5` – `2.0` — Flight speed after the enderpearl teleport.
-#### Rotations
-
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
-
-
-##### Mode: AirWalk
-
-- **OnGround** (Toggle) — default: `true` — Spoofs the on-ground state in movement packets.
-
-##### Mode: Explosion
-
-- **Vertical** (Decimal) — default: `4.0`; range: `0.0` – `10.0` — Multiplier for vertical velocity from explosions.
-- **StartStrafe** (Decimal) — default: `1.0`; range: `0.6` – `4.0` — Initial horizontal strafe speed after being damaged.
-- **StrafeDecrease** (Decimal) — default: `0.005`; range: `0.001` – `0.1` — Amount the strafe speed decreases per tick.
-
-##### Mode: Fireball
-
-###### Technique
-
-Select a mode for this feature. Available modes: **Legit**, **Custom**. Default: **Legit**.
-
-###### Mode: Legit
-
-- **Sprint** (Toggle) — default: `true` — Enables sprinting after throwing the fireball.
-- **StopMove** (Toggle) — default: `true` — Stops player movement while preparing the throw to avoid falling off edges.
-###### Jump
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables jumping before throwing.
-- **Delay** (Integer) — default: `3`; range: `0` – `20`; unit: ticks — Ticks to wait after jumping before throwing.
-
-#### Rotations
-
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
-
-- **Pitch** (Decimal) — default: `90.0`; range: `0.0` – `90.0` — Pitch angle to aim at when throwing the fireball.
-- **Backwards** (Toggle) — default: `true` — Rotates the player to face backwards before throwing.
-
-
-###### Mode: Custom
-
-- **DisableDelay** (Integer) — default: `10`; range: `0` – `20` — Ticks to wait before disabling the module after throwing.
-- **ThrowDelay** (Integer) — default: `2`; range: `0` – `20` — Ticks to wait before throwing the fireball.
-- **Sprint** (Toggle) — default: `true` — Enables sprinting after throwing the fireball.
-- **StopMove** (Toggle) — default: `true` — Stops player movement while preparing the throw to avoid falling off edges.
-###### Jump
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables jumping before throwing.
-- **JumpDelay** (Integer) — default: `1`; range: `0` – `20`; unit: ticks — Ticks to wait after jumping before throwing.
-
-###### YVelocity
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables setting a custom vertical velocity after throwing.
-- **Velocity** (Decimal) — default: `0.0`; range: `-5.0` – `5.0` — Vertical velocity to apply after throwing.
-- **Delay** (Integer) — default: `0`; range: `0` – `20`; unit: ticks — Ticks to wait before applying the vertical velocity.
-
-#### Rotations
-
-> For details on Rotations settings, see [Shared: Rotations](/docs/modules/shared-settings/rotations).
-
-- **Pitch** (Decimal) — default: `90.0`; range: `0.0` – `90.0` — Pitch angle to aim at when throwing the fireball.
-
-
-###### Trigger
-
-Select a mode for this feature. Available modes: **Instant**, **OnEdge**. Default: **Instant**.
-
-###### Mode: OnEdge
-
-- **EdgeDistance** (Decimal) — default: `0.01`; range: `0.01` – `0.5` — How close to the block edge the player must be to trigger the fireball throw.
-
-- **SlotResetDelay** (Integer Range) — default: `4` – `6`; range: `0` – `40`; unit: ticks — Ticks to wait before resetting the hotbar slot after use.
-
-##### Mode: Vulcan286-18
-
-- **Timer** (Decimal) — default: `2.5`; range: `1.0` – `2.5`
-- **AutoDisable** (Toggle) — default: `false`
-
-##### Mode: Grim2859-V
-
-- **Toggle** (Integer) — default: `0`; range: `0` – `100`
-- **Timer** (Decimal) — default: `0.446`; range: `0.1` – `1.0`
-
-##### Mode: Grim2373Jan15
-
-- **AutoLagInAir** (Toggle) — default: `true`
-- **AirTick** (Integer) — default: `3`; range: `0` – `12`; unit: ticks
-
-##### Mode: Sentinel20thApr
-
-- **HorizontalSpeed** (Decimal) — default: `3.5`; range: `0.1` – `10.0`
-- **ConstantSpeed** (Toggle) — default: `false`
-- **VerticalSpeed** (Decimal) — default: `0.7`; range: `0.1` – `1.0`
-- **ReboostTicks** (Integer) — default: `30`; range: `10` – `50`
-- **BoostOnce** (Toggle) — default: `false`
-- **Nostalgia** (Toggle) — default: `false`
-
-##### Mode: Sentinel27thJan
-
-- **HorizontalSpeed** (Decimal Range) — default: `0.33` – `0.34`; range: `0.1` – `1.0`
-
-##### Mode: Sentinel10thMar
-
-- **Height** (Decimal) — default: `0.42`; range: `0.1` – `1.0`
-- **Speed** (Decimal) — default: `0.35`; range: `0.1` – `1.0`
-- **Ticks** (Integer) — default: `11`; range: `1` – `20`
-
-##### Mode: Sentinel26thDec
-
-- **HorizontalSpeed** (Decimal) — default: `3.5`; range: `0.1` – `10.0`
-- **VerticalSpeed** (Decimal) — default: `0.7`; range: `0.1` – `5.0`
-- **Ticks** (Integer) — default: `20`; range: `10` – `50`
-- **Timer** (Decimal) — default: `0.5`; range: `0.1` – `1.0`
-- **Nostalgia** (Toggle) — default: `false`
-
-##### Mode: VerusB3896Flat
-
-- **Timer** (Decimal) — default: `5.0`; range: `1.0` – `20.0`
-
-##### Mode: NcpClip
-
-- **Speed** (Decimal) — default: `7.5`; range: `2.0` – `10.0`
-- **AdditionalEntry** (Decimal) — default: `2.0`; range: `0.0` – `2.0`
-- **Timer** (Decimal) — default: `0.4`; range: `0.1` – `1.0`
-- **Strafe** (Toggle) — default: `true`
-- **Clipping** (Decimal) — default: `-0.5`; range: `-1.0` – `1.0`
-- **Blink** (Toggle) — default: `false`
-- **FallDamage** (Toggle) — default: `false`
-- **MaximumDistance** (Decimal) — default: `200.0`; range: `0.1` – `500.0`
-
-##### Mode: Hypixel
-
-- **Timer** (Decimal) — default: `1.0`; range: `0.1` – `1.0`
-
-##### Mode: HypixelFlat
-
-- **Timer** (Decimal) — default: `1.0`; range: `0.1` – `1.0`
-- **Speed** (Decimal) — default: `1.66`; range: `0.8` – `2.0`
-
-#### Visuals
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables visual effects while flying.
-- **Stride** (Toggle) — default: `true` — Adds a walking animation while flying.
-
-- **DisableOnSetback** (Toggle) — default: `false` — Disables the module when a server position correction (setback) is detected.
-
-### Screenshots
-
-*Screenshots for Fly will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | HypixelFlat | Vanilla, Creative, Jetpack, Enderpearl, AirWalk, Explosion, Fireball, Vulcan277, Vulcan286-113, Vulcan286-18, Vulcan286-Teleport-18, Grim2859-V, Grim2373Jan15, Spartan524, Sentinel20thApr, Sentinel27thJan, Sentinel10thMar, Sentinel26thDec, VerusB3896Damage, VerusB3896Flat, NcpClip, Hypixel, HypixelFlat, HycraftDamage | Which flight method to use. Choose the one made for your server or anti-cheat. |
+| Mode → [Vanilla] → Glide | Decimal | 0.0 | -1.0..1.0 | Vertical drift when you aren't pressing jump or sneak — negative sinks, positive rises. |
+| Mode → [Vanilla] → BypassVanillaCheck | Toggle | false | — | Periodically nudges you downward to avoid the vanilla flight kick. |
+| Mode → [Vanilla] → BaseSpeed | Setting Group | — | — | Base horizontal and vertical fly speed. |
+| Mode → [Vanilla] → BaseSpeed → Horizontal | Decimal | 3.0 | 0.1..10.0 | Forward/sideways fly speed. |
+| Mode → [Vanilla] → BaseSpeed → Vertical | Decimal | 2.93 | 0.1..10.0 | Up/down fly speed when ascending or descending. |
+| Mode → [Vanilla] → SprintSpeed | Toggleable Group | On | — | Applies a different speed while holding sprint. |
+| Mode → [Vanilla] → SprintSpeed → Horizontal | Decimal | 1.0 | 0.1..10.0 | Forward/sideways speed while sprinting. |
+| Mode → [Vanilla] → SprintSpeed → Vertical | Decimal | 1.0 | 0.1..10.0 | Up/down speed while sprinting. |
+| Mode → [Creative] → Speed | Decimal | 0.1 | 0.1..5.0 | Flight speed using creative-style abilities. |
+| Mode → [Creative] → SprintSpeed | Toggleable Group | On | — | Uses a different speed while holding sprint. |
+| Mode → [Creative] → SprintSpeed → Speed | Decimal | 0.1 | 0.1..5.0 | Flight speed while sprinting. |
+| Mode → [Creative] → MaxVelocity | Decimal | 4.0 | 1.0..20.0 | Caps your overall movement speed. |
+| Mode → [Creative] → BypassVanillaCheck | Toggle | true | — | Sends occasional downward movement to dodge the vanilla check. |
+| Mode → [Creative] → ForceFlight | Toggle | true | — | Keeps the flying ability forced on. |
+| Mode → [Enderpearl] → Speed | Decimal | 1.0 | 0.5..2.0 | Fly speed after the thrown pearl lands. |
+| Mode → [Enderpearl] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Mode → [AirWalk] → OnGround | Toggle | false | — | Whether to tell the server you're on the ground while walking on air. |
+| Mode → [Explosion] → Vertical | Decimal | 1.2 | 0.0..10.0 | Multiplies the upward velocity gained from explosion knockback. |
+| Mode → [Explosion] → StartStrafe | Decimal | 1.0 | 0.6..4.0 | Initial horizontal boost right after the explosion. |
+| Mode → [Explosion] → StrafeDecrease | Decimal | 0.01 | 0.001..0.1 | How quickly that horizontal boost fades each tick. |
+| Mode → [Fireball] → Technique | Mode Selector | Custom | Legit, Custom | How the fireball launch is performed. |
+| Mode → [Fireball] → Technique → [Legit] → Sprint | Toggle | true | — | Start sprinting after the fireball is thrown. |
+| Mode → [Fireball] → Technique → [Legit] → StopMove | Toggle | false | — | Stops you walking while active so you don't fall off edges. |
+| Mode → [Fireball] → Technique → [Legit] → Jump | Toggleable Group | On | — | Jump before launching. |
+| Mode → [Fireball] → Technique → [Legit] → Jump → Delay | Integer | 0 | 0..20 ticks | Ticks to wait before jumping. |
+| Mode → [Fireball] → Technique → [Legit] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Mode → [Fireball] → Technique → [Custom] → DisableDelay | Integer | 10 | 0..20 | Ticks to wait after the throw before turning Fly off. |
+| Mode → [Fireball] → Technique → [Custom] → ThrowDelay | Integer | 1 | 0..20 | Ticks to wait before throwing the fireball. |
+| Mode → [Fireball] → Technique → [Custom] → Sprint | Toggle | true | — | Start sprinting after the fireball is thrown. |
+| Mode → [Fireball] → Technique → [Custom] → StopMove | Toggle | false | — | Stops you walking while active so you don't fall off edges. |
+| Mode → [Fireball] → Technique → [Custom] → Jump | Toggleable Group | Off | — | Jump before launching. |
+| Mode → [Fireball] → Technique → [Custom] → Jump → JumpDelay | Integer | 1 | 0..20 ticks | Ticks to wait before jumping. |
+| Mode → [Fireball] → Technique → [Custom] → YVelocity | Toggleable Group | On | — | Applies a set vertical velocity after launching. |
+| Mode → [Fireball] → Technique → [Custom] → YVelocity → Velocity | Decimal | 0.45 | -5.0..5.0 | Vertical velocity applied after launch. |
+| Mode → [Fireball] → Technique → [Custom] → YVelocity → Delay | Integer | 5 | 0..20 ticks | Ticks to wait before applying that velocity. |
+| Mode → [Fireball] → Technique → [Custom] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Mode → [Fireball] → Trigger | Mode Selector | Instant | Instant, OnEdge | When the fireball launch is triggered. |
+| Mode → [Fireball] → Trigger → [OnEdge] → EdgeDistance | Decimal | 0.01 | 0.01..0.5 | How close to a block edge you must be before it triggers. |
+| Mode → [Fireball] → SlotResetDelay | Integer Range | 4..6 | 0..40 ticks | Ticks before your hotbar slot is silently restored after grabbing the fireball. |
+| Mode → [Vulcan286-18] → Timer | Decimal | 2.5 | 1.0..2.5 | Game-speed multiplier while desynced. |
+| Mode → [Vulcan286-18] → AutoDisable | Toggle | false | — | Turn off automatically when the desync state breaks. |
+| Mode → [Grim2859-V] → Toggle | Integer | 0 | 0..100 | Auto-disable after this many ticks (0 removes the limit). |
+| Mode → [Grim2859-V] → Timer | Decimal | 0.446 | 0.1..1.0 | Game-speed multiplier during the boost. |
+| Mode → [Grim2373Jan15] → AutoLagInAir | Toggle | true | — | Automatically start the fly once you've been airborne long enough. |
+| Mode → [Grim2373Jan15] → AirTick | Integer | 3 | 0..12 ticks | Air time in ticks before it activates. |
+| Mode → [Sentinel20thApr] → HorizontalSpeed | Decimal | 2.36 | 0.1..10.0 | Horizontal fly speed. |
+| Mode → [Sentinel20thApr] → ConstantSpeed | Toggle | true | — | Keep applying the horizontal speed every tick. |
+| Mode → [Sentinel20thApr] → VerticalSpeed | Decimal | 0.7 | 0.1..1.0 | Up/down speed when pressing jump or sneak. |
+| Mode → [Sentinel20thApr] → ReboostTicks | Integer | 30 | 10..50 | Ticks between each re-boost. |
+| Mode → [Sentinel20thApr] → BoostOnce | Toggle | false | — | Boost a single time, then turn off. |
+| Mode → [Sentinel20thApr] → Nostalgia | Toggle | false | — | Adds a small upward teleport on boost (older behaviour). |
+| Mode → [Sentinel27thJan] → HorizontalSpeed | Decimal Range | 0.33..0.34 | 0.1..1.0 | Random horizontal speed picked from this range each cycle. |
+| Mode → [Sentinel10thMar] → Height | Decimal | 0.42 | 0.1..1.0 | Upward velocity applied each cycle. |
+| Mode → [Sentinel10thMar] → Speed | Decimal | 0.35 | 0.1..1.0 | Horizontal speed. |
+| Mode → [Sentinel10thMar] → Ticks | Integer | 11 | 1..20 | Ticks between each boost. |
+| Mode → [Sentinel26thDec] → HorizontalSpeed | Decimal | 3.5 | 0.1..10.0 | Horizontal fly speed. |
+| Mode → [Sentinel26thDec] → VerticalSpeed | Decimal | 0.7 | 0.1..5.0 | Up/down speed when pressing jump or sneak. |
+| Mode → [Sentinel26thDec] → Ticks | Integer | 20 | 10..50 | How long the flight lasts before turning off. |
+| Mode → [Sentinel26thDec] → Timer | Decimal | 0.5 | 0.1..1.0 | Game-speed multiplier during flight. |
+| Mode → [Sentinel26thDec] → Nostalgia | Toggle | false | — | Adds a small upward teleport on boost (older behaviour). |
+| Mode → [VerusB3896Flat] → Timer | Decimal | 5.0 | 1.0..20.0 | Game-speed multiplier while flat-flying. |
+| Mode → [NcpClip] → Speed | Decimal | 7.5 | 2.0..10.0 | Horizontal fly speed. |
+| Mode → [NcpClip] → AdditionalEntry | Decimal | 2.0 | 0.0..2.0 | Extra speed added to the initial launch. |
+| Mode → [NcpClip] → Timer | Decimal | 0.4 | 0.1..1.0 | Game-speed multiplier during flight. |
+| Mode → [NcpClip] → Strafe | Toggle | true | — | Allows steering while flying. |
+| Mode → [NcpClip] → Clipping | Decimal | -0.5 | -1.0..1.0 | Vertical offset used to clip through the floor (negative goes down). |
+| Mode → [NcpClip] → Blink | Toggle | false | — | Holds back packets so you can recover if something goes wrong. |
+| Mode → [NcpClip] → FallDamage | Toggle | false | — | Take fall damage first, which some setups require. |
+| Mode → [NcpClip] → MaximumDistance | Decimal | 60.0 | 0.1..500.0 | Auto-disable after travelling this many blocks. |
+| Mode → [Hypixel] → Timer | Decimal | 0.73 | 0.1..1.0 | Game-speed multiplier during the flight. |
+| Mode → [HypixelFlat] → Timer | Decimal | 1.0 | 0.1..1.0 | Game-speed multiplier during the flight. |
+| Mode → [HypixelFlat] → Speed | Decimal | 1.66 | 0.8..2.0 | Horizontal fly speed. |
+| Visuals | Toggleable Group | On | — | Visual tweaks that keep your flight looking natural to others. |
+| Visuals → Stride | Toggle | true | — | Smooths your stride animation so movement appears normal. |
+| DisableOnSetback | Toggle | true | — | Turns Fly off when the server teleports you back, a sign you've been flagged. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleFly.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/fly/ModuleFly.kt)*

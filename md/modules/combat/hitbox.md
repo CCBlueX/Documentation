@@ -1,29 +1,21 @@
 ## Hitbox
 
-Enlarges the hit box of targets.
+Hitbox makes the targets you're fighting easier to hit by expanding the invisible box the game uses to register your attacks. With a larger box, your crosshair doesn't have to be perfectly centered on an enemy for a swing to land, which helps when opponents are strafing, jittering, or fighting at the edge of your reach.
 
-**Category:** Combat  
-**Enabled by default:** No  
+This pairs naturally with combat modules like [KillAura](/docs/modules/combat/killaura), [Aimbot](/docs/modules/combat/aimbot), and [Reach](/docs/modules/player/reach), giving you more forgiving aim during fast fights. Keep in mind that bigger hitboxes are very obvious to anti-cheats, so higher values are best reserved for casual or unprotected servers.
+
+The **Size** value controls how much the box grows, while the two toggles decide which parts of the game's hit detection the enlargement is applied to.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Size (Decimal | default: 0.1 | range: 0.0..1.0)
-├── ApplyToDebugHitbox (Toggle | default: true)
-└── ApplyToComponent (Toggle | default: true)
-```
-
-### Settings Details
-
-- **Size** (Decimal) — default: `0.1`; range: `0.0` – `1.0` — Extra margin added to each attackable entity's hitbox.
-- **ApplyToDebugHitbox** (Toggle) — default: `true` — Also enlarges the debug (F3+B) hitbox display.
-- **ApplyToComponent** (Toggle) — default: `true` — Also applies the expansion to the item component attack-range hitbox margin.
-
-### Screenshots
-
-*Screenshots for Hitbox will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Size | Decimal | 0.4 | 0.0..1.0 | How far the target's hitbox is expanded on each side. Higher values make enemies easier to hit but more obvious to anti-cheats. |
+| ApplyToDebugHitbox | Toggle | true | — | Also enlarges the outline shown for entity hitboxes (visible with the F3+B debug view), so the displayed box matches the enlarged hit area. |
+| ApplyToComponent | Toggle | true | — | Applies the enlargement to items that define their own attack range, keeping the expanded hitbox consistent when using such weapons. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleHitbox.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleHitbox.kt)*

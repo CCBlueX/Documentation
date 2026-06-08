@@ -1,74 +1,31 @@
 ## BetterInventory
 
-Additional inventory-related visual features.
+BetterInventory bundles several quality-of-life visual tweaks for inventory and container screens. Instead of changing how items behave, it adds on-screen information and highlights that make managing your inventory faster and clearer. Each feature is its own toggleable group, so you can enable only the parts you want.
 
-**Category:** Render  
-**Enabled by default:** No  
+The three features are independent. **HighlightClicked** draws an outline or hotbar-style frame around the slot you last clicked, so it's easy to track which slot you just interacted with — see [the highlight logic](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBetterInventory.kt#L155-L159). **TextCooldownProgress** prints the remaining cooldown directly on an item (such as an Ender Pearl or Chorus Fruit) as a percentage, in ticks, or in seconds, so you don't have to read the shrinking cooldown overlay; the text only appears while a cooldown is active, as handled in [the cooldown text drawing](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBetterInventory.kt#L121-L153).
+
+**ContainerItemView** previews the contents of a container item — like a Shulker Box or Bundle — without opening it, by reading its stored items and drawing them next to your cursor when you hover over the stack. You can position the preview relative to the mouse or at a fixed offset, optionally hide empty slots, and scale it to taste, as shown in [the container preview rendering](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBetterInventory.kt#L161-L196).
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── HighlightClicked (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Mode (Mode Selector | default: Border | modes: Border, Texture)
-│       ├── [Mode: Border]
-│       │   └── Color (Color)
-├── TextCooldownProgress (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Mode (Choice | default: PERCENTAGE | options: Percentage, DurationTicks, DurationSeconds)
-│   ├── Scale (Decimal | default: 1.0 | range: 0.25..4.0)
-│   └── Color (Color)
-└── ContainerItemView (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    ├── SkipEmptyStack (Toggle | default: false)
-    ├── Scale (Decimal | default: 1.0 | range: 0.25..4.0)
-    ├── RelativeToMouse (Toggle | default: true)
-    ├── RenderOffsetX (Decimal | default: 150.0 | range: -4096.0..4096.0)
-    └── RenderOffsetY (Decimal | default: 0.0 | range: -4096.0..4096.0)
-```
-
-### Settings Details
-
-#### HighlightClicked
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables highlighting of the last clicked inventory slot.
-##### Mode
-
-Select a mode for this feature. Available modes: **Border**, **Texture**. Default: **Border**.
-
-###### Mode: Border
-
-- **Color** (Color) — Color of the border highlight around the clicked slot.
-
-
-#### TextCooldownProgress
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables displaying cooldown progress as text over items.
-- **Mode** (Choice) — default: `PERCENTAGE`; options: `Percentage`, `DurationTicks`, `DurationSeconds` — Format for displaying cooldown progress.
-- **Scale** (Decimal) — default: `1.0`; range: `0.25` – `4.0` — Scale of the cooldown progress text.
-- **Color** (Color) — Color of the cooldown progress text.
-
-#### ContainerItemView
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables the container content preview on hover.
-- **SkipEmptyStack** (Toggle) — default: `false` — Hides empty item slots in the container preview.
-- **Scale** (Decimal) — default: `1.0`; range: `0.25` – `4.0` — Scale of the container preview display.
-- **RelativeToMouse** (Toggle) — default: `true` — Positions the preview relative to the mouse cursor.
-- **RenderOffsetX** (Decimal) — default: `150.0`; range: `-4096.0` – `4096.0` — Horizontal offset of the container preview.
-- **RenderOffsetY** (Decimal) — default: `0.0`; range: `-4096.0` – `4096.0` — Vertical offset of the container preview.
-
-
-### Screenshots
-
-*Screenshots for BetterInventory will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| HighlightClicked | Toggleable Group | on | — | Highlights the slot you last clicked in an inventory screen. |
+| HighlightClicked → Mode | Mode Selector | Border | Border, Texture | How the clicked slot is highlighted: a colored border, or the vanilla hotbar selection frame. |
+| HighlightClicked → Mode → [Border] → Color | Color | — | — | Color of the border drawn around the clicked slot. |
+| TextCooldownProgress | Toggleable Group | on | — | Shows an item's remaining cooldown as text drawn over the item. |
+| TextCooldownProgress → Mode | Choice | Percentage | Percentage, DurationTicks, DurationSeconds | Format of the cooldown readout: a percentage, the remaining ticks, or the remaining seconds. |
+| TextCooldownProgress → Scale | Decimal | 1.0 | 0.25..4.0 | Size multiplier for the cooldown text. |
+| TextCooldownProgress → Color | Color | — | — | Color of the cooldown text. |
+| ContainerItemView | Toggleable Group | on | — | Previews the contents of a hovered container item (e.g. Shulker Box, Bundle) next to your cursor. |
+| ContainerItemView → SkipEmptyStack | Toggle | false | — | When enabled, empty slots inside the container are omitted from the preview. |
+| ContainerItemView → Scale | Decimal | 1.0 | 0.25..4.0 | Size multiplier for the container preview. |
+| ContainerItemView → RelativeToMouse | Toggle | true | — | When enabled, the preview follows your cursor; when disabled, it uses a fixed position from the offsets below. |
+| ContainerItemView → RenderOffsetX | Decimal | 150.0 | -4096.0..4096.0 | Horizontal offset of the preview, in pixels. |
+| ContainerItemView → RenderOffsetY | Decimal | 0.0 | -4096.0..4096.0 | Vertical offset of the preview, in pixels. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleBetterInventory.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBetterInventory.kt)*

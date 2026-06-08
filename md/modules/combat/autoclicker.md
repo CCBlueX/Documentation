@@ -1,80 +1,34 @@
 ## AutoClicker
 
-Clicks automatically when holding down the attack button.
+AutoClicker automatically fires clicks for you while you hold down a mouse button, so you don't have to spam your mouse. It's split into two independent parts: one for the **attack** (left) button and one for the **use** (right) button. Each part has its own click-speed timing, controlled through its shared [Clicker](/docs/modules/shared-settings/clicker) group.
 
-**Category:** Combat  
-**Enabled by default:** No  
+The Attack part keeps you swinging at whatever your crosshair is pointed at, which is why it's also known as a triggerbot. You can restrict it to only attack enemies, any entity, blocks, or anything at all, and limit it to specific weapon types so it won't swing with the wrong item. It can also respect critical hits and pause itself while you're eating or using an item. Unlike [KillAura](/docs/modules/combat/killaura), it does not aim for you — it only clicks where you're already looking.
+
+The Use part auto-clicks the right button, which is handy for rapidly placing blocks or interacting. It can be limited to only block items and will skip clicking when you're holding certain items (like buckets, pearls, or eyes) or looking at blocks you'd rather open manually, such as doors, gates, and trapdoors.
+
+**Category:** Combat
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Attack (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Clicker (Setting Group)
-│   │   ├── CPS (Integer Range | default: 5..8 | range: 1..60 | clicks)
-│   │   ├── Technique (Choice | default: STABILIZED | options: Stabilized, Efficient, Spamming, DoubleClick, Drag, Butterfly, NormalDistribution)
-│   │   ├── ItemCooldown (Setting Group)
-│   │   │   └── Minimum (Decimal Range | default: 1.0..1.0 | range: 0.0..2.0)
-│   │   └── AttackCooldown (Toggle | default: true)
-│   ├── RequiresNoInput (Toggle | default: false)
-│   ├── DelayOnBroken (Toggle | default: true)
-│   ├── Objective (Choice | default: ANY | options: Enemy, Entity, Block, Any)
-│   ├── OnItemUse (Choice | default: WAIT | options: Wait, Stop, Ignore)
-│   ├── Weapon (Multi-Select | default: [Any] | options: Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect)
-│   ├── Criticals (Choice | default: SMART | options: Smart, Ignore, Always)
-│   └── DelayPostStopUse (Integer | default: 0 | range: 0..20 | ticks)
-└── Use (Toggleable Group | default: off)
-    ├── Enabled (Toggle | default: false)
-    ├── Clicker (Setting Group)
-    │   ├── CPS (Integer Range | default: 5..8 | range: 1..60 | clicks)
-    │   └── Technique (Choice | default: STABILIZED | options: Stabilized, Efficient, Spamming, DoubleClick, Drag, Butterfly, NormalDistribution)
-    ├── HoldingItemsForIgnore (Registry List)
-    ├── BlocksForIgnore (Registry List)
-    ├── DelayStart (Toggle | default: false)
-    ├── OnlyBlock (Toggle | default: false)
-    └── RequiresNoInput (Toggle | default: false)
-```
-
-### Settings Details
-
-#### Attack
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Clicker
-
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
-
-- **RequiresNoInput** (Toggle) — default: `false` — When enabled, attacks trigger without holding the attack key.
-- **DelayOnBroken** (Toggle) — default: `true` — Adds a 300ms delay after breaking a block to prevent attack spam.
-- **Objective** (Choice) — default: `ANY`; options: `Enemy`, `Entity`, `Block`, `Any` — Determines what type of object triggers automatic clicking.
-- **OnItemUse** (Choice) — default: `WAIT`; options: `Wait`, `Stop`, `Ignore` — Controls behavior when an item is being used: wait, stop using, or ignore.
-- **Weapon** (Multi-Select) — default: `Any`; options: `Any`, `Sword`, `Axe`, `Mace`, `Spear`, `Pickaxe`, `Shovel`, `Hoe`, `Knockback`, `FireAspect` — Restricts automatic clicking to specific weapon types held in the main hand. Cannot be empty.
-- **Criticals** (Choice) — default: `SMART`; options: `Smart`, `Ignore`, `Always` — Controls when to wait for critical hit opportunities before attacking.
-- **DelayPostStopUse** (Integer) — default: `0`; range: `0` – `20`; unit: ticks — Delay in ticks after stopping item usage before resuming attacks.
-
-#### Use
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-##### Clicker
-
-> For details on Clicker settings, see [Shared: Clicker](/docs/modules/shared-settings/clicker).
-
-- **HoldingItemsForIgnore** (Registry List) — Items that disable clicking when held (e.g., water buckets, ender pearls).
-- **BlocksForIgnore** (Registry List) — Blocks that disable clicking when aimed at (e.g., doors, fence gates, trapdoors).
-- **DelayStart** (Toggle) — default: `false` — Adds a 2-tick delay on the first use activation.
-- **OnlyBlock** (Toggle) — default: `false` — Only clicks when holding block items.
-- **RequiresNoInput** (Toggle) — default: `false` — When enabled, use triggers without holding the use key.
-
-
-### Screenshots
-
-*Screenshots for AutoClicker will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Attack | Toggleable Group | Off | — | Auto-clicks the attack (left) button while it's held. |
+| Attack → Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Attack → RequiresNoInput | Toggle | false | — | Clicks even when you aren't physically holding the attack button. |
+| Attack → DelayOnBroken | Toggle | true | — | Briefly pauses clicking right after you finish breaking a block. |
+| Attack → Objective | Choice | Enemy | Enemy, Entity, Block, Any | What your crosshair must be on for it to click. |
+| Attack → OnItemUse | Choice | Wait | Wait, Stop, Ignore | How to react while you're using an item — wait for it to finish, stop using it, or ignore it. |
+| Attack → Weapon | Multi-Select | [Any] | Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect | Only clicks when one of these weapon types is in your main hand. |
+| Attack → Criticals | Choice | Smart | Smart, Ignore, Always | When to time clicks for critical hits. |
+| Attack → DelayPostStopUse | Integer | 0 | 0–20 ticks | Extra wait after an item use ends before resuming clicks. |
+| Use | Toggleable Group | On | — | Auto-clicks the use (right) button while it's held. |
+| Use → Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Use → HoldingItemsForIgnore | Registry List | — | — | Items that, when held in either hand, stop it from clicking. |
+| Use → BlocksForIgnore | Registry List | — | — | Blocks that, when looked at, stop it from clicking. |
+| Use → DelayStart | Toggle | false | — | Adds a short delay before the first click after you start holding. |
+| Use → OnlyBlock | Toggle | true | — | Only clicks when you're holding a placeable block. |
+| Use → RequiresNoInput | Toggle | false | — | Clicks even when you aren't physically holding the use button. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoClicker.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleAutoClicker.kt)*

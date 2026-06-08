@@ -1,77 +1,34 @@
 ## CustomAmbience
 
-Allows you to override the world ambience.
+CustomAmbience lets you take over how the world around you looks, regardless of the actual server-side weather, time of day, fog, lighting, or sky color. Want a permanent snowy night even on a sunny survival server, or a clear sky with no rain blocking your view? This module forces the client to render whatever ambience you choose, purely on your screen.
 
-**Category:** Render  
-**Enabled by default:** No  
+Everything here is visual and local to your client — it does not change the real game state, so other players still see the server's normal weather and time. You can mix and match: set a time and weather, then optionally fine-tune precipitation density, fog distances and color, the lightmap (overall scene tint), and the sky color. Leave any choice on `NoChange` to keep the server's real value for that aspect.
+
+A common use is comfort and visibility: clearing fog, brightening or recoloring the lightmap, or locking a pleasant time of day. It pairs well with other render tweaks like [FullBright](/docs/modules/render/fullbright) and [AntiBlind](/docs/modules/render/antiblind).
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Weather (Choice | default: SNOWY | options: NoChange, Sunny, Rainy, Snowy, Thunder)
-├── Time (Choice | default: NIGHT | options: NoChange, Dawn, Day, Noon, Dusk, Night, MidNight)
-├── ModifyPrecipitation (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Gradient (Decimal | default: 0.7 | range: 0.1..1.0)
-├── Fog (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── DisableWorldFog (Toggle | default: false)
-│   ├── BackgroundColor (Color)
-│   ├── Environmental (Decimal Range | default: 0.0..1024.0 | range: -16.0..2048.0)
-│   ├── RenderDistance (Decimal Range | default: 230.0..256.0 | range: 0.0..1024.0)
-│   ├── SkyEnd (Decimal | default: 256.0 | range: 0.0..1024.0)
-│   └── CloudEnd (Decimal | default: 20480.0 | range: 0.0..4096.0)
-├── CustomLightmap (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   └── Color (Color)
-└── SkyColor (Toggleable Group | default: off)
-    ├── Enabled (Toggle | default: false)
-    └── Color (Color)
-```
-
-### Settings Details
-
-- **Weather** (Choice) — default: `SNOWY`; options: `NoChange`, `Sunny`, `Rainy`, `Snowy`, `Thunder` — Overrides the current weather type.
-- **Time** (Choice) — default: `NIGHT`; options: `NoChange`, `Dawn`, `Day`, `Noon`, `Dusk`, `Night`, `MidNight` — Overrides the time of day.
-#### ModifyPrecipitation
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables precipitation intensity modification.
-- **Gradient** (Decimal) — default: `0.7`; range: `0.1` – `1.0` — Controls the precipitation gradient intensity.
-
-#### Fog
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables custom fog settings.
-- **DisableWorldFog** (Toggle) — default: `false` — Disables the vanilla world fog entirely.
-- **BackgroundColor** (Color) — Background clear color when fog is active.
-- **Environmental** (Decimal Range) — default: `0.0` – `1024.0`; range: `-16.0` – `2048.0` — Start and end distances for environmental fog.
-- **RenderDistance** (Decimal Range) — default: `230.0` – `256.0`; range: `0.0` – `1024.0` — Start and end distances for render distance fog.
-- **SkyEnd** (Decimal) — default: `256.0`; range: `0.0` – `1024.0` — End distance for sky fog.
-- **CloudEnd** (Decimal) — default: `20480.0`; range: `0.0` – `4096.0` — End distance for cloud fog.
-
-#### CustomLightmap
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Enables a custom lightmap color overlay.
-- **Color** (Color) — Color used for the custom lightmap.
-
-#### SkyColor
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Enables a custom sky color override.
-- **Color** (Color) — Color used for the sky.
-
-
-### Screenshots
-
-*Screenshots for CustomAmbience will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Weather | Choice | Snowy | NoChange, Sunny, Rainy, Snowy, Thunder | Forces the displayed weather effect, or keeps the server's weather on NoChange. |
+| Time | Choice | Night | NoChange, Dawn, Day, Noon, Dusk, Night, MidNight | Locks the visual time of day, or keeps the server's time on NoChange. |
+| ModifyPrecipitation | Toggleable Group | On | — | Adjusts how rain and snow are rendered. |
+| ModifyPrecipitation → Gradient | Decimal | 0.7 | 0.1..1.0 | Controls how dense and heavy the falling rain or snow appears. |
+| Fog | Toggleable Group | On | — | Overrides the world's fog rendering. |
+| Fog → DisableWorldFog | Toggle | false | — | Removes the world fog entirely for a clearer view. |
+| Fog → BackgroundColor | Color | — | — | Sets the color the distant background and fog fade into. |
+| Fog → Environmental | Decimal Range | 0.0..0.0 | -16.0..2048.0 | Sets the near and far distances over which environmental fog fades in. |
+| Fog → RenderDistance | Decimal Range | 0.0..0.0 | 0.0..1024.0 | Sets the near and far distances over which render-distance fog fades in. |
+| Fog → SkyEnd | Decimal | 0.0 | 0.0..1024.0 | Distance at which the sky fog ends. |
+| Fog → CloudEnd | Decimal | 0.0 | 0.0..4096.0 | Distance at which the cloud fog ends. |
+| CustomLightmap | Toggleable Group | Off | — | Overrides the scene's lighting with a custom tint. |
+| CustomLightmap → Mode | Mode Selector | SingleColor | SingleColor | Selects how the lightmap is overridden. |
+| CustomLightmap → Mode → [SingleColor] → Color | Color | — | — | The single color applied across the whole lightmap. |
+| SkyColor | Toggleable Group | Off | — | Overrides the sky with a chosen color. |
+| SkyColor → Color | Color | — | — | The color used to paint the sky. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleCustomAmbience.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleCustomAmbience.kt)*

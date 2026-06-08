@@ -1,44 +1,23 @@
 ## NoFOV
 
-Disables FOV from changing during movement
+NoFOV keeps your field of view from changing due to in-game events. In vanilla Minecraft, sprinting, drawing a bow, being affected by speed or slowness potions, and riding a mount all dynamically shift your FOV. With this module enabled, those shifts are suppressed or replaced, giving you a consistent view at all times.
 
-**Category:** Render  
-**Enabled by default:** No  
+**Constant** mode is the simplest option: it replaces whatever FOV Minecraft would display with a single fixed degree value. If you just want a steady, unchanging field of view, this is the mode to use. **Custom** mode instead intercepts the internal FOV multiplier Minecraft calculates and remaps it — you can set a base offset, scale how strongly dynamic changes carry through, and clamp the result to a specific range. This is useful if you want to preserve a small amount of FOV feedback while still preventing extreme swings.
+
+NoFOV pairs naturally with [Zoom](/docs/modules/render/zoom) if you frequently switch between a wide field of view and a zoomed-in perspective, since both modules work on how the camera FOV is presented to you.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Mode (Mode Selector | default: Constant | modes: Constant, Custom)
-    ├── [Mode: Constant]
-    │   └── FOV (Integer | default: 90 | range: 1..179)
-    └── [Mode: Custom]
-        ├── BaseFOV (Decimal | default: 1.0 | range: 0.0..1.5)
-        ├── Limit (Decimal Range | default: 0.0..1.5 | range: 0.0..1.5)
-        └── Multiplier (Decimal | default: 1.0 | range: 0.1..1.5)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **Constant**, **Custom**. Default: **Constant**.
-
-##### Mode: Constant
-
-- **FOV** (Integer) — default: `90`; range: `1` – `179` — Sets the fixed field of view value.
-
-##### Mode: Custom
-
-- **BaseFOV** (Decimal) — default: `1.0`; range: `0.0` – `1.5` — Sets the base FOV multiplier before adjustments.
-- **Limit** (Decimal Range) — default: `0.0` – `1.5`; range: `0.0` – `1.5` — Clamps the resulting FOV multiplier within this range.
-- **Multiplier** (Decimal) — default: `1.0`; range: `0.1` – `1.5` — Scales the dynamic FOV change amount.
-
-
-### Screenshots
-
-*Screenshots for NoFOV will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | Constant | — | Selects how the FOV override is applied: a fixed degree value or a custom multiplier remap. |
+| Mode → [Constant] → FOV | Integer | 115 | 1–179 | The fixed FOV in degrees used at all times when Constant mode is active. |
+| Mode → [Custom] → BaseFOV | Decimal | 1.0 | 0.0–1.5 | Base FOV multiplier added as an offset after the dynamic component is scaled. |
+| Mode → [Custom] → Limit | Decimal Range | 0.0–1.5 | 0.0–1.5 | Clamps the final FOV multiplier to this range, preventing it from going below or above the set bounds. |
+| Mode → [Custom] → Multiplier | Decimal | 1.0 | 0.1–1.5 | Scales how strongly the dynamic (movement/effect-driven) FOV component carries through. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleNoFov.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleNoFov.kt)*

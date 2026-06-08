@@ -8,24 +8,13 @@ Improvements to the on-screen title and subtitle. Its main feature is optionally
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
+Nested settings are shown with their group path, e.g. `Group → Setting`.
 
-```
-└── AutoTranslate (Toggleable Group | default: off)
-    ├── Components (Multi-Select | options: Title, Subtitle)
-    └── ShowIn (Multi-Select | default: Chat | options: Chat, Message)
-```
-
-### Settings Details
-
-#### AutoTranslate
-
-Toggleable group (default: off) that translates incoming title text using the global Auto Translate service.
-
-- **Components** (Multi-Select) — options: `Title`, `Subtitle` — Which parts of the on-screen title to translate.
-- **ShowIn** (Multi-Select) — default: `Chat`; options: `Chat`, `Message` — Where the translated text is displayed. `Chat` prints the translation as a chat line; `Message` replaces the on-screen title/subtitle text itself.
-
-> Auto Translate must be configured for translation to work — see [Auto Translate](/docs/global-settings/auto-translate).
+| Setting | Type | Default | Range | Description |
+|---------|------|---------|-------|-------------|
+| AutoTranslate | Toggleable Group | off | — |  |
+| AutoTranslate → Components | Multi-Select | [] | Title, Subtitle | Which parts of the on-screen title to translate. |
+| AutoTranslate → ShowIn | Multi-Select | Chat | Chat, Message | Where the translated text is displayed. `Chat` prints the translation as a chat line; `Message` replaces the on-screen title/subtitle text itself. |
 
 ### Screenshots
 

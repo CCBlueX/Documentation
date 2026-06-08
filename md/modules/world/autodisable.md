@@ -1,27 +1,20 @@
 ## AutoDisable
 
-Automatically disables certain modules.
+AutoDisable watches for specific in-game events and automatically turns off the modules you've chosen, so you don't get caught with cheats still running at the wrong moment. For example, you can have it switch everything off the instant an anticheat flags you, the moment you die, or right before you disconnect — situations where leaving a module active could give you away or cause problems.
 
-**Category:** World  
-**Enabled by default:** No  
+Use the **Modules** list to pick which modules AutoDisable should switch off. By default it's set up to manage [Fly](/docs/modules/movement/fly), [Speed](/docs/modules/movement/speed), [NoClip](/docs/modules/movement/noclip), and [KillAura](/docs/modules/combat/killaura), but you can add or remove any module you like. The **On** setting controls which events trigger the shutdown. Whenever a trigger fires and at least one of your selected modules was active, you'll get a notification telling you why they were disabled.
+
+This pairs well with legit-style play: combine it with the "Flag" trigger to bail out automatically the first time a server's anticheat reacts to you.
+
+**Category:** World
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Modules (Registry List)
-└── On (Multi-Select | default: [Flag, Death, WorldChange, Disconnect] | options: Flag, Death, WorldChange, Disconnect)
-```
-
-### Settings Details
-
-- **Modules** (Registry List)
-- **On** (Multi-Select) — default: `Flag`, `Death`, `WorldChange`, `Disconnect`; options: `Flag`, `Death`, `WorldChange`, `Disconnect`
-
-### Screenshots
-
-*Screenshots for AutoDisable will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Modules | Registry List | — | — | The list of modules that get disabled when a trigger fires. |
+| On | Multi-Select | [Flag, Death, WorldChange] | [Flag, Death, WorldChange, Disconnect] | Which events trigger the shutdown: being flagged by an anticheat, dying, changing worlds, or disconnecting. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fworld%2FModuleAutoDisable.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleAutoDisable.kt)*

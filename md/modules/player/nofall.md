@@ -1,285 +1,55 @@
 ## NoFall
 
-Protects you from taking fall damage.
+NoFall prevents fall damage automatically whenever you land from a height that would normally hurt you. The module is inactive in Creative and Spectator mode, while flying, or while invulnerable, since those states already grant immunity. Use the **Not** setting to further restrict when it runs — for example, selecting **WithMace** lets fall damage remain active while you hold a Mace, preserving its charged smash-attack bonus.
+
+Choosing the right **Mode** for your server is the most important decision. Most modes work by modifying what the client reports to the server — **SpoofGround** and **Packet** tell the server you are on the ground before you actually land, **NoGround** never reports being on the ground (preventing the server from registering a damaging landing), and **Cancel** suppresses movement packets while you fall. Several modes are tuned for specific anti-cheat builds: **HypixelPacket** and **Hypixel** target Hypixel's protection, **Vulcan277** and **VulcanTP288** bypass different versions of Vulcan, **Verus** targets the Verus anti-cheat, **BlocksMC** is designed for BlocksMC's detection, **Grim2371-1.9+** targets GrimAC, and **Spartan524Flag** works around Spartan 524. **Rettungsplatform** is a special mode for GommeHD.net BedWars that activates that server's own rescue-platform item. **ForceJump** makes your character jump at the last moment before landing so you never accumulate enough fall distance to take damage.
+
+Two modes take a more physical approach: **MLG** automatically places a water bucket or other soft-landing block (scaffolding, hay bale, slime block, etc.) beneath you once you exceed **MinFallDistance**, just as a skilled player would — it can also pick up the water afterwards. **Mount** searches for a nearby rideable entity and mounts it during the fall to absorb the impact. The **Blink** mode predicts an upcoming dangerous fall and queues your movement packets rather than sending them, then releases them safely once you land. For any sub-mode that offers a fall-distance selector, **Smart** automatically reads your character's safe-fall-distance attribute (which scales with Feather Falling), while **Constant** uses a fixed threshold you configure.
 
 **Category:** Player  
-**Enabled by default:** No  
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Mode (Mode Selector | default: SpoofGround | modes: SpoofGround, SpoofLanding, NoGround, Packet, PacketJump, MLG, Mount, Rettungsplatform, Spartan524Flag, Vulcan277, VulcanTP288, Verus, ForceJump, Cancel, Blink, HypixelPacket, Hypixel, BlocksMC, Grim2371-1.9+)
-│   ├── [Mode: SpoofGround]
-│   │   ├── FallDistance (Mode Selector | default: Smart | modes: Smart, Constant)
-│   │   │   └── [Mode: Constant]
-│   │   │       └── Value (Decimal | default: 1.7 | range: 0.0..5.0)
-│   │   └── ResetFallDistance (Toggle | default: true)
-│   ├── [Mode: SpoofLanding]
-│   │   └── Modification (3D Position)
-│   ├── [Mode: Packet]
-│   │   ├── PacketType (Choice | default: FULL | options: OnGroundOnly, PositionAndOnGround, LookAndOnGround, Full)
-│   │   └── Filter (Mode Selector | default: FallDistance | modes: FallDistance, Always)
-│   │       ├── [Mode: FallDistance]
-│   │       │   ├── Distance (Mode Selector | default: Smart | modes: Smart, Constant)
-│   │       │   │   └── [Mode: Constant]
-│   │       │   │       └── Value (Decimal | default: 2.0 | range: 0.0..5.0)
-│   │       │   └── ResetFallDistance (Toggle | default: true)
-│   ├── [Mode: PacketJump]
-│   │   ├── PacketType (Choice | default: FULL | options: PositionAndOnGround, Full)
-│   │   ├── FallDistance (Mode Selector | default: Smart | modes: Smart, Constant)
-│   │   │   └── [Mode: Constant]
-│   │   │       └── Value (Decimal | default: 3.0 | range: 0.0..5.0)
-│   │   └── Timing (Mode Selector | default: Landing | modes: Landing, Falling)
-│   │       └── [Mode: Falling]
-│   │           └── ResetFallDistance (Toggle | default: true)
-│   ├── [Mode: MLG]
-│   │   ├── MinFallDistance (Decimal | default: 5.0 | range: 2.0..50.0)
-│   │   ├── Rotations (Setting Group)
-│   │   │   ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│   │   │   │   ├── [Mode: Linear]
-│   │   │   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │   ├── [Mode: Sigmoid]
-│   │   │   │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│   │   │   │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   │   │   └── [Mode: Acceleration]
-│   │   │   │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │   │   │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│   │   │   │       ├── DynamicAccel (Toggleable Group | default: off)
-│   │   │   │       │   ├── Enabled (Toggle | default: false)
-│   │   │   │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│   │   │   │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │   │   │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│   │   │   │       ├── AccelerationError (Toggleable Group | default: on)
-│   │   │   │       │   ├── Enabled (Toggle | default: true)
-│   │   │   │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       ├── ConstantError (Toggleable Group | default: on)
-│   │   │   │       │   ├── Enabled (Toggle | default: true)
-│   │   │   │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│   │   │   │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│   │   │   │           ├── Enabled (Toggle | default: false)
-│   │   │   │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│   │   │   │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│   │   │   ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│   │   │   ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│   │   │   └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-│   │   └── PickUpWater (Toggleable Group | default: on)
-│   │       ├── Enabled (Toggle | default: true)
-│   │       └── PickupSpan (Integer Range | default: 200..1000 | range: 0..10000 | ms)
-│   ├── [Mode: Mount]
-│   │   ├── MinFallDistance (Decimal | default: 5.0 | range: 2.0..50.0)
-│   │   ├── SearchRange (Decimal | default: 4.5 | range: 1.0..8.0)
-│   │   ├── RetryDelay (Integer | default: 2 | range: 0..20 | ticks)
-│   │   └── AutoDismount (Toggleable Group | default: off)
-│   │       ├── Enabled (Toggle | default: false)
-│   │       └── Delay (Integer Range | default: 0..0 | range: 0..20 | ticks)
-│   ├── [Mode: VulcanTP288]
-│   │   └── VoidLevel (Integer | default: 0 | range: -256..0)
-│   ├── [Mode: ForceJump]
-│   │   ├── BlockDistance (Decimal | default: 1.0 | range: 0.1..5.0)
-│   │   ├── FallDistance (Decimal | default: 3.35 | range: 3.35..10.0)
-│   │   └── JumpHeight (Decimal | default: 0.42 | range: 0.1..0.42)
-│   ├── [Mode: Cancel]
-│   │   ├── FallDistance (Mode Selector | default: Smart | modes: Smart, Constant)
-│   │   │   └── [Mode: Constant]
-│   │   │       └── Value (Decimal | default: 1.7 | range: 0.0..5.0)
-│   │   ├── ResetFallDistance (Toggle | default: true)
-│   │   └── CancelSetbackPacket (Toggle | default: false)
-│   ├── [Mode: Blink]
-│   │   ├── TriggerFallDistance (Decimal | default: 2.5 | range: 0.5..3.0)
-│   │   └── MaximumFallDistance (Decimal | default: 20.0 | range: 2.0..50.0)
-│   ├── [Mode: HypixelPacket]
-│   │   └── OverVoid (Toggle | default: false)
-└── Not (Multi-Select | options: WhileGliding, WithMace)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **SpoofGround**, **SpoofLanding**, **NoGround**, **Packet**, **PacketJump**, **MLG**, **Mount**, **Rettungsplatform**, **Spartan524Flag**, **Vulcan277**, **VulcanTP288**, **Verus**, **ForceJump**, **Cancel**, **Blink**, **HypixelPacket**, **Hypixel**, **BlocksMC**, **Grim2371-1.9+**. Default: **SpoofGround**.
-
-##### Mode: SpoofGround
-
-###### FallDistance
-
-Select a mode for this feature. Available modes: **Smart**, **Constant**. Default: **Smart**.
-
-###### Mode: Constant
-
-- **Value** (Decimal) — default: `1.7`; range: `0.0` – `5.0`
-
-- **ResetFallDistance** (Toggle) — default: `true`
-
-##### Mode: SpoofLanding
-
-- **Modification** (3D Position)
-
-##### Mode: Packet
-
-- **PacketType** (Choice) — default: `FULL`; options: `OnGroundOnly`, `PositionAndOnGround`, `LookAndOnGround`, `Full`
-###### Filter
-
-Select a mode for this feature. Available modes: **FallDistance**, **Always**. Default: **FallDistance**.
-
-###### Mode: FallDistance
-
-###### Distance
-
-Select a mode for this feature. Available modes: **Smart**, **Constant**. Default: **Smart**.
-
-###### Mode: Constant
-
-- **Value** (Decimal) — default: `2.0`; range: `0.0` – `5.0`
-
-- **ResetFallDistance** (Toggle) — default: `true`
-
-
-##### Mode: PacketJump
-
-- **PacketType** (Choice) — default: `FULL`; options: `PositionAndOnGround`, `Full`
-###### FallDistance
-
-Select a mode for this feature. Available modes: **Smart**, **Constant**. Default: **Smart**.
-
-###### Mode: Constant
-
-- **Value** (Decimal) — default: `3.0`; range: `0.0` – `5.0`
-
-###### Timing
-
-Select a mode for this feature. Available modes: **Landing**, **Falling**. Default: **Landing**.
-
-###### Mode: Falling
-
-- **ResetFallDistance** (Toggle) — default: `true`
-
-
-##### Mode: MLG
-
-- **MinFallDistance** (Decimal) — default: `5.0`; range: `2.0` – `50.0`
-###### Rotations
-
-A group of related settings.
-
-###### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-###### PickUpWater
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **PickupSpan** (Integer Range) — default: `200` – `1000`; range: `0` – `10000`; unit: ms
-
-
-##### Mode: Mount
-
-When you are about to take fall damage, finds and rides a nearby mount (e.g. a boat or animal) to cancel the fall.
-
-- **MinFallDistance** (Decimal) — default: `5.0`; range: `2.0` – `50.0` — Minimum fall distance before the module tries to mount.
-- **SearchRange** (Decimal) — default: `4.5`; range: `1.0` – `8.0` — How far to look for a rideable entity.
-- **RetryDelay** (Integer) — default: `2`; range: `0` – `20`; unit: ticks — Delay between mount attempts.
-- **AutoDismount** (Toggleable Group, default: off) — Automatically dismounts again after landing, after the configured **Delay** (default `0`–`0` ticks).
-
-##### Mode: VulcanTP288
-
-- **VoidLevel** (Integer) — default: `0`; range: `-256` – `0`
-
-##### Mode: ForceJump
-
-- **BlockDistance** (Decimal) — default: `1.0`; range: `0.1` – `5.0`
-- **FallDistance** (Decimal) — default: `3.35`; range: `3.35` – `10.0`
-- **JumpHeight** (Decimal) — default: `0.42`; range: `0.1` – `0.42`
-
-##### Mode: Cancel
-
-###### FallDistance
-
-Select a mode for this feature. Available modes: **Smart**, **Constant**. Default: **Smart**.
-
-###### Mode: Constant
-
-- **Value** (Decimal) — default: `1.7`; range: `0.0` – `5.0`
-
-- **ResetFallDistance** (Toggle) — default: `true`
-- **CancelSetbackPacket** (Toggle) — default: `false`
-
-##### Mode: Blink
-
-- **TriggerFallDistance** (Decimal) — default: `2.5`; range: `0.5` – `3.0`
-- **MaximumFallDistance** (Decimal) — default: `20.0`; range: `2.0` – `50.0`
-
-##### Mode: HypixelPacket
-
-- **OverVoid** (Toggle) — default: `false`
-
-- **Not** (Multi-Select) — options: `WhileGliding`, `WithMace`
-
-### Screenshots
-
-*Screenshots for NoFall will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | HypixelPacket | SpoofGround, SpoofLanding, NoGround, Packet, PacketJump, MLG, Mount, Rettungsplatform, Spartan524Flag, Vulcan277, VulcanTP288, Verus, ForceJump, Cancel, Blink, HypixelPacket, Hypixel, BlocksMC, Grim2371-1.9+ | The bypass technique to use. Pick the mode that matches your server's anti-cheat. |
+| Mode → [SpoofGround] → FallDistance | Mode Selector | Smart | Smart, Constant | Whether to derive the trigger threshold from your safe-fall attribute (Smart) or use a fixed value (Constant). |
+| Mode → [SpoofGround] → FallDistance → [Constant] → Value | Decimal | 1.7 | 0.0..5.0 | Fixed fall distance (blocks) at which ground spoofing begins. |
+| Mode → [SpoofGround] → ResetFallDistance | Toggle | true | — | Resets the client-side fall-distance counter after spoofing so it does not accumulate. |
+| Mode → [SpoofLanding] → Modification | Vector3_d | — | — | X/Y/Z position offset applied to the landing packet to prevent the server from registering fall damage. |
+| Mode → [Packet] → PacketType | Choice | Full | OnGroundOnly, PositionAndOnGround, LookAndOnGround, Full | Format of the extra movement packet sent with the on-ground flag set. |
+| Mode → [Packet] → Filter | Mode Selector | FallDistance | FallDistance, Always | When to send the on-ground packet — only when falling far enough, or on every tick. |
+| Mode → [Packet] → Filter → [FallDistance] → Distance | Mode Selector | Smart | Smart, Constant | How the trigger distance is determined in FallDistance filter mode. |
+| Mode → [Packet] → Filter → [FallDistance] → Distance → [Constant] → Value | Decimal | 2.0 | 0.0..5.0 | Fixed fall-distance threshold for the FallDistance filter. |
+| Mode → [Packet] → Filter → [FallDistance] → ResetFallDistance | Toggle | true | — | Resets the client-side fall-distance counter each time the packet fires. |
+| Mode → [PacketJump] → PacketType | Choice | Full | PositionAndOnGround, Full | Format of the virtual-jump packet sent to the server. |
+| Mode → [PacketJump] → FallDistance | Mode Selector | Smart | Smart, Constant | How the trigger fall distance is determined. |
+| Mode → [PacketJump] → FallDistance → [Constant] → Value | Decimal | 3.0 | 0.0..5.0 | Fixed fall distance at which PacketJump activates. |
+| Mode → [PacketJump] → Timing | Mode Selector | Landing | Landing, Falling | When to send the jump packet — just as you land (Landing) or repeatedly while you are still airborne (Falling). |
+| Mode → [PacketJump] → Timing → [Falling] → ResetFallDistance | Toggle | true | — | Resets the fall-distance counter each tick while you are falling. |
+| Mode → [MLG] → MinFallDistance | Decimal | 5.0 | 2.0..50.0 | Minimum fall distance (blocks) before an MLG item placement is attempted. |
+| Mode → [MLG] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Mode → [MLG] → PickUpWater | Toggleable Group | on | — | Automatically picks up water placed during an MLG save. |
+| Mode → [MLG] → PickUpWater → PickupSpan | Integer Range | 200..1000 | 0..10000 ms | Time window (ms) after placement during which placed water will be collected. |
+| Mode → [Mount] → MinFallDistance | Decimal | 5.0 | 2.0..50.0 | Minimum fall distance before a mount attempt is made. |
+| Mode → [Mount] → SearchRange | Decimal | 4.5 | 1.0..8.0 | Radius (blocks) around you to search for a rideable entity. |
+| Mode → [Mount] → RetryDelay | Integer | 2 | 0..20 ticks | Ticks to wait before retrying if the first mount attempt fails. |
+| Mode → [Mount] → SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Controls whether the hand-swing animation from interacting with the entity is hidden. |
+| Mode → [Mount] → AutoDismount | Toggleable Group | off | — | When enabled, automatically dismounts after the configured delay following a successful mount. |
+| Mode → [Mount] → AutoDismount → Delay | Integer Range | 0..0 | 0..20 ticks | Random delay range (ticks) to wait before dismounting. |
+| Mode → [VulcanTP288] → VoidLevel | Integer | 0 | -256..0 | Y coordinate below which the void-detection check is considered active. |
+| Mode → [ForceJump] → BlockDistance | Decimal | 0.76 | 0.1..5.0 | Distance below your feet at which a block is detected, triggering the forced jump. |
+| Mode → [ForceJump] → FallDistance | Decimal | 3.35 | 3.35..10.0 | Minimum fall distance before a force jump is attempted. |
+| Mode → [ForceJump] → JumpHeight | Decimal | 0.11 | 0.1..0.42 | Upward velocity applied during the forced jump. |
+| Mode → [Cancel] → FallDistance | Mode Selector | Smart | Smart, Constant | How the trigger fall distance is determined. |
+| Mode → [Cancel] → FallDistance → [Constant] → Value | Decimal | 1.7 | 0.0..5.0 | Fixed fall distance at which movement packets are suppressed. |
+| Mode → [Cancel] → ResetFallDistance | Toggle | true | — | Resets the client-side fall-distance counter after cancelling packets. |
+| Mode → [Cancel] → CancelSetbackPacket | Toggle | false | — | Also suppresses server-issued position-correction (setback) packets. |
+| Mode → [Blink] → TriggerFallDistance | Decimal | 2.5 | 0.5..3.0 | Predicted fall distance (simulated ahead) at which packet queuing starts. |
+| Mode → [Blink] → MaximumFallDistance | Decimal | 20.0 | 2.0..50.0 | If your actual fall distance exceeds this value, queued packets are flushed immediately. |
+| Mode → [HypixelPacket] → OverVoid | Toggle | false | — | Allows the mode to activate even when there is no ground block below (over the void). |
+| Not | Multi-Select | (none) | WhileGliding, WithMace | Suspend NoFall while any of the selected conditions are true (e.g. gliding with an Elytra, or holding a Mace). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleNoFall.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/nofall/ModuleNoFall.kt)*

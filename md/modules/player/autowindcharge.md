@@ -1,142 +1,25 @@
 ## AutoWindCharge
 
-Automatically boosts you using wind charges when holding jump.
+AutoWindCharge automatically detonates a wind charge beneath you to launch you into the air the moment you'd otherwise land, as long as you're holding the jump key. It's a movement aid for the 1.21+ wind charge item: instead of manually timing throws, the module watches your fall and fires at the ideal moment so you keep bouncing higher off the ground.
 
-**Category:** Player  
-**Enabled by default:** No  
+Each tick the module checks that you're holding jump and aren't flying, swimming, or in liquid, then predicts where you'll land. Using a [7-tick look-ahead](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWindCharge.kt#L61-L75) — described in the source as "the perfect time to use a wind charge before hitting the ground" — it only acts once a collision is imminent. It looks for a wind charge in your hotbar or offhand and uses it from there, so the item never has to be in your main hand.
+
+By default the boost aims straight down (pitch 90) to throw you upward. Holding the **HorizontalBoost** key instead aims at the configured pitch and points opposite your movement input, giving you a flatter, more horizontal launch for covering distance. When **Rotate** is on, the module smoothly turns toward the aim point first and only fires [once your rotation is close enough](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWindCharge.kt#L88-L110) (within 1°).
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── HorizontalBoost (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Pitch (Decimal | default: 70.0 | range: 0.0..90.0)
-│   └── Key (Key)
-├── Rotate (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Rotations (Setting Group)
-│       ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-│       │   ├── [Mode: Linear]
-│       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   ├── [Mode: Sigmoid]
-│       │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-│       │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│       │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│       │   └── [Mode: Acceleration]
-│       │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│       │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-│       │       ├── DynamicAccel (Toggleable Group | default: off)
-│       │       │   ├── Enabled (Toggle | default: false)
-│       │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-│       │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│       │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-│       │       ├── AccelerationError (Toggleable Group | default: on)
-│       │       │   ├── Enabled (Toggle | default: true)
-│       │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       ├── ConstantError (Toggleable Group | default: on)
-│       │       │   ├── Enabled (Toggle | default: true)
-│       │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-│       │       └── SigmoidDeceleration (Toggleable Group | default: off)
-│       │           ├── Enabled (Toggle | default: false)
-│       │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-│       │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-│       ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-│       ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-│       └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-├── CombatPauseTime (Integer | default: 0 | range: 0..40 | ticks)
-└── SlotResetDelay (Integer Range | default: 0..0 | range: 0..40 | ticks)
-```
-
-### Settings Details
-
-#### HorizontalBoost
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Pitch** (Decimal) — default: `70.0`; range: `0.0` – `90.0` — Pitch angle used for horizontal boost direction.
-- **Key** (Key) — Key to hold for horizontal boost (default: Left Control).
-
-#### Rotate
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### Rotations
-
-A group of related settings. *Shared setting group — configured identically across modules that use rotations.*
-
-###### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-- **CombatPauseTime** (Integer) — default: `0`; range: `0` – `40`; unit: ticks — Ticks to pause combat actions before using a wind charge.
-- **SlotResetDelay** (Integer Range) — default: `0` – `0`; range: `0` – `40`; unit: ticks — Ticks to wait before switching back to the original hotbar slot.
-
-### Screenshots
-
-*Screenshots for AutoWindCharge will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| HorizontalBoost | Toggleable Group | on | — | When its key is held, aims the wind charge at the set pitch (opposite your input direction) for a flatter, horizontal launch instead of a straight-up boost. |
+| HorizontalBoost → Pitch | Decimal | 70.0 | 0.0..90.0 | Aim pitch used while horizontal boosting. Lower values launch you more horizontally; higher values closer to vertical. |
+| HorizontalBoost → Key | Key | — | — | Hold this key to trigger a horizontal boost. Bound to Left Control by default. |
+| Rotate | Toggleable Group | on | — | Turns toward the boost direction before firing and only uses the charge once aim is within 1° of the target. |
+| Rotate → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| CombatPauseTime | Integer | 0 | 0..40 | Ticks to pause combat-related actions while rotating to boost. 0 disables the pause. |
+| SlotResetDelay | Integer Range | 0..0 | 0..40 | Random delay (in ticks, picked from this range) before switching back from the wind charge slot after using it. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleAutoWindCharge.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWindCharge.kt)*

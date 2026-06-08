@@ -1,61 +1,24 @@
 ## AutoArmor
 
-Automatically equips the best armor in your inventory.
+AutoArmor keeps you geared up without any manual sorting. As soon as it finds better armor anywhere in your inventory, it equips it for you — picking the strongest available helmet, chestplate, leggings, and boots automatically. This is handy in fast-paced PvP or kit-based games where stopping to drag armor into place can get you killed.
 
-**Category:** Combat  
-**Enabled by default:** No  
+By default it can equip pieces straight from your hotbar as well as from your main inventory, and it will make room in an armor slot (or throw out the old piece if your inventory is full) when needed. It won't touch an equipped Elytra, so your gliding setup stays intact.
+
+The optional **SaveArmor** feature watches the durability of the armor you're wearing and swaps in fresh pieces before your current ones break, opening your inventory on its own if that's what it takes to get the replacement on in time.
+
+**Category:** Combat
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Constraints (Setting Group)
-│   ├── StartDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│   ├── ClickDelay (Integer Range | default: 2..4 | range: 0..20 | ticks)
-│   ├── CloseDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│   ├── MissChance (Integer Range | default: 0..0 | range: 0..100 | %)
-│   └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
-├── Hotbar (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── CanSwapArmor (Toggle | default: false)
-└── SaveArmor (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    ├── DurabilityThreshold (Integer | default: 24 | range: 0..100)
-    └── AutoOpenInventory (Toggle | default: true)
-```
-
-### Settings Details
-
-#### Constraints
-
-A group of related settings.
-
-- **StartDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks — Delay before starting inventory actions.
-- **ClickDelay** (Integer Range) — default: `2` – `4`; range: `0` – `20`; unit: ticks — Delay between inventory click actions.
-- **CloseDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks — Delay before closing the inventory after actions.
-- **MissChance** (Integer Range) — default: `0` – `0`; range: `0` – `100`; unit: % — Chance to intentionally miss a click to appear more human-like.
-- **Requires** (Multi-Select) — options: `NoMovement`, `NoRotation`, `InventoryOpen` — Conditions that must be met before the module performs actions.
-
-#### Hotbar
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **CanSwapArmor** (Toggle) — default: `false` — Allows armor swapping via hotbar (MC 1.19.4+); requires Hotbar to be enabled.
-
-#### SaveArmor
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **DurabilityThreshold** (Integer) — default: `24`; range: `0` – `100` — Minimum durability percentage before armor is considered for replacement.
-- **AutoOpenInventory** (Toggle) — default: `true` — Automatically opens the inventory when armor needs to be saved.
-
-
-### Screenshots
-
-*Screenshots for AutoArmor will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| Hotbar | Toggleable Group | On | — | Allow equipping armor by clicking pieces in your hotbar, which is faster than moving items inside the inventory. When off, armor is equipped using inventory moves only. |
+| Hotbar → CanSwapArmor | Toggle | false | — | Use the direct armor-swap (Minecraft 1.19.4+) to switch a worn piece for a hotbar piece in one click. Leave off on servers that don't support it. |
+| SaveArmor | Toggleable Group | Off | — | Watch the durability of your equipped armor and replace worn-out pieces before they break. |
+| SaveArmor → DurabilityThreshold | Integer | 24 | 0–100 | Durability percentage at or below which a worn piece is treated as used up and swapped for a fresh replacement. |
+| SaveArmor → AutoOpenInventory | Toggle | true | — | Automatically open your inventory when needed to swap in a replacement piece, even if it means closing another open screen first. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2FModuleAutoArmor.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/autoarmor/ModuleAutoArmor.kt)*

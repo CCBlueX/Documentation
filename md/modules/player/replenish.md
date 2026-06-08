@@ -1,49 +1,22 @@
 ## Replenish
 
-Automatically refills your hotbar with items from your inventory when the count drops to a certain threshold.
+Replenish automatically tops up your hotbar slots from your main inventory whenever a stack runs low. Once a slot drops to or below the **ItemThreshold**, the module finds matching items in your inventory and moves them over — no manual restocking needed. This is particularly useful when consuming large quantities of a single item type, such as building blocks with [Scaffold](/docs/modules/world/scaffold), food, arrows, or potions.
 
-**Category:** Player  
-**Enabled by default:** No  
+By default, Replenish only activates while you are playing in the world normally. You can optionally allow it to run while your inventory screen is open, or even while you have a chest (or other container) open, using the **InsideOf** setting. The **Features** multi-select lets you fine-tune how refills are performed: **CleanUp** merges smaller partial stacks first to tidy your inventory, **UsePickupAll** picks up all matching stacks directly onto the hotbar slot, and **UseSwap** does a direct slot swap when a bigger inventory stack is available — choose the combination that best fits your play style and the anti-cheat environment you are on.
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Constraints (Setting Group)
-│   ├── StartDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│   ├── ClickDelay (Integer Range | default: 2..4 | range: 0..20 | ticks)
-│   ├── CloseDelay (Integer Range | default: 1..2 | range: 0..20 | ticks)
-│   ├── MissChance (Integer Range | default: 0..0 | range: 0..100 | %)
-│   └── Requires (Multi-Select | options: NoMovement, NoRotation, InventoryOpen)
-├── ItemThreshold (Integer | default: 5 | range: 0..63)
-├── Delay (Integer | default: 40 | range: 0..1000 | ms)
-├── ReplenishEmpty (Toggle | default: true)
-├── Features (Multi-Select | default: [CleanUp] | options: CleanUp, UsePickupAll, UseSwap)
-└── InsideOf (Multi-Select | options: Chests, Inventories)
-```
-
-### Settings Details
-
-#### Constraints
-
-A group of related settings. *Shared setting group — configured identically across modules that use inventory actions.*
-
-- **StartDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **ClickDelay** (Integer Range) — default: `2` – `4`; range: `0` – `20`; unit: ticks
-- **CloseDelay** (Integer Range) — default: `1` – `2`; range: `0` – `20`; unit: ticks
-- **MissChance** (Integer Range) — default: `0` – `0`; range: `0` – `100`; unit: %
-- **Requires** (Multi-Select) — options: `NoMovement`, `NoRotation`, `InventoryOpen`
-
-- **ItemThreshold** (Integer) — default: `5`; range: `0` – `63` — Item count at or below which a hotbar slot is refilled.
-- **Delay** (Integer) — default: `40`; range: `0` – `1000`; unit: ms — Milliseconds to wait between replenish actions.
-- **ReplenishEmpty** (Toggle) — default: `true` — Also refill a hotbar slot when it has become completely empty, not only when it drops below the threshold.
-- **Features** (Multi-Select) — default: `CleanUp`; options: `CleanUp`, `UsePickupAll`, `UseSwap` — Refill strategies to use (CleanUp prioritizes small stacks, UseSwap swaps full stacks, UsePickupAll merges stacks).
-- **InsideOf** (Multi-Select) — options: `Chests`, `Inventories` — Allows replenishing while inside chest or inventory screens.
-
-### Screenshots
-
-*Screenshots for Replenish will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| ItemThreshold | Integer | 5 | 0 – 63 | When a hotbar stack's count falls to this value or below, the module will attempt to refill it from your inventory. |
+| Delay | Integer | 40 | 0 – 1000 ms | Minimum time in milliseconds between consecutive refill actions. |
+| ReplenishEmpty | Toggle | true | — | When enabled, also refills hotbar slots that are completely empty (using the last known item for that slot). |
+| Features | Multi-Select | CleanUp | CleanUp, UsePickupAll, UseSwap | Controls how refills are performed. **CleanUp** consolidates smaller partial stacks first; **UsePickupAll** merges all matching stacks onto the hotbar slot; **UseSwap** swaps a larger inventory stack directly into the hotbar slot. |
+| InsideOf | Multi-Select | *(none)* | Chests, Inventories | Allows Replenish to operate while specific screens are open. Add **Chests** to run inside container screens, or **Inventories** to run while your own inventory screen is open. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleReplenish.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleReplenish.kt)*

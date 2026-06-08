@@ -1,67 +1,27 @@
 ## NoWeb
 
-Disables slow down caused by webs.
+NoWeb prevents cobwebs from slowing you down. In vanilla Minecraft, moving through a cobweb brings your speed to a near-standstill. This module intercepts that effect and counters it according to the mode you choose, letting you pass through webs at full speed or with far less reduction.
 
-**Category:** Movement  
-**Enabled by default:** No  
+The default **Air** mode is the most straightforward: cobwebs are treated as if they were air and impose no slowdown at all. For servers running anti-cheat software, the server-specific modes are a better fit. **Grim2365** sends block-break packets for each web you touch (and optionally removes it on your client) to satisfy Grim's movement validation. **Intave14** uses a timed pattern of strafing and jumping tuned for Intave-protected servers. **PlaceWater** takes a physical approach — when you walk into a web it automatically places a water bucket beside it to destroy the cobweb, then picks the bucket back up; this requires a water bucket in your hotbar or offhand and a world where water does not evaporate. **Strafe** applies a configurable horizontal push each tick you are inside a web and can optionally override your vertical speed as well, making it suitable for servers like Vulcan or Grim where outright cancellation would trigger flags.
+
+Note that NoWeb is incompatible with the cobweb-avoidance behaviour of [AvoidHazards](/docs/modules/movement/avoidhazards) — if AvoidHazards has its cobweb option active when NoWeb is enabled, AvoidHazards will be automatically turned off.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Mode (Mode Selector | default: Air | modes: Air, Grim2365, Intave14, PlaceWater, Strafe)
-    ├── [Mode: Grim2365]
-    │   └── BreakOnWorld (Toggle | default: true)
-    ├── [Mode: PlaceWater]
-    │   ├── Rotations (Setting Group → see Shared: Rotations)
-    │   └── Pickup (Toggleable Group | default: on)
-    │       └── PickupSpan (Decimal Range | default: 0.8..3.0 | range: 0.5..20.0 | s)
-    └── [Mode: Strafe]
-        ├── Strength (Decimal | default: 0.23 | range: 0.01..0.8)
-        ├── MotionY (Toggleable Group | default: off)
-        │   ├── Enabled (Toggle | default: false)
-        │   └── MotionYStrength (Decimal | default: 0.6 | range: -2.0..2.0)
-        └── OnlyOnGround (Toggle | default: false)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **Air**, **Grim2365**, **Intave14**, **Strafe**. Default: **Air**.
-
-##### Mode: Grim2365
-
-- **BreakOnWorld** (Toggle) — default: `true` — Also removes the web block client-side to bypass BadPacketsX checks.
-
-##### Mode: PlaceWater
-
-Places a water bucket on the web to wash it away, then picks the water back up.
-
-- **Rotations** (Setting Group) — controls how the aim moves toward the placement. See [Shared: Rotations](/docs/modules/shared-settings/rotations).
-###### Pickup
-
-A toggleable group of settings (default: enabled).
-
-- **PickupSpan** (Decimal Range) — default: `0.8` – `3.0`; range: `0.5` – `20.0`; unit: s — Time window in which the placed water is collected again.
-
-##### Mode: Strafe
-
-- **Strength** (Decimal) — default: `0.23`; range: `0.01` – `0.8` — Horizontal strafe speed applied when moving through webs.
-###### MotionY
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Toggles vertical motion override while in webs.
-- **MotionYStrength** (Decimal) — default: `0.6`; range: `-2.0` – `2.0` — Vertical motion value applied while in webs.
-
-- **OnlyOnGround** (Toggle) — default: `false` — Only applies the strafe when the player is on the ground.
-
-
-### Screenshots
-
-*Screenshots for NoWeb will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | Air | — | Selects how cobweb slowdown is countered. Choose from Air, Grim2365, Intave14, PlaceWater, or Strafe. |
+| Mode → [Grim2365] → BreakOnWorld | Toggle | true | — | Removes the cobweb block on your local client when it is broken, helping avoid the BadPacketsX check on Grim. |
+| Mode → [PlaceWater] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Mode → [PlaceWater] → Pickup | Toggleable Group | on | — | When enabled, automatically retrieves the placed water bucket after it has had time to destroy the web. |
+| Mode → [PlaceWater] → Pickup → PickupSpan | Decimal Range | 0.8..3.0 | 0.5..20.0 s | The window of time (in seconds) after placing water during which the module will attempt to pick the bucket back up. |
+| Mode → [Strafe] → Strength | Decimal | 0.23 | 0.01..0.8 | The amount of horizontal strafe force applied each tick while inside a web to counteract slowdown. |
+| Mode → [Strafe] → MotionY | Toggleable Group | off | — | When enabled, overrides your vertical velocity while inside a web. |
+| Mode → [Strafe] → MotionY → MotionYStrength | Decimal | 0.6 | -2.0..2.0 | The vertical speed set while inside a web. Positive values push you upward; negative values push you downward. |
+| Mode → [Strafe] → OnlyOnGround | Toggle | false | — | Restricts the strafe force to only apply when you are standing on the ground. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2Fnoweb%2FModuleNoWeb.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/noweb/ModuleNoWeb.kt)*

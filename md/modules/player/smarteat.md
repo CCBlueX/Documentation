@@ -1,63 +1,29 @@
 ## SmartEat
 
-Automatically eats food when your hunger is low.
+SmartEat automatically manages food consumption so you can focus on playing without manually swapping items. It has two complementary systems: **AutoEat** silently selects and eats a food item whenever your hunger bar drops too low, and **SilentOffhand** lets you right-click to eat while holding a tool — without visibly changing your hotbar slot on your own screen or the server's.
 
-**Category:** Player  
-**Enabled by default:** No  
+The module is also smart about *what* it eats. Rather than blindly picking the nearest food, it prioritises high-value items when your health is critically low. Enchanted golden apples (Notch apples) are preferred below one threshold, golden apples below another, and instant-health potions below a third. Outside those thresholds it falls back to regular food, choosing whichever option restores the most hunger. This tiered priority system can make the difference in a tough combat scenario where every half-heart counts.
+
+SmartEat integrates with the combat management system so eating does not interfere with your fighting rhythm. The **NotDuringCombat** toggle prevents any eating while you are actively in combat, and **CombatPauseTime** briefly suspends combat tracking each time a food item is consumed. For a fuller automated survival setup, consider pairing SmartEat with [AutoBuff](/docs/modules/player/autobuff) or [AutoArmor](/docs/modules/combat/autoarmor).
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── SwapBackDelay (Integer | default: 5 | range: 1..20)
-├── PreferGappleHealthThreshold (Decimal | default: 9.0 | range: 0.0..20.0)
-├── PreferNotchAppleHealthThreshold (Decimal | default: 2.0 | range: 0.0..20.0)
-├── PreferHealthPotHealthThreshold (Decimal | default: 12.0 | range: 0.0..20.0)
-├── CombatPauseTime (Integer | default: 0 | range: 0..40 | ticks)
-├── NotDuringCombat (Toggle | default: false)
-├── SilentOffhand (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── RenderSlot (Toggleable Group | default: on)
-│       ├── Enabled (Toggle | default: true)
-│       └── Offset (Integer | default: 40 | range: 30..70)
-└── AutoEat (Toggleable Group | default: on)
-    ├── Enabled (Toggle | default: true)
-    └── MinHunger (Integer | default: 15 | range: 0..20)
-```
-
-### Settings Details
-
-- **SwapBackDelay** (Integer) — default: `5`; range: `1` – `20` — Ticks to wait before switching back to the original hotbar slot after eating.
-- **PreferGappleHealthThreshold** (Decimal) — default: `9.0`; range: `0.0` – `20.0` — Health at or below which golden apples are preferred.
-- **PreferNotchAppleHealthThreshold** (Decimal) — default: `2.0`; range: `0.0` – `20.0` — Health at or below which enchanted golden apples are preferred.
-- **PreferHealthPotHealthThreshold** (Decimal) — default: `12.0`; range: `0.0` – `20.0` — Health at or below which health potions are preferred.
-- **CombatPauseTime** (Integer) — default: `0`; range: `0` – `40`; unit: ticks — Ticks to pause combat actions while eating.
-- **NotDuringCombat** (Toggle) — default: `false` — Prevents eating while actively in combat.
-#### SilentOffhand
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-##### RenderSlot
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Offset** (Integer) — default: `40`; range: `30` – `70` — Horizontal pixel offset for the rendered offhand slot indicator.
-
-
-#### AutoEat
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **MinHunger** (Integer) — default: `15`; range: `0` – `20` — Hunger level below which automatic eating begins.
-
-
-### Screenshots
-
-*Screenshots for SmartEat will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| SwapBackDelay | Integer | 5 | 1–20 | Number of ticks to wait before silently returning the hotbar selection to your original slot after eating. |
+| PreferGappleHealthThreshold | Decimal | 9.0 | 0.0–20.0 | Health (in half-hearts) at or below which golden apples are preferred over ordinary food. |
+| PreferNotchAppleHealthThreshold | Decimal | 2.0 | 0.0–20.0 | Health (in half-hearts) at or below which enchanted golden apples are preferred over other food. |
+| PreferHealthPotHealthThreshold | Decimal | 12.0 | 0.0–20.0 | Health (in half-hearts) at or below which instant-health potions are preferred over food. |
+| CombatPauseTime | Integer | 0 | 0–40 ticks | How long to pause combat tracking (in ticks) each time SmartEat begins consuming an item. |
+| NotDuringCombat | Toggle | false | — | When enabled, SmartEat will not eat or swap food while you are in active combat. |
+| SilentOffhand | Toggleable Group | On | — | When you right-click while holding a tool, silently swaps the best food item into your hand server-side so you can eat without interrupting your workflow. |
+| SilentOffhand → RenderSlot | Toggleable Group | On | — | Renders a ghost offhand slot in the HUD showing which food item SmartEat would use next. |
+| SilentOffhand → RenderSlot → Offset | Integer | 26 | 30–70 | Horizontal pixel offset for the ghost offhand slot indicator in the HUD. |
+| AutoEat | Toggleable Group | On | — | Automatically eats the best available food item whenever your hunger drops below MinHunger. |
+| AutoEat → MinHunger | Integer | 15 | 0–20 | Hunger level (out of 20) that triggers automatic eating. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleSmartEat.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleSmartEat.kt)*

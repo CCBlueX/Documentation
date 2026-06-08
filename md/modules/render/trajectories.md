@@ -1,59 +1,33 @@
 ## Trajectories
 
-Allows you to see where projectiles will land.
+Trajectories draws a predicted arc for projectiles — arrows, ender pearls, splash potions, tridents, and more — directly in the 3D world so you can see exactly where they will land before or after they are thrown. It is enabled by default, giving you an immediate visual edge when lining up long-range bow shots, ender pearl teleports, or potion throws.
 
-**Category:** Render  
-**Enabled by default:** No  
+The module can preview paths for your own held items as well as projectiles already airborne, and can optionally show the same information for other nearby players. The **Show** setting controls which of these scenarios are active: `AlwaysShowBow` lets you see the arrow arc even while your bow is only partially drawn; `OtherPlayers` reveals where nearby players' held throwables are aimed; `ActiveTrajectoryArrow` and `ActiveTrajectoryOther` track arrows and other live projectiles already in flight. Use **TrajectoryTypes** to limit rendering to only the projectile types you care about. Pair Trajectories with [AutoBow](/docs/modules/combat/autobow) or [Aimbot](/docs/modules/combat/aimbot) to get a clearer picture of where your shots will land.
+
+The optional **ShowDetailedInfo** overlay adds an on-screen label beside each trajectory showing flight time, distance to the landing spot, the item icon, and the thrower's name — useful for reading incoming enemy pearl plays or coordinating grenade timing in PvP.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── MaxSimulatedTicks (Integer | default: 240 | range: 1..1000 | ticks)
-├── MaxRenderDistance (Integer | default: 96 | range: 16..512 | m)
-├── CullBehindPlayer (Toggle | default: false)
-├── ShowMultiShot (Toggle | default: true)
-├── TrajectoryTypes (Multi-Select | default: all | options: Arrow, Potion, EnderPearl, FishingBobber, Trident, Snowball, Egg, ExpBottle, FireworkRocket, Fireball, WindCharge)
-├── Show (Multi-Select | default: [OtherPlayers, ActiveTrajectoryArrow] | options: AlwaysShowBow, OtherPlayers, ActiveTrajectoryArrow, ActiveTrajectoryOther)
-└── ShowDetailedInfo (Toggleable Group | default: off)
-    ├── Enabled (Toggle | default: false)
-    ├── ShowAt (Choice | default: ENTITY | options: Owner, Entity, Landing)
-    ├── Item (Toggle | default: true)
-    ├── OwnerName (Toggle | default: true)
-    ├── Distance (Toggle | default: true)
-    ├── DurationUnit (Choice | default: TICKS | options: Ticks, Seconds)
-    ├── Color (Color)
-    ├── Scale (Decimal | default: 1.0 | range: 0.25..4.0)
-    └── RenderOffset (3D Position)
-```
-
-### Settings Details
-
-- **MaxSimulatedTicks** (Integer) — default: `240`; range: `1` – `1000`; unit: ticks — Limits the maximum number of ticks to simulate for trajectory prediction.
-- **MaxRenderDistance** (Integer) — default: `96`; range: `16` – `512`; unit: m — Trajectories farther than this are not drawn.
-- **CullBehindPlayer** (Toggle) — default: `false` — Hides trajectories that are behind you to reduce clutter.
-- **ShowMultiShot** (Toggle) — default: `true` — Also draws the extra arrows from Multishot crossbows.
-- **TrajectoryTypes** (Multi-Select) — default: all; options: `Arrow`, `Potion`, `EnderPearl`, `FishingBobber`, `Trident`, `Snowball`, `Egg`, `ExpBottle`, `FireworkRocket`, `Fireball`, `WindCharge` — Which projectile types to draw trajectories for.
-- **Show** (Multi-Select) — default: `OtherPlayers`, `ActiveTrajectoryArrow`; options: `AlwaysShowBow`, `OtherPlayers`, `ActiveTrajectoryArrow`, `ActiveTrajectoryOther` — Selects which trajectory types to display.
-#### ShowDetailedInfo
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Enables the detailed info overlay for trajectories.
-- **ShowAt** (Choice) — default: `ENTITY`; options: `Owner`, `Entity`, `Landing` — Selects where to render the detailed info label.
-- **Item** (Toggle) — default: `true` — Shows the projectile item icon in the info label.
-- **OwnerName** (Toggle) — default: `true` — Shows the name of the entity that launched the projectile.
-- **Distance** (Toggle) — default: `true` — Shows the distance to the landing point.
-- **DurationUnit** (Choice) — default: `TICKS`; options: `Ticks`, `Seconds` — Selects the time unit for flight duration display.
-- **Color** (Color) — Sets the color of the info label text.
-- **Scale** (Decimal) — default: `1.0`; range: `0.25` – `4.0` — Sets the scale of the info label.
-- **RenderOffset** (3D Position) — Offsets the info label render position.
-
-
-### Screenshots
-
-*Screenshots for Trajectories will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| MaxSimulatedTicks | Integer | 240 | 1–1000 ticks | How many game ticks ahead the trajectory path is simulated. Higher values extend the visible arc but cover less ground for fast projectiles like arrows. |
+| MaxRenderDistance | Integer | 96 | 16–512 m | Maximum distance from your camera at which trajectories are drawn. Projectiles beyond this range are not shown. |
+| CullBehindPlayer | Toggle | false | — | When enabled, trajectories located behind you (behind your view direction) are hidden, reducing clutter outside your field of view. |
+| ShowMultiShot | Toggle | true | — | When enabled, a separate arc is drawn for each arrow fired by a multi-shot crossbow. Disable to show only the centre shot. |
+| TrajectoryTypes | Multi-Select | Arrow, Potion, EnderPearl, FishingBobber, Trident, Snowball, Egg, ExpBottle, Fireball, WindCharge | — | Which projectile types have their paths rendered. Deselect any entry to hide that projectile type entirely. FireworkRocket is available but off by default. |
+| Show | Multi-Select | OtherPlayers, ActiveTrajectoryArrow | — | Controls when and for whom trajectories appear. `AlwaysShowBow` previews your bow arc even before it is fully drawn. `OtherPlayers` shows predicted arcs for nearby players' held throwables. `ActiveTrajectoryArrow` tracks arrows already in flight. `ActiveTrajectoryOther` tracks other live projectiles in flight. |
+| ShowDetailedInfo | Toggleable Group | Off | — | When enabled, overlays an info label on each trajectory showing flight time, distance, item icon, and owner name. Sub-settings below control what is shown and how it looks. |
+| ShowDetailedInfo → ShowAt | Choice | Entity | — | Determines where the info label is anchored in the world: `Owner` places it at the thrower, `Entity` follows the projectile itself, `Landing` pins it at the predicted impact point. |
+| ShowDetailedInfo → Item | Toggle | true | — | Show the projectile's item icon in the info overlay. |
+| ShowDetailedInfo → OwnerName | Toggle | true | — | Show the name of the player who threw or shot the projectile. |
+| ShowDetailedInfo → Distance | Toggle | true | — | Show the distance from your position to the predicted landing point. |
+| ShowDetailedInfo → DurationUnit | Choice | Ticks | — | Whether flight time is displayed in game ticks (`Ticks`) or as a decimal seconds value (`Seconds`). |
+| ShowDetailedInfo → Color | Color | — | — | Text colour used for the overlay labels. |
+| ShowDetailedInfo → Scale | Decimal | 1.0 | 0.25–4.0 | Scale multiplier applied to the overlay text and icon. Values below 1.0 shrink the label; values above 1.0 enlarge it. |
+| ShowDetailedInfo → RenderOffset | Vector3_d | — | — | Shifts the label's world anchor position by this (X, Y, Z) offset, allowing fine-tuned placement relative to the chosen `ShowAt` point. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2Ftrajectories%2FModuleTrajectories.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/trajectories/ModuleTrajectories.kt)*

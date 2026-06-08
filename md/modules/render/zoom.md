@@ -1,39 +1,23 @@
 ## Zoom
 
-Allows you to make everything in your world appear smaller or bigger.
+Zoom lets you narrow your field of view on demand, making distant objects appear larger and easier to see — useful for scouting terrain, reading signs, or tracking players at range. The module is bound to a **hold** action by default, meaning zoom is active only while you keep the key held down and releases as soon as you let go.
 
-**Category:** Render  
-**Enabled by default:** No  
+When you enable Zoom, the view smoothly transitions from your normal FOV to the zoomed-in level using the easing curve and duration you configure. The same smooth transition plays in reverse when you release the key. If **Scroll** is enabled, you can adjust the zoom level on the fly by scrolling your mouse wheel while zoomed in, letting you fine-tune magnification without opening the settings.
+
+This module interacts with [NoFOV](/docs/modules/render/nofov) — if that module is active, Zoom uses its modified FOV as the baseline rather than your vanilla FOV setting.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Zoom (Integer | default: 30 | range: 10..150)
-├── Scroll (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Speed (Decimal | default: 2.0 | range: 0.5..8.0)
-├── Transition (Choice | default: QUAD_IN | options: Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None)
-└── DurationFactor (Decimal | default: 2.0 | range: 0.0..10.0 | x)
-```
-
-### Settings Details
-
-- **Zoom** (Integer) — default: `30`; range: `10` – `150` — Sets the target FOV when zoomed in.
-#### Scroll
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables scroll wheel to adjust the zoom level.
-- **Speed** (Decimal) — default: `2.0`; range: `0.5` – `8.0` — Sets the scroll wheel zoom adjustment speed.
-
-- **Transition** (Choice) — default: `QUAD_IN`; options: `Linear`, `QuadIn`, `QuadOut`, `QuadInOut`, `ExponentialIn`, `ExponentialOut`, `None` — Selects the easing function for zoom transitions.
-- **DurationFactor** (Decimal) — default: `2.0`; range: `0.0` – `10.0`; unit: x — Scales the zoom transition animation duration.
-
-### Screenshots
-
-*Screenshots for Zoom will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Zoom | Integer | 30 | 10–150 | The target field-of-view (in degrees) when zoomed in. Lower values mean greater magnification. |
+| Scroll | Toggleable Group | on | — | When enabled, scrolling the mouse wheel while zoomed adjusts the zoom level in real time. |
+| Scroll → Speed | Decimal | 2.0 | 0.5–8.0 | How many FOV degrees each scroll tick shifts the zoom level. Higher values make the scroll wheel change zoom more aggressively. |
+| Transition | Choice | QuadIn | Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None | Easing curve applied to the zoom-in and zoom-out animation. |
+| DurationFactor | Decimal | 2.0 | 0.0–10.0 | Scales how long the transition animation takes. Higher values produce a slower, more gradual zoom; 0.0 makes it instant. Unit: x |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleZoom.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleZoom.kt)*

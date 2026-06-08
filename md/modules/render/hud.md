@@ -3,110 +3,37 @@
 Shows an in-game overlay with various useful tools.
 
 **Category:** Render  
-**Enabled by default:** Yes  
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
+Nested settings are shown with their group path, e.g. `Group → Setting`.
 
-```
-├── Blur (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── AlphaBlendRange (Decimal Range | default: 0.0..0.75 | range: 0.0..1.0)
-├── SpaceSeperatedNames (Toggle | default: true)
-├── Themes (Setting Group)
-└── AdditionalComponents (Setting Group)
-    └── Minimap (Toggleable Group | default: off)
-        ├── Enabled (Toggle | default: false)
-        ├── Alignment (Setting Group)
-        │   ├── Horizontal (Choice | default: LEFT | options: Left, Center, CenterTranslated, Right)
-        │   ├── HorizontalOffset (Integer | default: 7 | range: -1000..1000)
-        │   ├── Vertical (Choice | default: TOP | options: Top, Center, CenterTranslated, Bottom)
-        │   └── VerticalOffset (Integer | default: 180 | range: -1000..1000)
-        ├── Size (Integer | default: 96 | range: 1..256)
-        ├── ViewDistance (Decimal | default: 3.0 | range: 1.0..8.0)
-        ├── FixedDirection (Toggle | default: false)
-        ├── Texture (Toggleable Group | default: on)
-        │   ├── Enabled (Toggle | default: true)
-        │   └── VertexColor (Color)
-        ├── Entity (Toggleable Group | default: on)
-        │   ├── Enabled (Toggle | default: true)
-        │   ├── Scale (Decimal | default: 1.0 | range: 0.25..4.0)
-        │   └── OutOfBounds (Choice | default: NONE | options: None, All)
-        ├── Compass (Toggleable Group | default: off)
-        │   ├── Enabled (Toggle | default: false)
-        │   └── Placement (Choice | default: TOP_LEFT | options: TopLeft, TopRight, BottomLeft, BottomRight)
-        └── Clock (Toggleable Group | default: off)
-            ├── Enabled (Toggle | default: false)
-            └── Placement (Choice | default: TOP_LEFT | options: TopLeft, TopRight, BottomLeft, BottomRight)
-```
-
-### Settings Details
-
-#### Blur
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **AlphaBlendRange** (Decimal Range) — default: `0.0` – `0.75`; range: `0.0` – `1.0`
-
-- **SpaceSeperatedNames** (Toggle) — default: `true`
-#### Themes
-
-A group of related settings.
-
-#### AdditionalComponents
-
-A group of related settings.
-
-##### Minimap
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-###### Alignment
-
-A group of related settings.
-
-- **Horizontal** (Choice) — default: `LEFT`; options: `Left`, `Center`, `CenterTranslated`, `Right`
-- **HorizontalOffset** (Integer) — default: `7`; range: `-1000` – `1000`
-- **Vertical** (Choice) — default: `TOP`; options: `Top`, `Center`, `CenterTranslated`, `Bottom`
-- **VerticalOffset** (Integer) — default: `180`; range: `-1000` – `1000`
-
-- **Size** (Integer) — default: `96`; range: `1` – `256`
-- **ViewDistance** (Decimal) — default: `3.0`; range: `1.0` – `8.0`
-- **FixedDirection** (Toggle) — default: `false`
-###### Texture
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **VertexColor** (Color)
-
-###### Entity
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Scale** (Decimal) — default: `1.0`; range: `0.25` – `4.0`
-- **OutOfBounds** (Choice) — default: `NONE`; options: `None`, `All` — Draws markers at the minimap edge for entities outside its view. `All` marks every tracked entity.
-
-###### Compass
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Placement** (Choice) — default: `TOP_LEFT`; options: `TopLeft`, `TopRight`, `BottomLeft`, `BottomRight`
-
-###### Clock
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Placement** (Choice) — default: `TOP_LEFT`; options: `TopLeft`, `TopRight`, `BottomLeft`, `BottomRight`
-
-
-
+| Setting | Type | Default | Range | Description |
+|---------|------|---------|-------|-------------|
+| Blur | Toggleable Group | on | — |  |
+| Blur → AlphaBlendRange | Decimal Range | 0.0..0.75 | 0.0..1.0 |  |
+| SpaceSeperatedNames | Toggle | true | — |  |
+| Themes | Setting Group | — | — |  |
+| AdditionalComponents | Setting Group | — | — |  |
+| AdditionalComponents → Minimap | Toggleable Group | off | — |  |
+| AdditionalComponents → Minimap → Alignment | Setting Group | — | — |  |
+| AdditionalComponents → Minimap → Alignment → Horizontal | Choice | Left | Left, Center, CenterTranslated, Right |  |
+| AdditionalComponents → Minimap → Alignment → HorizontalOffset | Integer | 7 | -1000..1000 |  |
+| AdditionalComponents → Minimap → Alignment → Vertical | Choice | Top | Top, Center, CenterTranslated, Bottom |  |
+| AdditionalComponents → Minimap → Alignment → VerticalOffset | Integer | 180 | -1000..1000 |  |
+| AdditionalComponents → Minimap → Size | Integer | 96 | 1..256 |  |
+| AdditionalComponents → Minimap → ViewDistance | Decimal | 3.0 | 1.0..8.0 |  |
+| AdditionalComponents → Minimap → FixedDirection | Toggle | false | — |  |
+| AdditionalComponents → Minimap → Texture | Toggleable Group | on | — |  |
+| AdditionalComponents → Minimap → Texture → VertexColor | Color | — | — |  |
+| AdditionalComponents → Minimap → Entity | Toggleable Group | on | — |  |
+| AdditionalComponents → Minimap → Entity → Scale | Decimal | 1.0 | 0.25..4.0 |  |
+| AdditionalComponents → Minimap → Entity → OutOfBounds | Choice | None | None, All | Draws markers at the minimap edge for entities outside its view. `All` marks every tracked entity. |
+| AdditionalComponents → Minimap → Compass | Toggleable Group | off | — |  |
+| AdditionalComponents → Minimap → Compass → Placement | Choice | TopLeft | TopLeft, TopRight, BottomLeft, BottomRight |  |
+| AdditionalComponents → Minimap → Clock | Toggleable Group | off | — |  |
+| AdditionalComponents → Minimap → Clock → Placement | Choice | TopLeft | TopLeft, TopRight, BottomLeft, BottomRight |  |
 
 ### Screenshots
 

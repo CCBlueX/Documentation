@@ -1,25 +1,17 @@
 ## BlockWalk
 
-Allows you to walk on non-full block blocks.
+BlockWalk lets you walk across blocks that aren't full cubes as if they had a solid, full-height top surface. Normally blocks like cobwebs or snow layers have a reduced or sticky collision shape that slows you down or lets you sink in; BlockWalk replaces their collision shape with a standard full-block shape so you can move over them cleanly.
 
-**Category:** Movement  
-**Enabled by default:** No  
+It works by intercepting the collision-shape calculation for blocks in your configured list and swapping in a full cube shape — see [the shape handler](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleBlockWalk.kt#L39-L44). By default it targets cobwebs and snow, but you can edit the **Blocks** list to add or remove any blocks you want to treat as walkable. Use it when you want consistent footing over partial blocks instead of getting caught or slowed by their real hitboxes.
+
+**Category:** Movement
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Blocks (Registry List)
-```
-
-### Settings Details
-
-- **Blocks** (Registry List) — The list of non-full blocks to treat as full solid blocks so you can walk on them (defaults to cobwebs and snow).
-
-### Screenshots
-
-*Screenshots for BlockWalk will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Blocks | Registry List | Cobweb, Snow | — | The blocks whose collision shape is replaced with a full block, letting you walk on top of them. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmovement%2FModuleBlockWalk.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleBlockWalk.kt)*

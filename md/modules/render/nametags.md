@@ -1,74 +1,32 @@
 ## Nametags
 
-Improves the visibility of player name tags and shows additional information.
+Nametags replaces Minecraft's default name tags with a richer, more readable overlay. Instead of the vanilla floating label, each nearby player (and other living entities) gets a customisable tag showing any combination of their name, current health, ping, distance, game mode, and whether they have been flagged as a bot by [AntiBot](/docs/modules/misc/antibot). The tag scales smoothly with distance according to a configurable curve, so it stays readable up close without overwhelming the screen at range, and vanilla name tags are suppressed while the module is active.
 
-**Category:** Render  
-**Enabled by default:** No  
+Above the text tag, Nametags can also display a row of item icons representing the equipment each entity is wearing or holding. Enchantments on those items are summarised as short abbreviations (e.g. "Sha5", "Pro4") rendered in colour-coded badges directly above the item icon — curses appear in red, high-level enchantments in gold or yellow. If an entity is actively using an item (drawing a bow, eating, etc.) that item's slot can be highlighted with a configurable fill and outline colour so you can tell at a glance what they are doing.
+
+Use this module in PvP scenarios, on practice servers, or any time you want at-a-glance combat information about the players around you. It pairs naturally with [ESP](/docs/modules/render/esp) and [Tracers](/docs/modules/render/tracers) for a complete awareness setup.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Text (Setting Group)
-│   └── Parts (Multi-Select | default: [Distance, Ping, Name, Health, GameMode, BotMark] | options: Distance, Ping, Name, Health, GameMode, BotMark)
-├── Equipment (Setting Group)
-│   ├── Slots (Multi-Select | default: [Mainhand, Head, Chest, Legs, Feet, Offhand] | options: Mainhand, Offhand, Feet, Legs, Chest, Head, Body, Saddle)
-│   ├── SkipEmptySlot (Toggle | default: true)
-│   ├── ShowInfo (Toggle | default: true)
-│   ├── Enchantment (Toggleable Group | default: on)
-│   │   ├── Enabled (Toggle | default: true)
-│   │   ├── Scale (Decimal | default: 0.8 | range: 0.25..4.0)
-│   │   ├── MaxCountPerItem (Integer | default: 4 | range: 1..16)
-│   │   └── BackgroundRadius (Decimal | default: 1.0 | range: 0.0..8.0)
-│   └── HighlightItemInUse (Toggleable Group | default: off)
-│       ├── Enabled (Toggle | default: false)
-│       ├── FillColor (Color)
-│       └── OutlineColor (Color)
-├── BorderWidth (Decimal | default: 1.0 | range: 0.0..8.0)
-├── BackgroundRadius (Decimal | default: 2.0 | range: 0.0..16.0)
-└── Scale (Curve)
-```
-
-### Settings Details
-
-#### Text
-
-A group of related settings.
-
-- **Parts** (Multi-Select) — default: `Distance`, `Ping`, `Name`, `Health`, `GameMode`, `BotMark`; options: `Distance`, `Ping`, `Name`, `Health`, `GameMode`, `BotMark` — Components displayed in the name tag text. `GameMode` shows the player's current game mode.
-
-#### Equipment
-
-A group of related settings.
-
-- **Slots** (Multi-Select) — default: `Mainhand`, `Head`, `Chest`, `Legs`, `Feet`, `Offhand`; options: `Mainhand`, `Offhand`, `Feet`, `Legs`, `Chest`, `Head`, `Body`, `Saddle` — Equipment slots shown above the name tag.
-- **SkipEmptySlot** (Toggle) — default: `true` — Hides empty equipment slots from the display.
-- **ShowInfo** (Toggle) — default: `true` — Shows durability and stack count on equipment items.
-##### Enchantment
-
-A toggleable group of settings (default: enabled). Shows the enchantments of the displayed equipment.
-
-- **Enabled** (Toggle) — default: `true`
-- **Scale** (Decimal) — default: `0.8`; range: `0.25` – `4.0` — Size of the enchantment text relative to the name tag.
-- **MaxCountPerItem** (Integer) — default: `4`; range: `1` – `16` — Maximum number of enchantments shown per item before the rest are summarized.
-- **BackgroundRadius** (Decimal) — default: `1.0`; range: `0.0` – `8.0` — Corner rounding of the enchantment background.
-
-##### HighlightItemInUse
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Highlights the item the player is currently using.
-- **FillColor** (Color) — Fill color of the in-use item highlight.
-- **OutlineColor** (Color) — Outline color of the in-use item highlight.
-
-- **BorderWidth** (Decimal) — default: `1.0`; range: `0.0` – `8.0` — Thickness of the border drawn around the name tag background (0 disables it).
-- **BackgroundRadius** (Decimal) — default: `2.0`; range: `0.0` – `16.0` — Corner rounding of the name tag background.
-- **Scale** (Curve) — Curve mapping camera distance to name tag display scale.
-
-### Screenshots
-
-*Screenshots for Nametags will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Text → Parts | Multi-Select | Distance, Ping, Name, Health, BotMark | Distance, Ping, Name, Health, GameMode, BotMark | Choose which pieces of information appear in the name tag text. |
+| Equipment → Slots | Multi-Select | Mainhand, Head, Chest, Legs, Feet, Offhand | Mainhand, Offhand, Feet, Legs, Chest, Head, Body, Saddle | Which equipment slots are shown as item icons above the name tag. |
+| Equipment → SkipEmptySlot | Toggle | true | — | When enabled, slots that contain no item are hidden instead of showing a blank space. |
+| Equipment → ShowInfo | Toggle | true | — | When enabled, item tooltips (durability, count, etc.) are shown alongside the item icons. |
+| Equipment → Enchantment | Toggleable Group | on | — | Shows abbreviated enchantment labels above each item icon. |
+| Equipment → Enchantment → Scale | Decimal | 0.8 | 0.25–4.0 | Size of the enchantment label text relative to the default font size. |
+| Equipment → Enchantment → MaxCountPerItem | Integer | 4 | 1–16 | Maximum number of enchantment badges displayed per item; additional enchantments are replaced with "…". |
+| Equipment → Enchantment → BackgroundRadius | Decimal | 1.0 | 0.0–8.0 | Corner rounding radius of the enchantment label background pill. |
+| Equipment → HighlightItemInUse | Toggleable Group | off | — | Draws a coloured overlay on the item slot of whatever item the entity is currently using. |
+| Equipment → HighlightItemInUse → FillColor | Color | — | — | Fill colour of the in-use item highlight overlay. |
+| Equipment → HighlightItemInUse → OutlineColor | Color | — | — | Outline colour of the in-use item highlight overlay. |
+| BorderWidth | Decimal | 1.0 | 0.0–8.0 | Thickness of the border drawn around the name tag background. |
+| BackgroundRadius | Decimal | 2.0 | 0.0–16.0 | Corner rounding radius of the name tag background. |
+| Scale | Curve | — | — | Distance-to-scale curve controlling how large the name tag appears at different distances (x-axis: distance 0–200, y-axis: scale 0.25–4). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2Fnametags%2FModuleNametags.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/nametags/ModuleNametags.kt)*

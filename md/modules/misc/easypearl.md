@@ -1,122 +1,21 @@
 ## EasyPearl
 
-Throws pearl to where you looking at.
+EasyPearl makes throwing ender pearls far more reliable. Instead of guessing the arc, just look at the spot you want to land on, hold down your use key, and the module works out the throwing angle for you — accounting for the pearl's trajectory — before releasing it toward that point.
 
-**Category:** Misc  
-**Enabled by default:** No  
+When you trigger a throw, EasyPearl first turns your aim to the calculated angle and only lets the pearl fly once you're pointing the right way, so your toss lands where you intended. While you're holding a pearl, a colored box highlights the block you're aiming at: green means the spot is reachable and the throw will work, red means it's out of range. With ReachableCheck on, throws at unreachable spots are blocked and you get a warning instead of wasting the pearl.
+
+It works with pearls in either your main hand or offhand. For automatic combat pearling instead of manual aiming, see [AutoPearl](/docs/modules/combat/autopearl).
+
+**Category:** Misc
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── AimOffThreshold (Decimal | default: 2.0 | range: 0.5..10.0)
-├── ReachableCheck (Toggle | default: true)
-└── Rotations (Setting Group)
-    ├── AngleSmooth (Mode Selector | default: Linear | modes: Linear, Sigmoid, Acceleration)
-    │   ├── [Mode: Linear]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   └── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   ├── [Mode: Sigmoid]
-    │   │   ├── HorizontalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── VerticalTurnSpeed (Decimal Range | default: 180.0..180.0 | range: 0.0..180.0)
-    │   │   ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │   │   └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    │   └── [Mode: Acceleration]
-    │       ├── YawAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── PitchAcceleration (Decimal Range | default: 20.0..25.0 | range: 1.0..180.0)
-    │       ├── DynamicAccel (Toggleable Group | default: off)
-    │       │   ├── Enabled (Toggle | default: false)
-    │       │   ├── CoefDistance (Decimal | default: -1.393 | range: -2.0..2.0)
-    │       │   ├── YawCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       │   └── PitchCrosshairAccel (Decimal Range | default: 17.0..20.0 | range: 1.0..180.0)
-    │       ├── AccelerationError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchAccelError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       ├── ConstantError (Toggleable Group | default: on)
-    │       │   ├── Enabled (Toggle | default: true)
-    │       │   ├── YawConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       │   └── PitchConstantError (Decimal | default: 0.1 | range: 0.01..1.0)
-    │       └── SigmoidDeceleration (Toggleable Group | default: off)
-    │           ├── Enabled (Toggle | default: false)
-    │           ├── Steepness (Decimal | default: 10.0 | range: 0.0..20.0)
-    │           └── Midpoint (Decimal | default: 0.3 | range: 0.0..1.0)
-    ├── MovementCorrection (Choice | default: SILENT | options: Off, Strict, Silent, ChangeLook)
-    ├── ResetThreshold (Decimal | default: 2.0 | range: 1.0..180.0)
-    └── TicksUntilReset (Integer | default: 5 | range: 1..30 | ticks)
-```
-
-### Settings Details
-
-- **AimOffThreshold** (Decimal) — default: `2.0`; range: `0.5` – `10.0`
-- **ReachableCheck** (Toggle) — default: `true`
-#### Rotations
-
-A group of related settings.
-
-##### AngleSmooth
-
-Select a mode for this feature. Available modes: **Linear**, **Sigmoid**, **Acceleration**. Default: **Linear**.
-
-###### Mode: Linear
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-
-###### Mode: Sigmoid
-
-- **HorizontalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **VerticalTurnSpeed** (Decimal Range) — default: `180.0` – `180.0`; range: `0.0` – `180.0`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-###### Mode: Acceleration
-
-- **YawAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-- **PitchAcceleration** (Decimal Range) — default: `20.0` – `25.0`; range: `1.0` – `180.0`
-###### DynamicAccel
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **CoefDistance** (Decimal) — default: `-1.393`; range: `-2.0` – `2.0`
-- **YawCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-- **PitchCrosshairAccel** (Decimal Range) — default: `17.0` – `20.0`; range: `1.0` – `180.0`
-
-###### AccelerationError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchAccelError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### ConstantError
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **YawConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-- **PitchConstantError** (Decimal) — default: `0.1`; range: `0.01` – `1.0`
-
-###### SigmoidDeceleration
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Steepness** (Decimal) — default: `10.0`; range: `0.0` – `20.0`
-- **Midpoint** (Decimal) — default: `0.3`; range: `0.0` – `1.0`
-
-
-- **MovementCorrection** (Choice) — default: `SILENT`; options: `Off`, `Strict`, `Silent`, `ChangeLook`
-- **ResetThreshold** (Decimal) — default: `2.0`; range: `1.0` – `180.0`
-- **TicksUntilReset** (Integer) — default: `5`; range: `1` – `30`; unit: ticks
-
-
-### Screenshots
-
-*Screenshots for EasyPearl will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| AimOffThreshold | Decimal | 2.0 | 0.5..10.0 | How close your aim must be to the calculated throwing angle (in degrees) before the pearl is released. Lower values demand a more precise alignment for greater accuracy; higher values let the pearl fly sooner. |
+| ReachableCheck | Toggle | true | — | When on, blocks throws at spots the pearl can't actually reach and shows a warning instead, preventing wasted pearls. |
+| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleEasyPearl.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleEasyPearl.kt)*

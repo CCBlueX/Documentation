@@ -1,39 +1,22 @@
 ## ClickGUI
 
-Shows you an easy to use menu to toggle and configure modules.
+ClickGUI opens the main menu where you browse, toggle, and configure every module in LiquidBounce. By default it's bound to **Right Shift** — press it in-game to bring up the interface, search for what you need, and tweak settings without leaving your session. This is the central hub from which you'll manage everything from [KillAura](/docs/modules/combat/killaura) to [ESP](/docs/modules/render/esp).
 
-**Category:** Render  
-**Enabled by default:** No  
+You can resize the whole interface to fit your screen, have the search bar grab focus automatically when the menu opens, and snap module panels neatly to a grid as you drag them around. The menu is always available regardless of whether you're connected to a server, so it's the first thing you'll reach for when setting up your client.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Scale (Decimal | default: 1.0 | range: 0.5..2.0)
-├── SearchBarAutoFocus (Toggle | default: true)
-├── Snapping (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── GridSize (Integer | default: 10 | range: 1..100 | px)
-└── Cache (Toggle | default: true)
-```
-
-### Settings Details
-
-- **Scale** (Decimal) — default: `1.0`; range: `0.5` – `2.0` — Controls the UI scale of the ClickGUI.
-- **SearchBarAutoFocus** (Toggle) — default: `true` — Automatically focuses the search bar when opening the GUI.
-#### Snapping
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Enables snapping of GUI elements to a grid.
-- **GridSize** (Integer) — default: `10`; range: `1` – `100`; unit: px — Size of the snap grid in pixels.
-
-- **Cache** (Toggle) — default: `true` — Caches the ClickGUI in a standalone screen for faster reopening.
-
-### Screenshots
-
-*Screenshots for ClickGUI will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Scale | Decimal | 1.0 | 0.5..2.0 | Adjusts the overall size of the menu. Lower values shrink everything to fit more on screen; higher values make panels and text larger and easier to read. |
+| SearchBarAutoFocus | Toggle | true | — | When on, the search bar is focused the moment you open the menu, so you can start typing a module name right away without clicking it first. |
+| Snapping | Toggleable Group | on | — | When enabled, panels snap to an invisible grid as you move them, keeping your layout aligned and tidy. |
+| Snapping → GridSize | Integer | 10 px | 1..100 | The spacing of the snapping grid in pixels. Smaller values allow finer positioning; larger values snap panels to wider intervals. |
+| Cache | Toggle | true | — | Keeps the menu loaded in the background so it reopens instantly and remembers its state. Turning this off frees resources but the menu may take longer to appear. |
+| Renderer | Setting Group | — | — | See [Shared: Renderer](/docs/modules/shared-settings/renderer). |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleClickGui.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleClickGui.kt)*

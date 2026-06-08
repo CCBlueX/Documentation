@@ -1,43 +1,25 @@
 ## Blink
 
-Makes it look as if you were teleporting to other players.
+Blink holds your packets instead of sending them, making your character freeze in place on the server while you keep moving freely on your own screen. The moment the held packets are released, all your movement is replayed at once, so to everyone else it looks like you suddenly teleported across the world to wherever you've actually walked. By default it only delays your [outgoing](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleBlink.kt#L55) packets, but it can also suspend incoming ones.
 
-**Category:** Player  
-**Enabled by default:** No  
+Use it to escape a bad fight, set up an ambush, or buy time — while Blink is active the server still thinks you're standing where you started, so you take no real-world position updates. The held packets are flushed when you disable the module (or via AutoReset), at which point your true position is synced and the "teleport" happens. The actual queueing is handled by the [BlinkManager via the packet events](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleBlink.kt#L169-L174).
+
+A few extras help with specific situations: **Dummy** spawns a clone of you at your starting spot so you can see where the server still thinks you are; **Ambush** auto-disables Blink the instant you attack or interact with an entity (releasing all packets so your hit lands from your real position); and if **AutoDodge** is also running, Blink will intelligently flush just enough packets to dodge incoming arrows. There's also a [tick-based AutoReset](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleBlink.kt#L148-L167) so the queue never builds up indefinitely.
+
+**Category:** Player
+**Enabled by default:** No
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Directions (Multi-Select | default: [Outgoing] | options: Incoming, Outgoing)
-├── Dummy (Toggle | default: false)
-├── Ambush (Toggle | default: false)
-├── AutoDisable (Toggle | default: true)
-└── AutoReset (Toggleable Group | default: off)
-    ├── Enabled (Toggle | default: false)
-    ├── ResetAfter (Integer | default: 100 | range: 1..1000)
-    └── ResetAction (Choice | default: RESET | options: Reset, Blink)
-```
-
-### Settings Details
-
-- **Directions** (Multi-Select) — default: `Outgoing`; options: `Incoming`, `Outgoing` — Which packet directions to hold back. `Outgoing` blinks your own actions; `Incoming` also holds back packets coming from the server. Cannot be empty.
-- **Dummy** (Toggle) — default: `false` — Spawns a fake player clone at your original position.
-- **Ambush** (Toggle) — default: `false` — Automatically disables Blink when you interact with an entity.
-- **AutoDisable** (Toggle) — default: `true` — Disables the module after an auto reset is triggered.
-#### AutoReset
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **ResetAfter** (Integer) — default: `100`; range: `1` – `1000` — Number of queued positions before triggering an automatic reset.
-- **ResetAction** (Choice) — default: `RESET`; options: `Reset`, `Blink` — Whether to cancel all packets (Reset) or send them all at once (Blink).
-
-
-### Screenshots
-
-*Screenshots for Blink will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Directions | Multi-Select | [Outgoing] | [Incoming, Outgoing] | Which packet directions to suspend. Outgoing holds the packets you send to the server (freezing your position server-side); Incoming holds packets coming from the server. At least one must be selected. |
+| Dummy | Toggle | false | — | Spawns a visible clone of your character at your starting position, marking where the server still thinks you are while you move away. |
+| Ambush | Toggle | false | — | Automatically disables Blink (releasing all held packets) the moment you attack, interact with, or spectate an entity, so the action lands from your real position. |
+| AutoDisable | Toggle | true | — | When AutoReset triggers, also turns Blink off afterward instead of leaving it running. |
+| AutoReset | Toggleable Group | off | — | When on, periodically clears or flushes the packet queue after a set number of ticks so it doesn't grow forever. |
+| AutoReset → ResetAfter | Integer | 100 | 1..1000 | Number of movement ticks to wait before AutoReset fires. |
+| AutoReset → ResetAction | Choice | Reset | [Reset, Blink] | What AutoReset does: Reset cancels and discards the queued packets; Blink flushes them (performing the teleport) and re-syncs the dummy clone. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fplayer%2FModuleBlink.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleBlink.kt)*

@@ -1,90 +1,39 @@
 ## Animations
 
-Allows you to modify many of game's animations.
+Animations gives you control over how your held items look and move on screen. You can resize and reposition the item in your main hand or off hand, tweak the rotation of the model, adjust how long the swing animation lasts, and pick a different blocking animation — all without changing how the game plays for other players. It's purely a visual tweak, so use it to get a viewmodel that feels comfortable to you, whether that's an old-school look or something more compact.
 
-**Category:** Render  
-**Enabled by default:** No  
+The main-hand and off-hand groups each let you shift the item along the X/Y axes, scale it up or down, and add extra rotation. The EquipOffset group controls the small "raise" animation that plays when you switch or use items, and lets you skip that motion in specific situations. AirWalker keeps your legs moving with the walking animation even while you're off the ground.
+
+The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules/combat/swordblock) is enabled — it changes how your sword looks when blocking, letting you choose the classic 1.7-style block or a pushdown motion.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── MainHand (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── ItemScale (Decimal | default: 0.0 | range: -5.0..5.0)
-│   ├── X (Decimal | default: 0.0 | range: -5.0..5.0)
-│   ├── Y (Decimal | default: 0.0 | range: -5.0..5.0)
-│   ├── PositiveRotationX (Decimal | default: 0.0 | range: -50.0..50.0)
-│   ├── PositiveRotationY (Decimal | default: 0.0 | range: -50.0..50.0)
-│   └── PositiveRotationZ (Decimal | default: 0.0 | range: -50.0..50.0)
-├── OffHand (Toggleable Group | default: off)
-│   ├── Enabled (Toggle | default: false)
-│   ├── ItemScale (Decimal | default: 0.0 | range: -5.0..5.0)
-│   ├── X (Decimal | default: 0.0 | range: -1.0..1.0)
-│   ├── Y (Decimal | default: 0.0 | range: -1.0..1.0)
-│   ├── PositiveRotationX (Decimal | default: 0.0 | range: -50.0..50.0)
-│   ├── PositiveRotationY (Decimal | default: 0.0 | range: -50.0..50.0)
-│   └── PositiveRotationZ (Decimal | default: 0.0 | range: -50.0..50.0)
-├── EquipOffset (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   └── Ignore (Multi-Select | default: [Blocking, Place] | options: Blocking, Place, Amount)
-├── SwingDuration (Integer | default: 6 | range: 1..20)
-├── BlockingAnimation (Mode Selector | default: 1.7 | modes: 1.7, Pushdown)
-│   ├── [Mode: 1.7]
-│   │   ├── Y (Decimal | default: 0.1 | range: 0.05..0.3)
-│   │   └── SwingScale (Decimal | default: 0.9 | range: 0.1..1.0)
-└── AirWalker (Toggle | default: false)
-```
-
-### Settings Details
-
-#### MainHand
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Toggles main hand item position and rotation customization.
-- **ItemScale** (Decimal) — default: `0.0`; range: `-5.0` – `5.0` — Adjusts the scale of the item held in the main hand.
-- **X** (Decimal) — default: `0.0`; range: `-5.0` – `5.0` — Horizontal position offset of the main hand item.
-- **Y** (Decimal) — default: `0.0`; range: `-5.0` – `5.0` — Vertical position offset of the main hand item.
-- **PositiveRotationX** (Decimal) — default: `0.0`; range: `-50.0` – `50.0` — Rotation offset around the X axis for the main hand item.
-- **PositiveRotationY** (Decimal) — default: `0.0`; range: `-50.0` – `50.0` — Rotation offset around the Y axis for the main hand item.
-- **PositiveRotationZ** (Decimal) — default: `0.0`; range: `-50.0` – `50.0` — Rotation offset around the Z axis for the main hand item.
-
-#### OffHand
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false` — Toggles off hand item position and rotation customization.
-- **ItemScale** (Decimal) — default: `0.0`; range: `-5.0` – `5.0` — Adjusts the scale of the item held in the off hand.
-- **X** (Decimal) — default: `0.0`; range: `-1.0` – `1.0` — Horizontal position offset of the off hand item.
-- **Y** (Decimal) — default: `0.0`; range: `-1.0` – `1.0` — Vertical position offset of the off hand item.
-- **PositiveRotationX** (Decimal) — default: `0.0`; range: `-50.0` – `50.0` — Rotation offset around the X axis for the off hand item.
-- **PositiveRotationY** (Decimal) — default: `0.0`; range: `-50.0` – `50.0` — Rotation offset around the Y axis for the off hand item.
-- **PositiveRotationZ** (Decimal) — default: `0.0`; range: `-50.0` – `50.0` — Rotation offset around the Z axis for the off hand item.
-
-#### EquipOffset
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles equip animation offset customization.
-- **Ignore** (Multi-Select) — default: `Blocking`, `Place`; options: `Blocking`, `Place`, `Amount` — Conditions under which the equip offset animation is skipped.
-
-- **SwingDuration** (Integer) — default: `6`; range: `1` – `20` — Duration of the arm swing animation in ticks.
-#### BlockingAnimation
-
-Select a mode for this feature. Available modes: **1.7**, **Pushdown**. Default: **1.7**.
-
-##### Mode: 1.7
-
-- **Y** (Decimal) — default: `0.1`; range: `0.05` – `0.3` — Vertical translation applied during the 1.7-style blocking animation.
-- **SwingScale** (Decimal) — default: `0.9`; range: `0.1` – `1.0` — Scale factor for the swing progress during blocking.
-
-- **AirWalker** (Toggle) — default: `false` — Applies the walk animation even while the player is airborne.
-
-### Screenshots
-
-*Screenshots for Animations will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+| --- | --- | --- | --- | --- |
+| MainHand | Toggleable Group | On | — | Customizes the position, scale, and rotation of the item held in your main hand. |
+| MainHand → ItemScale | Decimal | -1.25 | -5.0..5.0 | Scales the main-hand item model larger or smaller. |
+| MainHand → X | Decimal | 0.0 | -5.0..5.0 | Shifts the main-hand item left or right. |
+| MainHand → Y | Decimal | 0.0 | -5.0..5.0 | Shifts the main-hand item up or down. |
+| MainHand → PositiveRotationX | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the main-hand item around the X axis. |
+| MainHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the main-hand item around the Y axis. |
+| MainHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the main-hand item around the Z axis. |
+| OffHand | Toggleable Group | Off | — | Customizes the position, scale, and rotation of the item held in your off hand. |
+| OffHand → ItemScale | Decimal | 0.0 | -5.0..5.0 | Scales the off-hand item model larger or smaller. |
+| OffHand → X | Decimal | 0.0 | -1.0..1.0 | Shifts the off-hand item left or right. |
+| OffHand → Y | Decimal | 0.0 | -1.0..1.0 | Shifts the off-hand item up or down. |
+| OffHand → PositiveRotationX | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the X axis. |
+| OffHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Y axis. |
+| OffHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Z axis. |
+| EquipOffset | Toggleable Group | On | — | Controls the raise/equip motion that plays when switching or using items. |
+| EquipOffset → Ignore | Multi-Select | [Blocking, Place] | [Blocking, Place, Amount] | Situations in which the equip motion is skipped. |
+| SwingDuration | Integer | 12 | 1..20 | How long the arm swing animation lasts, in ticks — lower is faster. |
+| BlockingAnimation | Mode Selector | Pushdown | [1.7, Pushdown] | Animation used while blocking with a sword (only active with SwordBlock enabled). |
+| BlockingAnimation → [1.7] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the 1.7 blocking animation. |
+| BlockingAnimation → [1.7] → SwingScale | Decimal | 0.9 | 0.1..1.0 | Scales how strongly the swing motion is applied during the 1.7 animation. |
+| AirWalker | Toggle | false | — | Plays the walking leg animation even while you are in the air. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleAnimations.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAnimations.kt)*

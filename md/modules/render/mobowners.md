@@ -1,25 +1,19 @@
 ## MobOwners
 
-Allows you to see which player a tamed entity or projectile belongs to.
+MobOwners displays the owner's name above tamed entities and, optionally, projectiles in the world. Whenever you hover near a wolf, cat, horse, or any other tamable creature, you will see a label showing which player claimed it — useful for quickly identifying whether a mob belongs to you, a teammate, or an unknown player.
 
-**Category:** Render  
-**Enabled by default:** No  
+By default the module only tracks tamed animals. If you also want to know who fired an arrow, threw a trident, or launched another projectile, enable the **Projectiles** toggle. When the owner is already present in your current game session their name appears instantly; if they are not, LiquidBounce queries the Mojang API in the background and shows "Loading…" until the name is resolved.
+
+This module pairs naturally with [ESP](/docs/modules/render/esp) and [Nametags](/docs/modules/render/nametags) if you want a fuller picture of the entities around you.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-└── Projectiles (Toggle | default: false)
-```
-
-### Settings Details
-
-- **Projectiles** (Toggle) — default: `false` — Also shows owner names for projectiles.
-
-### Screenshots
-
-*Screenshots for MobOwners will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Projectiles | Toggle | false | — | When enabled, also shows the owner's name above projectiles (arrows, tridents, etc.) in addition to tamed animals. |
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleMobOwners.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleMobOwners.kt)*

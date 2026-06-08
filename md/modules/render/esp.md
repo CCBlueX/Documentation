@@ -1,132 +1,45 @@
 ## ESP
 
-Highlights all targets allowing you to see them through walls.
+ESP (Extra Sensory Perception) highlights living entities like players and mobs so you can spot them through walls and across the map. It's one of the most useful render features for keeping track of who's around you, whether you're fighting, hiding, or just exploring.
 
-**Category:** Render  
-**Enabled by default:** No  
+You can choose how targets are drawn with the **Mode** setting: a 3D **Box** around each entity, a screen-aligned **2D** box with optional health bar, the classic **Legacy2D** marker, or **Glow**, which gives entities a vanilla glowing outline. The **ColorMode** setting controls how those highlights are colored — by distance, by remaining health, a single static color, or a shifting rainbow. On top of that, invisible entities and [friends](/docs/modules/misc/teams) get their own dedicated colors, and entities that were just hit briefly flash red.
+
+The **Glow** modes rely on entities being rendered, so to see hidden or invisible targets through walls with those modes you'll want [TrueSight](/docs/modules/render/truesight). For filled-in or recolored entity models instead of boxes, see [Chams](/docs/modules/render/chams), and use [Nametags](/docs/modules/render/nametags) to label them. Use **MaximumDistance** to limit how far away entities are still drawn.
+
+**Category:** Render
+**Enabled by default:** Yes
 
 ### Settings
 
-Below is the complete tree of all configurable settings for this module.
-
-```
-├── Mode (Mode Selector | default: Glow | modes: Box, 2D, Legacy2D, Glow)
-│   ├── [Mode: Box]
-│   │   ├── Expand (Decimal | default: 0.05 | range: 0.0..0.5)
-│   │   ├── Outline (Toggle | default: true)
-│   │   └── MergeIntersecting (Toggle | default: false)
-│   ├── [Mode: 2D]
-│   │   ├── Expand (Decimal | default: 0.05 | range: 0.0..0.5)
-│   │   ├── Fill (Toggle | default: true)
-│   │   ├── Outline (Toggleable Group | default: on)
-│   │   │   ├── Enabled (Toggle | default: true)
-│   │   │   └── Thickness (Decimal | default: 1.0 | range: 1.0..9.0 | px)
-│   │   ├── Corner (Toggleable Group | default: off)
-│   │   │   ├── Enabled (Toggle | default: false)
-│   │   │   └── Gap (Decimal | default: 50.0 | range: 1.0..100.0 | %)
-│   │   ├── Border (Toggleable Group | default: on)
-│   │   │   ├── Enabled (Toggle | default: true)
-│   │   │   └── Thickness (Decimal | default: 1.0 | range: 1.0..9.0 | px)
-│   │   └── HealthBar (Toggleable Group | default: on)
-│   │       ├── Enabled (Toggle | default: true)
-│   │       └── Spacing (Decimal | default: 2.0 | range: 0.0..32.0 | px)
-│   └── [Mode: Legacy2D]
-│       ├── Scale (Decimal | default: 0.1 | range: 0.02..0.3)
-│       ├── YOffset (Decimal | default: 0.0 | range: -1.0..1.0)
-│       └── BackgroundAlpha (Integer | default: 150 | range: 0..255)
-├── ColorMode (Mode Selector | default: Distance | modes: Distance, Health, Static, Rainbow)
-│   ├── [Mode: Distance]
-│   │   ├── Saturation (Decimal | default: 1.0 | range: 0.0..1.0)
-│   │   ├── Brightness (Decimal | default: 1.0 | range: 0.0..1.0)
-│   │   ├── Hue (Curve)
-│   │   └── Alpha (Decimal | default: 1.0 | range: 0.0..1.0)
-│   ├── [Mode: Health]
-│   │   └── Alpha (Integer | default: 255 | range: 0..255)
-│   ├── [Mode: Static]
-│   │   └── Color (Color)
-├── Invisible (Color)
-├── Friends (Color)
-└── MaximumDistance (Decimal | default: 128.0 | range: 1.0..512.0)
-```
-
-### Settings Details
-
-#### Mode
-
-Select a mode for this feature. Available modes: **Box**, **2D**, **Legacy2D**, **Glow**. Default: **Glow**.
-
-##### Mode: Box
-
-- **Expand** (Decimal) — default: `0.05`; range: `0.0` – `0.5` — Inflates the bounding box size of entities.
-- **Outline** (Toggle) — default: `true` — Draws an outline around the ESP box.
-- **MergeIntersecting** (Toggle) — default: `false` — Merges overlapping boxes into a single outline instead of drawing each separately.
-
-##### Mode: 2D
-
-- **Expand** (Decimal) — default: `0.05`; range: `0.0` – `0.5` — Inflates the bounding box used for 2D projection.
-- **Fill** (Toggle) — default: `true` — Fills the interior of the 2D rectangle.
-###### Outline
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles the colored outline around the 2D rectangle.
-- **Thickness** (Decimal) — default: `1.0`; range: `1.0` – `9.0`; unit: px — Line width of the 2D outline.
-
-###### Corner
-
-A toggleable group of settings (default: disabled). Draws only the corners of the rectangle instead of full edges.
-
-- **Enabled** (Toggle) — default: `false`
-- **Gap** (Decimal) — default: `50.0`; range: `1.0` – `100.0`; unit: % — Portion of each edge left empty in the middle.
-
-###### Border
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles a dark border around the outline.
-- **Thickness** (Decimal) — default: `1.0`; range: `1.0` – `9.0`; unit: px — Line width of the dark border.
-
-###### HealthBar
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true` — Toggles the vertical health bar beside the 2D rectangle.
-- **Spacing** (Decimal) — default: `2.0`; range: `0.0` – `32.0`; unit: px — Gap between the 2D rectangle and the health bar.
-
-##### Mode: Legacy2D
-
-Classic flat box rendered around the entity (the old 2D style).
-
-- **Scale** (Decimal) — default: `0.1`; range: `0.02` – `0.3` — Size of the legacy box.
-- **YOffset** (Decimal) — default: `0.0`; range: `-1.0` – `1.0` — Vertical offset of the legacy box.
-- **BackgroundAlpha** (Integer) — default: `150`; range: `0` – `255` — Opacity of the box background fill.
-
-#### ColorMode
-
-Select a mode for this feature. Available modes: **Distance**, **Health**, **Static**, **Rainbow**. Default: **Distance**.
-
-##### Mode: Distance
-
-- **Saturation** (Decimal) — default: `1.0`; range: `0.0` – `1.0` — HSB saturation of the distance-based color.
-- **Brightness** (Decimal) — default: `1.0`; range: `0.0` – `1.0` — HSB brightness of the distance-based color.
-- **Hue** (Curve) — Curve mapping distance to hue value.
-- **Alpha** (Decimal) — default: `1.0`; range: `0.0` – `1.0` — Opacity of the distance-based color.
-
-##### Mode: Health
-
-- **Alpha** (Integer) — default: `255`; range: `0` – `255` — Opacity of the health-based color.
-
-##### Mode: Static
-
-- **Color** (Color) — Static color applied to all highlighted entities.
-
-- **Invisible** (Color) — Color used to highlight invisible entities.
-- **Friends** (Color) — Color used to highlight friend entities.
-- **MaximumDistance** (Decimal) — default: `128.0`; range: `1.0` – `512.0` — Maximum render distance for highlighted entities.
-
-### Screenshots
-
-*Screenshots for ESP will be added in a future update.*
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Mode | Mode Selector | 2D | Box, 2D, Legacy2D, Glow | How entities are highlighted on screen. |
+| Mode → [Box] → Expand | Decimal | 0.05 | 0.0..0.5 | Grows the box outward from the entity. |
+| Mode → [Box] → Outline | Toggle | true | — | Draws an outline around the box. |
+| Mode → [Box] → MergeIntersecting | Toggle | false | — | Combines overlapping boxes into one shape. |
+| Mode → [2D] → Expand | Decimal | 0.05 | 0.0..0.5 | Grows the box outward from the entity. |
+| Mode → [2D] → Fill | Toggle | true | — | Fills the 2D box with a translucent color. |
+| Mode → [2D] → Outline | Toggleable Group | On | — | Draws an outline around the 2D box. |
+| Mode → [2D] → Outline → Thickness | Decimal | 1.0 | 1.0..9.0 px | Width of the outline. |
+| Mode → [2D] → Corner | Toggleable Group | Off | — | Draws only the corners of the box instead of full edges. |
+| Mode → [2D] → Corner → Gap | Decimal | 50.0 | 1.0..100.0 % | Size of the open gap between corners. |
+| Mode → [2D] → Border | Toggleable Group | On | — | Adds a black border around the outline for contrast. |
+| Mode → [2D] → Border → Thickness | Decimal | 1.0 | 1.0..9.0 px | Width of the border. |
+| Mode → [2D] → HealthBar | Toggleable Group | On | — | Shows a health bar next to the box. |
+| Mode → [2D] → HealthBar → Spacing | Decimal | 2.0 | 0.0..32.0 px | Distance between the box and the health bar. |
+| Mode → [Legacy2D] → Scale | Decimal | 0.1 | 0.02..0.3 | Size of the legacy marker. |
+| Mode → [Legacy2D] → YOffset | Decimal | 0.0 | -1.0..1.0 | Moves the marker up or down. |
+| Mode → [Legacy2D] → BackgroundAlpha | Integer | 150 | 0..255 | Opacity of the marker's background. |
+| ColorMode | Mode Selector | Health | Distance, Health, Static, Rainbow | How highlights are colored. |
+| ColorMode → [Distance] → Saturation | Decimal | 1.0 | 0.0..1.0 | Color saturation based on distance. |
+| ColorMode → [Distance] → Brightness | Decimal | 1.0 | 0.0..1.0 | Color brightness based on distance. |
+| ColorMode → [Distance] → Hue | Curve | — | — | Maps distance to a hue along a custom curve. |
+| ColorMode → [Distance] → Alpha | Decimal | 1.0 | 0.0..1.0 | Opacity of the color. |
+| ColorMode → [Health] → Alpha | Integer | 255 | 0..255 | Opacity of the health-based color. |
+| ColorMode → [Static] → Color | Color | — | — | The single color applied to all entities. |
+| Invisible | Color | — | — | Color used for invisible entities. |
+| Friends | Color | — | — | Color used for friends. |
+| MaximumDistance | Decimal | 128.0 | 1.0..512.0 | Maximum distance at which entities are highlighted. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2Fesp%2FModuleESP.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/esp/ModuleESP.kt)*

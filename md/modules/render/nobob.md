@@ -1,17 +1,15 @@
 ## NoBob
 
-Disables the view bobbing effect.
+NoBob disables Minecraft's built-in view bobbing effect — the subtle side-to-side swaying of your camera and hand that occurs while walking. Vanilla Minecraft includes this animation to add a sense of physical movement, but many players find it distracting or disorienting during gameplay.
 
-**Category:** Render  
-**Enabled by default:** No  
+Disabling view bobbing can make it easier to aim precisely, read the screen clearly while moving, and reduce motion sickness for sensitive players. While Minecraft's own settings menu also offers a "View Bobbing" toggle, enabling NoBob lets you manage this preference directly within LiquidBounce alongside your other module configuration. It pairs well with modules like [Animations](/docs/modules/render/animations) or [NoHurtCam](/docs/modules/render/nohurtcam) if you want a generally cleaner, more stable visual experience.
+
+**Category:** Render
+**Enabled by default:** No
 
 ### Settings
 
-This module has no configurable settings beyond the standard key bind and visibility options.
-
-### Screenshots
-
-*Screenshots for NoBob will be added in a future update.*
+This module has no configurable settings.
 
 ---
-*Last updated: 2026-02-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/dfe60ac/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Frender%2FModuleNoBob.kt)*
+*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleNoBob.kt)*
