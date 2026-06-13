@@ -99,7 +99,7 @@ If you experience frequent disconnections:
 
 #### Network protocol error when joining a server
 
-This is **not** a LiquidProxy issue. Make sure you are joining with the correct protocol version (for example 1.21.11). You may need to disable **Auto Config** if it is changing your protocol version automatically.
+This is **not** a LiquidProxy issue. Make sure you are joining with the correct protocol version (for example 26.1.2). You may need to disable **Auto Config** if it is changing your protocol version automatically.
 
 #### Server still detects VPN
 
