@@ -8,7 +8,6 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 |---|---|
 | mc.jartexnetwork.com | Polar |
 | mc.universocraft.com | Polar |
-| mc.fakepixel.fun | Polar |
 | play.minemalia.com | Polar |
 | play.trexmine.com | Polar |
 | mc.masedworld.ru | Polar |
@@ -16,7 +15,6 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 | mc.mineberry.org | Polar |
 | gommehd.net | Polar |
 | play.ultimismc.com | Polar |
-| mc.agerapvp.club | Polar |
 | twerion.net | Polar |
 | mc.hycraft.us | Polar |
 | cheatmine.ru | Polar |
@@ -31,6 +29,7 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 | bridger.land | Polar |
 | go.minepeak.org | Polar |
 | seiky.net | Polar |
+| play.regorland.net | Polar |
 
 ### Intave / Intave forks
 
@@ -39,6 +38,7 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 | mc.mineland.net | Old custom Intave (nemesis) |
 | mc.hypemc.pro | Old Intave (14.9.0) |
 | craftplay.pl | Old Intave |
+| mc.agerapvp.club | Intave |
 
 ### Grim / Grim forks
 
@@ -72,7 +72,6 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 |---|---|
 | deathzone.net | Vulcan |
 | mc.minelatino.com | Vulcan + Grim + unknown |
-| play.regorland.net | Bad Vulcan |
 | supercraft.fun | Vulcan |
 | nerdcats.asia | Vulcan |
 | macesmp.net | Vulcan |
@@ -115,3 +114,4 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 | mushmc.com.br | Mush-Prediction |
 | cubecraft.net | Sentinel |
 | minemen.club | AGC |
+| mc.fakepixel.fun | None |
