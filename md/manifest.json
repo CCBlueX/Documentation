@@ -8,7 +8,8 @@
         "Account Manager": "usage/account-manager.md",
         "ClickGUI": "usage/clickgui.md",
         "Proxy Manager": "usage/proxy-manager.md",
-        "Changing Version": "usage/change_version.md"
+        "Changing Version": "usage/change_version.md",
+        "Anticheats": "usage/anticheats.md"
     },
     "Tutorials": {
         "LiquidLauncher": "tutorials/liquidlauncher.md",
