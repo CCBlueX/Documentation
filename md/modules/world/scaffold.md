@@ -44,7 +44,7 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | Technique → [Normal] → Ceiling | Toggleable Group | Off | — | Builds a ceiling above you instead of a floor. |
 | Technique → [Normal] → HeadHitter | Toggleable Group | Off | — | Auto-jumps into blocks above your head when bridging under a low ceiling. |
 | Technique → [Expand] → Length | Integer | 5 | 1..10 blocks | How far ahead the expand technique reaches to place blocks. |
-| Technique → [GodBridge] → Modes | Multi-Select | [Jump] | Jump, Sneak, StopInput, Backwards | Which actions are used to stay on the ledge while god-bridging. |
+| Technique → [GodBridge] → Modes | Multi-Select | [Jump] | Jump, Sneak, StopInput, Backwards | Which actions are used to stay on the ledge while god-bridging. Jump is skipped when a jump would carry you two or more blocks high (e.g. with a Jump Boost effect); another selected mode, or a sneak, is used instead. |
 | Technique → [GodBridge] → ForceSneakBelowCount | Integer | 5 | 0..10 | Forces a sneak instead of other actions once your block count drops this low. |
 | Technique → [GodBridge] → SneakTime | Integer Range | 1..1 | 1..10 | How long each forced sneak lasts. |
 | Technique → [Breezily] → EdgeDistance | Decimal Range | 0.4..0.45 | 0.25..0.5 blocks | How far from the edge the breezily technique repositions you sideways. |
@@ -91,4 +91,4 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | Render | Toggleable Group | On | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*
+*Last updated: 2026-07-06 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*
