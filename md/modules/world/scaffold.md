@@ -43,6 +43,7 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | Technique → [Normal] → StabilizeMovement | Toggleable Group | Off | — | Nudges your movement back toward the ideal line to keep placements centered. |
 | Technique → [Normal] → Ceiling | Toggleable Group | Off | — | Builds a ceiling above you instead of a floor. |
 | Technique → [Normal] → HeadHitter | Toggleable Group | Off | — | Auto-jumps into blocks above your head when bridging under a low ceiling. |
+| Technique → [Normal] → HeadHitter → JumpDelay | Integer Range | 0..0 | 0..20 ticks | Delay between each auto-jump. |
 | Technique → [Expand] → Length | Integer | 5 | 1..10 blocks | How far ahead the expand technique reaches to place blocks. |
 | Technique → [GodBridge] → Modes | Multi-Select | [Jump] | Jump, Sneak, StopInput, Backwards | Which actions are used to stay on the ledge while god-bridging. Jump is skipped when a jump would carry you two or more blocks high (e.g. with a Jump Boost effect); another selected mode, or a sneak, is used instead. |
 | Technique → [GodBridge] → ForceSneakBelowCount | Integer | 5 | 0..10 | Forces a sneak instead of other actions once your block count drops this low. |
