@@ -17,7 +17,7 @@ From here, you can enable/disable components and adjust their positions.
 
 ### Edit your HUD visually
 
-The newest version of LiquidBounce also includes a visual HUD editor in the ClickGUI. In the editor you can drag components directly on the screen to reposition them, with anchor points and snapping guides helping you align them. A drawer lists the components available in your active theme together with a short description of each, so you can add them to your HUD from there — some components, such as **Text** and **Image**, can be added multiple times. You can also adjust a component's settings directly in the editor.
+The newest version of LiquidBounce also includes a visual HUD editor in the ClickGUI. In the editor you can drag components directly on the screen to reposition them, with anchor points and snapping guides helping you align them. A drawer lists the components available in your active theme together with a short description of each, so you can add them to your HUD from there — some components, such as **Text** and **Image**, can be added multiple times. You can also adjust a component's settings directly in the editor. When components overlap, clicking one in the editor brings it in front of the others; this stacking order is saved with your config.
 
 ### Replace scoreboard text
 
