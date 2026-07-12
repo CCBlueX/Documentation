@@ -2,7 +2,7 @@
 
 Scaffold automatically bridges for you. As you walk forward over a gap, it places blocks into the empty space beneath your feet so you can keep moving without manually aiming down and clicking. It's the go-to tool for bridging across voids, building paths in BedWars-style games, or covering open ground quickly and consistently.
 
-The **Technique** setting picks how you bridge: *Normal* handles everyday bridging, while *GodBridge* and *Breezily* are fast, sprint-friendly diagonal styles, and *Expand* reaches out to place a run of blocks ahead of you. Holding jump with a **Tower** mode selected lets you stack straight up. A large set of optional toggles — **Strafe**, **Acceleration**, **SpeedLimiter**, **SprintControl** and **StrafeOnJump** — tune how fast you move and how your movement looks to anti-cheats, while **Blink** can briefly hold back your packets to hide placements.
+The **Technique** setting picks how you bridge: *Normal* handles everyday bridging, while *GodBridge* and *Breezily* are fast, sprint-friendly diagonal styles, and *Expand* reaches out to place a run of blocks ahead of you. Holding jump with a **Tower** mode selected lets you stack straight up. The *Hypixel* tower only works while you stand still and requires the 1.8.x protocol version; a chat message warns you if either condition is not met. A large set of optional toggles — **Strafe**, **Acceleration**, **SpeedLimiter**, **SprintControl** and **StrafeOnJump** — tune how fast you move and how your movement looks to anti-cheats, while **Blink** can briefly hold back your packets to hide placements.
 
 Scaffold also bundles convenience features so you don't need extra modules running: it can pull in [SafeWalk](/docs/modules/movement/safewalk) edge protection, an [Eagle](/docs/modules/player/eagle)-style auto-sneak so you don't slip off, and an **AutoSpeed** toggle that temporarily enables [Speed](/docs/modules/movement/speed) while you bridge. AutoBlock automatically grabs a suitable block from your inventory, and the built-in **Ledge** helper jumps or sneaks at edges to keep you from falling.
 
@@ -92,4 +92,4 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | Render | Toggleable Group | On | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
 
 ---
-*Last updated: 2026-07-06 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*
+*Last updated: 2026-07-12 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*
