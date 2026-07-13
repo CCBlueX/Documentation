@@ -15,9 +15,9 @@ This setting group is used by the following modules:
 
 | Setting | Type | Default | Range | Description |
 | --- | --- | --- | --- | --- |
-| Titles | Multi-Select | [Barrel, Chest, LargeChest, ShulkerBox] | [Barrel, Beacon, BlastFurnace, BrewingStand, Chest, LargeChest, Dispenser, Dropper, EnderChest, Furnace, Hopper, ShulkerBox, Smoker, ChestMinecart, HopperMinecart] | The list of known container screen types to match against. Pick which vanilla containers count for matching. |
+| Titles | Multi-Select | [Barrel, Chest, LargeChest, ShulkerBox, ChestMinecart, ChestBoat] | [Barrel, Beacon, BlastFurnace, BrewingStand, Chest, LargeChest, Dispenser, Dropper, EnderChest, Furnace, Hopper, ShulkerBox, Smoker, ChestMinecart, ChestBoat, HopperMinecart] | The list of known container screen types to match against. Pick which vanilla containers count for matching. The ChestBoat entry matches the titles of all chest boat and chest raft wood variants. |
 | Custom | Editable List | — | — | Add your own screen titles here for servers that use renamed or non-vanilla GUIs, so they get matched too. |
 | Filter | Choice | Whitelist | [Whitelist, Blacklist] | How the lists are applied. Whitelist means the module only acts on the listed screens; Blacklist means it acts on everything except the listed screens. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2)*
+*Last updated: 2026-07-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2)*

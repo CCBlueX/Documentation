@@ -1,6 +1,6 @@
 ## StorageESP
 
-StorageESP highlights storage containers — chests, barrels, ender chests, furnaces, brewing stands, hoppers, shulker boxes, decorated pots, shelves, and more — through solid terrain so you can spot loot and resources at a glance. The module scans chunks as they load and also tracks container entities in the world, including chest minecarts, chest boats, and pack horses.
+StorageESP highlights storage containers — chests, barrels, ender chests, furnaces, brewing stands, hoppers, shulker boxes, decorated pots, chiseled bookshelves, shelves, and more — through solid terrain so you can spot loot and resources at a glance. The module scans chunks as they load and also tracks container entities in the world, including chest minecarts, chest boats, and pack horses.
 
 Two rendering modes are available. **Box** mode draws a semi-transparent coloured box over every matched storage block and, when **Outline** is on, adds a crisp border around it. **Glow** mode uses Minecraft's built-in outline glow effect for a subtler look that blends more naturally with the game's visuals. Every storage type has its own configurable colour and an optional **Tracers** toggle that draws a beam from your crosshair to each block, making distant containers easy to locate even in large caves or bases.
 
@@ -42,6 +42,9 @@ You can narrow the module's scope with **RequiresChestStealer**, which suppresse
 | Pot | Toggleable Group | on | — | Highlight settings for decorated pots. |
 | Pot → Color | Color | — | — | Highlight colour for decorated pots. |
 | Pot → Tracers | Toggle | false | — | Draws a line from your crosshair to each visible decorated pot. |
+| Bookshelf | Toggleable Group | on | — | Highlight settings for chiseled bookshelves. |
+| Bookshelf → Color | Color | — | — | Highlight colour for chiseled bookshelves. |
+| Bookshelf → Tracers | Toggle | false | — | Draws a line from your crosshair to each visible chiseled bookshelf. |
 | Shelf | Toggleable Group | on | — | Highlight settings for shelves. |
 | Shelf → Color | Color | — | — | Highlight colour for shelves. |
 | Shelf → Tracers | Toggle | false | — | Draws a line from your crosshair to each visible shelf. |
@@ -50,4 +53,4 @@ You can narrow the module's scope with **RequiresChestStealer**, which suppresse
 | DistanceFade | Setting Group | — | — | See [Shared: DistanceFade](/docs/modules/shared-settings/distancefade). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleStorageESP.kt)*
+*Last updated: 2026-07-13 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleStorageESP.kt)*
