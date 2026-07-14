@@ -27,6 +27,10 @@ In the newest version of LiquidBounce, the **Scoreboard** component of the defau
 
 The **Image** component of the default theme has an **Opacity** setting that controls how see-through the displayed picture is, from 0% (fully transparent) to 100% (fully opaque, the default). Large images are automatically limited in height so they do not cover the whole screen.
 
+### Show Minecraft's closed captions
+
+The default theme includes a **ClosedCaptions** component that shows Minecraft's closed captions (Settings → Accessibility Settings → Closed Captions) on the HUD. Captions keep the text and background colors of the vanilla subtitles, and an arrow next to a caption points in the direction the sound came from. While the component is shown, the vanilla subtitle overlay is hidden so captions do not appear twice. The component is disabled by default and can only be added to the HUD once.
+
 ### Use a different HUD look
 
 The available HUD components and their look are determined by your active [theme](/docs/theme-system/overview). To change the appearance or add components, switch to a different theme from the [Marketplace](/docs/theme-system/overview#installing-themes-from-marketplace) or create your own following the [theme development guide](/docs/theme-system/overview#creating-your-own-theme).
