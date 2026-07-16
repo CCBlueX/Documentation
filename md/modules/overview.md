@@ -6,7 +6,7 @@ Use the **ClickGUI** (default: **RIGHT SHIFT**) or the `.toggle <module>` comman
 
 ### Module Categories
 
-- [Combat](/docs/Modules/Combat) (28 modules) — Combat modules enhance your fighting capabilities.
+- [Combat](/docs/Modules/Combat) (29 modules) — Combat modules enhance your fighting capabilities.
 - [Movement](/docs/Modules/Movement) (38 modules) — Movement modules modify how your character moves through the world.
 - [Player](/docs/Modules/Player) (31 modules) — Player modules automate player actions and inventory management.
 - [Render](/docs/Modules/Render) (59 modules) — Render modules change what you see on screen.
@@ -15,7 +15,7 @@ Use the **ClickGUI** (default: **RIGHT SHIFT**) or the `.toggle <module>` comman
 - [Misc](/docs/Modules/Misc) (20 modules) — Miscellaneous modules provide various utilities that do not fit neatly into other categories, including chat enhancements, team detection, and notification systems.
 - [Fun](/docs/Modules/Fun) (7 modules) — Fun modules are purely for entertainment.
 
-**Total: 235 modules**
+**Total: 236 modules**
 
 ---
-*Last updated: 2026-06-08*
+*Last updated: 2026-07-16*

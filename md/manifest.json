@@ -79,6 +79,7 @@
             "MaceKill": "modules/combat/macekill.md",
             "NoMissCooldown": "modules/combat/nomisscooldown.md",
             "ProjectileAimbot": "modules/combat/projectileaimbot.md",
+            "SpearKill": "modules/combat/spearkill.md",
             "SuperKnockback": "modules/combat/superknockback.md",
             "SwordBlock": "modules/combat/swordblock.md",
             "TickBase": "modules/combat/tickbase.md",

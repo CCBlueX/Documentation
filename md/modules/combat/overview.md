@@ -2,7 +2,7 @@
 
 Combat modules enhance your fighting capabilities. They automate attacks, improve aim, manage armor, and give you an edge in PvP encounters.
 
-There are **28** modules in this category:
+There are **29** modules in this category:
 
 - [Aimbot](/docs/Modules/Combat/Aimbot) — Automatically faces targets nearby.
 - [AutoArmor](/docs/Modules/Combat/AutoArmor) — Automatically equips the best armor in your inventory.
@@ -26,6 +26,7 @@ There are **28** modules in this category:
 - [MaceKill](/docs/Modules/Combat/MaceKill) — Instant kill when using the Mace
 - [NoMissCooldown](/docs/Modules/Combat/NoMissCooldown) — Disables 1.8 hit cooldown or cancels missed attacks entirely.
 - [ProjectileAimbot](/docs/Modules/Combat/ProjectileAimbot) — Automatically aims your held projectile at the best target.
+- [SpearKill](/docs/Modules/Combat/SpearKill) — Automatically attacks enemies using a charged spear.
 - [SuperKnockback](/docs/Modules/Combat/SuperKnockback) — Increases knockback dealt to other entities.
 - [SwordBlock](/docs/Modules/Combat/SwordBlock) — Enables 1.8 sword blocking on servers using ViaVersion
 - [TickBase](/docs/Modules/Combat/TickBase) — Buffer ticks to get early hits on an enemy.
@@ -34,4 +35,4 @@ There are **28** modules in this category:
 - [Velocity](/docs/Modules/Combat/Velocity) — Modifies the amount of velocity you take.
 
 ---
-*Last updated: 2026-06-08*
+*Last updated: 2026-07-16*
