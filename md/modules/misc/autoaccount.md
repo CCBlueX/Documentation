@@ -17,7 +17,8 @@ When the server prompts you, the module fills in your stored password and sends 
 | LoginCommand | Text | — | — | The command name used to log in (the password is appended automatically). |
 | RegisterRegex | Text | — | — | Pattern matched against server messages to detect a registration prompt. |
 | LoginRegex | Text | — | — | Pattern matched against server messages to detect a login prompt. |
+| RepeatPasswordOnRegister | Toggle | true | — | Whether the register command sends the password twice (`/register <password> <password>`) or only once (`/register <password>`). |
 | MessageSource | Multi-Select | [Chat, Title, Subtitle] | [Chat, Title, Subtitle] | Which sources to scan for login/register prompts. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleAutoAccount.kt)*
+*Last updated: 2026-07-19 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleAutoAccount.kt)*
