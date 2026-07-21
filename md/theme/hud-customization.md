@@ -25,7 +25,7 @@ In the newest version of LiquidBounce, the **Scoreboard** component of the defau
 
 ### Adjust an image's opacity
 
-The **Image** component of the default theme has an **Opacity** setting that controls how see-through the displayed picture is, from 0% (fully transparent) to 100% (fully opaque, the default). Large images are automatically limited in height so they do not cover the whole screen.
+The **Image** component of the default theme can display a picture either from a web address or from a file on your computer. Its **Source** setting chooses between the two: with **URL** selected you enter the image's address, and with **File** selected you pick a local file (PNG, JPG, JPEG, WEBP, GIF or SVG). It also has an **Opacity** setting that controls how see-through the displayed picture is, from 0% (fully transparent) to 100% (fully opaque, the default). Large images are automatically limited in height so they do not cover the whole screen.
 
 ### Show Minecraft's closed captions
 
