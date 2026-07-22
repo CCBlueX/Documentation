@@ -49,7 +49,7 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | Technique → [GodBridge] → ForceSneakBelowCount | Integer | 5 | 0..10 | Forces a sneak instead of other actions once your block count drops this low. |
 | Technique → [GodBridge] → SneakTime | Integer Range | 1..1 | 1..10 | How long each forced sneak lasts. |
 | Technique → [Breezily] → EdgeDistance | Decimal Range | 0.4..0.45 | 0.25..0.5 blocks | How far from the edge the breezily technique repositions you sideways. |
-| SameY | Choice | Off | Off, On, Falling, Hypixel | Keeps placements on a single height level instead of stepping down. |
+| SameY | Choice | Off | Off, On, JumpKey, Falling, Hypixel | Keeps placements on a single height level instead of stepping down. *JumpKey* only holds the level while you press the jump key. |
 | Tower | Mode Selector | None | — | How Scaffold builds straight up when you hold jump. |
 | Tower → [Motion] → Motion | Decimal | 0.42 | 0.0..1.0 | Upward boost applied each tower step. |
 | Tower → [Motion] → TriggerHeight | Decimal | 0.78 | 0.76..1.0 | How high above the jump point you must rise before the next boost. |
