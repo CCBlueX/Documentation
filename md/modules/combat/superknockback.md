@@ -18,7 +18,7 @@ You can limit when the module activates using the **Conditions** filter (e.g. on
 | Mode → [WTap] → UntilMovementBlock | Integer Range | 1..1 | 0..10 ticks | Ticks to wait after a hit before blocking forward movement. |
 | Mode → [WTap] → UntilAllowedMovement | Integer Range | 1..1 | 0..10 ticks | Ticks to wait after movement is blocked before restoring it. |
 | HurtTime | Integer | 4 | 0..10 | Only applies the knockback boost if the target's hurt timer is at or below this value. |
-| Chance | Integer | 100 | 0..100 % | Probability (in percent) that the knockback boost fires on any given hit. |
+| Chance | Decimal | 100.0 | 0.0..100.0 % | Probability (in percent) that the knockback boost fires on any given hit. |
 | Conditions | Multi-Select | NotInWater | OnlyFacing, OnlyOnGround, NotInWater | Extra conditions that must all be met for the module to act. |
 | OnlyOnMove | Toggleable Group | on | — | Only activate when you are moving. |
 | OnlyOnMove → OnlyForward | Toggle | true | — | When enabled, the module also requires you to be moving forward (not just sideways). |

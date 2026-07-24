@@ -13,7 +13,7 @@ By default, `RequiresKillAura` is enabled, meaning TimerRange only activates whe
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Chance | Integer | 100 | 0..100 % | Probability per tick that the timer boost is applied when an enemy is in range. Values below 100 make the boost intermittent, which can appear more natural to anti-cheat. |
+| Chance | Decimal | 100.0 | 0.0..100.0 % | Probability per tick that the timer boost is applied when an enemy is in range. Values below 100 make the boost intermittent, which can appear more natural to anti-cheat. |
 | TimerBalanceLimit | Decimal | 20.0 | 0.0..50.0 | How much timer-speed "debt" can accumulate before the module throttles down to `BalanceLimitSpeed`. Higher values allow longer boost windows before the cooldown phase begins. |
 | NormalSpeed | Decimal | 0.9 | 0.1..10.0 | Timer multiplier applied when an enemy is detected within `DistanceToStartWorking` but still outside `DistanceToSpeedUp`. The default of 0.9× slightly slows the game in the approach phase. |
 | InRangeSpeed | Decimal | 0.95 | 0.1..10.0 | Timer multiplier used once the balance limit has been exhausted during a boost sequence — a reduced in-combat speed to help the balance recover while still providing a minor edge. |
