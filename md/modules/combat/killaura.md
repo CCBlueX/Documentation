@@ -32,7 +32,9 @@ Several optional sub-systems extend the base behaviour. **AutoBlocking** makes K
 | AutoBlocking → Blink | Integer | 0 | 0..10 ticks | Number of ticks to queue outgoing packets while blocking, simulating a brief connection lag. |
 | AutoBlocking → PrioritizeBlocking | Toggle | true | — | Reduces attack rate to ensure a block is fully established before each strike. |
 | AutoBlocking → OnScanRange | Toggle | false | — | Starts blocking when a target enters scan range but has not yet reached attack range. |
-| AutoBlocking → OnlyWhenInDanger | Toggle | false | — | Restricts AutoBlocking to situations where a target is actively aiming at you. |
+| AutoBlocking → OnlyWhenInDanger | Toggleable Group | Off | — | Restricts AutoBlocking to situations where a target's line of sight is actually aimed at you within reach. |
+| AutoBlocking → OnlyWhenInDanger → Tolerance | Decimal | 0.3 | 0.0..1.0 blocks | How far your hitbox is inflated when testing whether a target's look ray hits you. Higher values register danger more easily. |
+| AutoBlocking → OnlyWhenInDanger → ForceActiveRange | Decimal Range | 0.0..1.0 | 0.0..6.0 | Distance range within which danger is assumed regardless of line of sight, so AutoBlocking stays active for very close targets. |
 | AutoBlocking → AssumeShield | Toggle | false | — | Treats the main-hand item as shield-capable on servers that do not support the 1.9+ offhand protocol, useful for 1.8-based servers. |
 | TargetRendering | Toggleable Group | On | — | See [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering). |
 | FailSwing | Toggleable Group | Off | — | Performs a fake swing when no valid target is in attack range, disguising KillAura's idle timing pattern from anti-cheat. |
