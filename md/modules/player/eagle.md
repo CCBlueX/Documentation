@@ -6,6 +6,8 @@ It's a good companion to manual bridging when you don't want the more aggressive
 
 The `Conditional` group lets you restrict when Eagle is allowed to take over, so it only kicks in under the situations you choose (for example, only while on the ground or only while holding blocks). When `Sneak` is one of the active conditions, Eagle can take control of your sneak key for you.
 
+The optional `Clutch` group is a last-resort void recovery. When the simulated movement path has no safe landing, Eagle holds your position and temporarily enables Normal Scaffold so it can place a rescue block against nearby support. Scaffold returns to its previous state after a block appears below you or the attempt times out.
+
 **Category:** Player
 **Enabled by default:** No
 
@@ -17,6 +19,10 @@ The `Conditional` group lets you restrict when Eagle is allowed to take over, so
 | Conditional | Toggleable Group | on | — | Restricts when Eagle is allowed to activate. Turn off to let Eagle sneak at every edge regardless of conditions. |
 | Conditional → Conditions | Multi-Select | [OnGround] | options: [Left, Right, Forwards, Backwards, HoldingBlocks, OnGround, Sneak] | The conditions that must all be met for Eagle to act — based on movement direction, whether you're holding placeable blocks, whether you're on the ground, and whether you're sneaking. Including Sneak lets Eagle take over control of your sneak key. |
 | Conditional → Pitch | Decimal Range | -90.0..90.0 | -90.0..90.0 | The vertical look (pitch) range you must be looking within for Eagle to act. The default covers all angles; narrow it to only sneak while looking down, for example. |
+| Clutch | Toggleable Group | off | — | Freezes you over the void and temporarily enables Normal Scaffold to place a rescue block. |
+| Clutch → PredictionTicks | Integer | 10 | 1..40 ticks | How many movement ticks to simulate when checking whether the current fall has a safe landing. |
+| Clutch → MinFallDistance | Decimal | 0.5 | 0.0..5.0 blocks | Minimum simulated fall distance before Clutch can start a rescue. |
+| Clutch → MaxStuckTicks | Integer | 20 | 1..100 ticks | Maximum time to hold your position while Scaffold attempts the rescue. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleEagle.kt)*
+*Last updated: 2026-07-31 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleEagle.kt)*
