@@ -168,6 +168,8 @@ Manage deep learning AI models for combat prediction.
 - `.models reload` — Reload all models.
 - `.models browse` — Open the models folder.
 
+A model in the models folder overrides a bundled model of the same name, so an improved copy of a bundled model is used in place of the original.
+
 **Example:**
 ```
 .models create combat_v1
