@@ -1,6 +1,6 @@
 ## Nuker
 
-Nuker automatically breaks blocks in your surrounding area without any manual clicking. When enabled, it continuously scans for valid blocks within range and destroys them one after another — useful for clearing terrain, farming resources, or demolishing structures rapidly. It pairs well with [AutoTool](/docs/modules/world/autotool) to always use the most efficient tool for whatever it is breaking.
+Nuker automatically breaks blocks in your surrounding area without any manual clicking. When enabled, it continuously scans for valid blocks within range and destroys them one after another — useful for clearing terrain, farming resources, or demolishing structures rapidly. While target rendering is on, the highlight around the current block reflects how close it is to breaking. It pairs well with [AutoTool](/docs/modules/world/autotool) to always use the most efficient tool for whatever it is breaking.
 
 There are two breaking modes to choose from. **Legit** mode mimics how a real player mines: it faces the target block, respects normal break timing and reach limits, and can optionally reach through walls via `WallRange`. This is the safer option on servers with anti-cheat. **Instant** mode bypasses break animations entirely and can destroy many blocks per second using raw packets — far faster, but much more detectable. Note that [Blink](/docs/modules/player/blink) will pause Nuker in either mode while it is active.
 

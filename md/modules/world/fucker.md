@@ -1,6 +1,6 @@
 ## Fucker
 
-Fucker automatically destroys (or right-click *uses*) specific blocks near you. Its most common job is breaking enemy **beds** in Bedwars-style games, but it also targets things like dragon eggs out of the box — and you can point it at any block type you like. When enabled, it scans for valid targets within reach, turns toward the closest one, and starts breaking it without you having to aim or click.
+Fucker automatically destroys (or right-click *uses*) specific blocks near you. Its most common job is breaking enemy **beds** in Bedwars-style games, but it also targets things like dragon eggs out of the box — and you can point it at any block type you like. When enabled, it scans for valid targets within reach, turns toward the closest one, and starts breaking it without you having to aim or click. While target rendering is on, the highlight around the target block reflects how close it is to breaking.
 
 It can reach targets you can see directly, and — depending on your settings — work toward targets that are walled off by clearing a path or punching an opening first. It plays nicely with related tools: when [PacketMine](/docs/modules/world/packetmine) is running it hands off the actual mining, it uses [AutoTool](/docs/modules/world/autotool)'s slots to judge mining speed, and it pauses while [Blink](/docs/modules/player/blink) is active.
 
