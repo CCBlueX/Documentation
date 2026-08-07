@@ -4,7 +4,9 @@ Animations gives you control over how your held items look and move on screen. Y
 
 The main-hand and off-hand groups each let you shift the item along the X/Y axes, scale it up or down, and add extra rotation. The EquipOffset group controls the small "raise" animation that plays when you switch or use items, and lets you skip that motion in specific situations. AirWalker keeps your legs moving with the walking animation even while you're off the ground.
 
-The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules/combat/swordblock) is enabled — it changes how your sword looks when blocking, letting you choose the classic 1.7-style block or a pushdown motion.
+The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules/combat/swordblock) is enabled — it changes how your sword looks when blocking, letting you choose the classic 1.7-style block, a pushdown motion or one of the Sigma, Exhibition, Avatar and Dortware animations.
+
+The SwingAnimations group replaces the vanilla arm swing of your main hand with one of several preset motions. It is skipped while a sword-blocking animation is being shown, so BlockingAnimation stays in control there.
 
 **Category:** Render
 **Enabled by default:** Yes
@@ -30,10 +32,16 @@ The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules
 | EquipOffset | Toggleable Group | On | — | Controls the raise/equip motion that plays when switching or using items. |
 | EquipOffset → Ignore | Multi-Select | [Blocking, Place] | [Blocking, Place, Amount] | Situations in which the equip motion is skipped. |
 | SwingDuration | Integer | 12 | 1..20 | How long the arm swing animation lasts, in ticks — lower is faster. |
-| BlockingAnimation | Mode Selector | Pushdown | [1.7, Pushdown] | Animation used while blocking with a sword (only active with SwordBlock enabled). |
+| SwingAnimations | Toggleable Group | Off | — | Replaces the vanilla main-hand swing animation with a preset motion. |
+| SwingAnimations → Mode | Choice | Spin | [Swipe, Spin, Hook, Dash, Tap, Inject, Slap, Akrien, Smooth, Power, Feast] | Swing motion that is played instead of the vanilla one. |
+| BlockingAnimation | Mode Selector | 1.7 | [1.7, Pushdown, Sigma, Exhibition, Avatar, Dortware] | Animation used while blocking with a sword (only active with SwordBlock enabled). |
 | BlockingAnimation → [1.7] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the 1.7 blocking animation. |
 | BlockingAnimation → [1.7] → SwingScale | Decimal | 0.9 | 0.1..1.0 | Scales how strongly the swing motion is applied during the 1.7 animation. |
+| BlockingAnimation → [Sigma] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Sigma blocking animation. |
+| BlockingAnimation → [Exhibition] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Exhibition blocking animation. |
+| BlockingAnimation → [Avatar] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Avatar blocking animation. |
+| BlockingAnimation → [Dortware] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Dortware blocking animation. |
 | AirWalker | Toggle | false | — | Plays the walking leg animation even while you are in the air. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAnimations.kt)*
+*Last updated: 2026-08-07 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAnimations.kt)*
