@@ -22,7 +22,7 @@ Some modules rename the group (for example LiquidFiller calls it **Placer**), bu
 | WallRange | Decimal | 4.5 | 0.0–6.0 | Maximum reach for placements that are not in your direct line of sight (e.g. behind or around blocks). Set to 0 to only place visible blocks. |
 | Cooldown | Integer Range | 1..2 | 0..40 ticks | Delay between placements. A random value within this range is chosen each time. |
 | Swing | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Whether the hand-swing animation is shown to you, the server, both, or neither. |
-| ConstructFailResult | Toggle | true | — | When the placement raytrace fails, fall back to a constructed center-hit instead of skipping. Makes placements much more reliable on most servers, at the cost of slightly less accurate rotations and reach. |
+| ConstructFailResult | Toggle | true | — | When the placement raytrace fails, fall back to a hit result constructed at the point on the block face that target finding picked, instead of skipping the placement. Makes placements much more reliable on most servers, at the cost of slightly less accurate rotations and reach. |
 | Sneak | Integer Range | 1..1 | 0..10 ticks | How long to keep sneaking when placing against an interactable block (chest, furnace, etc.) so it is not opened instead of built on. |
 | Ignore | Multi-Select | [] | OpenInventory, UsingItem | Situations in which the module should keep placing anyway: while an inventory is open, and/or while you are using an item. |
 | SlotResetDelay | Integer Range | 4..6 | 0..40 ticks | Delay before switching your hotbar slot back after a placement. |
@@ -35,4 +35,4 @@ Some modules rename the group (for example LiquidFiller calls it **Placer**), bu
 > For rotation tuning, see [Rotations](/docs/modules/shared-settings/rotations). For the placement preview boxes, see [TargetRendering](/docs/modules/shared-settings/target-rendering).
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Futils%2Fblock%2Fplacer%2FBlockPlacer.kt)*
+*Last updated: 2026-08-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Futils%2Fblock%2Fplacer%2FBlockPlacer.kt)*
