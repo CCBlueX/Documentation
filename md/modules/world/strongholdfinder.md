@@ -19,6 +19,7 @@ The module resets all collected measurements when you disable it or (optionally)
 | SampleDelayTicks | Integer | 2 | 0 – 10 | How many ticks after an Eye of Ender spawns before its direction is sampled. A small delay lets the eye stabilize before its angle is recorded. |
 | MinEyeHorizontalSpeed | Decimal | 0.02 | 0.001 – 0.2 | Minimum horizontal speed (blocks/tick) an eye must have for its direction to be recorded. Filters out eyes that have already slowed or are falling. |
 | MaxSampleAgeTicks | Integer | 20 | 5 – 100 | Maximum age (in ticks) of a pending throw before it is discarded. If the eye entity spawns too long after the throw action, the pairing is dropped. |
+| MaxEyeSpawnDistance | Decimal | 8 | 1 – 32 | Maximum horizontal distance (in blocks) between your throw position and the spot where the eye entity appears for the two to be paired. Eyes spawning further away — for example those thrown by other players — are ignored. |
 | ShowTopCandidates | Integer | 3 | 1 – 10 | How many of the highest-probability stronghold chunks to display in the world render and on-screen overlay. |
 | RenderRays | Toggle | true | — | Draws a direction ray from each recorded throw position toward the predicted stronghold direction. |
 | RenderBestChunk | Toggle | true | — | Highlights the top-ranked stronghold chunk candidate in the world (shown in blue). |
@@ -27,4 +28,4 @@ The module resets all collected measurements when you disable it or (optionally)
 | ResetOnWorldChange | Toggle | true | — | Clears all measurements and predictions when you change worlds or reconnect, preventing data from a previous seed carrying over. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleStrongholdFinder.kt)*
+*Last updated: 2026-08-09 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleStrongholdFinder.kt)*
