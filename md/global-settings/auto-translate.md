@@ -2,6 +2,8 @@
 
 Configures the translation provider used for automatic message translation throughout the client, including LiquidChat auto-translation and the `.translate` command.
 
+Successful translations are cached, so translating the same text between the same two languages again returns the stored result instead of contacting the provider. The cache holds up to 512 translations, each entry is discarded 15 minutes after it was stored, and switching the provider clears it completely.
+
 ### Settings
 
 ```
