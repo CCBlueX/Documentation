@@ -194,6 +194,8 @@ Save, load, and manage local configuration files.
 - `.localconfig list` — List all local configurations.
 - `.localconfig browse` — Open the local config folder.
 
+Saved configurations leave out settings that are tied to your personal setup, such as your keybinds and the settings of Render and Fun modules. Each of these groups can be included on request when saving, so you can keep your visual setup in the file if you want to.
+
 ---
 
 ### `.targets`
