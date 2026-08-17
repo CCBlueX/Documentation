@@ -4,6 +4,8 @@ InventoryMove lets you walk, jump, and sneak while any inventory or container sc
 
 The **Behavior** setting controls how cautiously the module operates. **Normal** passes all movement through regardless of what screen is open. **Safe** closes the inventory server-side the moment you start moving, so the server never sees you moving inside a handled screen — clicks are also blocked while you are in motion. **Undetectable** stops your movement input entirely when a container screen (chests, crafting tables, etc.) is open, effectively disabling the module for those screens while still working in your personal inventory. **StopOnAction** takes a different approach: it queues any inventory interaction packets and only sends them once you have stopped moving, keeping your movement and inventory actions mutually exclusive.
 
+Whichever behaviour you pick, movement input is never forwarded while a text field is focused — the chat box, a sign or rename field, or the ClickGui search bar — so you can still type normally. Only the movement, jump, sprint, and sneak keys are passed through; every other keybind keeps working as the open screen expects.
+
 By default, the Sneak key is not forwarded through open screens (it tends to conflict with GUI behaviour); enable **PassthroughSneak** if you want sneak input to also be passed while an inventory is open. The optional **SprintControl**, **SneakControl**, **Timer**, and **Blink** sub-groups give you fine-grained control over sprint/sneak state and can add a tick-speed boost or a [Blink](/docs/modules/player/blink)-style packet delay while you navigate screens.
 
 **Category:** Movement
