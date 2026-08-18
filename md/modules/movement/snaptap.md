@@ -4,7 +4,7 @@ SnapTap resolves conflicting movement inputs by always prioritising the most rec
 
 This applies independently to both the horizontal axis (Left/Right) and the vertical axis (Forward/Back). Whether you tap a strafe key while already holding the opposite key, or quickly reverse your walking direction, your movement responds immediately to your last input rather than locking up. This behaviour is sometimes called SOCD (Simultaneous Opposite Cardinal Directions) cleaning, and it is commonly used to make strafing and direction changes feel more responsive during PvP and parkour.
 
-SnapTap only applies while no screen is open. As soon as an inventory, container, or any other screen is on-screen, the key-priority logic is skipped — even if [InventoryMove](/docs/modules/movement/inventorymove) is passing your movement keys through.
+The key-priority logic also applies while a screen is open, so it keeps working together with [InventoryMove](/docs/modules/movement/inventorymove) when that module passes your movement keys through in an inventory, container, or any other screen.
 
 **Category:** Movement
 **Enabled by default:** No
