@@ -2,7 +2,7 @@
 
 Render modules change what you see on screen. They add ESP overlays, modify visual effects, customize the HUD, and improve visual information.
 
-There are **59** modules in this category:
+There are **60** modules in this category:
 
 - [Animations](/docs/Modules/Render/Animations) — Allows you to modify many of game's animations.
 - [AntiBlind](/docs/Modules/Render/AntiBlind) — Protects you from potentially annoying screen effects that obscure your view.
@@ -57,6 +57,7 @@ There are **59** modules in this category:
 - [SmoothCamera](/docs/Modules/Render/SmoothCamera) — Makes your camera move smoother.
 - [StorageESP](/docs/Modules/Render/StorageESP) — Highlights all blocks that can contain items allowing you to see them rough walls.
 - [TNTTimer](/docs/Modules/Render/TNTTimer) — Highlight the active TNTs.
+- [TotemEffect](/docs/Modules/Render/TotemEffect) — Draws a visual effect for the Totem of Undying.
 - [Tracers](/docs/Modules/Render/Tracers) — Draws a line to targets within a certain radius.
 - [Trajectories](/docs/Modules/Render/Trajectories) — Allows you to see where projectiles will land.
 - [TrueSight](/docs/Modules/Render/TrueSight) — Allows you to see invisible objects and entities.

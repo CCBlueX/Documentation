@@ -217,6 +217,7 @@
             "SmoothCamera": "modules/render/smoothcamera.md",
             "StorageESP": "modules/render/storageesp.md",
             "TNTTimer": "modules/render/tnttimer.md",
+            "TotemEffect": "modules/render/totemeffect.md",
             "Tracers": "modules/render/tracers.md",
             "Trajectories": "modules/render/trajectories.md",
             "TrueSight": "modules/render/truesight.md",
