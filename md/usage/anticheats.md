@@ -54,7 +54,7 @@ This page lists which anticheat is known to be used on popular servers. Knowing 
 | mc.zentic.cc | Bad Grim |
 | mc.minetoday.org | Bad Grim |
 | luckynetwork.net | Grim |
-| mc.vimemc.net | Grim |
+| mc.vimemc.net | Polar |
 | hoplite.gg | Grim V3 |
 | catpvp.xyz | Grim V3 |
 | zonecraft.es | Grim |
