@@ -25,18 +25,21 @@ Each stored entry appears in a list (often with an icon indicating its type). Yo
 
 ### Microsoft Login
 
-Use this if you own Minecraft on a Microsoft account.
+Use this if you own Minecraft on a Microsoft account. You can choose between three sign-in methods:
+
+- **WebView** – signs you in through a browser window that opens inside the client.
+- **Device Code** – shows a link and a code; open the link in a browser on any device and enter the code to confirm the login.
+- **Credentials** – signs you in directly with the email address and password of your Microsoft account.
 
 <video controls src="/images/get-started/account-manager/login-with-microsoft.mp4" style="max-width: 100%; border-radius: 8px;"></video>
 
 1. In the **Account Manager**, click **Add Account** and choose **Microsoft**.
-2. In the Microsoft account dialog, click **Link Account**. This will open a browser window with the **Microsoft login page**.
-3. Alternatively, click **Copy URL** and paste the link into any browser of your choice.
-4. Sign into your **Microsoft account** in the browser and confirm the requested permissions.
-5. Once the login succeeds, LiquidBounce will:
+2. Pick the sign-in method you want to use and follow the steps it shows you.
+3. Sign into your **Microsoft account** and confirm the requested permissions.
+4. Once the login succeeds, LiquidBounce will:
    - Add the account to the Account Manager.
    - Show it in the **account list** with your Microsoft username.
-6. Click the entry to log into this Microsoft account.
+5. Click the entry to log into this Microsoft account.
 
 After this, the Title screen’s account panel will show your Microsoft username and indicate that you are logged in via Microsoft.
 
