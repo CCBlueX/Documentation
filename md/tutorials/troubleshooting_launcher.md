@@ -4,6 +4,7 @@ Use the following guide to troubleshoot common issues with LiquidLauncher. Only 
 
 ### Table of Contents
 
+- [Your LiquidLauncher is outdated and must be reinstalled](#your-liquidlauncher-is-outdated-and-must-be-reinstalled)
 - [LiquidLauncher does not show up (Windows)](#liquidlauncher-does-not-show-up-windows)
 - [LiquidLauncher does not show up (Linux with Wayland)](#liquidlauncher-does-not-show-up-linux-with-wayland)
 - [LiquidBounce download does not finish (SmartScreen issue)](#liquidbounce-download-does-not-finish-smartscreen-issue)
@@ -13,6 +14,28 @@ Use the following guide to troubleshoot common issues with LiquidLauncher. Only 
   - [Fixing issues with the DNS server](#fixing-issues-with-the-dns-server)
 
 ---
+
+### Your LiquidLauncher is outdated and must be reinstalled
+
+LiquidLauncher *v0.5.0 and older* cannot sign in with *Microsoft authentication* at all anymore. Mojang blacklisted our login, which is why those versions can no longer log you in. You can read more about this in our blog post [Microsoft Tried to Ban Us!](https://liquidbounce.net/blog/article/WhKoUYc3).
+
+LiquidLauncher Version *v0.6.0* and upwards fixes this, but unfortunately, the auto updater built into v0.5.0 is broken. We received so many reports from people who had no idea why nothing worked anymore that we decided to show this confusing error on purpose.
+
+You are affected if the launcher shows *Failed to establish connection with LiquidBounce API* and the *Technical Details* box below it mentions:
+
+```
+YOUR-LIQUIDLAUNCHER-IS-OUTDATED-AND-MUST-BE-REINSTALLED-MANUALLY
+```
+
+To fix it:
+
+1. Download the latest LiquidLauncher from [liquidbounce.net/download](https://liquidbounce.net/download).
+2. Install it the same way you installed LiquidLauncher the first time. Installing over your current version is fine, there is no need to uninstall it first, and on Linux you simply replace the old *AppImage*.
+3. Start LiquidLauncher and add your Microsoft account again, since the old sign in method does not exist anymore.
+
+Your settings and already downloaded LiquidBounce versions are kept. From *v0.6.0* onwards the launcher updates itself again, so this is a one-time step.
+
+If the same error still appears afterwards, your launcher is up to date and the cause is a different one. Continue with [Failed to establish connection with LiquidBounce API](#failed-to-establish-connection-with-liquidbounce-api).
 
 ### LiquidLauncher does not show up (Windows)
 
