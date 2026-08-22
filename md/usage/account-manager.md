@@ -43,6 +43,8 @@ Use this if you own Minecraft on a Microsoft account. You can choose between thr
 
 After this, the Title screen’s account panel will show your Microsoft username and indicate that you are logged in via Microsoft.
 
+> Microsoft sign-in requires LiquidBounce *v0.40.0* or newer. In *v0.39.0* and older it does not work at all, because Mojang blacklisted our login — read more in our blog post [Microsoft Tried to Ban Us!](https://liquidbounce.net/blog/article/WhKoUYc3). Update the client through [LiquidLauncher](/docs/tutorials/liquidlauncher) to sign in.
+
 > If you encounter issues when signing in with **Microsoft** or **Session**, see
 > [Fixing issues with the system's hosts file](/docs/tutorials/fixing-liquidlauncher#fixing-issues-with-the-systems-hosts-file).
 
