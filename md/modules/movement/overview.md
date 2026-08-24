@@ -2,7 +2,7 @@
 
 Movement modules modify how your character moves through the world. They enable flying, faster movement, climbing walls, and bypassing movement restrictions.
 
-There are **38** modules in this category:
+There are **39** modules in this category:
 
 - [AirJump](/docs/Modules/Movement/AirJump) — Allows you to jump mid-air.
 - [Anchor](/docs/Modules/Movement/Anchor) — Pulls you into safe holes for crystal PvP.
@@ -40,6 +40,7 @@ There are **38** modules in this category:
 - [Strafe](/docs/Modules/Movement/Strafe) — Allows you to strafe while being in mid-air.
 - [TargetStrafe](/docs/Modules/Movement/TargetStrafe) — Automatically strafes around enemies targeted by KillAura.
 - [TerrainSpeed](/docs/Modules/Movement/TerrainSpeed) — Allows you to move faster on specific surfaces.
+- [TridentBoost](/docs/Modules/Movement/TridentBoost) — Strengthens the riptide dash of a trident and allows it on dry land.
 - [VehicleBoost](/docs/Modules/Movement/VehicleBoost) — Boost you when leaving a vehicle.
 - [VehicleControl](/docs/Modules/Movement/VehicleControl) — Allows you to fly and speed while riding an entity (like boats or horses).
 

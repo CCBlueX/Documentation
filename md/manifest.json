@@ -125,6 +125,7 @@
             "Strafe": "modules/movement/strafe.md",
             "TargetStrafe": "modules/movement/targetstrafe.md",
             "TerrainSpeed": "modules/movement/terrainspeed.md",
+            "TridentBoost": "modules/movement/tridentboost.md",
             "VehicleBoost": "modules/movement/vehicleboost.md",
             "VehicleControl": "modules/movement/vehiclecontrol.md"
         },
