@@ -2,7 +2,7 @@
 
 Render modules change what you see on screen. They add ESP overlays, modify visual effects, customize the HUD, and improve visual information.
 
-There are **60** modules in this category:
+There are **61** modules in this category:
 
 - [Animations](/docs/Modules/Render/Animations) — Allows you to modify many of game's animations.
 - [AntiBlind](/docs/Modules/Render/AntiBlind) — Protects you from potentially annoying screen effects that obscure your view.
@@ -47,6 +47,7 @@ There are **60** modules in this category:
 - [NoHurtCam](/docs/Modules/Render/NoHurtCam) — Disables the camera effect when getting hurt.
 - [NoSwing](/docs/Modules/Render/NoSwing) — Disables the hand swing animation.
 - [Particles](/docs/Modules/Render/Particles) — Displays particles when attacking an entity.
+- [PotionFX](/docs/Modules/Render/PotionFX) — Draws custom visual effects for potions.
 - [ProphuntESP](/docs/Modules/Render/ProphuntESP) — Shows you props in Prophunt.
 - [ProtectionZones](/docs/Modules/Render/ProtectionZones) — Allows you to see areas protected by protection blocks and suggests optimal placement spots.
 - [QuickPerspectiveSwap](/docs/Modules/Render/QuickPerspectiveSwap) — Allows you to quickly change the game's perspective.

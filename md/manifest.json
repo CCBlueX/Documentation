@@ -208,6 +208,7 @@
             "NoHurtCam": "modules/render/nohurtcam.md",
             "NoSwing": "modules/render/noswing.md",
             "Particles": "modules/render/particles.md",
+            "PotionFX": "modules/render/potionfx.md",
             "ProphuntESP": "modules/render/prophuntesp.md",
             "ProtectionZones": "modules/render/protectionzones.md",
             "QuickPerspectiveSwap": "modules/render/quickperspectiveswap.md",
