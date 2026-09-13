@@ -13,7 +13,7 @@ Defines which entity types are considered targets across the entire client. Thes
 
 ### Settings Details
 
-- **Combat** (Multi-Select) — default: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Invisible`; options: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Passive`, `Invisible`, `Dead`, `Sleeping`, `Friends` — Determines which entity types combat modules will attack. The `Self` option is excluded from combat targeting.
+- **Combat** (Multi-Select) — default: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Invisible`; options: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Passive`, `Invisible`, `Dead`, `Sleeping`, `Friends` — Determines which entity types combat modules will attack. The `Self` option is excluded from combat targeting. Regardless of this setting, entities outside the world border are never attacked, because the server rejects such attacks.
 - **Visual** (Multi-Select) — default: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Invisible`; options: `Self`, `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Passive`, `Invisible`, `Dead`, `Sleeping`, `Friends` — Determines which entity types visual modules will highlight or display. Includes the `Self` option for rendering your own player in third-person or FreeCam.
 
 ### Target Types
