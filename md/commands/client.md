@@ -37,7 +37,7 @@ Bind a module to a keyboard key.
 
 **Parameters:**
 - `module` (required) — The module to bind.
-- `key` (required) — The key name. Common formats: `r`, `y`, `left.control`, `right.alt`, `keypad.4`, `mouse4`. Use `none` to unbind.
+- `key` (required) — The key name. Common formats: `r`, `y`, `left.control`, `left_shift`, `right.alt`, `keypad.4`, `mouse.4`. Use `none` to unbind. A key name the client does not recognise is rejected with an error message instead of being bound.
 - `action` (optional) — The bind action: `Toggle` (default) or `Hold`.
 - `modifiers` (optional, vararg) — Modifier keys: `Alt`, `Control`, `Shift`, `Super`.
 
