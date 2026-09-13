@@ -14,6 +14,8 @@ The Block Placer setting group appears in the following modules:
 
 Some modules rename the group (for example LiquidFiller calls it **Placer**), but the settings are the same.
 
+A position is only skipped when an entity that actually obstructs building stands in it — players, mobs, boats, minecarts or end crystals. Entities that vanilla lets you build through, such as dropped items, projectiles and experience orbs, do not stop a placement. End crystal placement in [CrystalAura](/docs/modules/combat/crystalaura) is stricter: there any entity in the way blocks the placement, matching vanilla crystal placement.
+
 ### Settings
 
 | Setting | Type | Default | Range | Description |
