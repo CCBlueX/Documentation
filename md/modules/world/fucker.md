@@ -24,6 +24,7 @@ To keep you from wrecking your own bed, the **SelfBed** option offers several wa
 | ForceImmediateBreak | Toggle | false | — | Tries to break the block in a single tick where possible, instead of the normal gradual mining process. |
 | IgnoreOpenInventory | Toggle | false | — | Keeps working even while a chest or other inventory screen is open. |
 | IgnoreUsingItem | Toggle | true | — | Keeps working while you're using an item (eating, drinking, drawing a bow, etc.). |
+| NotDuringCombat | Toggle | false | — | Pauses Fucker while you are in combat, so it won't keep breaking blocks during a fight. |
 | PrioritizeOverKillAura | Toggle | true | — | Gives Fucker's aiming priority over [KillAura](/docs/modules/combat/killaura), so it focuses on breaking rather than attacking. |
 | ChestAsFullBlock | Toggle | false | — | Treats chests as a full cube when working out reach and pathing, useful when a chest sits right against the target. |
 | SelfBed | Mode Selector | SpawnLocation | None, Color, SpawnLocation, Manual | How your own bed is recognized so it gets left alone. None disables protection, Color matches by armor color, SpawnLocation uses your spawn point, Manual lets you mark beds yourself. |
