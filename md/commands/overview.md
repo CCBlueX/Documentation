@@ -42,4 +42,4 @@ Type commands in the Minecraft chat window. The command prefix (default: `.`) mu
 
 > Minecraft usernames cannot contain spaces — the example `.friend add "Senk Ju"` as a username is invalid. Quotes are useful for aliases or display names when the command supports them.
 
-**Total: 40 commands**
+**Total: 39 commands**

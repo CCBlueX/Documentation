@@ -218,21 +218,6 @@ Toggle target types for combat and visual modules.
 
 ---
 
-### `.script`
-
-Manage client scripts.
-
-**Subcommands:**
-- `.script reload` — Reload all scripts.
-- `.script load <name>` — Load a script by name.
-- `.script unload <name>` — Unload a script.
-- `.script debug <name>` — Start debug protocol for a script.
-- `.script list` — List all loaded scripts.
-- `.script browse` — Open the scripts folder.
-- `.script edit <name>` — Open a script for editing.
-
----
-
 ### `.debug`
 
 Collect debug information about the client and upload it to a paste service.
@@ -242,7 +227,7 @@ Collect debug information about the client and upload it to a paste service.
 .debug
 ```
 
-Generates a report containing client version, Minecraft version, Java version, OS, profile info, active modules, and loaded scripts.
+Generates a report containing client version, Minecraft version, Java version, OS, profile info, and active modules.
 
 ---
 

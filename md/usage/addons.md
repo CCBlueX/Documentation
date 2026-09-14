@@ -1,6 +1,6 @@
 ## Add-ons
 
-Add-ons extend LiquidBounce with features that are compiled into a jar file instead of being written in JavaScript. An add-on can register its own modules and commands, and even its own module categories, which appear in the [ClickGUI](/docs/usage/clickgui) next to the built-in ones. For smaller features, [scripts](/docs/Script%20API/Installation) remain the simpler option.
+Add-ons extend LiquidBounce with additional features and are compiled into a jar file. An add-on can register its own modules and commands, and even its own module categories, which appear in the [ClickGUI](/docs/usage/clickgui) next to the built-in ones.
 
 ### Installing Add-ons
 
