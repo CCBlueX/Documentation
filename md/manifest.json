@@ -324,6 +324,31 @@
         "Overview": "theme/overview.md",
         "HUD Customization": "theme/hud-customization.md"
     },
+    "Script API": {
+        "Installation": "scriptapi_v3/installation.md",
+        "Getting Started": "scriptapi_v3/getting_started.md",
+        "Using Java Classes": "scriptapi_v3/using_java_classes.md",
+        "Global Classes": {
+            "AsyncUtil": "scriptapi_v3/global_classes/async_util.md",
+            "BlockUtil": "scriptapi_v3/global_classes/block_util.md",
+            "Client": "scriptapi_v3/global_classes/client.md",
+            "InteractionUtil": "scriptapi_v3/global_classes/interaction_util.md",
+            "ItemUtil": "scriptapi_v3/global_classes/item_util.md",
+            "MovementUtil": "scriptapi_v3/global_classes/movement_util.md",
+            "NetworkUtil": "scriptapi_v3/global_classes/network_util.md",
+            "ParameterValidator": "scriptapi_v3/global_classes/parameter_validator.md",
+            "Primitives": "scriptapi_v3/global_classes/primitives.md",
+            "ReflectionUtil": "scriptapi_v3/global_classes/reflection_util.md",
+            "RotationUtil": "scriptapi_v3/global_classes/rotation_util.md",
+            "Setting": "scriptapi_v3/global_classes/setting.md"
+        },
+        "Global Instances": "scriptapi_v3/global_instances.md",
+        "Creating Modules": {
+            "Overview": "scriptapi_v3/module/overview.md"
+        },
+        "Creating Commands": "scriptapi_v3/command/command.md",
+        "Debugging": "scriptapi_v3/debugging.md"
+    },
     "Premium": {
         "Cosmetics Setup": "premium/setup_cosmetics.md",
         "Launcher Setup": "premium/setup_launcher.md"

@@ -1,5 +1,12 @@
 ## Scripts
-LiquidBounce provides an interface that allows third-party developers from our community to enhance the client with new features using JavaScript scripts. These scripts can add various functionalities - from simple [macros](https://forum.liquidbounce.net/topic/8354/script-macros) to complex features like an [NES Emulator](https://forum.liquidbounce.net/topic/8352/script-nes-emulator).
+The Script API allows third-party developers from our community to enhance LiquidBounce with new features using JavaScript scripts. These scripts can add various functionalities - from simple [macros](https://forum.liquidbounce.net/topic/8354/script-macros) to complex features like an [NES Emulator](https://forum.liquidbounce.net/topic/8352/script-nes-emulator).
+
+### Installing the Script API
+Scripts are no longer supported by LiquidBounce itself and need the [Script API add-on](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI). Without it, neither scripts nor the `.script` command are available.
+
+1. Download `liquidbounce-scriptapi-*.jar` from the add-on's [releases](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/releases)
+2. Install it like any other mod, either as an [additional mod in LiquidLauncher](/docs/tutorials/liquidlauncher) or by placing it in the *mods* folder of a [manual installation](/docs/get-started/manual-installation)
+3. Restart the game and check that `.addon list` shows `liquidbounce-scriptapi`
 
 ### Managing Scripts
 The following commands are available to manage your scripts:
