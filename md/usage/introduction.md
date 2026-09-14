@@ -25,11 +25,15 @@ After installing LiquidBounce and launching the game, you’ll be greeted by the
 ![LiquidBounce Title Screen](/images/get-started/title/1-title.png)
 
 - The **left side** of the title screen contains buttons for **Singleplayer**, **Multiplayer**, **LiquidBounce** (Proxy Manager & ClickGUI) and **Options**.
-- The **bottom left** shows **Exit** and a **Toggle Shader** button that enables or disables the animated background.
+- The **bottom left** shows **Exit**, a **Basic Mode** button and a **Toggle Shader** button that enables or disables the animated background.
 - The **bottom right** contains icons linking to the official **LiquidBounce website**, **Discord**, **GitHub**, **Twitter**, **YouTube**, and more.
 - The **top right** shows your **current account**:
   - Clicking the **pen icon** opens the Account Manager.
   - Clicking the **arrow icon** creates a **random cracked username**.
   - Clicking anywhere on the **whole account box** opens the **Account Selector**.
+
+### Basic Mode
+
+**Basic Mode** replaces the LiquidBounce menus with the vanilla Minecraft ones. Instead of the full title screen you only get a small column of buttons on the left edge, giving you access to **Click GUI**, **Alt Manager**, **Proxy Manager** and **Full Mode**, which switches back to the LiquidBounce menus.
 
 From here, follow the links above to dive deeper into each feature.
