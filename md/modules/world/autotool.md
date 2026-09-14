@@ -27,7 +27,8 @@ Several guards control *when* it acts: it can be limited to while sneaking, paus
 | SilkTouchHandler | Toggleable Group | Off | — | When on, forces a Silk Touch tool for the configured blocks so they drop themselves. |
 | SilkTouchHandler → Filter | Choice | Whitelist | Whitelist, Blacklist | Whether the SilkTouchHandler Blocks list is a Whitelist (only these blocks require Silk Touch) or a Blacklist. |
 | SilkTouchHandler → Blocks | Registry List | — | — | Blocks that require a Silk Touch tool (defaults: Ender Chest, Glowstone, Sea Lantern, Turtle Egg). |
-| SwapPreviousDelay | Integer | 20 (ticks) | 1..100 | Ticks to keep the selected tool before silently swapping back to your previous slot. |
+| SwapBackDelay | Integer | 20 (ticks) | 1..100 | Ticks to keep the selected tool before silently swapping back to your previous slot. |
+| SwitchDelay | Integer | 0 (ticks) | 0..100 | Ticks to keep mining a block with your current item before switching to the tool. The delay is re-armed whenever you start breaking a different block, so it applies once per block. |
 | RequireSneaking | Toggle | false | — | Only switch tools while you are sneaking. |
 | NotDuringCombat | Toggle | false | — | Don't switch tools while you are in combat. |
 | RequireNearBed | Toggleable Group | Off | — | Only switch tools when a bed is within the configured distance. |
