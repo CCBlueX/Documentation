@@ -25,4 +25,6 @@ LiquidBounce itself is published as a Maven artifact, so an add-on can be compil
 
 Add-ons can be written in Java as well as Kotlin. The classes an add-on builds on expose Java-friendly signatures — event listeners, for instance, are registered through `on`, `onTick`, `every` and `after`, which take plain `Consumer` and `Runnable` callbacks and return an `AutoCloseable` that unregisters the listener again. This public surface is tracked in an API dump in the LiquidBounce repository, so changes that would break add-ons are caught before they are released.
 
+A module category registered by an add-on can bring its own icon for the ClickGUI. The icon is an SVG or PNG bundled in the add-on's jar and is passed to the category as an identifier in the form `namespace:path`, which resolves to `resources/<namespace>/<path>` inside the jar. Place the file there rather than in Minecraft's `assets/`, since anything that inspects the loaded resource packs can see those. Categories without an icon fall back to the icon the theme provides, as the built-in categories do.
+
 Once your add-on is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
