@@ -23,4 +23,6 @@ Use `.marketplace unsubscribe <id>` to remove an add-on again and `.marketplace 
 
 LiquidBounce itself is published as a Maven artifact, so an add-on can be compiled against it. Release builds are served from `https://maven.ccbluex.net/releases`, development builds from `https://maven.ccbluex.net/snapshots`. Both are published together with a sources artifact.
 
+Add-ons can be written in Java as well as Kotlin. The classes an add-on builds on expose Java-friendly signatures — event listeners, for instance, are registered through `on`, `onTick`, `every` and `after`, which take plain `Consumer` and `Runnable` callbacks and return an `AutoCloseable` that unregisters the listener again. This public surface is tracked in an API dump in the LiquidBounce repository, so changes that would break add-ons are caught before they are released.
+
 Once your add-on is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
