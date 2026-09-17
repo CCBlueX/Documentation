@@ -4,9 +4,9 @@ The Script API allows third-party developers from our community to enhance Liqui
 ### Installing the Script API
 Scripts are no longer supported by LiquidBounce itself and need the [Script API add-on](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI). Without it, neither scripts nor the `.script` command are available.
 
-1. Download `liquidbounce-scriptapi-*.jar` from the add-on's [releases](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/releases)
-2. Install it like any other mod, either as an [additional mod in LiquidLauncher](/docs/tutorials/liquidlauncher) or by placing it in the *mods* folder of a [manual installation](/docs/get-started/manual-installation)
-3. Restart the game and check that `.addon list` shows `liquidbounce-scriptapi`
+1. Install it from the Marketplace with `.marketplace subscribe 771`, see [Add-ons](/docs/usage/add-ons)
+   - Or download `liquidbounce-scriptapi-*.jar` from the add-on's [releases](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/releases) and install it like any other mod, either as an [additional mod in LiquidLauncher](/docs/tutorials/liquidlauncher) or by placing it in the *mods* folder of a [manual installation](/docs/get-started/manual-installation)
+2. Restart the game and check that `.addon list` shows `liquidbounce-scriptapi`
 
 ### Managing Scripts
 The following commands are available to manage your scripts:
