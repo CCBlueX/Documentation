@@ -8,6 +8,7 @@ Because servers often rename their GUIs, the custom list and the whitelist/black
 
 This setting group is used by the following modules:
 - [AutoF5](/docs/modules/render/autof5)
+- [AutoDeposit](/docs/modules/player/autodeposit)
 - [ChestCleaner](/docs/modules/player/chestcleaner)
 - [ChestStealer](/docs/modules/player/cheststealer)
 

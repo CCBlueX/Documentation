@@ -14,6 +14,7 @@ The Rotations setting group appears in the following modules:
 - [NoRotateSet](/docs/modules/player/norotateset)
 - [AutoBuff](/docs/modules/player/autobuff)
 - [ChestAura](/docs/modules/player/chestaura)
+- [AutoDeposit](/docs/modules/player/autodeposit) (PunchToDeposit)
 - [Scaffold](/docs/modules/world/scaffold)
 - [Extinguish](/docs/modules/world/extinguish)
 - [ProjectilePuncher](/docs/modules/world/projectilepuncher)

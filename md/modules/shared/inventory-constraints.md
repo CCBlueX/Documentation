@@ -6,6 +6,7 @@ The Inventory Constraints setting group appears in the following modules:
 - [AutoArmor](/docs/modules/combat/autoarmor)
 - [ChestStealer](/docs/modules/player/cheststealer)
 - [ChestCleaner](/docs/modules/player/chestcleaner)
+- [AutoDeposit](/docs/modules/player/autodeposit)
 - [InventoryCleaner](/docs/modules/player/inventorycleaner)
 - [Replenish](/docs/modules/player/replenish)
 - [Offhand](/docs/modules/player/offhand)
@@ -21,7 +22,7 @@ The Inventory Constraints setting group appears in the following modules:
 | MissChance | Integer Range | 0..0 | 0..100 % | The percentage chance that the first click in an action chain is replaced with a simulated miss click (clicking on an empty or wrong slot). Only applies to container-type click actions and does not apply to throw actions. When a miss click occurs, the normal click delay is waited before retrying the intended action. |
 | Requires | Multi-Select | [] | NoMovement, NoRotation, NotUsingItem, NotBreaking, NotDuringCombat, InventoryOpen\* | A set of conditions that must all be met before any inventory action is allowed to proceed. If any selected requirement is not satisfied, the action is postponed. See [Requirements](#requirements) for details. |
 
-\*InventoryOpen is only available in `PlayerInventoryConstraints`, which is used by modules that interact with the player's own inventory (AutoArmor, ChestCleaner, InventoryCleaner, Replenish, Offhand). Modules that interact with external containers (ChestStealer, AutoTool) use the base `InventoryConstraints`, which offers every requirement except InventoryOpen.
+\*InventoryOpen is only available in `PlayerInventoryConstraints`, which is used by modules that interact with the player's own inventory (AutoArmor, ChestCleaner, InventoryCleaner, Replenish, Offhand). Modules that interact with external containers (ChestStealer, AutoDeposit, AutoTool) use the base `InventoryConstraints`, which offers every requirement except InventoryOpen.
 
 ### Requirements
 

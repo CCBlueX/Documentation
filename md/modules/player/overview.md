@@ -2,7 +2,7 @@
 
 Player modules automate player actions and inventory management. They handle item usage, chest looting, auto-respawning, and other player utilities.
 
-There are **31** modules in this category:
+There are **32** modules in this category:
 
 - [AntiAFK](/docs/Modules/Player/AntiAFK) — Prevents you from being kicked for being AFK.
 - [AntiExploit](/docs/Modules/Player/AntiExploit) — Prevents the server from exploiting client-side bugs.
@@ -10,6 +10,7 @@ There are **31** modules in this category:
 - [AutoBreak](/docs/Modules/Player/AutoBreak) — Automatically breaks the block you are looking at.
 - [AutoBuff](/docs/Modules/Player/AutoBuff) — Automatically buffs yourself using various items.
 - [AutoCrafter](/docs/Modules/Player/AutoCrafter) — Automatically crafts items using the Recipe Book.
+- [AutoDeposit](/docs/Modules/Player/AutoDeposit) — Automatically deposits configured items into containers.
 - [AutoFish](/docs/Modules/Player/AutoFish) — Automatically catches fish when using a rod.
 - [AutoQueue](/docs/Modules/Player/AutoQueue) — Automatically enters mini game queues on servers.
 - [AutoRespawn](/docs/Modules/Player/AutoRespawn) — Automatically respawns you after dying.

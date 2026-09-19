@@ -138,6 +138,7 @@
             "AutoBreak": "modules/player/autobreak.md",
             "AutoBuff": "modules/player/autobuff.md",
             "AutoCrafter": "modules/player/autocrafter.md",
+            "AutoDeposit": "modules/player/autodeposit.md",
             "AutoFish": "modules/player/autofish.md",
             "AutoQueue": "modules/player/autoqueue.md",
             "AutoRespawn": "modules/player/autorespawn.md",

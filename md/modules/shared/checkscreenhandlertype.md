@@ -8,6 +8,7 @@ If you leave the list empty, the filter effectively applies to nothing on the wh
 
 This setting group is used by the following modules:
 - [AutoF5](/docs/modules/render/autof5)
+- [AutoDeposit](/docs/modules/player/autodeposit)
 - [ChestCleaner](/docs/modules/player/chestcleaner)
 - [ChestStealer](/docs/modules/player/cheststealer)
 
