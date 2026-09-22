@@ -15,7 +15,7 @@ The Clicker setting group appears in the following modules:
 | Setting | Type | Default | Range | Description |
 |---------|------|---------|-------|-------------|
 | CPS | Integer Range | 5..8 | 1..60 | The target clicks per second, specified as a range. A random value within this range is chosen each cycle. The upper bound may vary per module (e.g. Scaffold allows up to 100). |
-| Technique | Enum | Stabilized | See [Technique Modes](#technique-modes) | The click pattern used to distribute clicks across the 20-tick cycle. |
+| Technique | Enum | Stabilized | See [Technique Modes](#technique-modes) | The click pattern used to distribute clicks across the 20-tick cycle. KillAura also offers **AI**. |
 | AttackCooldown | Boolean | true | — | Only present when the clicker is bound to the attack key. When enabled, clicks are suppressed while the Minecraft miss cooldown (`missTime`) is active, preventing attacks during the post-miss delay. |
 
 ### Technique Modes
@@ -33,6 +33,8 @@ The Clicker setting group appears in the following modules:
 **Butterfly** — Simulates butterfly clicking by alternating two fingers on the mouse button. Clicks are placed at random unused tick indices, with each placement adding either 1 or 2 clicks (randomly). Once all indices are used, additional clicks are added to random indices. This produces a pattern similar to DoubleClick but with more randomized variation.
 
 **NormalDistribution** — Generates click timings using a Gaussian (normal) distribution. Uses two frequency bands with different means and standard deviations to model realistic inter-click intervals. Clicks are placed by sampling from these distributions and accumulating time until the cycle is full, producing a statistically natural-looking click pattern.
+
+**AI** (KillAura only): nothing is scheduled ahead. Each tick the bundled combat model decides whether a player in that situation would click now, so CPS and the enforced click do not apply. AttackCooldown, ItemCooldown, Criticals and FailSwing still do. Same model as the [Rotations](/docs/modules/shared-settings/rotations) AI angle smooth.
 
 ### ItemCooldown
 

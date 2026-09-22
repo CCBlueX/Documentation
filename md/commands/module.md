@@ -154,25 +154,3 @@ Vertically clip through blocks using the Teleport module's exploit.
 ```
 
 > **Related module:** [Teleport](/docs/Modules/Exploit/Teleport)
-
----
-
-### `.models`
-
-Manage deep learning AI models for combat prediction.
-
-**Subcommands:**
-- `.models create <name>` — Create a new AI model.
-- `.models improve <name>` — Improve an existing model with new training data.
-- `.models delete <name>` — Delete a model.
-- `.models reload` — Reload all models.
-- `.models browse` — Open the models folder.
-
-A model in the models folder overrides a bundled model of the same name, so an improved copy of a bundled model is used in place of the original.
-
-**Example:**
-```
-.models create combat_v1
-.models improve combat_v1
-.models delete combat_v1
-```

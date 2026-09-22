@@ -294,7 +294,6 @@
             "AutoAccount": "modules/misc/autoaccount.md",
             "AutoChatGame": "modules/misc/autochatgame.md",
             "AutoConfig": "modules/misc/autoconfig.md",
-            "DebugRecorder": "modules/misc/debugrecorder.md",
             "EasyPearl": "modules/misc/easypearl.md",
             "FlagCheck": "modules/misc/flagcheck.md",
             "GUICloser": "modules/misc/guicloser.md",
