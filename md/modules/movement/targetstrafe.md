@@ -20,6 +20,7 @@ The **Planner** group validates each planned orbit step before your character mo
 | Requirements | Multi-Select | Space, Speed | — | Conditions that must all be satisfied for strafing to activate: **Space** (jump key held), **Speed** ([Speed](/docs/modules/movement/speed) active), **KillAura** ([KillAura](/docs/modules/combat/killaura) active), **Ground** (standing on the ground). |
 | Planner | Toggleable Group | on | — | Plans and validates each orbit step before moving. Disabling skips all path-safety checks. |
 | Planner → ControlDirection | Toggle | true | — | When on, pressing left or right overrides the automatic strafe direction. |
+| Planner → AI | Toggleable Group | off | — | The bundled combat model picks the side, when to switch and when to walk straight, like the players it learned from. Your keys still decide whether you move, and a held side key wins. |
 | Planner → Validation | Toggleable Group | on | — | Validates the next orbit position for safety before committing to movement. |
 | Planner → Validation → EdgeCheck | Toggleable Group | on | — | Prevents strafing to positions where you would fall farther than the configured maximum height. |
 | Planner → Validation → EdgeCheck → MaxFallHeight | Decimal | 1.2 | 0.1 – 4.0 | Maximum drop distance in blocks still considered safe when evaluating an orbit position. |

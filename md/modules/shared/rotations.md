@@ -116,19 +116,14 @@ Simulates realistic aim by applying acceleration to the rotation. Instead of mov
 
 #### AI *(combat-specific modules only)*
 
-Uses a trained deep learning model to predict the next rotation delta each tick. The model takes as input the current and previous rotation direction vectors, the target direction vector, velocity deltas, player and target movement differences, hurt time, and distance. The raw model output (yaw and pitch deltas) is scaled by configurable multipliers and then optionally refined by a correction mode. If the deep learning engine is not available on the platform, it falls back to the Interpolation mode (or Linear if Interpolation is unavailable).
+Aims the way the players in the bundled combat model's training data did. Every tick the model sees the last ticks of the fight, both fighters' movement and rotations, and decides the next turn. The same decision can drive the Clicker's AI technique, FightBot's AI movement and TargetStrafe's AI side. Without a decision, because the deep learning engine is unavailable, no model fits, or the fight history is still filling up, Interpolation aims instead and a chat message says why. There is no model setting: the client uses its bundled model unless an add-on installs another one.
 
 | Setting | Type | Default | Range | Description |
 |---------|------|---------|-------|-------------|
-| Model | Mode | — | — | Selects which trained model file to use for inference. Models are loaded from the deep learning model manager. |
-| Correction | Mode | Interpolation | Interpolation / Linear / None | A secondary angle smooth applied after the model output to refine the result. Interpolation works best with the model. Linear is not recommended as it eliminates acceleration effects. None passes the model output directly. |
-
-**OutputMultiplier** — Scales the raw model output before correction is applied.
-
-| Setting | Type | Default | Range | Description |
-|---------|------|---------|-------|-------------|
-| Yaw | Float | 1.5 | 0.5..2.0 | Multiplier applied to the model's yaw delta output. |
-| Pitch | Float | 1.0 | 0.5..2.0 | Multiplier applied to the model's pitch delta output. |
+| Speed | Float | 1.0 | 0.5..1.5 | Scales the model's turn speed. 1.0 turns like the recordings. |
+| MaxTurn | Float | 60.0 | 10.0..180.0 | Largest turn per tick, in degrees. |
+| Randomness | Float | 0.5 | 0.0..1.0 | How much of the model's variation to keep. 0 always aims the same way. |
+| Prediction | Integer | 2 | 0..4 ticks | Aims this many ticks ahead of a moving opponent, making up for the reaction time learned from players. |
 
 ### ShortStop *(combat-specific modules only)*
 
