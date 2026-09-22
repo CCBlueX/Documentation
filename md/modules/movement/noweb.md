@@ -4,7 +4,7 @@ NoWeb prevents cobwebs from slowing you down. In vanilla Minecraft, moving throu
 
 The default **Air** mode is the most straightforward: cobwebs are treated as if they were air and impose no slowdown at all. For servers running anti-cheat software, the server-specific modes are a better fit. **Grim2365** sends block-break packets for each web you touch (and optionally removes it on your client) to satisfy Grim's movement validation. **Intave14** uses a timed pattern of strafing and jumping tuned for Intave-protected servers. **PlaceWater** takes a physical approach — when you walk into a web it automatically places a water bucket beside it to destroy the cobweb, then picks the bucket back up; this requires a water bucket in your hotbar or offhand and a world where water does not evaporate. **Strafe** applies a configurable horizontal push each tick you are inside a web and can optionally override your vertical speed as well, making it suitable for servers like Vulcan or Grim where outright cancellation would trigger flags.
 
-Note that NoWeb is incompatible with the cobweb-avoidance behaviour of [AvoidHazards](/docs/modules/movement/avoidhazards) — if AvoidHazards has its cobweb option active when NoWeb is enabled, AvoidHazards will be automatically turned off.
+Note that NoWeb is incompatible with the cobweb-avoidance behaviour of [AvoidHazards](/docs/modules/movement/avoidhazards) in **Shape** mode, which makes webs solid so NoWeb never gets to handle them — if AvoidHazards is in Shape mode with its cobweb option active when NoWeb is enabled, AvoidHazards will be automatically turned off. AvoidHazards in **Input** mode only steers around webs, so it can be used alongside NoWeb.
 
 **Category:** Movement
 **Enabled by default:** No
