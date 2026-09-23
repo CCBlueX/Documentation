@@ -1,6 +1,8 @@
 ## Clicker
 
-The Clicker setting group controls how and when automated clicks are scheduled. It simulates realistic mouse clicking by distributing a target number of clicks per second (CPS) across a 20-tick cycle using a configurable click pattern technique. Each tick, the clicker determines how many clicks to fire based on the generated click array. If no click has occurred for over 1 second or the item cooldown has elapsed, a click is enforced regardless of the pattern.
+The Clicker setting group controls how and when automated clicks are scheduled. Presses are planned ahead in milliseconds by the selected click timing technique and then batched into ticks, the same way Minecraft drains every click queued since the previous tick. Because the presses are known in advance, other features can predict upcoming clicks and act accordingly. While an item cooldown is in use, one click is enforced on the tick the cooldown fills up.
+
+Consecutive presses form a combo. When planned presses go unused for a while, or the game skips ticks, the combo ends and a new one starts with a fresh press.
 
 The Clicker setting group appears in the following modules:
 - [KillAura](/docs/modules/combat/killaura)
@@ -14,25 +16,16 @@ The Clicker setting group appears in the following modules:
 
 | Setting | Type | Default | Range | Description |
 |---------|------|---------|-------|-------------|
-| CPS | Integer Range | 5..8 | 1..60 | The target clicks per second, specified as a range. A random value within this range is chosen each cycle. The upper bound may vary per module (e.g. Scaffold allows up to 100). |
-| Technique | Enum | Stabilized | See [Technique Modes](#technique-modes) | The click pattern used to distribute clicks across the 20-tick cycle. |
-| AttackCooldown | Boolean | true | — | Only present when the clicker is bound to the attack key. When enabled, clicks are suppressed while the Minecraft miss cooldown (`missTime`) is active, preventing attacks during the post-miss delay. |
+| CPS | Integer Range | 11..14 | 1..30 | The target clicks per second, specified as a range. The upper bound may vary per module (e.g. Scaffold allows up to 100). |
+| Technique | Enum | Human | See [Technique Modes](#technique-modes) | The timing used to decide how long to wait between two presses. |
+| MaxPerTick | Integer | 2 | 1..5 clicks | The highest number of clicks a single tick may consume. Presses that would exceed this are pushed to a later tick. |
+| MissCooldown | Boolean | true | — | Only present when the clicker is bound to the attack key. When enabled, clicks are dropped while the Minecraft miss cooldown (`missTime`) is active, preventing attacks during the post-miss delay. |
 
 ### Technique Modes
 
-**Stabilized** — Distributes clicks evenly across the 20-tick cycle. Calculates a fixed interval between clicks and spreads any remainder across the cycle, resulting in a consistent and uniform click rhythm.
+**Human** — Derives each interval from the intervals already clicked in the current combo and from how long the combo has been running, so the click rhythm varies and drifts the way a real hand does.
 
-**Efficient** — Ensures at least a one-tick gap between each click by placing clicks at every other tick index. When CPS is below 10, it falls back to the Stabilized pattern to avoid overly wide gaps.
-
-**Spamming** — Simulates normal finger clicking by placing each click at a random tick index in the cycle. This creates an irregular, human-like distribution where multiple clicks can land on the same tick by chance.
-
-**DoubleClick** — Simulates a mouse with a double-click (fire) button. Each click placement adds 2 clicks at a random tick index instead of 1, effectively doubling the actual CPS beyond the configured value.
-
-**Drag** — Simulates drag clicking, where the finger glides across the mouse button. Clicks are concentrated into a burst window of 17–19 ticks (the "travel time"), with the remaining ticks left empty to represent the finger resetting to its starting position. Within the burst window, clicks are distributed to the tick with the fewest clicks first.
-
-**Butterfly** — Simulates butterfly clicking by alternating two fingers on the mouse button. Clicks are placed at random unused tick indices, with each placement adding either 1 or 2 clicks (randomly). Once all indices are used, additional clicks are added to random indices. This produces a pattern similar to DoubleClick but with more randomized variation.
-
-**NormalDistribution** — Generates click timings using a Gaussian (normal) distribution. Uses two frequency bands with different means and standard deviations to model realistic inter-click intervals. Clicks are placed by sampling from these distributions and accumulating time until the cycle is full, producing a statistically natural-looking click pattern.
+**Constant** — Spaces presses evenly at the top of the CPS range, for anti-cheats that only look at the time since the last attack.
 
 ### ItemCooldown
 
@@ -45,4 +38,4 @@ The ItemCooldown sub-group controls whether the clicker respects the Minecraft a
 > **Note:** Not all modules include the ItemCooldown sub-group. Modules that use the use key (e.g. AutoShoot, Scaffold) or do not need cooldown management (e.g. ProjectilePuncher) create their Clicker without an ItemCooldown.
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-09-23*
