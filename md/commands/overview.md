@@ -19,7 +19,7 @@ Commands are organized into the following categories:
 | `.toggle <module>` | Enable or disable a module |
 | `.bind <module> <key>` | Bind a module to a key |
 | `.friend add <name>` | Add a player to your friend list |
-| `.config load <name>` | Load an online configuration |
+| `.config load <config>` | Load a config from the marketplace |
 | `.panic` | Disable all active modules |
 | `.client prefix <prefix>` | Change the command prefix |
 | `.ping` | Show your current ping |

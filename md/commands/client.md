@@ -174,13 +174,29 @@ Get or set module settings (values).
 
 ### `.config`
 
-Load and manage online configurations.
+Find, load, publish and manage configs on the marketplace. See [Configs](/docs/usage/configs) for the full guide.
 
-**Subcommands:**
-- `.config load <name> [modules...]` — Load a configuration by name. Optionally specify which modules to load.
-- `.config list` — List available online configurations.
-- `.config browse` — Open the configuration browser.
-- `.config reload` — Reload configurations from the server.
+| Command | Description |
+|---|---|
+| `.config list [page]` | List configs, featured ones first |
+| `.config search <query> [tag]` | Search configs, optionally within a tag |
+| `.config info [config]` | Show a config, or the loaded one |
+| `.config load <config> [modules]` | Load a config by `author/name`, name, ID, share code or link |
+| `.config revert` | Drop your changes to the loaded config |
+| `.config restore` | Restore your settings from before the first marketplace config |
+| `.config detach` | Stop tracking the loaded config and keep your settings |
+| `.config report works [config]` | Report that a config works for you |
+| `.config report broken [config]` | Report that a config is broken for you |
+| `.config publish new <name> [visibility] [description]` | Publish your current settings |
+| `.config publish overlay <name> [visibility] [description]` | Publish only your changes on top of the loaded config |
+| `.config publish fork <name> [visibility] [description]` | Publish a copy of someone else's config with your changes |
+| `.config edit update [changelog]` | Publish your changes to your loaded config |
+| `.config edit set <field> <value>` | Change the `name`, `description`, `tags`, `servers` or `visibility` of your loaded config |
+| `.config edit depend add <item>` | Add a config, add-on or script your config needs |
+| `.config edit depend remove <item>` | Remove a dependency again |
+| `.config edit delete` | Delete your loaded config |
+
+`visibility` is `public` (the default) or `unlisted`.
 
 ---
 
