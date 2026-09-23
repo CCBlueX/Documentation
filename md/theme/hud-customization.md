@@ -11,7 +11,7 @@ The HUD Editor lets you put together your HUD visually:
 
 While the HUD Editor is open, all components become editable.
 
-**Adding components:** Click **Add Component** at the top of the screen to open a drawer listing the components available in your active theme, together with a short description of each. Use the search bar to filter the list and click a component to add it to your HUD. Most components can only be added once, but some, such as **Text** and **Image**, can be added multiple times.
+**Adding components:** Click **Add Component** at the top of the screen to open a drawer listing the components available in your active theme and the ones provided by installed [add-ons](/docs/usage/addons), together with a short description of each. Use the search bar to filter the list and click a component to add it to your HUD. Most components can only be added once, but some, such as **Text** and **Image**, can be added multiple times.
 
 **Moving components:** Drag a component to reposition it. While dragging, a grid is shown and the screen is divided into nine anchor zones. The component is anchored to the zone it is dropped in, so it keeps its position relative to the screen edge or center across different resolutions and GUI scales. Components snap to the grid and align magnetically with nearby components, with guides and the current position shown while you move them.
 
