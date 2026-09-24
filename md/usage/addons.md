@@ -26,6 +26,8 @@ Add-ons are distributed through the built-in Marketplace:
 
 Use `.marketplace unsubscribe <id>` to remove an add-on again and `.marketplace update` to pull the latest revision of everything you are subscribed to.
 
+Every revision of an add-on is built for a certain Minecraft and LiquidBounce version, so only the revisions that fit the game you are running are installed. An add-on whose revisions all miss your version stays subscribed without being installed and returns once a revision that fits is available.
+
 Modules of an add-on appear in the ClickGUI under the category it registers:
 
 ![Extras in the ClickGUI](/images/addons/clickgui-extras.png)
