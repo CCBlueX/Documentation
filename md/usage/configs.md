@@ -79,6 +79,8 @@ LiquidBounce remembers which config you loaded. As soon as you change one of its
 
 ![Detach](/images/configs/detach.png)
 
+`.localconfig load <name>` replaces the settings of the tracked config, so tracking stops and the chat tells you which config was dropped. Two loads keep it tracked and count as your changes to it: a local config you saved while it was tracked, and a load of only some modules of a local config.
+
 ### Reporting
 
 `.config report works [config]` and `.config report broken [config]` tell others whether a config works for you. Without a config, the report is for the one you loaded. Clicking `[✔]` or `[✘]` in a list does the same. Reports count for 30 days and decide how high a config ranks.
@@ -92,6 +94,8 @@ The [AutoConfig](/docs/modules/misc/autoconfig) module loads the best config for
 ![AutoConfig](/images/configs/autoconfig.png)
 
 ![AutoConfig after a change](/images/configs/autoconfig-edited.png)
+
+After you load a local config, the tag shows its name and joining a server keeps it instead of loading a config for that server.
 
 By default it only loads featured configs. Turn off **OnlyFeatured** to also load configs published by other players.
 

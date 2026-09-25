@@ -212,6 +212,8 @@ Save, load, and manage local configuration files.
 
 Saved configurations leave out settings that are tied to your personal setup, such as your keybinds and the settings of Render and Fun modules. Each of these groups can be included on request when saving, so you can keep your visual setup in the file if you want to.
 
+Loading a local config replaces the settings of a marketplace config you are tracking, so LiquidBounce stops tracking it and tells you which one it dropped. A config you saved while tracking that marketplace config, and a load of only some modules, count as edits of it instead, so tracking goes on.
+
 ---
 
 ### `.targets`
