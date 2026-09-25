@@ -47,11 +47,11 @@ Subscribe to a marketplace item to receive its content and updates.
 
 **Usage:**
 ```
-.marketplace subscribe <id>
+.marketplace subscribe <item>
 ```
 
 **Parameters:**
-- `id` (required) — The marketplace item ID.
+- `item` (required) — The marketplace item, given as its ID, its name or `author/name`. Names containing spaces have to be quoted, for example `.marketplace subscribe "Author/Item Name"`. Tab completion suggests the items you are not subscribed to yet as `author/name`.
 
 ---
 
@@ -61,22 +61,25 @@ Unsubscribe from a marketplace item.
 
 **Usage:**
 ```
-.marketplace unsubscribe <id>
+.marketplace unsubscribe <item>
 ```
 
 **Parameters:**
-- `id` (required) — The marketplace item ID.
+- `item` (required) — The subscribed item, given as its ID, its name or `author/name`. Tab completion suggests the items you are subscribed to. If the name you give belongs to several of your subscriptions, nothing is unsubscribed and the client lists what tells them apart.
 
 ---
 
 #### `.marketplace update`
 
-Update all subscribed marketplace items to their latest versions.
+Update all subscribed marketplace items to their latest versions, or only the one you name.
 
 **Usage:**
 ```
-.marketplace update
+.marketplace update [item]
 ```
+
+**Parameters:**
+- `item` (optional) — The subscribed item to update, given as its ID, its name or `author/name`, the same way as for `.marketplace unsubscribe`. Without it, every subscription is updated.
 
 ---
 
