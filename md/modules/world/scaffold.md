@@ -69,7 +69,7 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | SprintControl | Toggleable Group | Off | — | Forces sprinting on or off independently for the client and server. |
 | SprintControl → Client | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint, NoSprintOnPlace, NoSprintOnGround | How sprinting is handled on your own (visual) side. |
 | SprintControl → Server | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint, NoSprintOnPlace, NoSprintOnGround | How sprinting is reported to the server. |
-| SimulatePlacementAttempts | Toggleable Group | Off | — | Sends extra interaction clicks to mimic a real player placing blocks. |
+| SimulatePlacementAttempts | Toggleable Group | Off | — | Sends extra interaction clicks to mimic a real player placing blocks. The clicks are aimed at the spot the technique would place on, and fall back to whatever your crosshair points at, so they keep coming even when there is nothing to place. |
 | SimulatePlacementAttempts → Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
 | SimulatePlacementAttempts → FailedAttemptsOnly | Toggle | false | — | Only simulates clicks that wouldn't actually place a block. |
 | Acceleration | Toggleable Group | Off | — | Multiplies your horizontal speed while bridging. |
@@ -92,4 +92,4 @@ Scaffold also bundles convenience features so you don't need extra modules runni
 | Render | Toggleable Group | On | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
 
 ---
-*Last updated: 2026-07-12 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*
+*Last updated: 2026-09-25 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/scaffold/ModuleScaffold.kt)*
