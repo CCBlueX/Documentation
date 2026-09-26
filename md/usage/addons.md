@@ -12,7 +12,7 @@ Add-ons are distributed through the built-in Marketplace:
    ![Marketplace Add-ons](/images/addons/marketplace-list.png)
 
 2. **Install an add-on**: `.marketplace subscribe <id>`
-   - The add-on is downloaded and prepared for the next start
+   - The add-on is downloaded and prepared for the next start, together with the add-ons and scripts it needs
 
    ![Subscribing to an Add-on](/images/addons/marketplace-subscribe.png)
 

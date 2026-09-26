@@ -53,6 +53,8 @@ Subscribe to a marketplace item to receive its content and updates.
 **Parameters:**
 - `item` (required) — The marketplace item, given as its ID, its name or `author/name`. Names containing spaces have to be quoted, for example `.marketplace subscribe "Author/Item Name"`. Tab completion suggests the items you are not subscribed to yet as `author/name`.
 
+Subscribing also installs the add-ons and scripts the item needs, including whatever those need themselves, and LiquidBounce names the ones it installed alongside it. Restart the game to finish installing add-ons. If something the item needs does not fit the game you are running, the item is left out as well and LiquidBounce names what is missing.
+
 ---
 
 #### `.marketplace unsubscribe`
