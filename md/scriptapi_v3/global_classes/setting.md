@@ -126,7 +126,7 @@ cps.value = [5, 12];
 <hr>
 
 #### `Setting.key(options: Object): Value`
-Creates a keyboard key value. Refer to the [this gist](https://gist.github.com/Mumfrey/5cfc3b7e14fef91b6fa56470dc05218a) for information on key codes. <br>
+Creates a keyboard key value. Keys are identified by their SDL keycode, refer to the [SDL keycode list](https://wiki.libsdl.org/SDL3/SDL_Keycode) for the available values. <br>
 Parameter properties:
 
 | Property | Description                                                          | Type     |
