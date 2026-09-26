@@ -59,7 +59,7 @@ If the config was made for a different Minecraft version, LiquidBounce tells you
 
 #### Dependencies
 
-A config can depend on other configs, add-ons and scripts. Loading it first loads the configs it depends on, in order, and then applies its own settings on top. Add-ons and scripts it needs are installed, including whatever they need themselves. Restart the game to finish installing them.
+A config can depend on other configs, add-ons and scripts. Loading it first loads the configs it depends on, in order, and then applies its own settings on top. Add-ons and scripts it needs are installed, including whatever they need themselves. Restart the game to finish installing them. One that does not load with the game you are running is left out instead of stopping the load, together with everything that needs it, and LiquidBounce names what it left out.
 
 ![Loading a config with dependencies](/images/configs/load-dependencies.png)
 
