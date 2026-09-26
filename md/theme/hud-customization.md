@@ -9,6 +9,8 @@ The HUD Editor lets you put together your HUD visually:
 1. Press **RIGHT SHIFT** to open the ClickGUI
 2. Select the **HUD Editor** tab at the top of the screen
 
+The ClickGUI remembers which tab you last had selected and opens on it again, so you do not have to switch back to the HUD Editor every time.
+
 While the HUD Editor is open, all components become editable.
 
 **Adding components:** Click **Add Component** at the top of the screen to open a drawer listing the components available in your active theme and the ones provided by installed [add-ons](/docs/usage/addons), together with a short description of each. Use the search bar to filter the list and click a component to add it to your HUD. Most components can only be added once, but some, such as **Text** and **Image**, can be added multiple times.
