@@ -49,6 +49,8 @@ A module category registered by an add-on can bring its own icon for the ClickGU
 
 An add-on can also draw onto the HUD. A component it registers behaves like the components a theme ships: it is listed in the [HUD Editor](/docs/theme-system/hud-customization), can be moved and anchored freely and shows its settings there. A component can either be registered directly, in which case it is part of the HUD right away, or through a factory, which puts it into the **Add Component** drawer under the name and description the factory carries so players add it themselves. The position and settings of such a component are not written to the config; the add-on keeps that state.
 
+An add-on can also provide its own browser backend, which is what the client renders its web-based interfaces with. The add-on registers the backend under an id, a name and a description, and unless the backend is marked as not selectable, it is offered next to the built-in ones in a selection screen shown while LiquidBounce starts up. The backend chosen there is stored in the config, so the choice only has to be made once.
+
 ### Publishing Add-ons
 
 The template's build workflow uploads your add-on to the Marketplace whenever you publish a GitHub release.
