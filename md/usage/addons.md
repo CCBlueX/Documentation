@@ -41,15 +41,7 @@ Modules of an add-on appear in the ClickGUI under the category it registers:
 
 ### Developing Add-ons
 
-Start from the [add-on template](https://github.com/CCBlueX/LiquidBounce-Addon-Template). LiquidBounce itself is published as a Maven artifact, so an add-on can be compiled against it. Release builds are served from `https://maven.ccbluex.net/releases`, development builds from `https://maven.ccbluex.net/snapshots`. Both are published together with a sources artifact.
-
-Add-ons can be written in Java as well as Kotlin. The classes an add-on builds on expose Java-friendly signatures — event listeners, for instance, are registered through `on`, `onTick`, `every` and `after`, which take plain `Consumer` and `Runnable` callbacks and return an `AutoCloseable` that unregisters the listener again. This public surface is tracked in an API dump in the LiquidBounce repository, so changes that would break add-ons are caught before they are released.
-
-A module category registered by an add-on can bring its own icon for the ClickGUI. The icon is an SVG or PNG bundled in the add-on's jar and is passed to the category as an identifier in the form `namespace:path`, which resolves to `resources/<namespace>/<path>` inside the jar. Place the file there rather than in Minecraft's `assets/`, since anything that inspects the loaded resource packs can see those. Categories without an icon fall back to the icon the theme provides, as the built-in categories do.
-
-An add-on can also draw onto the HUD. A component it registers behaves like the components a theme ships: it is listed in the [HUD Editor](/docs/theme-system/hud-customization), can be moved and anchored freely and shows its settings there. A component can either be registered directly, in which case it is part of the HUD right away, or through a factory, which puts it into the **Add Component** drawer under the name and description the factory carries so players add it themselves. The position and settings of such a component are not written to the config; the add-on keeps that state.
-
-An add-on can also provide its own browser backend, which is what the client renders its web-based interfaces with. The add-on registers the backend under an id, a name and a description, and unless the backend is marked as not selectable, it is offered next to the built-in ones in a selection screen shown while LiquidBounce starts up. The backend chosen there is stored in the config, so the choice only has to be made once.
+Start from the [add-on template](https://github.com/CCBlueX/LiquidBounce-Addon-Template). The [Add-on API](/docs/add-on-api/getting-started) section covers modules, commands, HUD components, browser backends and the rest, in Kotlin and Java.
 
 ### Publishing Add-ons
 
