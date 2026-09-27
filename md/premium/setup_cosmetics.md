@@ -8,7 +8,7 @@ The following tutorial will guide you through the process of setting up your pre
 2. Launch LiquidBounce.
 3. Join a server or a singleplayer world.
 4. Send `.client account login` into the chat.
-5. A browser window should open. Login to your LiquidBounce account.
+5. A browser window should open. Login to your LiquidBounce account. Finish the login within five minutes, otherwise it times out and you have to send the command again. Sending the command again while a login is still pending simply opens the same page once more instead of starting a second login.
 6. If everything went accordingly, you should now be logged in and your cosmetics should be enabled. Make sure it says `Premium Features: Yes` in the chat message.
 
 ![premium_login_command](/images/user_login_command.png)
