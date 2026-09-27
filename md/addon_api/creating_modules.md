@@ -43,8 +43,8 @@ The constructor takes:
 
 | Property          | Description                                                                                              | Required | Type                     | Default     |
 |-------------------|----------------------------------------------------------------------------------------------------------|----------|--------------------------|-------------|
-| name              | Name of the module. Unique regardless of case, also the base of its [translation keys](/docs/add-on-api/translations). | Yes | `String`       |             |
-| category          | The [category](/docs/add-on-api/categories) it is filed under.                                           | Yes      | `ModuleCategory`         |             |
+| name              | Name of the module. Unique regardless of case, also the base of its [translation keys](/docs/add-on-api/developers/translations). | Yes | `String`       |             |
+| category          | The [category](/docs/add-on-api/developers/categories) it is filed under.                                           | Yes      | `ModuleCategory`         |             |
 | bind              | Default key, for example `InputConstants.KEY_C`.                                                         | No       | `Int`                    | unbound     |
 | bindAction        | What the key does: `TOGGLE`, `HOLD` (enabled while held) or `SMART` (hold or toggle, by how the key is pressed). | No | `InputBind.BindAction` | `TOGGLE` |
 | state             | Whether the module starts enabled.                                                                       | No       | `Boolean`                | `false`     |
@@ -81,7 +81,7 @@ A name that is already taken, or a category that is not registered, fails the ad
 | `onRegistration()`  | Once, when `registerModules` adds the module.                                            |
 | `enabledEffect()`   | A `suspend` function launched after the module was enabled, cancelled when it is disabled. |
 
-Everything else the module does happens in [event handlers](/docs/add-on-api/events). They run while `running` is true, that is while the module is enabled and the player is in a world.
+Everything else the module does happens in [event handlers](/docs/add-on-api/developers/events). They run while `running` is true, that is while the module is enabled and the player is in a world.
 
 ### Properties
 
@@ -110,7 +110,7 @@ notification("Example", "Done", NotificationEvent.Severity.SUCCESS)
 - `chat` prints to the chat with the client's prefix, nothing is sent to the server. Passing the module makes each message replace the module's previous one instead of adding a line.
 - `regular`, `variable`, `highlight`, `warning` and `markAsError` color text the way the client's own messages are colored.
 - `notification` shows a notification with a title, a message and a `NotificationEvent.Severity` (`INFO`, `SUCCESS`, `ERROR`, `ENABLED`, `DISABLED`).
-- `message(key, args)` returns the translation of `liquidbounce.module.<module>.messages.<key>`, see [Translations](/docs/add-on-api/translations).
+- `message(key, args)` returns the translation of `liquidbounce.module.<module>.messages.<key>`, see [Translations](/docs/add-on-api/developers/translations).
 
 ### Modes
 
@@ -153,8 +153,8 @@ object ModuleJumpBoost : ClientModule("JumpBoost", ModuleCategories.MOVEMENT) {
 }
 ```
 
-`choices` selects the first mode by default. See [`choices`](/docs/add-on-api/settings) for the other forms.
+`choices` selects the first mode by default. See [`choices`](/docs/add-on-api/developers/settings) for the other forms.
 
 ### Descriptions
 
-The ClickGUI shows a description for the module and each setting. They come from the add-on's [translations](/docs/add-on-api/translations) under `liquidbounce.module.<module>.description`. `literalDescription { "..." }` sets a fixed text instead. A module with neither logs a warning when it is registered.
+The ClickGUI shows a description for the module and each setting. They come from the add-on's [translations](/docs/add-on-api/developers/translations) under `liquidbounce.module.<module>.description`. `literalDescription { "..." }` sets a fixed text instead. A module with neither logs a warning when it is registered.

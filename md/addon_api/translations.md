@@ -47,10 +47,10 @@ The client derives the keys from the names, each converted to lower camel case (
 | `liquidbounce.module.<module>.description`                       | The module's description.                           |
 | `liquidbounce.module.<module>.<setting>.description`             | A setting's description.                            |
 | `liquidbounce.module.<module>.<group>.<setting>.description`     | A setting inside a nested group, and so on for deeper nesting. |
-| `liquidbounce.module.<module>.<modes>.<mode>.<setting>.description` | A setting of a [mode](/docs/add-on-api/creating-modules#modes), `<modes>` being the name passed to `choices`. |
+| `liquidbounce.module.<module>.<modes>.<mode>.<setting>.description` | A setting of a [mode](/docs/add-on-api/developers/creating-modules#modes), `<modes>` being the name passed to `choices`. |
 | `liquidbounce.module.<module>.messages.<key>`                    | `message(key, args)` in the module.                 |
 | `liquidbounce.command.<command>.description`                     | The command's description, shown by `.help`.        |
-| `liquidbounce.command.<command>.<key>`                           | `t(key, args)` in the [command DSL](/docs/add-on-api/creating-commands). |
+| `liquidbounce.command.<command>.<key>`                           | `t(key, args)` in the [command DSL](/docs/add-on-api/developers/creating-commands). |
 
 A group or a mode selection has a description of its own too, under `<...>.<group>.description`.
 

@@ -51,8 +51,8 @@ An add-on is described by its `fabric.mod.json`, like any Fabric mod. What Liqui
 | `contact`                    | `homepage`, `sources` and `issues` are available through `metadata`. `.addon info` shows `sources`.          |
 | `icon`                       | The mod icon, for example in Mod Menu. Keep it under `resources/<id>/`.                                     |
 | `entrypoints.liquidbounce`   | The class extending `LiquidBounceAddon`. An add-on without it is loaded by Fabric but not by LiquidBounce.   |
-| `mixins`, `accessWidener`    | See [Mixins and Access Wideners](/docs/add-on-api/mixins-and-access-wideners).                               |
-| `depends`                    | `liquidbounce` makes Fabric refuse to start without the client. The Marketplace also reads `minecraft` and `liquidbounce` from here, see [Publishing](/docs/add-on-api/publishing). |
+| `mixins`, `accessWidener`    | See [Mixins and Access Wideners](/docs/add-on-api/developers/mixins-and-access-wideners).                               |
+| `depends`                    | `liquidbounce` makes Fabric refuse to start without the client. The Marketplace also reads `minecraft` and `liquidbounce` from here, see [Publishing](/docs/add-on-api/developers/publishing). |
 | `custom.liquidbounce.color`  | A hex color (`#RRGGBB` or `#AARRGGBB`), available as `color`.                                                |
 | `custom.modmenu.parent`      | `liquidbounce` lists the add-on under LiquidBounce in Mod Menu.                                              |
 
@@ -93,7 +93,7 @@ The entrypoint is constructed while the client discovers add-ons. `metadata` and
 
 | Member           | When                                                                                                      |
 |------------------|-----------------------------------------------------------------------------------------------------------|
-| `categories`     | Read for every add-on before any `onInitialize()`, see [Categories](/docs/add-on-api/categories).         |
+| `categories`     | Read for every add-on before any `onInitialize()`, see [Categories](/docs/add-on-api/developers/categories).         |
 | `onInitialize()` | Register everything here. Runs before configs are loaded, so only what exists now gets its settings restored. |
 | `onStarted()`    | After configs are loaded. Settings hold their stored values from here on.                                 |
 | `onStopping()`   | Before configs are written back to disk.                                                                  |
@@ -128,17 +128,17 @@ Register through the add-on, not through `ModuleManager` or `CommandManager` dir
 
 | Function                                     | Registers                                                                                     |
 |----------------------------------------------|-----------------------------------------------------------------------------------------------|
-| `registerModules(vararg modules)`            | [Modules](/docs/add-on-api/creating-modules). `unregisterModules` removes them again.         |
-| `registerCommand(registrar)`                 | A [command](/docs/add-on-api/creating-commands).                                              |
+| `registerModules(vararg modules)`            | [Modules](/docs/add-on-api/developers/creating-modules). `unregisterModules` removes them again.         |
+| `registerCommand(registrar)`                 | A [command](/docs/add-on-api/developers/creating-commands).                                              |
 | `registerCommandNodes(nodes)`                | Prebuilt Brigadier `LiteralCommandNode`s.                                                     |
-| `registerCategory(category)`                 | A [category](/docs/add-on-api/categories) that is only known at runtime.                      |
+| `registerCategory(category)`                 | A [category](/docs/add-on-api/developers/categories) that is only known at runtime.                      |
 | `registerMode(parent, mode)`                 | A mode in an existing `ModeValueGroup`, for example the modes of a built-in module.           |
-| `registerListeners(vararg listeners)`        | Nothing new; tracks [event listeners](/docs/add-on-api/events) so they are unregistered on failure. |
-| `registerBrowserBackend(provider)`           | A [browser backend](/docs/add-on-api/browser-backends).                                       |
+| `registerListeners(vararg listeners)`        | Nothing new; tracks [event listeners](/docs/add-on-api/developers/events) so they are unregistered on failure. |
+| `registerBrowserBackend(provider)`           | A [browser backend](/docs/add-on-api/developers/browser-backends).                                       |
 | `registerMarketplaceHandler(type, handler)`  | Takes over subscribed Marketplace items of one type. Runs once the subscriptions are loaded, and after every install, update or removal. |
 | `config(name, tree)`                         | A config file of its own for the given value groups, `<name>.json` (lower case) in the LiquidBounce folder. `name` defaults to the add-on id. |
 
-[HUD components](/docs/add-on-api/hud-components) are registered through `HudComponentManager` and are not withdrawn.
+[HUD components](/docs/add-on-api/developers/hud-components) are registered through `HudComponentManager` and are not withdrawn.
 
 ### Properties
 
@@ -154,7 +154,7 @@ Register through the add-on, not through `ModuleManager` or `CommandManager` dir
 | `state`       | `AddonState`     | `DISCOVERED`, `LOADED`, `ERRORED` or `DISABLED`.                            |
 | `logger`      | `Logger`         | A Log4j logger named `LiquidBounce/Addon/<id>`.                             |
 
-The add-on is an [event listener](/docs/add-on-api/events) itself. Its handlers run while its state is `LOADED`. It also has the Minecraft shortcuts every module has: `mc`, `player`, `world`, `network`, `interaction` and `inGame`.
+The add-on is an [event listener](/docs/add-on-api/developers/events) itself. Its handlers run while its state is `LOADED`. It also has the Minecraft shortcuts every module has: `mc`, `player`, `world`, `network`, `interaction` and `inGame`.
 
 ```kotlin
 object ChatLogger : EventListener {

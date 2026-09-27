@@ -117,7 +117,7 @@ Handling the event itself is over once the sequence first waits, so cancelling o
 | `after(ticks, task)`                      | Runs `task` once, `ticks` ticks from now.                                                |
 | `every(ticks, task)`                      | Runs `task` every `ticks` ticks, the first time after `ticks`.                           |
 
-`after` and `every` start counting right away and are cancelled for good as soon as the listener is not running. Call them while it runs, for example from a handler, not from a constructor. See [Using Java](/docs/add-on-api/using-java).
+`after` and `every` start counting right away and are cancelled for good as soon as the listener is not running. Call them while it runs, for example from a handler, not from a constructor. See [Using Java](/docs/add-on-api/developers/using-java).
 
 ### Listeners of your own
 
@@ -150,7 +150,7 @@ fun greet(name: String) {
 
 ### Stable events
 
-These events are part of the [stable API](/docs/add-on-api/stable-api). The client raises many more, see the [event classes](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events), but those may change between releases.
+These events are part of the [stable API](/docs/add-on-api/developers/stable-api). The client raises many more, see the [event classes](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events), but those may change between releases.
 
 | Event                            | Raised                                                                                                  |
 |----------------------------------|---------------------------------------------------------------------------------------------------------|
@@ -169,8 +169,8 @@ These events are part of the [stable API](/docs/add-on-api/stable-api). The clie
 | `ScreenEvent`                    | When a screen is opened, with `null` when screens are closed. Cancel to keep the current one.           |
 | `KeyboardKeyEvent`               | When a key is pressed, repeated or released.                                                            |
 | `MouseButtonEvent`               | When a mouse button is pressed or released.                                                             |
-| `OverlayRenderEvent`             | While the HUD is drawn, see [Rendering](/docs/add-on-api/rendering).                                    |
-| `WorldRenderEvent`               | While the world is drawn, see [Rendering](/docs/add-on-api/rendering).                                  |
+| `OverlayRenderEvent`             | While the HUD is drawn, see [Rendering](/docs/add-on-api/developers/rendering).                                    |
+| `WorldRenderEvent`               | While the world is drawn, see [Rendering](/docs/add-on-api/developers/rendering).                                  |
 | `WorldChangeEvent`               | When the client's world changes, with `null` when leaving it.                                           |
 | `ChunkLoadEvent`                 | When the server sends a chunk, with its chunk coordinates.                                              |
 | `BlockChangeEvent`               | When a block in the client's world changes.                                                             |

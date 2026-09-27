@@ -149,7 +149,7 @@ loom {
 }
 ```
 
-`accessWidenerPath` points Loom at the add-on's access widener, which it applies to the Minecraft classes the add-on compiles against. The same file is named under `accessWidener` in `fabric.mod.json`, see [Mixins and Access Wideners](/docs/add-on-api/mixins-and-access-wideners#access-wideners). Loom also provides `./gradlew runClient`, which starts the game with LiquidBounce and the add-on. Game tests need more configuration, see [Testing](/docs/add-on-api/testing).
+`accessWidenerPath` points Loom at the add-on's access widener, which it applies to the Minecraft classes the add-on compiles against. The same file is named under `accessWidener` in `fabric.mod.json`, see [Mixins and Access Wideners](/docs/add-on-api/developers/mixins-and-access-wideners#access-wideners). Loom also provides `./gradlew runClient`, which starts the game with LiquidBounce and the add-on. Game tests need more configuration, see [Testing](/docs/add-on-api/developers/testing).
 
 ### Add-on version
 
@@ -171,7 +171,7 @@ base {
 }
 ```
 
-`./gradlew build` writes `build/libs/example-addon-1.0.0+26.3.jar` and `example-addon-1.0.0+26.3-sources.jar`. The jar carries the project's `LICENSE` as `LICENSE_example-addon`. The same `mod_version` can be released once per Minecraft version, see [Publishing](/docs/add-on-api/publishing).
+`./gradlew build` writes `build/libs/example-addon-1.0.0+26.3.jar` and `example-addon-1.0.0+26.3-sources.jar`. The jar carries the project's `LICENSE` as `LICENSE_example-addon`. The same `mod_version` can be released once per Minecraft version, see [Publishing](/docs/add-on-api/developers/publishing).
 
 `processResources` fills these placeholders in `fabric.mod.json`:
 

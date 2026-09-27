@@ -83,13 +83,13 @@ A greedy argument, such as `StringArgumentType.greedyString()`, has to be the la
 
 ### Descriptions and errors
 
-`.help` shows the translation of `liquidbounce.command.<command>.description`, see [Translations](/docs/add-on-api/translations).
+`.help` shows the translation of `liquidbounce.command.<command>.description`, see [Translations](/docs/add-on-api/developers/translations).
 
 An exception thrown by a command typed into the chat is shown there in red. `CommandException(text)` shows just `text`, any other exception its class name and message as well.
 
 ### Plain Brigadier
 
-The DSL is optional. Any Brigadier builder with `ClientCommandSource` as source works, which is also how commands are written in [Java](/docs/add-on-api/using-java):
+The DSL is optional. Any Brigadier builder with `ClientCommandSource` as source works, which is also how commands are written in [Java](/docs/add-on-api/developers/using-java):
 
 ```java
 public class CommandHello implements CommandRegistrar {

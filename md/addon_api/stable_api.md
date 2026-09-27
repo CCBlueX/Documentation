@@ -6,7 +6,7 @@ Add-ons compile against the whole client, there is no separate API artifact. Wha
 
 The marked declarations are recorded in [`api/LiquidBounce.api`](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/api/LiquidBounce.api) in the LiquidBounce repository, and the client's build compares its code against that file. A marked declaration therefore cannot change or disappear by accident. When it changes on purpose, the file changes with it, visible in the commit.
 
-Stable does not cover Minecraft. An add-on is built for one Minecraft version and is rebuilt for the next, see [Publishing](/docs/add-on-api/publishing#compatibility).
+Stable does not cover Minecraft. An add-on is built for one Minecraft version and is rebuilt for the next, see [Publishing](/docs/add-on-api/developers/publishing#compatibility).
 
 If an add-on needs something that is not marked, ask for it on [GitHub](https://github.com/CCBlueX/LiquidBounce/issues) instead of copying it.
 
@@ -17,7 +17,7 @@ If an add-on needs something that is not marked, ask for it on [GitHub](https://
 | Add-on     | `LiquidBounceAddon`, `AddonMetadata`, `AddonState`                                                                    |
 | Modules    | `ClientModule`, `ModuleCategory`, `ModuleCategories`, `ModuleManager.get`, `ModuleClickGui`, `MinecraftShortcuts`     |
 | Settings   | `ValueGroup` with every builder, `ToggleableValueGroup`, `Value`, `Config`, `ChoiceListValue.getChoicesStrings`, `ModeValueGroup.getModeStrings` |
-| Events     | `Event`, `CancellableEvent`, `EventState`, `EventListener` with `on`, `onTick`, `after` and `every`, `EventManager`, the events in the [Events](/docs/add-on-api/events#stable-events) table, `EventPriorityConvention` |
+| Events     | `Event`, `CancellableEvent`, `EventState`, `EventListener` with `on`, `onTick`, `after` and `every`, `EventManager`, the events in the [Events](/docs/add-on-api/developers/events#stable-events) table, `EventPriorityConvention` |
 | Commands   | `CommandRegistrar`, `ClientCommandSource`, `CommandManager.execute`, `CommandManager.isRootTaken`, `CommandManager.GlobalSettings` |
 | HUD        | `HudComponent`, `NativeHudComponent`, `HudComponentFactory.NativeHudComponentFactory`, `HudComponentManager`, `HudComponentTweak`, `Alignment` |
 | Rendering  | `WorldRenderEnvironment`, `renderEnvironment`, `withPositionRelativeToCamera`, `drawBox`, `drawLine`, `FULL_BOX`, `drawQuad`, `FontManager`, `AbstractFontRenderer`, `HorizontalAnchor`, `VerticalAnchor`, `Color4b` |

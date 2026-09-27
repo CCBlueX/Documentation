@@ -37,7 +37,7 @@ class ClockComponent : NativeHudComponent(
 }
 ```
 
-A component is a `ToggleableValueGroup` with the HUD module as parent. It has [settings](/docs/add-on-api/settings) like a module, `enabled` is whether it is shown, and its handlers run while it is shown and the HUD module is enabled. See [Rendering](/docs/add-on-api/rendering) for what can be drawn.
+A component is a `ToggleableValueGroup` with the HUD module as parent. It has [settings](/docs/add-on-api/developers/settings) like a module, `enabled` is whether it is shown, and its handlers run while it is shown and the HUD module is enabled. See [Rendering](/docs/add-on-api/developers/rendering) for what can be drawn.
 
 #### `NativeHudComponent(name, enabled, alignment, tweaks, description)`
 Base class of a component drawn by the client. <br>
@@ -129,7 +129,7 @@ Adds or removes a factory in the **Add Component** drawer. Components it already
 
 <hr>
 
-Unlike what an add-on registers through its [own functions](/docs/add-on-api/manifest-and-lifecycle#registering), components and factories are not withdrawn when the add-on fails.
+Unlike what an add-on registers through its [own functions](/docs/add-on-api/developers/manifest-and-lifecycle#registering), components and factories are not withdrawn when the add-on fails.
 
 | Member                        | Description                                                                                          |
 |-------------------------------|------------------------------------------------------------------------------------------------------|

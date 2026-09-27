@@ -40,11 +40,11 @@ Settings are fields holding the `Value`, read with `get()` and changed with `set
 | `enumChoice("Output", Output.CHAT)`      | `enumChoice("Output", Output.CHAT)`          |
 | `multiEnumChoice("Outputs", Output.CHAT)`| `multiEnumChoice("Outputs", Output.class, EnumSet.of(Output.CHAT))` |
 
-Most other builders are called the same, see [Settings](/docs/add-on-api/settings). Enums used for choices implement `Tagged`, whose `getTag()` is the name shown in the ClickGUI.
+Most other builders are called the same, see [Settings](/docs/add-on-api/developers/settings). Enums used for choices implement `Tagged`, whose `getTag()` is the name shown in the ClickGUI.
 
 ### Events
 
-Handlers are registered in the constructor with `on`, `onTick` is a handler for every tick. `after` and `every` schedule a task instead of a `tickHandler` with `waitTicks`; call them while the module runs, for example from a handler, since they are cancelled for good once it stops. See [Events](/docs/add-on-api/events).
+Handlers are registered in the constructor with `on`, `onTick` is a handler for every tick. `after` and `every` schedule a task instead of a `tickHandler` with `waitTicks`; call them while the module runs, for example from a handler, since they are cancelled for good once it stops. See [Events](/docs/add-on-api/developers/events).
 
 ```java
 public class ModuleLowHealth extends ClientModule {
@@ -114,7 +114,7 @@ public class ModuleLowHealth extends ClientModule {
 }
 ```
 
-`literalDescription` gives a module without a [translation](/docs/add-on-api/translations) its description; without either, the client logs a missing description key.
+`literalDescription` gives a module without a [translation](/docs/add-on-api/developers/translations) its description; without either, the client logs a missing description key.
 
 ### Modes
 
@@ -167,4 +167,4 @@ private void render(WorldRenderEvent event) {
 
 ### Commands
 
-Commands use Brigadier's builders directly, see [Creating Commands](/docs/add-on-api/creating-commands#plain-brigadier).
+Commands use Brigadier's builders directly, see [Creating Commands](/docs/add-on-api/developers/creating-commands#plain-brigadier).

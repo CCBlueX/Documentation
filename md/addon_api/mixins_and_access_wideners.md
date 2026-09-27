@@ -55,7 +55,7 @@ public class MixinCommandManager {
 
 A Kotlin `object` like `CommandManager` compiles to a class with the same name and its functions as instance methods. The [Script API add-on](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI) mixes into `ModuleManager` and `Value` this way.
 
-Code reached only through a Mixin is not part of the [stable API](/docs/add-on-api/stable-api) and can change in any build.
+Code reached only through a Mixin is not part of the [stable API](/docs/add-on-api/developers/stable-api) and can change in any build.
 
 ### Priority
 

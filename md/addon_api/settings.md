@@ -1,15 +1,15 @@
 ## Settings
 
-Settings are declared on a `ValueGroup`: a module, a [mode](/docs/add-on-api/creating-modules#modes), a nested group, or a group passed to the add-on's `config(...)`. They show up in the ClickGUI and are stored with the client's configs.
+Settings are declared on a `ValueGroup`: a module, a [mode](/docs/add-on-api/developers/creating-modules#modes), a nested group, or a group passed to the add-on's `config(...)`. They show up in the ClickGUI and are stored with the client's configs.
 
-In Kotlin, `by` reads the setting like a plain property. Without `by` the property holds the `Value`, which is needed for its modifiers or to set it from code. In Java, fields hold the `Value` and are read with `get()`, see [Using Java](/docs/add-on-api/using-java).
+In Kotlin, `by` reads the setting like a plain property. Without `by` the property holds the `Value`, which is needed for its modifiers or to set it from code. In Java, fields hold the `Value` and are read with `get()`, see [Using Java](/docs/add-on-api/developers/using-java).
 
 ```kotlin
 private val range by float("Range", 4.2f, 1f..6f, "blocks") // Float
 private val rangeValue = float("Range", 4.2f, 1f..6f, "blocks") // Value<Float>
 ```
 
-The name is the key in the config file and part of the setting's [translation key](/docs/add-on-api/translations). Renaming a setting loses its stored value, unless the old name goes into `aliases` where the builder has that parameter. A module already has settings named `Enabled`, `Bind` and `Hidden`.
+The name is the key in the config file and part of the setting's [translation key](/docs/add-on-api/developers/translations). Renaming a setting loses its stored value, unless the old name goes into `aliases` where the builder has that parameter. A module already has settings named `Enabled`, `Bind` and `Hidden`.
 
 In Kotlin, a property holding a setting cannot be called `name`, `tag`, `key` or anything else `Value` or `ClientModule` already declares.
 
@@ -164,7 +164,7 @@ private val ignored by regexList("Ignored", mutableListOf(Regex("\\[Ad].*")))
 <hr>
 
 #### `color(name, default)`
-Creates a color setting with alpha. See [Color4b](/docs/add-on-api/rendering#colors). <br>
+Creates a color setting with alpha. See [Color4b](/docs/add-on-api/developers/rendering#colors). <br>
 
 | Property | Description                                | Required | Type      | Default |
 |----------|--------------------------------------------|----------|-----------|---------|
@@ -401,7 +401,7 @@ private val anchor by vec3d("Anchor", Vec3.ZERO, useLocateButton = false)
 <hr>
 
 #### `choices(name, modes)`
-Creates a choice between [modes](/docs/add-on-api/creating-modules#modes), each a `Mode` with settings and handlers of its own. Available in modules and other toggleable groups; a `Mode` declares nested modes with `modes(name, active, choices)`. <br>
+Creates a choice between [modes](/docs/add-on-api/developers/creating-modules#modes), each a `Mode` with settings and handlers of its own. Available in modules and other toggleable groups; a `Mode` declares nested modes with `modes(name, active, choices)`. <br>
 
 | Form                                   | Selected by default     |
 |----------------------------------------|-------------------------|
@@ -471,7 +471,7 @@ Every builder returns the `Value`, and these return it again, so they chain:
 | `notPersistent()`            | Neither written to nor read from config files. Still shown in the ClickGUI.            |
 | `immutable()`                | Keeps the default value.                                                               |
 | `doNotIncludeAlways()`       | Left out of configs made for sharing. `doNotIncludeWhen { condition }` does so conditionally. |
-| `literalDescription { "..." }` | A fixed description instead of a [translation](/docs/add-on-api/translations).         |
+| `literalDescription { "..." }` | A fixed description instead of a [translation](/docs/add-on-api/developers/translations).         |
 
 **Example:**
 ```kotlin

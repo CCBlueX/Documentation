@@ -9,7 +9,6 @@
         "ClickGUI": "usage/clickgui.md",
         "Configs": "usage/configs.md",
         "Proxy Manager": "usage/proxy-manager.md",
-        "Add-ons": "usage/addons.md",
         "Changing Version": "usage/change_version.md",
         "Anticheats": "usage/anticheats.md"
     },
@@ -327,23 +326,26 @@
         "HUD Customization": "theme/hud-customization.md"
     },
     "Add-on API": {
-        "Getting Started": "addon_api/getting_started.md",
-        "Project Setup": "addon_api/project_setup.md",
-        "Manifest and Lifecycle": "addon_api/manifest_and_lifecycle.md",
-        "Categories": "addon_api/categories.md",
-        "Creating Modules": "addon_api/creating_modules.md",
-        "Settings": "addon_api/settings.md",
-        "Events": "addon_api/events.md",
-        "Creating Commands": "addon_api/creating_commands.md",
-        "HUD Components": "addon_api/hud_components.md",
-        "Rendering": "addon_api/rendering.md",
-        "Browser Backends": "addon_api/browser_backends.md",
-        "Translations": "addon_api/translations.md",
-        "Mixins and Access Wideners": "addon_api/mixins_and_access_wideners.md",
-        "Using Java": "addon_api/using_java.md",
-        "Testing": "addon_api/testing.md",
-        "Publishing": "addon_api/publishing.md",
-        "Stable API": "addon_api/stable_api.md"
+        "Using Add-ons": "addon_api/using_addons.md",
+        "Developers": {
+            "Getting Started": "addon_api/getting_started.md",
+            "Project Setup": "addon_api/project_setup.md",
+            "Manifest and Lifecycle": "addon_api/manifest_and_lifecycle.md",
+            "Categories": "addon_api/categories.md",
+            "Creating Modules": "addon_api/creating_modules.md",
+            "Settings": "addon_api/settings.md",
+            "Events": "addon_api/events.md",
+            "Creating Commands": "addon_api/creating_commands.md",
+            "HUD Components": "addon_api/hud_components.md",
+            "Rendering": "addon_api/rendering.md",
+            "Browser Backends": "addon_api/browser_backends.md",
+            "Translations": "addon_api/translations.md",
+            "Mixins and Access Wideners": "addon_api/mixins_and_access_wideners.md",
+            "Using Java": "addon_api/using_java.md",
+            "Testing": "addon_api/testing.md",
+            "Publishing": "addon_api/publishing.md",
+            "Stable API": "addon_api/stable_api.md"
+        }
     },
     "Script API": {
         "Installation": "scriptapi_v3/installation.md",

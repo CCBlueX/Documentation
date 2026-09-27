@@ -2,7 +2,7 @@
 
 Add-ons are Fabric mods that compile against LiquidBounce itself. They build on the same classes as the client's own modules, commands and HUD components, can ship Mixins and access wideners, and are loaded by the client while it starts. For small features, the [Script API](/docs/script-api/installation) is the simpler option.
 
-Add-ons are written in Kotlin or Java. The examples in this section are Kotlin, [Using Java](/docs/add-on-api/using-java) covers where Java differs. Minecraft's classes carry Mojang's official names, there is no other mapping layer.
+Add-ons are written in Kotlin or Java. The examples in this section are Kotlin, [Using Java](/docs/add-on-api/developers/using-java) covers where Java differs. Minecraft's classes carry Mojang's official names, there is no other mapping layer.
 
 ### Requirements
 
@@ -31,11 +31,11 @@ Then rename the example:
 | `src/main/kotlin/com/example/addon/`               | package name                                                                                |
 | `src/main/java/com/example/addon/mixin/`           | package name                                                                                |
 
-The build setup is explained in [Project Setup](/docs/add-on-api/project-setup), the manifest in [Manifest and Lifecycle](/docs/add-on-api/manifest-and-lifecycle).
+The build setup is explained in [Project Setup](/docs/add-on-api/developers/project-setup), the manifest in [Manifest and Lifecycle](/docs/add-on-api/developers/manifest-and-lifecycle).
 
 ### Writing a module
 
-A module is a `ClientModule`. Its [settings](/docs/add-on-api/settings) and [event handlers](/docs/add-on-api/events) are properties. This one counts the player's jumps and reports every tenth:
+A module is a `ClientModule`. Its [settings](/docs/add-on-api/developers/settings) and [event handlers](/docs/add-on-api/developers/events) are properties. This one counts the player's jumps and reports every tenth:
 
 ```kotlin
 package com.example.addon.modules
@@ -91,7 +91,7 @@ class ExampleAddon : LiquidBounceAddon() {
 }
 ```
 
-`categories` registers the template's **Example** category. A module can also go into a built-in category from `ModuleCategories`, see [Categories](/docs/add-on-api/categories).
+`categories` registers the template's **Example** category. A module can also go into a built-in category from `ModuleCategories`, see [Categories](/docs/add-on-api/developers/categories).
 
 ### Adding a description
 
@@ -104,7 +104,7 @@ The ClickGUI shows a description for every module and setting. They come from `s
 }
 ```
 
-A module without an `en_us` description logs a warning when it is registered. The key format is explained in [Translations](/docs/add-on-api/translations).
+A module without an `en_us` description logs a warning when it is registered. The key format is explained in [Translations](/docs/add-on-api/developers/translations).
 
 ### Running and building
 
@@ -118,11 +118,11 @@ starts Minecraft with LiquidBounce and the add-on. Join a world, open the ClickG
 ./gradlew build
 ```
 
-writes the add-on to `build/libs/`, as `example-addon-1.0.0+26.3.jar` next to a `-sources` jar. Install the jar like any other mod, as an [additional mod in LiquidLauncher](/docs/tutorials/liquidlauncher#installing-additional-mods) or in the *mods* folder of a [manual installation](/docs/get-started/manual-installation). To offer it on the Marketplace, see [Publishing](/docs/add-on-api/publishing).
+writes the add-on to `build/libs/`, as `example-addon-1.0.0+26.3.jar` next to a `-sources` jar. Install the jar like any other mod, as an [additional mod in LiquidLauncher](/docs/tutorials/liquidlauncher#installing-additional-mods) or in the *mods* folder of a [manual installation](/docs/get-started/manual-installation). To offer it on the Marketplace, see [Publishing](/docs/add-on-api/developers/publishing).
 
 ### Examples
 
 - [LiquidBounce-Addon-Template](https://github.com/CCBlueX/LiquidBounce-Addon-Template): the starting point, with a module, a command, a category and a Mixin.
 - [LiquidBounce-Addon-Extras](https://github.com/CCBlueX/LiquidBounce-Addon-Extras): modules in Kotlin and Java side by side, each covered by a game test.
 - [LiquidBounce-Addon-ScriptAPI](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI): a larger add-on with Mixins into LiquidBounce.
-- [LiquidBounce-Addon-Wry](https://github.com/CCBlueX/LiquidBounce-Addon-Wry): a [browser backend](/docs/add-on-api/browser-backends).
+- [LiquidBounce-Addon-Wry](https://github.com/CCBlueX/LiquidBounce-Addon-Wry): a [browser backend](/docs/add-on-api/developers/browser-backends).

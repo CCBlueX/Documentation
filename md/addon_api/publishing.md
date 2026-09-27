@@ -1,6 +1,6 @@
 ## Publishing
 
-Add-ons reach players through the Marketplace, where they are installed with `.marketplace subscribe <id>` (see [Add-ons](/docs/usage/add-ons)). The template's build workflow uploads a new revision whenever a GitHub release is published.
+Add-ons reach players through the Marketplace, where they are installed with `.marketplace subscribe <id>` (see [Add-ons](/docs/add-on-api/using-add-ons)). The template's build workflow uploads a new revision whenever a GitHub release is published.
 
 ### Creating the add-on
 
@@ -25,7 +25,7 @@ Add-ons and scripts the add-on needs go under **Dependencies** on its page under
 
 ### Releasing
 
-The build versions the add-on `<mod_version>+<minecraft>` and names the jar after it, for example `example-addon-1.0.0+26.3.jar` (see [Project Setup](/docs/add-on-api/project-setup#add-on-version)). Tag the release with that version, `v1.0.0+26.3`, and publish it. The workflow builds the add-on, attaches the jar to the release and uploads it to the Marketplace. The tag becomes the revision's version and the release notes its changelog.
+The build versions the add-on `<mod_version>+<minecraft>` and names the jar after it, for example `example-addon-1.0.0+26.3.jar` (see [Project Setup](/docs/add-on-api/developers/project-setup#add-on-version)). Tag the release with that version, `v1.0.0+26.3`, and publish it. The workflow builds the add-on, attaches the jar to the release and uploads it to the Marketplace. The tag becomes the revision's version and the release notes its changelog.
 
 - A tag that does not match the jar fails the workflow before anything is attached or uploaded.
 - Pre-releases get the jar attached but are not uploaded.

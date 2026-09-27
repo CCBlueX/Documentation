@@ -1,6 +1,6 @@
 ## Rendering
 
-Modules draw in two events: `OverlayRenderEvent` for the screen, `WorldRenderEvent` for the world. [HUD components](/docs/add-on-api/hud-components) use the same overlay drawing.
+Modules draw in two events: `OverlayRenderEvent` for the screen, `WorldRenderEvent` for the world. [HUD components](/docs/add-on-api/developers/hud-components) use the same overlay drawing.
 
 ### On the screen
 
