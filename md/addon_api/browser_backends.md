@@ -24,8 +24,8 @@ class ExampleAddon : LiquidBounceAddon() {
 
 | Property    | Description                                                                                 | Required | Type                   | Default |
 |-------------|---------------------------------------------------------------------------------------------|----------|------------------------|---------|
-| id          | Unique id, stored as the player's choice and accepted by `LB_BROWSER_BACKEND`.              | Yes      | `String`               |         |
-| name        | Shown on the selection screen.                                                              | Yes      | `String`               |         |
+| id          | Unique id, accepted by `LB_BROWSER_BACKEND`.                                                | Yes      | `String`               |         |
+| name        | Shown on the selection screen and stored as the value of the **Backend** setting.           | Yes      | `String`               |         |
 | description | Shown below the name.                                                                       | Yes      | `String`               |         |
 | selectable  | Whether the selection screen offers it. When false, only `LB_BROWSER_BACKEND` picks it.     | No       | `Boolean`              | `true`  |
 | create      | Creates the backend. Only called for the backend that is used.                              | Yes      | `() -> BrowserBackend` |         |
@@ -38,7 +38,7 @@ The client picks the backend while it starts, after every add-on's `onInitialize
 
 - `LB_BROWSER_BACKEND=<id>` as environment variable, or `-Dnet.ccbluex.liquidbounce.browser.backend=<id>`, uses that backend. `none` starts without one.
 - With only one selectable backend, that one is used.
-- Otherwise the backend chosen before is used. Without one, or while **SHIFT** is held during startup, a screen asks the player, and the choice is stored in the config.
+- Otherwise the **Backend** setting decides. It offers every selectable backend and defaults to **Ask**, which lets a screen ask the player at startup and stores the picked backend in the setting. While **SHIFT** is held during startup, that screen asks again.
 
 ### Implementing a backend
 
