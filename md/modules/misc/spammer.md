@@ -17,7 +17,7 @@ Before sending, each message is modified to help evade simple chat filters. When
 | MPS | Integer Range | 1..1 | 1..500 messages | Number of messages to send per cycle. A random count within this range is used each cycle. |
 | MessageSource | Mode Selector | Setting | — | Selects where messages are pulled from: a list entered in the settings (**Setting**) or a plain-text file on disk (**File**). |
 | MessageSource → [Mode: Setting] → Message | Editable List | — | — | The list of messages to send. Add, remove, or reorder entries as needed. |
-| MessageSource → [Mode: File] → Source | File | — | — | Path to a plain-text file where each line is treated as a separate message. |
+| MessageSource → [Mode: File] → Source | File | — | — | Path to a plain-text file where each line is treated as a separate message. Edits to the file are picked up automatically, so you do not have to select it again. |
 | Pattern | Choice | Random | — | Order in which messages are selected. **Random** picks one at random each time; **Linear** cycles through them in sequence. |
 | MessageConverter | Choice | Leet | — | Additional text transformation applied before sending. **None** sends the message as-is; **Leet** substitutes certain letters with numbers (e→3, a→4, etc.); **Random Case** randomly capitalises each character; **Random Space** randomly inserts extra spaces between characters. |
 | CustomFormatter | Toggle | false | — | When enabled, messages support dynamic placeholders (`%f`, `%i`, `%s`, `@a`) for varied content each send. When disabled, a random short prefix is automatically prepended and random case is applied to the raw text. |
