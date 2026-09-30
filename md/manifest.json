@@ -10,7 +10,8 @@
         "Configs": "usage/configs.md",
         "Proxy Manager": "usage/proxy-manager.md",
         "Changing Version": "usage/change_version.md",
-        "Anticheats": "usage/anticheats.md"
+        "Anticheats": "usage/anticheats.md",
+        "Anti-Cheat Test Server": "usage/test-server.md"
     },
     "Tutorials": {
         "LiquidLauncher": "tutorials/liquidlauncher.md",
