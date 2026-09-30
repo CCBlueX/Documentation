@@ -11,3 +11,4 @@ We appreciate anyone who is willing to help us expand the documentation. If you 
 - All images must be placed inside the `images` folder. Use `/images` to reference it.
 - Do not use `#` (h1).
 - If you add a new page, remember to also add it to [mainfest.json](md/manifest.json).
+- Documentation URLs use the section and page names from `md/manifest.json`, lowercased and hyphenated, rather than the Markdown filenames. For example, `"Anti-Cheat Test Server": "servers/test-server.md"` in the `Servers` section has the URL `/docs/servers/anti-cheat-test-server`.

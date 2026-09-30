@@ -9,9 +9,11 @@
         "ClickGUI": "usage/clickgui.md",
         "Configs": "usage/configs.md",
         "Proxy Manager": "usage/proxy-manager.md",
-        "Changing Version": "usage/change_version.md",
-        "Anticheats": "usage/anticheats.md",
-        "Anti-Cheat Test Server": "usage/test-server.md"
+        "Changing Version": "usage/change_version.md"
+    },
+    "Servers": {
+        "Server List": "servers/server-list.md",
+        "Anti-Cheat Test Server": "servers/test-server.md"
     },
     "Tutorials": {
         "LiquidLauncher": "tutorials/liquidlauncher.md",

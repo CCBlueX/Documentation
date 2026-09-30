@@ -1,8 +1,8 @@
-# Anticheats
+# Server List
 
 This page lists which anticheat is known to be used on popular servers. Knowing the anticheat of a server helps you choose a fitting config.
 
-To try different anti-cheats yourself, see the [CCBlueX Anti-Cheat Test Server](/docs/usage/test-server).
+To try different anti-cheats yourself, see the [CCBlueX Anti-Cheat Test Server](/docs/servers/anti-cheat-test-server).
 
 ### Polar
 
