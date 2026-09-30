@@ -10,4 +10,4 @@ We appreciate anyone who is willing to help us expand the documentation. If you 
 - Syntax highlighting is being made possible by [PrismJS](https://prismjs.com/).
 - All images must be placed inside the `images` folder. Use `/images` to reference it.
 - Do not use `#` (h1).
-- If you add a new page, remember to also add it to [mainfest.json](md/manifest.json).
+- If you add a new page, remember to also add it to [manifest.json](md/manifest.json).
