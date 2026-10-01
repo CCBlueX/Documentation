@@ -19,19 +19,25 @@ List available marketplace items with pagination.
 .marketplace list [page]
 ```
 
+**Parameters:**
+- `page` (optional) — The page to show, the first one by default. The arrows at the end of the list move between pages.
+
+Every item is listed by its `author/name`, which you can click to fill in a subscribe or unsubscribe command for it.
+
 ---
 
 #### `.marketplace search`
 
-Search for items on the marketplace.
+Search for items on the marketplace. The results are listed the same way as `.marketplace list`.
 
 **Usage:**
 ```
-.marketplace search <query>
+.marketplace search <query> [page]
 ```
 
 **Parameters:**
 - `query` (required) — The search term.
+- `page` (optional) — The page of results to show, the first one by default.
 
 **Example:**
 ```
@@ -67,7 +73,7 @@ Unsubscribe from a marketplace item.
 ```
 
 **Parameters:**
-- `item` (required) — The subscribed item, given as its ID, its name or `author/name`. Tab completion suggests the items you are subscribed to. If the name you give belongs to several of your subscriptions, nothing is unsubscribed and the client lists what tells them apart.
+- `item` (required) — The subscribed item, given as its ID, its name or `author/name`. Tab completion suggests the items you are subscribed to. If the name you give belongs to several of your subscriptions, nothing is unsubscribed and the client lists their `author/name` for you to pick from.
 
 ---
 
