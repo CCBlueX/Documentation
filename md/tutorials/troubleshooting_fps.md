@@ -184,7 +184,7 @@ If not, follow these steps:
 - **Windows and Linux only:** This feature is only supported on Windows and Linux systems. 
 - **AMD GPU users:** There is a known [VRAM leak bug](https://github.com/chromiumembedded/cef/issues/3968) that may cause VRAM to fill up after extended use. Monitor your VRAM usage.
 - **Intel GPU users:** This feature is not currently supported due to [driver issues](https://github.com/IGCIT/Intel-GPU-Community-Issue-Tracker-IGCIT/issues/1143)
-- **X11 users:** This feature is only supported on Linux when using Wayland. X11 is NOT supported.
+- **Linux users:** Both Wayland and X11 are supported. Accelerated paint needs an EGL context, so the client makes the game use EGL on Linux unless the browser is disabled. A `SDL_VIDEO_FORCE_EGL` environment variable you set yourself takes priority over this.
 
 ## 7. Optimize HUD and Theme Settings
 
