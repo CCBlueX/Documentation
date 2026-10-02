@@ -21,7 +21,7 @@ If an add-on needs something that is not marked, ask for it on [GitHub](https://
 | Commands   | `CommandRegistrar`, `ClientCommandSource`, `CommandManager.execute`, `CommandManager.isRootTaken`, `CommandManager.GlobalSettings` |
 | HUD        | `HudComponent`, `NativeHudComponent`, `HudComponentFactory.NativeHudComponentFactory`, `HudComponentManager`, `HudComponentTweak`, `Alignment` |
 | Rendering  | `WorldRenderEnvironment`, `renderEnvironment`, `withPositionRelativeToCamera`, `drawBox`, `drawLine`, `FULL_BOX`, `drawQuad`, `FontManager`, `AbstractFontRenderer`, `HorizontalAnchor`, `VerticalAnchor`, `Color4b` |
-| Browser    | `BrowserBackend`, `BrowserBackendProvider`, `BrowserBackendManager.registerBackend`, `Browser`, `BrowserTexture`, `BrowserViewport`, `BrowserState`, `BrowserSettings`, `BrowserAccelerationFlags`, `InputAcceptor`, `InputHandler`, `isBrowserSkipped`, `isBrowserAccelerationDisabled` |
+| Browser    | `BrowserBackend`, `BrowserBackendProvider`, `BrowserBackendManager.registerBackend`, `Browser`, `BrowserTexture`, `BrowserViewport`, `BrowserState`, `BrowserSettings`, `InputAcceptor`, `InputHandler`, `isBrowserSkipped` |
 | Chat       | `chat`, `notification`, `regular`, `variable`, `highlight`, `warning`, `markAsError`, `MessageMetadata`, `translation` |
 | Combat     | `attackEntity`, `findEnemy`, `findEnemies`, `shouldBeAttacked`, `shouldBeShown`, `CombatManager`, `EntityTargetingInfo`, `EntityTargetClassification`, `FriendManager.add`, `remove` and `clear` |
 | Rotations  | `RotationManager.setRotationTarget`, `currentRotation`, `serverRotation`, `RotationTarget`, `RotationsValueGroup`, `Rotation`, `MovementCorrection`, `Priority` |

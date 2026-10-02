@@ -48,7 +48,6 @@ A backend implements `BrowserBackend`, its pages implement `Browser`. The smalle
 class SystemBrowserBackend : BrowserBackend {
 
     override val isInitialized = true
-    override var accelerationFlags = BrowserAccelerationFlags.UNSUPPORTED
     override val browsers = mutableListOf<SystemBrowser>()
     override val supportsIncognito = false
 
@@ -125,7 +124,6 @@ class SystemBrowser(
 | `isInitialized`                                 | Whether `start()` has finished.                                                                     |
 | `browsers`                                      | The open pages.                                                                                     |
 | `supportsIncognito`                             | Whether a page can get cookies and storage of its own, kept in memory only.                         |
-| `accelerationFlags`                             | Whether pages can stay on the GPU, `BrowserAccelerationFlags.UNSUPPORTED` if not. Offers the player the **AcceleratedPaint** setting when supported. |
 
 `createBrowser` gets the page's `url`, its `position` on screen as a `BrowserViewport` (`BrowserViewport.fullscreen()` for the whole window), `settings` with the frame rate limit, a `priority`, whether the page should be `incognito`, and an `inputAcceptor` that tells when the page may take mouse and keyboard input.
 

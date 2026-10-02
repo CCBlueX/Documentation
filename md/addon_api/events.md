@@ -169,6 +169,7 @@ These events are part of the [stable API](/docs/add-on-api/developers/stable-api
 | `ScreenEvent`                    | When a screen is opened, with `null` when screens are closed. Cancel to keep the current one.           |
 | `KeyboardKeyEvent`               | When a key is pressed, repeated or released.                                                            |
 | `MouseButtonEvent`               | When a mouse button is pressed or released.                                                             |
+| `WindowTitleEvent`               | While the game window's title is built. Append to `title` to add to it.                                 |
 | `OverlayRenderEvent`             | While the HUD is drawn, see [Rendering](/docs/add-on-api/developers/rendering).                                    |
 | `WorldRenderEvent`               | While the world is drawn, see [Rendering](/docs/add-on-api/developers/rendering).                                  |
 | `WorldChangeEvent`               | When the client's world changes, with `null` when leaving it.                                           |
