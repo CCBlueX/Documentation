@@ -33,6 +33,8 @@ Once you have added a proxy:
 2. The proxy will be used for all subsequent server connections.
 3. Join a Minecraft server as normal — your connection will be routed through the selected proxy.
 
+Local servers are an exception: connections to loopback and local network addresses are made directly, without the proxy. This means you can keep a proxy selected while joining a LAN world or a server running on your own machine.
+
 To stop using a proxy, click the **Disconnect** button at the bottom left of the Proxy Manager.
 
 ![Proxy Connected](/images/get-started/proxy-manager/proxy-manager-3.png)
