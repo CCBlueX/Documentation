@@ -21,7 +21,8 @@ To add a proxy:
    - **Port** – The proxy port (for example `1080`).
    - **Username** and **Password** – If your proxy requires authentication.
 3. Select the proxy type: **SOCKS5** or **HTTP**.
-4. Click **Save** to add the proxy.
+4. Optionally enable **Proxy Resource Packs** to download server resource packs through the proxy, and **Proxy DNS** to let the proxy resolve server addresses instead of resolving them on your own connection.
+5. Click **Save** to add the proxy.
 
 ![Adding a Proxy](/images/get-started/proxy-manager/proxy-manager-2.png)
 
