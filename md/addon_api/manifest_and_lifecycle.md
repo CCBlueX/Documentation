@@ -201,4 +201,4 @@ class ListenerAddon : LiquidBounceAddon() {
 
 ### Disabling add-ons
 
-The JVM argument `-Dliquidbounce.disableAddons=<id>,<id>` skips the listed add-ons, `-Dliquidbounce.disableAddons=all` skips every one. A skipped add-on is constructed but none of its hooks run, and its translations are not loaded. `.addon info` shows it as `DISABLED`.
+The JVM argument `-Dliquidbounce.disableAddons=<id>,<id>` skips the listed add-ons, `-Dliquidbounce.disableAddons=all` skips every add-on except the ones LiquidBounce comes with, which only a listed id skips. A skipped add-on is constructed but none of its hooks run, and its translations are not loaded. `.addon info` shows it as `DISABLED`.

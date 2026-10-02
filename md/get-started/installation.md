@@ -105,7 +105,7 @@ Follow the installation wizard that appears:
 ### 5. First Launch
 
 1. LiquidBounce will start and download additional dependencies:
-   - MCEF (Minecraft Chromium Embedded Framework) for the GUI
+   - Chromium for the GUI
    - Deep Learning resources for AI-assisted modules
    
    ![Initial Setup](/images/get-started/installation/17-launch-liquidbounce-wait-for-installation-of-dependencies.png)

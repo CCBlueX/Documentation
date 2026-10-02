@@ -1,6 +1,6 @@
 ## Browser Backends
 
-LiquidBounce shows its interface (ClickGUI, HUD, menus) as web pages, rendered by a browser backend. The client comes with Chromium (`cef`) and a backend that opens pages in the system's browser (`external`). An add-on can offer another one, as [LiquidBounce-Addon-Wry](https://github.com/CCBlueX/LiquidBounce-Addon-Wry) does with the web view built into the operating system.
+LiquidBounce shows its interface (ClickGUI, HUD, menus) as web pages, rendered by a browser backend. The client comes with a backend that opens pages in the system's browser (`external`), and with an add-on of its own that offers Chromium (`cef`). An add-on can offer another one, as [LiquidBounce-Addon-Wry](https://github.com/CCBlueX/LiquidBounce-Addon-Wry) does with the web view built into the operating system.
 
 ### Registering a backend
 
