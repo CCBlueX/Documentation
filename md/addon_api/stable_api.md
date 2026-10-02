@@ -21,14 +21,14 @@ If an add-on needs something that is not marked, ask for it on [GitHub](https://
 | Commands   | `CommandRegistrar`, `ClientCommandSource`, `CommandManager.execute`, `CommandManager.isRootTaken`, `CommandManager.GlobalSettings` |
 | HUD        | `HudComponent`, `NativeHudComponent`, `HudComponentFactory.NativeHudComponentFactory`, `HudComponentManager`, `HudComponentTweak`, `Alignment` |
 | Rendering  | `WorldRenderEnvironment`, `renderEnvironment`, `withPositionRelativeToCamera`, `drawBox`, `drawLine`, `FULL_BOX`, `drawQuad`, `FontManager`, `AbstractFontRenderer`, `HorizontalAnchor`, `VerticalAnchor`, `Color4b` |
-| Browser    | `BrowserBackend`, `BrowserBackendProvider`, `BrowserBackendManager.registerBackend`, `Browser`, `BrowserTexture`, `BrowserViewport`, `BrowserState`, `BrowserSettings`, `BrowserAccelerationFlags`, `InputAcceptor`, `InputHandler` |
+| Browser    | `BrowserBackend`, `BrowserBackendProvider`, `BrowserBackendManager.registerBackend`, `Browser`, `BrowserTexture`, `BrowserViewport`, `BrowserState`, `BrowserSettings`, `BrowserAccelerationFlags`, `InputAcceptor`, `InputHandler`, `isBrowserSkipped`, `isBrowserAccelerationDisabled` |
 | Chat       | `chat`, `notification`, `regular`, `variable`, `highlight`, `warning`, `markAsError`, `MessageMetadata`, `translation` |
 | Combat     | `attackEntity`, `findEnemy`, `findEnemies`, `shouldBeAttacked`, `shouldBeShown`, `CombatManager`, `EntityTargetingInfo`, `EntityTargetClassification`, `FriendManager.add`, `remove` and `clear` |
 | Rotations  | `RotationManager.setRotationTarget`, `currentRotation`, `serverRotation`, `RotationTarget`, `RotationsValueGroup`, `Rotation`, `MovementCorrection`, `Priority` |
 | World      | `BlockPos.state`, `stateOrEmpty`, `getBlock`, `outlineBox`, `BlockState.isInteractable`, `doPlacement`, `doBreak`, `SwingMode` |
 | Inventory  | `Slots`, `ItemSlot`, `HotbarItemSlot`, `SilentHotbar`, `useHotbarSlotOrOffhand`, `InventoryManager.isInventoryOpen`, `isHandledScreenOpen` |
 | Movement   | `DirectionalInput`, `LocalPlayer.moving`, `Entity.horizontalSpeed`, `Vec3.withStrafe`, `LocalPlayer.stopXZVelocity`, `Timer.requestTimerSpeed` |
-| Misc       | `sendPacketSilently`, `inGame`, `Chronometer`, `InputBind`, `MarketplaceItemType`, `MarketplaceItemHandler`, `MarketplaceManager` handlers, `SubscribedItem` |
+| Misc       | `sendPacketSilently`, `inGame`, `Chronometer`, `InputBind`, `MarketplaceItemType`, `MarketplaceItemHandler`, `MarketplaceManager` handlers, `SubscribedItem`, `QuickFix`, `QuickFixes`, `Instructions`, `ClientError` |
 
 The API file is the complete list.
 

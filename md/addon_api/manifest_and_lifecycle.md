@@ -136,9 +136,33 @@ Register through the add-on, not through `ModuleManager` or `CommandManager` dir
 | `registerListeners(vararg listeners)`        | Nothing new; tracks [event listeners](/docs/add-on-api/developers/events) so they are unregistered on failure. |
 | `registerBrowserBackend(provider)`           | A [browser backend](/docs/add-on-api/developers/browser-backends).                                       |
 | `registerMarketplaceHandler(type, handler)`  | Takes over subscribed Marketplace items of one type. Runs once the subscriptions are loaded, and after every install, update or removal. |
+| `registerQuickFix(quickFix)`                 | A `QuickFix`, offered on the fatal error screen for the errors it matches.                     |
 | `config(name, tree)`                         | A config file of its own for the given value groups, `<name>.json` (lower case) in the LiquidBounce folder. `name` defaults to the add-on id. |
 
 [HUD components](/docs/add-on-api/developers/hud-components) are registered through `HudComponentManager` and are not withdrawn.
+
+A `QuickFix` takes a `description`, a `testError` that decides whether it applies to a thrown error, and the two `Instructions` `whatYouNeed` and `whatToDo`. `Instructions` builds its steps from the error and shows them numbered when `showStepIndex` is true.
+
+```kotlin
+class ExampleAddon : LiquidBounceAddon() {
+
+    override fun onInitialize() {
+        registerQuickFix(
+            QuickFix(
+                description = "The example add-on could not reach its server",
+                testError = { it is ExampleConnectionException },
+                whatToDo = Instructions(true) { _ ->
+                    arrayOf(
+                        "Check your internet connection",
+                        "Try again later"
+                    )
+                }
+            )
+        )
+    }
+
+}
+```
 
 ### Properties
 
