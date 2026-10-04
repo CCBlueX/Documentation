@@ -2,6 +2,8 @@
 
 Shows an in-game overlay with various useful tools.
 
+The overlay follows the vanilla HUD toggle: while the vanilla HUD is hidden, the overlay stays hidden as well, including when a screen such as the inventory is open.
+
 **Category:** Render  
 **Enabled by default:** Yes
 
