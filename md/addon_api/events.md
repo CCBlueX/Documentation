@@ -105,6 +105,8 @@ Handling the event itself is over once the sequence first waits, so cancelling o
 
 `waitTicks`, `waitSeconds` and `tickUntil` resume on the render thread, `waitMatches` on the thread that raised the matching event. When the listener stops running, for example because the module was disabled, its sequences are cancelled at their next wait.
 
+If the condition passed to `tickUntil` throws, the sequence resumes with that exception instead of staying suspended, so it can be caught around the wait and `finally` blocks run as usual.
+
 ### Without Kotlin
 
 `handler`, `tickHandler` and `sequenceHandler` are Kotlin extensions. Every listener also has plain methods, which work from Java and Kotlin alike and return an `AutoCloseable` that unregisters again:
