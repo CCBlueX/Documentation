@@ -4,6 +4,8 @@ AutoArmor keeps you geared up without any manual sorting. As soon as it finds be
 
 By default it can equip pieces straight from your hotbar as well as from your main inventory, and it will make room in an armor slot (or throw out the old piece if your inventory is full) when needed. It won't touch an equipped Elytra, so your gliding setup stays intact.
 
+The **Mode** setting decides how two pieces are ranked against each other. *Smart* uses the modern, toughness-aware damage formula and weighs every damage-reduction enchantment (Protection, Projectile, Fire and Blast Protection) into one value. *RawDefense* instead ranks by the real damage reduction under the 1.8 armor model, where each armor point is a flat 4% and toughness does not exist — only Protection (and optionally Projectile Protection) counts, so niche enchantments can never make the module prefer iron with high Fire Protection over plain diamond. That makes it the better pick for SkyWars and BedWars.
+
 The optional **SaveArmor** feature watches the durability of the armor you're wearing and swaps in fresh pieces before your current ones break, opening your inventory on its own if that's what it takes to get the replacement on in time.
 
 **Category:** Combat
@@ -14,6 +16,8 @@ The optional **SaveArmor** feature watches the durability of the armor you're we
 | Setting | Type | Default | Range | Description |
 | --- | --- | --- | --- | --- |
 | Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| Mode | Choice | Smart | Smart, RawDefense | How armor pieces are ranked. *Smart* weighs all protection enchantments into the modern damage formula. *RawDefense* ranks by the real damage reduction under the 1.8 armor model and ignores enchantments that don't add actual defense. |
+| Mode → RawDefense → ConsiderProjectileProtection | Toggle | true | — | Let Projectile Protection influence the ranking as a deciding argument, which helps on archer-heavy servers. When off, it only matters if everything else is equal. |
 | Hotbar | Toggleable Group | On | — | Allow equipping armor by clicking pieces in your hotbar, which is faster than moving items inside the inventory. When off, armor is equipped using inventory moves only. |
 | Hotbar → CanSwapArmor | Toggle | false | — | Use the direct armor-swap (Minecraft 1.19.4+) to switch a worn piece for a hotbar piece in one click. Leave off on servers that don't support it. |
 | SaveArmor | Toggleable Group | Off | — | Watch the durability of your equipped armor and replace worn-out pieces before they break. |
