@@ -52,15 +52,15 @@ Rename the item you are currently holding.
 Add, remove, or manage enchantments on the item you are holding.
 
 **Subcommands:**
-- `.enchant add <enchantment> <level>` — Add an enchantment. Use `max` for the maximum level or specify a number.
+- `.enchant add <enchantment> [level]` — Add an enchantment.
 - `.enchant remove <enchantment>` — Remove a specific enchantment.
 - `.enchant clear` — Remove all enchantments.
-- `.enchant all <level>` — Add all enchantments at the specified level.
-- `.enchant all_possible <level>` — Add all compatible enchantments at the specified level.
+- `.enchant all [level]` — Add all enchantments.
+- `.enchant all_possible [level]` — Add all compatible enchantments.
 
 **Parameters:**
 - `enchantment` — The enchantment name (e.g. `sharpness`, `protection`).
-- `level` — The enchantment level (number or `max`).
+- `level` (optional) — The enchantment level as a number, or `max`. Both `max` and an omitted level apply each enchantment's own maximum level. Levels above 255 are capped at 255.
 
 **Example:**
 ```
