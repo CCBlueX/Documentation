@@ -487,4 +487,6 @@ private val secret by text("Secret", "")
     .doNotIncludeAlways()
 ```
 
+Several `onChange` listeners on the same setting are chained in the order they were registered: each one receives the value returned by the previous one, and the value returned by the last one is applied.
+
 `get()`, `set(value)` and `restore()` read, change and reset a `Value` directly. `asStateFlow()` exposes it as a Kotlin `StateFlow`.
