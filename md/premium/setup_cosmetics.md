@@ -4,12 +4,14 @@ The following tutorial will guide you through the process of setting up your pre
 
 ### Instructions for LiquidBounce Nextgen (recommended)
 
-1. Link your premium purchase to a [LiquidBounce account](https://user.liquidbounce.net/). See [here](/docs/Premium/Launcher%20Setup) for more information. You can also customize your cosmetics in the user panel.
+1. Link your premium purchase to a [LiquidBounce account](https://liquidbounce.net/premium). See [here](/docs/premium/launcher-setup) for more information. You can also customize your cosmetics in the user panel.
 2. Launch LiquidBounce.
 3. Join a server or a singleplayer world.
 4. Send `.client account login` into the chat.
-5. A browser window should open. Login to your LiquidBounce account.
+5. A browser window should open. Login to your LiquidBounce account. Finish the login within five minutes, otherwise it times out and you have to send the command again. Sending the command again while a login is still pending simply opens the same page once more instead of starting a second login.
 6. If everything went accordingly, you should now be logged in and your cosmetics should be enabled. Make sure it says `Premium Features: Yes` in the chat message.
+
+> **Note:** LiquidBounce and LiquidLauncher share the same LiquidBounce account login. If you already signed in with your LiquidBounce account in the launcher, the client picks that login up and you can skip the steps above; likewise, signing in with `.client account login` also signs you in in the launcher.
 
 ![premium_login_command](/images/user_login_command.png)
 

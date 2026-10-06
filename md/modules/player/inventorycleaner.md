@@ -1,0 +1,42 @@
+## InventoryCleaner
+
+InventoryCleaner automatically organises your inventory while you play. It moves items into the hotbar slots you configure, merges partial stacks together to free up space, and throws out anything it considers surplus — all without you having to open your inventory manually. This makes it especially useful in fast-paced scenarios such as PvP or [Scaffold](/docs/modules/world/scaffold) bridging, where a tidy hotbar directly affects your reaction time.
+
+You control exactly what goes where by assigning an item category to each of the nine hotbar slots and the off-hand. Any item type not assigned to a slot — and not needed to satisfy a quantity limit — will be dropped. If [Offhand](/docs/modules/player/offhand) is active at the same time, InventoryCleaner leaves the off-hand slot alone so the two modules do not conflict. Armor slots are also left untouched; use [AutoArmor](/docs/modules/combat/autoarmor) for those.
+
+Quantity caps let you decide how much of a given consumable type to keep. Once the cap is reached, excess items are discarded. Setting a cap to its maximum value effectively means "keep everything of that type", while setting it to 0 tells the module to throw all of them away. In addition to the caps, the **ItemsBlacklist** setting lets you list items that are never kept — the module ignores them when filling slots and throws them out of your inventory.
+
+**Category:** Player
+**Enabled by default:** No
+
+### Settings
+
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| MaximumBlocks | Integer | 512 | 0–2500 | Maximum number of block items to keep. Surplus blocks are dropped. |
+| MaximumArrows | Integer | 128 | 0–2500 | Maximum number of arrows to keep across all arrow types. |
+| MaximumThrowables | Integer | 64 | 0–600 | Maximum number of throwable items (snowballs, eggs, wind charges) to keep. |
+| MaximumFoodPoints | Integer | 200 | 0–2000 | Maximum total food nutrition points worth of food items to keep. |
+| MaximumWaterBuckets | Integer | 2 | 0–16 | Maximum number of water buckets to keep. |
+| MaximumLavaBuckets | Integer | 2 | 0–16 | Maximum number of lava buckets to keep. |
+| MaximumMilkBuckets | Integer | 2 | 0–16 | Maximum number of milk buckets to keep. |
+| ItemsBlacklist | Registry List | — | — | Items that are never kept. Blacklisted items are thrown out of the inventory. |
+| Greedy | Toggle | true | — | When enabled, the module replaces items already in a hotbar slot with a better version of the same category if one is available in your inventory. |
+| OffHandItem | Choice | Shield | — | Item category to place in the off-hand slot. |
+| SlotItem-1 | Choice | Weapon | — | Item category to place in hotbar slot 1. |
+| SlotItem-2 | Choice | Bow | — | Item category to place in hotbar slot 2. |
+| SlotItem-3 | Choice | Pickaxe | — | Item category to place in hotbar slot 3. |
+| SlotItem-4 | Choice | Axe | — | Item category to place in hotbar slot 4. |
+| SlotItem-5 | Choice | None | — | Item category to place in hotbar slot 5. |
+| SlotItem-6 | Choice | Potion | — | Item category to place in hotbar slot 6. |
+| SlotItem-7 | Choice | Food | — | Item category to place in hotbar slot 7. |
+| SlotItem-8 | Choice | Block | — | Item category to place in hotbar slot 8. |
+| SlotItem-9 | Choice | Block | — | Item category to place in hotbar slot 9. |
+
+Available item categories for slot and off-hand settings: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore` (leave slot untouched), `None` (no preference, slot may be used for overflow).
+
+Axes are categorised by their Sharpness enchantment: an axe with Sharpness V or higher counts as a weapon and is kept, an axe with Sharpness 100 or higher is always kept, and any other axe is treated as a mining tool.
+
+---
+*Last updated: 2026-07-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/invcleaner/ModuleInventoryCleaner.kt)*

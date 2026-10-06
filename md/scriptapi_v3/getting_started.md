@@ -6,7 +6,7 @@ LiquidBounce's script API is based on [GraalJS](https://github.com/oracle/graalj
 
 To begin, create a new file with a `.mjs` extension (for example, `my_script.mjs`) and open it in your preferred code editor (such as [Visual Studio Code](https://code.visualstudio.com/)). This file will encompass  the entire code covered in this introduction. The script we are going to write will introduce a new module that prints a string to the chat upon activation and a client command that adds two numbers.
 
-Documentation of classes, methods and fields of the Minecraft client can be found [here](https://maven.fabricmc.net/docs/yarn-1.20.4+build.3/index.html).
+Documentation of classes, methods and fields of the Minecraft client can be found [here](https://mappings.dev/1.21.11).
 
 ### Registering the script
 
@@ -56,6 +56,9 @@ A plethora of additional events are supported by the API and serve different pur
 - `playerTick`: Called once every game tick (~20 times per second).
 
 The full list of supported events can be found [here](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
+
+All event handlers can be `async` function (including `enable` or `disable`).
+Unfortunately, we can't cancel a `Promise` in JavaScript (unlike Kotlin's `Job` or Java's `Future`). So you need to manually check if your module is still running after `await` operations.
 
 ### Creating a command
 
@@ -130,5 +133,10 @@ script.registerCommand({
 
 To run the script, place it inside the *scripts* directory located in the *LiquidBounce* directory which in turn can be found in the *.minecraft* directory of your installation. When using LiquidLauncher, simply press the directory icon with the arrow in the top right corner next to the *Data location* field in the launcher's settings window to open the data diretory in your file manager. Once you ran the game, open up a single player world and open the ClickGUI. You should find *MyModule* in the *Misc* category and sending *.addition 1 2* into the chat should execute your command and yield *3* as a result.
 
+## Additional documentation
+
+There is [Dokka documentation](https://ccbluex.github.io/LiquidBounce/) for the client. You need to invoke them in Java style. (Sadly it's not supported to invoke `suspend` functions in JS)
+
 ## Examples
+
 A repository with additional examples can be found on our [GitHub page](https://github.com/CCBlueX/LiquidScript).

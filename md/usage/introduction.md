@@ -1,0 +1,39 @@
+# Introduction
+
+After installing LiquidBounce and launching the game, you’ll be greeted by the **LiquidBounce Title Screen**.
+
+## Where to go next
+
+- **Using the Account Manager**  
+  Manage Microsoft, TheAltening, Cracked and Session accounts, restore your original account, and quickly switch between them.  
+  → See [Using the Account Manager](/docs/usage/account-manager)
+
+- **Configuring Modules with ClickGUI**  
+  Enable and configure combat, movement, render and utility modules before or while playing.  
+  → See [Using the ClickGUI](/docs/usage/clickgui)
+
+- **Customizing Your HUD and Theme**  
+  Change the appearance of your HUD, main menu and ClickGUI using themes and HUD components.  
+  → See [Theme Overview](/docs/theme-system/overview) and [HUD Customization](/docs/theme-system/hud-customization)
+
+- **Using a Proxy (Proxy Manager)**  
+  Connect via SOCKS5/HTTP proxies (for example through [liquidproxy.net](https://liquidproxy.net)) to change your IP before joining servers.  
+  → See [Using the Proxy Manager](/docs/usage/proxy-manager)
+
+## Title
+
+![LiquidBounce Title Screen](/images/get-started/title/1-title.png)
+
+- The **left side** of the title screen contains buttons for **Singleplayer**, **Multiplayer**, **LiquidBounce** (Proxy Manager & ClickGUI) and **Options**.
+- The **bottom left** shows **Exit**, a **Basic Mode** button and a **Toggle Shader** button that enables or disables the animated background.
+- The **bottom right** contains icons linking to the official **LiquidBounce website**, **Discord**, **GitHub**, **Twitter**, **YouTube**, and more.
+- The **top right** shows your **current account**:
+  - Clicking the **pen icon** opens the Account Manager.
+  - Clicking the **arrow icon** creates a **random cracked username**.
+  - Clicking anywhere on the **whole account box** opens the **Account Selector**.
+
+### Basic Mode
+
+**Basic Mode** replaces the LiquidBounce menus with the vanilla Minecraft ones. Instead of the full title screen you only get a small column of buttons on the left edge, giving you access to **Click GUI**, **Alt Manager**, **Proxy Manager** and **Full Mode**, which switches back to the LiquidBounce menus.
+
+From here, follow the links above to dive deeper into each feature.
