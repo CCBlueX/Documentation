@@ -24,7 +24,7 @@ Besides the normal Microsoft login there is a device login, which gives you a co
 
 - *JVM Distribution*: *Automatic* picks a Java for the Minecraft version, *Manual* lets you choose Temurin, GraalVM or Zulu and *Custom* uses a Java you installed yourself
 - *Data Location*: where the launcher keeps its files
-- *Memory*: how much RAM the game may use, see [Fixing FPS](/docs/tutorials/fixing-fps)
+- *Memory*: how much RAM the game may use, see [Fixing FPS](/docs/troubleshooting/fixing-fps)
 - *Concurrent Downloads*: how many files are downloaded at once
 - *Keep launcher running*: keeps the launcher open while the game runs
 

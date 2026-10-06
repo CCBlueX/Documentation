@@ -10,7 +10,7 @@ For smaller features, [scripts](/docs/script-api/installation) remain the simple
 
 ### Installing Add-ons
 
-In [LiquidLauncher](/docs/tutorials/liquidlauncher#client), open the **Client** tab in the settings, click **Browse** next to **Add-ons** and install one. The launcher sets the add-on up for the next start, together with the add-ons and scripts it needs.
+In [LiquidLauncher](/docs/get-started/liquidlauncher#client), open the **Client** tab in the settings, click **Browse** next to **Add-ons** and install one. The launcher sets the add-on up for the next start, together with the add-ons and scripts it needs.
 
 In game, the chat does the same:
 

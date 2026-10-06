@@ -1,7 +1,9 @@
 {
     "Get Started": {
         "Installation": "get-started/installation.md",
-        "Manual Installation": "get-started/manual-installation.md"
+        "Manual Installation": "get-started/manual-installation.md",
+        "LiquidLauncher": "get-started/liquidlauncher.md",
+        "LiquidLauncher On MacOS": "get-started/liquidlauncher-macos-gatekeeper.md"
     },
     "Usage": {
         "Introduction": "usage/introduction.md",
@@ -15,12 +17,12 @@
         "Server List": "servers/server-list.md",
         "Anti-Cheat Test Server": "servers/test-server.md"
     },
-    "Tutorials": {
-        "LiquidLauncher": "tutorials/liquidlauncher.md",
-        "LiquidLauncher On MacOS": "tutorials/liquidlauncher-macos-gatekeeper.md",
-        "Fixing LiquidLauncher": "tutorials/troubleshooting_launcher.md",
-        "Fixing FPS": "tutorials/troubleshooting_fps.md",
-        "LiquidProxy": "tutorials/liquidproxy.md"
+    "Troubleshooting": {
+        "Fixing LiquidLauncher": "troubleshooting/launcher.md",
+        "Fixing FPS": "troubleshooting/fps.md"
+    },
+    "LiquidProxy": {
+        "Overview": "liquidproxy/overview.md"
     },
     "Commands": {
         "Overview": "commands/overview.md",
@@ -390,5 +392,14 @@
             "Building": "baritone/usage/building.md",
             "Settings": "baritone/usage/settings.md"
         }
+    },
+    "$redirects": {
+        "tutorials": "get-started",
+        "tutorials/liquidlauncher": "get-started/liquidlauncher",
+        "tutorials/liquidlauncher-on-macos": "get-started/liquidlauncher-on-macos",
+        "tutorials/fixing-liquidlauncher": "troubleshooting/fixing-liquidlauncher",
+        "tutorials/fixing-fps": "troubleshooting/fixing-fps",
+        "tutorials/liquidproxy": "liquidproxy/overview",
+        "tutorials/changing-version": "usage/changing-version"
     }
 }

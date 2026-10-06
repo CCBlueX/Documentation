@@ -51,4 +51,4 @@ If you have a LiquidProxy subscription, you can set it up through the Proxy Mana
    - **Route Address** – Create a route address on the dashboard and add it directly to your Minecraft server list. No Proxy Manager setup needed.
    - **Proxy Credentials** – Copy your proxy credentials (host, port, username, password) and add them in the Proxy Manager as described above.
 
-> For more details about LiquidProxy, see the [LiquidProxy guide](/docs/tutorials/liquidproxy).
+> For more details about LiquidProxy, see the [LiquidProxy guide](/docs/liquidproxy/overview).

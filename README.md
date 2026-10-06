@@ -1,6 +1,6 @@
 # Documentation
 This repository contains the files used to generate the documentation on our homepage. \
-Example: https://liquidbounce.net/docs/Script%20API/Getting%20Started
+Example: https://liquidbounce.net/docs/script-api/getting-started
 
 ## Contributing
 We appreciate anyone who is willing to help us expand the documentation. If you want to contribute, please consider the following points:
@@ -10,5 +10,6 @@ We appreciate anyone who is willing to help us expand the documentation. If you 
 - Syntax highlighting is being made possible by [PrismJS](https://prismjs.com/).
 - All images must be placed inside the `images` folder. Use `/images` to reference it.
 - Do not use `#` (h1).
-- If you add a new page, remember to also add it to [mainfest.json](md/manifest.json).
+- If you add a new page, remember to also add it to [manifest.json](md/manifest.json).
 - Documentation URLs use the section and page names from `md/manifest.json`, lowercased and hyphenated, rather than the Markdown filenames. For example, `"Anti-Cheat Test Server": "servers/test-server.md"` in the `Servers` section has the URL `/docs/servers/anti-cheat-test-server`.
+- If you move or rename a page, add its old URL path to `$redirects` in `md/manifest.json`, mapped to the new one, so existing links keep working. For example, `"tutorials/fixing-fps": "troubleshooting/fixing-fps"` redirects `/docs/tutorials/fixing-fps`.

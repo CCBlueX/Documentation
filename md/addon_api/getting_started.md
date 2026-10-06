@@ -118,7 +118,7 @@ starts Minecraft with LiquidBounce and the add-on. Join a world, open the ClickG
 ./gradlew build
 ```
 
-writes the add-on to `build/libs/`, as `example-addon-1.0.0+26.3.jar` next to a `-sources` jar. Install the jar like any other mod, as an [additional mod in LiquidLauncher](/docs/tutorials/liquidlauncher#client) or in the *mods* folder of a [manual installation](/docs/get-started/manual-installation). To offer it on the Marketplace, see [Publishing](/docs/add-on-api/developers/publishing).
+writes the add-on to `build/libs/`, as `example-addon-1.0.0+26.3.jar` next to a `-sources` jar. Install the jar like any other mod, as an [additional mod in LiquidLauncher](/docs/get-started/liquidlauncher#client) or in the *mods* folder of a [manual installation](/docs/get-started/manual-installation). To offer it on the Marketplace, see [Publishing](/docs/add-on-api/developers/publishing).
 
 ### Examples
 
