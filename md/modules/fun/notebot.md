@@ -4,6 +4,12 @@ Notebot automatically plays Note Block songs loaded from NBS (Note Block Song) f
 
 You must be in Survival mode and have enough correctly-typed note blocks within range before enabling the module. The block type underneath each note block determines its instrument, so make sure you have the right blocks placed. With **ReuseBlocks** enabled, only one block per note value is needed (the same block can be struck multiple times per tick), which greatly reduces the number of blocks required at the cost of potentially missing simultaneous identical notes.
 
+If the song needs more note blocks than are in range, the module disables itself and lists the instruments it is missing in chat.
+
+![Missing instruments](/images/Notebot/instrumentlist.png)
+
+Note blocks need free space above them, otherwise they stay silent. Notebot interacts with many blocks per tick, so a high ping or an anti-cheat can get you kicked.
+
 Notebot highlights the note blocks it is working with in-world. The highlight color transitions through red (testing), yellow (tuning), and the configured play color as the module progresses through its stages.
 
 **Category:** Fun
