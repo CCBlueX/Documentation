@@ -10,11 +10,9 @@ For smaller features, [scripts](/docs/script-api/installation) remain the simple
 
 ### Installing Add-ons
 
-Open the ClickGUI, select the **Marketplace** tab, switch to **Add-ons** and click **Install**. Installed add-ons show their version, and **Remove** appears when you hover them.
+In [LiquidLauncher](/docs/tutorials/liquidlauncher#managing-the-client), open the **Client** tab in the settings, click **Browse** next to **Add-ons** and install one. The launcher sets the add-on up for the next start, together with the add-ons and scripts it needs.
 
-![Add-ons in the Marketplace tab](/images/addons/marketplace-tab.png)
-
-The same works from the chat:
+In game, the chat does the same:
 
 1. **Browse available add-ons**: `.marketplace list addon`
 

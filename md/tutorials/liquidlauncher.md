@@ -20,6 +20,16 @@ When *Show nightly builds* is enabled, LiquidLauncher will allow you to select p
 
 Under the *Recommended mods* section, you will be shown a curated list of mods that have been tested to be compatiable with LiquidBounce and might improve your experience with the client. Most of them do not alter the gameplay in any way but improve performance and security. You probably will not have to change any default values here unless you are facing issues with one of them.
 
+### Managing the client
+
+The **Client** tab in the settings lists the LiquidBounce build the launcher starts and everything installed for it.
+
+- **Build**: pick the latest build or a specific one. *Show nightly builds* adds the pre-release versions.
+- **Mods**: your additional mods, and mods found through a search on [Modrinth](https://modrinth.com/).
+- **Add-ons**, **Themes** and **Scripts**: click **Browse** to search the Marketplace, open an item to see its screenshots, versions and what needs it, and **Install** it. **Remove** takes it out again, and **Undo** brings back an item you just removed.
+
+The launcher signs in to LiquidBounce with the same account as the client, so signing in on either side signs in both. Everything installed here is shared with the `.marketplace` [commands](/docs/Commands/Marketplace%20Commands) in game.
+
 ### Installing additional mods
 
 LiquidLauncher allows you to install any additional mod you would like to use. Simply make sure the mod you want to install is compatible with the version of Minecraft and LiquidBounce you are intending to play on. By pressing the *Install* button, you can select a mod from your computer to install. Once a mod has been installed, it will be automatically applied when the game is launched. You can also disable a mod or delete it entirely if you do not want to use it anymore. Popular sources for third-party mods are [Modrinth](https://modrinth.com/) and [CurseForge](https://www.curseforge.com/).

@@ -78,10 +78,7 @@ The bar at the top switches between tabs. The ClickGUI opens on the tab you used
 
 - **ClickGUI**: the module panels described on this page.
 - **HUD Editor**: arrange the components of your HUD, see [HUD Customization](/docs/theme-system/hud-customization).
-- **Marketplace**: browse and load [configs](/docs/usage/configs), fully or only some of their modules, report whether a config works, and install, update and remove [add-ons](/docs/add-on-api/using-add-ons), scripts and themes.
 - **Settings**: settings for the whole client, such as the language and the command prefix.
-
-![Marketplace tab](/images/clickgui/marketplace.png)
 
 ## Closing the ClickGUI
 
