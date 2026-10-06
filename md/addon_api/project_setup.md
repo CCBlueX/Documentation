@@ -46,7 +46,7 @@ fabric-api = "0.160.5+26.3"
 kotlin = "2.4.20"
 fabric-kotlin = "1.14.1+kotlin.2.4.20"
 
-liquidbounce = "0.41.0+26.3-SNAPSHOT"
+liquidbounce = "0.41.1+26.3-SNAPSHOT"
 
 [libraries]
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
@@ -67,8 +67,8 @@ The `liquidbounce` version takes one of three forms:
 | Form                            | Example                        | Repository  | Resolves to                                                  |
 |---------------------------------|--------------------------------|-------------|--------------------------------------------------------------|
 | `<version>+<mc>`                | `0.41.0+26.3`                  | `releases`  | a release                                                    |
-| `<version>+<mc>-SNAPSHOT`       | `0.41.0+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `nextgen` |
-| `<version>+<mc>-<sha>-SNAPSHOT` | `0.41.0+26.3-cadfef0-SNAPSHOT` | `snapshots` | the development build of one commit                          |
+| `<version>+<mc>-SNAPSHOT`       | `0.41.1+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `nextgen` |
+| `<version>+<mc>-<sha>-SNAPSHOT` | `0.41.1+26.3-cadfef0-SNAPSHOT` | `snapshots` | the development build of one commit                          |
 
 Gradle keeps a resolved snapshot for a day. The template turns that off so `-SNAPSHOT` always means the newest build:
 
@@ -187,13 +187,13 @@ base {
 To compile against changes that are not published yet, publish a LiquidBounce checkout to the local Maven repository under a version of your own. The checkout needs everything LiquidBounce's own build needs, Node.js included (see its [README](https://github.com/CCBlueX/LiquidBounce#readme)).
 
 ```sh
-./gradlew publishToMavenLocal -Ppublish.version=0.41.0+26.3-local-SNAPSHOT
+./gradlew publishToMavenLocal -Ppublish.version=0.41.1+26.3-local-SNAPSHOT
 ```
 
 Then point the add-on at it. `mavenLocal()` is already among the template's repositories.
 
 ```toml
-liquidbounce = "0.41.0+26.3-local-SNAPSHOT"
+liquidbounce = "0.41.1+26.3-local-SNAPSHOT"
 ```
 
 Without `-Ppublish.version`, the checkout publishes `<mod_version>+<mc>-SNAPSHOT`, the same version as the moving development build. Since `mavenLocal()` comes before the CCBlueX repositories, the add-on then keeps resolving the local build until it is removed from `~/.m2/repository/net/ccbluex/liquidbounce/`.
