@@ -62,15 +62,15 @@ Follow the installation wizard that appears:
    > **Note**: Offline mode will only allow you to join servers that have online-mode disabled.
 
 3. If you selected Microsoft Login:
-   - Click the "Microsoft Login" button
+   - Click "Microsoft login" and sign in in the window that opens, or click "Microsoft device login" to sign in on another device
    
    ![Login Selection](/images/get-started/installation/10-launcher-sign-in-with-microsoft.png)
    
-   - You'll be presented with a device login screen
+   - The device login shows a code
    
-   ![Device Login](/images/get-started/installation/11-launcher-sign-in-on-microsoft.png)
+   ![Device Login](/images/get-started/installation/11-launcher-sign-in-device-code.png)
    
-   - Visit [microsoft.com/link](https://microsoft.com/link) on any device
+   - Visit [microsoft.com/link](https://microsoft.com/link) on any device, or scan the QR code
    - Enter the code shown in the launcher
    - Press "Allow access" to continue
    - Sign in with your Microsoft account

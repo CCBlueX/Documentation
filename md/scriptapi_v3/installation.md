@@ -50,8 +50,8 @@ LiquidBounce's script performance is significantly enhanced when using GraalVM c
 
 1. **Using LiquidLauncher (Recommended)**
    - Open LiquidLauncher settings
-   - Navigate to the JRE selection dropdown
-   - Select GraalVM instead of Temurin
+   - Set *JVM Distribution* to *Manual*
+   - Select GraalVM as the *Distribution*
    
    ![JRE Selection](/images/launcher-jre-selection.png)
 
