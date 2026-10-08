@@ -4,7 +4,7 @@ An add-on is a Gradle project with Fabric Loom and the Kotlin plugin. The [templ
 
 ### Gradle and JDK
 
-The template's wrapper runs Gradle 9.6.1, the same as LiquidBounce. Minecraft 26.1 and later need Java 25. `jdk` in `gradle/libs.versions.toml` sets the toolchain for Java and Kotlin and the Java release target:
+The template's wrapper runs Gradle 9.8.0, the same as LiquidBounce. Minecraft 26.1 and later need Java 25. `jdk` in `gradle/libs.versions.toml` sets the toolchain for Java and Kotlin and the Java release target:
 
 ```kotlin
 tasks.withType<JavaCompile>().configureEach {
@@ -39,7 +39,7 @@ LiquidBounce is compiled with Kotlin preview features, which marks its classes a
 jdk = "25"
 
 minecraft = "26.3"
-fabric-loom = "1.17-SNAPSHOT"
+fabric-loom = "1.18-SNAPSHOT"
 fabric-loader = "0.19.5"
 fabric-api = "0.160.5+26.3"
 
