@@ -13,7 +13,7 @@ To cut clutter, you can limit how many beds are shown at once, scale the overlay
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| BackgroundColor | Color | — | — | Color of the rectangular background drawn behind each bed's icon strip. |
+| Background | Mode Selector | — | — | Chooses how the background behind each bed's icon strip is drawn. The rounded-panel mode has its own fill and outline color, margin and corner radius, plus a gradient that darkens the panel towards its bottom edge and an outer glow. |
 | Outline | Toggle | false | — | Draws an outline around the overlay using the bed's wool color. When off, no outline is drawn. |
 | MaxLayers | Integer | 5 | 1..5 | How many block layers outward from the bed to scan and display. Changing it triggers a full rescan. |
 | ShowBed | Toggle | true | — | Includes the bed itself as the first icon in the strip, labeled with the bed's distance in meters. |
@@ -36,4 +36,4 @@ To cut clutter, you can limit how many beds are shown at once, scale the overlay
 | IgnoreAdjacent | Toggle | false | — | Skips a bed's overlay when another tracked bed sits directly adjacent to it, avoiding duplicate plates for double beds. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt)*
+*Last updated: 2026-10-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt)*

@@ -15,7 +15,7 @@ Tags scale with distance and support overlap prevention so they don't pile on to
 |---|---|---|---|---|
 | Filter | Choice | Blacklist | Whitelist, Blacklist | Whether the Items list acts as a whitelist (only show tags for listed items) or a blacklist (hide tags for listed items, show all others). |
 | Items | Registry List | — | — | The list of items used by the Filter setting. |
-| BackgroundColor | Color | — | — | Background color of the tag boxes drawn behind item icons. |
+| Background | Mode Selector | — | — | Chooses how the background behind the item icons is drawn, for both the item tags and the shulker contents display. The rounded-panel mode has its own fill and outline color, margin and corner radius, plus a gradient that darkens the panel towards its bottom edge and an outer glow. |
 | Scale | Curve | — | — | Controls tag scale as a function of distance from the camera. |
 | RenderOffset | Vector3_d | — | — | Positional offset applied to each tag's anchor point in world space, allowing fine-tuned vertical or horizontal adjustment. |
 | RowLength | Integer | 100 | 1–100 | Maximum number of item icons per row in a tag box before wrapping to the next row. |
@@ -27,4 +27,4 @@ Tags scale with distance and support overlap prevention so they don't pile on to
 | Shulker → ShowTitle | Toggle | true | — | When enabled, the shulker contents display includes the shulker box's name as a title above the contents. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleItemTags.kt)*
+*Last updated: 2026-10-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleItemTags.kt)*
