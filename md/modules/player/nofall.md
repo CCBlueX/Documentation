@@ -1,6 +1,6 @@
 ## NoFall
 
-NoFall prevents fall damage automatically whenever you land from a height that would normally hurt you. The module is inactive in Creative and Spectator mode, while flying, or while invulnerable, since those states already grant immunity. Use the **Not** setting to further restrict when it runs — for example, selecting **WithMace** lets fall damage remain active while you hold a Mace, preserving its charged smash-attack bonus.
+NoFall prevents fall damage automatically whenever you land from a height that would normally hurt you. The module is inactive in Creative and Spectator mode, while flying, or while invulnerable, since those states already grant immunity. The **Not** setting further restricts when it runs and has all of its conditions selected by default — **WithMace** lets fall damage remain active while you hold a Mace, preserving its charged smash-attack bonus, and **WhileGliding** keeps the module out of the way while you glide with an Elytra. Deselect a condition if you want NoFall to stay active in that situation.
 
 Choosing the right **Mode** for your server is the most important decision. Most modes work by modifying what the client reports to the server — **SpoofGround** and **Packet** tell the server you are on the ground before you actually land, **NoGround** never reports being on the ground (preventing the server from registering a damaging landing), and **Cancel** suppresses movement packets while you fall. Several modes are tuned for specific anti-cheat builds: **HypixelPacket** and **Hypixel** target Hypixel's protection, **Vulcan277** and **VulcanTP288** bypass different versions of Vulcan, **Verus** targets the Verus anti-cheat, **BlocksMC** is designed for BlocksMC's detection, **Grim2371-1.9+** targets GrimAC, and **Spartan524Flag** works around Spartan 524. **Rettungsplatform** is a special mode for GommeHD.net BedWars that activates that server's own rescue-platform item. **ForceJump** makes your character jump at the last moment before landing so you never accumulate enough fall distance to take damage.
 
@@ -49,7 +49,7 @@ Two modes take a more physical approach: **MLG** automatically places a water bu
 | Mode → [Blink] → TriggerFallDistance | Decimal | 2.5 | 0.5..3.0 | Predicted fall distance (simulated ahead) at which packet queuing starts. |
 | Mode → [Blink] → MaximumFallDistance | Decimal | 20.0 | 2.0..50.0 | If your actual fall distance exceeds this value, queued packets are flushed immediately. |
 | Mode → [HypixelPacket] → OverVoid | Toggle | false | — | Allows the mode to activate even when there is no ground block below (over the void). |
-| Not | Multi-Select | (none) | WhileGliding, WithMace | Suspend NoFall while any of the selected conditions are true (e.g. gliding with an Elytra, or holding a Mace). |
+| Not | Multi-Select | WhileGliding, WithMace | WhileGliding, WithMace | Suspend NoFall while any of the selected conditions are true (e.g. gliding with an Elytra, or holding a Mace). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/nofall/ModuleNoFall.kt)*
+*Last updated: 2026-10-09 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/nofall/ModuleNoFall.kt)*
