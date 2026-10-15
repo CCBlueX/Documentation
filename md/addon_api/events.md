@@ -81,6 +81,8 @@ object ModuleReminder : ClientModule("Reminder", ModuleCategories.MISC) {
 }
 ```
 
+If the block never waits, use a plain `handler<GameTickEvent>` instead of `tickHandler`.
+
 `sequenceHandler<T>` starts a sequence for every event of type `T`, each running on its own:
 
 ```kotlin
