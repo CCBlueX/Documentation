@@ -22,7 +22,8 @@
         "Fixing FPS": "troubleshooting/fps.md"
     },
     "LiquidProxy": {
-        "Overview": "liquidproxy/overview.md"
+        "Overview": "liquidproxy/overview.md",
+        "IP Addresses": "liquidproxy/ip-addresses.md"
     },
     "Commands": {
         "Overview": "commands/overview.md",

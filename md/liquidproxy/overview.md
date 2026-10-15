@@ -8,22 +8,31 @@
 
 LiquidProxy routes your Minecraft connection through proxy servers so that the game server sees a different IP address instead of your real one. Unlike a traditional VPN, LiquidProxy only affects your Minecraft connection and is optimized to minimize latency.
 
-LiquidProxy operates on a **fair-use** basis. As long as your traffic is normal Minecraft usage, there is no limit on IPs or data transfer (GBs). LiquidProxy is **only** for Minecraft Java Edition — it is not a general-purpose proxy and will reject non-Minecraft traffic.
+LiquidProxy operates on a **fair-use** basis and is made for Minecraft Java Edition. It is not a general-purpose proxy: web traffic is limited to what joining a server needs (see [IP Addresses](/docs/liquidproxy/ip-addresses)).
+
+Each Minecraft name keeps its IP per server, and nobody else gets that IP on that server. See [IP Addresses](/docs/liquidproxy/ip-addresses).
 
 ### Subscription Plans
 
-LiquidProxy offers two types of proxy networks:
+| Plan | Networks |
+|---|---|
+| **Basic** | Dedicated |
+| **Pro** | Dedicated and Residential |
 
-- **Dedicated** – Datacenter proxies with low latency. Works on many servers but may be detected by some AntiVPN plugins. Your IP is never shared with other users on the same server.
+- **Dedicated** – Datacenter proxies with low latency. Works on many servers but may be detected by some AntiVPN plugins.
 - **Residential** – Residential IP proxies that appear as regular home connections. Required for servers with strict AntiVPN plugins that block datacenter IPs (for example servers using v4Guard or similar).
 
 #### Which plan do I need?
 
-Use the **server checker** on [liquidproxy.net](https://liquidproxy.net) to test whether your target server requires Dedicated or Residential. As a general rule:
+Use the **server checker** on [liquidproxy.net](https://liquidproxy.net) to test your target server:
 
-- If the server checker says **Dedicated is sufficient**, the cheaper Dedicated plan will work.
-- If the server checker says **Residential required** or the server has not been tested, you may need the Residential plan.
-- Servers that restrict connections to specific countries or regions typically require Residential.
+| Result | Meaning |
+|---|---|
+| Dedicated network appears sufficient | Basic works. |
+| Residential network required | You need Pro. |
+| Server cannot be bypassed | No network gets past this server's AntiVPN right now. |
+| Geo-IP restricted | The server only allows certain countries; not supported right now. |
+| Server not tested yet | Unknown; it may need Residential. |
 
 You can upgrade your subscription at any time through [liquidproxy.net/subscription](https://liquidproxy.net/subscription).
 
@@ -45,6 +54,8 @@ If your Minecraft client supports a Proxy Manager, Method 1 (Proxy Credentials) 
 2. In a client with a Proxy Manager (such as LiquidBounce), open the **Proxy Manager** and add a new proxy with the credentials from the dashboard.
 3. Select the proxy and join your target server normally.
 
+The host is your location, for example `eu-fra.liquidproxy.net`. SOCKS5 uses port `1080`, HTTP port `80` and HTTPS port `443`.
+
 For more details on using the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/usage/proxy-manager).
 
 #### Method 2: Route Address
@@ -55,6 +66,8 @@ For more details on using the Proxy Manager in LiquidBounce, see [Using the Prox
 4. Join the server through the route address — your connection will automatically be proxied.
 
 This method works with **any** Minecraft Java Edition client and does not require a Proxy Manager.
+
+A route set to **Smart** uses the network the server checker confirmed for that server. If the server has not been verified yet, the dashboard shows which network it falls back to.
 
 ### Proxy Locations
 
@@ -69,7 +82,7 @@ Choose the location closest to the game server you are connecting to for the bes
 
 ### Connection Duration
 
-- **Dedicated network** – You can stay connected for up to **one week**.
+- **Dedicated network** – You can typically stay connected for up to **one week**.
 - **Residential network** – Residential proxies use home connections, and their availability depends on how long these connections remain active. Connections may disconnect unexpectedly due to the nature of residential proxies.
 
 ### Connection Limits
@@ -82,9 +95,10 @@ Wait a few minutes for previous connections to expire, or make sure you have dis
 
 ### Managing Your Subscription
 
-- **Upgrade your plan** – You can upgrade from Dedicated to Residential at [liquidproxy.net/subscription](https://liquidproxy.net/subscription). You only pay the difference from your existing subscription.
+- **Upgrade your plan** – You can upgrade from Basic to Pro at [liquidproxy.net/subscription](https://liquidproxy.net/subscription). You only pay the difference from your existing subscription.
 - **Cancel your subscription** – Go to [liquidproxy.net/subscription](https://liquidproxy.net/subscription) and click **Manage Subscription** to cancel.
 - **View your account** – Your account details and UID are available at [liquidproxy.net/account](https://liquidproxy.net/account).
+- **Session history** – The dashboard lists your recent Minecraft sessions with location, server and IP type.
 
 ### Troubleshooting
 
@@ -104,8 +118,8 @@ This is **not** a LiquidProxy issue. Make sure you are joining with the correct 
 #### Server still detects VPN
 
 - Make sure you are using the **Residential** network if the server has a strict AntiVPN plugin.
-- Some servers use geo-restrictions (only allowing connections from specific countries). Residential proxies can typically bypass these, but dedicated proxies may not.
-- If you recently switched IPs from e.g. a detected IP, the server may have put a temporary restriction on your account. Try with another account.
+- Some servers only allow connections from specific countries. Choose a location in that country. If the server checker reports **Geo-IP restricted**, the server is not supported right now.
+- If your IP was detected, press **Change IP on next join** in the session history (see [IP Addresses](/docs/liquidproxy/ip-addresses)). The server may also have put a temporary restriction on your account; try with another account.
 
 #### "Security blocked" on Hypixel
 
