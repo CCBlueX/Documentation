@@ -17,10 +17,6 @@ Each Minecraft name keeps its IP per server, and nobody else gets that IP on tha
 Use TCP port **80, 443, 993, 1080 or 25565** with your proxy host. Every port detects the proxy protocol
 automatically, so the port does not select HTTP or SOCKS.
 
-Port **993** is an alternative conventionally used for encrypted IMAP. The port number alone does not
-enable encryption: your client must support and enable TLS for the proxy connection. Availability
-depends on your network; choosing port 993 does not guarantee firewall access.
-
 ### Subscription Plans
 
 | Plan | Networks |
@@ -30,7 +26,6 @@ depends on your network; choosing port 993 does not guarantee firewall access.
 
 - **Dedicated** – Datacenter proxies with low latency. Works on many servers but may be detected by some AntiVPN plugins.
 - **Residential** – Residential IP proxies that appear as regular home connections. Required for servers with strict AntiVPN plugins that block datacenter IPs (for example servers using v4Guard or similar).
-
 #### Which plan do I need?
 
 Use the **server checker** on [liquidproxy.net](https://liquidproxy.net) to test your target server:
