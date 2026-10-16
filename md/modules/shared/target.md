@@ -18,19 +18,19 @@ The Target setting group appears in the following modules:
 
 | Setting | Type | Default | Range | Description |
 |---------|------|---------|-------|-------------|
-| FOV | Float | 180.0 | 0.0..180.0 | Maximum angle in degrees between the player's crosshair direction and an entity for it to be considered a valid target. At 180.0 all entities in front and behind the player are included. Lower values restrict targeting to entities closer to the center of the screen. |
+| FOV | Float | 180.0 | 0.0..180.0 | Maximum angle in degrees between the player's crosshair direction and the closest point of an entity's bounding box for it to be considered a valid target. An entity the crosshair is pointing at always passes. At 180.0 all entities in front and behind the player are included. Lower values restrict targeting to entities closer to the center of the screen. |
 | HurtTime | Integer | 10 | 0..10 | Maximum hurt time an entity can have to be considered a valid target. Entities with a hurt time above this value are excluded. Since hurt time counts down from 10 after being hit, a value of 10 allows targeting entities regardless of their hurt state, while 0 only allows targeting entities that are not in a hurt animation. |
 | Priority | Multi-Select | Type, *then module default* | Type, Health, Distance, Direction, HurtTime, Age | An ordered list of comparators used to sort valid targets. Targets are sorted by the first priority, then ties are broken by the second, and so on. Cannot be empty. The default always starts with Type, followed by a second priority that depends on the module (e.g. Health for KillAura, Distance for AutoShoot, Direction for Aimbot). |
 
 ### Priority Options
 
-**Type** — Sorts targets by entity type. Players are prioritized first, then hostile mobs, then neutral mobs that are angry at the player, and all other entities last. This ensures players are always targeted before other entity types when this priority is active.
+**Type** — Sorts targets by entity type. Players are prioritized first, then hostile mobs, and all other entities last. This ensures players are always targeted before other entity types when this priority is active.
 
 **Health** — Sorts targets by their actual health (absorption hearts included) in ascending order. Entities with the lowest health are prioritized first, making it easier to secure kills on weakened targets.
 
 **Distance** — Sorts targets by their squared boxed distance to the player in ascending order. The closest entities are prioritized first.
 
-**Direction** — Sorts targets by the angle between the player's crosshair and the entity in ascending order. Entities closest to where the player is already looking are prioritized first. This is useful for aim-assist style modules where targeting the entity requiring the least rotation is preferred.
+**Direction** — Sorts targets by the angle between the player's crosshair and the closest point of the entity's bounding box in ascending order, rather than the box's center, so large or nearby entities are ranked correctly. Entities the crosshair is pointing at count as an angle of zero. Entities closest to where the player is already looking are prioritized first. This is useful for aim-assist style modules where targeting the entity requiring the least rotation is preferred.
 
 **HurtTime** — Sorts targets by their current hurt time in ascending order. Entities with the lowest hurt time (those not currently in a hurt animation or closest to recovering) are prioritized first. This helps avoid wasting hits on entities that are still in their invulnerability frames.
 
@@ -44,4 +44,4 @@ Some modules extend the Target group with additional settings that are not part 
 - **IgnoreShield** — KillAura adds this boolean (default: true) to control whether entities holding a shield that would block the attack are excluded from targeting. When enabled, shielding entities are still valid targets. When disabled, entities that would block the hit are skipped unless the player is holding an axe or AutoWeapon will switch to one.
 
 ---
-*Last updated: 2026-06-08*
+*Last updated: 2026-10-16*
