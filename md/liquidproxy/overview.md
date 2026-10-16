@@ -12,6 +12,15 @@ LiquidProxy operates on a **fair-use** basis and is made for Minecraft Java Edit
 
 Each Minecraft name keeps its IP per server, and nobody else gets that IP on that server. See [IP Addresses](/docs/liquidproxy/ip-addresses).
 
+### Connection Ports
+
+Use TCP port **80, 443, 993, 1080 or 25565** with your proxy host. Every port detects the proxy protocol
+automatically, so the port does not select HTTP or SOCKS.
+
+Port **993** is an alternative conventionally used for encrypted IMAP. The port number alone does not
+enable encryption: your client must support and enable TLS for the proxy connection. Availability
+depends on your network; choosing port 993 does not guarantee firewall access.
+
 ### Subscription Plans
 
 | Plan | Networks |
