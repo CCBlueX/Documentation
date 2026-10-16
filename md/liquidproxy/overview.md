@@ -47,34 +47,59 @@ You can upgrade your subscription at any time through [liquidproxy.net/subscript
 
 ### Setting Up LiquidProxy
 
-LiquidProxy does **not** require a separate download. Once you have an active subscription:
+LiquidProxy does **not** require a separate download. Once you have an active subscription, open the [dashboard](https://liquidproxy.net/dashboard). The **Connect** card offers two ways to connect. If your client has a Proxy Manager, use Method 1; otherwise use Method 2.
 
-1. Log in at [liquidproxy.net](https://liquidproxy.net).
-2. Choose a **location** (for example Frankfurt, London, Los Angeles).
-3. Connect using one of two methods:
+> For a video walkthrough, press **Watch the setup videos** on the dashboard or see the [LiquidProxy setup tutorial](https://www.youtube.com/watch?v=W0dSieDq2qQ).
 
-If your Minecraft client supports a Proxy Manager, Method 1 (Proxy Credentials) is recommended; otherwise use Method 2 (Route Address).
+#### Method 1: Proxy Manager (Recommended)
 
-> For a video walkthrough, see the [LiquidProxy setup tutorial](https://www.youtube.com/watch?v=W0dSieDq2qQ).
+![Proxy Manager tab of the Connect card](/images/liquidproxy-proxy-manager.png)
 
-#### Method 1: Proxy Credentials (Recommended when the client supports a Proxy Manager)
+1. Pick a **Proxy type**, **Port** and **Location**. **Smart** picks the network that works on each server, **Auto** picks the location closest to you.
+2. Copy the **URL** with the copy button. It holds the address, port, username and password, for example `socks5://username:password@smart.eu-fra.liquidproxy.net:1080`. Click one part of the URL to copy only that part.
+3. In LiquidBounce, open the **Proxy Manager** and press **Add from Clipboard**. Other proxy managers take the parts one by one.
+4. Select the proxy and join your server.
 
-1. On the LiquidProxy dashboard, copy your **proxy credentials** (host, port, username, password).
-2. In a client with a Proxy Manager (such as LiquidBounce), open the **Proxy Manager** and add a new proxy with the credentials from the dashboard.
-3. Select the proxy and join your target server normally.
+Every port accepts HTTP and SOCKS5. If you can't connect, your network may block that port: pick another one, like 443.
 
-The host is your location, for example `eu-fra.liquidproxy.net`. SOCKS5 uses port `1080`, HTTP port `80` and HTTPS port `443`.
+**Regenerate credentials** gives you a new password. The old one stops working right away, so update every proxy manager you use.
 
-For more details on using the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/usage/proxy-manager).
+For more details on the Proxy Manager in LiquidBounce, see [Using the Proxy Manager](/docs/usage/proxy-manager).
 
-#### Method 2: Route Address
+#### Method 2: Minecraft Routes
 
-1. On the LiquidProxy dashboard, create a **route address** for your target server.
-2. Copy the route address.
-3. In Minecraft, add it to your **server list** as a new server.
-4. Join the server through the route address — your connection will automatically be proxied.
+![Minecraft Routes tab of the Connect card](/images/liquidproxy-minecraft-routes.png)
 
-This method works with **any** Minecraft Java Edition client and does not require a Proxy Manager.
+1. Open the **Minecraft Routes** tab, press **Add route** and enter the server address.
+2. Copy the route with its copy button and add it to your Minecraft **server list**.
+3. Join it like any other server.
+
+A route added while a location is picked always uses that location. A route added on **Auto** shows **Any location**: its address follows the location picked above, so copy it again after you change the location.
+
+This method works with **any** Minecraft Java Edition client. If a server says "Not authenticated with Minecraft.net", use the Proxy Manager instead.
+
+### Your Dashboard
+
+#### Connections
+
+![Connections card](/images/liquidproxy-connections.png)
+
+The **Connections** card lists your Minecraft games of the last 7 days, newest first. Search it by Minecraft account or server.
+
+- **Green** rows are playing now, with their speed and signal. The power button disconnects them.
+- **Yellow** rows are offline accounts whose IP is saved, so they get the same IP next time. The refresh button gives them a new IP on the next join.
+- **White** rows are past games.
+- Thumbs up or down tells us how a connection went.
+
+Open a row to see how you connected, the server with its address, IP and host, your exit IP, and the web requests made during the game (mostly logins and skins from the game itself).
+
+![Details of a connection](/images/liquidproxy-connection-details.png)
+
+#### Usage
+
+![Usage card](/images/liquidproxy-usage.png)
+
+The **Usage** card shows your playtime, servers joined, Minecraft accounts and exit IPs of the last 7 days.
 
 A route set to **Smart** uses the network the server checker confirmed for that server. If the server has not been verified yet, the dashboard shows which network it falls back to.
 
@@ -87,7 +112,7 @@ LiquidProxy offers a comprehensive network of locations:
 - **South America** – Brazil (São Paulo)
 - **Asia** – Singapore
 
-Choose the location closest to the game server you are connecting to for the best latency.
+Choose the location closest to the game server you are connecting to for the best latency. The dashboard marks Germany (Frankfurt) and USA (Chicago) as **Recommended**.
 
 ### Connection Duration
 
