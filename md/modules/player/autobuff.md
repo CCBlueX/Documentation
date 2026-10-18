@@ -16,8 +16,8 @@ Use it on Kit-PvP, UHC, or survival servers where staying buffed is the differen
 | Soup | Toggleable Group | Off | — | Heals you by eating mushroom stew when your health is low. |
 | Soup → Health | Integer | 40 | 1..100 %HP | Trigger soup once health falls to this percent of your max. |
 | Soup → ConsiderAbsorption | Toggle | true | — | Counts absorption (yellow) hearts toward your health when deciding whether to eat. |
-| Soup → DropAfterUse | Toggleable Group | On | — | Drops the empty bowl after eating so it doesn't clutter your slot. |
-| Soup → DropAfterUse → AssumeEmptyBowl | Toggle | true | — | Drops right away assuming the bowl is now empty, instead of waiting to confirm. |
+| Soup → DropAfterUse | Toggleable Group | On | — | Drops the empty bowl after eating so it doesn't clutter your slot. The soup slot stays selected until the bowl is dropped. Soup eaten from the offhand is never dropped. |
+| Soup → DropAfterUse → AssumeEmptyBowl | Toggle | true | — | Drops the item after the Wait delay assuming the bowl is now empty, instead of checking that the slot holds a bowl. |
 | Soup → DropAfterUse → Wait | Integer Range | 1..2 | 1..20 ticks | Random delay before dropping the bowl. |
 | Head | Toggleable Group | Off | — | Eats a player head for instant healing when your health is low. |
 | Head → Health | Integer | 40 | 1..100 %HP | Trigger the head once health falls to this percent of your max. |
@@ -63,4 +63,4 @@ Use it on Kit-PvP, UHC, or survival servers where staying buffed is the differen
 | NotDuringCombat | Toggle | false | — | Stops buffing entirely while you're in combat. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autobuff/ModuleAutoBuff.kt)*
+*Last updated: 2026-10-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autobuff/ModuleAutoBuff.kt)*
