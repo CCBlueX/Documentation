@@ -17,7 +17,7 @@ The module is protective about its state: if you move out of your starting posit
 | AutoDisable | Toggle | true | — | When the box is fully built, sends a "filled" notification and turns the module off automatically. |
 | PlaceOrder | Choice | Normal | Normal, Random, BottomTop, TopBottom | Order in which the surrounding positions are placed: Normal uses the natural floor-sides-ceiling sequence, Random shuffles it, BottomTop places lowest blocks first, and TopBottom places highest blocks first. |
 | Filter | Choice | Blacklist | Whitelist, Blacklist | How the Blocks list is interpreted. Whitelist places only the listed blocks; Blacklist places anything except the listed blocks. |
-| Blocks | Registry List | — | — | The set of blocks used together with Filter to decide which items in your hotbar and offhand are eligible to be placed. |
+| Blocks | Registry List | — | — | The set of blocks used together with Filter to decide which items in your hotbar are eligible to be placed. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleBlockIn.kt)*
+*Last updated: 2026-10-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleBlockIn.kt)*

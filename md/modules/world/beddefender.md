@@ -4,7 +4,7 @@ BedDefender keeps your bed alive in BedWars by automatically placing blocks over
 
 You decide how thick the wall should be with **MaxLayers** (1–5 layers of blocks around the bed), and which blocks it's allowed to use: by default it only consumes full solid blocks, picking the hardest, most blast-resistant ones first via [the block-slot comparator](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleBedDefender.kt#L57-L70), so obsidian or end stone is preferred over wool. Because a bed may already be partially covered, it searches a slightly larger area than its reach so it can still find and finish the job — see [the bed search and placement logic](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleBedDefender.kt#L97-L139).
 
-Crucially, BedDefender only acts on *your* bed, decided by the **SelfBed** mode. Leave it on **None** and it won't defend anything; pick **Color** to identify your bed by the dyed blocks (e.g. armor of a matching color) around it, **SpawnLocation** to treat the nearest bed within a distance of your spawn as yours, or **Manual** to bind keys that mark and unmark a specific bed yourself. Placements are ordered innermost layer first, closest gaps prioritized, so the holes nearest the bed get plugged first.
+Crucially, BedDefender only acts on *your* bed, decided by the **SelfBed** mode. Leave it on **None** and it won't defend anything; pick **Color** to identify your bed by the dyed blocks (e.g. armor of a matching color) around it, **SpawnLocation** to treat the nearest bed within a distance of your spawn as yours, or **Manual** to bind keys that mark and unmark a specific bed yourself. Placements are ordered innermost layer first, so the holes nearest the bed get plugged first; within a layer, the gaps farthest from you are filled first.
 
 **Category:** World
 **Enabled by default:** No
@@ -25,4 +25,4 @@ Crucially, BedDefender only acts on *your* bed, decided by the **SelfBed** mode.
 | RequiresSneak | Toggle | false | — | When on, blocks are only placed while you are holding sneak, giving you manual control over when defending happens. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleBedDefender.kt)*
+*Last updated: 2026-10-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleBedDefender.kt)*
