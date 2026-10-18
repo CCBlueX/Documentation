@@ -17,10 +17,11 @@ To keep you from wrecking your own bed, the **SelfBed** option offers several wa
 | WallRange | Decimal | 0.0 | 0.0–6.0 | Maximum distance for targets you have no direct line of sight to. Left at 0, the module won't break blocks it can't see. Capped to Range. |
 | Entrance | Toggleable Group | On | — | Treats a target as reachable if it has any open (air) side, even one you can't see, and breaks it as if it were in plain view. Handy on servers like Hypixel and CubeCraft. |
 | Entrance → BreakFree | Toggle | true | — | If the target has no opening, breaks the weakest neighboring block first to create one. |
-| Surroundings | Toggle | false | — | Allows breaking blocks that stand in the way in order to clear a path to a hidden target. |
+| Surroundings | Toggle | false | — | Allows breaking blocks that stand in the way in order to clear a path to a hidden target. Only the first blocking block has to be within Range, not the target behind it. |
 | Targets | Registry List | — | — | The blocks Fucker will break or use. Defaults to all beds and dragon eggs. |
 | Delay | Integer | 1 | 0–20 (ticks) | Ticks to wait when switching between targets or after a use action. Higher values slow it down. |
 | Action | Choice | Destroy | Destroy, Use | Whether to break the target (Destroy) or right-click interact with it (Use). |
+| SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Controls whether and where the arm-swing animation is shown when breaking or using a block. |
 | ForceImmediateBreak | Toggle | false | — | Tries to break the block in a single tick where possible, instead of the normal gradual mining process. |
 | IgnoreOpenInventory | Toggle | false | — | Keeps working even while a chest or other inventory screen is open. |
 | IgnoreUsingItem | Toggle | true | — | Keeps working while you're using an item (eating, drinking, drawing a bow, etc.). |
@@ -37,4 +38,4 @@ To keep you from wrecking your own bed, the **SelfBed** option offers several wa
 | TargetRendering | Toggleable Group | On | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/fucker/ModuleFucker.kt)*
+*Last updated: 2026-10-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/fucker/ModuleFucker.kt)*
