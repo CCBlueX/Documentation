@@ -30,7 +30,6 @@ The **Not** multi-select suppresses Speed whenever selected conditions are true 
 | Mode → [Custom] → Strafe → VelocityTimeout | Integer | 20 | 0..20 ticks | Ticks to pause strafing after receiving a server velocity (knockback) packet. |
 | Mode → [Custom] → Strafe → StrafeKnock | Toggle | true | — | Re-applies strafe direction after a server velocity packet to maintain momentum. |
 | Mode → [YPort] → Speed | Decimal | 0.4 | 0.1..1.0 | Horizontal strafe speed applied immediately after each jump. |
-| Mode → [PiercingAttack] → SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Controls whether the weapon swing animation is hidden when performing the piercing attack speed boost. |
 | Mode → [PiercingAttack] → HoldTime | Integer Range | 1..1 | 1..20 ticks | Randomised tick range to silently hold the piercing weapon before restoring the hotbar slot. |
 | Mode → [PiercingAttack] → OnGround | Toggle | true | — | Only perform the piercing attack boost while standing on the ground. |
 | Mode → [PiercingAttack] → IgnoreHunger | Toggle | false | — | Use the boost even when hunger is too low to sprint normally. |
@@ -78,7 +77,6 @@ The **Not** multi-select suppresses Speed whenever selected conditions are true 
 | OnlyInCombat → Mode → [Custom] → Strafe → VelocityTimeout | Integer | 0 | 0..20 ticks | Ticks to pause strafing after a knockback packet. |
 | OnlyInCombat → Mode → [Custom] → Strafe → StrafeKnock | Toggle | false | — | Re-applies strafe direction after a knockback packet. |
 | OnlyInCombat → Mode → [YPort] → Speed | Decimal | 0.4 | 0.1..1.0 | Horizontal speed applied after each jump. |
-| OnlyInCombat → Mode → [PiercingAttack] → SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Swing animation visibility during piercing attacks. |
 | OnlyInCombat → Mode → [PiercingAttack] → HoldTime | Integer Range | 1..1 | 1..20 ticks | Ticks to silently hold the piercing weapon. |
 | OnlyInCombat → Mode → [PiercingAttack] → OnGround | Toggle | true | — | Only boost while on the ground. |
 | OnlyInCombat → Mode → [PiercingAttack] → IgnoreHunger | Toggle | false | — | Boost even when hunger is low. |
@@ -128,7 +126,6 @@ The **Not** multi-select suppresses Speed whenever selected conditions are true 
 | OnlyOnPotionEffect → Mode → [Custom] → Strafe → VelocityTimeout | Integer | 0 | 0..20 ticks | Ticks to pause strafing after a knockback packet. |
 | OnlyOnPotionEffect → Mode → [Custom] → Strafe → StrafeKnock | Toggle | true | — | Re-applies strafe direction after a knockback packet. |
 | OnlyOnPotionEffect → Mode → [YPort] → Speed | Decimal | 0.4 | 0.1..1.0 | Horizontal speed applied after each jump. |
-| OnlyOnPotionEffect → Mode → [PiercingAttack] → SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Swing animation visibility during piercing attacks. |
 | OnlyOnPotionEffect → Mode → [PiercingAttack] → HoldTime | Integer Range | 1..1 | 1..20 ticks | Ticks to silently hold the piercing weapon. |
 | OnlyOnPotionEffect → Mode → [PiercingAttack] → OnGround | Toggle | true | — | Only boost while on the ground. |
 | OnlyOnPotionEffect → Mode → [PiercingAttack] → IgnoreHunger | Toggle | false | — | Boost even when hunger is low. |
@@ -160,4 +157,4 @@ The **Not** multi-select suppresses Speed whenever selected conditions are true 
 | YawOffset → YawOffsetMode | Choice | Air | Ground, Air, Constant | When the offset is applied: Ground = on the ground only; Air = airborne while moving straight forward (applies a −45° offset); Constant = whenever moving in any direction. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/speed/ModuleSpeed.kt)*
+*Last updated: 2026-10-19 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/speed/ModuleSpeed.kt)*
