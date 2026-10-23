@@ -82,11 +82,13 @@ This method works with **any** Minecraft Java Edition client. If a server says "
 The **Connections** card lists your Minecraft games of the last 7 days, newest first. Search it by Minecraft account or server.
 
 - **Green** rows are playing now, with their speed and signal. The power button disconnects them.
-- **Yellow** rows are offline accounts whose IP is saved, so they get the same IP next time. The refresh button gives them a new IP on the next join.
+- **Yellow** rows are offline accounts whose IP is saved (**IP saved for ...**), so they get the same IP next time. **New IP on next join** gives them a new one.
 - **White** rows are past games.
 - Thumbs up or down tells us how a connection went.
 
 Open a row to see how you connected, the server with its address, IP and host, your exit IP, and the web requests made during the game (mostly logins and skins from the game itself).
+
+Every game shows its IP type: **Hosted IP** (data center), **Residential IP** (home connection) or **Mobile IP** (mobile network). A game that used [Double Hop](#double-hop) shows the flag of the location it left from, and its details show **Left from**.
 
 ![Details of a connection](/images/liquidproxy-connection-details.png)
 
@@ -105,9 +107,20 @@ LiquidProxy offers a comprehensive network of locations:
 - **Europe** – Germany (Frankfurt), France (Gravelines), UK (London), Sweden (Stockholm), Poland (Warsaw), Spain (Madrid)
 - **North America** – USA (Los Angeles, Chicago, Seattle, New York, Atlanta), Canada (Beauharnois)
 - **South America** – Brazil (São Paulo)
-- **Asia** – Singapore
+- **Asia** – Singapore (Double Hop)
+- **Oceania** – Australia (Sydney, Double Hop only)
 
-Choose the location closest to the game server you are connecting to for the best latency. The dashboard marks Germany (Frankfurt) and USA (Chicago) as **Recommended**.
+Choose the location closest to the game server you are connecting to for the best latency. The location list shows each location's ping from your browser. **Auto** picks the closest location on your continent and prefers the ones marked **Recommended**, Germany (Frankfurt) and USA (Chicago).
+
+### Double Hop
+
+With **Double Hop**, your connection enters at the location you picked and leaves from another of our locations. The server sees an exit IP from the location it left from, and the [IP rules](/docs/liquidproxy/ip-addresses) apply to that location.
+
+- **Australia (Sydney)** is **Double Hop only**. It has no exit IPs of its own, so every connection leaves from another location.
+- **Singapore** is marked **Double Hop**. When joins to a server were clearly faster from another location, the connection leaves from there.
+- All other locations connect directly.
+
+The way out is picked from the round trips between our locations and how fast joins to the server were from each of them. The map on [liquidproxy.net](https://liquidproxy.net) shows these round trips. Double Hop works with the Proxy Manager and with Minecraft Routes.
 
 ### Connection Duration
 
@@ -148,7 +161,7 @@ This is **not** a LiquidProxy issue. Make sure you are joining with the correct 
 
 - Make sure you are using the **Residential** network if the server has a strict AntiVPN plugin.
 - Some servers only allow connections from specific countries. Choose a location in that country. If the server checker reports **Geo-IP restricted**, the server is not supported right now.
-- If your IP was detected, press **Change IP on next join** in the session history (see [IP Addresses](/docs/liquidproxy/ip-addresses)). The server may also have put a temporary restriction on your account; try with another account.
+- If your IP was detected, press **New IP on next join** in **Connections** (see [IP Addresses](/docs/liquidproxy/ip-addresses)). The server may also have put a temporary restriction on your account; try with another account.
 
 #### "Security blocked" on Hypixel
 

@@ -1,7 +1,7 @@
 ## IP Addresses
 
-To get a new IP for a server, open **Session History** on the [dashboard](https://liquidproxy.net/dashboard)
-and press **Change IP on next join** on that session. Your next join gets a different IP.
+To get a new IP for a server, open **Connections** on the [dashboard](https://liquidproxy.net/dashboard)
+and press **New IP on next join** on that game. Your next join gets a different IP.
 
 ### Your IP stays the same
 
@@ -16,7 +16,7 @@ later join with the same name gets the same IP, so the server sees one consisten
 You keep the IP until one of these happens:
 
 1. You don't join that server with that name for 3 days.
-2. You press **Change IP on next join**.
+2. You press **New IP on next join**.
 3. The IP stops working, goes offline or becomes much slower than when you got it.
 
 In all three cases your next join picks a new IP automatically.
