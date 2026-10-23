@@ -46,7 +46,6 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-chea
 | [Horizon](https://www.spigotmc.org/resources/65830/) | Legacy | MrCraftGoo, Anthony M., Cipher and other contributors | — |
 | MX | Latest, Legacy | pawsashatoy, Vagdedes and other contributors | Combat and automation analysis. |
 | [Reflex](https://g.reflex.rip/spigot) | Legacy | DarksideCode, sinnlosername | — |
-| Sentinel | Latest, Legacy | — | — |
 | [TakaAntiCheat](https://www.spigotmc.org/resources/45167/) | Legacy | dani02 | — |
 | Themis | Latest | Olexorus | — |
 | [TotemGuard](https://github.com/Bram1903/TotemGuard) | Latest | Bram, OutDev | Detects AutoTotem. |
@@ -83,7 +82,16 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-chea
 | `/msg <player> <message>`; `/reply <message>` | Sends a private message to a player on any of the servers, or replies to one. |
 | `/discord` | Shows the server's Discord link. |
 | `/help [page]` | Shows the commands available to you on that server. |
+| `/botduel <kit> [easy\|normal\|hard]` | On the practice server, duels a bot with a practice kit. The Duel menu has the same under **Bots**. |
 
 ![Items menu](/images/test-server/items.png)
 
 Commands beginning with `/` here are **server commands**.
+
+### Test bots
+
+The bots around spawn look like players to your client and to every anti-cheat. Standing and walking bots never die and never get knocked back: hit them as often as you like to test reach, aim and hitboxes. Some show your reach in the action bar or report the damage you dealt, others hit back with a knockback stick to test your velocity handling, and fighters attack you with crits, sprint resets and strafing.
+
+### Bot duels
+
+On the practice server, type **`/botduel <kit>`** or open the Duel menu and pick **Bots** to fight a bot with the same kit as you. Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo and boxing; difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes, the diamond SMP bot traps you in cobwebs and walls you off, the axe bot breaks your shield. Type `/leave` to give up.
