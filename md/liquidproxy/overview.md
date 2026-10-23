@@ -88,7 +88,7 @@ The **Connections** card lists your Minecraft games of the last 7 days, newest f
 
 Open a row to see how you connected, the server with its address, IP and host, your exit IP, and the web requests made during the game (mostly logins and skins from the game itself).
 
-Every game shows its IP type: **Hosted IP** (data center), **Residential IP** (home connection) or **Mobile IP** (mobile network). A game that used [Double Hop](#double-hop) shows the flag of the location it left from, and its details show **Left from**.
+Every game shows its IP type: **Hosted IP** (data center), **Residential IP** (home connection) or **Mobile IP** (mobile network).
 
 ![Details of a connection](/images/liquidproxy-connection-details.png)
 
@@ -107,20 +107,9 @@ LiquidProxy offers a comprehensive network of locations:
 - **Europe** – Germany (Frankfurt), France (Gravelines), UK (London), Sweden (Stockholm), Poland (Warsaw), Spain (Madrid)
 - **North America** – USA (Los Angeles, Chicago, Seattle, New York, Atlanta), Canada (Beauharnois)
 - **South America** – Brazil (São Paulo)
-- **Asia** – Singapore (Double Hop)
-- **Oceania** – Australia (Sydney, Double Hop only)
+- **Asia** – Singapore
 
 Choose the location closest to the game server you are connecting to for the best latency. The location list shows each location's ping from your browser. **Auto** picks the closest location on your continent and prefers the ones marked **Recommended**, Germany (Frankfurt) and USA (Chicago).
-
-### Double Hop
-
-With **Double Hop**, your connection enters at the location you picked and leaves from another of our locations. The server sees an exit IP from the location it left from, and the [IP rules](/docs/liquidproxy/ip-addresses) apply to that location.
-
-- **Australia (Sydney)** is **Double Hop only**. It has no exit IPs of its own, so every connection leaves from another location.
-- **Singapore** is marked **Double Hop**. When joins to a server were clearly faster from another location, the connection leaves from there.
-- All other locations connect directly.
-
-The way out is picked from the round trips between our locations and how fast joins to the server were from each of them. The map on [liquidproxy.net](https://liquidproxy.net) shows these round trips. Double Hop works with the Proxy Manager and with Minecraft Routes.
 
 ### Connection Duration
 
