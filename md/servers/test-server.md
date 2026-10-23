@@ -13,7 +13,7 @@ You can join without a Minecraft account. In that case, sign in with your **Liqu
 | `test.ccbluex.net` | Detects whether your Minecraft session is online or offline. Offline sessions go to the sign-in lobby. If you joined with a premium Minecraft account and want to use your LiquidBounce account, type `/sign-in`. |
 | `test-offline.ccbluex.net` | Treats every connection as offline and sends it through LiquidBounce account sign-in. |
 
-After joining, use **`/server latest`** for the 1.21.11 server or **`/server legacy`** for the 1.8.8 server.
+After joining, use **`/server latest`** for the 1.21.11 server or **`/server legacy`** for the 1.8.8 server. Chat is shared between the servers: each message starts with the server its sender is on, and Minecraft 1.21.9 and newer also show the sender's head.
 
 ### Selecting anti-cheats
 
@@ -80,7 +80,7 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-chea
 | `/settings`; `/language [language]` | Opens server settings or changes your language. |
 | `/ping`; `/gameprotocol` | Shows your ping or protocol version. |
 | `/client` | Shows client information. |
-| `/msg <player> <message>`; `/reply <message>` | Sends a private message or replies to one. |
+| `/msg <player> <message>`; `/reply <message>` | Sends a private message to a player on any of the servers, or replies to one. |
 | `/discord` | Shows the server's Discord link. |
 | `/help [page]` | Shows the commands available to you on that server. |
 
