@@ -82,7 +82,7 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-chea
 | `/msg <player> <message>`; `/reply <message>` | Sends a private message to a player on any of the servers, or replies to one. |
 | `/discord` | Shows the server's Discord link. |
 | `/help [page]` | Shows the commands available to you on that server. |
-| `/botduel <kit> [easy\|normal\|hard]` | On the practice server, duels a bot with a practice kit. The Duel menu has the same under **Bots**. |
+| `/botduel <kit> [easy\|normal\|hard]` | On the practice server, duels a bot with a practice kit. The **Play against a bot** item does the same. |
 
 ![Items menu](/images/test-server/items.png)
 
@@ -94,4 +94,4 @@ The bots around spawn look like players to your client and to every anti-cheat. 
 
 ### Bot duels
 
-On the practice server, type **`/botduel <kit>`** or open the Duel menu and pick **Bots** to fight a bot with the same kit as you. Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo and boxing; difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes, the diamond SMP bot traps you in cobwebs and walls you off, the axe bot breaks your shield. Type `/leave` to give up.
+On the practice server, type **`/botduel <kit>`** or use the **Play against a bot** item in the practice lobby to fight a bot with the same kit as you; **Pick a player** is for duels against real players. Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo and boxing; difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes, the diamond SMP bot traps you in cobwebs and walls you off, the axe bot breaks your shield. Type `/leave` to give up.
