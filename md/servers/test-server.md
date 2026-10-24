@@ -95,3 +95,5 @@ The bots around spawn look like players to your client and to every anti-cheat. 
 ### Bot duels
 
 On the practice server, type **`/botduel <kit>`** or use the **Play against a bot** item in the practice lobby to fight a bot with the same kit as you; **Pick a player** is for duels against real players. Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo, boxing, pot, soup, classic, uhc, vanilla, spear_mace and cart; difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes, the diamond SMP bot traps you in cobwebs and walls you off, the axe bot breaks your shield. Type `/leave` to give up.
+
+The **No Cooldown** switch in the practice menus turns the sword, pot, soup, classic, uhc, sumo and boxing kits into 1.8-style versions without the attack cooldown, for queues, duels against players and bot duels alike; with a bot you can also type `/botduel <kit>_nocd`, for example `/botduel sword_nocd`.
