@@ -10,7 +10,7 @@ Documentation of classes, methods and fields of the Minecraft client can be foun
 
 ### Registering the script
 
-The first thing every script should do is registering itself with the client providing it with its name, version and information about its authors. Invoking `registerScript` will also return a new script instance on which modules and commands can be registered. While you may use an arbitrary string the version number, adhering to the [Semver](https://semver.org/) standard is highly recommended.
+The first thing every script should do is registering itself with the client providing it with its name, version and information about its authors. Invoking `registerScript` will also return a new script instance on which modules and commands can be registered. While you may use an arbitrary string for the version number, adhering to the [Semver](https://semver.org/) standard is highly recommended.
 
 ```js
 const script = registerScript({
@@ -29,7 +29,7 @@ Our module will be called *MyModule* and will belong to the *Misc* category. Add
 ```js
 script.registerModule({
   name: "MyModule",
-  category: "Misc", // Movement, Combat, Renderr, ...
+  category: "Misc", // Movement, Combat, Render, ...
   description: "An example module created with LiquidBounce's script API."
 }, (mod) => {
 
@@ -131,7 +131,7 @@ script.registerCommand({
 });
 ```
 
-To run the script, place it inside the *scripts* directory located in the *LiquidBounce* directory which in turn can be found in the *.minecraft* directory of your installation. When using LiquidLauncher, simply press the directory icon with the arrow in the top right corner next to the *Data location* field in the launcher's settings window to open the data diretory in your file manager. Once you ran the game, open up a single player world and open the ClickGUI. You should find *MyModule* in the *Misc* category and sending *.addition 1 2* into the chat should execute your command and yield *3* as a result.
+To run the script, place it inside the *scripts* directory located in the *LiquidBounce* directory which in turn can be found in the *.minecraft* directory of your installation. When using LiquidLauncher, simply press the directory icon with the arrow in the top right corner next to the *Data location* field in the launcher's settings window to open the data directory in your file manager. Once you ran the game, open up a single player world and open the ClickGUI. You should find *MyModule* in the *Misc* category and sending *.addition 1 2* into the chat should execute your command and yield *3* as a result.
 
 ## Additional documentation
 
