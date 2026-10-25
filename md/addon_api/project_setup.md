@@ -137,7 +137,7 @@ dependencies {
 }
 ```
 
-- The dependency is the client itself, `net.ccbluex:liquidbounce`. There is no separate API artifact. Its POM declares no dependencies, so the add-on declares Minecraft, Fabric Loader, Fabric API and Fabric Language Kotlin itself.
+- The dependency is the client itself, `net.ccbluex:liquidbounce`. There is no separate API artifact. Its POM lists the libraries the client depends on, so they reach the add-on's compile classpath, but not Minecraft. The add-on declares Minecraft itself, along with Fabric Loader, Fabric API and Fabric Language Kotlin.
 - Use `implementation`, not `modImplementation`. For these Minecraft versions Loom has no remapping step, development and production both use Mojang's names, and the `mod*` configurations do not exist.
 - Do not add a `mappings(...)` line. LiquidBounce declares none, and Loom defaults to Mojang's official names. A different mapping set produces an add-on that compiles and then fails on every Minecraft call.
 
