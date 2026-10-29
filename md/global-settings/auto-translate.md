@@ -7,12 +7,12 @@ Successful translations are cached, so translating the same text between the sam
 ### Settings
 
 ```
-└── Provider (Mode Selector | default: GoogleTranslate | modes: GoogleTranslate)
+└── Provider (Mode Selector | default: GoogleTranslate | modes: GoogleTranslate, LibreTranslate)
 ```
 
 ### Settings Details
 
-- **Provider** (Mode Selector) — default: `GoogleTranslate`; modes: `GoogleTranslate` — Selects the translation service used for all translation features. Currently only Google Translate is available.
+- **Provider** (Mode Selector) — default: `GoogleTranslate`; modes: `GoogleTranslate`, `LibreTranslate` — Selects the translation service used for all translation features: Google Translate or a LibreTranslate server.
 
 ### Related Features
 
