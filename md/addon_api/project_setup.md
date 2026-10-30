@@ -46,7 +46,7 @@ fabric-api = "0.160.5+26.3"
 kotlin = "2.4.20"
 fabric-kotlin = "1.14.1+kotlin.2.4.20"
 
-liquidbounce = "0.41.1+26.3-SNAPSHOT"
+liquidbounce = "0.42.0+26.3"
 
 [libraries]
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
@@ -66,7 +66,7 @@ The `liquidbounce` version takes one of three forms:
 
 | Form                            | Example                        | Repository  | Resolves to                                                  |
 |---------------------------------|--------------------------------|-------------|--------------------------------------------------------------|
-| `<version>+<mc>`                | `0.41.0+26.3`                  | `releases`  | a release                                                    |
+| `<version>+<mc>`                | `0.42.0+26.3`                  | `releases`  | a release                                                    |
 | `<version>+<mc>-SNAPSHOT`       | `0.41.1+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `nextgen` |
 | `<version>+<mc>-<sha>-SNAPSHOT` | `0.41.1+26.3-cadfef0-SNAPSHOT` | `snapshots` | the development build of one commit                          |
 
