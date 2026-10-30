@@ -110,10 +110,10 @@ Some alternative Minecraft authentication services like [TheAltening](https://th
 - "The authentication servers are currently not reachable."
 - "Please switch to Mojang mode."
 - "Not authenticated with minecraft.net."
-- It may also prevent LiquidLauncher from working properly ("An error with the client occured: Connection to https://launchermeta.mojang.com/ failed.").
+- It may also prevent LiquidLauncher from working properly ("An error with the client occurred: Connection to https://launchermeta.mojang.com/ failed.").
 - java.net.ConnectException: Connection refused: getsockopt
 
-To reset your hosts file and fix these issues, follow the these instructions for your respective operating system.
+To reset your hosts file and fix these issues, follow these instructions for your respective operating system.
 
 #### On Windows
 1. Search for *notepad* in start menu, right-click it, and run it as an administrator. <br>
