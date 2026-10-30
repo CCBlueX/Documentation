@@ -67,8 +67,8 @@ The `liquidbounce` version takes one of three forms:
 | Form                            | Example                        | Repository  | Resolves to                                                  |
 |---------------------------------|--------------------------------|-------------|--------------------------------------------------------------|
 | `<version>+<mc>`                | `0.42.0+26.3`                  | `releases`  | a release                                                    |
-| `<version>+<mc>-SNAPSHOT`       | `0.41.1+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `nextgen` |
-| `<version>+<mc>-<sha>-SNAPSHOT` | `0.41.1+26.3-cadfef0-SNAPSHOT` | `snapshots` | the development build of one commit                          |
+| `<version>+<mc>-SNAPSHOT`       | `0.42.1+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `nextgen` |
+| `<version>+<mc>-<sha>-SNAPSHOT` | `0.42.1+26.3-cadfef0-SNAPSHOT` | `snapshots` | the development build of one commit                          |
 
 Gradle keeps a resolved snapshot for a day. The template turns that off so `-SNAPSHOT` always means the newest build:
 
