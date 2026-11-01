@@ -84,7 +84,7 @@ Give yourself a player head (skull) with a specific player's skin.
 ```
 
 **Parameters:**
-- `player` (required) — The username of the player whose head you want.
+- `player` (required) — The username or UUID of the player whose head you want. Anything that is neither a UUID nor a valid player name is rejected with an error.
 
 **Example:**
 ```
