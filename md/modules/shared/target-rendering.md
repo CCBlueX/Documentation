@@ -36,7 +36,7 @@ Sub-settings:
 
 | Setting | Type | Default | Description |
 |---|---|---|---|
-| Source | Mode | Custom | Image source. Choose between **Custom** (user-provided texture) and **Builtin** (preset textures: Marker1, Marker2). |
+| Source | Mode | Custom | Image source. Choose between **Custom** (user-provided PNG or JPG image) and **Builtin** (preset textures: Marker1, Marker2). |
 | Scale | Vec2f | (1.0, 1.0) | X and Y scale of the rendered quad. |
 | ColorModulator | Color | White | Tint color multiplied onto the texture. |
 | Rotate | AnimatedValueGroup | — | Animation curve controlling rotation over time. The curve maps a progress value (0–1) to degrees (-180–180). |
