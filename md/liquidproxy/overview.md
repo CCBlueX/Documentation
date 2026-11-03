@@ -1,15 +1,29 @@
 ## LiquidProxy
 
-[LiquidProxy](https://liquidproxy.net) gives your Minecraft Java Edition connection a different IP, to get past IP bans and AntiVPN plugins. It is a separate paid subscription and needs no download. It only carries Minecraft: most websites are blocked through it.
+[LiquidProxy](https://liquidproxy.net) is a game proxy for Minecraft Java Edition only. It gives your connection a different IP, to get past IP bans and AntiVPN plugins. It is a separate paid subscription and needs no download.
 
 ### Plans
 
-| Plan | Networks |
-|---|---|
-| **Basic** | Dedicated: data center IPs, low latency, caught by some AntiVPN plugins |
-| **Pro** | Dedicated and Residential: home IPs, for strict AntiVPN (v4Guard and similar) |
+| | Basic | Pro |
+|---|---|---|
+| Dedicated network | Yes | Yes |
+| Residential network | No | Yes |
+| Accounts at once | 2 | 2 |
 
-Check your server with the **server checker** on [liquidproxy.net](https://liquidproxy.net) before you buy. *Dedicated sufficient* means Basic, *Residential required* means Pro. *Cannot be bypassed* and *Geo-IP restricted* servers don't work right now; *not tested yet* may need Pro.
+- **Dedicated**: data center IPs. Lowest ping, connections last up to a week. Some AntiVPN plugins detect it.
+- **Residential**: home connection IPs. Gets past strict AntiVPN (v4Guard and similar).
+
+#### Which plan do I need?
+
+Enter your server in the **Server Compatibility Checker** on [liquidproxy.net](https://liquidproxy.net/#server-checker), below the plans. It recommends a plan from our latest test of that server.
+
+![Server Compatibility Checker recommending Pro](/images/liquidproxy-server-checker.png)
+
+- **We recommend Basic** or **We recommend Pro**: the plan that got in when we tested it.
+- **Not tested yet**: Pro is the safer pick. You can ask us to test the server.
+- **No plan works here right now**: the server blocks all our networks or only lets in certain countries.
+
+Servers change their AntiVPN, so a recommendation is not a guarantee.
 
 Upgrade (you pay only the difference) or cancel under **Manage Subscription** at [liquidproxy.net/subscription](https://liquidproxy.net/subscription).
 
@@ -54,7 +68,6 @@ Frankfurt, Gravelines, London, Stockholm, Warsaw, Madrid, Los Angeles, Chicago, 
 ### Limits
 
 - 2 Minecraft accounts at once per subscription. On "maximum number of simultaneous connections", disconnect elsewhere or wait a few minutes. More needs another subscription.
-- Dedicated connections last up to a week; Residential ones can drop at any time.
 
 ### Troubleshooting
 
