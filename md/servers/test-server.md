@@ -82,7 +82,10 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu, then click an anti
 | `/msg <player> <message>`; `/reply <message>` | Sends a private message to a player on any of the servers, or replies to one. |
 | `/discord` | Shows the server's Discord link. |
 | `/help [page]` | Shows the commands available to you on that server. |
+| `/practice` | On Latest and Legacy, takes you to the practice server. On the practice server, opens the kits so you can queue for a duel. |
 | `/botduel <kit> [easy\|normal\|hard]` | On the practice server, duels a bot with a practice kit. The **Play against a bot** item does the same. |
+
+You can use every command above on Latest and Legacy, except `/botduel`. The practice server has no test tools. There you can use `/menu`, `/ac`, `/settings`, `/language`, `/ping`, `/gameprotocol`, `/client`, `/msg`, `/reply`, `/ignore`, `/discord`, `/help`, `/spawn`, `/practice` and the duel commands.
 
 ![Items menu](/images/test-server/items.png)
 
