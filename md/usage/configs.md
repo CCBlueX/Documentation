@@ -26,7 +26,7 @@ Each entry shows:
 
 ![Search within a tag](/images/configs/search-tag.png)
 
-`.config info <config>` shows one config in full, including the servers, tags and everything it needs to load.
+`.config info <config>` shows one config in full, including the servers, tags, contributors, its source link and everything it needs to load.
 
 ![Config info](/images/configs/info.png)
 
@@ -134,6 +134,8 @@ A public config shows up in lists and searches. An unlisted one does not, so han
 ### Managing Your Configs
 
 The `.config edit` commands change the config you loaded, which has to be one of yours.
+
+When the author of a public config opens it to the community, anyone logged in can also use `.config edit update` and `.config edit set` on it, except for `.config edit set visibility`, which stays with the author.
 
 `.config edit update [changelog]` publishes your changes as a new version. For an overlay, the update again only holds the modules that differ from the config it builds on.
 
