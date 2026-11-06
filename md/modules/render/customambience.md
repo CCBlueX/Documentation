@@ -19,13 +19,15 @@ A common use is comfort and visibility: clearing fog, brightening or recoloring 
 | ModifyPrecipitation → Gradient | Decimal | 0.7 | 0.1..1.0 | Controls how dense and heavy the falling rain or snow appears. |
 | Fog | Toggleable Group | On | — | Overrides the world's fog rendering. |
 | Fog → DisableWorldFog | Toggle | false | — | Removes the world fog entirely for a clearer view. |
+| Fog → FogColorOverride | Toggleable Group | On | — | Overrides the color of the fog. |
+| Fog → FogColorOverride → Color | Color | — | — | The color applied to the fog. |
 | Fog → BackgroundColor | Color | — | — | Sets the color the distant background and fog fade into. |
-| Fog → Environmental | Decimal Range | 0.0..0.0 | -16.0..2048.0 | Sets the near and far distances over which environmental fog fades in. |
-| Fog → RenderDistance | Decimal Range | 0.0..0.0 | 0.0..1024.0 | Sets the near and far distances over which render-distance fog fades in. |
-| Fog → SkyEnd | Decimal | 0.0 | 0.0..1024.0 | Distance at which the sky fog ends. |
-| Fog → CloudEnd | Decimal | 0.0 | 0.0..4096.0 | Distance at which the cloud fog ends. |
-| CustomLightmap | Toggleable Group | Off | — | Overrides the scene's lighting with a custom tint. |
-| CustomLightmap → Mode | Mode Selector | SingleColor | SingleColor | Selects how the lightmap is overridden. |
+| Fog → Environmental | Decimal Range | 5.0..40.0 | -16.0..2048.0 | Sets the near and far distances over which environmental fog fades in. |
+| Fog → RenderDistance | Decimal Range | 230.0..256.0 | 0.0..1024.0 | Sets the near and far distances over which render-distance fog fades in. |
+| Fog → SkyEnd | Decimal | 40.0 | 0.0..1024.0 | Distance at which the sky fog ends. |
+| Fog → CloudEnd | Decimal | 40.0 | 0.0..4096.0 | Distance at which the cloud fog ends. |
+| CustomLightmap | Toggleable Group | On | — | Overrides the scene's lighting with a custom tint. |
+| CustomLightmap → Mode | Mode Selector | SingleColor | SingleColor, Custom | Selects how the lightmap is overridden. |
 | CustomLightmap → Mode → [SingleColor] → Color | Color | — | — | The single color applied across the whole lightmap. |
 | SkyColor | Toggleable Group | Off | — | Overrides the sky with a chosen color. |
 | SkyColor → Color | Color | — | — | The color used to paint the sky. |
