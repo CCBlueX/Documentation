@@ -2,9 +2,8 @@
 
 Render modules change what you see on screen. They add ESP overlays, modify visual effects, customize the HUD, and improve visual information.
 
-There are **61** modules in this category:
+There are **59** modules in this category:
 
-- [Animations](/docs/Modules/Render/Animations) — Allows you to modify many of game's animations.
 - [AntiBlind](/docs/Modules/Render/AntiBlind) — Protects you from potentially annoying screen effects that obscure your view.
 - [Aspect](/docs/Modules/Render/Aspect) — Adjust the horizontal stretching.
 - [AutoF5](/docs/Modules/Render/AutoF5) — Automatically enables F5 mode when opening the inventory or a chest.
@@ -52,7 +51,6 @@ There are **61** modules in this category:
 - [ProtectionZones](/docs/Modules/Render/ProtectionZones) — Allows you to see areas protected by protection blocks and suggests optimal placement spots.
 - [QuickPerspectiveSwap](/docs/Modules/Render/QuickPerspectiveSwap) — Allows you to quickly change the game's perspective.
 - [Radar](/docs/Modules/Render/Radar) — Shows the direction of rendered entities on GUI.
-- [Rotations](/docs/Modules/Render/Rotations) — Allows you to see server-sided rotations.
 - [SilentHotbar](/docs/Modules/Render/SilentHotbar) — Disables showing silently selected items in your hand.
 - [SkinChanger](/docs/Modules/Render/SkinChanger) — Hides the player's real skin client-side (useful for videos).
 - [SmoothCamera](/docs/Modules/Render/SmoothCamera) — Makes your camera move smoother.

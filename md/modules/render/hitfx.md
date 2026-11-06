@@ -4,7 +4,7 @@ HitFX turns a successful hit on another player or mob into a little celebration.
 
 You can pick which particles appear (from blood splatters to fire, hearts, water, smoke, magic sparkles, or crit stars) and how many of them burst out per hit. On top of that, HitFX offers two separate sound pools: one for the sounds played when you hit someone, and a personal one that only plays for you. Mix and match the playful built-in sounds to taste — leave a list empty to skip that part of the effect entirely.
 
-This is purely a cosmetic, client-side feature: it changes what you see and hear, not how your attacks behave. It pairs nicely with other visual touches like [DamageParticles](/docs/modules/render/damageparticles) and [Animations](/docs/modules/render/animations).
+This is purely a cosmetic, client-side feature: it changes what you see and hear, not how your attacks behave. It pairs nicely with other visual touches like [DamageParticles](/docs/modules/render/damageparticles) and the [ViewModel](/docs/global-settings/view-model) global setting.
 
 **Category:** Render
 **Enabled by default:** No

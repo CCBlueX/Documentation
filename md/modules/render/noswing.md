@@ -4,7 +4,7 @@ NoSwing suppresses the hand swing animation that plays whenever you attack, use 
 
 The **HideFor** setting lets you control exactly where the animation is hidden. Suppressing it for **Client** removes the visual swing from your own screen, so you never see your hand move. Suppressing it for **Server** prevents the swing packet from being sent to the server, meaning other players won't see your hand animate either. Both options are enabled by default, hiding the animation entirely on all sides.
 
-This module pairs well with other visual tweaks such as [Animations](/docs/modules/render/animations) and [NoBob](/docs/modules/render/nobob) if you want a fully clean, static first-person view.
+This module pairs well with other visual tweaks such as the [ViewModel](/docs/global-settings/view-model) global setting and [NoBob](/docs/modules/render/nobob) if you want a fully clean, static first-person view.
 
 **Category:** Render
 **Enabled by default:** No

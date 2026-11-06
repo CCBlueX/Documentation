@@ -40,7 +40,9 @@
         "Client Chat": "global-settings/client-chat.md",
         "Commands": "global-settings/commands.md",
         "Rich Presence": "global-settings/rich-presence.md",
-        "Targets": "global-settings/targets.md"
+        "Rotation Manager": "modules/render/rotations.md",
+        "Targets": "global-settings/targets.md",
+        "View Model": "modules/render/animations.md"
     },
     "Modules": {
         "Overview": "modules/overview.md",
@@ -172,7 +174,6 @@
         },
         "Render": {
             "Overview": "modules/render/overview.md",
-            "Animations": "modules/render/animations.md",
             "AntiBlind": "modules/render/antiblind.md",
             "Aspect": "modules/render/aspect.md",
             "AutoF5": "modules/render/autof5.md",
@@ -220,7 +221,6 @@
             "ProtectionZones": "modules/render/protectionzones.md",
             "QuickPerspectiveSwap": "modules/render/quickperspectiveswap.md",
             "Radar": "modules/render/radar.md",
-            "Rotations": "modules/render/rotations.md",
             "SilentHotbar": "modules/render/silenthotbar.md",
             "SkinChanger": "modules/render/skinchanger.md",
             "SmoothCamera": "modules/render/smoothcamera.md",
@@ -402,6 +402,8 @@
         "tutorials/fixing-fps": "troubleshooting/fixing-fps",
         "tutorials/liquidproxy": "liquidproxy/overview",
         "liquidproxy/ip-addresses": "liquidproxy/overview",
-        "tutorials/changing-version": "usage/changing-version"
+        "tutorials/changing-version": "usage/changing-version",
+        "modules/render/animations": "global-settings/view-model",
+        "modules/render/rotations": "global-settings/rotation-manager"
     }
 }

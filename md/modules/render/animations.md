@@ -1,15 +1,12 @@
-## Animations
+## ViewModel
 
-Animations gives you control over how your held items look and move on screen. You can resize and reposition the item in your main hand or off hand, tweak the rotation of the model, adjust how long the swing animation lasts, and pick a different blocking animation — all without changing how the game plays for other players. It's purely a visual tweak, so use it to get a viewmodel that feels comfortable to you, whether that's an old-school look or something more compact.
+ViewModel is a global setting that gives you control over how your held items look and move on screen. You can resize and reposition the item in your main hand or off hand, tweak the rotation of the model, adjust how long the swing animation lasts, and pick a different blocking animation — all without changing how the game plays for other players. It's purely a visual tweak, so use it to get a viewmodel that feels comfortable to you, whether that's an old-school look or something more compact.
 
 The main-hand and off-hand groups each let you shift the item along the X/Y axes, scale it up or down, and add extra rotation. The EquipOffset group controls the small "raise" animation that plays when you switch or use items, and lets you skip that motion in specific situations. AirWalker keeps your legs moving with the walking animation even while you're off the ground.
 
 The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules/combat/swordblock) is enabled — it changes how your sword looks when blocking, letting you choose the classic 1.7-style block, a pushdown motion or one of the Sigma, Exhibition, Avatar and Dortware animations.
 
 The SwingAnimations group replaces the vanilla arm swing of your main hand with one of several preset motions. It is skipped while a sword-blocking animation is being shown, so BlockingAnimation stays in control there.
-
-**Category:** Render
-**Enabled by default:** Yes
 
 ### Settings
 

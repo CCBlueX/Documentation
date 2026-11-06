@@ -1,6 +1,6 @@
 ## Global Settings Overview
 
-LiquidBounce has a set of **global settings** that apply across the entire client, independent of any specific module. These settings control client-wide behavior such as target selection, Discord Rich Presence, the built-in client chat, auto-translation, blink packet management, and the command system prefix.
+LiquidBounce has a set of **global settings** that apply across the entire client, independent of any specific module. These settings control client-wide behavior such as target selection, Discord Rich Presence, the built-in client chat, auto-translation, blink packet management, the command system prefix, the held-item view model, and the display of server-side rotations.
 
 You can access global settings through the **ClickGUI** (default: **RIGHT SHIFT**) under the Settings section, or configure them using the `.value` command.
 
@@ -12,3 +12,5 @@ You can access global settings through the **ClickGUI** (default: **RIGHT SHIFT*
 - [AutoTranslate](/docs/Global%20Settings/AutoTranslate) — Choose the translation provider for auto-translation.
 - [BlinkManager](/docs/Global%20Settings/BlinkManager) — Control blink packet queueing and ESP visualization.
 - [Commands](/docs/Global%20Settings/Commands) — Set the command prefix and hint count.
+- [ViewModel](/docs/global-settings/view-model) — Customize held items, swing and blocking animations.
+- [RotationManager](/docs/global-settings/rotation-manager) — Show server-side rotations on your character model.
