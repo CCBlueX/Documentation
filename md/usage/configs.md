@@ -36,7 +36,7 @@ Each entry shows:
 
 Every command that takes a config accepts:
 
-- `author/name`, such as `CCBlueX/hypixel`
+- `author/name`, such as `1zun4/hypixel`
 - the name alone, such as `hypixel`, as long as only one author uses it
 - the numeric ID
 - a share code, such as `LB-FLNV95DU`
@@ -47,7 +47,7 @@ When several authors use the same name, the command lists them and asks you to p
 
 ### Loading a Config
 
-`.config load <config>` applies a config. Add a comma-separated list of modules, such as `.config load CCBlueX/grim KillAura,Velocity`, to only take those modules from it. A link to a config file works as well.
+`.config load <config>` applies a config. Add a comma-separated list of modules, such as `.config load 1zun4/grim KillAura,Velocity`, to only take those modules from it. A link to a config file works as well.
 
 ![Loading a config](/images/configs/load.png)
 
@@ -162,3 +162,15 @@ When the author of a public config opens it to the community, anyone logged in c
 `.config edit delete` deletes the config.
 
 ![Deleting a config](/images/configs/delete.png)
+
+### Community Configs
+
+Configs marked **Community editable** on the [marketplace](https://liquidbounce.net/resources) can be improved by anyone with a LiquidBounce account. All featured configs are open to the community.
+
+1. Load the config: `.config load 1zun4/hypixel`
+2. Change what you need and test it on the server
+3. Run `.config edit update <what you changed>`
+
+Your update goes live right away and you are listed as a contributor.
+
+You can also upload a new version on the config's page on the website. The owner opens a public config to the community in its settings there.
