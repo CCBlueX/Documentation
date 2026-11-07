@@ -119,7 +119,7 @@ Draws a line between two points relative to the current origin, through blocks. 
 | `alpha(a)`                               | The same color with another alpha.                                   |
 | `fade(f)`                                | The alpha multiplied by `f`.                                         |
 | `darker()`                               | Each channel at 70 %.                                                |
-| `interpolateTo(other, t)`                | Between this color (`t = 0`) and `other` (`t = 1`).                  |
+| `interpolateTo(other, t)`                | Between this color (`t = 0`) and `other` (`t = 1`), `t` is a `Float`. The `Double` overload is deprecated and does not compile. |
 | `Color4b.ofHSB(h, s, b)`                 | From hue, saturation and brightness.                                 |
 
 ### From Java
