@@ -37,6 +37,109 @@ Teleports your player to the center of the current block position.
 
 ---
 
+### `.teleport`
+
+Teleport to specific coordinates. Configured in the [Teleport](/docs/global-settings/teleport) global settings.
+
+**Aliases:** `tp`
+
+**Usage:**
+```
+.teleport <x> <y> <z> [highTp]
+```
+
+**Parameters:**
+- `x`, `y`, `z` (required) — The coordinates, with vanilla semantics: absolute (`100 64 -200`), relative to the player (`~ ~ ~`, `~5 ~-2 ~`) or local to the look direction (`^ ^ ^5`).
+- `highTp` (optional) — `true`, `yes` or `on` replaces Y with **HighTPAmount** from the Teleport global settings.
+
+**Example:**
+```
+.teleport 100 64 200
+.tp ~ ~10 ~
+.tp ^ ^ ^5
+.tp 0 0 0 true
+```
+
+---
+
+### `.playerteleport`
+
+Teleport to another player's position. Configured in the [Teleport](/docs/global-settings/teleport) global settings.
+
+**Aliases:** `playertp`, `ptp`
+
+**Usage:**
+```
+.playerteleport <player> [copy]
+```
+
+**Parameters:**
+- `player` (required) — The name of another player in the loaded world, whether or not the tab list shows them.
+- `copy` (optional) — Additional option for coordinate copying.
+
+**Example:**
+```
+.playerteleport Steve
+.ptp Steve
+```
+
+---
+
+### `.vclip`
+
+Vertically clip through blocks. Configured in the [Teleport](/docs/global-settings/teleport) global settings.
+
+**Subcommands:**
+- `.vclip by <distance>` — Clip vertically by a specific distance (positive = up, negative = down).
+- `.vclip smart up [max]` — Intelligently clip upward through blocks. Optionally specify max distance.
+- `.vclip smart down [max]` — Intelligently clip downward through blocks. Optionally specify max distance.
+
+**Example:**
+```
+.vclip by 5
+.vclip by -10
+.vclip smart up
+.vclip smart down 20
+```
+
+---
+
+### `.goto`
+
+Walk to a position with [AutoWalk](/docs/modules/player/autowalk). Accepts the same coordinate formats as `.teleport`.
+
+**Usage:**
+```
+.goto <x> <y> <z>
+```
+
+**Example:**
+```
+.goto 100 64 200
+.goto ~ ~ ~50
+```
+
+---
+
+### `.follow`
+
+Walk after a player with [AutoWalk](/docs/modules/player/autowalk).
+
+**Usage:**
+```
+.follow <player>
+```
+
+**Parameters:**
+- `player` (required) — The name of another player in the loaded world, whether or not the tab list shows them.
+
+**Example:**
+```
+.follow Steve
+```
+
+---
+
 ### `.coordinates`
 
 Display, copy, or share your current coordinates.

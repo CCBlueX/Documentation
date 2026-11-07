@@ -7,7 +7,7 @@ Commands are organized into the following categories:
 - [Client Commands](/docs/Commands/Client%20Commands) — Manage the client, modules, bindings, friends, and configurations.
 - [In-Game Commands](/docs/Commands/In-Game%20Commands) — Utilities for in-game information such as coordinates, ping, TPS, and server info.
 - [Creative Commands](/docs/Commands/Creative%20Commands) — Item manipulation commands for Creative mode.
-- [Module Commands](/docs/Commands/Module%20Commands) — Commands tied to specific modules (XRay, AutoDisable, Teleport, etc.).
+- [Module Commands](/docs/Commands/Module%20Commands) — Commands tied to specific modules (XRay, AutoDisable, InvSee, etc.).
 - [Translation Commands](/docs/Commands/Translation%20Commands) — Translate text and configure auto-translation.
 - [Marketplace Commands](/docs/Commands/Marketplace%20Commands) — Browse and manage marketplace items.
 

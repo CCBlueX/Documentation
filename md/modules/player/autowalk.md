@@ -1,15 +1,18 @@
 ## AutoWalk
 
-AutoWalk holds your forward movement key for you, so your character keeps walking in whatever direction you're looking without you needing to touch the keyboard. Turn it on, point your camera where you want to go, and you'll keep moving forward; turn your view and you turn your path.
+AutoWalk walks for you, so you can cross large terrain without touching the keyboard. It uses LiquidBounce's shared pathfinder, which finds routes over hills and river banks, swims, sneaks along edges and through 1.5 block high gaps, and opens doors, trapdoors and fence gates on the way. Goals beyond the path range or in unloaded chunks are walked in stages. While walking, your head turns the way the walk goes and you sprint.
 
-It's handy for long, repetitive treks — crossing large terrain, AFK pathing, or holding a steady walking direction while you focus on aiming or interacting. Under the hood it simply forces the "forwards" input on every [movement input event](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWalk.kt#L35-L37), so it stacks with your normal controls — you can still strafe, sprint, jump, and steer with the mouse as usual. It does not pathfind or avoid hazards, so it will happily walk you off a ledge or into a wall if you stop steering.
+AutoWalk has the following modes:
+
+- **Forward** — Walks forward.
+- **Direction** — Keeps walking in one direction across the terrain.
+- **Goto** — Walks to a position set with [`.goto <x> <y> <z>`](/docs/commands/in-game) and turns off on arrival.
+- **Follow** — Walks after a player set with [`.follow <player>`](/docs/commands/in-game).
+
+With **AllowBreak** and **AllowPlace**, the route may also mine through blocks and place blocks, for example to dig a shaft up out of a cave and pillar out to the surface.
 
 **Category:** Player
 **Enabled by default:** No
 
-### Settings
-
-This module has no configurable settings.
-
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWalk.kt)*
+*Last updated: 2026-11-07 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWalk.kt)*

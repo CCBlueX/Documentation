@@ -42,6 +42,7 @@
         "Rich Presence": "global-settings/rich-presence.md",
         "Rotation Manager": "modules/render/rotations.md",
         "Targets": "global-settings/targets.md",
+        "Teleport": "modules/exploit/teleport.md",
         "View Model": "modules/render/animations.md"
     },
     "Modules": {
@@ -270,7 +271,6 @@
             "AntiHunger": "modules/exploit/antihunger.md",
             "AntiReducedDebugInfo": "modules/exploit/antireduceddebuginfo.md",
             "BookBot": "modules/exploit/bookbot.md",
-            "ClickTp": "modules/exploit/clicktp.md",
             "Damage": "modules/exploit/damage.md",
             "Disabler": "modules/exploit/disabler.md",
             "Dupe": "modules/exploit/dupe.md",
@@ -287,7 +287,7 @@
             "ResetVL": "modules/exploit/resetvl.md",
             "ServerCrasher": "modules/exploit/servercrasher.md",
             "SleepWalker": "modules/exploit/sleepwalker.md",
-            "Teleport": "modules/exploit/teleport.md",
+            "TeleportReach": "modules/exploit/clicktp.md",
             "TimeShift": "modules/exploit/timeshift.md",
             "VehicleOneHit": "modules/exploit/vehicleonehit.md",
             "YggdrasilSignatureFix": "modules/exploit/yggdrasilsignaturefix.md"
@@ -404,6 +404,8 @@
         "liquidproxy/ip-addresses": "liquidproxy/overview",
         "tutorials/changing-version": "usage/changing-version",
         "modules/render/animations": "global-settings/view-model",
-        "modules/render/rotations": "global-settings/rotation-manager"
+        "modules/render/rotations": "global-settings/rotation-manager",
+        "modules/exploit/teleport": "global-settings/teleport",
+        "modules/exploit/clicktp": "modules/exploit/teleportreach"
     }
 }

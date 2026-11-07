@@ -15,7 +15,7 @@ There are **32** modules in this category:
 - [AutoQueue](/docs/Modules/Player/AutoQueue) — Automatically enters mini game queues on servers.
 - [AutoRespawn](/docs/Modules/Player/AutoRespawn) — Automatically respawns you after dying.
 - [AutoShop](/docs/Modules/Player/AutoShop) — Automatically buys specific items in a BedWars shop.
-- [AutoWalk](/docs/Modules/Player/AutoWalk) — Automatically makes you walk in the direction you are facing.
+- [AutoWalk](/docs/Modules/Player/AutoWalk) — Automatically walks forward, in a direction, to a position or after a player.
 - [AutoWindCharge](/docs/Modules/Player/AutoWindCharge) — Automatically boosts you using wind charges when holding jump.
 - [Blink](/docs/Modules/Player/Blink) — Makes it look as if you were teleporting to other players.
 - [ChestCleaner](/docs/Modules/Player/ChestCleaner) — Automatically drops unwanted items from a chest.
