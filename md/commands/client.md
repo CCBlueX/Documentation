@@ -255,14 +255,14 @@ Manage client scripts.
 
 ### `.debug`
 
-Collect debug information about the client and upload it to a paste service.
+Collect debug information about the client and upload it, together with the latest log, to [logs.liquidbounce.net](https://logs.liquidbounce.net).
 
 **Usage:**
 ```
 .debug
 ```
 
-Generates a report containing client version, Minecraft version, Java version, OS, profile info, and active modules.
+Generates a report containing client version, Minecraft version, Java version, OS, profile info, and active modules. The current config and the end of `logs/latest.log` (at most the last 10 MB or 25,000 lines) are uploaded as well and linked from the report. Links to the report and the uploaded log are shown in chat.
 
 ---
 
