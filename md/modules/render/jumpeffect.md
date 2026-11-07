@@ -18,7 +18,7 @@ By default the effect always renders on top of blocks — disable **CanBeCovered
 | Mode | Mode Selector | Simple | Simple \| Image | How the effect is drawn: a gradient ring or an image. |
 | Mode → EndRadius | Decimal Range | 0.15..0.8 | 0.0..3.0 | The inner-to-outer radius range the effect expands to at the end of its animation. |
 | Mode → AnimCurve | Choice | QuadOut | Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None | Easing curve that controls how the effect expands over its lifetime. |
-| Mode → HueOffsetAnim | Integer | 63 | -360..360 | How many degrees to shift the hue across the animation. Set to 0 to disable hue animation. |
+| Mode → HueOffsetAnim | Integer | -63 | -360..360 | How many degrees to shift the hue across the animation. Set to 0 to disable hue animation. |
 | Mode → Lifetime | Integer Range | 15..15 | 1..120 | The first value is how many ticks the expansion animation takes, the second how many ticks pass before the effect has fully faded out. |
 | Mode → CanBeCovered | Toggle | false | — | When enabled, blocks in the world can occlude the effect. When disabled, it always renders on top of geometry. |
 | Mode → Colors → InnerColor | Color | — | — | Colour at the centre of the gradient. |

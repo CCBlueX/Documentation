@@ -14,8 +14,8 @@ When **SideOnly** is on, only the face you're looking at is highlighted (the box
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
 | SideOnly | Toggle | true | — | When on, highlights only the face you are aiming at; when off, draws the full block box. |
-| Color | Color | Color4b(68, 117, 255, 70) | — | Fill color of the highlighted face or box (the default is a semi-transparent blue). |
-| Outline | Color | Color4b(68, 117, 255, 150) | — | Color of the outline drawn around the highlighted shape. |
+| Color | Color | Color4b(70, 119, 255, 70) | — | Fill color of the highlighted face or box (the default is a semi-transparent version of the LiquidBounce accent blue). |
+| Outline | Color | Color4b(70, 119, 255, 150) | — | Color of the outline drawn around the highlighted shape. |
 | Slide | Toggleable Group | on | — | When enabled, animates the highlight sliding from the previous block to the newly targeted one (single-box shapes only). |
 | Slide → Time | Integer | 150 | 1..1000 (ms) | Duration of the slide animation in milliseconds. |
 | Slide → Easing | Choice | Linear | Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None | Easing curve used to interpolate the slide between blocks. |
