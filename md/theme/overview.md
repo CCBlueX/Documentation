@@ -84,6 +84,8 @@ For developers who want to create custom themes:
    ```
    The optional `nativeFont` field names one of the theme's loaded font faces (for example `"nativeFont": "Inter Medium"`) that the client draws its own text with. If your theme does not set it, the client uses the font of the included LiquidBounce theme, or a system font if that is unavailable.
 
+   The optional `sounds` field lists the names of sounds your theme ships as `public/sounds/<name>.ogg` (for example `"sounds": ["click"]`). Names must be valid Minecraft identifier paths without `/`. The client registers each sound with the game's sound engine as `liquidbounce:theme/<theme id>/<name>`. Your theme can play any registered sound, including its own, by sending a `POST` request to `/api/v1/client/sound` with a JSON body such as `{"sound": "liquidbounce:theme/your-custom-id/click", "volume": 1.0, "pitch": 1.0}`. `volume` and `pitch` are optional and default to `1.0`. Sounds play in the UI category, so the game's volume sliders apply.
+
 3. **Install dependencies and start development server**:
    ```bash
    npm install
