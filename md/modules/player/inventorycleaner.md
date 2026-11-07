@@ -34,9 +34,11 @@ Quantity caps let you decide how much of a given consumable type to keep. Once t
 | SlotItem-8 | Choice | Block | — | Item category to place in hotbar slot 8. |
 | SlotItem-9 | Choice | Block | — | Item category to place in hotbar slot 9. |
 
-Available item categories for slot and off-hand settings: `Sword`, `Weapon`, `Spear`, `Mace`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore` (leave slot untouched), `None` (no preference, slot may be used for overflow).
+Available item categories for slot and off-hand settings: `Sword`, `Weapon`, `Spear`, `Mace`, `BestKnockback`, `Bow`, `Crossbow`, `Axe`, `Pickaxe`, `Shovel`, `Hoe`, `Rod`, `Shield`, `Water`, `Lava`, `Milk`, `Pearl`, `Gapple`, `Food`, `Potion`, `Block`, `Throwables`, `Ignore` (leave slot untouched), `None` (no preference, slot may be used for overflow).
 
 Axes are categorised by their Sharpness enchantment: an axe with Sharpness V or higher counts as a weapon and is kept, an axe with Sharpness 100 or higher is always kept, and any other axe is treated as a mining tool.
+
+The `BestKnockback` category keeps a dedicated knockback item, such as a knockback stick, in its own slot. Only items whose Knockback level is higher than that of your best weapon (sword, spear, mace or axe) qualify, so your main weapon is still chosen first. Among the candidates, the item with the highest Knockback level is preferred.
 
 ---
 *Last updated: 2026-07-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/invcleaner/ModuleInventoryCleaner.kt)*
