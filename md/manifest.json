@@ -328,7 +328,8 @@
     },
     "Theme System": {
         "Overview": "theme/overview.md",
-        "HUD Customization": "theme/hud-customization.md"
+        "HUD Customization": "theme/hud-customization.md",
+        "Splash Screen": "theme/splash-screen.md"
     },
     "Add-on API": {
         "Using Add-ons": "addon_api/using_addons.md",

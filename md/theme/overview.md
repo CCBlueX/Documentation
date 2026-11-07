@@ -86,7 +86,7 @@ For developers who want to create custom themes:
 
    The optional `sounds` field lists the names of sounds your theme ships as `public/sounds/<name>.ogg` (for example `"sounds": ["click"]`). Names must be valid Minecraft identifier paths without `/`. The client registers each sound with the game's sound engine as `liquidbounce:theme/<theme id>/<name>`. Your theme can play any registered sound, including its own, by sending a `POST` request to `/api/v1/client/sound` with a JSON body such as `{"sound": "liquidbounce:theme/your-custom-id/click", "volume": 1.0, "pitch": 1.0}`. `volume` and `pitch` are optional and default to `1.0`. Sounds play in the UI category, so the game's volume sliders apply.
 
-   The optional `splash` field gives your theme its own loading screen. It points to a [Lottie](https://airbnb.io/lottie/) animation file in your theme and sets the background, text and accent colors. The client draws the splash itself before any browser is loaded, so a change shows on the next start. The same animation continues through the browser choice and the downloads on the first start. If your theme has no splash, or its splash fails to load, fails to draw or draws too slowly, Minecraft's own loading screen is shown instead.
+   The optional `splash` field gives your theme its own loading screen: a [Lottie](https://airbnb.io/lottie/) animation the client draws itself, with background, text and accent colors. See [Splash Screen](/docs/theme-system/splash-screen) for the format and its limits.
 
 3. **Install dependencies and start development server**:
    ```bash
