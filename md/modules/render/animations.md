@@ -29,7 +29,7 @@ The SwingDuration group scales the vanilla swing duration with a multiplier. Nor
 | OffHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Y axis. |
 | OffHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Z axis. |
 | EquipOffset | Toggleable Group | On | — | Controls the raise/equip motion that plays when switching or using items. |
-| EquipOffset → Ignore | Multi-Select | [Blocking, Place] | [Blocking, Place, Amount] | Situations in which the equip motion is skipped. |
+| EquipOffset → Ignore | Multi-Select | [] | [Blocking, Place, Amount] | Situations in which the equip motion is skipped. |
 | SwingDuration | Toggleable Group | Off | — | Scales how long your arm swing animation lasts. |
 | SwingDuration → Multiplier | Decimal | 1.0 | 0.1..3.0x | Multiplier applied to the vanilla swing duration — lower is faster. |
 | SwingDuration → Ignore | Multi-Select | [] | [Item, Haste, MiningFatigue] | Factors that no longer affect the swing duration: the held item's own swing speed, Haste and Mining Fatigue. |
