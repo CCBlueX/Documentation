@@ -28,7 +28,7 @@ If an add-on needs something that is not marked, ask for it on [GitHub](https://
 | World      | `BlockPos.state`, `stateOrEmpty`, `getBlock`, `outlineBox`, `BlockState.isInteractable`, `doPlacement`, `doBreak`, `SwingMode` |
 | Inventory  | `Slots`, `ItemSlot`, `HotbarItemSlot`, `SilentHotbar`, `useHotbarSlotOrOffhand`, `InventoryManager.isInventoryOpen`, `isHandledScreenOpen` |
 | Movement   | `DirectionalInput`, `LocalPlayer.moving`, `Entity.horizontalSpeed`, `Vec3.withStrafe`, `LocalPlayer.stopXZVelocity`, `Timer.requestTimerSpeed` |
-| Misc       | `sendPacketSilently`, `inGame`, `Chronometer`, `InputBind`, `MarketplaceItemType`, `MarketplaceItemHandler`, `MarketplaceManager` handlers, `SubscribedItem`, `Task`, `ResourceTask`, `QuickFix`, `QuickFixes`, `Instructions`, `ClientError` |
+| Misc       | `sendPacketSilently`, `inGame`, `Chronometer`, `InputBind`, `MarketplaceItemType`, `MarketplaceItemHandler`, `MarketplaceManager` handlers, `SubscribedItem`, `Task`, `ResourceTask`, `QuickFix`, `QuickFixes`, `Instructions`, `ClientError`, `Path.atomicMoveTo`, `Path.atomicWrite` |
 
 The API file is the complete list.
 
