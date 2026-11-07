@@ -6,6 +6,10 @@ It can reach targets you can see directly, and â€” depending on your settings â€
 
 To keep you from wrecking your own bed, the **SelfBed** option offers several ways to recognize and skip it. You can also let Fucker's aiming take priority over [KillAura](/docs/modules/combat/killaura) so it stays focused on breaking instead of fighting.
 
+With the **AutoWalk** group on, Fucker walks to the closest target out of reach, bridging, pillaring and tunneling as needed.
+
+<video src="/images/modules/fucker/fucker-walk.mp4" controls width="600">Your browser does not support the video tag.</video>
+
 **Category:** World
 **Enabled by default:** Yes
 

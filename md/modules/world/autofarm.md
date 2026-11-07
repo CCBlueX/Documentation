@@ -6,6 +6,8 @@ It works best when you stand within reach of your crops, but it can also walk be
 
 Note that AutoFarm pauses while you have a container open (like a chest or your inventory) and while [Blink](/docs/modules/player/blink) is active, so it won't interfere with those.
 
+<video src="/images/modules/autofarm/autofarm-walk.mp4" controls width="600">Your browser does not support the video tag.</video>
+
 **Category:** World
 **Enabled by default:** No
 

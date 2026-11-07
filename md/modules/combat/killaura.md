@@ -4,6 +4,8 @@ KillAura automatically locks on to nearby enemies and attacks them on every avai
 
 Several optional sub-systems extend the base behaviour. **AutoBlocking** makes KillAura shield or sword-block between swings, improving your effective defence. **FailSwing** performs a fake swing when no valid target is in reach, disguising KillAura's idle pattern from anti-cheat systems. **FightBot** (powered by [AutoWalk](/docs/modules/shared-settings/autowalk)) navigates you toward your target automatically, and **RangeIndicator** draws a ground circle showing your current attack radius. For a stronger setup, combine KillAura with [Velocity](/docs/modules/combat/velocity) to reduce incoming knockback and [AutoWeapon](/docs/modules/combat/autoweapon) to automatically switch to the best weapon for each target.
 
+<video src="/images/modules/killaura/fightbot.mp4" controls width="600">Your browser does not support the video tag.</video>
+
 **Category:** Combat
 **Enabled by default:** No
 

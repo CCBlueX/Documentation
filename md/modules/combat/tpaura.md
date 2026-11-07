@@ -4,6 +4,8 @@ TpAura automatically teleports your character to nearby enemies and attacks them
 
 The route to the target comes from LiquidBounce's shared pathfinder, so TpAura reaches enemies around obstacles, below overhangs and up on raised platforms, and comes back the same way.
 
+<video src="/images/modules/tpaura/tpaura.mp4" controls width="600">Your browser does not support the video tag.</video>
+
 Because TpAura relies on sending rapid position packets, servers with strong anti-cheat may issue a setback (a server-side correction). When this happens, a chat message will warn you and the teleport is cancelled automatically. Pairing this module with [AntiBot](/docs/modules/misc/antibot) is recommended to avoid wasting attacks on fake players.
 
 **Category:** Combat

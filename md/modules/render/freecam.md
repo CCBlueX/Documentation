@@ -4,7 +4,9 @@ FreeCam detaches the camera from your character and lets you fly it freely throu
 
 Because your real position never changes, FreeCam is great for situational awareness, but it can leave you exposed if something happens while you're "away." The **CancelOn** options let it switch itself off automatically when you take damage, get teleported, actually move, or enter liquid, so you snap back to your body when it matters. It also disables itself on world changes so you never get stuck.
 
-With **AllowCameraInteract** turned on you can interact with blocks and entities from the camera's viewpoint — handy for reaching things behind cover, similar to a ghost-hand style reach. **MidClickCameraTeleport** lets you middle-click to jump the camera to whatever it's looking at, and the **Navigation** group can auto-walk the camera toward its aim point while a held key is pressed. For finer control over how aiming behaves while interacting, see the shared [Rotations](/docs/modules/shared-settings/rotations) settings. If you only want to look around without detaching the camera, try [FreeLook](/docs/modules/render/freelook) instead.
+With **AllowCameraInteract** turned on you can interact with blocks and entities from the camera's viewpoint — handy for reaching things behind cover, similar to a ghost-hand style reach. **MidClickCameraTeleport** lets you middle-click to jump the camera to whatever it's looking at, and while the **Navigation** group's key (Left Ctrl by default) is held, your body walks to where the camera looks. For finer control over how aiming behaves while interacting, see the shared [Rotations](/docs/modules/shared-settings/rotations) settings. If you only want to look around without detaching the camera, try [FreeLook](/docs/modules/render/freelook) instead.
+
+<video src="/images/modules/freecam/freecam-navigation.mp4" controls width="600">Your browser does not support the video tag.</video>
 
 **Category:** Render
 **Enabled by default:** No
