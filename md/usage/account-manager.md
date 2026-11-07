@@ -129,3 +129,9 @@ The **arrow icon** in the top-right account panel is a shortcut for generating a
 3. The account panel updates to show the newly generated username.
 
 This is useful when you quickly need a throwaway cracked username without manually adding a new cracked account in the Account Manager.
+
+## Switching Accounts After a Disconnect
+
+When you are disconnected from a server, the disconnect screen shows the same **top-right account panel** as the Title screen. Logging into another account from there (through the Account Selector, the Account Manager or the arrow icon) automatically reconnects you to the server with that account.
+
+The bottom left of the disconnect screen has a **Reconnect** button and an **Auto reconnect** switch. With **Auto reconnect** enabled, the button counts down and LiquidBounce reconnects to the server after 5 seconds. The countdown pauses while your mouse is over the account panel or while a login is in progress. The switch is remembered for future disconnects.
