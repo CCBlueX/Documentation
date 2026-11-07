@@ -82,6 +82,7 @@ For developers who want to create custom themes:
      "authors": ["CCBlueX"]
    }
    ```
+   The optional `nativeFont` field names one of the theme's loaded font faces (for example `"nativeFont": "Inter Medium"`) that the client draws its own text with. If your theme does not set it, the client uses the font of the included LiquidBounce theme, or a system font if that is unavailable.
 
 3. **Install dependencies and start development server**:
    ```bash
