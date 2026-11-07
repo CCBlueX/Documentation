@@ -6,7 +6,9 @@ The main-hand and off-hand groups each let you shift the item along the X/Y axes
 
 The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules/combat/swordblock) is enabled — it changes how your sword looks when blocking, letting you choose the classic 1.7-style block, a pushdown motion or one of the Sigma, Exhibition, Avatar and Dortware animations.
 
-The SwingAnimations group replaces the vanilla arm swing of your main hand with one of several preset motions. It is skipped while a sword-blocking animation is being shown, so BlockingAnimation stays in control there.
+The SwingAnimation setting replaces the vanilla arm swing of your main hand with one of several preset motions; leave it on None to keep the vanilla swing. It is skipped while a sword-blocking animation is being shown, so BlockingAnimation stays in control there.
+
+The SwingDuration group scales the vanilla swing duration with a multiplier. Normally that duration depends on the held item, Haste and Mining Fatigue; with Ignore you can leave any of these out, so the item's own swing speed or the effects no longer change how long your swing lasts.
 
 ### Settings
 
@@ -28,9 +30,10 @@ The SwingAnimations group replaces the vanilla arm swing of your main hand with 
 | OffHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Z axis. |
 | EquipOffset | Toggleable Group | On | — | Controls the raise/equip motion that plays when switching or using items. |
 | EquipOffset → Ignore | Multi-Select | [Blocking, Place] | [Blocking, Place, Amount] | Situations in which the equip motion is skipped. |
-| SwingDuration | Integer | 12 | 1..20 | How long the arm swing animation lasts, in ticks — lower is faster. |
-| SwingAnimations | Toggleable Group | Off | — | Replaces the vanilla main-hand swing animation with a preset motion. |
-| SwingAnimations → Mode | Choice | Spin | [Swipe, Spin, Hook, Dash, Tap, Inject, Slap, Akrien, Smooth, Power, Feast] | Swing motion that is played instead of the vanilla one. |
+| SwingDuration | Toggleable Group | Off | — | Scales how long your arm swing animation lasts. |
+| SwingDuration → Multiplier | Decimal | 1.0 | 0.1..3.0x | Multiplier applied to the vanilla swing duration — lower is faster. |
+| SwingDuration → Ignore | Multi-Select | [] | [Item, Haste, MiningFatigue] | Factors that no longer affect the swing duration: the held item's own swing speed, Haste and Mining Fatigue. |
+| SwingAnimation | Mode Selector | None | [None, Swipe, Spin, Hook, Dash, Tap, Inject, Slap, Akrien, Smooth, Power, Feast] | Swing motion that is played instead of the vanilla main-hand swing. None keeps the vanilla swing. |
 | BlockingAnimation | Mode Selector | 1.7 | [1.7, Pushdown, Sigma, Exhibition, Avatar, Dortware] | Animation used while blocking with a sword (only active with SwordBlock enabled). |
 | BlockingAnimation → [1.7] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the 1.7 blocking animation. |
 | BlockingAnimation → [1.7] → SwingScale | Decimal | 0.9 | 0.1..1.0 | Scales how strongly the swing motion is applied during the 1.7 animation. |
