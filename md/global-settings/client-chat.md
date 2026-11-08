@@ -38,5 +38,6 @@ Connects to **LiquidChat**, a built-in IRC-style chat system that allows LiquidB
 1. When enabled, the client connects to the LiquidChat server automatically.
 2. Authentication is handled via Mojang login or JWT token.
 3. Messages appear in-game chat with a **ClientChat** prefix in blue.
-4. The client automatically reconnects if the connection is lost.
-5. On session change (e.g. switching Minecraft accounts), the client reconnects with the new credentials.
+4. If the chat server takes back a public message, the client removes it from the chat together with its translation.
+5. The client automatically reconnects if the connection is lost.
+6. On session change (e.g. switching Minecraft accounts), the client reconnects with the new credentials.
