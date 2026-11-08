@@ -14,7 +14,8 @@ Connects to **LiquidChat**, a built-in IRC-style chat system that allows LiquidB
 ├── Filter (Toggleable Group | default: false)
 │   ├── Usernames (Text List | default: empty)
 │   └── UsernameFilter (Choice | default: Blacklist | options: Whitelist, Blacklist)
-└── AutoTranslate (Multi-Select | options: PublicChat, PrivateChat, ServerChat)
+├── AutoTranslate (Multi-Select | options: PublicChat, PrivateChat)
+└── AllowMessages (Toggle | default: true)
 ```
 
 ### Settings Details
@@ -24,7 +25,8 @@ Connects to **LiquidChat**, a built-in IRC-style chat system that allows LiquidB
 - **Filter** (Toggleable Group) — default: `false` — When enabled, incoming LiquidChat messages are filtered by their sender's username. Filtered messages are not shown in chat; the first message hidden from a given sender is noted in the client log.
 - **Filter → Usernames** (Text List) — default: empty — The usernames the filter applies to. Matching is case-insensitive.
 - **Filter → UsernameFilter** (Choice) — default: `Blacklist` — How the Usernames list is interpreted. **Blacklist** hides messages from the listed senders; **Whitelist** shows messages only from the listed senders.
-- **AutoTranslate** (Multi-Select) — options: `PublicChat`, `PrivateChat`, `ServerChat` — When selected, incoming messages from the chosen chat groups are automatically translated using the configured AutoTranslate provider.
+- **AutoTranslate** (Multi-Select) — options: `PublicChat`, `PrivateChat` — When selected, incoming messages from the chosen chat groups are automatically translated using the configured AutoTranslate provider.
+- **AllowMessages** (Toggle) — default: `true` — Allows other users to send you direct messages. The setting is sent to the chat server when logging in, so changing it while connected reconnects LiquidChat.
 
 ### Related Commands
 
