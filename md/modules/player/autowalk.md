@@ -1,6 +1,8 @@
 ## AutoWalk
 
-AutoWalk walks for you, so you can cross large terrain without touching the keyboard. It uses LiquidBounce's shared pathfinder, which finds routes over hills and river banks, swims, sneaks along edges and through 1.5 block high gaps, and opens doors, trapdoors and fence gates on the way. Goals beyond the path range or in unloaded chunks are walked in stages. While walking, your head turns the way the walk goes and you sprint.
+AutoWalk walks for you, so you can cross large terrain without touching the keyboard. It uses LiquidBounce's shared pathfinder, which finds routes over hills and river banks, swims, sneaks along edges and through 1.5 block high gaps, and opens doors, trapdoors and fence gates on the way. Goals beyond the path range or in unloaded chunks are walked in stages. While walking, your head turns the way the walk goes and you sprint, sprint-hopping along straight runs.
+
+Routes also include jumps, worked out by simulating your movement tick by tick: sprint jumps at any angle, up a block, down several, across gaps up to four blocks wide, into holes in walls, onto fences, panes and walls, under low ceilings and onto ladders. While following the route, each jump is worked out again every tick from where you really are. By default, jumps need room to spare and are only taken when they save time; with **RiskyJumps**, the route also takes jumps where a miss would not be survived.
 
 AutoWalk has the following modes:
 
@@ -8,7 +10,7 @@ AutoWalk has the following modes:
 
 <video src="/images/modules/autowalk/autowalk-forward.mp4" controls width="600">Your browser does not support the video tag.</video>
 
-- **Direction** — Keeps walking in one direction across the terrain.
+- **Direction** — Keeps walking in one direction across the terrain, aiming far ahead so water and cliffs are walked around.
 
 <video src="/images/modules/autowalk/autowalk-direction.mp4" controls width="600">Your browser does not support the video tag.</video>
 
