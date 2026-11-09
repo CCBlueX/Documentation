@@ -280,6 +280,7 @@
             "MultiActions": "modules/exploit/multiactions.md",
             "NameCollector": "modules/exploit/namecollector.md",
             "NoPitchLimit": "modules/exploit/nopitchlimit.md",
+            "OldRegen": "modules/exploit/timeshift.md",
             "Phase": "modules/exploit/phase.md",
             "PingSpoof": "modules/exploit/pingspoof.md",
             "Plugins": "modules/exploit/plugins.md",
@@ -288,7 +289,6 @@
             "ServerCrasher": "modules/exploit/servercrasher.md",
             "SleepWalker": "modules/exploit/sleepwalker.md",
             "TeleportReach": "modules/exploit/clicktp.md",
-            "TimeShift": "modules/exploit/timeshift.md",
             "VehicleOneHit": "modules/exploit/vehicleonehit.md",
             "YggdrasilSignatureFix": "modules/exploit/yggdrasilsignaturefix.md"
         },
@@ -408,6 +408,7 @@
         "modules/render/rotations": "global-settings/rotation-manager",
         "modules/exploit/teleport": "global-settings/teleport",
         "modules/exploit/clicktp": "modules/exploit/teleportreach",
-        "modules/combat/timerrange": "modules/combat/tickbase"
+        "modules/combat/timerrange": "modules/combat/tickbase",
+        "modules/exploit/timeshift": "modules/exploit/oldregen"
     }
 }
