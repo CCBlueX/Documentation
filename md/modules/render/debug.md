@@ -2,7 +2,9 @@
 
 Debug is a diagnostic overlay aimed squarely at developers and advanced users who want to peek under the hood of the client. When other modules expose internal data — server-sided rotations, hitboxes, target lines, predicted paths and other geometry, plus live parameter values — Debug draws that information into the world and onto your screen so you can see exactly what the client is calculating.
 
-For everyday play there's nothing here to gain; it doesn't give you any in-game advantage. It's most useful when you're testing behavior, reporting a bug, or trying to understand why a feature like [KillAura](/docs/modules/combat/killaura) or [Scaffold](/docs/modules/world/scaffold) is acting a certain way. Captured parameter values are shown in a list that fades out after a set time, and holding the player-list (Tab) key temporarily hides that overlay.
+For everyday play there's nothing here to gain; it doesn't give you any in-game advantage. It's most useful when you're testing behavior, reporting a bug, or trying to understand why a feature like [KillAura](/docs/modules/combat/killaura) or [Scaffold](/docs/modules/world/scaffold) is acting a certain way. Captured parameter values are shown in an overview that fades out after a set time, and holding the player-list (Tab) key temporarily hides that overlay.
+
+The overview shows one compact table per module: names on the left, values in one aligned column, and child groups such as modes as indented sections. Values are formatted by type, for example numbers to three decimals, vectors, rotations, entities, items and lists. Tables stack from top to bottom and only spread into more columns when they would reach below the screen. If even that is not enough, the last line shows how many rows are out of view, and while the chat is open the mouse wheel scrolls the tables. Data from sources outside of modules, such as the timer, combat or inventory handling, is reported every tick and only shows when **Global** is enabled.
 
 The optional groups add their own visualizations: SimulatedPlayer draws a predicted line showing where your movement is heading over the next several ticks, and Graph renders a small on-screen plot of an editable curve for tuning value mappings.
 
@@ -19,6 +21,7 @@ Because many modules report data at once, **TitleFilter** lets you narrow the ca
 | Geometry | Toggle | true | — | Draws debug geometry (lines, boxes, points, triangles) that other modules submit into the world. |
 | Expires | Integer | 5 | 1..30 (secs) | How long a captured parameter value stays on screen before fading away. |
 | TitleFilter | Text | `.*` | — | Regex pattern matched against the name of the module or feature reporting the data; only matching sources are captured. |
+| Global | Toggle | false | — | Also shows data from sources outside of modules (e.g. timer, combat and inventory handling), which report every tick. |
 | DebugLog | Toggle | false | — | Writes captured parameter values to a tab-separated file in the `debug-log` folder of your LiquidBounce directory. The file is created when the module is enabled. |
 | SimulatedPlayer | Toggleable Group | off | — | Draws a line predicting your movement path over the coming ticks. |
 | SimulatedPlayer → TicksToPredict | Integer | 20 | 5..100 | How many ticks ahead the predicted movement path is simulated. |
