@@ -92,7 +92,6 @@
             "SuperKnockback": "modules/combat/superknockback.md",
             "SwordBlock": "modules/combat/swordblock.md",
             "TickBase": "modules/combat/tickbase.md",
-            "TimerRange": "modules/combat/timerrange.md",
             "TpAura": "modules/combat/tpaura.md",
             "TriggerBot": "modules/combat/triggerbot.md",
             "Velocity": "modules/combat/velocity.md"
@@ -408,6 +407,7 @@
         "modules/render/animations": "global-settings/view-model",
         "modules/render/rotations": "global-settings/rotation-manager",
         "modules/exploit/teleport": "global-settings/teleport",
-        "modules/exploit/clicktp": "modules/exploit/teleportreach"
+        "modules/exploit/clicktp": "modules/exploit/teleportreach",
+        "modules/combat/timerrange": "modules/combat/tickbase"
     }
 }

@@ -2,7 +2,7 @@
 
 Combat modules enhance your fighting capabilities. They automate attacks, improve aim, manage armor, and give you an edge in PvP encounters.
 
-There are **30** modules in this category:
+There are **29** modules in this category:
 
 - [Aimbot](/docs/Modules/Combat/Aimbot) — Automatically faces targets nearby.
 - [AutoArmor](/docs/Modules/Combat/AutoArmor) — Automatically equips the best armor in your inventory.
@@ -29,8 +29,7 @@ There are **30** modules in this category:
 - [SpearKill](/docs/Modules/Combat/SpearKill) — Automatically attacks enemies using a charged spear.
 - [SuperKnockback](/docs/Modules/Combat/SuperKnockback) — Increases knockback dealt to other entities.
 - [SwordBlock](/docs/Modules/Combat/SwordBlock) — Enables 1.8 sword blocking on servers using ViaVersion
-- [TickBase](/docs/Modules/Combat/TickBase) — Buffer ticks to get early hits on an enemy.
-- [TimerRange](/docs/Modules/Combat/TimerRange) — Accelerates the game time when being within the range of an enemy.
+- [TickBase](/docs/Modules/Combat/TickBase) — Spends the timer balance to reach an enemy earlier, by bursting ticks or speeding up the timer.
 - [TpAura](/docs/Modules/Combat/TpAura) — Automatically teleports and attacks enemies around you.
 - [TriggerBot](/docs/Modules/Combat/TriggerBot) — Attacks the enemy under your crosshair without holding the attack button.
 - [Velocity](/docs/Modules/Combat/Velocity) — Modifies the amount of velocity you take.
