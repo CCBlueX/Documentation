@@ -29,7 +29,9 @@ The Clicker setting group appears in the following modules:
 
 ### ItemCooldown
 
-The ItemCooldown sub-group controls whether the clicker respects the Minecraft attack cooldown (the 1.9+ combat mechanic based on `attackStrengthScale`). When enabled, clicks are only fired once the cooldown progress meets or exceeds the configured minimum threshold.
+The ItemCooldown sub-group controls whether the clicker respects the Minecraft attack cooldown (the 1.9+ combat mechanic). When enabled, clicks are only fired once the cooldown progress meets or exceeds the configured minimum threshold.
+
+The progress is counted the way the server counts it: in real time since your last swing, attack or hotbar slot change, scaled by the server's measured TPS. Timer speed changes, held or extra client ticks and a server running below 20 TPS therefore do not let an attack go out before the server considers the cooldown full. [Criticals](/docs/modules/combat/criticals) uses the same count to decide whether a hit can be critical.
 
 | Setting | Type | Default | Range | Description |
 |---------|------|---------|-------|-------------|
