@@ -94,6 +94,7 @@
             "TickBase": "modules/combat/tickbase.md",
             "TimerRange": "modules/combat/timerrange.md",
             "TpAura": "modules/combat/tpaura.md",
+            "TriggerBot": "modules/combat/triggerbot.md",
             "Velocity": "modules/combat/velocity.md"
         },
         "Movement": {

@@ -21,6 +21,7 @@ Sprinting normally cancels critical hits, so the **WhenSprinting** group can bri
 | Mode → Jump → OptimizeForCooldown | Toggle | true | — | Times the hop to your attack cooldown so the crit lands with a fully charged hit. |
 | Mode → Jump → CheckKillaura | Toggle | true | — | Only auto-hops while [KillAura](/docs/modules/combat/killaura) is active. |
 | Mode → Jump → CheckAutoClicker | Toggle | false | — | Only auto-hops while [AutoClicker](/docs/modules/combat/autoclicker) is active. |
+| Mode → Jump → CheckTriggerBot | Toggle | false | — | Only auto-hops while [TriggerBot](/docs/modules/combat/triggerbot) is active. |
 | Mode → Jump → CanBeSeen | Toggle | true | — | Requires line of sight to the enemy before hopping. |
 | Mode → Blink → Delay | Integer Range | 50..50 | 0..1000 ms | How long packets are held back while waiting for a crit opportunity. A random value in this range is used each time. |
 | Mode → Blink → Range | Decimal | 4.0 | 0.0..10.0 | Only engages when an enemy is within this distance. |

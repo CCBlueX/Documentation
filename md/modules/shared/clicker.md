@@ -7,6 +7,7 @@ Consecutive presses form a combo. When planned presses go unused for a while, or
 The Clicker setting group appears in the following modules:
 - [KillAura](/docs/modules/combat/killaura)
 - [AutoClicker](/docs/modules/combat/autoclicker)
+- [TriggerBot](/docs/modules/combat/triggerbot)
 - [AutoShoot](/docs/modules/combat/autoshoot)
 - [TpAura](/docs/modules/combat/tpaura)
 - [Scaffold](/docs/modules/world/scaffold)
