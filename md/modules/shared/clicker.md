@@ -4,6 +4,8 @@ The Clicker setting group controls how and when automated clicks are scheduled. 
 
 Consecutive presses form a combo. When planned presses go unused for a while, or the game skips ticks, the combo ends and a new one starts with a fresh press.
 
+Presses on the same key by you or by another clicker count toward the plan, so their CPS does not add up, for example when KillAura and TriggerBot run together. A press of your own takes the place of the plan's next planned press, so the rhythm and CPS stay the same and your clicks still go through. When another clicker presses the key, the plan follows that clicker's planned presses from then on instead of drawing its own.
+
 The Clicker setting group appears in the following modules:
 - [KillAura](/docs/modules/combat/killaura)
 - [AutoClicker](/docs/modules/combat/autoclicker)
