@@ -24,6 +24,7 @@ The Rotations setting group appears in the following modules:
 - [AutoTrap](/docs/modules/world/autotrap)
 - [Nuker](/docs/modules/world/nuker) (Legit mode)
 - [Sprint](/docs/modules/movement/sprint)
+- [Parkour](/docs/modules/movement/parkour) (Assist)
 - [FreeCam](/docs/modules/render/freecam)
 - [Derp](/docs/modules/misc/derp)
 - [Notebot](/docs/modules/misc/notebot)

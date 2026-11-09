@@ -28,7 +28,7 @@ There are **39** modules in this category:
 - [NoPush](/docs/Modules/Movement/NoPush) — Protects you from being pushed around by other players.
 - [NoSlow](/docs/Modules/Movement/NoSlow) — Cancels slowness effects caused by blocks and using items.
 - [NoWeb](/docs/Modules/Movement/NoWeb) — Disables slow down caused by webs.
-- [Parkour](/docs/Modules/Movement/Parkour) — Automatically jumps at the very edge of a block.
+- [Parkour](/docs/Modules/Movement/Parkour) — Jumps at block edges and helps you land your jumps.
 - [ReverseStep](/docs/Modules/Movement/ReverseStep) — Makes you step down blocks faster.
 - [SafeWalk](/docs/Modules/Movement/SafeWalk) — Prevents you from falling down block (as if you were sneaking).
 - [SnapTap](/docs/Modules/Movement/SnapTap) — Prioritizes the last pressed movement key (SOCD / null-movement).
