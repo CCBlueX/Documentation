@@ -2,7 +2,7 @@
 
 ESP (Extra Sensory Perception) highlights living entities like players and mobs so you can spot them through walls and across the map. It's one of the most useful render features for keeping track of who's around you, whether you're fighting, hiding, or just exploring.
 
-You can choose how targets are drawn with the **Mode** setting: a 3D **Box** around each entity, a screen-aligned **2D** box with optional health bar, the classic **Legacy2D** marker, or **Glow**, which gives entities a vanilla glowing outline. The **ColorMode** setting controls how those highlights are colored — by distance, by remaining health, a single static color, or a shifting rainbow. On top of that, invisible entities and [friends](/docs/modules/misc/teams) get their own dedicated colors, and entities that were just hit briefly flash red.
+You can choose how targets are drawn with the **Mode** setting: a 3D **Box** around each entity, a screen-aligned **2D** box with optional health bar, the classic **Legacy2D** marker, or **Glow**, which draws a glow around each entity's outline. Glow's **Style** setting picks how that glow looks: **Vanilla** keeps Minecraft's own glowing outline, while **Smooth**, **Outline**, **Neon**, **Rainbow**, **Ripple**, **Hologram**, **Halftone**, **Chromatic** and **Aura** are shader styles, each with its own options. Glow colors still come from the color settings below, and the shader styles ship with the client, so resource packs cannot replace them. The **ColorMode** setting controls how those highlights are colored — by distance, by remaining health, a single static color, or a shifting rainbow. On top of that, invisible entities and [friends](/docs/modules/misc/teams) get their own dedicated colors, and entities that were just hit briefly flash red.
 
 The **Glow** modes rely on entities being rendered, so to see hidden or invisible targets through walls with those modes you'll want [TrueSight](/docs/modules/render/truesight). For filled-in or recolored entity models instead of boxes, see [Chams](/docs/modules/render/chams), and use [Nametags](/docs/modules/render/nametags) to label them. Use **MaximumDistance** to limit how far away entities are still drawn.
 
@@ -30,6 +30,8 @@ The **Glow** modes rely on entities being rendered, so to see hidden or invisibl
 | Mode → [Legacy2D] → Scale | Decimal | 0.1 | 0.02..0.3 | Size of the legacy marker. |
 | Mode → [Legacy2D] → YOffset | Decimal | 0.0 | -1.0..1.0 | Moves the marker up or down. |
 | Mode → [Legacy2D] → BackgroundAlpha | Integer | 150 | 0..255 | Opacity of the marker's background. |
+| Mode → [Glow] → Style | Mode Selector | Smooth | Vanilla, Smooth, Outline, Neon, Rainbow, Ripple, Hologram, Halftone, Chromatic, Aura | Look of the glow. Vanilla uses Minecraft's glowing outline, the others are shader styles with their own options. |
+| Mode → [Glow] → Style → [all except Vanilla] → Opacity | Decimal | 1.0 | 0.0..1.0 | Opacity of the shader glow. |
 | ColorMode | Mode Selector | Health | Distance, Health, Static, Rainbow | How highlights are colored. |
 | ColorMode → [Distance] → Saturation | Decimal | 1.0 | 0.0..1.0 | Color saturation based on distance. |
 | ColorMode → [Distance] → Brightness | Decimal | 1.0 | 0.0..1.0 | Color brightness based on distance. |
