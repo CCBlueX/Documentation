@@ -16,9 +16,9 @@ Use it on Kit-PvP, UHC, or survival servers where staying buffed is the differen
 | Soup | Toggleable Group | Off | — | Heals you by eating mushroom stew when your health is low. |
 | Soup → Health | Integer | 40 | 1..100 %HP | Trigger soup once health falls to this percent of your max. |
 | Soup → ConsiderAbsorption | Toggle | true | — | Counts absorption (yellow) hearts toward your health when deciding whether to eat. |
-| Soup → DropAfterUse | Toggleable Group | On | — | Drops the empty bowl after eating so it doesn't clutter your slot. The soup slot stays selected until the bowl is dropped. Soup eaten from the offhand is never dropped. |
-| Soup → DropAfterUse → AssumeEmptyBowl | Toggle | true | — | Drops the item after the Wait delay assuming the bowl is now empty, instead of checking that the slot holds a bowl. |
-| Soup → DropAfterUse → Wait | Integer Range | 1..2 | 1..20 ticks | Random delay before dropping the bowl. |
+| Soup → AfterUse | Mode Selector | Drop | None \| Drop \| Stack | What to do with the empty bowl after eating. **None** leaves it in the slot, **Drop** drops it, and **Stack** shift-clicks it out of the hotbar so the bowls stack up in your inventory (useful for recrafting soup). Bowls from soup eaten in the offhand are never handled. |
+| Soup → AfterUse → [Drop/Stack] → AssumeEmptyBowl | Toggle | true | — | Handles the item after the Wait delay assuming the bowl is now empty, instead of checking that the slot holds a bowl. |
+| Soup → AfterUse → [Drop/Stack] → Wait | Integer Range | 1..2 | 1..20 ticks | Random delay before dropping or moving the bowl. |
 | Head | Toggleable Group | Off | — | Eats a player head for instant healing when your health is low. |
 | Head → Health | Integer | 40 | 1..100 %HP | Trigger the head once health falls to this percent of your max. |
 | Head → ConsiderAbsorption | Toggle | true | — | Counts absorption (yellow) hearts toward your health when deciding whether to eat. |
@@ -59,8 +59,9 @@ Use it on Kit-PvP, UHC, or survival servers where staying buffed is the differen
 | Refill | Toggleable Group | On | — | Moves spare buff items from your inventory into the hotbar to keep you stocked. |
 | Refill → Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
 | Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
-| CombatPauseTime | Integer | 2 | 0..40 ticks | Pauses combat actions for this long when a buff is used. |
+| CombatPauseTime | Integer | 0 | 0..40 ticks | Pauses combat actions for this long when a buff is used. |
 | NotDuringCombat | Toggle | false | — | Stops buffing entirely while you're in combat. |
+| IgnoreOpenInventory | Toggle | false | — | Keeps buffing while your inventory is open. By default, AutoBuff pauses while the inventory is open. |
 
 ---
 *Last updated: 2026-10-18 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autobuff/ModuleAutoBuff.kt)*
