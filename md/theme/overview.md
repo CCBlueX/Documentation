@@ -101,6 +101,10 @@ For developers who want to create custom themes:
 5. **Publish to Marketplace**:
    - Once your theme is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
 
+### Handling Esc
+
+Pressing **Esc** closes the whole theme screen. While a page has a dialog, dropdown or search open, it can keep the key for itself by sending a `PUT` request to `/api/v1/client/screen/escape` with a JSON body such as `{"name": "multiplayer", "keep": true}`, and `"keep": false` once the layer is closed. `name` must be the theme screen that is currently open, otherwise the client answers with `403`. Any screen change hands Esc back to the client, so a page that still has a layer open has to keep it again. The included LiquidBounce theme does this, so Esc first closes its dialogs, dropdowns and searches.
+
 ### Adding a Marketplace to Your Theme
 
 Your theme can bring its own Marketplace through the client API. The `/api/v1/client/marketplace/tags` and `/api/v1/client/marketplace/configs` routes list configs, show their details and modules, load them fully or only some of their modules, and report them. The `/api/v1/client/marketplace/items` routes list add-ons, scripts and themes, show the installed ones and their details, and install, update, remove and apply them. Descriptions and item summaries are passed on as Markdown; to open a link in them, send a `POST` request to `/api/v1/client/marketplace/items/{id}/openLink` with the link as `url`, where `{id}` is the id of the item or config. The client opens the link only if it is an http(s) link in that item's description and answers anything else with `403`. As with the [marketplace commands](/docs/commands/marketplace), the client reports how an action went in the chat and as a notification.
