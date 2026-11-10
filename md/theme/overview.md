@@ -101,6 +101,10 @@ For developers who want to create custom themes:
 5. **Publish to Marketplace**:
    - Once your theme is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
 
+### Adding a Marketplace to Your Theme
+
+Your theme can bring its own Marketplace through the client API. The `/api/v1/client/marketplace/tags` and `/api/v1/client/marketplace/configs` routes list configs, show their details and modules, load them fully or only some of their modules, and report them. The `/api/v1/client/marketplace/items` routes list add-ons, scripts and themes, show the installed ones and their details, and install, update, remove and apply them. Descriptions and item summaries are passed on as Markdown; to open the links in them, send a `POST` request to `/api/v1/client/browse` with an http(s) `url`. As with the [marketplace commands](/docs/commands/marketplace), the client reports how an action went in the chat and as a notification.
+
 ### Security Warning
 
 > **Only install themes from trusted sources!**
