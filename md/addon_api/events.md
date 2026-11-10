@@ -166,6 +166,8 @@ These events are part of the [stable API](/docs/add-on-api/developers/stable-api
 | `PlayerJumpEvent`                | When the local player jumps. `motion` and `yaw` can be changed, cancel to not jump.                     |
 | `MovementInputEvent`             | When the movement keys are read. `directionalInput`, `jump` and `sneak` can be changed.                 |
 | `AttackEntityEvent`              | Before the player attacks an entity. Cancel to not attack.                                              |
+| `PlayerKillEvent`                | When a death message in chat shows the player killed `victim`. Also fires in minigames that never really kill a player. |
+| `PlayerDeathEvent`               | When a death message in chat names the player as the victim, with `killer` if the message names one. Also fires in minigames. |
 | `TagEntityEvent`                 | When the client decides how to treat an entity: `dontTarget()`, `ignore()`, `assumeFriend()`, `color(...)`. |
 | `PacketEvent`                    | For every packet, `OUTGOING` or `INCOMING`. Cancel to drop it.                                          |
 | `ChatSendEvent`                  | When the player sends a chat message. Cancel to not send it.                                            |
