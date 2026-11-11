@@ -15,6 +15,8 @@ The following tutorial will guide you through the process of setting up your pre
 
 ![premium_login_command](/images/user_login_command.png)
 
+Deadmau5 ears use their own texture instead of your skin. In the user panel you can let them match your cape (the default), pick a style, upload a texture or choose a colour. You can also pick or upload a custom elytra, which replaces your cape texture on the elytra.
+
 ### Instructions for LiquidBounce Legacy
 
 **Note:** LiquidBounce Legacy only supports capes. Other premium cosmetics like Deadmau5 ears are only available in LiquidBounce Nextgen.
