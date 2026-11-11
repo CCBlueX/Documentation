@@ -12,9 +12,9 @@ When your health is low, it prefers golden apples, enchanted golden apples or he
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
 | SwapBackDelay | Integer | 5 | 1..20 | Ticks (20 per second) to wait before switching back to your slot after eating. |
-| PreferGappleHealthThreshold | Decimal | 9.0 | 0.0..20.0 | At or below this health, healing potions come before normal food. |
+| PreferGappleHealthThreshold | Decimal | 9.0 | 0.0..20.0 | At or below this health, golden apples come before normal food. |
 | PreferNotchAppleHealthThreshold | Decimal | 2.0 | 0.0..20.0 | At or below this health, enchanted golden apples come first. |
-| PreferHealthPotHealthThreshold | Decimal | 12.0 | 0.0..20.0 | At or below this health, golden apples come before normal food. |
+| PreferHealthPotHealthThreshold | Decimal | 12.0 | 0.0..20.0 | At or below this health, healing potions come before normal food. |
 | CombatPauseTime | Integer | 0 | 0..40 ticks | Pauses combat modules for this long when SmartEat starts eating. |
 | NotDuringCombat | Toggle | Off | | Does not eat while you are fighting. |
 | SilentOffhand | Toggleable Group | On | | Right-click while holding a tool to eat the best food without changing your slot. |
