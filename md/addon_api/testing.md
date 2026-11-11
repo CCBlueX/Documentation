@@ -85,6 +85,14 @@ private fun <T> ClientGameTestContext.client(block: (Minecraft) -> T): T =
 - `ModuleManager[name]` finds a module, `CommandManager.execute` runs a command without the prefix.
 - An exception fails the run. Extras also collects every logged error and fails on them, which catches problems inside handlers that the client only logs.
 
+### Tests on the game test server
+
+LiquidBounce publishes `net.ccbluex:liquidbounce-gametest`, its part on top of the [CCBlueX game test harness](https://github.com/CCBlueX/gametest).
+
+- A test that extends `LiquidBounceGameTest` joins the game test server, a Paper server with an anticheat, under a fresh name and gets worlds of its own. It fails when the anticheat or Paper objects to what the client did. The test runs with every module but the HUD turned off and turns the modules that ran before back on afterwards.
+- A test of the client alone (commands, configs, registries) extends `LocalGameTest` and implements `test(context)`. It runs only when no anticheat is picked.
+- Inside a server test, `enable(module)` and `disable(module)` switch a module, `command(line)` runs a client command (it never reaches the server) and `module.setting<T>(name)` finds a setting by name.
+
 ### Running
 
 ```sh
