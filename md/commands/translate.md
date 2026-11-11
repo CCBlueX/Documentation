@@ -41,7 +41,7 @@ Languages are written as short codes. Press Tab to see all of them. Some common 
 
 ### `.autotranslate`
 
-Sets the language that chat messages are translated into when automatic translation is on. It starts as `en`. Automatic translation is used by [Client Chat](/docs/global-settings/client-chat) and the BetterChat and BetterTitle modules.
+Sets the language that chat messages are translated into when automatic translation is on. It starts as `en` and is the same as the LanguageCode setting in [AutoTranslate](/docs/global-settings/auto-translate). Automatic translation is used by [Client Chat](/docs/global-settings/client-chat) and the BetterChat and BetterTitle modules.
 
 - `.autotranslate language`: shows the current language.
 - `.autotranslate language set <code>`: sets the language.
