@@ -1,21 +1,21 @@
 ## Modules Overview
 
-LiquidBounce organizes its features into **modules** (also called "hacks"). Each module can be toggled on or off, configured with custom settings, and bound to a key for quick access.
+Modules are the features of LiquidBounce. You can turn each one on or off, change its settings and give it a key so you can turn it on quickly.
 
-Use the **ClickGUI** (default: **RIGHT SHIFT**) or the `.toggle <module>` command to enable/disable modules. Right-click a module in the ClickGUI to access its settings.
+Open the ClickGUI with **Right Shift** to turn modules on and off. Right click a module to see its settings. You can also type `.toggle <module>` in chat.
 
 ### Module Categories
 
-- [Combat](/docs/Modules/Combat) (29 modules) — Combat modules enhance your fighting capabilities.
-- [Movement](/docs/Modules/Movement) (39 modules) — Movement modules modify how your character moves through the world.
-- [Player](/docs/Modules/Player) (32 modules) — Player modules automate player actions and inventory management.
-- [Render](/docs/Modules/Render) (61 modules) — Render modules change what you see on screen.
-- [World](/docs/Modules/World) (27 modules) — World modules interact with the game world.
-- [Exploit](/docs/Modules/Exploit) (24 modules) — Exploit modules abuse server or protocol behavior.
-- [Misc](/docs/Modules/Misc) (20 modules) — Miscellaneous modules provide various utilities that do not fit neatly into other categories, including chat enhancements, team detection, and notification systems.
-- [Fun](/docs/Modules/Fun) (7 modules) — Fun modules are purely for entertainment.
+- [Combat](/docs/modules/combat/overview) (29 modules): help you fight, for example by attacking, aiming or blocking for you.
+- [Movement](/docs/modules/movement/overview) (39 modules): change how you move, like flying or going faster.
+- [Player](/docs/modules/player/overview) (32 modules): do things for you, like sorting your inventory or eating.
+- [Render](/docs/modules/render/overview) (60 modules): change what you see on screen.
+- [World](/docs/modules/world/overview) (27 modules): work with blocks in the world, like placing and breaking them.
+- [Exploit](/docs/modules/exploit/overview) (24 modules): use bugs or weak spots in servers.
+- [Misc](/docs/modules/misc/overview) (20 modules): everything else, like chat tools, teams and notifications.
+- [Fun](/docs/modules/fun/overview) (7 modules): just for fun.
 
-**Total: 239 modules**
+**Total: 238 modules**
 
 ---
-*Last updated: 2026-07-16*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ModuleCategories.kt)*

@@ -1,137 +1,99 @@
 # Using the Account Manager
 
-The **Account Manager** allows you to:
+In the Account Manager you can:
 
-- Log in with different account types:
-   - [**Microsoft**](#microsoft-login)
-   - [**TheAltening**](#thealtening-login)
-   - [**Cracked (offline)**](#cracked-offline-login)
-   - [**Session / Access Token**](#session-access-token-login)
-- [Restore](#restoring-the-original-game-account) the account you started the game with.
-- [Quickly switch](#account-selector) between saved accounts.
+- Log in with different kinds of accounts: [Microsoft](#microsoft-login), [TheAltening](#thealtening-login), [Cracked (offline)](#cracked-offline-login) and [Session / Access Token](#session-access-token-login).
+- [Go back](#restoring-the-original-game-account) to the account you started the game with.
+- [Switch quickly](#account-selector) between saved accounts.
 
 ## Opening the Account Manager
 
-You can open the Account Manager directly from the Title screen:
-
-1. Look at the **top-right account panel**.
-2. Click the **pen (edit) icon** next to your username.
-
-This opens a window listing all stored accounts, along with buttons to add, edit, or remove them.
+On the title screen, click the pen icon next to your name in the account box at the top right. A window opens with all your saved accounts and buttons to add, edit or remove them.
 
 ## Adding Accounts
 
-Each stored entry appears in a list (often with an icon indicating its type). You can click an entry to log into it.
+Every saved account shows in the list, with an icon for its type. Click one to log in to it.
 
 ### Microsoft Login
 
-Use this if you own Minecraft on a Microsoft account. You can choose between three sign-in methods:
+Use this if you bought Minecraft with a Microsoft account. There are three ways to sign in:
 
-- **WebView** – signs you in through a browser window that opens inside the client.
-- **Device Code** – shows a link and a code; open the link in a browser on any device and enter the code to confirm the login.
-- **Credentials** – signs you in directly with the email address and password of your Microsoft account.
+- **WebView** opens a browser window inside the game.
+- **Device Code** shows a link and a code. Open the link on any device and type in the code.
+- **Credentials** signs in with the email address and password of your Microsoft account.
 
 <video controls src="/images/get-started/account-manager/login-with-microsoft.mp4" style="max-width: 100%; border-radius: 8px;"></video>
 
-1. In the **Account Manager**, click **Add Account** and choose **Microsoft**.
-2. Pick the sign-in method you want to use and follow the steps it shows you.
-3. Sign into your **Microsoft account** and confirm the requested permissions.
-4. Once the login succeeds, LiquidBounce will:
-   - Add the account to the Account Manager.
-   - Show it in the **account list** with your Microsoft username.
-5. Click the entry to log into this Microsoft account.
+1. In the Account Manager, click **Add Account** and choose **Microsoft**.
+2. Pick a way to sign in and follow the steps.
+3. Sign in to your Microsoft account and allow the permissions it asks for.
+4. The account now shows in the list with your Minecraft name. Click it to log in.
 
-After this, the Title screen’s account panel will show your Microsoft username and indicate that you are logged in via Microsoft.
+The account box on the title screen now shows your Microsoft account.
 
-> Microsoft sign-in requires LiquidBounce *v0.40.0* or newer. In *v0.39.0* and older it does not work at all, because Mojang blacklisted our login — read more in our blog post [Microsoft Tried to Ban Us!](https://liquidbounce.net/blog/article/WhKoUYc3). Update the client through [LiquidLauncher](/docs/get-started/liquidlauncher) to sign in.
+> Microsoft sign-in only works in LiquidBounce *v0.40.0* or newer, because Mojang blocked the login of older versions. You can read about it in our blog post [Microsoft Tried to Ban Us!](https://liquidbounce.net/blog/article/WhKoUYc3). Update the client with [LiquidLauncher](/docs/get-started/liquidlauncher).
 
-> If you encounter issues when signing in with **Microsoft** or **Session**, see
+> If signing in with Microsoft or Session does not work, see
 > [Fixing issues with the system's hosts file](/docs/troubleshooting/fixing-liquidlauncher#fixing-issues-with-the-systems-hosts-file).
 
 ### TheAltening Login
 
-Use this if you have alt tokens from **[thealtening.com](https://thealtening.com)**.
+Use this if you have alt tokens from [thealtening.com](https://thealtening.com).
 
-1. In the **Account Manager**, click **Add Account** → **TheAltening**.
-2. Enter the **token** provided by TheAltening.
-3. Confirm to save the account.
-4. Select the account from the list to log in.
+1. In the Account Manager, click **Add Account** → **TheAltening**.
+2. Paste the token from TheAltening.
+3. Save the account.
+4. Click it in the list to log in.
 
-> Make sure you are using tokens from the official **[thealtening.com](https://thealtening.com)** website to avoid invalid or unsafe accounts.
+Only use tokens from the real [thealtening.com](https://thealtening.com) website. Tokens from elsewhere are often broken or unsafe.
 
 ### Cracked (Offline) Login
 
-Cracked accounts are **offline-mode** accounts that work only on servers with online-mode disabled.
+A cracked account is just a name. It only works on servers that do not check accounts (online mode turned off). Most big servers do check, so cracked accounts cannot join them.
 
-1. In the **Account Manager**, click **Add Account** → **Cracked** (sometimes shown as “Offline”).
-2. Enter any **username** you want to use.
-3. Confirm to save the account.
-4. Select the account from the list to switch to it.
-
-The Title screen now displays the chosen offline username. Remember that most public servers require online-mode accounts and will not accept cracked logins.
+1. In the Account Manager, click **Add Account** → **Cracked** (sometimes called "Offline").
+2. Type any name you like.
+3. Save the account.
+4. Click it in the list to switch to it.
 
 ### Session / Access Token Login
 
-Session (also known as **access token**) lets you log in using an already obtained Minecraft access token, for example from another launcher or tool.
+A session (or access token) lets you log in with a Minecraft token you already have, for example from another launcher.
 
 ![Login with Session](/images/get-started/account-manager/login-with-session.png)
 
-1. In the **Account Manager**, click **Add Account** → **Session / Access Token**.
-2. Paste your **access token** into the token field.
-3. Confirm to save the account and then select it to log in.
+1. In the Account Manager, click **Add Account** → **Session / Access Token**.
+2. Paste your token into the token field.
+3. Save the account and click it to log in.
 
-> Sessions are usually **temporary**. When Mojang/Microsoft invalidates that token (for example after logout or after some time), you may need to enter a fresh one.
+Tokens stop working after a while, or when you log out somewhere else. Then you need a new one.
 
 ## Restoring the Original Game Account
 
-If you log into other accounts (Microsoft, TheAltening, Cracked, Session) and later want to return to the account that was active when you launched the game:
-
-1. Open the **Account Manager**.
-2. Look at the **bottom left bar** and click the **Restore** button (refresh icon).
-3. Your session will switch back to the original account, effectively restoring the login you started the game with.
+To go back to the account you started the game with, open the Account Manager and click **Restore** (the refresh icon) in the bar at the bottom left.
 
 ![Restore Original Account](/images/get-started/account-manager/restore-account.png)
 
 ## Account Selector
 
-The **Account Selector** allows you to switch between stored accounts with as few clicks as possible.
+The Account Selector lets you switch accounts without opening the whole Account Manager.
 
-### Opening the Account Selector
-
-1. On the Title screen, look at the **top-right account panel**.
-2. Click anywhere on the **entire account box** (not the individual arrow or pen icons).
-3. A compact overlay opens, showing a **short list of your favorite or most recently used accounts**.
-
-This behavior is demonstrated in the video and screenshot below.
+On the title screen, click anywhere on the account box at the top right (but not on the arrow or pen icon). A small list of your favorite and recently used accounts opens.
 
 <video controls src="/images/get-started/account-manager/changing-account.mp4" style="max-width: 100%; border-radius: 8px;"></video>
 
 ![Changing Account](/images/get-started/account-manager/changing-account.png)
 
-### Switching Accounts Quickly
+Each entry shows the Minecraft name with the account type below it ("Microsoft", "TheAltening", "Cracked" or "Session"). Click one to switch to it.
 
-1. In the Account Selector overlay, each entry shows the **Minecraft username** with the **account type** below it (for example "Microsoft", "TheAltening", "Cracked", or "Session").
-2. Click the entry for the account you want to use.
-3. The client switches from your current session to the selected account.
+Use the Account Manager to add accounts or to sort through many of them, and the Account Selector for everyday switching.
 
-The whole process only takes a moment and does not require opening the full Account Manager window.
+## Random Cracked Name (Arrow Icon)
 
-> Use the full Account Manager to add new accounts or manage many accounts, and use the **Account Selector** for everyday switching between a small set of commonly used accounts.
-
-## Random Cracked Username (Arrow Icon)
-
-The **arrow icon** in the top-right account panel is a shortcut for generating a **random cracked username**:
-
-1. Click the **arrow icon** next to your username on the Title screen.
-2. LiquidBounce will automatically:
-   - Generate a new random cracked username.
-   - Switch your session to this new **offline account**.
-3. The account panel updates to show the newly generated username.
-
-This is useful when you quickly need a throwaway cracked username without manually adding a new cracked account in the Account Manager.
+Click the arrow icon next to your name on the title screen. LiquidBounce makes up a random name and switches you to a cracked account with it. This is handy when you need a throwaway name fast.
 
 ## Switching Accounts After a Disconnect
 
-When you are disconnected from a server, the disconnect screen shows the same **top-right account panel** as the Title screen. Logging into another account from there (through the Account Selector, the Account Manager or the arrow icon) automatically reconnects you to the server with that account.
+When a server kicks you or you lose connection, the disconnect screen shows the same account box as the title screen. If you log in to another account there (with the Account Selector, the Account Manager or the arrow icon), LiquidBounce joins the server again with that account.
 
-The bottom left of the disconnect screen has a **Reconnect** button and an **Auto reconnect** switch. With **Auto reconnect** enabled, the button counts down and LiquidBounce reconnects to the server after 5 seconds. The countdown pauses while your mouse is over the account panel or while a login is in progress. The switch is remembered for future disconnects.
+At the bottom left are a **Reconnect** button and an **Auto reconnect** switch. With **Auto reconnect** on, the button counts down and LiquidBounce joins the server again after 5 seconds. The countdown waits while your mouse is over the account box or while you are logging in. The switch stays the way you left it.

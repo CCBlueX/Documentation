@@ -1,27 +1,23 @@
 ## SuperKnockback
 
-SuperKnockback maximises the knockback you deal when hitting enemies. In vanilla Minecraft, sprint-attacking an entity only applies extra knockback if the game registers you as actively sprinting at the moment of impact. This module manipulates your sprint state around each hit so that the knockback bonus is consistently applied, even against targets that would otherwise be invulnerable to it due to their hurt timer.
-
-Three modes are available. **Packet** sends sprint-state packets in quick succession at the moment of attack, instantly toggling sprint off and back on at the network level without visibly interrupting your movement. **SprintTap** briefly suppresses your sprint in-game after a hit and re-enables it after a short configurable delay, mimicking the manual "sprint-tap" technique. **WTap** instead momentarily blocks your forward movement input after a hit — similar to the classic "w-tap" PvP technique — which resets your sprint and re-applies the knockback boost.
-
-You can limit when the module activates using the **Conditions** filter (e.g. only fire while not in water, only while the target is looking towards you, or only while on the ground) and the **OnlyOnMove** group, which prevents the module from triggering when you are standing still. The **HurtTime** threshold lets you skip hits on enemies that were hit too recently to receive full knockback, and **Chance** lets you apply the effect only a percentage of the time for a more natural appearance.
+SuperKnockback makes your hits push enemies further away. In Minecraft, a sprinting hit gives extra knockback, but only once per sprint. This module restarts your sprint around each hit so every hit gets the extra push.
 
 **Category:** Combat
-**Enabled by default:** Yes
+**Enabled by default:** No
 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | SprintTap | Packet, SprintTap, WTap | The technique used to boost knockback on hit. |
-| Mode → [SprintTap] → ReSprint | Integer Range | 0..1 | 0..10 ticks | How many ticks to wait before re-enabling sprint after a hit. |
-| Mode → [WTap] → UntilMovementBlock | Integer Range | 1..1 | 0..10 ticks | Ticks to wait after a hit before blocking forward movement. |
-| Mode → [WTap] → UntilAllowedMovement | Integer Range | 1..1 | 0..10 ticks | Ticks to wait after movement is blocked before restoring it. |
-| HurtTime | Integer | 4 | 0..10 | Only applies the knockback boost if the target's hurt timer is at or below this value. |
-| Chance | Decimal | 100.0 | 0.0..100.0 % | Probability (in percent) that the knockback boost fires on any given hit. |
-| Conditions | Multi-Select | NotInWater | OnlyFacing, OnlyOnGround, NotInWater | Extra conditions that must all be met for the module to act. **OnlyFacing** requires the target to be looking towards you. |
-| OnlyOnMove | Toggleable Group | on | — | Only activate when you are moving. |
-| OnlyOnMove → OnlyForward | Toggle | true | — | When enabled, the module also requires you to be moving forward (not just sideways). |
+| Mode | Choice | Packet | Packet, SprintTap, WTap | How the sprint is restarted. Packet tells the server you stopped and started sprinting, without changing how you move. SprintTap stops your sprint for a moment after a hit. WTap lets go of the forward key for a moment after a hit, like doing a W-tap yourself. |
+| Mode → [SprintTap] → ReSprint | Integer Range | 0..1 | 0..10 ticks | How long to wait before sprinting again, in ticks (20 per second). |
+| Mode → [WTap] → UntilMovementBlock | Integer Range | 0..1 | 0..10 ticks | How long to wait after the hit before letting go of forward. |
+| Mode → [WTap] → UntilAllowedMovement | Integer Range | 0..1 | 0..10 ticks | How long to stay stopped before walking forward again. |
+| HurtTime | Integer | 10 | 0..10 | Only works if the enemy was not hurt more recently than this. Lower values skip enemies that were just hit. |
+| Chance | Decimal | 100.0 | 0.0..100.0 % | How often the extra knockback is used on a hit. |
+| Conditions | Multi-Select | NotInWater | OnlyFacing, OnlyOnGround, NotInWater | Only works when all picked conditions are true. OnlyFacing: the enemy is looking at you. OnlyOnGround: you are on the ground. NotInWater: you are not in water. |
+| OnlyOnMove | Toggleable Group | On | | Only works while you are moving. |
+| OnlyOnMove → OnlyForward | Toggle | true | | Does not work while you are walking sideways. |
 
 ---
-*Last updated: 2026-10-09 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleSuperKnockback.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleSuperKnockback.kt)*

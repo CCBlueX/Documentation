@@ -1,10 +1,8 @@
 ## BedPlates
 
-BedPlates draws a floating overlay over every bed it can find in your view distance, showing you exactly which blocks are protecting it. This is built for bed-defense game modes (Bedwars and similar): instead of flying around each bed to inspect its defense, you get an at-a-glance icon strip of the surrounding blocks, each with a stacked count, plus the bed's distance in meters. Beds are scanned asynchronously and the overlays are sorted by distance so the closest beds render first.
+BedPlates shows a small panel above each bed with the blocks that protect it and how far away the bed is. It is made for Bed Wars and similar modes, so you can see a bed's defense without walking around it.
 
-For each bed, the mod collects the surrounding blocks, filters them, and turns them into a list of item icons. By default it uses **Compact** mode (merging blocks of the same type across layers into one count) and **ShowBed** (the bed itself appears first in the strip with its distance label). Blocks you can't currently break — those that need a tool you don't have in your hotbar — are highlighted in red so you can spot reinforced defenses like obsidian or end stone; see [the unbreakable-block check](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt#L230-L237). The full per-bed gather, filter, and sort pass lives in [updateAndSortBeds](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt#L145-L168).
-
-To cut clutter, you can limit how many beds are shown at once, scale the overlay by distance, filter which blocks are listed, and tell the mod to skip your own bed. The skip logic (own bed and adjacent beds) and distance scaling are applied at [render time](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt#L199-L208).
+Blocks you cannot break with the tools in your hotbar get a red count, so hard blocks like obsidian stand out. The closest beds are shown first.
 
 **Category:** Render
 **Enabled by default:** No
@@ -13,27 +11,33 @@ To cut clutter, you can limit how many beds are shown at once, scale the overlay
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Background | Mode Selector | — | — | Chooses how the background behind each bed's icon strip is drawn. The rounded-panel mode has its own fill and outline color, margin and corner radius, plus a gradient that darkens the panel towards its bottom edge and an outer glow. |
-| Outline | Toggle | false | — | Draws an outline around the overlay using the bed's wool color. When off, no outline is drawn. |
-| MaxLayers | Integer | 5 | 1..5 | How many block layers outward from the bed to scan and display. Changing it triggers a full rescan. |
-| ShowBed | Toggle | true | — | Includes the bed itself as the first icon in the strip, labeled with the bed's distance in meters. |
-| TextShadow | Toggle | true | — | Renders a drop shadow behind the count and layer text for readability. |
-| RenderOffset | Vector3_d | — | — | World-space offset applied to the bed position before projecting it to the screen, nudging the overlay's location. |
-| Scale | Curve | — | — | Maps camera distance (0–200) to an overlay scale (0.25–4). Lets distant beds shrink or stay readable; overlays below 0.01 scale are skipped. |
-| MaxCount | Integer | 8 | 1..64 | Maximum number of beds rendered at once, starting with the closest. |
-| HighlightUnbreakable | Toggle | true | — | Colors a block's count red when it requires a tool you don't currently have in your hotbar to break. |
-| Compact | Toggle | true | — | Merges identical surrounding blocks across layers into a single counted icon. When off, each layer is shown separately with a Roman-numeral layer label. |
-| PreventOverlap | Toggle | true | — | Prevents bed overlays from drawing on top of each other when beds are close together on screen. |
-| FilterMode | Mode Selector | Predefined | Predefined, Custom | Chooses how surrounding blocks are filtered. Predefined hides air and non-solid blocks (except a built-in whitelist like glass, water, and ladders); Custom uses your own block list. |
-| FilterMode → [Custom] → Blocks | Registry List | — | — | The list of blocks used by the Custom filter. |
-| FilterMode → [Custom] → Filter | Choice | Blacklist | Whitelist, Blacklist | Whether the Blocks list is treated as a blacklist (hide listed blocks) or whitelist (show only listed blocks). |
-| IgnoreSelfBed | Mode Selector | None | None, Color, SpawnLocation, Manual | How to detect and skip your own bed so its plate isn't drawn. None disables this. |
-| IgnoreSelfBed → [Color] → Slots | Multi-Select | Head | Feet, Legs, Chest, Head | Armor slots whose color is compared against bed colors to identify your team's bed. |
-| IgnoreSelfBed → [Color] → Loose | Toggle | false | — | Loosens the color match used to identify your own bed. |
-| IgnoreSelfBed → [SpawnLocation] → BedDistance | Decimal | 24.0 | 16.0..48.0 | Maximum distance from your spawn point within which a bed is treated as your own. |
-| IgnoreSelfBed → [Manual] → Track | Key | — | — | Key to manually mark the bed you're looking at as your own (to be ignored). |
-| IgnoreSelfBed → [Manual] → Untrack | Key | — | — | Key to remove a manual self-bed mark. |
-| IgnoreAdjacent | Toggle | false | — | Skips a bed's overlay when another tracked bed sits directly adjacent to it, avoiding duplicate plates for double beds. |
+| Background | Mode Selector | Rect | Rect, Texture | The panel behind the icons. Rect is a rounded box, Texture uses item slot frames. |
+| Background → [Rect] → Color | Color | | | Fill color of the box. |
+| Background → [Rect] → OutlineColor | Color | | | Border color of the box. Clear by default. |
+| Background → [Rect] → Margin | Decimal | 2.0 | 0.0..100.0 | Space between the icons and the edge of the box. |
+| Background → [Rect] → Radius | Decimal | 4.0 | 0.0..16.0 | How round the corners are. |
+| Background → [Rect] → Gradient | Decimal | 0.3 | 0.0..1.0 | How much darker the box gets toward the bottom. |
+| Background → [Rect] → Glow | Decimal | 0.3 | 0.0..1.0 | Strength of the glow around the box. |
+| Outline | Toggle | false | | Draws a border in the bed's color. |
+| MaxLayers | Integer | 5 | 1..5 | How many layers of blocks around the bed are counted. |
+| ShowBed | Toggle | true | | Shows the bed itself first, with its distance in meters. |
+| TextShadow | Toggle | true | | Adds a shadow to the numbers so they are easier to read. |
+| RenderOffset | Vector3_d | | | Moves the panel away from the bed. |
+| Scale | Curve | 1 at every distance | Distance 0..200, Scale 0.25..4 | Panel size depending on how far away the bed is. |
+| MaxCount | Integer | 8 | 1..64 | Most beds shown at once, closest first. |
+| HighlightUnbreakable | Toggle | true | | Colors the count red for blocks you cannot break with your hotbar tools. |
+| Compact | Toggle | true | | Adds up the same block from all layers into one icon. Off shows each layer separately. |
+| PreventOverlap | Toggle | true | | Moves panels apart so they do not cover each other. |
+| FilterMode | Mode Selector | Predefined | Predefined, Custom | Which blocks are listed. Predefined skips air and see-through blocks, but keeps glass, water and ladders. |
+| FilterMode → [Custom] → Blocks | Registry List | | | Your own list of blocks. |
+| FilterMode → [Custom] → Filter | Choice | Blacklist | Whitelist, Blacklist | Blacklist hides the listed blocks, Whitelist shows only them. |
+| IgnoreSelfBed | Mode Selector | None | None, Color, SpawnLocation, Manual | How your own bed is found so it gets no panel. |
+| IgnoreSelfBed → [Color] → Slots | Multi-Select | Head | Feet, Legs, Chest, Head | Armor pieces whose color is compared with the bed color. |
+| IgnoreSelfBed → [Color] → Loose | Toggle | false | | Accepts colors that are only close to the bed color. |
+| IgnoreSelfBed → [SpawnLocation] → BedDistance | Decimal | 24.0 | 16.0..48.0 | A bed this close to where you spawned counts as yours. |
+| IgnoreSelfBed → [Manual] → Track | Key | Numpad + | | Marks the bed you look at as yours. |
+| IgnoreSelfBed → [Manual] → Untrack | Key | Numpad - | | Removes that mark. |
+| IgnoreAdjacent | Toggle | false | | Skips a bed when another bed is right next to it. |
 
 ---
-*Last updated: 2026-10-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt)*

@@ -1,10 +1,6 @@
 ## NoSlowBreak
 
-NoSlowBreak prevents the game's normal mining speed penalties from slowing you down when breaking blocks. Vanilla Minecraft reduces your breaking speed in several situations — when you have the Mining Fatigue effect, when you are not standing on the ground, or when you are underwater. This module cancels those reductions so your blocks break at full speed regardless of your current conditions.
-
-You can choose which situations the module applies to independently. For example, you might only want to counteract Mining Fatigue (common on servers that apply the effect near elder guardians or via plugins) without affecting the physics of mid-air or underwater mining. Enable whichever conditions suit your playstyle or server environment.
-
-This module pairs well with [FastBreak](/docs/modules/world/fastbreak) if you want to mine as quickly as possible overall, and with [NoSlow](/docs/modules/movement/noslow) if you are also looking to remove other speed-reducing effects on your movement.
+NoSlowBreak stops things from slowing down your mining. Normally you mine slower with Mining Fatigue, while you are in the air, or under water. Pick which of these it should fix under **When**.
 
 **Category:** World
 **Enabled by default:** No
@@ -12,8 +8,8 @@ This module pairs well with [FastBreak](/docs/modules/world/fastbreak) if you wa
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-|---------|------|---------|-------|-------------|
-| When | Multi-Select | MiningFatigue, OnAir | MiningFatigue, OnAir, Underwater | Select which conditions should have their block-breaking speed penalty removed. **MiningFatigue** — negates the penalty from the Mining Fatigue status effect. **OnAir** — negates the penalty for breaking blocks while airborne. **Underwater** — negates the penalty for breaking blocks while submerged. |
+|---|---|---|---|---|
+| When | Multi-Select | MiningFatigue, OnAir | MiningFatigue, OnAir, Underwater | Which slowdowns to remove. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleNoSlowBreak.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleNoSlowBreak.kt)*

@@ -1,8 +1,8 @@
 ## LiquidWalk
 
-LiquidWalk lets you walk across the surface of water and other liquids as if they were solid ground — sometimes called the "Jesus" module. Instead of sinking or swimming, you glide across the surface at full walking speed. This is useful for crossing oceans, rivers, or any water body quickly without having to swim or build a bridge. Holding sneak (Shift) will let you sink into the water as normal when you need to dive.
+LiquidWalk lets you walk on water and lava like it is solid ground. It is also called Jesus. Hold sneak to sink in when you want to swim.
 
-The module offers four modes to help you bypass different anti-cheat systems. **Vanilla** is the simplest approach and works well on servers with no anti-cheat or very basic checks. **NoCheatPlus** and **VerusB3901** apply packet-level adjustments tailored to their respective anti-cheats. **Vulcan291** takes a different approach — when you enter water it launches you upward and briefly speeds up your tick rate, effectively skipping you across the surface; you can tune the upward **Motion** force to find the right balance between reliability and flag avoidance.
+Vanilla works on servers without an anti-cheat. NCP-3.16.1, Verus-b3901 and Vulcan-2.9.1 are made for those anti-cheats. Vulcan-2.9.1 bounces you up out of the water, and Motion sets how hard.
 
 **Category:** Movement
 **Enabled by default:** No
@@ -11,8 +11,8 @@ The module offers four modes to help you bypass different anti-cheat systems. **
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | VerusB3901 | Vanilla, NoCheatPlus, VerusB3901, Vulcan291 | Selects the liquid-walking technique. Choose the mode that matches the anti-cheat running on your server. |
-| Mode → [Vulcan291] → Motion | Decimal | 0.8 | 0.2 – 1.4 | Controls the upward force applied when skipping across water in Vulcan291 mode. Lower values are more subtle; higher values propel you upward more aggressively. |
+| Mode | Mode Selector | Vanilla | Vanilla, NCP-3.16.1, Verus-b3901, Vulcan-2.9.1 | How you walk on water. Pick the one that fits the server's anti-cheat. |
+| Mode → [Vulcan-2.9.1] → Motion | Decimal | 0.8 | 0.2..1.4 | How hard you are bounced up out of the water. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/liquidwalk/ModuleLiquidWalk.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/liquidwalk/ModuleLiquidWalk.kt)*

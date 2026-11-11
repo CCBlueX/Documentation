@@ -59,3 +59,7 @@ val category = registerCategory(ModuleCategory(name))
 ### Icons
 
 The icon above resolves to `src/main/resources/resources/example-addon/clickgui/example.svg`. Keep it there and not under Minecraft's `assets/`, see [Resource files](/docs/add-on-api/developers/manifest-and-lifecycle#resource-files). A category without an icon gets the theme's icon for its name, and the client icon if the theme has none.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ModuleCategory.kt)*

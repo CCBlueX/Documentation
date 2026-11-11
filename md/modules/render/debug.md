@@ -1,14 +1,10 @@
 ## Debug
 
-Debug is a diagnostic overlay aimed squarely at developers and advanced users who want to peek under the hood of the client. When other modules expose internal data — server-sided rotations, hitboxes, target lines, predicted paths and other geometry, plus live parameter values — Debug draws that information into the world and onto your screen so you can see exactly what the client is calculating.
+Debug shows what other modules are working out behind the scenes, like where they aim, which target they picked and which path they expect you to take. It draws lines and boxes in the world and shows a list of values on your screen. It gives you no advantage in a game. Use it when you test a module like [KillAura](/docs/modules/combat/killaura) or [Scaffold](/docs/modules/world/scaffold), or when you report a bug.
 
-For everyday play there's nothing here to gain; it doesn't give you any in-game advantage. It's most useful when you're testing behavior, reporting a bug, or trying to understand why a feature like [KillAura](/docs/modules/combat/killaura) or [Scaffold](/docs/modules/world/scaffold) is acting a certain way. Captured parameter values are shown in an overview that fades out after a set time, and holding the player-list (Tab) key temporarily hides that overlay.
+The values show up as one small table per module and fade out after a few seconds. Hold the player list key (Tab) to hide them. If the tables do not fit on screen, open the chat and scroll with the mouse wheel.
 
-The overview shows one compact table per module: names on the left, values in one aligned column, and child groups such as modes as indented sections. Values are formatted by type, for example numbers to three decimals, vectors, rotations, entities, items and lists. Tables stack from top to bottom and only spread into more columns when they would reach below the screen. If even that is not enough, the last line shows how many rows are out of view, and while the chat is open the mouse wheel scrolls the tables. Data from sources outside of modules, such as the timer, combat or inventory handling, is reported every tick and only shows when **Global** is enabled.
-
-The optional groups add their own visualizations: SimulatedPlayer draws a predicted line showing where your movement is heading over the next several ticks, and Graph renders a small on-screen plot of an editable curve for tuning value mappings.
-
-Because many modules report data at once, **TitleFilter** lets you narrow the capture to the sources whose name matches a regex pattern; everything else is ignored, both on screen and in the log. With **DebugLog** enabled, captured parameter values are additionally written to a tab-separated file in the `debug-log` folder of your LiquidBounce directory, one file per time the module is switched on, with a line of timestamp, source, name and value per capture. That makes it easy to attach a recording of what the client calculated to a bug report.
+Many modules report at once, so **TitleFilter** lets you only show the ones whose name matches a pattern. With **DebugLog** on, the values are also saved to a file in the `debug-log` folder of your LiquidBounce folder, which you can attach to a bug report.
 
 **Category:** Render
 **Enabled by default:** No
@@ -16,17 +12,18 @@ Because many modules report data at once, **TitleFilter** lets you narrow the ca
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-| --- | --- | --- | --- | --- |
-| Parameters | Toggle | true | — | Shows the on-screen list of captured parameter values reported by other modules. |
-| Geometry | Toggle | true | — | Draws debug geometry (lines, boxes, points, triangles) that other modules submit into the world. |
-| Expires | Integer | 5 | 1..30 (secs) | How long a captured parameter value stays on screen before fading away. |
-| TitleFilter | Text | `.*` | — | Regex pattern matched against the name of the module or feature reporting the data; only matching sources are captured. |
-| Global | Toggle | false | — | Also shows data from sources outside of modules (e.g. timer, combat and inventory handling), which report every tick. |
-| DebugLog | Toggle | false | — | Writes captured parameter values to a tab-separated file in the `debug-log` folder of your LiquidBounce directory. The file is created when the module is enabled. |
-| SimulatedPlayer | Toggleable Group | off | — | Draws a line predicting your movement path over the coming ticks. |
-| SimulatedPlayer → TicksToPredict | Integer | 20 | 5..100 | How many ticks ahead the predicted movement path is simulated. |
-| Graph | Toggleable Group | off | — | Renders an on-screen plot of the editable curve below for visual tuning. |
-| Graph → Curve | Curve | — | — | The curve drawn and edited in the on-screen graph. |
+|---|---|---|---|---|
+| Parameters | Toggle | true | | Shows the list of values that modules report. |
+| Global | Toggle | false | | Also shows values from parts of the client that are not modules, such as the timer, combat and inventory handling. |
+| Geometry | Toggle | true | | Draws the lines, boxes and points that modules report into the world. |
+| Expires | Integer | 5 | 1 to 30 secs | How long a value stays on screen. |
+| Width | Integer | 180 | 120 to 400 px | How wide each table is. |
+| TitleFilter | Text | `.*` | | Only shows modules whose name matches this pattern. `.*` matches all of them. |
+| DebugLog | Toggle | false | | Also saves the values to a file in the `debug-log` folder. A new file starts each time you turn the module on. |
+| SimulatedPlayer | Toggleable Group | Off | | Draws a line showing where you will move next. |
+| SimulatedPlayer → TicksToPredict | Integer | 20 | 5 to 100 | How far ahead the line goes, in ticks (20 per second). |
+| Graph | Toggleable Group | Off | | Shows a small graph of the curve below on your screen. |
+| Graph → Curve | Curve | | | The curve shown in the graph. |
 
 ---
-*Last updated: 2026-09-25 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleDebug.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/debug/ModuleDebug.kt)*

@@ -1,47 +1,50 @@
 ## AutoQueue
 
-AutoQueue (also known by its alias *AutoPlay*) automatically queues you into minigame matches and re-queues once each game finishes, so you can grind rounds without manually typing join commands or clicking lobby NPCs. It ships with ready-made presets for popular servers plus a fully configurable Custom mode you can adapt to almost any server.
+AutoQueue joins a new game for you every time a minigame round ends, so you can keep playing round after round without typing commands or clicking NPCs. It has ready setups for some servers and a Custom mode you can set up for others.
 
-Choose the profile that matches where you're playing under **Presets**. *HypixelSW* joins Hypixel SkyWars solo games — it watches for the paper item in your hotbar and then sends the `/play` command for the chosen playlist ([the join loop](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autoqueue/presets/AutoQueueHypixelSW.kt#L42-L55)). *GommeDuels* handles GommeHD.net Duels end-to-end (interacting with the Duels NPC, sending win/lose messages, and managing KillAura) and requires your server language to be set to German. *Custom* lets you define your own **Trigger** (what tells the client a match has ended or a lobby is ready) and **Action** (how the client queues again).
+**Presets** picks the setup:
 
-In Custom mode the chosen trigger is checked every tick, and when it fires the chosen action runs — optionally waiting for a world change before it looks for the next trigger ([the trigger/action loop](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autoqueue/presets/AutoQueueCustom.kt#L92-L113)). It can also auto-toggle KillAura and Speed so they only run while you're actually in a match. **Pause** halts the whole module while specific screens are open.
+- **HypixelSW** joins Hypixel SkyWars solo games when the paper item shows up in your hotbar.
+- **GommeDuels** joins Duels on GommeHD.net through the Duels NPC and sends a chat message after each match. Your server language must be German.
+- **Custom** waits for something you choose (**Trigger**), like a title or a chat message, and then does something you choose (**Action**), like sending a command.
 
 **Category:** Player
 **Enabled by default:** No
+**Aliases:** AutoPlay
 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
 | --- | --- | --- | --- | --- |
-| Presets | Mode Selector | HypixelSW | HypixelSW, GommeDuels, Custom | Selects which queue profile to run: a ready-made setup for Hypixel SkyWars or GommeHD.net Duels, or a fully Custom configuration. |
-| Presets → [HypixelSW] → GameMode | Choice | Normal | Normal, Insane | Which Hypixel SkyWars solo playlist to join (sends `/play solo_normal` or `/play solo_insane`). |
-| Presets → [GommeDuels] → WinMessage | Text | — | — | Chat message sent a couple of seconds after you win a Duels match (default "GG, nice try"). |
-| Presets → [GommeDuels] → LoseMessage | Text | — | — | Chat message sent a couple of seconds after you lose a Duels match (default "GG, bist wohl besser als ich!"). |
-| Presets → [GommeDuels] → ControlKillAura | Toggle | true | — | Lets this preset enable KillAura once a match starts and disable it between matches. |
-| Presets → [Custom] → Trigger | Mode Selector | Title | Title, Title, Message, Item, TabHeader, TabFooter | What the Custom preset watches to decide that a new game should be queued. |
-| Presets → [Custom] → Trigger → [Title] → Keywords | Editable List | — | — | Fires when an on-screen title contains any of these words (default "Win", "胜利"). |
-| Presets → [Custom] → Trigger → [Title] → Keywords | Editable List | — | — | The second Title option matches the subtitle line instead of the main title; fires when the subtitle contains any keyword (default "恭喜"). |
-| Presets → [Custom] → Trigger → [Message] → Keywords | Editable List | — | — | Fires when a received chat message contains any of these words (default "Новая игра", "游戏结束"). |
-| Presets → [Custom] → Trigger → [Message] → ChatTypes | Multi-Select | [GameMessage] | ChatMessage, DisguisedChatMessage, GameMessage | Which chat channels the Message trigger listens to (at least one must be selected). |
-| Presets → [Custom] → Trigger → [Item] → Mode | Mode Selector | Name | Name, Item | How to identify the trigger item: by display name or by item type. |
-| Presets → [Custom] → Trigger → [Item] → Mode → [Name] → Names | Editable List | — | — | Item names to look for in your hotbar or offhand. |
-| Presets → [Custom] → Trigger → [Item] → Mode → [Name] → Mode | Choice | Equals | Equals, EqualsIgnoreCase, Contains, ContainsIgnoreCase, StartsWith, StartsWithIgnoreCase, EndsWith, EndsWithIgnoreCase | How a name is compared against the item's display name. |
-| Presets → [Custom] → Trigger → [Item] → Mode → [Item] → Items | Registry List | — | — | Item types to look for in your hotbar or offhand. |
-| Presets → [Custom] → Trigger → [TabHeader] → Text | Text | — | — | Fires when the tab-list header contains this text (default "Duels"). |
-| Presets → [Custom] → Trigger → [TabFooter] → Text | Text | — | — | Fires when the tab-list footer contains this text (default "Duels"). |
-| Presets → [Custom] → Action | Mode Selector | Chat | Chat, UseItem | What the Custom preset does to re-queue once the trigger fires. |
-| Presets → [Custom] → Action → [Chat] → StartDelay | Integer Range | 0..0 | 0..5000 | Random delay (ms) before the first message is sent. |
-| Presets → [Custom] → Action → [Chat] → MessageDelay | Integer Range | 0..0 | 0..5000 | Random delay (ms) between each subsequent message. |
-| Presets → [Custom] → Action → [Chat] → Messages | Editable List | — | — | Chat messages or commands sent in order to queue (default "/play solo_normal"). |
-| Presets → [Custom] → Action → [UseItem] → Mode | Mode Selector | Name | Name, Item | How to find the item to use: by display name or by item type. |
-| Presets → [Custom] → Action → [UseItem] → Mode → [Name] → Names | Editable List | — | — | Item names to search for in your hotbar or offhand. |
-| Presets → [Custom] → Action → [UseItem] → Mode → [Name] → Mode | Choice | Equals | Equals, EqualsIgnoreCase, Contains, ContainsIgnoreCase, StartsWith, StartsWithIgnoreCase, EndsWith, EndsWithIgnoreCase | How a name is compared against the item's display name. |
-| Presets → [Custom] → Action → [UseItem] → Mode → [Item] → Items | Registry List | — | — | Item types to search for in your hotbar or offhand. |
-| Presets → [Custom] → Control | Toggleable Group | on | — | When on, automatically disables the modules below while AutoQueue is queuing and re-enables them afterwards, so they don't run in the lobby. |
-| Presets → [Custom] → Control → KillAura | Toggle | true | — | Whether KillAura is included in Control's auto-toggling. |
-| Presets → [Custom] → Control → Speed | Toggle | false | — | Whether Speed is included in Control's auto-toggling. |
-| Presets → [Custom] → WaitUntilWorldChange | Toggle | true | — | After running the action, wait for a world/server change before watching for the trigger again. |
-| Pause | Multi-Select | [ClickGuiOpen, ChatScreenOpen, ContainerScreenOpen, PauseScreenOpen] | ClickGuiOpen, ChatScreenOpen, ContainerScreenOpen, PauseScreenOpen | Screens that fully pause AutoQueue while they are open (ClickGUI, chat box, container/inventory, or the pause menu). |
+| Presets | Mode Selector | HypixelSW | HypixelSW, GommeDuels, Custom | Which setup to use. |
+| Presets → [HypixelSW] → GameMode | Choice | Normal | Normal, Insane | Which SkyWars solo mode to join. |
+| Presets → [GommeDuels] → WinMessage | Text | GG, nice try | | Chat message sent after you win. |
+| Presets → [GommeDuels] → LoseMessage | Text | GG, bist wohl besser als ich! | | Chat message sent after you lose. |
+| Presets → [GommeDuels] → ControlKillAura | Toggle | true | | Turns [KillAura](/docs/modules/combat/killaura) on when a match starts and off between matches. |
+| Presets → [Custom] → Trigger | Mode Selector | Title | Title, Title, Message, Item, TabHeader, TabFooter | What tells AutoQueue that it is time to join a new game. The second Title option checks the smaller line under the title. |
+| Presets → [Custom] → Trigger → [Title] → Keywords | Text List | Win, 胜利 | | Joins when the big title on screen contains one of these words. |
+| Presets → [Custom] → Trigger → [Title (second)] → Keywords | Text List | 恭喜 | | Joins when the line under the title contains one of these words. |
+| Presets → [Custom] → Trigger → [Message] → Keywords | Text List | Новая игра, 游戏结束 | | Joins when a chat message contains one of these words. |
+| Presets → [Custom] → Trigger → [Message] → ChatTypes | Multi-Select | GameMessage | ChatMessage, DisguisedChatMessage, GameMessage | Which kinds of chat messages to check. |
+| Presets → [Custom] → Trigger → [Item] → Mode | Mode Selector | Name | Name, Item | Find the item by its name or by its item type. |
+| Presets → [Custom] → Trigger → [Item] → Mode → [Name] → Names | Text List | Paper | | Item names to look for in your hotbar or offhand. |
+| Presets → [Custom] → Trigger → [Item] → Mode → [Name] → Mode | Choice | Equals | Equals, EqualsIgnoreCase, Contains, ContainsIgnoreCase, StartsWith, StartsWithIgnoreCase, EndsWith, EndsWithIgnoreCase | How the name has to match. |
+| Presets → [Custom] → Trigger → [Item] → Mode → [Item] → Items | Registry List | Paper | | Item types to look for in your hotbar or offhand. |
+| Presets → [Custom] → Trigger → [TabHeader] → Text | Text | Duels | | Joins when the top of the tab list contains this text. |
+| Presets → [Custom] → Trigger → [TabFooter] → Text | Text | Duels | | Joins when the bottom of the tab list contains this text. |
+| Presets → [Custom] → Action | Mode Selector | Chat | Chat, UseItem | What to do to join a new game. |
+| Presets → [Custom] → Action → [Chat] → StartDelay | Integer Range | 0..0 | 0..5000 ms | Wait before the first message. |
+| Presets → [Custom] → Action → [Chat] → MessageDelay | Integer Range | 0..0 | 0..5000 ms | Wait between messages. |
+| Presets → [Custom] → Action → [Chat] → Messages | Text List | /play solo_normal | | Messages or commands to send, in order. |
+| Presets → [Custom] → Action → [UseItem] → Mode | Mode Selector | Name | Name, Item | Find the item by its name or by its item type. |
+| Presets → [Custom] → Action → [UseItem] → Mode → [Name] → Names | Text List | Paper | | Item names to look for in your hotbar or offhand. |
+| Presets → [Custom] → Action → [UseItem] → Mode → [Name] → Mode | Choice | Equals | Equals, EqualsIgnoreCase, Contains, ContainsIgnoreCase, StartsWith, StartsWithIgnoreCase, EndsWith, EndsWithIgnoreCase | How the name has to match. |
+| Presets → [Custom] → Action → [UseItem] → Mode → [Item] → Items | Registry List | Paper | | Item types to look for in your hotbar or offhand. |
+| Presets → [Custom] → Control | Toggleable Group | On | | Turns the modules below off while you wait for a new game and on again when it starts. |
+| Presets → [Custom] → Control → KillAura | Toggle | true | | Do this for [KillAura](/docs/modules/combat/killaura). |
+| Presets → [Custom] → Control → Speed | Toggle | false | | Do this for [Speed](/docs/modules/movement/speed). |
+| Presets → [Custom] → WaitUntilWorldChange | Toggle | true | | After joining, waits until you are moved to a new world before checking the trigger again. |
+| Pause | Multi-Select | ClickGuiOpen, ChatScreenOpen, ContainerScreenOpen, PauseScreenOpen | ClickGuiOpen, ChatScreenOpen, ContainerScreenOpen, PauseScreenOpen | AutoQueue waits while one of these screens is open. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autoqueue/ModuleAutoQueue.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autoqueue/ModuleAutoQueue.kt)*

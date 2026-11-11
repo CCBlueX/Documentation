@@ -1,19 +1,17 @@
 ## FastPlace
 
-FastPlace removes the short delay the game normally enforces between placing blocks (and, optionally, throwing projectiles), letting you build and spam items as fast as you can click or hold use. It's especially handy when bridging, walling off, or quickly stacking blocks under pressure.
-
-By default it speeds up block placement only, with no extra cooldown of its own. If you'd rather rate-limit the effect to look more legitimate, raise **Cooldown** to add a small randomized tick delay back in. You can also include projectiles like snowballs, eggs, or ender pearls via **ApplyTo**, and use **StartDelay** to wait a moment after you begin holding use before the speed-up kicks in.
+FastPlace removes the short wait between placing blocks, so you can build as fast as you click or hold the button. It can also speed up throwing snowballs, eggs and ender pearls.
 
 **Category:** World
-**Enabled by default:** Yes
+**Enabled by default:** No
 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Cooldown | Integer Range | 0..0 | 0..4 | Randomized cooldown (in ticks) applied between uses. Leave at `0..0` for maximum speed, or raise it to throttle and randomize how fast items are used. |
-| ApplyTo | Multi-Select | [Blocks] | Projectiles, Blocks | Which item types FastPlace affects. `Blocks` speeds up block placement, `Projectiles` speeds up throwable items like snowballs, eggs, and pearls. |
-| StartDelay | Integer | 0 | 0..1000 | Delay (in ms) after you start holding the use key before the speed-up activates. `0` applies it immediately. |
+| Cooldown | Integer Range | 0..0 | 0..4 ticks | Wait between uses, picked at random from the range (20 ticks per second). `0..0` is fastest. |
+| ApplyTo | Multi-Select | Projectiles, Blocks | Projectiles, Blocks | What it speeds up: blocks, things you throw, or both. |
+| StartDelay | Integer | 0 | 0..1000 ms | How long you must hold the button before it gets faster. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleFastPlace.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleFastPlace.kt)*

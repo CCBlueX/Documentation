@@ -2,34 +2,34 @@
 
 The `AsyncUtil` class offers a set of utilities for handling asynchronous operations using [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) in JavaScript.
 
-All command and module handlers (including `onEnable` and `onDisable`) can be written as [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), like in the following examples:
+Module event handlers (including `enable` and `disable`) and command handlers can be written as [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), like in the following examples:
 
 ```js
-const onEnable = async () => {
+mod.on("enable", async () => {
   await AsyncUtil.ticks(1);
-  Chat.displayChatMessage("Enabled!");
-}
-```
-
-```js
-module.on("chatReceive", async (event) => {
-  const message = event.getMessage();
-  await AsyncUtil.ticks(3);
-  await AsyncUtil.until(() => mc.player.isOnGround());
-  await AsyncUtil.conditional(20, mc.player.isOnGround);
+  Client.displayChatMessage("Enabled!");
 });
 ```
 
-**Note:** Since Promise does not support cancellation, any async function that has already started will continue running even if the module is disabled.
+```js
+mod.on("chatReceive", async (event) => {
+  const message = event.getMessage();
+  await AsyncUtil.ticks(3);
+  await AsyncUtil.until(() => mc.player.onGround());
+  await AsyncUtil.conditional(20, () => mc.player.onGround());
+});
+```
 
-Unlike browsers or Node.js, GraalJS does not support web APIs such as  [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout), [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval), or  [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). These are typically available on the [Window object](https://developer.mozilla.org/en-US/docs/Web/API/Window) object in browsers.
+**Note:** Promises cannot be cancelled, so any async function that has already started will continue running even if the module is disabled.
+
+Unlike browsers or Node.js, GraalJS does not support web APIs such as [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout), [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval), or [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
 Instead, this utility provides delay and timing functions that work within the game's render thread event loop.
 
-Additionally, AsyncUtil includes support for making HTTP requests using [OkHttp](https://github.com/square/okhttp), which is widely used in this mod:
+Additionally, AsyncUtil includes support for making HTTP requests using [OkHttp](https://github.com/square/okhttp), which LiquidBounce also uses:
 
 ```js
-const test = "Guten Tag!";
+const text = "Guten Tag!";
 const sourceLanguage = "de";
 const targetLanguage = "en";
 /** okhttp3.Response */
@@ -39,19 +39,19 @@ const response = await AsyncUtil.request((builder) => {
 const code = response.code(); // No await here!
 ```
 
-You can also run tasks asynchronously on a specified [ExecutorService](https://docs.oracle.com/javase/8/docs/api/?java/util/concurrent/ExecutorService.html), with coroutine-style results:
+You can also run tasks on another thread with `launch` and wait for their result:
 
 ```js
 const result = await AsyncUtil.launch(() => {
   java.lang.Thread.sleep(5000);
   return "task result";
 });
-Chat.displayChatMessage(result);
+Client.displayChatMessage(result);
 ```
 
 ### Method Summary
 
-*All methods resolve or reject their Promises on the render thread.*
+*All methods resolve or reject their Promises on the render thread. AsyncUtil only exists in JavaScript scripts. Pending waits are dropped when scripts are reloaded.*
 
 <hr>
 
@@ -96,11 +96,14 @@ Creates a `Promise` that performs an HTTP request and resolves with the resultin
 
 <hr>
 
-#### `AsyncUtil.launch<T>(executor: ExecutorService, block: () => T): Promise<T>`
+#### `AsyncUtil.launch<T>(executor: Executor, block: () => T): Promise<T>`
 
-Runs a task asynchronously on a given `ExecutorService`, returning a `Promise` that resolves with the result of the task.
+Runs a task asynchronously on a given [Executor](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Executor.html), returning a `Promise` that resolves with the result of the task.
 
 **Parameters:**
 
-* `executor`: *(Optional)* The `ExecutorService` to run the task on. Defaults to Minecraft's main worker (for version 1.21.x).
+* `executor`: *(Optional)* The `Executor` to run the task on. Defaults to Minecraft's background worker pool.
 * `block`: A function containing the code to execute asynchronously.
+
+---
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/api/ScriptAsyncUtil.kt)*

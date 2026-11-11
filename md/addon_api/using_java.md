@@ -168,3 +168,7 @@ private void render(WorldRenderEvent event) {
 ### Commands
 
 Commands use Brigadier's builders directly, see [Creating Commands](/docs/add-on-api/developers/creating-commands#plain-brigadier).
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/config/types/group/ValueGroup.kt)*

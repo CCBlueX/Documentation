@@ -24,16 +24,11 @@ Manages client configurations. See [GitHub](https://github.com/CCBlueX/LiquidBou
 ### `Client.moduleManager`
 Manages modules (cheats). See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ModuleManager.kt) for more information.
 
-**Examples:**
+**Example:**
 
-Retrieving a module from the module manager.
+Retrieving a module from the module manager (the name is not case-sensitive).
 ```js
-const killAura = client.moduleManager.getModuleByName("KillAura");
-```
-
-Getting all available module categories.
-```js
-const categories = client.moduleManager.getCategories(); // ["Movement", "Combat", "Render", ...]
+const killAura = Client.moduleManager.get("KillAura");
 ```
 
 <hr>
@@ -44,9 +39,12 @@ Manages client commands. See [GitHub](https://github.com/CCBlueX/LiquidBounce/bl
 <hr>
 
 ### `Client.scriptManager`
-Manages installed scripts. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/script/ScriptManager.kt) for more information.
+Manages installed scripts. See [GitHub](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/script/ScriptManager.kt) for more information.
 
 <hr>
 
 ### `Client.combatManager`
-Manages rotations for combat. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/utils/combat/CombatUtils.kt) for more information.
+Tracks combat state, such as whether the player is fighting. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/utils/combat/CombatManager.kt) for more information.
+
+---
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/api/ScriptClient.kt)*

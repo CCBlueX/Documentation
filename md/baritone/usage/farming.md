@@ -8,13 +8,13 @@
 #farm
 ```
 
-This will automatically harvest and replant nearby crops.
+Harvests nearby crops and plants them again.
 
 ```
 #farm 20
 ```
 
-This sets a specific range for farming operations (in this case, 20 blocks).
+Only farms within this range (here, 20 blocks).
 
 ## Item Collection
 
@@ -24,4 +24,4 @@ This sets a specific range for farming operations (in this case, 20 blocks).
 #pickup minecraft:diamond
 ```
 
-This will automatically pickup items around you.
+Picks up items of that type lying around you.

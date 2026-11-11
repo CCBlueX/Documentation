@@ -1,6 +1,6 @@
 ## BetterTitle
 
-Improvements to the on-screen title and subtitle. Its main feature is optionally running incoming titles and subtitles through the client's [Auto Translate](/docs/global-settings/auto-translate) so foreign-language announcements can be read in your own language.
+BetterTitle can translate the big title and subtitle text that servers show in the middle of your screen. It uses the client's [Auto Translate](/docs/global-settings/auto-translate), so you can read announcements in your own language.
 
 **Category:** Render
 **Aliases:** BetterSubtitle
@@ -8,17 +8,11 @@ Improvements to the on-screen title and subtitle. Its main feature is optionally
 
 ### Settings
 
-Nested settings are shown with their group path, e.g. `Group → Setting`.
-
 | Setting | Type | Default | Range | Description |
-|---------|------|---------|-------|-------------|
-| AutoTranslate | Toggleable Group | off | — |  |
-| AutoTranslate → Components | Multi-Select | [] | Title, Subtitle | Which parts of the on-screen title to translate. |
-| AutoTranslate → ShowIn | Multi-Select | Chat | Chat, Message | Where the translated text is displayed. `Chat` prints the translation as a chat line; `Message` replaces the on-screen title/subtitle text itself. |
-
-### Screenshots
-
-*Screenshots for BetterTitle will be added in a future update.*
+|---|---|---|---|---|
+| AutoTranslate | Toggleable Group | Off | | Translates titles. |
+| AutoTranslate → Components | Multi-Select | Title, Subtitle | Title, Subtitle | Which parts get translated. |
+| AutoTranslate → ShowIn | Multi-Select | Chat | Chat, Message | Chat writes the translation in chat. Message replaces the title text on screen. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fmisc%2FModuleBetterTitle.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleBetterTitle.kt)*

@@ -1,10 +1,8 @@
 ## AutoDeposit
 
-AutoDeposit is the counterpart to [ChestStealer](/docs/modules/player/cheststealer): instead of pulling loot out of a container, it pushes items out of your inventory into whatever container you have open. Open a chest, barrel or shulker box and every stack matching your filter is quick-moved across, which makes it ideal for emptying a full inventory into a storage room or dumping junk blocks while building.
+AutoDeposit puts items from your inventory into a chest, barrel or shulker box for you. Open the container and it moves every item that matches your list. It works the other way round from [ChestStealer](/docs/modules/player/cheststealer). Use it to empty a full inventory into your storage room.
 
-Use the **Filter** setting to decide how the **Items** list is read: in Whitelist mode only the listed items are deposited, in Blacklist mode everything *except* them is. Stacks the container can no longer absorb are left alone rather than clicked forever, and with **AutoClose** the screen closes by itself once there is nothing left to move — but only for containers it actually deposited into, so manually opened chests stay open.
-
-**PunchToDeposit** adds a hands-free variant: punch a storage block and the first matching stack from your hotbar is deposited without the container GUI ever opening. It can look for a block on its own with **RotateToTarget**, and pauses while you are in combat or using an item if you select those conditions.
+With **PunchToDeposit** you can also hit a chest to put an item from your hotbar into it without opening it.
 
 **Category:** Player
 **Enabled by default:** No
@@ -13,22 +11,22 @@ Use the **Filter** setting to decide how the **Items** list is read: in Whitelis
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Filter | Choice | Whitelist | Whitelist, Blacklist | Whether the Items list is treated as a whitelist (only listed items are deposited) or a blacklist (everything except listed items is deposited). |
-| Items | Registry List | — | — | The items this module looks for, interpreted according to the Filter mode. |
-| AutoClose | Toggle | true | — | Closes the container automatically once there is nothing left to deposit. Only applies to containers the module has deposited into. |
-| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
-| CheckScreenHandlerType | Toggleable Group | on | — | See [Shared: CheckScreenHandlerType](/docs/modules/shared-settings/checkscreenhandlertype). |
-| CheckScreenTitle | Toggleable Group | on | — | See [Shared: CheckScreenTitle](/docs/modules/shared-settings/checkscreentitle). |
-| PunchToDeposit | Toggleable Group | Off | — | Lets you punch a storage block to deposit a stack from your hotbar without opening it. |
-| PunchToDeposit → Range | Decimal | 3.0 | 1.0–6.0 | How far away (in blocks) a storage block can be for you to punch it. |
-| PunchToDeposit → WallRange | Decimal | 0.0 | 0.0–6.0 | Reach for storage blocks you don't have line of sight to; capped at the Range value. |
-| PunchToDeposit → Delay | Integer | 5 | 1–80 ticks | Wait time between one punch and the next. |
-| PunchToDeposit → SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Whether and where the hand-swing animation is shown when punching a block. |
-| PunchToDeposit → PauseOn | Multi-Select | None | Combat, UsingItem | Conditions that temporarily halt depositing by punch. |
-| PunchToDeposit → ValidStorageBlocks | Registry List | Chest, EnderChest | — | Which block types count as storage and can be punched. |
-| PunchToDeposit → RotateToTarget | Toggle | false | — | Searches for a nearby storage block and aims at it instead of only using the block you are already looking at. |
-| PunchToDeposit → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| --- | --- | --- | --- | --- |
+| Filter | Choice | Whitelist | Whitelist, Blacklist | Whitelist puts in only the items on the list. Blacklist puts in everything except them. |
+| Items | Registry List | | | The item list used by Filter. |
+| AutoClose | Toggle | true | | Closes the container when nothing is left to put in. Only for containers it has put items into. |
+| Constraints | Setting Group | | | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| CheckScreenHandlerType | Toggleable Group | On | | See [Shared: CheckScreenHandlerType](/docs/modules/shared-settings/checkscreenhandlertype). |
+| CheckScreenTitle | Toggleable Group | On | | See [Shared: CheckScreenTitle](/docs/modules/shared-settings/checkscreentitle). |
+| PunchToDeposit | Toggleable Group | Off | | Hit a storage block to put a stack from your hotbar into it. |
+| PunchToDeposit → Range | Decimal | 3.0 | 1.0..6.0 | How far away the block can be, in blocks. |
+| PunchToDeposit → WallRange | Decimal | 0.0 | 0.0..6.0 | How far away a block behind a wall can be. Can't be more than Range. |
+| PunchToDeposit → Delay | Integer | 5 | 1..80 ticks | Wait between hits, in ticks (20 per second). |
+| PunchToDeposit → SwingMode | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Whether your arm swing is shown, and to whom. |
+| PunchToDeposit → PauseOn | Multi-Select | | Combat, UsingItem | Pauses while you are fighting or using an item. |
+| PunchToDeposit → ValidStorageBlocks | Registry List | Chest, Ender Chest | | Blocks you can hit to put items in. |
+| PunchToDeposit → RotateToTarget | Toggle | false | | Looks for a storage block nearby and aims at it by itself. |
+| PunchToDeposit → Rotations | Setting Group | | | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-09-19*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/autodeposit/ModuleAutoDeposit.kt)*

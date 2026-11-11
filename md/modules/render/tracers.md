@@ -1,10 +1,6 @@
 ## Tracers
 
-Tracers draws a line from the center of your screen to every nearby entity within a set range, giving you an at-a-glance map of where targets are even when they are off to the side, behind terrain, or obscured by other players. The lines update smoothly in real time as entities move, and only appear for targets within your configured maximum distance, so the display stays focused on what is actually relevant to you.
-
-You can choose from four color modes to make the lines as readable as possible. **Distance** shifts the hue along a configurable curve based on how far away a target is. **Health** tints lines to reflect each entity's remaining health. **Static** uses a single fixed color for everything. **Rainbow** cycles through colors automatically. Regardless of which mode is active, any player you have added as a friend is always highlighted in blue. Tracers pairs well with [ESP](/docs/modules/render/esp) and [Nametags](/docs/modules/render/nametags) for comprehensive visual awareness during combat.
-
-Increase **LineWidth** to make tracers pop in cluttered scenes, or lower **MaximumDistance** to reduce visual noise and focus only on close-range threats.
+Tracers draws a line from the middle of your screen to every entity near you, so you can see where they are even behind blocks. Friends always get a blue line.
 
 **Category:** Render
 **Enabled by default:** No
@@ -13,15 +9,15 @@ Increase **LineWidth** to make tracers pop in cluttered scenes, or lower **Maxim
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| ColorMode | Mode Selector | Distance | — | Determines how tracer lines are colored. Modes: Distance, Health, Static, Rainbow. |
-| ColorMode → Distance → Saturation | Decimal | 1.0 | 0.0–1.0 | Color saturation of the HSB gradient in Distance mode. |
-| ColorMode → Distance → Brightness | Decimal | 1.0 | 0.0–1.0 | Color brightness of the HSB gradient in Distance mode. |
-| ColorMode → Distance → Hue | Curve | — | — | Curve controlling how hue shifts as target distance increases. |
-| ColorMode → Distance → Alpha | Decimal | 1.0 | 0.0–1.0 | Opacity of tracer lines in Distance mode. |
-| ColorMode → Health → Alpha | Integer | 255 | 0–255 | Opacity of tracer lines in Health mode. |
-| ColorMode → Static → Color | Color | — | — | Fixed color applied to all tracer lines in Static mode. |
-| LineWidth | Decimal | 1.0 | 1.0–16.0 | Thickness of the tracer lines in pixels. |
-| MaximumDistance | Decimal | 128.0 | 1.0–512.0 | Maximum distance in blocks at which tracer lines are drawn to entities. |
+| ColorMode | Mode Selector | Distance | Distance, Health, Static, Rainbow | How the lines are colored. |
+| ColorMode → Distance → Saturation | Decimal | 1.0 | 0.0 to 1.0 | How strong the colors are. |
+| ColorMode → Distance → Brightness | Decimal | 1.0 | 0.0 to 1.0 | How bright the colors are. |
+| ColorMode → Distance → Hue | Curve | | Distance 0 to 200, Hue 0 to 360 | Which color a line gets at each distance. |
+| ColorMode → Distance → Alpha | Decimal | 1.0 | 0.0 to 1.0 | How see-through the lines are. |
+| ColorMode → Health → Alpha | Integer | 255 | 0 to 255 | How see-through the lines are when colored by health. |
+| ColorMode → Static → Color | Color | | | One color for every line. |
+| LineWidth | Decimal | 1.0 | 1.0 to 16.0 | How thick the lines are. |
+| MaximumDistance | Decimal | 128.0 | 1.0 to 512.0 | Entities farther away than this get no line. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleTracers.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleTracers.kt)*

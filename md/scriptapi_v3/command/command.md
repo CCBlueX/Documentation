@@ -1,6 +1,6 @@
 ## Creating Commands
 
-Commands created using the script API behave exactly like builtin commands. In contrast to modules, commands are intended to perform one well-defined action once when they are executed.
+Commands created using the script API work like the built-in client commands. In contrast to modules, commands are intended to perform one well-defined action once when they are executed.
 
 ### Registering a command
 
@@ -14,15 +14,16 @@ The object passed to `registerCommand` may contain the following options:
 | Property     | Description                                                                 | Required | Type     | Default |
 |--------------|-----------------------------------------------------------------------------|----------|----------|---------|
 | name         | Primary name of the command.                                                | Yes      | string   |         |
-| onExecute    | Function called when the command is executed.                               | Yes      | function |         |
+| onExecute    | Function called when the command is executed. Without it, the command only holds subcommands. | No       | function |         |
 | aliases      | Array containing additional names of the command.                           | No       | array    | []      |
 | parameters   | Array containing parameters of the command. Refer to 'Creating parameters'. | No       | array    | []      |
-| hub          | Whether this command is a hub command. Hub commands cannot be executed.     | No       | boolean  | false   |
 | subcommands  | Array containing additional subcommands.                                    | No       | array    | []      |
 
 ### Creating parameters
 
-Parameters accept arguments passed in by the user. By default, no validation is performed. Arguments given by the user will be passed to `onExecute` as strings. 
+Parameters accept arguments passed in by the user. By default, no validation is performed. Arguments given by the user will be passed to `onExecute` as strings, in the order of the parameters. Optional parameters the user left out are not passed.
+
+Required parameters cannot follow optional ones, and parameter names must be unique. A `vararg` parameter with a `validate` function passes an array of the validated values; without `validate` it passes the rest of the input as one string.
 
 Parameters are created as JavaScript objects and may have the following options:
 
@@ -30,7 +31,7 @@ Parameters are created as JavaScript objects and may have the following options:
 |-----------------|--------------------------------------------------------------------------------------------------|----------|----------|---------|
 | name            | Name of the parameter.                                                                           | Yes      | string   |         |
 | required        | Whether the parameter is required or optional.                                                   | No       | boolean  | false   |
-| vararg          | Whether this parameter accept a variable amount of arguments. Only possible with last parameter. | No       | boolean  | false   |
+| vararg          | Whether this parameter accepts a variable amount of arguments. Only possible with the last parameter. | No       | boolean  | false   |
 | getCompletions  | Function returning completion candidates for partial input.                                      | No       | function |         |
 | validate        | Function validating the parameter and possibly applying transformations.                         | No       | function |         |
 
@@ -40,7 +41,7 @@ Validators may be used to ensure an argument provided by the user is of the expe
 
 #### Using builtin validators
 
-LiquidBounce's script API provides a set of builtin validators for common use cases. For more information on builtin validators, click [here](/docs/Script%20API/Global%20Classes/ParameterValidator).
+LiquidBounce's script API provides a set of builtin validators for common use cases. For more information on builtin validators, see [ParameterValidator](/docs/script-api/global-classes/parametervalidator).
 
 **Example:** Command using the built-in *module* validator.
 ```js
@@ -52,7 +53,7 @@ script.registerCommand({
     validate: ParameterValidator.module,
   }],
   onExecute(mod) {
-    Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description}'`);
+    Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description.get()}'`);
   }
 });
 ```
@@ -60,9 +61,9 @@ script.registerCommand({
 
 #### Writing custom validators
 
-Validators are functions that accept an argument given by the user and validate its integrity. They may also subsitute it with a processed value which will be passed to `onExecute` instead.
+Validators are functions that accept an argument given by the user and validate its integrity. They may also substitute it with a processed value which will be passed to `onExecute` instead.
 
-Writing a custom validator involves creating a function which accepts the raw string argument as a parameter and returns an object indicating whether the argument has been accepted and either a subsitution value or an error message to display.
+Writing a custom validator involves creating a function which accepts the raw string argument as a parameter and returns an object indicating whether the argument has been accepted and either a substitution value or an error message to display.
 
 If the argument has been accepted, an object of the following structure has to be returned:
 ```js
@@ -81,7 +82,7 @@ If the argument has been rejected, an object of the following structure has to b
 }
 ```
 
-**Example:** Implementing an integer validator. Note that the script API offers a built-in validator for this purpose. See [here](/docs/Script%20API/Global%20Classes/ParameterValidator).
+**Example:** Implementing an integer validator. The script API also has a [built-in validator](/docs/script-api/global-classes/parametervalidator) for this.
 
 ```js
 script.registerCommand({
@@ -112,9 +113,9 @@ script.registerCommand({
 
 ### Using auto completion
 
-Command parameters support tab autocomplete when implemented. To do so, `getCompletions` has a to specified. It expects a function accepting two parameters, the partial input for the current parameter (what the user has entered so far) and an array containing all parameters accepted so far, and returns an array of completion candidates.
+Command parameters support tab completion. To use it, set `getCompletions`. It expects a function accepting two parameters, the partial input for the current parameter (what the user has entered so far) and an array with the command's name (and parent command names), the arguments entered before this parameter and the partial input, and returns an array of completion candidates.
 
-**Example:** A command accepting only *Axolotl*, *Capbybara*, and *Snek* as its first parameter.
+**Example:** A command accepting only *Axolotl*, *Capybara*, and *Snek* as its first parameter.
 
 ```js
 const acceptedAnimals = ["Axolotl", "Capybara", "Snek"];
@@ -154,11 +155,10 @@ The following example command uses all supported API features. It may be used as
 const acceptedAnimals = ["Axolotl", "Capybara", "Snek"];
 script.registerCommand({
   name: "myCommand",
-  aliases: ["exampleCommand", "sampleCMD"], // .exampleCommand and .sampleCommand will both work to execute this command.
-  hub: true, // .myCommand is not executable directly. It only serves a hub holding subcommands.
+  aliases: ["exampleCommand", "sampleCMD"], // .exampleCommand and .sampleCMD will both work to execute this command.
+  // No onExecute: .myCommand is not executable directly. It only holds subcommands.
   subcommands: [{
       name: "math",
-      hub: true,
       subcommands: [{
           name: "div",
           aliases: ["divide"],
@@ -231,3 +231,6 @@ script.registerCommand({
   ]
 });
 ```
+
+---
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/features/ScriptCommandBuilder.kt)*

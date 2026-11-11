@@ -1,8 +1,6 @@
 ## BlockBounce
 
-BlockBounce gives you extra upward momentum every time you jump off a bouncy block, letting you launch much higher than vanilla mechanics allow. It's useful on parkour servers, bounce-pad maps, or any time you want to reach ledges and gain height quickly from slime, beds, or honey.
-
-The module hooks into your jump and only activates when you're actually standing on a bouncy surface. It checks the block just beneath your hitbox — using a detection box extended slightly below your feet by 0.01 — and counts it as bouncy if it's a [slime block, bed, or honey block](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleBlockBounce.kt#L47-L54). When that condition is met, it adds the configured **Motion** value straight onto your jump's vertical motion, so a higher Motion means a higher bounce.
+BlockBounce makes you jump higher when you jump off a slime block, a bed or a honey block. Turn it on to reach high places quickly on maps with bouncy blocks.
 
 **Category:** Movement
 **Enabled by default:** No
@@ -10,8 +8,8 @@ The module hooks into your jump and only activates when you're actually standing
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-|---------|------|---------|-------|-------------|
-| Motion | Decimal | 0.42 | 0.2..2.0 | Extra upward motion added to your jump when standing on a bouncy block (slime, bed, or honey). Higher values bounce you higher. |
+|---|---|---|---|---|
+| Motion | Decimal | 0.42 | 0.2..2.0 | How much extra height you get. Higher values make you jump higher. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleBlockBounce.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleBlockBounce.kt)*

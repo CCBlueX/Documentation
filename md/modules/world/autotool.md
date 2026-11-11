@@ -1,10 +1,8 @@
 ## AutoTool
 
-AutoTool silently swaps to the most efficient tool for whatever block you're breaking. The moment you start mining, it inspects the block, picks the best matching tool, and switches your held slot without you touching the hotbar — then swaps back to your previous slot after a short delay. It's the standard quality-of-life helper for mining, bridging, and bed-breaking so you never chip away at obsidian with your fist or waste durability on the wrong pick.
+AutoTool picks the best tool in your hotbar when you start breaking a block. After you stop, it switches back to the item you held before.
 
-The **Dynamic** selector finds the best tool automatically; with **ConsiderInventory** on it will even pull a better tool out of your main inventory into the hotbar before mining. The **Static** selector instead always switches to one fixed hotbar slot. You can narrow what AutoTool reacts to with the **Filter**/**Blocks** list, and the [SilkTouchHandler test](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleAutoTool.kt#L157-L161) forces a Silk Touch tool for blocks that only drop themselves when mined with it (Ender Chest, Glowstone, Sea Lantern, Turtle Egg by default).
-
-Several guards control *when* it acts: it can be limited to while sneaking, paused during combat, or restricted to when you're near a bed — all checked before [the swap is performed](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleAutoTool.kt#L211-L227).
+It can also use a Silk Touch tool for blocks that only drop themselves with Silk Touch, like Ender Chests and Glowstone.
 
 **Category:** World
 **Enabled by default:** No
@@ -13,26 +11,22 @@ Several guards control *when* it acts: it can be limited to while sneaking, paus
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| ToolSelector | Mode Selector | Dynamic | Dynamic, Static | How the tool is chosen: Dynamic finds the best tool automatically, Static always uses one fixed hotbar slot. |
-| ToolSelector → [Dynamic] → IgnoreDurability | Toggle | false | — | When on, near-broken tools are still treated as eligible instead of being skipped to preserve durability. |
-| ToolSelector → [Dynamic] → ConsiderInventory | Toggleable Group | Off | — | When on, also searches your main inventory for a better tool and swaps it into the hotbar before mining. |
-| ToolSelector → [Dynamic] → ConsiderInventory → Constraints → StartDelay | Integer Range | 1..2 (ticks) | 0..20 | Ticks to wait before beginning the inventory swap. |
-| ToolSelector → [Dynamic] → ConsiderInventory → Constraints → ClickDelay | Integer Range | 2..4 (ticks) | 0..20 | Ticks between inventory clicks while moving the tool. |
-| ToolSelector → [Dynamic] → ConsiderInventory → Constraints → CloseDelay | Integer Range | 1..2 (ticks) | 0..20 | Ticks to wait before closing the inventory after the swap. |
-| ToolSelector → [Dynamic] → ConsiderInventory → Constraints → MissChance | Integer Range | 0..0 (%) | 0..100 | Chance to intentionally misclick during the inventory swap, mimicking human imperfection. |
-| ToolSelector → [Dynamic] → ConsiderInventory → Constraints → Requires | Multi-Select | [] | NoMovement, NoRotation, NotUsingItem, NotBreaking, NotDuringCombat | Conditions that must all be met before an inventory swap is allowed. |
-| ToolSelector → [Static] → Slot | Integer | 0 | 0..8 | The fixed hotbar slot to switch to when breaking an eligible block. |
-| Filter | Choice | Blacklist | Whitelist, Blacklist | Whether the Blocks list is a Whitelist (only act on listed blocks) or a Blacklist (act on everything except listed blocks). |
-| Blocks | Registry List | — | — | The blocks the Filter applies to. |
-| SilkTouchHandler | Toggleable Group | Off | — | When on, forces a Silk Touch tool for the configured blocks so they drop themselves. |
-| SilkTouchHandler → Filter | Choice | Whitelist | Whitelist, Blacklist | Whether the SilkTouchHandler Blocks list is a Whitelist (only these blocks require Silk Touch) or a Blacklist. |
-| SilkTouchHandler → Blocks | Registry List | — | — | Blocks that require a Silk Touch tool (defaults: Ender Chest, Glowstone, Sea Lantern, Turtle Egg). |
-| SwapBackDelay | Integer | 20 (ticks) | 1..100 | Ticks to keep the selected tool before silently swapping back to your previous slot. |
-| SwitchDelay | Integer | 0 (ticks) | 0..100 | Ticks to keep mining a block with your current item before switching to the tool. The delay is re-armed whenever you start breaking a different block, so it applies once per block. |
-| RequireSneaking | Toggle | false | — | Only switch tools while you are sneaking. |
-| NotDuringCombat | Toggle | false | — | Don't switch tools while you are in combat. |
-| RequireNearBed | Toggleable Group | Off | — | Only switch tools when a bed is within the configured distance. |
-| RequireNearBed → Distance | Decimal | 10.0 | 3.0..50.0 | Maximum distance (in blocks) to a bed for the module to act. |
+| ToolSelector | Mode Selector | Dynamic | Dynamic, Static | Dynamic finds the best tool. Static always uses one hotbar slot. |
+| ToolSelector → [Dynamic] → IgnoreDurability | Toggle | false | | Also uses tools that are almost broken. |
+| ToolSelector → [Dynamic] → ConsiderInventory | Toggleable Group | Off | | Also looks in your inventory and moves a better tool into the hotbar. |
+| ToolSelector → [Dynamic] → ConsiderInventory → Constraints | Setting Group | | | See [Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| ToolSelector → [Static] → Slot | Integer | 0 | 0..8 | The hotbar slot to switch to. |
+| Filter | Choice | Blacklist | Whitelist, Blacklist | Whitelist: only work on the listed blocks. Blacklist: work on all blocks except the listed ones. |
+| Blocks | Registry List | | | The blocks the filter uses. |
+| SilkTouchHandler | Toggleable Group | Off | | Chooses Silk Touch on purpose for some blocks. |
+| SilkTouchHandler → Filter | Choice | Whitelist | Whitelist, Blacklist | Whitelist: use a Silk Touch tool on the listed blocks. Blacklist: use a tool without Silk Touch on them. |
+| SilkTouchHandler → Blocks | Registry List | Ender Chest, Glowstone, Sea Lantern, Turtle Egg | | The blocks this applies to. |
+| SwapBackDelay | Integer | 20 | 1..100 ticks | How long to wait before switching back to your old item, in ticks (20 per second). |
+| SwitchDelay | Integer | 0 | 0..100 ticks | How long you mine a block with your current item before the tool is picked. |
+| RequireSneaking | Toggle | false | | Only switch while you sneak. |
+| NotDuringCombat | Toggle | false | | Don't switch while you are fighting. |
+| RequireNearBed | Toggleable Group | Off | | Only switch when a bed is close. |
+| RequireNearBed → Distance | Decimal | 10.0 | 3.0..50.0 blocks | How close the bed has to be. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleAutoTool.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleAutoTool.kt)*

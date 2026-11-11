@@ -1,12 +1,8 @@
 ## TpAura
 
-TpAura automatically teleports your character to nearby enemies and attacks them, all without physically moving your visible position. When active, the module finds valid targets around you, packet-teleports to their location to land a hit, and then returns you to your original position — making it appear as though you never moved.
-
-The route to the target comes from LiquidBounce's shared pathfinder, so TpAura reaches enemies around obstacles, below overhangs and up on raised platforms, and comes back the same way.
+TpAura teleports you to enemies far away, hits them, and teleports you back. It finds a way around walls and up or down to reach them. While you teleport, you stay where you are on your own screen.
 
 <video src="/images/modules/tpaura/tpaura.mp4" controls width="600">Your browser does not support the video tag.</video>
-
-Because TpAura relies on sending rapid position packets, servers with strong anti-cheat may issue a setback (a server-side correction). When this happens, a chat message will warn you and the teleport is cancelled automatically. Pairing this module with [AntiBot](/docs/modules/misc/antibot) is recommended to avoid wasting attacks on fake players.
 
 **Category:** Combat
 **Enabled by default:** No
@@ -15,9 +11,26 @@ Because TpAura relies on sending rapid position packets, servers with strong ant
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| AttackRange | Decimal | 4.2 | 3.0–5.0 | Maximum distance from your teleported position at which an enemy can be attacked. |
-| Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
-| Target | Setting Group | — | — | See [Shared: Target](/docs/modules/shared-settings/target). |
+| Range | Decimal | 30.0 | 6.0..100.0 blocks | How far away an enemy can be. |
+| AfterAttack | Choice | Return | Return, Stay | What to do after hitting. Return teleports you back. Stay keeps you at the enemy. |
+| Hold | Integer | 10 | 1..40 ticks | With Return: how long to stay at the enemy waiting for a hit before going back, in ticks (20 per second). |
+| Target | Setting Group |  | | See [Shared: Target](/docs/modules/shared-settings/target). |
+| Clicker | Setting Group |  | | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Rotations | Setting Group |  | | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Steps | Setting Group | | | How the teleport is split into small jumps. |
+| Steps → Length | Decimal | 5.0 | 1.0..9.5 blocks | How long each small jump is. |
+| Steps → PerTick | Integer | 3 | 1..5 packets | How many small jumps are sent each tick. |
+| Render | Toggleable Group | On | | Draws the way TpAura takes. |
+| Render → CanBeCovered | Toggle | false | | Lets blocks hide the drawing. |
+| Render → Route | Color | | | Color of the way to the enemy. |
+| Render → Search | Color | | | Color shown while it looks for a way. |
+| Render → Destination | Color | | | Color of the spot you teleport to. |
+| Render → Break | Color | | | Color of blocks that would be broken on the way. |
+| Render → Place | Color | | | Color of blocks that would be placed on the way. |
+| Render → Target | Color | | | Color of the enemy. |
+| Render → Invalid | Color | | | Color used when no way was found. |
+| Render → Ghost | Toggle | true | | Shows an outline of you where the server thinks you are. |
+| Render → FadeOut | Integer | 800 | 0..3000 ms | How long the drawing takes to fade away. |
 
 ---
-*Last updated: 2026-11-07 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/tpaura/ModuleTpAura.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/tpaura/ModuleTpAura.kt)*

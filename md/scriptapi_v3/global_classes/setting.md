@@ -1,6 +1,6 @@
 ## Setting
 
-The Setting class provides methods for creating module settings. Refer to [here](/docs/Script%20API/Creating%20Modules/Overview) for information how to integrate them with modules.
+The Setting class provides methods for creating module settings. See [Creating Modules](/docs/script-api/creating-modules/overview) for how to add them to a module.
 
 ### Method summary
 
@@ -25,7 +25,7 @@ fastSwing.value = false;
 
 <hr>
 
-#### `float(options: Object): Value`
+#### `Setting.float(options: Object): Value`
 Creates a new float setting (a floating-point value between *min* and *max*). <br>
 Parameter properties:
 
@@ -33,7 +33,7 @@ Parameter properties:
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
 | default  | The setting's initial value.                                         | number   |
-| range    | Array containing ths setting's min and max value.                    | number[] |
+| range    | Array containing the setting's min and max value.                    | number[] |
 | suffix   | Displayed next to the current value to describe its unit. (optional) | string   |
 
 **Example:**
@@ -58,7 +58,7 @@ Parameter properties:
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
 | default  | The setting's initial values.                                        | number[] |
-| range    | Array containing ths setting's min and max value.                    | number[] |
+| range    | Array containing the setting's min and max value.                    | number[] |
 | suffix   | Displayed next to the current value to describe its unit. (optional) | string   |
 
 **Example:**
@@ -83,7 +83,7 @@ Parameter properties:
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
 | default  | The setting's initial value.                                         | number   |
-| range    | Array containing ths setting's min and max value.                    | number[] |
+| range    | Array containing the setting's min and max value.                    | number[] |
 | suffix   | Displayed next to the current value to describe its unit. (optional) | string   |
 
 **Example:**
@@ -100,7 +100,7 @@ expand.value = 7;
 
 <hr>
 
-#### `Setting.intRange(options: Object)`
+#### `Setting.intRange(options: Object): Value`
 Creates a new integer setting which has a low and a high value. Intended for choosing values between a set max and min value. <br>
 Parameter properties:
 
@@ -108,7 +108,7 @@ Parameter properties:
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
 | default  | The setting's initial values.                                        | number[] |
-| range    | Array containing ths setting's min and max value.                    | number[] |
+| range    | Array containing the setting's min and max value.                    | number[] |
 | suffix   | Displayed next to the current value to describe its unit. (optional) | string   |
 
 **Example:**
@@ -126,28 +126,28 @@ cps.value = [5, 12];
 <hr>
 
 #### `Setting.key(options: Object): Value`
-Creates a keyboard key value. Keys are identified by their SDL keycode, refer to the [SDL keycode list](https://wiki.libsdl.org/SDL3/SDL_Keycode) for the available values. <br>
+Creates a key value. Keys are given by name, like Minecraft's key names: `"r"`, `"key.keyboard.r"`, `"left.shift"` or `"key.mouse.left"`. Use `"none"` for no key. Reading `value` returns the key object, use `value.getName()` for its name. <br>
 Parameter properties:
 
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
-| default  | The setting's initial value (key code).                              | number   |
+| default  | The setting's initial key name.                                      | string   |
 
 **Example:**
 ```js
 const key = Setting.key({
     name: "Key",
-    default: 260
+    default: "r"
 });
-key.value; // 260
-key.value = 265;
+key.value.getName(); // "key.keyboard.r"
+key.value = "g";
 ```
 
 <hr>
 
-#### `Setting.text(object: Object): Value`
-Creates text value. <br>
+#### `Setting.text(options: Object): Value`
+Creates a text value. <br>
 Parameter properties:
 
 | Property | Description                                                          | Type     |
@@ -167,8 +167,8 @@ message.value = "This is another message";
 
 <hr>
 
-#### `Setting.textArray(object: Object): Value`
-Creates text value. <br>
+#### `Setting.textArray(options: Object): Value`
+Creates a list of text values. <br>
 Parameter properties:
 
 | Property | Description                                                          | Type     |
@@ -183,19 +183,19 @@ const messages = Setting.textArray({
     default: ["This is a message", "This is another message"]
 });
 messages.value; // ["This is a message", "This is another message"]
-messages.value = [...message.value, "This is a third message."];
+messages.value = [...messages.value, "This is a third message."];
 ```
 
 <hr>
 
-#### `Setting.choose(object: Object): Value`
+#### `Setting.choose(options: Object): Value`
 Creates a choose list value (drop down). <br>
 Parameter properties:
 
 | Property | Description                                                          | Type     |
 |----------|----------------------------------------------------------------------|----------|
 | name     | Name under which the setting is displayed.                           | string   |
-| default  | The setting's initial values.                                        | string   |
+| default  | The setting's initial value. Must be one of *choices*.               | string   |
 | choices  | Possible values.                                                     | string[] |
 
 **Example:**
@@ -207,6 +207,29 @@ const animal = Setting.choose({
 });
 animal.value; // Capybara
 animal.value = "Axolotl";
+```
+
+<hr>
+
+#### `Setting.multiChoose(options: Object): Value`
+Creates a list of values the user can turn on and off independently. <br>
+Parameter properties:
+
+| Property  | Description                                                          | Type     |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | Name under which the setting is displayed.                           | string   |
+| default   | The values turned on initially. (optional)                           | string[] |
+| choices   | Possible values.                                                     | string[] |
+| canBeNone | Whether all values may be turned off. Defaults to `true`. (optional) | boolean  |
+
+**Example:**
+```js
+const targets = Setting.multiChoose({
+    name: "Targets",
+    default: ["Players"],
+    choices: ["Players", "Mobs", "Animals"],
+    canBeNone: false
+});
 ```
 
 ### Example script
@@ -255,7 +278,7 @@ script.registerModule({
     }),
     key: Setting.key({
       name: "Key",
-      default: 260
+      default: "r"
     }),
     message: Setting.text({
       name: "Message",
@@ -278,7 +301,7 @@ script.registerModule({
     Client.displayChatMessage(`Randomness: ${mod.settings.randomness.value}`);
     Client.displayChatMessage(`Expand: ${mod.settings.expand.value}`);
     Client.displayChatMessage(`CPS: ${mod.settings.cps.value}`);
-    Client.displayChatMessage(`Key: ${mod.settings.key.value}`);
+    Client.displayChatMessage(`Key: ${mod.settings.key.value.getName()}`);
     Client.displayChatMessage(`Message: ${mod.settings.message.value}`);
     Client.displayChatMessage(`Messages: ${mod.settings.messages.value}`);
     Client.displayChatMessage(`Animal: ${mod.settings.animal.value}`);
@@ -288,10 +311,13 @@ script.registerModule({
     mod.settings.randomness.value = [2, 4.34];
     mod.settings.expand.value = 2;
     mod.settings.cps.value = [5, 12];
-    mod.settings.key.value = 265;
+    mod.settings.key.value = "g";
     mod.settings.message.value = "Axolotls are cool";
     mod.settings.messages.value = ["New message 1", "New message 2"];
     mod.settings.animal.value = "Axolotl";
   });
 });
 ```
+
+---
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/features/ScriptSetting.kt)*

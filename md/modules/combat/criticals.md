@@ -1,10 +1,6 @@
 ## Criticals
 
-In vanilla Minecraft a critical hit deals roughly 50% bonus damage, but only when you're falling through the air at the moment you attack — you can't be on the ground, in water, on a ladder, and so on. Criticals takes care of this for you, landing a crit on (almost) every hit instead of only when you happen to be falling. It's a staple companion to melee modules like [KillAura](/docs/modules/combat/killaura) and [AutoClicker](/docs/modules/combat/autoclicker).
-
-The **Mode** setting decides *how* the crit is achieved. Jump physically performs a tiny hop so you're falling when the hit lands. Packet and NoGround instead manipulate your movement packets so the server believes you're in the air without you actually moving much, which makes them far harder to detect — but the right choice depends on the server's anti-cheat. Timer briefly bends game speed to squeeze a fall in before the hit, and Blink holds packets back until a crit is possible. Pick the mode that matches the anti-cheat you're up against; the packet-based options include presets tuned for common systems.
-
-Sprinting normally cancels critical hits, so the **WhenSprinting** group can briefly drop your sprint around an attack to let the crit go through. **Visuals** controls the crit star/particles, letting you show extra effects or even fake them when no real crit happened.
+A critical hit does extra damage, but normally only when you are falling while you hit. Criticals makes more of your hits critical, either by doing a tiny jump for you or by making the server think you are in the air. Which mode works best depends on the server's anticheat.
 
 **Category:** Combat
 **Enabled by default:** No
@@ -13,27 +9,27 @@ Sprinting normally cancels critical hits, so the **WhenSprinting** group can bri
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Jump | None, Packet, NoGround, Jump, Blink, Timer | Selects the method used to land critical hits. |
-| Mode → Packet → Mode | Choice | NoCheatPlus | Vanilla, NoCheatPlus, Falling, Low, Down, Grim, BlocksMC | Anti-cheat preset that shapes the fake movement packets. Choose the one matching the server. |
-| Mode → Packet → PacketType | Choice | Full | OnGroundOnly, PositionAndOnGround, LookAndOnGround, Full | Which kind of movement packet is sent. Full carries the most data and works with every preset. |
-| Mode → Jump → Height | Decimal | 0.42 | 0.1..0.42 | How high the automatic hop is. Lower values are subtler but still enough to crit. |
-| Mode → Jump → Range | Decimal | 1.0 | 1.0..6.0 | Only hops when an enemy is within this distance, so you don't jump for no reason. |
-| Mode → Jump → OptimizeForCooldown | Toggle | true | — | Times the hop to your attack cooldown so the crit lands with a fully charged hit. |
-| Mode → Jump → CheckKillaura | Toggle | true | — | Only auto-hops while [KillAura](/docs/modules/combat/killaura) is active. |
-| Mode → Jump → CheckAutoClicker | Toggle | false | — | Only auto-hops while [AutoClicker](/docs/modules/combat/autoclicker) is active. |
-| Mode → Jump → CheckTriggerBot | Toggle | false | — | Only auto-hops while [TriggerBot](/docs/modules/combat/triggerbot) is active. |
-| Mode → Jump → CanBeSeen | Toggle | true | — | Requires line of sight to the enemy before hopping. |
-| Mode → Blink → Delay | Integer Range | 50..50 | 0..1000 ms | How long packets are held back while waiting for a crit opportunity. A random value in this range is used each time. |
-| Mode → Blink → Range | Decimal | 4.0 | 0.0..10.0 | Only engages when an enemy is within this distance. |
-| Mode → Timer → Speed | Decimal | 0.8 | 0.1..1.0 | Game-speed factor applied near an enemy to create a fall window. Lower is slower and more noticeable. |
-| Mode → Timer → Range | Decimal | 4.0 | 0.0..10.0 | Only adjusts timer speed when an enemy is within this distance. |
-| WhenSprinting | Toggleable Group | On | — | Manages your sprint around attacks so sprinting doesn't cancel the crit. |
-| WhenSprinting → StopSprinting | Choice | Legit | None, Legit, OnNetwork, OnAttack | How sprint is dropped: not at all, naturally (Legit), at the network level, or right when you attack. |
-| WhenSprinting → Range | Decimal | 4.0 | 0.0..10.0 | Distance at which an enemy counts for the sprint handling. |
-| Visuals | Toggleable Group | On | — | Controls the critical-hit particle effects. |
-| Visuals → Fake | Toggle | false | — | Shows crit particles even when the hit isn't actually a critical. |
-| Visuals → Critical | Integer | 1 | 0..20 | Number of normal crit particle bursts to display per hit. |
-| Visuals → Magic | Integer | 0 | 0..20 | Number of enchant/magic crit particle bursts to display per hit. |
+| Mode | Choice | Packet | None, Packet, NoGround, Jump, Blink, Timer | How critical hits are made. Packet and NoGround make the server think you are in the air. Jump does a small jump before you hit. Blink holds back your movement until a critical hit is possible. Timer slows the game down near enemies so you fall longer. |
+| Mode → [Packet] → Mode | Choice | NCP-2024-01-25 | Vanilla, NCP-2024-01-25, Falling, Low, Down, Grim-2.3.59, BlocksMC | Which anticheat to work against. Pick the one the server uses. |
+| Mode → [Packet] → PacketType | Choice | Full | OnGroundOnly, PositionAndOnGround, LookAndOnGround, Full | What kind of movement message is sent. |
+| Mode → [Jump] → Height | Decimal | 0.42 | 0.1..0.42 | How high the small jump is. |
+| Mode → [Jump] → Range | Decimal | 4.0 | 1.0..6.0 | Only jumps when an enemy is this close, in blocks. |
+| Mode → [Jump] → OptimizeForCooldown | Toggle | true | | Times the jump so you land the hit when your attack is fully charged. |
+| Mode → [Jump] → CheckKillaura | Toggle | false | | Only jumps while [KillAura](/docs/modules/combat/killaura) is on. |
+| Mode → [Jump] → CheckAutoClicker | Toggle | false | | Only jumps while [AutoClicker](/docs/modules/combat/autoclicker) is on. |
+| Mode → [Jump] → CheckTriggerBot | Toggle | false | | Only jumps while [TriggerBot](/docs/modules/combat/triggerbot) is on. |
+| Mode → [Jump] → CanBeSeen | Toggle | true | | Only jumps when you can see the enemy. |
+| Mode → [Blink] → Delay | Integer Range | 300..600 | 0..1000 ms | How long your movement is held back. A random value from the range is used. |
+| Mode → [Blink] → Range | Decimal | 4.0 | 0.0..10.0 | Only works when an enemy is this close, in blocks. |
+| Mode → [Timer] → Speed | Decimal | 0.8 | 0.1..1.0 | How fast the game runs near enemies. 1.0 is normal speed. |
+| Mode → [Timer] → Range | Decimal | 4.0 | 0.0..10.0 | Only works when an enemy is this close, in blocks. |
+| WhenSprinting | Toggleable Group | Off | | Sprinting stops critical hits. This stops your sprint when you are about to hit, so the hit can be critical. |
+| WhenSprinting → StopSprinting | Choice | Legit | None, Legit, OnNetwork, OnAttack | How your sprint is stopped. None keeps sprinting. Legit stops sprinting like a player would. OnNetwork only tells the server you stopped. OnAttack stops it right when you hit. |
+| WhenSprinting → Range | Decimal | 4.0 | 0.0..10.0 | Only works when an enemy is this close, in blocks. |
+| Visuals | Toggleable Group | Off | | Shows extra critical hit particles. |
+| Visuals → Fake | Toggle | false | | Shows the particles on every hit, even ones that are not critical. |
+| Visuals → Critical | Integer | 1 | 0..20 | How many critical hit particle bursts to show. |
+| Visuals → Magic | Integer | 0 | 0..20 | How many enchanted hit particle bursts to show. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/criticals/ModuleCriticals.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/criticals/ModuleCriticals.kt)*

@@ -1,47 +1,41 @@
 ## ViewModel
 
-ViewModel is a global setting that gives you control over how your held items look and move on screen. You can resize and reposition the item in your main hand or off hand, tweak the rotation of the model, adjust how long the swing animation lasts, and pick a different blocking animation — all without changing how the game plays for other players. It's purely a visual tweak, so use it to get a viewmodel that feels comfortable to you, whether that's an old-school look or something more compact.
+ViewModel changes how the item in your hand looks on your own screen. You can move, resize and turn the item in each hand, change how fast your arm swings, and pick a different look for swinging and sword blocking. Other players do not see any of this.
 
-The main-hand and off-hand groups each let you shift the item along the X/Y axes, scale it up or down, and add extra rotation. The EquipOffset group controls the small "raise" animation that plays when you switch or use items, and lets you skip that motion in specific situations. AirWalker keeps your legs moving with the walking animation even while you're off the ground.
-
-The BlockingAnimation setting only takes effect while [SwordBlock](/docs/modules/combat/swordblock) is enabled — it changes how your sword looks when blocking, letting you choose the classic 1.7-style block, a pushdown motion or one of the Sigma, Exhibition, Avatar and Dortware animations.
-
-The SwingAnimation setting replaces the vanilla arm swing of your main hand with one of several preset motions; leave it on None to keep the vanilla swing. It is skipped while a sword-blocking animation is being shown, so BlockingAnimation stays in control there.
-
-The SwingDuration group scales the vanilla swing duration with a multiplier. Normally that duration depends on the held item, Haste and Mining Fatigue; with Ignore you can leave any of these out, so the item's own swing speed or the effects no longer change how long your swing lasts.
+BlockingAnimation is only used while [SwordBlock](/docs/modules/combat/swordblock) is on. While a blocking animation is showing, it is used instead of SwingAnimation.
 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-| --- | --- | --- | --- | --- |
-| MainHand | Toggleable Group | On | — | Customizes the position, scale, and rotation of the item held in your main hand. |
-| MainHand → ItemScale | Decimal | -1.25 | -5.0..5.0 | Scales the main-hand item model larger or smaller. |
-| MainHand → X | Decimal | 0.0 | -5.0..5.0 | Shifts the main-hand item left or right. |
-| MainHand → Y | Decimal | 0.0 | -5.0..5.0 | Shifts the main-hand item up or down. |
-| MainHand → PositiveRotationX | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the main-hand item around the X axis. |
-| MainHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the main-hand item around the Y axis. |
-| MainHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the main-hand item around the Z axis. |
-| OffHand | Toggleable Group | Off | — | Customizes the position, scale, and rotation of the item held in your off hand. |
-| OffHand → ItemScale | Decimal | 0.0 | -5.0..5.0 | Scales the off-hand item model larger or smaller. |
-| OffHand → X | Decimal | 0.0 | -1.0..1.0 | Shifts the off-hand item left or right. |
-| OffHand → Y | Decimal | 0.0 | -1.0..1.0 | Shifts the off-hand item up or down. |
-| OffHand → PositiveRotationX | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the X axis. |
-| OffHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Y axis. |
-| OffHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Adds rotation to the off-hand item around the Z axis. |
-| EquipOffset | Toggleable Group | On | — | Controls the raise/equip motion that plays when switching or using items. |
-| EquipOffset → Ignore | Multi-Select | [] | [Blocking, Place, Amount] | Situations in which the equip motion is skipped. |
-| SwingDuration | Toggleable Group | Off | — | Scales how long your arm swing animation lasts. |
-| SwingDuration → Multiplier | Decimal | 1.0 | 0.1..3.0x | Multiplier applied to the vanilla swing duration — lower is faster. |
-| SwingDuration → Ignore | Multi-Select | [] | [Item, Haste, MiningFatigue] | Factors that no longer affect the swing duration: the held item's own swing speed, Haste and Mining Fatigue. |
-| SwingAnimation | Mode Selector | None | [None, Swipe, Spin, Hook, Dash, Tap, Inject, Slap, Akrien, Smooth, Power, Feast] | Swing motion that is played instead of the vanilla main-hand swing. None keeps the vanilla swing. |
-| BlockingAnimation | Mode Selector | 1.7 | [1.7, Pushdown, Sigma, Exhibition, Avatar, Dortware] | Animation used while blocking with a sword (only active with SwordBlock enabled). |
-| BlockingAnimation → [1.7] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the 1.7 blocking animation. |
-| BlockingAnimation → [1.7] → SwingScale | Decimal | 0.9 | 0.1..1.0 | Scales how strongly the swing motion is applied during the 1.7 animation. |
-| BlockingAnimation → [Sigma] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Sigma blocking animation. |
-| BlockingAnimation → [Exhibition] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Exhibition blocking animation. |
-| BlockingAnimation → [Avatar] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Avatar blocking animation. |
-| BlockingAnimation → [Dortware] → Y | Decimal | 0.1 | 0.05..0.3 | Vertical offset of the item during the Dortware blocking animation. |
-| AirWalker | Toggle | false | — | Plays the walking leg animation even while you are in the air. |
+|---|---|---|---|---|
+| MainHand | Toggleable Group | Off | | Changes the item in your main hand. |
+| MainHand → ItemScale | Decimal | 0.0 | -5.0..5.0 | Makes the item bigger or smaller. |
+| MainHand → X | Decimal | 0.0 | -5.0..5.0 | Moves the item left or right. |
+| MainHand → Y | Decimal | 0.0 | -5.0..5.0 | Moves the item up or down. |
+| MainHand → PositiveRotationX | Decimal | 0.0 | -50.0..50.0 | Tilts the item forward or back. |
+| MainHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Turns the item left or right. |
+| MainHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Rolls the item sideways. |
+| OffHand | Toggleable Group | Off | | Changes the item in your off hand. |
+| OffHand → ItemScale | Decimal | 0.0 | -5.0..5.0 | Makes the item bigger or smaller. |
+| OffHand → X | Decimal | 0.0 | -1.0..1.0 | Moves the item left or right. |
+| OffHand → Y | Decimal | 0.0 | -1.0..1.0 | Moves the item up or down. |
+| OffHand → PositiveRotationX | Decimal | 0.0 | -50.0..50.0 | Tilts the item forward or back. |
+| OffHand → PositiveRotationY | Decimal | 0.0 | -50.0..50.0 | Turns the item left or right. |
+| OffHand → PositiveRotationZ | Decimal | 0.0 | -50.0..50.0 | Rolls the item sideways. |
+| EquipOffset | Toggleable Group | On | | Plays the small raise animation when you switch or use items. |
+| EquipOffset → Ignore | Multi-Select | | Blocking, Place, Amount | Skips the raise animation when you block, place a block, or when only the stack size changes. |
+| SwingDuration | Toggleable Group | Off | | Changes how long your arm swing takes. |
+| SwingDuration → Multiplier | Decimal | 1.0 | 0.1..3.0x | Lower numbers make the swing faster, higher numbers slower. |
+| SwingDuration → Ignore | Multi-Select | | Item, Haste, MiningFatigue | These no longer change your swing speed: the held item, Haste, or Mining Fatigue. |
+| SwingAnimation | Mode Selector | None | None, Swipe, Spin, Hook, Dash, Tap, Inject, Slap, Akrien, Smooth, Power, Feast | The arm swing you see when you hit. None keeps the normal swing. |
+| BlockingAnimation | Mode Selector | 1.7 | 1.7, Pushdown, Sigma, Exhibition, Avatar, Dortware | How your sword looks while blocking. |
+| BlockingAnimation → [1.7] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
+| BlockingAnimation → [1.7] → SwingScale | Decimal | 0.9 | 0.1..1.0 | How much the sword moves when you swing while blocking. |
+| BlockingAnimation → [Sigma] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
+| BlockingAnimation → [Exhibition] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
+| BlockingAnimation → [Avatar] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
+| BlockingAnimation → [Dortware] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
+| AirWalker | Toggle | false | | Your legs keep their walking animation while you are in the air. |
 
 ---
-*Last updated: 2026-08-07 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAnimations.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/global/viewmodel/GlobalSettingsViewModel.kt)*

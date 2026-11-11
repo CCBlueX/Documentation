@@ -1,10 +1,6 @@
 ## AirJump
 
-AirJump lets you jump again while you're already off the ground, giving you extra height or a second boost without touching solid ground. It's handy for reaching ledges, crossing small gaps, or stringing together moves that a normal single jump can't pull off.
-
-The behavior depends on the selected **Mode**. *JumpFreely* removes the limit entirely, so you can keep jumping in the air as many times as you like. *DoubleJump* grants exactly one extra jump after leaving the ground, resetting once you land again. *GhostBlock* lets you stand on an invisible block while holding the jump key, so you can hover or climb upward as long as you keep jumping.
-
-Because this gives obvious non-vanilla movement, it can look suspicious on servers with strict anti-cheat. Pair it with modules like [HighJump](/docs/modules/movement/highjump) or [Fly](/docs/modules/movement/fly) for more dramatic vertical mobility.
+AirJump lets you jump while you are already in the air. Use it to reach high ledges or get across gaps that one normal jump can't clear.
 
 **Category:** Movement
 **Enabled by default:** No
@@ -13,7 +9,7 @@ Because this gives obvious non-vanilla movement, it can look suspicious on serve
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Choice | GhostBlock | JumpFreely, DoubleJump, GhostBlock | How the mid-air jump works: *JumpFreely* allows unlimited air jumps, *DoubleJump* grants one extra jump per landing, and *GhostBlock* places an invisible block under you while you hold the jump key. |
+| Mode | Mode Selector | JumpFreely | JumpFreely, DoubleJump, GhostBlock | JumpFreely: jump in the air as often as you like. DoubleJump: one extra jump, then you need to land again. GhostBlock: while you hold jump, the blocks below you act solid, so you can stand on air. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleAirJump.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleAirJump.kt)*

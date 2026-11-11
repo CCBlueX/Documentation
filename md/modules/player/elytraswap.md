@@ -1,10 +1,8 @@
 ## ElytraSwap
 
-ElytraSwap lets you instantly switch between your chestplate and an elytra with a single action. When you trigger it, the module looks at your hotbar, main inventory, and offhand for the appropriate item and swaps it onto your chest slot for you — no need to open your inventory and drag items around. If your chest slot is empty it equips an elytra; if you're wearing an elytra it puts your chestplate back on; and if you're wearing a chestplate it switches to your elytra.
+ElytraSwap switches between your chestplate and an elytra without opening your inventory. If you wear a chestplate, it puts on an elytra. If you wear an elytra, it puts your chestplate back on. If your chest slot is empty, it puts on an elytra.
 
-This is handy for situations where you constantly alternate between fighting in full armor and flying with an elytra, letting you change gear in a fraction of a second. The module only picks an elytra that isn't about to break, so it won't equip a worn-out wing.
-
-ElytraSwap performs its swap once and then disables itself automatically, so you simply re-enable it (for example with a bind) each time you want to switch. It also turns itself off when you leave a server.
+It looks in your hotbar, inventory and offhand, and it skips elytras that would break on the next use. After one swap the module turns itself off, so put it on a key and press that key each time you want to switch.
 
 **Category:** Player
 **Enabled by default:** No
@@ -13,7 +11,7 @@ ElytraSwap performs its swap once and then disables itself automatically, so you
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| Constraints | Setting Group | | | See [Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleElytraSwap.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleElytraSwap.kt)*

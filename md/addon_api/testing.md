@@ -98,3 +98,7 @@ SDL_VIDEO_FORCE_EGL=1 xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient
 ```
 
 Screenshots land in `build/run/clientGameTest/screenshots/`.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/build.gradle.kts)*

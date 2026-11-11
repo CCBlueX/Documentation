@@ -1,10 +1,8 @@
 ## ReportHelper
 
-ReportHelper automates the process of reporting players on servers that support report commands or confirmation GUIs. When enabled, it can detect when another player's name appears alongside your own in chat — a common pattern on servers like Hypixel when you are killed or interacted with — and automatically issue a report command for that player, saving you the effort of typing it manually every time.
+ReportHelper reports players for you. AutoReport watches the chat: when a message has your name and another player's name in it, like a kill message, it sends a report command for that player. AutoConfirm clicks the confirm button in the report menu that some servers open afterwards.
 
-The module is split into two independently toggleable sub-features. **AutoReport** watches incoming chat messages for your name and another online player's name appearing together, then fires your configured report command at that player after a short delay. It keeps track of already-reported players per session so no one is reported twice. **AutoConfirm** handles the confirmation step: when a report confirmation GUI appears (such as the yes/no terracotta screen on Hypixel or the diamond-sword selection screen on Heypixel), it automatically clicks the confirm option and closes the screen for you.
-
-Note that neither friends (managed via LiquidBounce's friend list) nor yourself will ever be auto-reported. Both sub-features are off by default and must be toggled on individually to take effect.
+Each player is only reported once until you leave the server. Your friends are never reported. Both parts are off at first, so turn on the ones you want.
 
 **Category:** Player
 **Enabled by default:** No
@@ -13,12 +11,12 @@ Note that neither friends (managed via LiquidBounce's friend list) nor yourself 
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| AutoReport | Toggleable Group | off | — | Automatically sends a report command when another player's name appears with yours in chat. |
-| AutoReport → Delay | Integer Range | 1..3 | 0..20 ticks | How many ticks to wait before sending the report command after a trigger is detected. |
-| AutoReport → Chance | Integer | 100 | 1..100 % | Percentage chance that a detected player will actually be reported. Set below 100 to report only some of the time. |
-| AutoReport → CommandPattern | Text | — | — | The command template used to report a player. Use `%s` as a placeholder for the player's name (e.g. `report %s`). |
-| AutoConfirm | Toggleable Group | off | — | Automatically confirms report GUIs when they appear. |
-| AutoConfirm → Mode | Mode Selector | Hypixel | — | Which server's confirmation GUI layout to handle. `Hypixel` clicks the green terracotta yes-button in a 9×3 inventory; `Heypixel` selects the diamond sword in a 9×1 inventory. |
+| AutoReport | Toggleable Group | Off | | Reports a player when their name shows up in chat together with yours. |
+| AutoReport → Delay | Integer Range | 1..3 | 0..20 ticks | Ticks (20 per second) to wait before sending the report. |
+| AutoReport → Chance | Integer | 100 | 1..100 % | How likely it is that a player gets reported. |
+| AutoReport → CommandPattern | Text | `report %s` | | The report command. `%s` is replaced with the player's name. |
+| AutoConfirm | Toggleable Group | Off | | Confirms the report menu when it opens. |
+| AutoConfirm → Mode | Mode Selector | Hypixel | Hypixel, Heypixel | Which server's report menu to click. Hypixel clicks the green yes button, Heypixel clicks the diamond sword. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/reporthelper/ModuleReportHelper.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/reporthelper/ModuleReportHelper.kt)*

@@ -1,56 +1,56 @@
 ## CCBlueX's Anti-Cheat Test Server
 
-The CCBlueX Testserver is an EU Minecraft server for trying LiquidBounce against different anti-cheats. Add **`test.ccbluex.net`** to your multiplayer server list.
+The CCBlueX test server is a Minecraft server in Europe where you can try LiquidBounce against many different anti-cheats. Add **`test.ccbluex.net`** to your multiplayer server list.
 
 ![LiquidBounce on the test server](/images/test-server/world.png)
 
 ### Connecting with or without a Minecraft account
 
-You can join without a Minecraft account. In that case, sign in with your **LiquidBounce account** when the server puts you in the sign-in lobby. Your server name comes from that account; names signed in this way have a star (`*`) prefix.
+You can join without a Minecraft account. The server then puts you in a sign-in lobby, where you sign in with your **LiquidBounce account**. Your name on the server comes from that account and starts with a star (`*`).
 
 | Address | What happens |
 |---|---|
 | `test.ccbluex.net` | Detects whether your Minecraft session is online or offline. Offline sessions go to the sign-in lobby. If you joined with a premium Minecraft account and want to use your LiquidBounce account, type `/sign-in`. |
 | `test-offline.ccbluex.net` | Treats every connection as offline and sends it through LiquidBounce account sign-in. |
 
-After joining, use **`/server latest`** for the 1.21.11 server or **`/server legacy`** for the 1.8.8 server. Chat is shared between the servers: each message starts with the server its sender is on, and Minecraft 1.21.9 and newer also show the sender's head.
+After joining, use **`/server latest`** for the 1.21.11 server or **`/server legacy`** for the 1.8.8 server. Both servers share one chat. Each message starts with the server the sender is on, and on Minecraft 1.21.9 and newer you also see the sender's head.
 
 ### Selecting anti-cheats
 
-Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-cheat to select it. You can also type `/ac <name>` to select one directly, such as `/ac GrimAC`. To select multiple installed anti-cheats, separate their names with spaces, for example `/ac GrimAC Vulcan`. Regular players can select up to two at once. Tab completion shows available names. The menu shows each plugin's version, author and description when supplied by that plugin. Availability and allowed combinations can differ between the two servers.
+Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu, then click an anti-cheat to pick it. You can also type its name, like `/ac GrimAC`. To pick two, put a space between the names: `/ac GrimAC Vulcan`. Regular players can pick up to two at once. Press Tab while typing to see the names. The menu also shows each anti-cheat's version, author and description if it has them. The two servers don't have the same anti-cheats, and some combinations only work on one of them.
 
 ![Anti-cheat selection menu](/images/test-server/anticheats.png)
 
 ### Anti-cheats available
 
-**Latest** is the 1.21.11 server (`/server latest`); **Legacy** is the 1.8.8 server (`/server legacy`). The server column shows where each anti-cheat is listed. Open `/ac` after joining to see which plugins are currently enabled.
+**Latest** is the 1.21.11 server (`/server latest`) and **Legacy** is the 1.8.8 server (`/server legacy`). The Server column shows where you can pick each anti-cheat. Open `/ac` after joining to see which ones are turned on right now.
 
 | Anti-cheat | Server | Author(s) | Description |
 |---|---|---|---|
 | [Intave](https://intave.ac/) | Latest, Legacy | DarkAndBlue, Jpx3, vento, vxcus, lennoxlotl, NotLucky, Trattue | Automated cheat detection and prevention. |
 | [GrimAC](https://github.com/GrimAnticheat/Grim) | Latest, Legacy | GrimAC | Simulation based movement checks. |
-| [Matrix](https://matrix.rip/) | Latest, Legacy | RE, MIYU | — |
+| [Matrix](https://matrix.rip/) | Latest, Legacy | RE, MIYU | |
 | [NoCheatPlus](https://dev.bukkit.org/projects/nocheatplus) | Legacy | NeatMonster and contributors | Checks Minecraft exploits and invalid behavior. |
 | [OldNoCheatPlus](https://dev.bukkit.org/projects/nocheatplus) | Legacy | NeatMonster and contributors | Older NoCheatPlus build. |
-| [Spartan](https://spartan.top/) | Latest, Legacy | Evangelos Dedes (Vagdedes), pawsashatoy | — |
-| [AAC5](https://www.spigotmc.org/resources/6442/) | Legacy | konsolas | — |
-| AGC | Legacy | — | — |
-| AIAC3 | Latest, Legacy | huzpsb | — |
+| [Spartan](https://spartan.top/) | Latest, Legacy | Evangelos Dedes (Vagdedes), pawsashatoy | |
+| [AAC5](https://www.spigotmc.org/resources/6442/) | Legacy | konsolas | |
+| AGC | Legacy | | |
+| AIAC3 | Latest, Legacy | huzpsb | |
 | [AntiCheatAddition](https://github.com/Photon-GitHub/AntiCheatAddition) | Latest, Legacy | Photon | Extra checks for cheats other anti-cheats may miss. |
 | Axiom | Legacy | dw1e | Private anti-cheat. |
-| CoffeeProtect | Legacy | Nik | — |
+| CoffeeProtect | Legacy | Nik | |
 | FairFight | Legacy | dw1e | Lightweight anti-cheat for 1.8 arenas. |
-| Frequency | Legacy | Elevated, Gson | — |
+| Frequency | Legacy | Elevated, Gson | |
 | Gurei | Latest, Legacy | Gurei | Machine learning anti-cheat. |
-| [Hawk](https://github.com/HawkAnticheat/Hawk) | Legacy | Islandscout | — |
-| [Horizon](https://www.spigotmc.org/resources/65830/) | Legacy | MrCraftGoo, Anthony M., Cipher and other contributors | — |
+| [Hawk](https://github.com/HawkAnticheat/Hawk) | Legacy | Islandscout | |
+| [Horizon](https://www.spigotmc.org/resources/65830/) | Legacy | MrCraftGoo, Anthony M., Cipher and other contributors | |
 | MX | Latest, Legacy | pawsashatoy, Vagdedes and other contributors | Combat and automation analysis. |
-| [Reflex](https://g.reflex.rip/spigot) | Legacy | DarksideCode, sinnlosername | — |
-| [TakaAntiCheat](https://www.spigotmc.org/resources/45167/) | Legacy | dani02 | — |
-| Themis | Latest | Olexorus | — |
+| [Reflex](https://g.reflex.rip/spigot) | Legacy | DarksideCode, sinnlosername | |
+| [TakaAntiCheat](https://www.spigotmc.org/resources/45167/) | Legacy | dani02 | |
+| Themis | Latest | Olexorus | |
 | [TotemGuard](https://github.com/Bram1903/TotemGuard) | Latest | Bram, OutDev | Detects AutoTotem. |
-| Verus | Legacy | — | — |
-| [Vulcan](https://vulcanac.net/wiki) | Latest, Legacy | frep, GladUrBad, Joshb_, Elevated, retrooper | — |
+| Verus | Legacy | | |
+| [Vulcan](https://vulcanac.net/wiki) | Latest, Legacy | frep, GladUrBad, Joshb_, Elevated, retrooper | |
 
 ### Commands
 
@@ -67,7 +67,7 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-chea
 | `/health <amount>`; `/hunger <amount>` | Sets your own health or hunger. |
 | `/damage [amount]` | Damages you to test reactions to damage and knockback. |
 | `/damagetick <0-20>` | Changes your invulnerability ticks after taking damage. |
-| `/scale [0.5-1.5]` | Changes your player scale on the latest server; omitting the value resets it to `1`. |
+| `/scale [0.5-1.5]` | Changes your player size on the latest server. Without a value it goes back to `1`. |
 | `/kill` | Kills your character for respawn testing. |
 | `/clear` | Empties your inventory. |
 | `/filtersystem` or `/fs` | Opens the event and packet filter menu. |
@@ -86,16 +86,26 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu. Click an anti-chea
 
 ![Items menu](/images/test-server/items.png)
 
-Commands beginning with `/` here are **server commands**.
+All commands on this page that start with `/` are **server commands**, not LiquidBounce commands.
 
 ### Test bots
 
-The bots around spawn look like players to your client and to every anti-cheat. Standing and walking bots never die and never get knocked back: hit them as often as you like to test reach, aim and hitboxes. Some show your reach in the action bar or report the damage you dealt, others hit back with a knockback stick to test your velocity handling, and fighters attack you with crits, sprint resets and strafing.
+The bots around spawn look like real players to your client and to every anti-cheat. Standing and walking bots never die and never get knocked back, so you can hit them as often as you like to test reach, aim and hitboxes. Some show your reach above the hotbar or tell you how much damage you did. Others hit back with a knockback stick so you can test Velocity. Fighter bots attack you with crits, sprint resets and strafing.
 
 ### Bot duels
 
-On the practice server, type **`/botduel <kit>`** or use the **Play against a bot** item in the practice lobby to fight a bot with the same kit as you; **Pick a player** is for duels against real players. Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo, boxing, pot, soup, classic, uhc, vanilla, spear_mace and cart; difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes, the diamond SMP bot traps you in cobwebs and walls you off, the axe bot breaks your shield. Type `/leave` to give up.
+On the practice server, type **`/botduel <kit>`** or use the **Play against a bot** item in the practice lobby to fight a bot that has the same kit as you. **Pick a player** is for duels against real players.
 
-The **No Cooldown** switch in the practice menus turns the sword, pot, soup, classic, uhc, sumo and boxing kits into 1.8-style versions without the attack cooldown, for queues, duels against players and bot duels alike; with a bot you can also type `/botduel <kit>_nocd`, for example `/botduel sword_nocd`.
+Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo, boxing, pot, soup, classic, uhc, vanilla, spear_mace and cart. Difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes down on you, the diamond SMP bot traps you in cobwebs and walls you off, and the axe bot breaks your shield. Type `/leave` to give up.
 
-Five minigame kits are played like the others, in queues, against players and against bots: **floor_is_lava** (the arena fills with lava one layer every 15 seconds, so build up), **pillar_of_fortune** (a random item every 5 seconds on bedrock pillars over the void), **spleef** (dig the snow out from under your opponent), **tnt_run** (the floor drops away under your feet) and **tnt_tag** (hit someone to pass on the TNT before it explodes after 30 seconds). After a duel, `/duelrematch` challenges the same opponent again and `/duelrequeue` toggles queueing again automatically.
+The **No Cooldown** switch in the practice menus turns the sword, pot, soup, classic, uhc, sumo and boxing kits into 1.8-style kits without the attack cooldown. It works for queues, duels against players and bot duels. Against a bot you can also type `/botduel <kit>_nocd`, for example `/botduel sword_nocd`.
+
+There are also five minigame kits. You can play them in queues, against players and against bots:
+
+- **floor_is_lava**: the arena fills with lava one layer every 15 seconds, so build up.
+- **pillar_of_fortune**: you stand on bedrock pillars over the void and get a random item every 5 seconds.
+- **spleef**: dig the snow out from under your opponent.
+- **tnt_run**: the floor falls away under your feet.
+- **tnt_tag**: hit someone to pass on the TNT before it explodes after 30 seconds.
+
+After a duel, `/duelrematch` challenges the same opponent again, and `/duelrequeue` turns automatic requeueing on or off.

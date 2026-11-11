@@ -1,8 +1,6 @@
 ## TriggerBot
 
-TriggerBot attacks the enemy under your crosshair without you holding the attack button. It only clicks when your crosshair is on an entity that should be attacked, so it never swings at air, blocks or entities that aren't targets. Click timing is controlled through the shared [Clicker](/docs/modules/shared-settings/clicker) group.
-
-It shares its attack settings with the Attack part of [AutoClicker](/docs/modules/combat/autoclicker), which only clicks while you hold the attack button. Like AutoClicker, TriggerBot does not aim for you — it only attacks where you're already looking. Pair it with [Aimbot](/docs/modules/combat/aimbot) if you want your view to follow targets.
+TriggerBot attacks when your crosshair is on an enemy, without you holding the attack button. It never swings at air or blocks. It does not aim for you, so you can use it with [Aimbot](/docs/modules/combat/aimbot) if you want your view to follow enemies.
 
 **Category:** Combat
 **Enabled by default:** No
@@ -11,11 +9,11 @@ It shares its attack settings with the Attack part of [AutoClicker](/docs/module
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
-| OnItemUse | Choice | Wait | Wait, Stop, Ignore | How to react while you're using an item — wait for it to finish, stop using it, or ignore it. |
-| Weapon | Multi-Select | [Any] | Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect | Only attacks when one of these weapon types is in your main hand. |
-| Criticals | Choice | Smart | Smart, Ignore, Always | When to time clicks for critical hits. |
-| DelayPostStopUse | Integer | 0 | 0–20 ticks | Extra wait after an item use ends before resuming attacks. |
+| Clicker | Setting Group | | | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| OnItemUse | Choice | Wait | Wait, Stop, Ignore | What to do while you use an item, like eating. Wait waits until you are done. Stop stops using the item. Ignore keeps clicking anyway. |
+| Weapon | Multi-Select | Any | Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect | Only attacks while you hold one of these. Knockback and FireAspect mean any item with that enchantment. |
+| Criticals | Choice | Smart | Smart, Ignore, Always | When to wait for a critical hit. Smart waits when a critical hit is possible soon. Ignore never waits. Always only hits when it is a critical hit. |
+| DelayPostStopUse | Integer | 0 | 0..20 ticks | How long to wait after you stop using an item before attacking again, in ticks (20 per second). |
 
 ---
-*Last updated: 2026-11-09 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/autoclicker/ModuleTriggerBot.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/autoclicker/ModuleTriggerBot.kt)*

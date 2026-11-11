@@ -87,3 +87,7 @@ chat(translation("example-addon.farewell"))
 Keys outside `liquidbounce.module` and `liquidbounce.command` are free to use; prefixing them with the add-on id keeps them apart from other add-ons.
 
 A description can also be set without a translation, with `literalDescription { "..." }` on the module or setting.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/lang/Language.kt)*

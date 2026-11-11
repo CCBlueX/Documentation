@@ -1,143 +1,74 @@
 ## TargetRendering
 
-A visual indicator rendered on or near the currently targeted entity. Used across several combat modules to give visual feedback about which entity is being targeted.
+TargetRendering draws a mark on the player or mob a module is targeting, so you can see who it is going after. You can pick from several looks, like a glowing circle, a picture or floating hearts.
 
-This is a toggleable group (can be enabled/disabled).
+Used by: [KillAura](/docs/modules/combat/killaura), [Aimbot](/docs/modules/combat/aimbot), [AutoBow](/docs/modules/combat/autobow), [AutoRod](/docs/modules/combat/autorod), [AutoShoot](/docs/modules/combat/autoshoot), [CrystalAura](/docs/modules/combat/crystalaura), [ElytraTarget](/docs/modules/combat/elytratarget), [BlockTrap](/docs/modules/world/blocktrap).
 
-### Modes
-
-**Legacy** - Renders a flat 3D box above the target entity's head. The box is centered horizontally on the entity and positioned at the top of the entity's bounding box plus an extra Y offset.
-
-Sub-settings:
+### Settings
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Size | Float | 0.5 | 0.1–2.0 | Half-width of the box on the X and Z axes. |
-| Height | Float | 0.1 | 0.02–2.0 | Vertical thickness of the box. |
-| Color | Color | LiquidBounce theme (alpha 100) | — | Color of the box. |
-| ExtraYOffset | Float | 0.1 | 0.0–1.0 | Additional vertical offset above the entity's bounding box top. |
+| TargetRendering | Toggleable Group | On | | Turns the mark on or off. |
+| Mode | Choice | GlowingCircle | Legacy, Circle, Image, GlowingCircle, Ghost, Hearts, Text2D, Arrow | What the mark looks like. |
+| Mode → [Legacy] → Size | Decimal | 0.5 | 0.1..2.0 | How wide the flat box above the target's head is. |
+| Mode → [Legacy] → Height | Decimal | 0.1 | 0.02..2.0 | How thick the box is. |
+| Mode → [Legacy] → Color | Color | | | Color of the box. |
+| Mode → [Legacy] → ExtraYOffset | Decimal | 0.1 | 0.0..1.0 | How far above the head the box floats. |
+| Mode → [Circle] → Radius | Decimal | 0.85 | 0.1..2.0 | How big the circle is. |
+| Mode → [Circle] → InnerRadius | Decimal | 0.0 | 0.0..2.0 | Size of the middle part where the color changes to InnerColor. |
+| Mode → [Circle] → HeightMode | Choice | Feet | Feet, Top, Relative, Health, Animated | How high on the target it is drawn. See [HeightMode](#heightmode) below. |
+| Mode → [Circle] → OuterColor | Color | | | Color at the edge. |
+| Mode → [Circle] → InnerColor | Color | | | Color in the middle. |
+| Mode → [Circle] → Color | Color | Blue | | Color of the line around the edge. Make it see-through to hide it. |
+| Mode → [Image] → Source | Choice | Custom | Custom, Builtin | Where the picture comes from. Custom uses a PNG or JPG file you pick. Builtin uses one that comes with the client. |
+| Mode → [Image] → Source → [Custom] → File | File | | | Your picture file. |
+| Mode → [Image] → Source → [Builtin] → Preset | Choice | Marker1 | Marker1, Marker2 | Which built-in picture to use. |
+| Mode → [Image] → Scale | Vector | 1.0, 1.0 | | How wide and how tall the picture is. |
+| Mode → [Image] → ColorModulator | Color | White | | Tints the picture with this color. |
+| Mode → [Image] → Rotate → Period | Integer | 1000 | 10..20000 ms | How long one turn of the animation takes. |
+| Mode → [Image] → Rotate → Symmetric | Toggle | true | | Plays the animation forward and then backward. |
+| Mode → [Image] → Rotate → Curve | Curve | | | How far the picture is turned over time, in degrees. |
+| Mode → [Image] → HeightMode | Choice | Feet | Feet, Top, Relative, Health, Animated | How high on the target it is drawn. See [HeightMode](#heightmode) below. |
+| Mode → [GlowingCircle] → Radius | Decimal | 0.85 | 0.1..2.0 | How big the circle is. |
+| Mode → [GlowingCircle] → HeightMode | Choice | Feet | Feet, Top, Relative, Health, Animated | How high on the target it is drawn. See [HeightMode](#heightmode) below. |
+| Mode → [GlowingCircle] → OuterColor | Color | | | Color of the circle and the bottom of the glow. |
+| Mode → [GlowingCircle] → GlowColor | Color | | | Color at the top of the glow. |
+| Mode → [GlowingCircle] → GlowHeight | Decimal | 0.3 | -1.0..1.0 | How tall the glow is. Below 0 it glows downward. Not used with the Animated height mode. |
+| Mode → [GlowingCircle] → Color | Color | Blue | | Color of the line around the edge. Make it see-through to hide it. |
+| Mode → [Ghost] → Color | Color | Blue | | Color of the glowing trails that spin around the target. |
+| Mode → [Ghost] → Size | Decimal | 0.5 | 0.4..0.7 | How big each glowing dot is. |
+| Mode → [Ghost] → Length | Integer | 25 | 15..40 | How long the trails are. |
+| Mode → [Hearts] → Color | Color | White | | Color of the health hearts. Extra (golden) hearts are always gold. |
+| Mode → [Hearts] → DynamicCount | Toggle | true | | Shows as many hearts as the target has health. |
+| Mode → [Hearts] → HeartCount | Integer | 10 | 1..32 | How many hearts to show when DynamicCount is off. |
+| Mode → [Hearts] → YOffset | Decimal | 0.1 | -1.0..3.0 | How high the ring of hearts is. |
+| Mode → [Hearts] → Size | Decimal | 0.15 | 0.05..1.0 | How big each heart is. |
+| Mode → [Hearts] → Orbit → Radius | Decimal | 0.5 | 0.1..1.0 | How wide the ring of hearts is. |
+| Mode → [Hearts] → Orbit → Speed | Decimal | 35.0 | -360.0..360.0 deg/s | How fast the hearts spin. Below 0 they spin the other way. |
+| Mode → [Hearts] → Orbit → SqueezeStrength | Decimal | 0.25 | 0.0..1.0 | How much the ring gets squeezed flat while it spins. |
+| Mode → [Hearts] → Orbit → SqueezeSpeed | Integer | 2 | 1..4 | How fast the squeezing goes. |
+| Mode → [Hearts] → CanBeCovered | Toggle | false | | Lets blocks hide the hearts. |
+| Mode → [Text2D] → Scale | Decimal | 1.0 | 0.01..10.0 | How big the text is. |
+| Mode → [Text2D] → Shadow | Toggle | true | | Draws a shadow behind the text. |
+| Mode → [Text2D] → Color | Color | Red | | Color of the text. |
+| Mode → [Text2D] → Text | Text List | TARGET | | The text to show. Each entry is its own line. |
+| Mode → [Text2D] → HeightMode | Choice | Feet | Feet, Top, Relative, Health, Animated | How high on the target it is drawn. See [HeightMode](#heightmode) below. |
+| Mode → [Arrow] → Color | Color | Red | | Color of the arrow above the target's head. |
+| Mode → [Arrow] → OutlineColor | Color | See-through | | Color of the arrow's edge. |
+| Mode → [Arrow] → Size | Decimal | 1.5 | 0.5..20.0 | How big the arrow is. |
 
-**Circle** - Renders a flat gradient-filled circle in the world at the target's position. The circle is drawn as a gradient from `OuterColor` at the rim to `InnerColor` at the center, with an optional outline ring on top. The outline is hidden when its color is fully transparent.
-
-Sub-settings:
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Radius | Float | 0.85 | 0.1–2.0 | Outer radius of the circle. |
-| InnerRadius | Float | 0.0 | 0.0–2.0 | Radius of the inner gradient endpoint. Clamped to not exceed Radius. |
-| HeightMode | Mode | — | — | Determines the vertical position of the circle. See [HeightMode](#heightmode-shared-sub-mode). |
-| OuterColor | Color | LiquidBounce theme (alpha 100) | — | Color at the outer edge of the gradient. |
-| InnerColor | Color | LiquidBounce theme (alpha 100) | — | Color at the inner center of the gradient. |
-| Color | Color | #007CFF (full alpha) | — | Outline color drawn around the outer edge. Set to transparent to hide the outline. |
-
-**Image** - Renders a textured quad in the world at the target's position, always facing the camera (billboard). Supports both a custom user-provided image and built-in preset textures (Marker1, Marker2). The quad can be rotated over time using an animation curve.
-
-Sub-settings:
-
-| Setting | Type | Default | Description |
-|---|---|---|---|
-| Source | Mode | Custom | Image source. Choose between **Custom** (user-provided PNG or JPG image) and **Builtin** (preset textures: Marker1, Marker2). |
-| Scale | Vec2f | (1.0, 1.0) | X and Y scale of the rendered quad. |
-| ColorModulator | Color | White | Tint color multiplied onto the texture. |
-| Rotate | AnimatedValueGroup | — | Animation curve controlling rotation over time. The curve maps a progress value (0–1) to degrees (-180–180). |
-| HeightMode | Mode | — | Determines the vertical position of the image. See [HeightMode](#heightmode-shared-sub-mode). |
-
-**GlowingCircle** - Renders a solid filled circle with a vertical glow effect extending upward or downward from the circle plane. The glow is drawn as a gradient cone from `OuterColor` at the base to `GlowColor` at the glow tip. An optional outline is drawn around the base circle. When using the Animated or Health height modes, the glow height is calculated automatically; otherwise the `GlowHeight` setting controls it.
-
-Sub-settings:
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Radius | Float | 0.85 | 0.1–2.0 | Radius of the circle. |
-| HeightMode | Mode | — | — | Determines the vertical position of the circle. See [HeightMode](#heightmode-shared-sub-mode). |
-| OuterColor | Color | LiquidBounce theme (alpha 100) | — | Color of the solid circle fill and base of the glow gradient. |
-| GlowColor | Color | LiquidBounce theme (alpha 0) | — | Color at the tip of the glow gradient. |
-| GlowHeight | Float | 0.3 | -1.0–1.0 | Vertical offset of the glow tip relative to the circle. Ignored when the active HeightMode provides its own glow height (Animated). |
-| Color | Color | #007CFF (full alpha) | — | Outline color drawn around the circle. Set to transparent to hide the outline. |
-
-**Ghost** - Renders three spiraling particle trails around the target entity using a glow texture. Each trail follows a different 3D path computed from sine and cosine functions. The particles are billboarded (always face the camera) and fade out progressively along the trail. The trail orbits continuously based on the client uptime.
-
-Sub-settings:
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Color | Color | Blue | — | Base color of the particles. Alpha fades along the trail. |
-| Size | Float | 0.5 | 0.4–0.7 | Size of each individual particle quad. |
-| Length | Int | 25 | 15–40 | Number of particles per trail. Longer values produce a longer spiral with more fade. Also affects the orbit radius slightly. |
-
-**Text2D** - Projects text onto the screen at the target's world position using screen-space rendering. The text is drawn using the client's font renderer, centered horizontally and vertically on the projected point. Supports multiple lines of text and optional text shadow.
-
-Sub-settings:
+### HeightMode
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Scale | Float | 1.0 | 0.01–10.0 | Scale factor for the rendered text. |
-| Shadow | Boolean | true | — | Whether to draw a shadow behind the text. |
-| Color | Color | Red | — | Color applied to the text via the text style. |
-| Text | Text List | ["TARGET"] | — | List of text lines to display. Each line is rendered below the previous one. |
-| HeightMode | Mode | — | — | Determines the vertical world position before screen projection. See [HeightMode](#heightmode-shared-sub-mode). |
-
-**Arrow** - Projects a downward-pointing triangle onto the screen above the target entity's head. The triangle tip points at the top of the entity's bounding box. The triangle width is `10 × Size` and its height is `10 × Size`.
-
-Sub-settings:
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Color | Color | Red | — | Fill color of the triangle. |
-| OutlineColor | Color | Transparent | — | Outline color of the triangle. Hidden when transparent. |
-| Size | Float | 1.5 | 0.5–20.0 | Scale factor for the triangle dimensions. |
-
-**Hearts** - Renders a ring of 2D heart icons orbiting the target, drawn with a signed-distance-field shader so they stay crisp at any size. Health hearts are tinted by the chosen color and absorption hearts are gold; when `DynamicCount` is on the number of hearts reflects the target's current health and absorption (including partial hearts).
-
-Sub-settings:
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Color | Color | White (alpha 180) | — | Color of the health hearts. Absorption hearts are always gold. |
-| DynamicCount | Boolean | true | — | When enabled, the number of hearts matches the target's actual health and absorption. When disabled, a fixed **HeartCount** is shown. |
-| HeartCount | Int | 10 | 1–32 | Fixed number of hearts to display when **DynamicCount** is off. |
-| YOffset | Float | 0.1 | -1.0–3.0 | Vertical offset of the heart ring relative to the target. |
-| Size | Float | 0.15 | 0.05–1.0 | Size of each heart. |
-| Orbit → Radius | Float | 0.5 | 0.1–1.0 | Radius of the orbit ring around the target. |
-| Orbit → Speed | Float | 35 | -360–360 deg/s | Rotation speed of the orbit. Negative values reverse direction. |
-| Orbit → SqueezeStrength | Float | 0.25 | 0.0–1.0 | How much the ring is flattened (squeezed) as it rotates. |
-| Orbit → SqueezeSpeed | Int | 2 | 1–4 | Speed of the squeeze animation. |
-| CanBeCovered | Boolean | false | — | When disabled, the hearts are drawn through walls; when enabled they can be hidden behind blocks. |
-
-### HeightMode (shared sub-mode)
-
-Used by Circle, Image, GlowingCircle, and Text2D to determine the vertical world position at which the indicator is rendered relative to the target entity.
-
-**Feet** - Positions the indicator at the entity's foot level (Y = 0 relative to entity position).
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Offset | Float | 0.0 | -1.0–1.0 | Additional vertical offset from the feet position. |
-
-**Top** - Positions the indicator at the top of the entity's bounding box.
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Offset | Float | 0.0 | -1.0–1.0 | Additional vertical offset from the top of the bounding box. |
-
-**Relative** - Positions the indicator at a fraction of the entity's total height. A value of 0 corresponds to the feet, 1 corresponds to the top of the bounding box.
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Height | Float | 0.5 | -0.5–1.5 | Fraction of entity height at which to place the indicator. |
-
-**Health** - Positions the indicator based on the entity's current health percentage. The height is calculated as `(currentHealth / maxHealth) × entityHeight`. Falls back to 0 for non-living entities.
-
-No additional settings.
-
-**Animated** - Moves the indicator up and down over time using a sine wave. The position follows the formula `sin(tickCount × Speed) × HeightMultiplier + HeightOffset`. Also provides an automatic glow height offset for GlowingCircle.
-
-| Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| Speed | Float | 0.18 | 0.01–1.0 | Speed multiplier for the sine wave oscillation. |
-| HeightMultiplier | Float | 0.4 | 0.1–1.0 | Amplitude of the vertical oscillation. |
-| HeightOffset | Float | 1.3 | 0.0–2.0 | Baseline vertical offset around which the sine wave oscillates. |
-| GlowOffset | Float | -1.0 | -3.1–3.1 | Phase offset applied to the sine wave when calculating the glow height for GlowingCircle. |
+| [Feet] → Offset | Decimal | 0.0 | -1.0..1.0 | Draws it at the target's feet, moved up or down by this much. |
+| [Top] → Offset | Decimal | 0.0 | -1.0..1.0 | Draws it at the top of the target's head, moved up or down by this much. |
+| [Relative] → Height | Decimal | 0.5 | -0.5..1.5 | Draws it at this part of the target's height. 0 is the feet, 1 is the top. |
+| [Health] | | | | Draws it higher the more health the target has. |
+| [Animated] → Speed | Decimal | 0.18 | 0.01..1.0 | Moves it up and down. This is how fast. |
+| [Animated] → HeightMultiplier | Decimal | 0.4 | 0.1..1.0 | How far it moves up and down. |
+| [Animated] → HeightOffset | Decimal | 1.3 | 0.0..2.0 | The middle height it moves around. |
+| [Animated] → GlowOffset | Decimal | -1.0 | -3.1..3.1 | For GlowingCircle: shifts the glow's movement against the circle's. |
 
 ---
-*Last updated: 2026-06-08*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/utils/render/TargetRenderer.kt)*

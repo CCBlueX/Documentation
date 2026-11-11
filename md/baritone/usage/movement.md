@@ -12,7 +12,7 @@ or just
 #goto x z
 ```
 
-Example: `#goto 100 64 -200` will make your character navigate to those coordinates.
+For example, `#goto 100 64 -200` walks you to those coordinates.
 
 ## Path in the Direction You're Facing
 
@@ -22,7 +22,7 @@ Example: `#goto 100 64 -200` will make your character navigate to those coordina
 #thisway 1000
 ```
 
-This tells Baritone to travel 1000 blocks in the direction you're currently looking.
+Baritone travels 1000 blocks in the direction you are looking.
 
 ## Explore Around You
 
@@ -30,7 +30,7 @@ This tells Baritone to travel 1000 blocks in the direction you're currently look
 #explore x z
 ```
 
-Systematically explores the world from the origin point of x,z.
+Explores the world, starting from the point x, z.
 
 ## Waypoint System
 

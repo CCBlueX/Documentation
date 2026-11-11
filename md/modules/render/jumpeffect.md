@@ -1,30 +1,28 @@
 ## JumpEffect
 
-JumpEffect renders a glowing effect on the ground beneath your feet each time you jump. It expands outward and fades away over a short time, adding a stylish visual flourish to your movement without affecting gameplay in any way.
+JumpEffect draws a ring on the ground under you every time you jump. It grows and fades out quickly. It is only for looks.
 
-JumpEffect offers two **Mode**s. **Simple** draws the classic gradient ring. **Image** instead draws an image flat on the ground — either one of the images bundled with the client or a file of your own — and can spin it while it plays out.
-
-You can fully customise the look of the effect: change the inner and outer colours, adjust how large it grows, control how long it lingers, and choose an easing curve to shape the expansion animation. The hue shift option lets the colour rotate as the effect plays out, producing a rainbow-like sweep for every jump.
-
-By default the effect always renders on top of blocks — disable **CanBeCovered** to let blocks occlude it for a more grounded look.
+**Simple** draws a colored ring. **Image** draws a picture on the ground instead, either one that comes with the client or your own, and can spin it. The colors can shift while the effect plays, which makes a rainbow-like sweep.
 
 **Category:** Render
-**Enabled by default:** Yes
+**Enabled by default:** No
 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Simple | Simple \| Image | How the effect is drawn: a gradient ring or an image. |
-| Mode → EndRadius | Decimal Range | 0.15..0.8 | 0.0..3.0 | The inner-to-outer radius range the effect expands to at the end of its animation. |
-| Mode → AnimCurve | Choice | QuadOut | Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None | Easing curve that controls how the effect expands over its lifetime. |
-| Mode → HueOffsetAnim | Integer | -63 | -360..360 | How many degrees to shift the hue across the animation. Set to 0 to disable hue animation. |
-| Mode → Lifetime | Integer Range | 15..15 | 1..120 | The first value is how many ticks the expansion animation takes, the second how many ticks pass before the effect has fully faded out. |
-| Mode → CanBeCovered | Toggle | false | — | When enabled, blocks in the world can occlude the effect. When disabled, it always renders on top of geometry. |
-| Mode → Colors → InnerColor | Color | — | — | Colour at the centre of the gradient. |
-| Mode → Colors → OuterColor | Color | — | — | Colour at the outer edge of the gradient. |
-| Mode → [Image] → RotationSpeed | Integer | 10 | -360..360 | How fast the image spins while the effect plays out. Set to 0 to keep it still. |
-| Mode → [Image] → Source | Mode Selector | Builtin | Builtin \| Custom | Where the image comes from: **Builtin** picks one of the images shipped with LiquidBounce, **Custom** uses an image file you provide. |
+| Mode | Mode Selector | Simple | Simple, Image | Draw a ring or a picture. |
+| Mode → (all) → EndRadius | Decimal Range | 0.15 to 0.8 | 0.0 to 3.0 | The inner and outer size the effect grows to. |
+| Mode → (all) → AnimCurve | Choice | QuadOut | Linear, QuadIn, QuadOut, QuadInOut, ExponentialIn, ExponentialOut, None | How the growing speeds up or slows down. |
+| Mode → (all) → HueOffsetAnim | Integer | -63 | -360 to 360 | How far the color shifts while the effect plays. 0 keeps the color the same. |
+| Mode → (all) → Lifetime | Integer Range | 15 to 15 | 1 to 120 | How long the effect grows, then how long until it is gone, in ticks (20 per second). |
+| Mode → (all) → CanBeCovered | Toggle | false | | Lets blocks hide the effect. When off, it is always drawn on top. |
+| Mode → (all) → Colors → InnerColor | Color | LiquidBounce blue, alpha 50 | | Color in the middle. |
+| Mode → (all) → Colors → OuterColor | Color | LiquidBounce blue, alpha 150 | | Color at the edge. |
+| Mode → Image → RotationSpeed | Integer | 10 | -360 to 360 | How fast the picture spins. 0 keeps it still. |
+| Mode → Image → Source | Mode Selector | Builtin | Builtin, Custom | Use a picture from the client or your own file. |
+| Mode → Image → Source → Builtin → Preset | Choice | LiquidBounce | LiquidBounce, LiquidBounceWithLogo | Which built-in picture to use. |
+| Mode → Image → Source → Custom → File | File | | PNG, JPG | Your own picture. |
 
 ---
-*Last updated: 2026-08-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/jumpeffect/ModuleJumpEffect.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/jumpeffect/ModuleJumpEffect.kt)*

@@ -1,14 +1,13 @@
 ## In-Game Commands
 
-In-game commands allow gathering information about your account, server, and position, as well as use a few one-time-use modules.
+These commands work while you are in a world. They show information about you and the server, and move you around.
 
 ---
 
 ### `.ping`
 
-Display your current network latency (ping) to the server in milliseconds.
+Shows your ping to the server in milliseconds. Lower is better.
 
-**Usage:**
 ```
 .ping
 ```
@@ -17,9 +16,8 @@ Display your current network latency (ping) to the server in milliseconds.
 
 ### `.tps`
 
-Display the current server ticks-per-second (TPS). A healthy server runs at 20 TPS.
+Shows how fast the server is running, in ticks per second. A server without lag runs at 20. Some servers change how time is sent, so the number can be wrong there.
 
-**Usage:**
 ```
 .tps
 ```
@@ -28,9 +26,8 @@ Display the current server ticks-per-second (TPS). A healthy server runs at 20 T
 
 ### `.center`
 
-Teleports your player to the center of the current block position.
+Moves you to the middle of the block you are standing on.
 
-**Usage:**
 ```
 .center
 ```
@@ -39,20 +36,15 @@ Teleports your player to the center of the current block position.
 
 ### `.teleport`
 
-Teleport to specific coordinates. Configured in the [Teleport](/docs/global-settings/teleport) global settings.
+Teleports you to a position. Short form: `.tp`. The [Teleport](/docs/global-settings/teleport) settings change how it teleports.
 
-**Aliases:** `tp`
-
-**Usage:**
 ```
 .teleport <x> <y> <z> [highTp]
 ```
 
-**Parameters:**
-- `x`, `y`, `z` (required) — The coordinates, with vanilla semantics: absolute (`100 64 -200`), relative to the player (`~ ~ ~`, `~5 ~-2 ~`) or local to the look direction (`^ ^ ^5`).
-- `highTp` (optional) — `true`, `yes` or `on` replaces Y with **HighTPAmount** from the Teleport global settings.
+- `x y z`: the position, written like in Minecraft's own `/tp`. Plain numbers (`100 64 -200`) are a fixed spot. `~` counts from where you are (`~ ~10 ~` is 10 blocks up). `^` counts from where you look (`^ ^ ^5` is 5 blocks forward).
+- `highTp`: add `true` to use the HighTPAmount height from the Teleport settings instead of your `y`.
 
-**Example:**
 ```
 .teleport 100 64 200
 .tp ~ ~10 ~
@@ -64,37 +56,30 @@ Teleport to specific coordinates. Configured in the [Teleport](/docs/global-sett
 
 ### `.playerteleport`
 
-Teleport to another player's position. Configured in the [Teleport](/docs/global-settings/teleport) global settings.
+Teleports you to another player. Short forms: `.playertp`, `.ptp`. The [Teleport](/docs/global-settings/teleport) settings change how it teleports.
 
-**Aliases:** `playertp`, `ptp`
-
-**Usage:**
 ```
 .playerteleport <player> [copy]
 ```
 
-**Parameters:**
-- `player` (required) — The name of another player in the loaded world, whether or not the tab list shows them.
-- `copy` (optional) — Additional option for coordinate copying.
+- `player`: a player near enough that your game has loaded them, even if the tab list hides them.
+- `copy`: write `copy` to not teleport and instead copy a `.teleport` command to that player's position, so you can paste it later.
 
-**Example:**
 ```
-.playerteleport Steve
 .ptp Steve
+.ptp Steve copy
 ```
 
 ---
 
 ### `.vclip`
 
-Vertically clip through blocks. Configured in the [Teleport](/docs/global-settings/teleport) global settings.
+Moves you straight up or down, through blocks. If you are riding something, it moves that too. The [Teleport](/docs/global-settings/teleport) settings change how it teleports.
 
-**Subcommands:**
-- `.vclip by <distance>` — Clip vertically by a specific distance (positive = up, negative = down).
-- `.vclip smart up [max]` — Intelligently clip upward through blocks. Optionally specify max distance.
-- `.vclip smart down [max]` — Intelligently clip downward through blocks. Optionally specify max distance.
+- `.vclip by <distance>`: moves you this many blocks. Positive numbers go up, negative numbers go down.
+- `.vclip smart up [max]`: moves you up onto the next block you can stand on, at most `max` blocks away (10 if you leave it out).
+- `.vclip smart down [max]`: the same, but downward.
 
-**Example:**
 ```
 .vclip by 5
 .vclip by -10
@@ -106,14 +91,12 @@ Vertically clip through blocks. Configured in the [Teleport](/docs/global-settin
 
 ### `.goto`
 
-Walk to a position with [AutoWalk](/docs/modules/player/autowalk). Accepts the same coordinate formats as `.teleport`.
+Walks you to a position with [AutoWalk](/docs/modules/player/autowalk). You write the position the same way as for `.teleport`.
 
-**Usage:**
 ```
 .goto <x> <y> <z>
 ```
 
-**Example:**
 ```
 .goto 100 64 200
 .goto ~ ~ ~50
@@ -123,48 +106,35 @@ Walk to a position with [AutoWalk](/docs/modules/player/autowalk). Accepts the s
 
 ### `.follow`
 
-Walk after a player with [AutoWalk](/docs/modules/player/autowalk).
+Walks after a player with [AutoWalk](/docs/modules/player/autowalk).
 
-**Usage:**
 ```
 .follow <player>
 ```
 
-**Parameters:**
-- `player` (required) — The name of another player in the loaded world, whether or not the tab list shows them.
-
-**Example:**
-```
-.follow Steve
-```
+The player has to be near enough that your game has loaded them.
 
 ---
 
 ### `.coordinates`
 
-Display, copy, or share your current coordinates.
+Shows, copies or shares your position. Short forms: `.coords`, `.position`.
 
-**Aliases:** `position`, `coords`
+- `.coordinates info`: shows your position and dimension in chat.
+- `.coordinates copy`: copies them, so you can paste them somewhere.
+- `.coordinates whisper <player>`: sends them to a player as a private message.
 
-**Subcommands:**
-- `.coordinates info` — Display your current X, Y, Z coordinates.
-- `.coordinates copy` — Copy your coordinates to the clipboard.
-- `.coordinates whisper <player>` — Send your coordinates as a private message to another player.
-
-**Example:**
 ```
-.coordinates info
-.coordinates copy
-.coordinates whisper Steve
+.coords info
+.coords whisper Steve
 ```
 
 ---
 
 ### `.username`
 
-Display your current Minecraft username and copy it to the clipboard.
+Shows your Minecraft name and copies it.
 
-**Usage:**
 ```
 .username
 ```
@@ -173,83 +143,76 @@ Display your current Minecraft username and copy it to the clipboard.
 
 ### `.say`
 
-Send a chat message to the server, bypassing the client command system.
+Sends a chat message to the server as it is, even if it starts with the command prefix.
 
-**Usage:**
 ```
 .say <message>
 ```
 
-**Parameters:**
-- `message` (required, vararg) — The message to send.
-
-**Example:**
-```
-.say Hello everyone!
-```
-
-> **Tip:** Useful for sending messages that start with the command prefix (e.g. `.say .help` sends ".help" as a chat message).
+`.say .help` sends ".help" to the chat instead of running the help command.
 
 ---
 
 ### `.serverinfo`
 
-Display detailed information about the current server, including address, Minecraft version, TPS, and optionally detect plugins or hosting provider.
+Shows what the client knows about the server you are on: its address, version, brand, TPS, ping and which anti-cheat it seems to use. Click a line to copy it.
 
-**Usage:**
 ```
-.serverinfo [detect]
+.serverinfo [detect...]
 ```
 
-**Parameters:**
-- `detect` (optional) — Detection type: `Plugins` or `Hosting`.
-  - `Plugins` — Attempts to detect server plugins and anti-cheat software.
-  - `Hosting` — Attempts to identify the server hosting provider.
+- `detect`: `Plugins` also tries to find out which plugins the server has. `Hosting` also tries to find out who hosts the server. You can use both.
 
-**Example:**
 ```
 .serverinfo
 .serverinfo Plugins
-.serverinfo Hosting
+.serverinfo Plugins Hosting
 ```
 
 ---
 
 ### `.remoteview`
 
-Change your camera perspective to view from another player's position.
+Lets you see through another player's eyes. Short form: `.rv`.
 
-**Aliases:** `rv`
+- `.remoteview view <player>`: looks from that player.
+- `.remoteview off`: goes back to your own view.
 
-**Subcommands:**
-- `.remoteview view <player>` — View from another player's perspective.
-- `.remoteview off` — Return to your own perspective.
-
-**Example:**
 ```
-.remoteview view Steve
+.rv view Steve
 .rv off
 ```
 
 ---
 
+### `.map_image`
+
+Turns the map you are holding into a picture.
+
+- `.map_image copy`: copies the picture, so you can paste it into another program.
+- `.map_image save [filename]`: saves it as a PNG file in the `map_image` folder inside your LiquidBounce folder. Click the file name in chat to open it.
+
+---
+
 ### `.fakeplayer`
 
-Spawn client-side fake players for testing combat modules and practicing.
+Spawns pretend players that only you can see. They are handy for testing combat modules like KillAura.
 
-**Subcommands:**
-- `.fakeplayer spawn [name]` — Spawn a fake player with an optional name.
-- `.fakeplayer remove [name]` — Remove a specific fake player.
-- `.fakeplayer clear` — Remove all fake players.
-- `.fakeplayer startrecording` — Start recording your movements for playback.
-- `.fakeplayer endrecording` — Stop recording and create a moving fake player.
+- `.fakeplayer spawn [name]`: spawns one where you stand.
+- `.fakeplayer remove [name]`: removes one.
+- `.fakeplayer clear`: removes all of them.
+- `.fakeplayer startrecording`: starts recording how you move.
+- `.fakeplayer endrecording [name]`: stops recording and spawns a fake player that repeats your movement.
 
-**Example:**
+The name is `FakePlayer` if you leave it out.
+
 ```
-.fakeplayer spawn TestDummy
+.fakeplayer spawn Dummy
 .fakeplayer startrecording
 .fakeplayer endrecording
 .fakeplayer clear
 ```
 
-> **Note:** Fake players are only visible to you (client-side). They are useful for testing KillAura, Aimbot, and other combat features.
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/command/commands/ingame)*

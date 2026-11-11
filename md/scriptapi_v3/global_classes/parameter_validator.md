@@ -1,6 +1,6 @@
 ## ParameterValidator
 
-The ParameterValidator class contains various builtin validation methods for client command parameters. A validation function ensures the given parameter satisfies its requirements and can also perform a parameter transformation. For example, `ParameterValidator.module` ensures the given parameter is the name of an existing module and passes the modules instance to `onExecute` in place of the string provided by the user.
+The ParameterValidator class contains various builtin validation methods for client command parameters. A validation function ensures the given parameter satisfies its requirements and can also perform a parameter transformation. For example, `ParameterValidator.module` ensures the given parameter is the name of an existing module and passes the module's instance to `onExecute` in place of the string provided by the user.
 
 ### Method summary
 
@@ -27,7 +27,7 @@ script.registerCommand({
     validate: ParameterValidator.module,
   }],
   onExecute(mod) {
-    Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description}'`);
+    Client.displayChatMessage(`Description of module ${mod.name} is '${mod.description.get()}'`);
   }
 });
 ```
@@ -68,3 +68,6 @@ script.registerCommand({
 Ensures *param* is a valid positive integer and passes the parsed number to `onExecute`. <br>
 List of parameters:
 - *param*, the parameter to validate.
+
+---
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/api/ScriptParameterValidator.kt)*

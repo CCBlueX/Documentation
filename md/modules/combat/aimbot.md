@@ -1,10 +1,6 @@
 ## Aimbot
 
-Aimbot quietly turns your view toward nearby players and mobs so your crosshair tracks them for you. It only aims — it does not click or attack — so it pairs well with a manual playstyle or with modules that handle the clicking, like [AutoClicker](/docs/modules/combat/autoclicker) or [KillAura](/docs/modules/combat/killaura).
-
-You choose how far it reaches, who it locks onto, and how the aim point is picked, then tune how the turn feels with the AngleSmooth modes. Smoother, slower settings look more human; faster settings snap on more aggressively. You can also limit it to only the horizontal or vertical part of the aim, and decide whether it should keep aiming while you have a screen or container open.
-
-The Requires options let you gate the assist behind conditions — for example, only while clicking, only while holding a weapon, or only while not breaking a block — so it engages exactly when you want it and stays idle the rest of the time.
+Aimbot turns your view toward the closest enemy in front of you, so your crosshair follows them. It only aims and does not attack. You still click yourself, or let a module like [AutoClicker](/docs/modules/combat/autoclicker) click for you.
 
 **Category:** Combat
 **Enabled by default:** No
@@ -13,24 +9,25 @@ The Requires options let you gate the assist behind conditions — for example, 
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Range | Decimal | 4.2 | 1.0..8.0 | How close a target must be, in blocks, before Aimbot will face it. |
-| Target | Setting Group | — | — | See [Shared: Target](/docs/modules/shared-settings/target). |
-| TargetRendering | Toggleable Group | On | — | See [Shared: TargetRendering](/docs/modules/shared-settings/target-rendering). |
-| AimPoint | Setting Group | — | — | See [Shared: AimPoint](/docs/modules/shared-settings/aim-point). |
-| Requires | Multi-Select | [Click] | options: Click, Weapon, EmptyHand, VanillaName, NotBreaking | Conditions that must all be true for Aimbot to engage — for example only while clicking, holding a weapon, with an empty hand, using a vanilla item name, or while not breaking a block. |
-| AngleSmooth | Mode Selector | Linear | modes: Interpolation, Sigmoid, Linear | How the turn toward the target is smoothed out to make it look more natural. |
-| AngleSmooth → [Interpolation] → HorizontalSpeed | Integer Range | 80..85 | 1..100 (%) | Portion of the remaining horizontal angle closed each tick. |
-| AngleSmooth → [Interpolation] → VerticalSpeed | Integer Range | 20..25 | 1..100 (%) | Portion of the remaining vertical angle closed each tick. |
-| AngleSmooth → [Interpolation] → DirectionChangeFactor | Integer Range | 95..100 | 0..100 (%) | How readily the aim reverses direction when the target moves the other way. |
-| AngleSmooth → [Interpolation] → Midpoint | Decimal | 0.35 | 0.0..1.0 | Where the fastest part of the turn falls along the path to the target. |
-| AngleSmooth → [Sigmoid] → HorizontalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | Maximum horizontal turn speed, in degrees, for the S-curve motion. |
-| AngleSmooth → [Sigmoid] → VerticalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | Maximum vertical turn speed, in degrees, for the S-curve motion. |
-| AngleSmooth → [Sigmoid] → Steepness | Decimal | 10.0 | 0.0..20.0 | How sharply the turn accelerates and decelerates across the curve. |
-| AngleSmooth → [Sigmoid] → Midpoint | Decimal | 0.3 | 0.0..1.0 | Where the fastest part of the turn falls along the path to the target. |
-| AngleSmooth → [Linear] → HorizontalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | Maximum horizontal turn speed, in degrees, at a steady rate. |
-| AngleSmooth → [Linear] → VerticalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | Maximum vertical turn speed, in degrees, at a steady rate. |
-| Axis | Multi-Select | [Vertical] | options: Horizontal, Vertical | Which parts of your aim Aimbot is allowed to control — horizontal (yaw), vertical (pitch), or both. |
-| Ignore | Multi-Select | [] | options: Screen, Container | Open screens that Aimbot should keep aiming through instead of stopping — any screen, or container/inventory screens specifically. |
+| Range | Decimal | 4.2 | 1.0..8.0 | How close an enemy has to be, in blocks. |
+| Target | Setting Group |  | | See [Shared: Target](/docs/modules/shared-settings/target). |
+| TargetRendering | Toggleable Group | On | | See [Shared: TargetRendering](/docs/modules/shared-settings/targetrendering). |
+| AimPoint | Setting Group |  | | See [Shared: AimPoint](/docs/modules/shared-settings/aimpoint). |
+| LazyRotation | Toggle | false | | If your crosshair is already on an enemy, Aimbot does not move it. |
+| Requires | Multi-Select | | Click, Weapon, EmptyHand, VanillaName, NotBreaking | Only aims when all picked conditions are true. Click: you are holding attack. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
+| AngleSmooth | Choice | Interpolation | Interpolation, Sigmoid, Linear | How your view turns toward the enemy. Slower, smoother turns look more like a real player. |
+| AngleSmooth → [Interpolation] → HorizontalSpeed | Integer Range | 80..85 | 1..100 % | How fast you turn left and right. |
+| AngleSmooth → [Interpolation] → VerticalSpeed | Integer Range | 20..25 | 1..100 % | How fast you turn up and down. |
+| AngleSmooth → [Interpolation] → DirectionChangeFactor | Integer Range | 95..100 | 0..100 % | How fast you turn when the enemy changes direction. |
+| AngleSmooth → [Interpolation] → Midpoint | Decimal | 0.35 | 0.0..1.0 | Where during the turn you move fastest. |
+| AngleSmooth → [Sigmoid] → HorizontalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | Fastest turn left and right, in degrees. |
+| AngleSmooth → [Sigmoid] → VerticalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | Fastest turn up and down, in degrees. |
+| AngleSmooth → [Sigmoid] → Steepness | Decimal | 10.0 | 0.0..20.0 | How quickly the turn speeds up and slows down. |
+| AngleSmooth → [Sigmoid] → Midpoint | Decimal | 0.3 | 0.0..1.0 | Where during the turn you move fastest. |
+| AngleSmooth → [Linear] → HorizontalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | How far you turn left and right at most, in degrees. |
+| AngleSmooth → [Linear] → VerticalTurnSpeed | Decimal Range | 180.0..180.0 | 0.0..180.0 | How far you turn up and down at most, in degrees. |
+| Axis | Multi-Select | Horizontal, Vertical | Horizontal, Vertical | Which way Aimbot may move your view: left and right (Horizontal), up and down (Vertical), or both. |
+| Ignore | Multi-Select | | Screen, Container | Keeps aiming while a screen (Screen) or a chest or your inventory (Container) is open. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleAimbot.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleAimbot.kt)*

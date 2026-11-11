@@ -1,10 +1,8 @@
 ## HoleFiller
 
-HoleFiller automatically places blocks into nearby holes so opponents can't dive into a safe spot to dodge your crystals. In crystal PvP, a "hole" is a tight gap in bedrock or obsidian that protects whoever stands in it — HoleFiller watches for those gaps around enemies and packs them with obsidian (or whatever block you choose) before the enemy can reach safety. It's a strong companion to [CrystalAura](/docs/modules/combat/crystalaura), and works well alongside [Surround](/docs/modules/world/surround) for keeping yourself protected while you trap others.
+HoleFiller fills holes near enemies with obsidian, so they can't hide in them during crystal fights. A hole is a gap in bedrock or obsidian that keeps you safe from crystals.
 
-By default it runs in **Smart** mode, meaning it only fills a hole when an enemy is actually about to step into it, rather than wastefully blocking every gap on the map. It also tries to avoid sealing the hole you yourself want to drop into, and it can check an enemy's movement direction so it only commits blocks to spots they're genuinely heading toward. You can widen or narrow how far around feet it scans, restrict it to only the tiny 1×1 holes, or have it act only while you're standing in a hole yourself.
-
-All the actual block placement — rotations, swing, timing, support requirements and so on — is handled by the shared [Block Placer](/docs/modules/shared-settings/block-placer) group, so you can tune how aggressively and how legitimately the blocks go down.
+By default it only fills a hole when an enemy is about to step in, and it leaves alone the hole you want to use yourself. It goes well with [CrystalAura](/docs/modules/combat/crystalaura) and [Surround](/docs/modules/world/surround).
 
 **Category:** World
 **Enabled by default:** No
@@ -13,11 +11,11 @@ All the actual block placement — rotations, swing, timing, support requirement
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Features | Multi-Select | [Smart, PreventSelfFill, CheckMovement] | Smart, PreventSelfFill, OnlyWhenSelfInHole, CheckMovement, Only1x1 | Toggles for how holes are chosen. **Smart** only fills holes when an enemy is about to enter one (otherwise every hole in range is filled). **PreventSelfFill** stops it from blocking the hole you want to drop into. **OnlyWhenSelfInHole** makes it act only while you are standing in a hole. **CheckMovement** ignores holes more than 30° away from an enemy's movement direction (only applies with Smart). **Only1x1** restricts filling to single-block holes, ignoring larger 2×1 and 2×2 ones. |
-| Area | Integer | 2 | 1..5 | How far around each entity's feet (in blocks) is scanned for holes to fill. Larger values react to holes further from the target. |
-| Filter | Choice | Whitelist | Whitelist, Blacklist | How the block list is applied — **Whitelist** only fills using the listed blocks, **Blacklist** uses any block except the listed ones. |
-| Blocks | Registry List | — | — | The blocks used to fill holes (and, with Blacklist, the blocks to avoid). Defaults to obsidian. |
-| Placing | Setting Group | — | — | See [Shared: Block Placer](/docs/modules/shared-settings/block-placer). |
+| Features | Multi-Select | Smart, PreventSelfFill, CheckMovement | Smart, PreventSelfFill, OnlyWhenSelfInHole, CheckMovement, Only1x1 | Smart: only fill a hole when an enemy is about to get in. PreventSelfFill: don't fill the hole you want to use. OnlyWhenSelfInHole: only work while you stand in a hole. CheckMovement: only fill holes in the direction an enemy is walking (needs Smart). Only1x1: only fill holes one block wide. |
+| Area | Integer | 2 | 1..5 | How many blocks around each player's feet to look for holes. |
+| Filter | Choice | Whitelist | Whitelist, Blacklist | Whitelist: only use the blocks in the list. Blacklist: use any block except those. |
+| Blocks | Registry List | Obsidian | | Blocks for the Filter. |
+| Placing | Setting Group | | | See [Block Placer](/docs/modules/shared-settings/block-placer). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleHoleFiller.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleHoleFiller.kt)*

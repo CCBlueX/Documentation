@@ -1,10 +1,10 @@
 ## Strafe
 
-Strafe restores full directional control over your movement while you are in the air. In vanilla Minecraft, air strafing is heavily dampened — you can barely change direction once you leave the ground. With this module enabled, your inputs are applied at full (or configurable) strength mid-air, letting you cut corners, dodge attacks, and reposition precisely while airborne.
+Strafe lets you change direction freely while you are in the air. Normally you can barely steer once you jump. With Strafe you can turn sharply mid-jump to dodge hits or go around corners.
 
-Two separate strength sliders let you tune the effect independently for when you are in the air and when you are on the ground. Setting either to `0.0` disables the correction for that phase entirely, while the default of `1.0` gives maximum responsiveness. When **StrictMovement** is on, releasing all movement keys while airborne immediately cancels any leftover horizontal momentum rather than letting your character drift.
+The two strength settings work on their own: one for the air and one for the ground. 1.0 gives full control and 0.0 turns that part off. With StrictMovement on, you stop right away in the air when you let go of all movement keys.
 
-Strafe pairs well with modules like [Speed](/docs/modules/movement/speed) or [LongJump](/docs/modules/movement/longjump) where precise mid-air direction changes are important. It is also useful in PvP to strafe around opponents without losing speed after jumps.
+It works well with [Speed](/docs/modules/movement/speed) and [LongJump](/docs/modules/movement/longjump).
 
 **Category:** Movement
 **Enabled by default:** No
@@ -13,9 +13,9 @@ Strafe pairs well with modules like [Speed](/docs/modules/movement/speed) or [Lo
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| StrengthInAir | Decimal | 1.0 | 0.0 – 1.0 | How strongly your directional inputs are applied while you are airborne. Lower values reduce air control; 0.0 disables in-air strafing entirely. |
-| StrengthOnGround | Decimal | 1.0 | 0.0 – 1.0 | How strongly your directional inputs are applied while you are on the ground. Lower values reduce ground strafing; 0.0 disables it entirely. |
-| StrictMovement | Toggle | true | — | When enabled, releasing all movement keys immediately zeroes out your horizontal velocity, preventing any unwanted drift. |
+| StrengthInAir | Decimal | 1.0 | 0.0..1.0 | How much you can steer in the air. |
+| StrengthOnGround | Decimal | 1.0 | 0.0..1.0 | How much it helps you steer on the ground. |
+| StrictMovement | Toggle | false | | Stops you right away when you let go of all movement keys. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleStrafe.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleStrafe.kt)*

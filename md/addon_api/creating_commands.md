@@ -111,3 +111,7 @@ public class CommandHello implements CommandRegistrar {
 
 }
 ```
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/command/brigadier/CommandDsl.kt)*

@@ -1,45 +1,45 @@
 ## TargetStrafe
 
-TargetStrafe automatically orbits your character around the enemy currently locked by [KillAura](/docs/modules/combat/killaura) or [Aimbot](/docs/modules/combat/aimbot), keeping you circling at a fixed distance. Continuously moving sideways around an opponent makes you much harder to hit while keeping you within melee reach — a significant edge in close-quarters PvP. If neither combat module has a lock, TargetStrafe falls back to its own built-in target selector.
+TargetStrafe makes you run in circles around the enemy you are fighting. Moving around them all the time makes you harder to hit while you stay close enough to hit them. It follows the target of [KillAura](/docs/modules/combat/killaura) or [Aimbot](/docs/modules/combat/aimbot), or picks its own target if neither has one.
 
-Two movement modes control how the orbit is applied. **Motion** mode adjusts your velocity vector directly and includes a **Hypixel** sub-option that synchronises the strafe with [Speed](/docs/modules/movement/speed)'s low-hop timing so you don't bleed horizontal speed on Hypixel-style servers. **Input** mode redirects your directional keyboard input instead, making the strafe behave more like manual movement and potentially passing certain anti-cheat checks more cleanly. The **Requirements** setting gates activation — for example, requiring [KillAura](/docs/modules/combat/killaura) to be running and the jump key to be held — so the module only activates under the right conditions.
+Motion mode changes your movement directly. Input mode presses the movement keys for you, which looks more like a real player. With Requirements you can make it work only when, for example, you hold jump or [Speed](/docs/modules/movement/speed) is on. When nothing is picked, it always works.
 
-The **Planner** group validates each planned orbit step before your character moves there, checking for block collisions, nearby edges, and void drops. When a destination is blocked, the module reverses its strafe direction by default; enabling **AdaptiveRange** causes it to try progressively tighter orbit radii before reversing. The **Visuals** group renders a ring around the target showing the orbit path and a dot marking the next planned position — the dot turns red when that position is deemed unsafe.
+The Planner checks each next spot before you move there, so you do not run into walls, off edges or into the void. If the spot is not safe, you turn around and circle the other way. The Visuals group draws a ring around the target and a dot where you go next. The dot turns red when that spot is not safe.
 
-**Category:** Movement  
+**Category:** Movement
 **Enabled by default:** No
 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Motion | — | How the strafe movement is applied. **Motion** modifies movement velocity directly; **Input** redirects keyboard directional input. |
-| Mode → [Motion] → Hypixel | Toggle | true | — | Synchronises strafe timing with [Speed](/docs/modules/movement/speed)'s Hypixel low-hop mode to avoid losing horizontal speed on Hypixel-style servers. |
-| Range | Decimal | 0.5 | 0.0 – 8.0 | Target orbit radius — the distance from the enemy the module tries to maintain while circling. |
-| FollowRange | Decimal | 3.0 | 0.0 – 10.0 | Maximum horizontal distance from the target at which strafing remains active. Beyond this the module pauses until you close in. |
-| Requirements | Multi-Select | Space, Speed | — | Conditions that must all be satisfied for strafing to activate: **Space** (jump key held), **Speed** ([Speed](/docs/modules/movement/speed) active), **KillAura** ([KillAura](/docs/modules/combat/killaura) active), **Ground** (standing on the ground). |
-| Planner | Toggleable Group | on | — | Plans and validates each orbit step before moving. Disabling skips all path-safety checks. |
-| Planner → ControlDirection | Toggle | true | — | When on, pressing left or right overrides the automatic strafe direction. |
-| Planner → Validation | Toggleable Group | on | — | Validates the next orbit position for safety before committing to movement. |
-| Planner → Validation → EdgeCheck | Toggleable Group | on | — | Prevents strafing to positions where you would fall farther than the configured maximum height. |
-| Planner → Validation → EdgeCheck → MaxFallHeight | Decimal | 1.2 | 0.1 – 4.0 | Maximum drop distance in blocks still considered safe when evaluating an orbit position. |
-| Planner → Validation → VoidCheck | Toggleable Group | on | — | Prevents strafing to positions from which you would fall into the void. |
-| Planner → Validation → VoidCheck → SafetyExpand | Decimal | 0.1 | 0.0 – 5.0 | Expands the void-detection boundary outward by this many blocks for an additional safety margin. |
-| Planner → AdaptiveRange | Toggleable Group | off | — | When a destination is blocked, tries progressively closer orbit radii before reversing direction. |
-| Planner → AdaptiveRange → MaxRange | Decimal | 4.0 | 1.0 – 5.0 | Largest orbit radius AdaptiveRange will attempt before giving up and reversing direction. |
-| Planner → AdaptiveRange → RangeStep | Decimal | 0.5 | 0.1 – 1.0 | Amount by which the orbit radius increases with each adaptive step. |
-| Visuals | Toggleable Group | on | — | Renders the orbit ring and next-step marker in the game world. |
-| Visuals → Width | Decimal | 0.12 | 0.01 – 1.0 | Thickness of the orbit ring drawn around the target. |
-| Visuals → HeightOffset | Decimal | 0.05 | -1.0 – 1.0 | Vertical offset of the ring and point marker relative to the target's position. |
-| Visuals → OuterColor | Color | — | — | Fill colour for the outer edge of the orbit ring. |
-| Visuals → InnerColor | Color | — | — | Fill colour for the inner edge of the orbit ring. |
-| Visuals → OutlineColor | Color | — | — | Border colour of the orbit ring. |
-| Visuals → ShowNextPoint | Toggle | true | — | Shows a dot at the next planned strafe position. |
-| Visuals → PointRadius | Decimal | 0.18 | 0.05 – 1.0 | Radius of the next-position dot marker. |
-| Visuals → PointColor | Color | — | — | Fill colour of the dot when the next position is valid. |
-| Visuals → PointOutlineColor | Color | — | — | Border colour of the dot when the next position is valid. |
-| Visuals → InvalidPointColor | Color | — | — | Fill colour of the dot when the next position is blocked or unsafe. |
-| Visuals → InvalidPointOutlineColor | Color | — | — | Border colour of the dot when the next position is blocked or unsafe. |
+| Mode | Mode Selector | Motion | Motion, Input | Motion changes your movement directly. Input presses the movement keys for you. |
+| Mode → [Motion] → Hypixel | Toggle | false | | Matches the circling to [Speed](/docs/modules/movement/speed)'s Hypixel hops so you keep your speed. |
+| Range | Decimal | 2.95 | 0.0..8.0 | How far from the target you circle. |
+| FollowRange | Decimal | 4.0 | 0.0..10.0 | Only circles when the target is closer than this. It is never smaller than Range. |
+| Requirements | Multi-Select | none | Space, Speed, KillAura, Ground | Everything picked here must be true: Space (jump key held), Speed (Speed is on), KillAura (KillAura is on), Ground (you stand on the ground). |
+| Planner | Toggleable Group | on | | Checks each next spot before moving there. |
+| Planner → ControlDirection | Toggle | true | | Pressing left or right picks which way you circle. |
+| Planner → Validation | Toggleable Group | on | | Makes sure the next spot is safe. |
+| Planner → Validation → EdgeCheck | Toggleable Group | on | | Avoids spots where you would fall too far. |
+| Planner → Validation → EdgeCheck → MaxFallHeight | Decimal | 1.2 | 0.1..4.0 | Biggest drop in blocks that still counts as safe. |
+| Planner → Validation → VoidCheck | Toggleable Group | on | | Avoids spots where you would fall into the void. |
+| Planner → Validation → VoidCheck → SafetyExpand | Decimal | 0.1 | 0.0..5.0 | Extra space in blocks to keep from the void. |
+| Planner → AdaptiveRange | Toggleable Group | off | | When a spot is blocked, tries other distances before turning around. |
+| Planner → AdaptiveRange → MaxRange | Decimal | 4.0 | 1.0..5.0 | Largest distance it tries. |
+| Planner → AdaptiveRange → RangeStep | Decimal | 0.5 | 0.1..1.0 | How much the distance changes with each try. |
+| Visuals | Toggleable Group | on | | Draws the ring and the next-spot dot. |
+| Visuals → Width | Decimal | 0.12 | 0.01..1.0 | How thick the ring is. |
+| Visuals → HeightOffset | Decimal | 0.05 | -1.0..1.0 | Moves the ring and dot up or down. |
+| Visuals → OuterColor | Color | | | Color of the outer edge of the ring. |
+| Visuals → InnerColor | Color | | | Color of the inner edge of the ring. |
+| Visuals → OutlineColor | Color | | | Color of the ring's border. |
+| Visuals → ShowNextPoint | Toggle | true | | Shows a dot where you move next. |
+| Visuals → PointRadius | Decimal | 0.18 | 0.05..1.0 | Size of the dot. |
+| Visuals → PointColor | Color | | | Dot color when the spot is safe. |
+| Visuals → PointOutlineColor | Color | | | Dot border color when the spot is safe. |
+| Visuals → InvalidPointColor | Color | | | Dot color when the spot is not safe. |
+| Visuals → InvalidPointOutlineColor | Color | | | Dot border color when the spot is not safe. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleTargetStrafe.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleTargetStrafe.kt)*

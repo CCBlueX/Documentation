@@ -1,10 +1,6 @@
 ## Freeze
 
-Freeze locks you in place on your own screen without the server immediately reacting to it. Depending on the mode you pick, it either holds back your outgoing packets so they pile up (like a controlled lag spike), drops them entirely, or keeps you network-connected while only your movement is suspended. This is handy for dodging an incoming hit, lining up a play, or stalling while the server still believes everything is normal.
-
-The **Queue** mode buffers your packets and releases them later, similar to [Blink](/docs/modules/player/blink), so your character snaps forward once they're flushed. **Cancel** simply discards packets in the chosen direction, meaning that movement is lost rather than delayed. **Stationary** is the stealthiest option: it freezes your position but keeps talking to the server, sending small rotation tweaks so anticheats don't flag the unusual behavior, which makes it the best choice on stricter servers.
-
-Because freezing your packets can desync you from the server, you may get teleported back ("flagged") when the connection catches up. Use **DisableOn** to pick the situations in which the module switches itself off — being flagged, standing on the ground, pressing a movement key, entering liquid, falling into the void or using an item.
+Freeze stops you in place. The game around you stops moving for you until you turn it off, and the mode decides what the server sees in the meantime.
 
 **Category:** Movement
 **Enabled by default:** No
@@ -13,11 +9,13 @@ Because freezing your packets can desync you from the server, you may get telepo
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Queue | Queue, Cancel, Stationary | Chooses how Freeze holds you in place: queuing packets for later, cancelling them, or staying connected while only stopping movement. |
-| Mode → Queue → Origin | Multi-Select | Outgoing | Incoming, Outgoing | Which packet direction gets queued up and released later. |
-| Mode → Cancel → Origin | Multi-Select | Outgoing | Incoming, Outgoing | Which packet direction gets discarded while frozen. |
-| Mode → Stationary → CancelC0B | Toggle | true | — | Holds back ping-response packets to better slip past stricter anticheat timer checks while frozen. |
-| DisableOn | Multi-Select | Flag | Flag, OnGround, OnMovementInput, InLiquid, Void, OnUseItem | Conditions that automatically turn Freeze off: the server teleports you back (Flag), you stand on the ground, you press a movement key, you enter liquid, you drop below the world (Void), or you use an item. |
-| Notification | Toggle | false | — | Shows an on-screen notice naming the condition that made Freeze disable itself. |
+| Mode | Mode Selector | Stationary | Queue, Cancel, Stationary, TickMovement | How Freeze holds you in place. |
+| Mode → Queue → Origin | Multi-Select | Outgoing | Incoming, Outgoing | Which data is held back and sent all at once when Freeze turns off. This works like [Blink](/docs/modules/player/blink). |
+| Mode → Cancel → Origin | Multi-Select | Outgoing | Incoming, Outgoing | Which data is thrown away while frozen. |
+| Mode → Stationary → CancelC0B | Toggle | true |  | Holds back replies to the server's connection checks. Helps on stricter servers. |
+| Mode → TickMovement → Interval | Integer Range | 20..20 | 1..200 | How many ticks (20 per second) you wait between each single step of movement. |
+| DisableOn | Multi-Select | Flag | Flag, OnGround, OnMovementInput, InLiquid, Void, OnUseItem | Turns Freeze off when one of these happens: the server pulls you back (Flag), you touch the ground, you press a walk key, you are in water or lava, you fall below the world (Void), or you use an item. |
+| Notification | Toggle | false |  | Shows a message that says why Freeze turned itself off. |
+
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleFreeze.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleFreeze.kt)*

@@ -1,21 +1,15 @@
 ## AutoTranslate
 
-Configures the translation provider used for automatic message translation throughout the client, including LiquidChat auto-translation and the `.translate` command.
-
-Successful translations are cached, so translating the same text between the same two languages again returns the stored result instead of contacting the provider. The cache holds up to 512 translations, each entry is discarded 15 minutes after it was stored, and switching the provider clears it completely.
+Chooses the service that translates text for LiquidBounce. It is used by the [`.translate`](/docs/commands/translate) command, by [Client Chat](/docs/global-settings/client-chat) when it translates LiquidChat messages, and by the BetterChat and BetterTitle modules. Set the language to translate into with `.autotranslate language set <code>`.
 
 ### Settings
 
-```
-└── Provider (Mode Selector | default: GoogleTranslate | modes: GoogleTranslate, LibreTranslate)
-```
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Provider | Mode Selector | Google | Google, LibreTranslate | The translation service. Google works without any setup. LibreTranslate uses a LibreTranslate server of your choice. |
+| Provider → [LibreTranslate] → BaseUrl | Text | `https://libretranslate.com` | | Address of the LibreTranslate server. |
+| Provider → [LibreTranslate] → ApiKey | Text | (empty) | | Your key for that server. Leave it empty if the server does not need one. |
 
-### Settings Details
+---
 
-- **Provider** (Mode Selector) — default: `GoogleTranslate`; modes: `GoogleTranslate`, `LibreTranslate` — Selects the translation service used for all translation features: Google Translate or a LibreTranslate server.
-
-### Related Features
-
-- **ClientChat AutoTranslate** — When enabled in [ClientChat](/docs/Global%20Settings/ClientChat), incoming LiquidChat messages are automatically translated using this provider.
-- **`.translate` command** — Uses this provider to translate text between languages on demand.
-- **`.autotranslate` command** — Configures the target language for auto-translation.
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/global/GlobalSettingsAutoTranslate.kt)*

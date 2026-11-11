@@ -1,34 +1,22 @@
 ## BlinkManager
 
-Controls the global packet queueing system used by the Blink module and other features that need to delay outgoing or incoming packets. The BlinkManager intercepts network packets and can hold them in a queue to be released later.
+Some modules, like [Blink](/docs/modules/player/blink) and [FakeLag](/docs/modules/combat/fakelag), hold back your movement for a moment so the server still thinks you are where you were. These settings choose how that spot is drawn for you, so you can see where the server thinks you are.
 
 ### Settings
 
-```
-├── Esp (Mode Selector | default: Wireframe | modes: Box, Model, Wireframe, None)
-└── Line (Color | default: LiquidBounce blue)
-```
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Esp | Mode Selector | Wireframe | Box, Model, Wireframe, None | How your held-back position is drawn. You only see it in third person. None draws nothing. |
+| Esp → [Box] → Color | Color | `#242093`, 34% opacity | | Fill color of the box. |
+| Esp → [Box] → OutlineColor | Color | `#242093` | | Outline color of the box. |
+| Esp → [Model] → OutlineColor | Color | `#242093`, fully transparent (off) | | Outline color around the player model. |
+| Esp → [Model] → LightPercent | Integer | 60% | 0% to 100% | How brightly the player model is lit. |
+| Esp → [Wireframe] → Color | Color | `#242093`, 34% opacity | | Fill color of the wireframe player. |
+| Esp → [Wireframe] → OutlineColor | Color | `#242093` | | Line color of the wireframe player. |
+| Line | Color | `#4677FF` | | Color of the line along the path you moved while held back. |
 
-### Settings Details
+Your held-back movement is sent all at once when the module lets go. It is also sent when the server teleports you and when you die or respawn. Chat messages are never held back.
 
-- **Esp** (Mode Selector) — default: `Wireframe`; modes: `Box`, `Model`, `Wireframe`, `None` — Selects how the server-side player position is visualized while blinking.
-  - **Box** — Renders a simple box at the server-side position.
-  - **Model** — Renders a full player model at the server-side position.
-  - **Wireframe** — Renders a wireframe outline of the player model.
-  - **None** — No ESP visualization.
-- **Line** (Color) — default: LiquidBounce blue — The color of the line trail drawn between queued movement positions.
+---
 
-### How It Works
-
-The BlinkManager sits between the client and server, intercepting packets in both directions. Modules like Blink and FakeLag use the BlinkManager to:
-
-1. **Queue outgoing packets** — Movement and action packets are held instead of being sent to the server.
-2. **Queue incoming packets** — Server packets can also be delayed for certain bypass techniques.
-3. **Flush on demand** — Queued packets are released all at once or in batches.
-
-Certain packets are always allowed through (chat messages, status requests), and the queue is automatically flushed on teleport, disconnect, or death to prevent desyncs.
-
-### Related Modules
-
-- [Blink](/docs/Modules/Player/Blink) — Uses BlinkManager to queue all outgoing movement packets.
-- [FakeLag](/docs/Modules/Combat/FakeLag) — Uses BlinkManager to simulate lag by delaying packets.
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/blink/BlinkManager.kt)*

@@ -171,3 +171,7 @@ Tweaks apply while the component is shown and the HUD module is enabled.
 | `DISABLE_STATUS_EFFECT_OVERLAY`   | The status effect icons.                                                   |
 | `DISABLE_LOCATOR_BAR`             | The locator bar.                                                           |
 | `DISABLE_SUBTITLE_OVERLAY`        | Vanilla subtitles.                                                         |
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/integration/theme/component/HudComponentManager.kt)*

@@ -1,33 +1,28 @@
 ## Theme System
-LiquidBounce features a Theme System that allows you to customize the appearance of the client. The theme affects all graphical user interfaces (GUIs) throughout the client, including but not limited to the HUD, ClickGUI, main menu, and any other visual elements.
+A theme decides how LiquidBounce looks: the HUD, the ClickGUI, the main menu and the other menus of the client. You can switch to another theme at any time.
 
 <div class="fluid-width-video-wrapper" style="padding-top: 50%;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/hUZBVYX9jTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 ### LiquidBounce Theme
-The default theme of LiquidBounce provides a clean and modern look:
+LiquidBounce comes with its own theme:
 
 ![Default HUD](/images/theme/liquidbounce/hud.png)
 ![Default ClickGUI](/images/theme/liquidbounce/clickgui.png)
 ![Default Main Menu](/images/theme/liquidbounce/mainmenu.png)
 
-The LiquidBounce theme is included in LiquidBounce. However, if you want to create your own theme, see the [Creating Your Own Theme](#creating-your-own-theme) section below.
+To make a theme yourself, see [Creating Your Own Theme](#creating-your-own-theme) below.
 
 ### Installing Themes from Marketplace
 
-The easiest way to install themes is through the built-in Marketplace:
+1. **See which themes there are**: `.marketplace list theme`
 
-1. **Browse available themes**: `.marketplace list theme`
-   - This displays all themes available in the marketplace
+2. **Install one**: click the theme in the list, or type `.marketplace subscribe <id>`. The theme is downloaded for you.
 
-2. **Install a theme**: Click on your desired theme, which will run:
-   - `.marketplace subscribe <id>`
-   - The theme will be automatically downloaded and installed
+3. **Use it**: type `.client theme` to see your installed themes, then click the new one. That runs `.client theme set <id>`.
 
-3. **Apply the theme**: After installation, use:
-   - `.client theme list` to see all installed themes
-   - Click on the theme you just installed, which will run `.client theme set <id>`
+> Only install themes from people you trust. A theme can connect to other servers on the internet, so a bad theme could take control of your client or steal your information. The Marketplace is the safest place to get themes.
 
 ### Themes
 
@@ -56,15 +51,15 @@ Install with: `.marketplace subscribe 561`
 
 ### Creating Your Own Theme
 
-For developers who want to create custom themes:
+Themes are web pages built with [Svelte](https://svelte.dev/). Start from the default theme and change it. You need Node.js.
 
-1. **Clone the theme template**:
+1. **Fork or clone the default theme**:
    ```bash
    git clone https://github.com/CCBlueX/LiquidBounce-Theme
    cd LiquidBounce-Theme
    ```
 
-2. **Edit the metadata file** (`public/metadata.json`):
+2. **Edit the metadata file** (`public/metadata.json`) and give the theme its own `id`, `name`, `version` and `authors`:
    ```json
    {
      "id": "your-custom-id",
@@ -73,7 +68,7 @@ For developers who want to create custom themes:
      "authors": ["YourName"]
    }
    ```
-   Change from the default:
+   The default theme uses:
    ```json
    {
      "id": "liquidbounce",
@@ -82,40 +77,43 @@ For developers who want to create custom themes:
      "authors": ["CCBlueX"]
    }
    ```
-   The optional `nativeFont` field names one of the theme's loaded font faces (for example `"nativeFont": "Inter Medium"`) that the client draws its own text with. If your theme does not set it, the client uses the font of the included LiquidBounce theme, or a system font if that is unavailable.
+   Three fields are optional:
+   - `nativeFont` names one of the theme's loaded font faces, for example `"nativeFont": "Inter Medium"`. The client draws its own text with it. Without it, the client uses the font of the LiquidBounce theme, or a system font if that is missing.
+   - `sounds` lists sounds the theme ships as `public/sounds/<name>.ogg`, for example `"sounds": ["click"]`. Names must be valid Minecraft identifier paths without `/`. See [Playing sounds](#playing-sounds).
+   - `splash` gives the theme its own loading screen, a [Lottie](https://airbnb.io/lottie/) animation with background, text and accent colors. See [Splash Screen](/docs/theme-system/splash-screen).
 
-   The optional `sounds` field lists the names of sounds your theme ships as `public/sounds/<name>.ogg` (for example `"sounds": ["click"]`). Names must be valid Minecraft identifier paths without `/`. The client registers each sound with the game's sound engine as `liquidbounce:theme/<theme id>/<name>`. Your theme can play any registered sound, including its own, by sending a `POST` request to `/api/v1/client/sound` with a JSON body such as `{"sound": "liquidbounce:theme/your-custom-id/click", "volume": 1.0, "pitch": 1.0}`. `volume` and `pitch` are optional and default to `1.0`. Sounds play in the UI category, so the game's volume sliders apply.
-
-   The optional `splash` field gives your theme its own loading screen: a [Lottie](https://airbnb.io/lottie/) animation the client draws itself, with background, text and accent colors. See [Splash Screen](/docs/theme-system/splash-screen) for the format and its limits.
-
-3. **Install dependencies and start development server**:
+3. **Start LiquidBounce, then install the dependencies and start the development server**:
    ```bash
    npm install
    npm run dev
    ```
 
-4. **Test your theme in LiquidBounce**:
-   - In the game chat, type: `.client theme set http://localhost:5173/`
-   - Your theme will load in real-time as you make changes
+4. **Load it in LiquidBounce**: type `.client theme set http://localhost:5173/` in the chat (use the address the development server prints). The theme reloads as you make changes.
 
-5. **Publish to Marketplace**:
-   - Once your theme is ready, you can submit it to the Marketplace for others to use by [contacting us](https://ccbluex.net/contact).
+5. **Install the finished theme**: run `npm run build`, open the themes folder with `.client theme browse`, copy the `dist` folder into it and rename it. Then use `.client theme set <id>`. `.client theme reload` picks up changes to installed themes.
+
+6. **Publish to the Marketplace**: create the theme on the [Resources](https://liquidbounce.net/account/resources) page of your account and generate an API token there, as for [add-ons](/docs/add-on-api/developers/publishing#creating-the-add-on). The template's `.github/workflows/build.yml` has the upload steps commented out: set `MARKETPLACE_ITEM_ID` and `ZIP_NAME`, add `API_TOKEN` as a repository secret, and uncomment them.
+
+### Playing sounds
+
+The client registers each sound listed under `sounds` as `liquidbounce:theme/<theme id>/<name>`. To play it, or any other sound the game knows, send a `POST` request to `/api/v1/client/sound`:
+
+```json
+{"sound": "liquidbounce:theme/your-custom-id/click", "volume": 1.0, "pitch": 1.0}
+```
+
+`volume` and `pitch` are optional and default to `1.0`. Sounds play in the game's UI category, so the volume sliders apply to them.
 
 ### Handling Esc
 
-Pressing **Esc** closes the whole theme screen. While a page has a dialog, dropdown or search open, it can keep the key for itself by sending a `PUT` request to `/api/v1/client/screen/escape` with a JSON body such as `{"name": "multiplayer", "keep": true}`, and `"keep": false` once the layer is closed. `name` must be the theme screen that is currently open, otherwise the client answers with `403`. Any screen change hands Esc back to the client, so a page that still has a layer open has to keep it again. The included LiquidBounce theme does this, so Esc first closes its dialogs, dropdowns and searches.
+Pressing **Esc** closes the whole theme screen. While a page has a dialog, dropdown or search open, it can keep the key for itself by sending a `PUT` request to `/api/v1/client/screen/escape`:
 
-### Adding a Marketplace to Your Theme
+```json
+{"name": "multiplayer", "keep": true}
+```
 
-Your theme can bring its own Marketplace through the client API. The `/api/v1/client/marketplace/tags` and `/api/v1/client/marketplace/configs` routes list configs, show their details and modules, load them fully or only some of their modules, and report them. The `/api/v1/client/marketplace/items` routes list add-ons, scripts and themes, show the installed ones and their details, and install, update, remove and apply them. Descriptions and item summaries are passed on as Markdown; to open a link in them, send a `POST` request to `/api/v1/client/marketplace/items/{id}/openLink` with the link as `url`, where `{id}` is the id of the item or config. The client opens the link only if it is an http(s) link in that item's description and answers anything else with `403`. As with the [marketplace commands](/docs/commands/marketplace), the client reports how an action went in the chat and as a notification.
+Send `"keep": false` once the layer is closed. `name` must be the theme screen that is open right now, otherwise the client answers with `403`. Every screen change gives Esc back to the client, so a page that still has a layer open has to ask again. The LiquidBounce theme does this, so Esc first closes its dialogs, dropdowns and searches.
 
-### Security Warning
+---
 
-> **Only install themes from trusted sources!**
->
-> Themes can establish HTTP/WebSocket connections to external servers, which means malicious themes could:
-> - Take over control of your client
-> - Steal sensitive information
-> - Perform unauthorized actions
->
-> We strongly discourage downloading themes from unknown sources or untrusted developers. Always use the official Marketplace when possible.
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/integration/theme/ThemeMetadata.kt)*

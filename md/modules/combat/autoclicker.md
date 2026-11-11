@@ -1,10 +1,6 @@
 ## AutoClicker
 
-AutoClicker automatically fires clicks for you while you hold down a mouse button, so you don't have to spam your mouse. It's split into two independent parts: one for the **attack** (left) button and one for the **use** (right) button. Each part has its own click-speed timing, controlled through its shared [Clicker](/docs/modules/shared-settings/clicker) group.
-
-The Attack part keeps you swinging at whatever your crosshair is pointed at while you hold the attack button. To attack enemies under your crosshair without holding the button, use [TriggerBot](/docs/modules/combat/triggerbot) instead. You can restrict it to only attack enemies, any entity, blocks, or anything at all, and limit it to specific weapon types so it won't swing with the wrong item. It can also respect critical hits and pause itself while you're eating or using an item. Unlike [KillAura](/docs/modules/combat/killaura), it does not aim for you — it only clicks where you're already looking.
-
-The Use part auto-clicks the right button, which is handy for rapidly placing blocks or interacting. It can be limited to only block items and will skip clicking when you're holding certain items (like buckets, pearls, or eyes) or looking at blocks you'd rather open manually, such as doors, gates, and trapdoors.
+AutoClicker clicks for you while you hold a mouse button, so you don't have to click fast yourself. The Attack part clicks the left button, the Use part clicks the right button. It does not aim for you. To attack enemies under your crosshair without holding the button, use [TriggerBot](/docs/modules/combat/triggerbot).
 
 **Category:** Combat
 **Enabled by default:** No
@@ -13,21 +9,21 @@ The Use part auto-clicks the right button, which is handy for rapidly placing bl
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Attack | Toggleable Group | Off | — | Auto-clicks the attack (left) button while it's held. |
-| Attack → Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
-| Attack → DelayOnBroken | Toggle | true | — | Briefly pauses clicking right after you finish breaking a block. |
-| Attack → Objective | Choice | Enemy | Enemy, Entity, Block, Any | What your crosshair must be on for it to click. |
-| Attack → OnItemUse | Choice | Wait | Wait, Stop, Ignore | How to react while you're using an item — wait for it to finish, stop using it, or ignore it. |
-| Attack → Weapon | Multi-Select | [Any] | Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect | Only clicks when one of these weapon types is in your main hand. |
-| Attack → Criticals | Choice | Smart | Smart, Ignore, Always | When to time clicks for critical hits. |
-| Attack → DelayPostStopUse | Integer | 0 | 0–20 ticks | Extra wait after an item use ends before resuming clicks. |
-| Use | Toggleable Group | On | — | Auto-clicks the use (right) button while it's held. |
-| Use → Clicker | Setting Group | — | — | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
-| Use → HoldingItemsForIgnore | Registry List | — | — | Items that, when held in either hand, stop it from clicking. |
-| Use → BlocksForIgnore | Registry List | — | — | Blocks that, when looked at, stop it from clicking. |
-| Use → DelayStart | Toggle | false | — | Adds a short delay before the first click after you start holding. |
-| Use → OnlyBlock | Toggle | true | — | Only clicks when you're holding a placeable block. |
-| Use → RequiresNoInput | Toggle | false | — | Clicks even when you aren't physically holding the use button. |
+| Attack | Toggleable Group | On | | Clicks the attack button (left click) while you hold it. |
+| Attack → Clicker | Setting Group | | | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Attack → DelayOnBroken | Toggle | true | | Waits a moment after you break a block before clicking again. |
+| Attack → Objective | Choice | Any | Enemy, Entity, Block, Any | What your crosshair has to be on for it to click: an enemy, any entity, a block, or anything. |
+| Attack → OnItemUse | Choice | Wait | Wait, Stop, Ignore | What to do while you use an item, like eating. Wait waits until you are done. Stop stops using the item. Ignore keeps clicking anyway. |
+| Attack → Weapon | Multi-Select | Any | Any, Sword, Axe, Mace, Spear, Pickaxe, Shovel, Hoe, Knockback, FireAspect | Only clicks while you hold one of these. Knockback and FireAspect mean any item with that enchantment. |
+| Attack → Criticals | Choice | Smart | Smart, Ignore, Always | When to wait for a critical hit. Smart waits when a critical hit is possible soon. Ignore never waits. Always only hits when it is a critical hit. |
+| Attack → DelayPostStopUse | Integer | 0 | 0..20 ticks | How long to wait after you stop using an item before clicking again, in ticks (20 per second). |
+| Use | Toggleable Group | Off | | Clicks the use button (right click) while you hold it. |
+| Use → Clicker | Setting Group | | | See [Shared: Clicker](/docs/modules/shared-settings/clicker). |
+| Use → HoldingItemsForIgnore | Registry List | Water Bucket, Lava Bucket, Ender Pearl, Eye of Ender, Player Head | | Does not click while you hold one of these items. |
+| Use → BlocksForIgnore | Registry List | Doors, fence gates, trapdoors | | Does not click while you look at one of these blocks. |
+| Use → DelayStart | Toggle | false | | Waits a moment before the first click. |
+| Use → OnlyBlock | Toggle | false | | Only clicks while you hold a block. |
+| Use → RequiresNoInput | Toggle | false | | Clicks even when you are not holding right click. |
 
 ---
-*Last updated: 2026-11-09 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/autoclicker/ModuleAutoClicker.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/autoclicker/ModuleAutoClicker.kt)*

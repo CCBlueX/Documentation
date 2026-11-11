@@ -1,10 +1,6 @@
 ## PotionFX
 
-PotionFX draws custom visual effects for potions. Like other effect modules such as [JumpEffect](/docs/modules/render/jumpeffect) and [TotemEffect](/docs/modules/render/totemeffect), it is purely cosmetic and does not change how the potions themselves behave.
-
-The module is split into three sections that are toggled independently: one for the effects on players, one for splash potions and one for lingering potions. Every effect is tinted with the colour of the potion it belongs to.
-
-The lingering potion section draws a spinning texture flat on the ground over the area effect cloud, scaled to the cloud's own radius. A second spinning texture can be layered underneath it, and a glow can flash up while the cloud settles. Both textures are either one of the images bundled with LiquidBounce — **Dashed**, **Solid**, **Runes** or **Atlas** for the main layer, **Cracked**, **Neuron**, **Hexagon** or **Stardust** for the second — or an image file of your own.
+PotionFX draws spinning circles on the ground for potions: under players who have an effect, where a splash potion breaks, and over lingering potion clouds. Each one takes the color of its potion. It only changes what you see, not how potions work.
 
 **Category:** Render
 **Enabled by default:** No
@@ -13,18 +9,54 @@ The lingering potion section draws a spinning texture flat on the ground over th
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| LingeringPotion | Toggleable Group | No | — | Draws an effect on the ground for the cloud left behind by a lingering potion. |
-| LingeringPotion → MainEffect → ExtraRadius | Decimal | 0.375 | 0.0 – 10.0 | Added to the cloud's own radius when sizing the main texture. |
-| LingeringPotion → MainEffect → RotationSpeed | Decimal | 1.0 | -10.0 – 10.0 | How fast the main texture spins. Negative values spin it the other way, 0 keeps it still. |
-| LingeringPotion → Source | Mode Selector | Builtin | Builtin \| Custom | Where the main texture comes from: **Builtin** picks one of the images shipped with LiquidBounce, **Custom** uses a PNG or JPG image file you provide. |
-| LingeringPotion → SecondEffects → Flash | Toggleable Group | Yes | — | Flashes a glow that grows out of the cloud when it appears. |
-| LingeringPotion → SecondEffects → Flash → AnimTime | Integer | 4 | 1 – 20 | How many ticks the glow takes to reach its full size. |
-| LingeringPotion → SecondEffects → Flash → Radius | Decimal | 2.0 | 0.1 – 10.0 | Size of the glow at the end of its animation. |
-| LingeringPotion → SecondEffects → Effect | Toggleable Group | No | — | Draws a second texture underneath the main one. |
-| LingeringPotion → SecondEffects → Effect → RotationSpeed | Decimal | 1.0 | -10.0 – 10.0 | How fast the second texture spins. |
-| LingeringPotion → SecondEffects → Effect → ExtraRadius | Decimal | 0.0 | 0.0 – 10.0 | Added to the size of the second texture, letting it stick out past the main one. |
-| LingeringPotion → SecondEffects → Effect → Source | Mode Selector | Builtin | Builtin \| Custom | Where the second texture comes from. |
-| LingeringPotion → CanBeCovered | Toggle | Yes | — | When enabled, blocks in the world can occlude the effect. When disabled, it always renders on top of geometry. |
+| Players | Toggleable Group | on | | Draws a spinning circle under every player who has a potion effect. |
+| Players → MainEffect → Radius | Decimal | 1.0 | 0.1 to 10.0 | Size of the circle. |
+| Players → MainEffect → RotationSpeed | Decimal | 4.0 | -10.0 to 10.0 | How fast the circle spins. Negative values spin it the other way, 0 keeps it still. |
+| Players → MainEffect → Source | Mode Selector | Builtin | Builtin, Custom | Where the texture comes from. **Builtin** uses an image that comes with LiquidBounce, **Custom** uses your own PNG or JPG file. |
+| Players → MainEffect → Source → Builtin → Preset | Choice | Dashed | Dashed, Solid, Runes, Atlas | Which built-in image to use. |
+| Players → MainEffect → Source → Custom → File | File | | | The PNG or JPG image to use. |
+| Players → SecondEffect | Toggleable Group | off | | Draws a second image under the first one. |
+| Players → SecondEffect → RotationSpeed | Decimal | 4.0 | -10.0 to 10.0 | How fast the second image spins. |
+| Players → SecondEffect → ExtraRadius | Decimal | 0.0 | 0.0 to 10.0 | Makes the second image bigger than the first one. |
+| Players → SecondEffect → Source | Mode Selector | Builtin | Builtin, Custom | Where the texture comes from. **Builtin** uses an image that comes with LiquidBounce, **Custom** uses your own PNG or JPG file. |
+| Players → SecondEffect → Source → Builtin → Preset | Choice | Cracked | Cracked, Neuron, Hexagon, Stardust | Which built-in image to use. |
+| Players → SecondEffect → Source → Custom → File | File | | | The PNG or JPG image to use. |
+| Players → CanBeCovered | Toggle | true | | When on, blocks can hide the effect. When off, it is always drawn on top. |
+| SplashPotion | Toggleable Group | on | | Draws a spinning circle on the ground where a splash potion breaks. |
+| SplashPotion → MainEffect → Lifetime | Integer Range | 20..40 | 1..1000 | How long the effect stays, in ticks (20 per second). |
+| SplashPotion → MainEffect → Radius | Decimal | 3.0 | 0.1 to 10.0 | Size of the circle. |
+| SplashPotion → MainEffect → RotationSpeed | Decimal | 3.0 | -10.0 to 10.0 | How fast the circle spins. |
+| SplashPotion → MainEffect → FadeStart | Decimal | 0.9 | 0.01 to 1.0 | How far into its life the effect starts to fade out. 0.9 means it fades during the last tenth. |
+| SplashPotion → MainEffect → Source | Mode Selector | Builtin | Builtin, Custom | Where the texture comes from. **Builtin** uses an image that comes with LiquidBounce, **Custom** uses your own PNG or JPG file. |
+| SplashPotion → MainEffect → Source → Builtin → Preset | Choice | Dashed | Dashed, Solid, Runes, Atlas | Which built-in image to use. |
+| SplashPotion → MainEffect → Source → Custom → File | File | | | The PNG or JPG image to use. |
+| SplashPotion → SecondEffects → Flash | Toggleable Group | on | | A glow that grows out of the spot where the potion broke. |
+| SplashPotion → SecondEffects → Flash → AnimTime | Integer | 4 | 1 to 20 | How many ticks the glow takes to reach full size. |
+| SplashPotion → SecondEffects → Flash → Radius | Decimal | 2.0 | 0.1 to 10.0 | Size of the glow at the end. |
+| SplashPotion → SecondEffects → Effect | Toggleable Group | off | | Draws a second image under the first one. |
+| SplashPotion → SecondEffects → Effect → AnimAcceleration | Decimal | 1.25 | 0.1 to 2.0 | How quickly the second image grows to full size. |
+| SplashPotion → SecondEffects → Effect → RotationSpeed | Decimal | 3.0 | -10.0 to 10.0 | How fast the second image spins. |
+| SplashPotion → SecondEffects → Effect → ExtraRadius | Decimal | 0.0 | 0.0 to 10.0 | Makes the second image bigger than the first one. |
+| SplashPotion → SecondEffects → Effect → Source | Mode Selector | Builtin | Builtin, Custom | Where the texture comes from. **Builtin** uses an image that comes with LiquidBounce, **Custom** uses your own PNG or JPG file. |
+| SplashPotion → SecondEffects → Effect → Source → Builtin → Preset | Choice | Cracked | Cracked, Neuron, Hexagon, Stardust | Which built-in image to use. |
+| SplashPotion → SecondEffects → Effect → Source → Custom → File | File | | | The PNG or JPG image to use. |
+| SplashPotion → CanBeCovered | Toggle | true | | When on, blocks can hide the effect. When off, it is always drawn on top. |
+| LingeringPotion | Toggleable Group | off | | Draws a spinning circle over the cloud a lingering potion leaves behind, sized to the cloud. |
+| LingeringPotion → MainEffect → ExtraRadius | Decimal | 0.375 | 0.0 to 10.0 | Added to the cloud's size. |
+| LingeringPotion → MainEffect → RotationSpeed | Decimal | 1.0 | -10.0 to 10.0 | How fast the circle spins. |
+| LingeringPotion → MainEffect → Source | Mode Selector | Builtin | Builtin, Custom | Where the texture comes from. **Builtin** uses an image that comes with LiquidBounce, **Custom** uses your own PNG or JPG file. |
+| LingeringPotion → MainEffect → Source → Builtin → Preset | Choice | Dashed | Dashed, Solid, Runes, Atlas | Which built-in image to use. |
+| LingeringPotion → MainEffect → Source → Custom → File | File | | | The PNG or JPG image to use. |
+| LingeringPotion → SecondEffects → Flash | Toggleable Group | on | | A glow that grows out of the cloud when it appears. |
+| LingeringPotion → SecondEffects → Flash → AnimTime | Integer | 4 | 1 to 20 | How many ticks the glow takes to reach full size. |
+| LingeringPotion → SecondEffects → Flash → Radius | Decimal | 2.0 | 0.1 to 10.0 | Size of the glow at the end. |
+| LingeringPotion → SecondEffects → Effect | Toggleable Group | off | | Draws a second image under the first one. |
+| LingeringPotion → SecondEffects → Effect → RotationSpeed | Decimal | 1.0 | -10.0 to 10.0 | How fast the second image spins. |
+| LingeringPotion → SecondEffects → Effect → ExtraRadius | Decimal | 0.0 | 0.0 to 10.0 | Makes the second image bigger than the first one. |
+| LingeringPotion → SecondEffects → Effect → Source | Mode Selector | Builtin | Builtin, Custom | Where the texture comes from. **Builtin** uses an image that comes with LiquidBounce, **Custom** uses your own PNG or JPG file. |
+| LingeringPotion → SecondEffects → Effect → Source → Builtin → Preset | Choice | Cracked | Cracked, Neuron, Hexagon, Stardust | Which built-in image to use. |
+| LingeringPotion → SecondEffects → Effect → Source → Custom → File | File | | | The PNG or JPG image to use. |
+| LingeringPotion → CanBeCovered | Toggle | true | | When on, blocks can hide the effect. When off, it is always drawn on top. |
 
 ---
-*Last updated: 2026-08-27*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/potionfx/ModulePotionFX.kt)*

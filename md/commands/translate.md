@@ -1,64 +1,55 @@
 ## Translation Commands
 
-Translation commands allow you to translate text between languages using the configured translation provider.
+These commands translate text into another language. The translation service is picked in the [AutoTranslate](/docs/global-settings/auto-translate) settings.
 
 ---
 
 ### `.translate`
 
-Translate text from one language to another.
+Translates text from one language into another. Short form: `.tr`.
 
-**Aliases:** `tr`
-
-**Usage:**
 ```
-.translate <source> <target> <text>
+.translate <from> <to> <text>
 ```
 
-**Parameters:**
-- `source` (required) — The source language code (e.g. `en`, `de`, `ja`). Use `auto` for automatic detection.
-- `target` (required) — The target language code.
-- `text` (required, vararg) — The text to translate.
+- `from`: the language of the text. Use `auto` to let the service guess it.
+- `to`: the language you want.
+- `text`: the text to translate. It can have spaces.
 
-**Example:**
 ```
 .translate en de Hello, how are you?
 .translate auto en Hallo, wie geht es dir?
 .tr ja en こんにちは
 ```
 
-### Common Language Codes
+Languages are written as short codes. Press Tab to see all of them. Some common ones:
 
 | Code | Language |
 |---|---|
-| `auto` | Auto-detect |
 | `en` | English |
 | `de` | German |
 | `fr` | French |
 | `es` | Spanish |
+| `it` | Italian |
+| `pt` | Portuguese |
+| `ru` | Russian |
 | `ja` | Japanese |
 | `ko` | Korean |
 | `zh` | Chinese |
-| `ru` | Russian |
-| `pt` | Portuguese |
-| `it` | Italian |
 
 ---
 
 ### `.autotranslate`
 
-Configure the target language for the auto-translation feature.
+Sets the language that chat messages are translated into when automatic translation is on. It starts as `en`. Automatic translation is used by [Client Chat](/docs/global-settings/client-chat) and the BetterChat and BetterTitle modules.
 
-**Subcommands:**
-- `.autotranslate language set <code>` — Set the target language for auto-translation.
+- `.autotranslate language`: shows the current language.
+- `.autotranslate language set <code>`: sets the language.
 
-**Parameters:**
-- `code` — A language code (e.g. `en`, `de`).
-
-**Example:**
 ```
-.autotranslate language set en
 .autotranslate language set de
 ```
 
-> **Tip:** Auto-translation works with the [ClientChat](/docs/Global%20Settings/ClientChat) global setting. Enable the AutoTranslate option in ClientChat to automatically translate incoming LiquidChat messages.
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/command/commands/translate)*

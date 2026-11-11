@@ -1,29 +1,29 @@
 ## Misc Modules
 
-Miscellaneous modules provide various utilities that do not fit neatly into other categories, including chat enhancements, team detection, and notification systems.
+Misc modules are tools that don't fit another category, like team detection, chat helpers and notifications.
 
 There are **20** modules in this category:
 
-- [AntiBot](/docs/Modules/Misc/AntiBot) — Detects bots spawned by Anti-Cheats and prevents you from attacking them.
-- [AntiCheatDetect](/docs/Modules/Misc/AntiCheatDetect) — Detects the AntiCheat of the server and notifies you.
-- [AntiStaff](/docs/Modules/Misc/AntiStaff) — Alerts you when the server's staff members are watching you.
-- [AutoAccount](/docs/Modules/Misc/AutoAccount) — Automatically authenticates you on cracked servers.
-- [AutoChatGame](/docs/Modules/Misc/AutoChatGame) — Uses OpenAI to play chat games.
-- [AutoConfig](/docs/Modules/Misc/AutoConfig) — Automatically applies the correct config for the server you are playing on.
-- [DebugRecorder](/docs/Modules/Misc/DebugRecorder) — Only of interest to developers.
-- [EasyPearl](/docs/Modules/Misc/EasyPearl) — Throws pearl to where you looking at.
-- [FlagCheck](/docs/Modules/Misc/FlagCheck) — Alerts you about flags.
-- [GUICloser](/docs/Modules/Misc/GUICloser) — Closes GUIs if their title matches specified patterns.
-- [ItemScroller](/docs/Modules/Misc/ItemScroller) — Quickly moves items in the inventory with the SHIFT and LMB pressed
-- [Macros](/docs/Modules/Misc/Macros) — Lets you execute chat messages or item actions using custom keybinds.
-- [MiddleClickAction](/docs/Modules/Misc/MiddleClickAction) — Allows you to perform actions with middle clicks.
-- [NameProtect](/docs/Modules/Misc/NameProtect) — Hides the player's real username client-side (useful for videos).
-- [Notifier](/docs/Modules/Misc/Notifier) — Notifies you about all kinds of events.
-- [PacketLogger](/docs/Modules/Misc/PacketLogger) — Prints all packets and their fields.
-- [Spammer](/docs/Modules/Misc/Spammer) — Spams the chat with specified messages.
-- [TargetLock](/docs/Modules/Misc/TargetLock) — Makes you attack only one specific enemy.
-- [Teams](/docs/Modules/Misc/Teams) — Prevents KillAura from attacking team mates.
-- [TextFieldProtect](/docs/Modules/Misc/TextFieldProtect) — Hides rendered text of text field widget when it matches certain patterns.
+- [AntiBot](/docs/modules/misc/antibot): Finds fake players made by anti-cheats so you don't attack them.
+- [AntiCheatDetect](/docs/modules/misc/anticheatdetect): Guesses which anti-cheat the server uses.
+- [AntiStaff](/docs/modules/misc/antistaff): Warns you when a staff member joins.
+- [AutoAccount](/docs/modules/misc/autoaccount): Logs you in on cracked servers.
+- [AutoChatGame](/docs/modules/misc/autochatgame): Uses AI to answer chat games.
+- [AutoConfig](/docs/modules/misc/autoconfig): Loads the right config for the server you join.
+- [DebugRecorder](/docs/modules/misc/debugrecorder): Records data for the developers.
+- [EasyPearl](/docs/modules/misc/easypearl): Throws ender pearls where you look.
+- [FlagCheck](/docs/modules/misc/flagcheck): Tells you when the anti-cheat pulls you back.
+- [GUICloser](/docs/modules/misc/guicloser): Closes menus whose title matches your filters.
+- [ItemScroller](/docs/modules/misc/itemscroller): Moves many items at once with Shift and left click.
+- [Macros](/docs/modules/misc/macros): Sends messages or uses items with one key.
+- [MiddleClickAction](/docs/modules/misc/middleclickaction): Adds friends or throws pearls with middle click.
+- [NameProtect](/docs/modules/misc/nameprotect): Hides your name on your screen, for videos.
+- [Notifier](/docs/modules/misc/notifier): Tells you about joins, totem pops and more.
+- [PacketLogger](/docs/modules/misc/packetlogger): Shows the packets your game sends and gets.
+- [Spammer](/docs/modules/misc/spammer): Sends chat messages again and again.
+- [TargetLock](/docs/modules/misc/targetlock): Makes you attack one player at a time.
+- [Teams](/docs/modules/misc/teams): Stops combat modules from hitting your teammates.
+- [TextFieldProtect](/docs/modules/misc/textfieldprotect): Hides passwords you type in chat.
 
 ---
-*Last updated: 2026-02-13*
+*Last updated: 2026-11-11*

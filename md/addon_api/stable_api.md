@@ -51,4 +51,8 @@ For contributors to LiquidBounce: mark a declaration with `@AddonApi` to make it
 ./gradlew updateKotlinAbi
 ```
 
-Commit the updated `api/LiquidBounce.api` together with the change. `./gradlew checkKotlinAbi` fails while the code and the file disagree, so a change to a marked declaration always shows up in review. Marked declarations look unused from inside the client, remove them only on purpose.
+Commit the updated `api/LiquidBounce.api` together with the change. `./gradlew checkKotlinAbi` fails while the code and the file disagree, so every change to a marked declaration shows up in review. Marked declarations can look unused from inside the client; only remove them on purpose.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/api/LiquidBounce.api)*

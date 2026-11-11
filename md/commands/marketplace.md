@@ -1,106 +1,90 @@
 ## Marketplace Commands
 
-Marketplace commands allow you to browse, search, subscribe to, and manage items from the LiquidBounce marketplace.
+The `.marketplace` command finds themes, add-ons and scripts on the LiquidBounce marketplace and installs them for you. To find configs, use [`.config`](/docs/commands/client) instead.
+
+Items are named as `author/name`. You can also use just the name or the item's ID. Put names with spaces in double quotes, like `"Author/Item Name"`.
 
 ---
 
-### `.marketplace`
+### `.marketplace list`
 
-The main marketplace command with multiple subcommands for interacting with the marketplace.
+Lists the items of one kind.
 
-**Subcommands:**
-
-#### `.marketplace list`
-
-List available marketplace items with pagination.
-
-**Usage:**
 ```
-.marketplace list [page]
+.marketplace list <type> [page]
 ```
 
-**Parameters:**
-- `page` (optional) — The page to show, the first one by default. The arrows at the end of the list move between pages.
+- `type`: `Theme`, `Addon` or `Script`.
+- `page`: which page to show, the first one if you leave it out. Click the arrows under the list to change pages.
 
-Every item is listed by its `author/name`, which you can click to fill in a subscribe or unsubscribe command for it.
+Click an item's name to fill in the command that installs or removes it.
+
+```
+.marketplace list Theme
+.marketplace list Addon 2
+```
 
 ---
 
-#### `.marketplace search`
+### `.marketplace search`
 
-Search for items on the marketplace. The results are listed the same way as `.marketplace list`.
+Searches the whole marketplace. The results look like `.marketplace list` and also show what kind of item each one is.
 
-**Usage:**
 ```
 .marketplace search <query> [page]
 ```
 
-**Parameters:**
-- `query` (required) — The search term.
-- `page` (optional) — The page of results to show, the first one by default.
-
-**Example:**
 ```
-.marketplace search KillAura
-.marketplace search bedwars config
+.marketplace search bedwars
+.marketplace search "dark theme"
 ```
 
 ---
 
-#### `.marketplace subscribe`
+### `.marketplace subscribe`
 
-Subscribe to a marketplace item to receive its content and updates.
+Installs an item and keeps it updated.
 
-**Usage:**
 ```
 .marketplace subscribe <item>
 ```
 
-**Parameters:**
-- `item` (required) — The marketplace item, given as its ID, its name or `author/name`. Names containing spaces have to be quoted, for example `.marketplace subscribe "Author/Item Name"`. Tab completion suggests the items you are not subscribed to yet as `author/name`.
-
-Subscribing also installs the add-ons and scripts the item needs, including whatever those need themselves, and LiquidBounce names the ones it installed alongside it. Restart the game to finish installing add-ons. If something the item needs does not fit the game you are running, the item is left out as well and LiquidBounce names what is missing.
+If the item needs add-ons or scripts, they are installed too, and the chat lists them. Restart the game to finish installing add-ons. If something the item needs does not work with your game version, the item is not installed and the chat tells you what is missing.
 
 ---
 
-#### `.marketplace unsubscribe`
+### `.marketplace unsubscribe`
 
-Unsubscribe from a marketplace item.
+Removes an item you installed.
 
-**Usage:**
 ```
 .marketplace unsubscribe <item>
 ```
 
-**Parameters:**
-- `item` (required) — The subscribed item, given as its ID, its name or `author/name`. Tab completion suggests the items you are subscribed to. If the name you give belongs to several of your subscriptions, nothing is unsubscribed and the client lists their `author/name` for you to pick from.
+If the name fits more than one of your items, nothing is removed and the chat lists them as `author/name`, so you can pick the right one.
 
 ---
 
-#### `.marketplace update`
+### `.marketplace update`
 
-Update all subscribed marketplace items to their latest versions, or only the one you name.
+Updates your installed items to their newest versions.
 
-**Usage:**
 ```
 .marketplace update [item]
 ```
 
-**Parameters:**
-- `item` (optional) — The subscribed item to update, given as its ID, its name or `author/name`, the same way as for `.marketplace unsubscribe`. Without it, every subscription is updated.
+Without an item, everything you installed is updated.
 
 ---
 
-#### `.marketplace revisions`
+### `.marketplace revisions list`
 
-View revisions of a marketplace item.
+Lists the versions of an item and when each one came out.
 
-**Usage:**
 ```
-.marketplace revisions <id>
+.marketplace revisions list <item>
 ```
-
-**Parameters:**
-- `id` (required) — The marketplace item ID.
 
 ---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/command/commands/client/marketplace)*

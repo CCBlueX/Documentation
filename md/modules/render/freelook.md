@@ -1,10 +1,8 @@
 ## FreeLook
 
-FreeLook lets you swing the camera around your character without changing the direction you're actually facing or moving. While the key is held, your view detaches from your aim — so you can glance behind you, check your flanks, or watch your surroundings while your player keeps walking and looking straight ahead. It's bound to a hold action, meaning the free camera is active only as long as you press the key, snapping back to normal the moment you release it.
+FreeLook lets you turn the camera around your player while you keep walking and looking the same way. It only works while you hold its key. Let go and the camera goes back to normal.
 
-This is handy for keeping an eye on chasers, lining up a third-person shot of yourself, or staying aware in PvP without committing your aim to a new direction. Unlike [FreeCam](/docs/modules/render/freecam), your body stays put and under your control — only the camera angle is freed.
-
-Use **Perspective** to choose whether the detached camera sits behind or in front of you, **SenseBoost** to fine-tune how fast the camera turns relative to your normal mouse sensitivity, and **NoPitchLimit** to let the view roll past the usual straight-up/straight-down limits.
+Use it to see who is chasing you or to look around in a fight without turning your aim. Your player stays under your control, unlike with [FreeCam](/docs/modules/render/freecam).
 
 **Category:** Render
 **Enabled by default:** No
@@ -13,9 +11,9 @@ Use **Perspective** to choose whether the detached camera sits behind or in fron
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Perspective | Choice | Back | Front, Back | Whether the free camera looks from behind your character (Back) or faces it from the front (Front). |
-| SenseBoost | Decimal | 1.0 | 0.1..2.0 | Multiplier for how quickly the camera turns as you move the mouse; lower for finer control, higher for faster sweeps. |
-| NoPitchLimit | Toggle | true | — | When on, lets the camera tilt freely beyond the normal up/down limits instead of stopping at straight up or straight down. |
+| Perspective | Choice | Back | Front, Back | Whether the camera looks at you from behind or from the front. |
+| SenseBoost | Decimal | 1.0 | 0.1 to 2.0 | How fast the camera turns when you move the mouse. |
+| NoPitchLimit | Toggle | true | | Lets the camera turn past straight up and straight down. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleFreeLook.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleFreeLook.kt)*

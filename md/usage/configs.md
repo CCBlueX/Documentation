@@ -14,11 +14,11 @@ Everything runs through the `.config` command. Type `.config ` and the chat sugg
 
 Each entry shows:
 
-- **`author/name`**: click it to put `.config load author/name` into the chat
-- **`[✔ 4] [✘ 0]`**: how many players reported in the last 30 days that the config works or is broken. Click either one to add your own report
-- **The servers it was made for**
-- **The Minecraft version it was made on**, green when it matches the version you are playing on and red when it does not
-- **Its tags and when it was last updated**. Hover the date to see the exact day
+- `author/name`: click it to put `.config load author/name` into the chat
+- `[✔ 4] [✘ 0]`: how many players said in the last 30 days that the config works or is broken. Click one to add your own report
+- the servers it was made for
+- the Minecraft version it was made on, green when it matches yours and red when it does not
+- its tags and when it was last updated. Hover the date to see the exact day
 
 `.config search <query> [tag]` searches config names. Add a tag to only search within it; the chat suggests the available tags.
 
@@ -59,7 +59,7 @@ If the config was made for a different Minecraft version, LiquidBounce tells you
 
 #### Dependencies
 
-A config can depend on other configs, add-ons and scripts. Loading it first loads the configs it depends on, in order, and then applies its own settings on top. Add-ons and scripts it needs are installed, including whatever they need themselves. Restart the game to finish installing them. One that does not load with the game you are running is left out instead of stopping the load, together with everything that needs it, and LiquidBounce names what it left out.
+A config can need other configs, add-ons and scripts. Loading it loads the configs it needs first, in order, and then puts its own settings on top. Add-ons and scripts it needs get installed; restart the game to finish that. If one of them does not work with your game, LiquidBounce skips it (and everything that needs it) and tells you what it skipped.
 
 ![Loading a config with dependencies](/images/configs/load-dependencies.png)
 
@@ -79,7 +79,7 @@ LiquidBounce remembers which config you loaded. As soon as you change one of its
 
 ![Detach](/images/configs/detach.png)
 
-`.localconfig load <name>` replaces the settings of the tracked config, so tracking stops and the chat tells you which config was dropped. Two loads keep it tracked and count as your changes to it: a local config you saved while it was tracked, and a load of only some modules of a local config.
+`.localconfig load <name>` replaces the settings of the config you loaded, so LiquidBounce stops tracking it and tells you in chat.
 
 ### Reporting
 

@@ -1,8 +1,8 @@
 ## Offhand
 
-Offhand automates what sits in your off-hand slot so you are never caught without the right survival or combat item. You configure independent sub-systems for totems of undying, end crystals, golden apples, strength potions, and building blocks — the module selects whichever is most relevant at any moment and quietly moves it into your off-hand without interrupting your main-hand actions. Each item group has an optional keybind for manual override, and the **Cycle** key lets you step through available modes on the fly.
+Offhand puts the right item in your offhand for you: a totem of undying, end crystal, golden apple, strength potion or block. It picks whichever one fits the moment. Each item can also have its own key to force it into your offhand, and the Cycle key steps through them.
 
-The Totem sub-system is the most sophisticated: it tracks your current health (including absorption), checks predicted explosion damage from nearby entities (creepers, end crystals), optionally scans for beds and respawn anchors, and simulates incoming fall damage — all before deciding whether a totem is required. When danger passes it can swap back to whatever was in your off-hand before the emergency. The Crystal, Gapple, StrengthPotion, and Block groups add contextual layers on top: for example, you can hold a golden apple only while swinging a sword with [KillAura](/docs/modules/combat/killaura) active, or keep a block ready only while [Scaffold](/docs/modules/world/scaffold) or [Eagle](/docs/modules/player/eagle) is running.
+The totem has the most checks. It goes in when your health (with absorption) gets low, when an explosion or a fall would hurt you a lot, or when a piece of armor is missing. When you are safe again, Offhand can put your old item back.
 
 **Category:** Player
 **Enabled by default:** No
@@ -11,40 +11,40 @@ The Totem sub-system is the most sophisticated: it tracks your current health (i
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
-| SwitchMode | Choice | Automatic | Smart, Switch, PickUp, Automatic | How items are moved into the off-hand. **Smart** swaps hotbar items directly, sending fewer packets (works on all versions but can trigger kicks on some servers). **Switch** performs a single inventory-swap action — the cleanest method on 1.16+ servers. **PickUp** uses click-to-pick-up actions and works on all versions. **Automatic** chooses between Switch and PickUp based on the detected server version (requires ViaFabricPlus for older servers). |
-| SwitchDelay | Integer | 0 | 0..500 ms | Minimum time (ms) to wait between off-hand swaps for all item modes. |
-| Cycle | Key | — | — | Key to cycle through available off-hand modes. |
-| Totem | Toggleable Group | on | — | Automatically equips a totem of undying when you are in danger. |
-| Totem → SwitchDelay | Integer | 0 | 0..500 ms | Delay (ms) specifically before switching to a totem. |
-| Totem → SwitchBackDelay | Integer | 40 | 0..500 ms | Delay (ms) to wait before switching back to the previous item once the totem is no longer needed. |
-| Totem → Health | Toggleable Group | on | — | Triggers a totem switch when your health drops to or below the configured threshold. |
-| Totem → Health → HealthThreshold | Integer | 14 | 0..20 | Health (in half-hearts, counting absorption) at or below which a totem is equipped. |
-| Totem → Health → Safety | Toggleable Group | on | — | Uses a lower, separate health threshold while you are inside a hole or burrowed, letting you keep more useful items in your off-hand when you are already protected from most damage. |
-| Totem → Health → Safety → SafeHealthThreshold | Integer | 10 | 0..20 | The reduced health threshold (half-hearts) applied instead of HealthThreshold when you are in a hole or burrowed. |
-| Totem → Health → SubtractCalculatedDamage | Toggle | false | — | Subtracts predicted incoming damage from your effective health before comparing it to the threshold, making totem switching more proactive. |
-| Totem → Health → PredictExplosionDamageEntities | Toggle | true | — | Factors in predicted explosion damage from nearby entities (e.g. end crystals, creepers) when deciding whether a totem is required. |
-| Totem → Health → PredictExplosionDamageBlocks | Toggle | false | — | Factors in predicted explosion damage from nearby beds and charged respawn anchors when deciding whether a totem is required. |
-| Totem → Health → MissingArmor | Toggle | true | — | Forces a totem into the off-hand whenever any armor slot is empty, regardless of current health. |
-| Totem → Health → PredictFallDamage | Toggleable Group | on | — | Simulates your falling trajectory and equips a totem if the calculated fall damage would bring you to or below the threshold. |
-| Totem → Health → PredictFallDamage → IgnoreElytra | Toggle | false | — | Skips fall-damage prediction while you are gliding with an elytra. |
-| Totem → Health → SwitchBack | Toggle | true | — | After a totem is no longer needed, returns the item that was previously in your off-hand. |
-| Totem → SendDirectly | Toggle | false | — | Bypasses the normal inventory scheduling queue and sends totem-swap packets immediately, ignoring active inventory constraints. Use carefully — it can look suspicious on strict servers. |
-| Crystal | Toggleable Group | on | — | Keeps an end crystal in your off-hand. |
-| Crystal → OnlyWhileCrystalAura | Toggle | false | — | Only equips a crystal while [CrystalAura](/docs/modules/combat/crystalaura) is active. |
-| Crystal → WhenNoTotems | Toggle | true | — | Falls back to an end crystal when Totem mode would normally equip a totem but none are available in your inventory. |
-| Crystal → CrystalBind | Key | — | — | Key to manually force an end crystal into the off-hand. |
-| Gapple | Toggleable Group | on | — | Keeps an enchanted golden apple (or regular golden apple as a fallback) in your off-hand. |
-| Gapple → GappleBind | Key | — | — | Key to manually force a golden apple into the off-hand. |
-| Gapple → WhileHoldingSword | Toggleable Group | on | — | Only equips a golden apple while you are holding a sword in your main hand. |
-| Gapple → WhileHoldingSword → OnlyWhileKillAura | Toggle | true | — | Requires [KillAura](/docs/modules/combat/killaura) to be active before equipping the golden apple. |
-| StrengthPotion | Toggleable Group | off | — | Keeps a strength potion in your off-hand so it is ready to drink before or during a fight. |
-| StrengthPotion → OnlyWhileHoldingSword | Toggle | true | — | Only equips a strength potion while you are holding a sword. |
-| StrengthPotion → OnlyWhileKillAura | Toggle | true | — | Only equips a strength potion while [KillAura](/docs/modules/combat/killaura) is active. |
-| StrengthPotion → StrengthBind | Key | — | — | Key to manually force a strength potion into the off-hand. |
-| Block | Toggleable Group | off | — | Keeps a placeable block in your off-hand for use alongside building modules. |
-| Block → WhileScaffold | Toggle | true | — | Equips a block while [Scaffold](/docs/modules/world/scaffold) is active. |
-| Block → WhileEagle | Toggle | true | — | Equips a block while [Eagle](/docs/modules/player/eagle) is active. |
+| Constraints | Setting Group | | | See [Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| SwitchMode | Choice | Switch | Smart, Switch, PickUp, Automatic | How items are moved into your offhand. Switch works best on 1.16 and newer servers. PickUp works on every version. Smart sends fewer clicks but some servers kick for it. Automatic picks Switch or PickUp from the server version and is the default when ViaFabricPlus is installed. |
+| SwitchDelay | Integer | 0 | 0..500 ms | Time to wait between offhand swaps. |
+| Cycle | Key | H | | Steps through the offhand items. |
+| Totem | Toggleable Group | On | | Puts a totem in your offhand when you are in danger. |
+| Totem → SwitchDelay | Integer | 0 | 0..500 ms | Time to wait before switching to a totem. |
+| Totem → SwitchBackDelay | Integer | 40 | 0..500 ms | Time to wait before putting the old item back. |
+| Totem → Health | Toggleable Group | On | | Uses a totem when your health is low. |
+| Totem → Health → HealthThreshold | Integer | 14 | 0..20 | Health in half hearts, with absorption, at which the totem goes in. |
+| Totem → Health → Safety | Toggleable Group | On | | Uses a lower health limit while you stand in a hole or are burrowed, where explosions hurt less. |
+| Totem → Health → Safety → SafeHealthThreshold | Integer | 10 | 0..20 | Health limit used while you are in a hole or burrowed. |
+| Totem → Health → SubtractCalculatedDamage | Toggle | Off | | Takes expected damage off your health before checking the limit, so the totem goes in earlier. |
+| Totem → Health → PredictExplosionDamageEntities | Toggle | On | | Counts damage from nearby end crystals and creepers that could explode. |
+| Totem → Health → PredictExplosionDamageBlocks | Toggle | Off | | Counts damage from nearby beds and respawn anchors that could explode. |
+| Totem → Health → MissingArmor | Toggle | On | | Always holds a totem while a piece of armor is missing. |
+| Totem → Health → PredictFallDamage | Toggleable Group | On | | Holds a totem if your fall would take you below the health limit. |
+| Totem → Health → PredictFallDamage → IgnoreElytra | Toggle | Off | | Skips the fall check while you fly with an elytra. |
+| Totem → Health → SwitchBack | Toggle | On | | Puts your old item back once you no longer need the totem. |
+| Totem → SendDirectly | Toggle | Off | | Swaps in the totem right away and ignores the inventory constraints. Strict servers may notice this. |
+| Crystal | Toggleable Group | On | | Keeps an end crystal in your offhand. |
+| Crystal → OnlyWhileCrystalAura | Toggle | Off | | Only while [CrystalAura](/docs/modules/combat/crystalaura) is on. |
+| Crystal → WhenNoTotems | Toggle | On | | Uses a crystal when you need a totem but have none. |
+| Crystal → CrystalBind | Key | None | | Key that puts a crystal in your offhand. |
+| Gapple | Toggleable Group | On | | Keeps an enchanted golden apple, or a normal one, in your offhand. |
+| Gapple → GappleBind | Key | None | | Key that puts a golden apple in your offhand. |
+| Gapple → WhileHoldingSword | Toggleable Group | On | | Only while you hold a sword. |
+| Gapple → WhileHoldingSword → OnlyWhileKillAura | Toggle | On | | Only while [KillAura](/docs/modules/combat/killaura) is on. |
+| StrengthPotion | Toggleable Group | Off | | Keeps a strength potion in your offhand. |
+| StrengthPotion → OnlyWhileHoldingSword | Toggle | On | | Only while you hold a sword. |
+| StrengthPotion → OnlyWhileKillAura | Toggle | On | | Only while [KillAura](/docs/modules/combat/killaura) is on. |
+| StrengthPotion → StrengthBind | Key | None | | Key that puts a strength potion in your offhand. |
+| Block | Toggleable Group | Off | | Keeps blocks in your offhand for building. |
+| Block → WhileScaffold | Toggle | On | | While [Scaffold](/docs/modules/world/scaffold) is on. |
+| Block → WhileEagle | Toggle | On | | While [Eagle](/docs/modules/player/eagle) is on. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/offhand/ModuleOffhand.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/offhand/ModuleOffhand.kt)*

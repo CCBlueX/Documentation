@@ -1,43 +1,29 @@
 ## ClientChat
 
-Connects to **LiquidChat**, a built-in IRC-style chat system that allows LiquidBounce users to communicate with each other in real time, regardless of which Minecraft server they are on.
+Connects you to LiquidChat, a chat for LiquidBounce users. You can talk to other users even when you play on different servers. LiquidChat messages show up in your normal chat with the sender's player head in front.
 
 **Aliases:** GlobalChat, IRC  
-**Toggleable:** Yes  
 **Enabled by default:** Yes
 
 ### Settings
 
-```
-├── Enabled (Toggle | default: true)
-├── JwtToken (Text | default: "")
-├── Filter (Toggleable Group | default: false)
-│   ├── Usernames (Text List | default: empty)
-│   └── UsernameFilter (Choice | default: Blacklist | options: Whitelist, Blacklist)
-├── AutoTranslate (Multi-Select | options: PublicChat, PrivateChat)
-└── AllowMessages (Toggle | default: true)
-```
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Enabled | Toggle | On | | Connects to LiquidChat. Turn it off to leave the chat. |
+| Filter | Toggleable Group | Off | | Hides messages from some users. |
+| Filter → Usernames | Text List | (empty) | | The users the filter is about. Upper and lower case do not matter. |
+| Filter → UsernameFilter | Choice | Blacklist | Whitelist, Blacklist | Blacklist hides messages from the users on the list. Whitelist only shows messages from the users on the list. |
+| AutoTranslate | Multi-Select | (none) | PublicChat, PrivateChat | Translates messages from the chosen chats into your language. The [AutoTranslate](/docs/global-settings/auto-translate) settings choose the service, and `.autotranslate language set <code>` chooses the language. |
+| AllowMessages | Toggle | On | | Lets other users send you private messages. Changing it reconnects you to LiquidChat. |
 
-### Settings Details
+### Chatting
 
-- **Enabled** (Toggle) — default: `true` — Enables or disables the LiquidChat connection. When enabled, the client automatically connects to the LiquidChat server.
-- **JwtToken** (Text) — default: `""` — JWT authentication token for LiquidChat. This is automatically populated when you authenticate. You can request a new token using the `.chatjwt` command.
-- **Filter** (Toggleable Group) — default: `false` — When enabled, incoming LiquidChat messages are filtered by their sender's username. Filtered messages are not shown in chat; the first message hidden from a given sender is noted in the client log.
-- **Filter → Usernames** (Text List) — default: empty — The usernames the filter applies to. Matching is case-insensitive.
-- **Filter → UsernameFilter** (Choice) — default: `Blacklist` — How the Usernames list is interpreted. **Blacklist** hides messages from the listed senders; **Whitelist** shows messages only from the listed senders.
-- **AutoTranslate** (Multi-Select) — options: `PublicChat`, `PrivateChat` — When selected, incoming messages from the chosen chat groups are automatically translated using the configured AutoTranslate provider.
-- **AllowMessages** (Toggle) — default: `true` — Allows other users to send you direct messages. The setting is sent to the chat server when logging in, so changing it while connected reconnects LiquidChat.
+- `.chat <message>` writes to everyone in LiquidChat.
+- `.liquidchat msg <user> <message>` (or `.lc msg`) sends a private message.
+- `.liquidchat report <user> <reason>` reports a user who breaks the rules.
 
-### Related Commands
+When you switch Minecraft accounts, or log in or out of your LiquidBounce account, the client reconnects to LiquidChat with the new account. If a message gets deleted from LiquidChat, it also disappears from your chat.
 
-- `.chat <message>` — Send a message to LiquidChat.
-- `.chatjwt` — Request a new JWT authentication token from the LiquidChat server.
+---
 
-### How It Works
-
-1. When enabled, the client connects to the LiquidChat server automatically.
-2. Authentication is handled via Mojang login or JWT token.
-3. Messages appear in-game chat with a **ClientChat** prefix in blue.
-4. If the chat server takes back a public message, the client removes it from the chat together with its translation.
-5. The client automatically reconnects if the connection is lost.
-6. On session change (e.g. switching Minecraft accounts), the client reconnects with the new credentials.
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/global/GlobalSettingsClientChat.kt)*

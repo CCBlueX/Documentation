@@ -1,6 +1,6 @@
 ## BlockUtil
 
-The BlockUtil class provides various methods for working with blocks and block posiotions.
+The BlockUtil class provides various methods for working with blocks and block positions.
 
 ### Method summary
 
@@ -21,6 +21,9 @@ List of parameters:
 <hr>
 
 #### `BlockUtil.getState(blockPos: BlockPos): BlockState`
-Returns the *BlockState* of the block at the given *BlockPos*. <br>
+Returns the *BlockState* of the block at the given *BlockPos*, or `null` if no world is loaded. <br>
 List of parameters:
 - *blockPos*, the position of the block to get the state of.
+
+---
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/api/ScriptBlockUtil.kt)*

@@ -1,36 +1,34 @@
 ## World Modules
 
-World modules interact with the game world. They automate building, farming, block breaking, and other world-manipulation tasks.
+World modules help you build, mine, farm and change the world around you.
 
-There are **27** modules in this category:
-
-- [AirPlace](/docs/Modules/World/AirPlace) — Allows you to place blocks in mid-air.
-- [AutoBuild](/docs/Modules/World/AutoBuild) — Automatically builds certain structures.
-- [AutoDisable](/docs/Modules/World/AutoDisable) — Automatically disables certain modules.
-- [AutoFarm](/docs/Modules/World/AutoFarm) — Automatically farms crops.
-- [AutoMobHeal](/docs/Modules/World/AutoMobHeal) — Automatically heals nearby vanilla-healable mobs.
-- [AutoTool](/docs/Modules/World/AutoTool) — Automatically chooses the best tool in your inventory to mine a block.
-- [AutoTrap](/docs/Modules/World/AutoTrap) — Automatically sets targets on fire or traps them in cobwebs.
-- [BedDefender](/docs/Modules/World/BedDefender) — Automatically places blocks to defend your bed in BedWars.
-- [BlockIn](/docs/Modules/World/BlockIn) — Builds blocks to cover yourself.
-- [BlockTrap](/docs/Modules/World/BlockTrap) — Traps enemies in blocks.
-- [Extinguish](/docs/Modules/World/Extinguish) — Automatically extinguishes yourself when on fire.
-- [FastBreak](/docs/Modules/World/FastBreak) — Allows you to break blocks faster.
-- [FastPlace](/docs/Modules/World/FastPlace) — Allows you to place blocks faster.
-- [Fucker](/docs/Modules/World/Fucker) — Destroys or interacts with selected blocks around you.
-- [HoleFiller](/docs/Modules/World/HoleFiller) — Automatically fills safe spots for crystal PvP.
-- [InventoryTracker](/docs/Modules/World/InventoryTracker) — Tracks the inventories of other players.
-- [LiquidFiller](/docs/Modules/World/LiquidFiller) — Places blocks inside liquid source blocks near you.
-- [LiquidPlace](/docs/Modules/World/LiquidPlace) — Allows you to place blocks on liquids.
-- [NoInterpolation](/docs/Modules/World/NoInterpolation) — Reduces entity interpolation for more immediate position updates.
-- [NoSlowBreak](/docs/Modules/World/NoSlowBreak) — Automatically adjusts breaking speed when in negatively affecting situations.
-- [Nuker](/docs/Modules/World/Nuker) — Automatically destroys all blocks in your area. Be careful!
-- [PacketMine](/docs/Modules/World/PacketMine) — Allows you to mine blocks by clicking them once.
-- [ProjectilePuncher](/docs/Modules/World/ProjectilePuncher) — Shoots back incoming projectiles around you.
-- [Scaffold](/docs/Modules/World/Scaffold) — Automatically places blocks beneath your feet allowing you to walk across gaps.
-- [StrongholdFinder](/docs/Modules/World/StrongholdFinder) — Predicts the stronghold location from your Eye of Ender throws.
-- [Surround](/docs/Modules/World/Surround) — Builds holes that protect you from explosion damage.
-- [Timer](/docs/Modules/World/Timer) — Changes the speed the game is running at.
+- [AirPlace](/docs/modules/world/airplace): place blocks in the air.
+- [AutoBuild](/docs/modules/world/autobuild): builds a Nether portal or a platform for you.
+- [AutoDisable](/docs/modules/world/autodisable): turns off modules you pick when something happens, like dying.
+- [AutoFarm](/docs/modules/world/autofarm): harvests and replants crops.
+- [AutoMobHeal](/docs/modules/world/automobheal): feeds and repairs your pets and other mobs.
+- [AutoTool](/docs/modules/world/autotool): switches to the best tool for the block you mine.
+- [AutoTrap](/docs/modules/world/autotrap): sets enemies on fire or traps them in cobwebs.
+- [BedDefender](/docs/modules/world/beddefender): covers your bed with blocks in BedWars.
+- [BlockIn](/docs/modules/world/blockin): builds blocks all around you.
+- [BlockTrap](/docs/modules/world/blocktrap): traps enemies in blocks.
+- [Extinguish](/docs/modules/world/extinguish): puts out fire on you with water.
+- [FastBreak](/docs/modules/world/fastbreak): break blocks faster.
+- [FastPlace](/docs/modules/world/fastplace): place blocks faster.
+- [Fucker](/docs/modules/world/fucker): breaks or uses chosen blocks around you, like beds.
+- [HoleFiller](/docs/modules/world/holefiller): fills safe holes near enemies in crystal fights.
+- [InventoryTracker](/docs/modules/world/inventorytracker): remembers the items other players hold and wear.
+- [LiquidFiller](/docs/modules/world/liquidfiller): fills water and lava near you with blocks.
+- [LiquidPlace](/docs/modules/world/liquidplace): place blocks against water and lava.
+- [NoInterpolation](/docs/modules/world/nointerpolation): shows other players closer to where they really are.
+- [NoSlowBreak](/docs/modules/world/noslowbreak): stops things from slowing down your mining.
+- [Nuker](/docs/modules/world/nuker): breaks all blocks around you. Be careful!
+- [PacketMine](/docs/modules/world/packetmine): mine a block by clicking it once.
+- [ProjectilePuncher](/docs/modules/world/projectilepuncher): hits away fireballs and shulker bullets.
+- [Scaffold](/docs/modules/world/scaffold): places blocks under your feet so you can walk over gaps.
+- [StrongholdFinder](/docs/modules/world/strongholdfinder): finds the stronghold from your Eye of Ender throws.
+- [Surround](/docs/modules/world/surround): puts blocks around your feet to protect you from explosions.
+- [Timer](/docs/modules/world/timer): makes the game run faster or slower.
 
 ---
-*Last updated: 2026-06-08*
+*Last updated: 2026-11-11*

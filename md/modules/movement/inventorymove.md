@@ -1,12 +1,10 @@
 ## InventoryMove
 
-InventoryMove lets you walk, jump, and sneak while any inventory or container screen is open. Normally, Minecraft blocks all movement input when a GUI is active; this module forwards your keypresses through to the movement system so you can reposition, dodge threats, or keep strafing without closing the screen first.
+InventoryMove lets you walk, jump and sneak while your inventory or a chest is open. Normally you stand still as soon as a menu opens.
 
-The **Behavior** setting controls how cautiously the module operates. **Normal** passes all movement through regardless of what screen is open. **Safe** closes the inventory server-side the moment you start moving, so the server never sees you moving inside a handled screen — clicks are also blocked while you are in motion. **Undetectable** stops your movement input entirely when a container screen (chests, crafting tables, etc.) is open, effectively disabling the module for those screens while still working in your personal inventory. **StopOnAction** takes a different approach: it queues any inventory interaction packets and only sends them once you have stopped moving, keeping your movement and inventory actions mutually exclusive.
+Behavior sets how careful it is. Normal lets you move in every menu. Safe lets you move in your own inventory but not in chests or other containers. When you start walking it tells the server your inventory is closed, and it blocks inventory clicks while you move. Undetectable only lets you move in menus that are not containers, so not in your inventory or chests. StopOnAction lets you move everywhere but stops you for a moment each time you click in a menu, so you never click and move at the same time.
 
-Whichever behaviour you pick, movement input is never forwarded while a text field is focused — the chat box, a sign or rename field, or the ClickGui search bar — so you can still type normally. Only the movement, jump, sprint, and sneak keys are passed through; every other keybind keeps working as the open screen expects.
-
-By default, the Sneak key is not forwarded through open screens (it tends to conflict with GUI behaviour); enable **PassthroughSneak** if you want sneak input to also be passed while an inventory is open. The optional **SprintControl**, **SneakControl**, **Timer**, and **Blink** sub-groups give you fine-grained control over sprint/sneak state and can add a tick-speed boost or a [Blink](/docs/modules/player/blink)-style packet delay while you navigate screens.
+You never move while typing in a text box, such as chat, a sign or the ClickGUI search bar. Only the walk, jump, sprint and sneak keys work through menus. Sneak is off unless you turn on PassthroughSneak.
 
 **Category:** Movement
 **Enabled by default:** No
@@ -15,17 +13,17 @@ By default, the Sneak key is not forwarded through open screens (it tends to con
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Behavior | Choice | Normal | Normal, Safe, Undetectable, StopOnAction | Controls how movement input is handled while a screen is open. Normal passes all input through. Safe closes the inventory server-side when movement begins and blocks clicks during motion. Undetectable suppresses movement inside container screens. StopOnAction queues inventory interaction packets until you stop moving. |
-| PassthroughSneak | Toggle | false | — | When enabled, the Sneak key is also forwarded as movement input while a screen is open. |
-| SprintControl | Toggleable Group | off | — | When enabled, overrides the sprint state on the client and/or server side while a screen is open. |
-| SprintControl → Client | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint | Controls the client-side sprint state while an inventory screen is open. |
-| SprintControl → Server | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint | Controls the server-side sprint state reported while an inventory screen is open. |
-| SneakControl | Toggleable Group | off | — | When enabled, overrides the sneak state on the client side while a screen is open. |
-| SneakControl → Client | Choice | DoNotChange | DoNotChange, ForceSneak, ForceNoSneak | Forces or suppresses the sneak state on the client while an inventory screen is open. |
-| Timer | Toggleable Group | off | — | When enabled, adjusts the game timer speed while an inventory screen is open. |
-| Timer → Speed | Decimal | 1.0 | 0.1 – 2.0 | Multiplier applied to the game timer while a screen is open. Values above 1.0 speed up the tick rate; values below 1.0 slow it down. |
-| Blink | Toggleable Group | off | — | When enabled, holds outgoing movement packets while a screen is open and flushes them when the screen closes, similar to [Blink](/docs/modules/player/blink). |
-| Blink → MaximumTime | Integer | 10000 | 0 – 30000 ms | Maximum time in milliseconds to hold packets before automatically closing the screen and flushing the queued movement. |
+| Behavior | Choice | Normal | Normal, Safe, Undetectable, StopOnAction | Which menus you can move in and how careful it is. |
+| PassthroughSneak | Toggle | false | | Lets the sneak key work while a menu is open. |
+| SprintControl | Toggleable Group | off | | Changes sprinting while a menu is open. |
+| SprintControl → Client | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint | Sprinting on your side. |
+| SprintControl → Server | Choice | DoNotChange | DoNotChange, ForceSprint, ForceNoSprint | Sprinting as the server sees it. |
+| SneakControl | Toggleable Group | off | | Changes sneaking while a menu is open. |
+| SneakControl → Client | Choice | DoNotChange | DoNotChange, ForceSneak, ForceNoSneak | Forces sneaking on or off. |
+| Timer | Toggleable Group | off | | Changes game speed while a menu is open. |
+| Timer → Speed | Decimal | 1.0 | 0.1..2.0 | Game speed. Above 1.0 is faster, below 1.0 is slower. |
+| Blink | Toggleable Group | off | | Holds back your movement while a menu is open and sends it when you close the menu, like [Blink](/docs/modules/player/blink). |
+| Blink → MaximumTime | Integer | 10000 | 0..30000 ms | After this many milliseconds the menu closes and the held movement is sent. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/inventorymove/ModuleInventoryMove.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/inventorymove/ModuleInventoryMove.kt)*

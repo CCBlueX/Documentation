@@ -1,10 +1,8 @@
 ## AutoBuild
 
-AutoBuild constructs structures for you automatically, placing blocks from your hotbar (or offhand) so you don't have to aim and click each one yourself. Pick a structure with the **Mode** setting and toggle the module on — it does the rest, then turns itself off once the build is finished.
+AutoBuild builds things for you with blocks from your hotbar. Pick what to build with Mode and turn it on. It turns itself off when it is done.
 
-In **Portal** mode it scans around you for the best spot to raise a nether portal, fills in the obsidian frame, and lights it with flint and steel. You'll need obsidian (and flint and steel) in your inventory; if either is missing, or there's no valid spot nearby, AutoBuild stops and tells you in chat. It does the same if it can't light the portal within the **IgniteTimeout**. **Platform** mode instead lays a flat square of blocks beneath your feet — handy for bridging across gaps or covering a hole — using whichever block you allow through its filter. With **DisableOnYChange** on, it shuts off the moment your height changes so it won't keep placing once you've moved.
-
-All the actual block placing — timing, rotations, reach, swing and how it interacts with your inventory — is handled by the shared [Block Placer](/docs/modules/shared-settings/block-placer) settings. If you want continuous bridging while you walk rather than fixed structures, see [Scaffold](/docs/modules/world/scaffold).
+Portal builds and lights a Nether portal near you. You need obsidian and flint and steel. Platform places a flat square of blocks under your feet, for example to cover a hole.
 
 **Category:** World
 **Enabled by default:** No
@@ -13,13 +11,13 @@ All the actual block placing — timing, rotations, reach, swing and how it inte
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Portal | Portal, Platform | Which structure to build: a nether portal frame, or a flat platform beneath you. |
-| Mode → [Portal] → IgniteTimeout | Integer | 2000 | 200..10000 ms | How long AutoBuild keeps trying to light the finished portal. If the ignition spot stays unreachable for this long, it stops and tells you in chat. |
-| Mode → [Platform] → DisableOnYChange | Toggle | true | — | Automatically turns the module off if your vertical position changes, so it stops once you've moved off the platform. |
-| Mode → [Platform] → Filter | Choice | Whitelist | Whitelist, Blacklist | Whether the block list below is treated as the only blocks allowed (Whitelist) or the only blocks forbidden (Blacklist). |
-| Mode → [Platform] → Blocks | Registry List | — | — | The blocks the filter applies to when choosing what to place for the platform. |
-| Mode → [Platform] → Size | Integer | 3 | 1..6 | How far the platform extends out from your position, making it larger or smaller. |
-| Placing | Setting Group | — | — | See [Shared: Block Placer](/docs/modules/shared-settings/block-placer). |
+| Mode | Choice | Portal | Portal, Platform | What to build. |
+| Mode → [Portal] → IgniteTimeout | Integer | 2000 | 200..10000 ms | How long it tries to light the portal before it gives up. |
+| Mode → [Platform] → DisableOnYChange | Toggle | true | | Turns off when you move up or down. |
+| Mode → [Platform] → Filter | Choice | Whitelist | Whitelist, Blacklist | Whitelist uses only the listed blocks. Blacklist uses every block except them. |
+| Mode → [Platform] → Blocks | Registry List | Obsidian | | The blocks the filter uses. |
+| Mode → [Platform] → Size | Integer | 3 | 1..6 | How big the platform is. |
+| Placing | Setting Group | | | See [Block Placer](/docs/modules/shared-settings/block-placer). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/autobuild/ModuleAutoBuild.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/autobuild/ModuleAutoBuild.kt)*

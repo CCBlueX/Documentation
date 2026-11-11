@@ -103,3 +103,7 @@ A splash screen that cannot be read, fails to draw, or takes longer than 20 ms p
 
 1. Apply your theme with `.client theme set <id>`, or your development server with `.client theme set http://localhost:5173/`.
 2. LiquidBounce uses the splash screen of the active theme from the next loading screen on. An installed theme also shows it right at the next start; a development server only while it is applied. Press **F3 + T** to reload resources and watch it, or restart the game.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/render/splash/Splash.kt)*

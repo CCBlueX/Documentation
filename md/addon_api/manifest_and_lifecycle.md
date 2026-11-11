@@ -26,7 +26,7 @@ An add-on is described by its `fabric.mod.json`, like any Fabric mod. What Liqui
   "mixins": ["example-addon.mixins.json"],
   "accessWidener": "example-addon.accesswidener",
   "depends": {
-    "minecraft": ">=${minecraft_version}",
+    "minecraft": "~${minecraft_version}",
     "fabricloader": ">=${loader_version}",
     "fabric-language-kotlin": ">=${fabric_kotlin_version}",
     "liquidbounce": "*"
@@ -133,6 +133,7 @@ Register through the add-on, not through `ModuleManager` or `CommandManager` dir
 | `registerCommandNodes(nodes)`                | Prebuilt Brigadier `LiteralCommandNode`s.                                                     |
 | `registerCategory(category)`                 | A [category](/docs/add-on-api/developers/categories) that is only known at runtime.                      |
 | `registerMode(parent, mode)`                 | A mode in an existing `ModeValueGroup`, for example the modes of a built-in module.           |
+| `registerValueGroup(parent, group)`          | A value group attached to an existing one, for example extra settings on a built-in module. Call it in `onInitialize()` so its settings are restored. |
 | `registerListeners(vararg listeners)`        | Nothing new; tracks [event listeners](/docs/add-on-api/developers/events) so they are unregistered on failure. |
 | `registerBrowserBackend(provider)`           | A [browser backend](/docs/add-on-api/developers/browser-backends).                                       |
 | `registerMarketplaceHandler(type, handler)`  | Takes over subscribed Marketplace items of one type. Runs once the subscriptions are loaded, and after every install, update or removal. |
@@ -178,7 +179,7 @@ class ExampleAddon : LiquidBounceAddon() {
 | `state`       | `AddonState`     | `DISCOVERED`, `LOADED`, `ERRORED` or `DISABLED`.                            |
 | `logger`      | `Logger`         | A Log4j logger named `LiquidBounce/Addon/<id>`.                             |
 
-The add-on is an [event listener](/docs/add-on-api/developers/events) itself. Its handlers run while its state is `LOADED`. It also has the Minecraft shortcuts every module has: `mc`, `player`, `world`, `network`, `interaction` and `inGame`.
+The add-on is an [event listener](/docs/add-on-api/developers/events) itself. Its handlers run while its state is `LOADED`. It also has the Minecraft shortcuts every module has: `mc`, `player`, `world`, `network`, `interaction`, `gpuDevice` and `inGame`.
 
 ```kotlin
 object ChatLogger : EventListener {
@@ -202,3 +203,7 @@ class ListenerAddon : LiquidBounceAddon() {
 ### Disabling add-ons
 
 The JVM argument `-Dliquidbounce.disableAddons=<id>,<id>` skips the listed add-ons, `-Dliquidbounce.disableAddons=all` skips every add-on except the ones LiquidBounce comes with, which only a listed id skips. A skipped add-on is constructed but none of its hooks run, and its translations are not loaded. `.addon info` shows it as `DISABLED`.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/addon/LiquidBounceAddon.kt)*

@@ -1,6 +1,13 @@
 ## DroneControl
 
-A bow aimbot you operate from a free-camera "drone" control panel. Enabling the module opens the Bow Aimbot control panel: move the camera around the world, click an entity to lock onto it, and press **Space** to fire. While a target is locked, DroneControl automatically aims your fully-drawn bow at it and releases the shot.
+DroneControl lets you shoot your bow from a camera flying above you, like steering a drone. Turning it on opens a control panel. The camera starts 10 blocks above your head.
+
+How to use it:
+
+1. Hold a bow and start pulling it.
+2. Drag with the left mouse button to look around. Scroll to zoom.
+3. Right click an enemy to pick it as your target. Hold Shift to point the camera at it.
+4. Press Space to shoot. Your bow aims at the target by itself.
 
 **Category:** Combat
 **Enabled by default:** No
@@ -8,17 +15,8 @@ A bow aimbot you operate from a free-camera "drone" control panel. Enabling the 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-|---------|------|---------|-------|-------------|
-| Rotations | Setting Group | — | — | Rotations settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
-
-### Frequently Asked Questions
-
-**Q: Nothing happens when I enable it.**
-A: DroneControl opens a control panel screen. Move the camera, click an entity to focus it, then hold/press **Space** to fire the bow. You also need a bow in hand.
-
-### Screenshots
-
-*Screenshots for DroneControl will be added in a future update.*
+|---|---|---|---|---|
+| Rotations | Setting Group | | | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2Faimbot%2FModuleDroneControl.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/aimbot/ModuleDroneControl.kt)*

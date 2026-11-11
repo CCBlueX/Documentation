@@ -97,7 +97,7 @@ Everything else the module does happens in [event handlers](/docs/add-on-api/dev
 
 The module list only reads `tag` again after a `RefreshArrayListEvent`, so call `EventManager.callEvent(RefreshArrayListEvent)` when an overridden `tag` changes. `tagBy(value)` does that by itself.
 
-Modules have the usual Minecraft shortcuts: `mc`, `player`, `world`, `network`, `interaction` and `inGame`. `player` and `world` are only safe to use while the player is in a world, which is always the case inside handlers.
+Modules have the usual Minecraft shortcuts: `mc`, `player`, `world`, `network`, `interaction`, `gpuDevice` and `inGame`. Only use `player` and `world` while the player is in a world. Inside handlers that is always the case.
 
 ### Output
 
@@ -158,3 +158,7 @@ object ModuleJumpBoost : ClientModule("JumpBoost", ModuleCategories.MOVEMENT) {
 ### Descriptions
 
 The ClickGUI shows a description for the module and each setting. They come from the add-on's [translations](/docs/add-on-api/developers/translations) under `liquidbounce.module.<module>.description`. `literalDescription { "..." }` sets a fixed text instead. A module with neither logs a warning when it is registered.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ClientModule.kt)*

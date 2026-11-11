@@ -1,8 +1,8 @@
 ## Replenish
 
-Replenish automatically tops up your hotbar slots from your main inventory whenever a stack runs low. Once a slot drops to or below the **ItemThreshold**, the module finds matching items in your inventory and moves them over — no manual restocking needed. This is particularly useful when consuming large quantities of a single item type, such as building blocks with [Scaffold](/docs/modules/world/scaffold), food, arrows, or potions.
+Replenish refills your hotbar from your inventory. When a stack in your hotbar gets down to ItemThreshold items or fewer, it moves more of the same item over. This helps when you use up a lot of one thing, like blocks with [Scaffold](/docs/modules/world/scaffold), food or potions.
 
-By default, Replenish only activates while you are playing in the world normally. You can optionally allow it to run while your inventory screen is open, or even while you have a chest (or other container) open, using the **InsideOf** setting. The **Features** multi-select lets you fine-tune how refills are performed: **CleanUp** merges smaller partial stacks first to tidy your inventory, **UsePickupAll** picks up all matching stacks directly onto the hotbar slot, and **UseSwap** does a direct slot swap when a bigger inventory stack is available — choose the combination that best fits your play style and the anti-cheat environment you are on.
+It also remembers what was in each slot, so a slot you used up completely gets filled again. By default it only works while no inventory or chest is open. Use InsideOf to let it run there too.
 
 **Category:** Player
 **Enabled by default:** No
@@ -11,12 +11,12 @@ By default, Replenish only activates while you are playing in the world normally
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Constraints | Setting Group | — | — | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
-| ItemThreshold | Integer | 5 | 0 – 63 | When a hotbar stack's count falls to this value or below, the module will attempt to refill it from your inventory. |
-| Delay | Integer | 40 | 0 – 1000 ms | Minimum time in milliseconds between consecutive refill actions. |
-| ReplenishEmpty | Toggle | true | — | When enabled, also refills hotbar slots that are completely empty (using the last known item for that slot). |
-| Features | Multi-Select | CleanUp | CleanUp, UsePickupAll, UseSwap | Controls how refills are performed. **CleanUp** consolidates smaller partial stacks first; **UsePickupAll** merges all matching stacks onto the hotbar slot; **UseSwap** swaps a larger inventory stack directly into the hotbar slot. |
-| InsideOf | Multi-Select | *(none)* | Chests, Inventories | Allows Replenish to operate while specific screens are open. Add **Chests** to run inside container screens, or **Inventories** to run while your own inventory screen is open. |
+| Constraints | Setting Group | | | See [Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
+| ItemThreshold | Integer | 5 | 0..63 | Refills a hotbar stack once it has this many items or fewer. |
+| Delay | Integer | 40 | 0..1000 ms | Time to wait between refills. |
+| ReplenishEmpty | Toggle | On | | Also refills slots that ran out completely, using the item that was there last. |
+| Features | Multi-Select | CleanUp | CleanUp, UsePickupAll, UseSwap | CleanUp uses up small stacks first. UsePickupAll collects matching items onto the slot in one click. UseSwap swaps a bigger stack straight into the slot. |
+| InsideOf | Multi-Select | None | Chests, Inventories | Lets Replenish run while a chest or your own inventory is open. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleReplenish.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleReplenish.kt)*

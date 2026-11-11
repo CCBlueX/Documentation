@@ -1,8 +1,8 @@
 ## TridentBoost
 
-TridentBoost strengthens the riptide dash of a trident and lets you use it on dry land. Normally a trident enchanted with Riptide only launches you while you are standing in water or in the rain, and the distance you travel is fixed by the enchantment level. With this module the launch is scaled by your own multipliers, and the water requirement can be lifted entirely.
+TridentBoost makes a Riptide trident throw you farther, and lets you use it on dry land. Normally Riptide only works in water or rain.
 
-This turns a Riptide trident into a general movement tool: you can dash across open terrain, gain height without a block to jump off, or cover far more ground than the enchantment would normally allow. The horizontal and vertical parts of the dash are scaled separately, so you can pick between a flat, fast dash and a steep launch into the air.
+You can set the forward and upward push on their own, for a long flat dash or a high jump into the air.
 
 **Category:** Movement
 **Enabled by default:** No
@@ -11,9 +11,9 @@ This turns a Riptide trident into a general movement tool: you can dash across o
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| HorizontalMultiplier | Decimal | 2.0 | 0.1 – 5.0 | Scales how far the riptide dash carries you horizontally. |
-| VerticalMultiplier | Decimal | 2.0 | 0.1 – 5.0 | Scales how far the riptide dash carries you upward. |
-| OnLand | Toggle | Yes | — | Allows the riptide dash to be used when you are neither in water nor in the rain. |
+| HorizontalMultiplier | Decimal | 2.0 | 0.1..5.0 | How much farther the dash takes you forward. |
+| VerticalMultiplier | Decimal | 2.0 | 0.1..5.0 | How much higher the dash takes you. |
+| OnLand | Toggle | true | | Lets you use Riptide outside of water and rain. |
 
 ---
-*Last updated: 2026-08-24*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleTridentBoost.kt)*

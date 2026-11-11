@@ -1,25 +1,20 @@
 ## Creative Commands
 
-Creative commands provide item manipulation features that work in Creative mode. These commands modify the item you are currently holding or give you new items.
-
-> **Note:** Creative commands require you to be in Creative mode to function.
+These commands give you items or change the item in your hand. They only work in Creative mode.
 
 ---
 
 ### `.give`
 
-Give yourself an item in Creative mode.
+Gives you an item.
 
-**Usage:**
 ```
 .give <item> [amount]
 ```
 
-**Parameters:**
-- `item` (required) — The item identifier (e.g. `diamond_sword`, `golden_apple`).
-- `amount` (optional) — The stack size, from 1 to 64.
+- `item`: the item name, like `diamond_sword` or `golden_apple`.
+- `amount`: how many you get, 1 if you leave it out. Bigger amounts fill more than one slot.
 
-**Example:**
 ```
 .give diamond_sword
 .give golden_apple 64
@@ -29,19 +24,16 @@ Give yourself an item in Creative mode.
 
 ### `.rename`
 
-Rename the item you are currently holding.
+Renames the item in your hand. You can use color codes with `&`, like `&c` for red.
 
-**Usage:**
 ```
 .rename [name]
 ```
 
-**Parameters:**
-- `name` (optional, vararg) — The new name for the item. Supports formatting codes. If no name is given, the item name is cleared.
+Without a name, the item gets its normal name back.
 
-**Example:**
 ```
-.rename Super Sword
+.rename &6Super Sword
 .rename
 ```
 
@@ -49,26 +41,20 @@ Rename the item you are currently holding.
 
 ### `.enchant`
 
-Add, remove, or manage enchantments on the item you are holding.
+Adds or removes enchantments on the item in your hand.
 
-**Subcommands:**
-- `.enchant add <enchantment> [level]` — Add an enchantment.
-- `.enchant remove <enchantment>` — Remove a specific enchantment.
-- `.enchant clear` — Remove all enchantments.
-- `.enchant all [level]` — Add all enchantments.
-- `.enchant all_possible [level]` — Add all compatible enchantments.
+- `.enchant add <enchantment> [level]`: adds one enchantment.
+- `.enchant remove <enchantment>`: removes one enchantment.
+- `.enchant clear`: removes all enchantments.
+- `.enchant all [level]`: adds every enchantment in the game, even ones that don't fit the item.
+- `.enchant all_possible [level]`: adds every enchantment that fits the item.
 
-**Parameters:**
-- `enchantment` — The enchantment name (e.g. `sharpness`, `protection`).
-- `level` (optional) — The enchantment level as a number, or `max`. Both `max` and an omitted level apply each enchantment's own maximum level. Levels above 255 are capped at 255.
+The level is a number, or `max` for the highest normal level of each enchantment. If you leave it out, you get `max`. A number can go above the normal highest level.
 
-**Example:**
 ```
-.enchant add sharpness max
+.enchant add sharpness
 .enchant add protection 4
 .enchant remove sharpness
-.enchant clear
-.enchant all max
 .enchant all_possible max
 ```
 
@@ -76,17 +62,14 @@ Add, remove, or manage enchantments on the item you are holding.
 
 ### `.skull`
 
-Give yourself a player head (skull) with a specific player's skin.
+Gives you the head of a player, with their skin.
 
-**Usage:**
 ```
 .skull <player>
 ```
 
-**Parameters:**
-- `player` (required) — The username or UUID of the player whose head you want. Anything that is neither a UUID nor a valid player name is rejected with an error.
+- `player`: the player's name or UUID.
 
-**Example:**
 ```
 .skull Notch
 ```
@@ -95,17 +78,18 @@ Give yourself a player head (skull) with a specific player's skin.
 
 ### `.stack`
 
-Set the stack size of the item you are currently holding.
+Changes how many items are in the stack in your hand.
 
-**Usage:**
 ```
 .stack [amount]
 ```
 
-**Parameters:**
-- `amount` (optional) — The new stack size, from 1 to 64.
+- `amount`: from 1 to 64. If you leave it out, you get 64.
 
-**Example:**
 ```
-.stack 64
+.stack 16
 ```
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/command/commands/ingame/creative)*

@@ -119,7 +119,7 @@ Draws a line between two points relative to the current origin, through blocks. 
 | `alpha(a)`                               | The same color with another alpha.                                   |
 | `fade(f)`                                | The alpha multiplied by `f`.                                         |
 | `darker()`                               | Each channel at 70 %.                                                |
-| `interpolateTo(other, t)`                | Between this color (`t = 0`) and `other` (`t = 1`), `t` is a `Float`. The `Double` overload is deprecated and does not compile. |
+| `interpolateTo(other, t)`                | Between this color (`t = 0f`) and `other` (`t = 1f`). `t` is a `Float`.  |
 | `Color4b.ofHSB(h, s, b)`                 | From hue, saturation and brightness.                                 |
 
 ### From Java
@@ -133,3 +133,7 @@ RenderShortcutsKt.withPositionRelativeToCamera(event.getEnvironment(), found, en
 Render2DKt.drawQuad(event.getContext(), 4f, 4f, 8f + width, 16f, new Color4b(0, 0, 0, 120));
 FontManager.getFONT_RENDERER().draw(event.getContext(), text, 6f, 6f);
 ```
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/render/RenderShortcuts.kt)*

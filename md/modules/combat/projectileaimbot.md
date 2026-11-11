@@ -1,6 +1,6 @@
 ## ProjectileAimbot
 
-Automatically aims your held projectile weapon at the best nearby target. It calculates the correct launch angle for whatever projectile you are holding (bow, crossbow, trident, snowball, egg, etc.) and rotates toward the target so your shot connects.
+ProjectileAimbot aims whatever you can throw or shoot at the best enemy nearby. It works with bows, crossbows, tridents, snowballs, eggs and other items. It aims higher for far enemies, because the item falls as it flies. It does not shoot for you.
 
 **Category:** Combat
 **Enabled by default:** No
@@ -8,13 +8,9 @@ Automatically aims your held projectile weapon at the best nearby target. It cal
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-|---------|------|---------|-------|-------------|
-| Target | Setting Group | — | — | Target settings. See [Shared: Target](/docs/modules/shared-settings/target). |
-| Rotations | Setting Group | — | — | Rotations settings. See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
-
-### Screenshots
-
-*Screenshots for ProjectileAimbot will be added in a future update.*
+|---|---|---|---|---|
+| Target | Setting Group |  | | See [Shared: Target](/docs/modules/shared-settings/target). |
+| Rotations | Setting Group |  | | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfc/src%2Fmain%2Fkotlin%2Fnet%2Fccbluex%2Fliquidbounce%2Ffeatures%2Fmodule%2Fmodules%2Fcombat%2Faimbot%2FModuleProjectileAimbot.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/aimbot/ModuleProjectileAimbot.kt)*

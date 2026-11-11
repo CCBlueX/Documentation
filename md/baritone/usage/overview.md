@@ -1,8 +1,8 @@
 # How to use Baritone
 
-Baritone uses a command prefix system to distinguish its commands from regular chat. The default prefix is `#`, so all Baritone commands will start with this symbol (e.g., `#goal`, `#mine`, etc.).
+All Baritone commands start with `#`, like `#goal` or `#mine`. That's how Baritone knows a chat message is meant for it.
 
-> **Note:** You can use commands directly in chat. Be careful with typos, as they will be sent to public chat if you make mistakes.
+> **Note:** You type the commands in the normal chat. Watch out for typos: a mistyped command is sent to public chat.
 
 ## Basic Command Usage
 
@@ -11,7 +11,7 @@ Baritone uses a command prefix system to distinguish its commands from regular c
 To use Baritone commands:
 1. Open the Minecraft chat (default: press 'T' key)
 2. Type a command starting with `#` 
-3. Press Enter to execute
+3. Press Enter
 
 ## Essential Commands
 
@@ -23,35 +23,35 @@ To use Baritone commands:
 #help
 ```
 
-This command shows all available Baritone commands. It's interactive - you can click on commands to get more information.
+Shows every Baritone command. Click a command to learn more about it.
 
 ### Basic Navigation
 
 ```
 #stop
 ```
-Immediately stops all Baritone actions.
+Stops whatever Baritone is doing right away.
 
 ```
 #click
 ```
-Click destination on screen - right click to path on top of the block, left click to path into it.
+Lets you click where you want to go. Right click to walk on top of a block, left click to walk into it.
 
 ## Troubleshooting
 
 ### Baritone Isn't Responding to Commands
-- Make sure Baritone is properly installed
-- Check that you're using the correct prefix (default: `#`)
+- Check that Baritone is installed (see [Installation](/docs/baritone/installation))
+- Check that your commands start with `#`
 
 ### Baritone Gets Stuck Frequently
-- Try adjusting the pathfinding settings
-- Ensure you're not in a very complex terrain that's difficult to navigate
-- Use `#cancel` and try a different approach or starting point
+- Change the pathfinding [settings](/docs/baritone/usage/settings)
+- Very rough terrain is hard for Baritone, so try from somewhere easier
+- Use `#cancel` and try again from another spot
 
 ### Poor Performance
-- Reduce render settings for Baritone
-- Use simpler goals or shorter paths
-- Consider upgrading your computer's RAM allocation to Minecraft
+- Turn off `renderPath` and `renderGoal`
+- Use closer goals or shorter paths
+- Give Minecraft more RAM (see [Fixing FPS](/docs/troubleshooting/fixing-fps))
 
 ## Additional Resources
 

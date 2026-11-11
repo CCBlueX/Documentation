@@ -1,10 +1,8 @@
 ## AutoTrap
 
-AutoTrap is a combat-utility module that punishes nearby enemies by placing hazardous blocks underneath them — either setting them on fire (lava or flint and steel) or trapping them in cobwebs. It's most useful in PvP situations where you want to lock down or chip away at an opponent without relying solely on your sword: webs slow and pin a target so they can't escape your KillAura, while ignition deals damage over time and pressures players who are low on health or out of food.
+AutoTrap places cobwebs on nearby enemies, or sets them on fire with lava or flint and steel. Webs slow an enemy down so they can't run. Fire hurts them over time.
 
-Rather than naively spamming blocks, AutoTrap predicts where a jumping or falling enemy is about to land and lays the trap there. It runs a [player movement simulation](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/traps/TrapPlayerSimulation.kt#L91-L133) over the next ~25 ticks, only committing once it has enough consistent evidence (low landing-position variance) that the prediction is reliable. A target that is on the ground needs no prediction and is trapped where it stands, even while it is moving — the planner's offset search extrapolates its velocity to cover where it walks from there. The module first tries the [web planner, then falls back to ignition](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt#L88-L107), picking placement faces that overlap the predicted target box.
-
-To avoid wasting your attack rhythm, placements are deliberately timed: when KillAura is mid-combat, AutoTrap [waits for a "propitious moment"](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt#L159-L173) — slotting the block in during recovery so it doesn't cancel a charged or critical hit. This wait is capped at 40 ticks, after which the trap is placed regardless. After a successful placement it pauses for the configured Delay before acting again. If planning is inconclusive for a tick, the previous plan is kept, but only as long as it still describes a pending action: once the target is no longer tracked or the block it meant to fill is occupied, the plan is dropped and AutoTrap stops requesting rotations for it. Note that ignition is skipped for targets already on fire, and both trap types require the appropriate items (cobweb, or lava bucket / flint and steel) in your hotbar or offhand.
+You need cobwebs, a lava bucket or flint and steel in your hotbar or offhand. If an enemy jumps or falls, AutoTrap places the trap where they will land. It tries a web first and uses fire if that doesn't work. While you fight with KillAura, it waits for a good moment so it doesn't ruin your hits.
 
 **Category:** World
 **Enabled by default:** No
@@ -13,13 +11,13 @@ To avoid wasting your attack rhythm, placements are deliberately timed: when Kil
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Range | Decimal Range | 3.0..4.5 | 2.0..6.0 | Distance window (in blocks) used to acquire targets for trapping. |
-| Delay | Integer | 20 | 0..400 | Cooldown in ticks to wait after a successful placement before trapping again. |
-| IgnoreOpenInventory | Toggle | true | — | When enabled, AutoTrap keeps working while a container/inventory screen is open. Disable it to pause trapping (and to consider the open inventory) while a screen is up. |
-| Ignite | Toggleable Group | on | — | Enables the fire trap, placing lava or flint and steel at targets to set them ablaze. Targets already on fire are skipped. |
-| AutoWeb | Toggleable Group | on | — | Enables the cobweb trap, placing cobwebs at targets to slow and pin them in place. |
-| Target | Setting Group | — | — | See [Shared: Target](/docs/modules/shared-settings/target). |
-| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| Range | Decimal Range | 3.0..4.5 | 2.0..6.0 blocks | How far away an enemy can be. |
+| Delay | Integer | 20 | 0..400 ticks | How long to wait after a trap before the next one, in ticks (20 per second). |
+| IgnoreOpenInventory | Toggle | true | | Keeps working while a chest or your inventory is open. |
+| Ignite | Toggleable Group | On | | Sets enemies on fire with lava or flint and steel. Skips enemies that are already burning. |
+| AutoWeb | Toggleable Group | On | | Places cobwebs on enemies. |
+| Target | Setting Group | | | See [Target](/docs/modules/shared-settings/target). |
+| Rotations | Setting Group | | | See [Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-10-06 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/traps/ModuleAutoTrap.kt)*

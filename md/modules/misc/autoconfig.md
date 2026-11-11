@@ -1,10 +1,10 @@
 ## AutoConfig
 
-AutoConfig loads a config from the marketplace when you join a server. It holds the connection for a moment, looks up the best-ranked config made for that server and loads it while the connect screen shows the progress. A notification tells you whether a config was loaded, whether there is none for the server, or whether loading failed. Turning the module on while you are on a server loads the config for that server right away.
+AutoConfig loads a config from the marketplace when you join a server. It picks the best-rated config made for that server, and a notification tells you if one was loaded, if none exists, or if loading failed. If you turn it on while you're already on a server, it loads the config for that server right away.
 
-The module's tag in the array list shows the loaded config as `author/name`, followed by `*` once you changed one of its settings. When you rejoin a server whose config you edited, AutoConfig keeps your changes. After you load a local config with `.localconfig load`, the tag shows its name and joining a server keeps it instead of loading a config for that server. A few servers known for anticheat testing are skipped.
+The module's name in the array list shows the loaded config as `author/name`, with a `*` after it once you change a setting. If you rejoin, your changes stay. After you load your own config with `.localconfig load`, AutoConfig keeps that one and stops loading server configs.
 
-See [Configs](/docs/usage/configs) for loading, reporting and publishing configs by hand.
+See [Configs](/docs/usage/configs) to load, report or publish configs yourself.
 
 **Category:** Misc
 **Enabled by default:** Yes
@@ -13,7 +13,7 @@ See [Configs](/docs/usage/configs) for loading, reporting and publishing configs
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| OnlyFeatured | Boolean | On | — | Only loads configs featured by the LiquidBounce team. Turn it off to also load configs published by other players. |
+| OnlyFeatured | Toggle | true | | Only loads configs picked by the LiquidBounce team. Turn it off to also load configs made by other players. |
 
 ---
-*Last updated: 2026-09-23 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2d4c325dc/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleAutoConfig.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/ModuleAutoConfig.kt)*

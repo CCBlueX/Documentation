@@ -1,10 +1,6 @@
 ## SmoothCamera
 
-SmoothCamera makes your camera position glide smoothly rather than snapping instantly to your player's movement. Instead of the camera jumping frame-to-frame, it interpolates toward the true position each tick, giving your gameplay a cinematic, fluid look — especially noticeable in third-person view while moving, bridging, or taking knockback.
-
-By default the effect only applies in third-person perspectives, since first-person smoothing can feel disorienting during normal play. If you want the effect in first-person as well, enable **EnableFirstPOV**. The **HorizontalFactor** and **VerticalFactor** controls let you dial in exactly how "laggy" the camera feels: values closer to `1.0` make the camera trail further behind (more smoothing), while values closer to `0.0` make it snap almost instantly to your position (less smoothing). This module pairs well with [FreeCam](/docs/modules/render/freecam) or [AutoF5](/docs/modules/render/autof5) for screen-capture and recording setups where visual polish matters.
-
-When you switch perspectives (e.g. first-person ↔ third-person), **ResetOnPerspectiveChange** snaps the camera immediately to your real position to avoid a jarring slide across the screen. Disable it only if you want a smooth transition between perspectives.
+SmoothCamera makes the camera glide after your player instead of moving with it right away. It looks smoother when you move, jump or take knockback, which is nice for recording. By default it only works in third person.
 
 **Category:** Render
 **Enabled by default:** No
@@ -13,10 +9,10 @@ When you switch perspectives (e.g. first-person ↔ third-person), **ResetOnPers
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| EnableFirstPOV | Toggle | false | — | When enabled, the smoothing effect is also applied in first-person perspective. Disabled by default because it can feel unnatural during normal gameplay. |
-| ResetOnPerspectiveChange | Toggle | true | — | Instantly snaps the camera to your real position whenever you switch perspectives, preventing a disorienting slide. |
-| HorizontalFactor | Decimal | 0.9 | 0.0 – 1.0 | Controls how much horizontal smoothing is applied. Higher values make the camera trail further behind on the X/Z axes; lower values reduce the lag. |
-| VerticalFactor | Decimal | 0.93 | 0.0 – 1.0 | Controls how much vertical smoothing is applied. Higher values make the camera trail further behind on the Y axis; lower values reduce the lag. |
+| EnableFirstPOV | Toggle | false | | Also smooths the camera in first person. |
+| ResetOnPerspectiveChange | Toggle | true | | Moves the camera straight to your player when you switch views, so it does not slide across the screen. |
+| HorizontalFactor | Decimal | 0.9 | 0.0 to 1.0 | How much the camera trails behind when you move sideways. Higher values trail more. |
+| VerticalFactor | Decimal | 0.93 | 0.0 to 1.0 | How much the camera trails behind when you move up or down. Higher values trail more. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleSmoothCamera.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleSmoothCamera.kt)*

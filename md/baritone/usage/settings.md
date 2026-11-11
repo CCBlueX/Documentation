@@ -37,12 +37,12 @@ How much to penalize block placement. Higher values make Baritone less likely to
 ```
 allowDiagonalAscend
 ```
-Allow diagonal ascending (default: false). Actually quite safe compared to diagonal descend.
+Lets Baritone walk up diagonally (default: false). This is fairly safe.
 
 ```
 allowDiagonalDescend
 ```
-Allow descending diagonally (default: false). Slightly unsafe, can contact unchecked blocks.
+Lets Baritone walk down diagonally (default: false). This is a bit risky, because it can touch blocks it didn't check.
 
 ```
 followRadius
@@ -54,19 +54,19 @@ Sets how close Baritone will stay to the entity it's following (default: 3).
 ```
 legitMine
 ```
-Makes mining look more "legitimate" by only mining blocks you can see (default: false).
+Only mines ores you can see, so mining looks more like a normal player (default: false).
 
 ```
 mineScanDroppedItems
 ```
-Determines if Baritone will target dropped items while mining (default: true).
+Picks up dropped items while mining (default: true).
 
 ## Building Settings
 
 ```
 buildInLayers
 ```
-Don't consider the next layer in builder until the current one is done (default: false).
+Builds one layer at a time and finishes it before starting the next (default: false).
 
 ```
 backfill
@@ -78,7 +78,7 @@ Fill in blocks behind you while tunneling (default: false).
 ```
 acceptableThrowawayItems
 ```
-Blocks that Baritone is allowed to place (as throwaway, for bridging etc). Default includes:
+Blocks Baritone may use up, for example for bridging. By default:
 - Dirt
 - Cobblestone
 - Netherrack
@@ -89,7 +89,7 @@ Blocks that Baritone is allowed to place (as throwaway, for bridging etc). Defau
 ```
 blocksToAvoidBreaking
 ```
-Blocks that baritone shouldn't break unless necessary. Default includes:
+Blocks Baritone only breaks when it has no other way. By default:
 - Crafting Table
 - Furnace
 - Chest
@@ -108,7 +108,8 @@ renderPath
 Toggles rendering of the path (default: true).
 
 ## Additional Resources
-- For a complete list of settings, use the `#help` command in-game
-- Settings can be modified directly in `baritone/settings.txt`
-- Use `modified` command to see all changed settings
-- Use `reset` command to restore defaults
+- Change a setting with `#set <setting> <value>`, for example `#set allowSprint false`
+- Your changes are saved in `baritone/settings.txt`
+- `#modified` lists the settings you changed
+- `#reset` puts all settings back to default
+- Type `#help set` in the game for more

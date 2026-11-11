@@ -1,6 +1,6 @@
 ## Troubleshooting LiquidLauncher
 
-Use the following guide to troubleshoot common issues with LiquidLauncher. Only contact us through our [contact page](https://ccbluex.net/contact) or on our [Discord](/discord) after you verified that all the possible solutions listed here didn't solve your problem.
+Try the fixes below first. If none of them help, contact us through our [contact page](https://ccbluex.net/contact) or on our [Discord](/discord).
 
 ### Table of Contents
 
@@ -17,9 +17,9 @@ Use the following guide to troubleshoot common issues with LiquidLauncher. Only 
 
 ### Your LiquidLauncher is outdated and must be reinstalled
 
-LiquidLauncher *v0.5.0 and older* cannot sign in with *Microsoft authentication* at all anymore. Mojang blacklisted our login, which is why those versions can no longer log you in. You can read more about this in our blog post [Microsoft Tried to Ban Us!](https://liquidbounce.net/blog/article/WhKoUYc3).
+LiquidLauncher *v0.5.0 and older* cannot sign in with *Microsoft authentication* anymore, because Mojang blocked our login. You can read more in our blog post [Microsoft Tried to Ban Us!](https://liquidbounce.net/blog/article/WhKoUYc3).
 
-LiquidLauncher Version *v0.6.0* and upwards fixes this, but unfortunately, the auto updater built into v0.5.0 is broken. We received so many reports from people who had no idea why nothing worked anymore that we decided to show this confusing error on purpose.
+LiquidLauncher *v0.6.0* and newer fix this, but the auto updater in v0.5.0 is broken, so it cannot update itself. Many people had no idea why nothing worked anymore, so old launchers now show this error on purpose.
 
 You are affected if the launcher shows *Failed to establish connection with LiquidBounce API* and the *Technical Details* box below it mentions:
 
@@ -39,9 +39,9 @@ If the same error still appears afterwards, your launcher is up to date and the 
 
 ### LiquidLauncher does not show up (Windows)
 
-This is a known issue if you've previously uninstalled Microsoft Edge or used so-called Windows debloat tools. LiquidLauncher uses [Edge Webview2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) to run - which is a core feature of your Windows operating system.
+This happens if you uninstalled Microsoft Edge or used a Windows "debloat" tool. LiquidLauncher needs [Edge Webview2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) to run, which is part of Windows.
 
-To fix this problem, you can simply download and install [Microsoft Webview2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH#download). After that, your launcher will appear as expected.
+To fix it, download and install [Microsoft Webview2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH#download). The launcher will show up after that.
 
 ### LiquidLauncher does not show up (Linux with Wayland)
 
@@ -85,7 +85,7 @@ This is a known bug on Windows 10. We are currently working on a proper fix. For
 
 ##### Using Cloudflare WARP
 
-Cloudflare WARP is a free VPN service that can help resolve connection issues with the LiquidBounce API. Here's how to set it up:
+Cloudflare WARP is a free VPN that can fix connection problems with the LiquidBounce API. To set it up:
 
 1. Download Cloudflare WARP from the [official website](https://1.1.1.1/).
 2. Install the application by following the on-screen instructions.
@@ -93,14 +93,14 @@ Cloudflare WARP is a free VPN service that can help resolve connection issues wi
 4. Click on the "Connect" button to establish a VPN connection.
 5. After the connection is established, restart LiquidLauncher.
 
-If you're still experiencing issues after using Cloudflare WARP, try the following:
+If it still doesn't work with WARP on:
 
 1. Open the Cloudflare WARP application settings.
 2. Navigate to "Preferences" or "Settings" depending on your operating system.
 3. Enable "WARP+" mode if available or try switching between different WARP modes.
 4. Restart your computer and try launching LiquidLauncher again.
 
-Using a VPN like Cloudflare WARP can help bypass network restrictions or resolve routing issues that might be preventing LiquidLauncher from connecting to the LiquidBounce API.
+A VPN like WARP gets around network blocks or bad routes that can stop LiquidLauncher from reaching the LiquidBounce API.
 
 #### Fixing issues with the system's hosts file
 
@@ -195,4 +195,4 @@ Please follow [this guide](https://support.apple.com/guide/mac-help/change-dns-s
 
 #### On Linux
 
-DNS configuration varies depending on your distribution and desktop environment. Please lookup a matching guide yourself. Since you are a Linux user, you probably know how to use a search engine.
+How to change DNS depends on your distribution and desktop environment, so search for a guide that matches yours.

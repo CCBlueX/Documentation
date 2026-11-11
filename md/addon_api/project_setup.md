@@ -32,27 +32,21 @@ LiquidBounce is compiled with Kotlin preview features, which marks its classes a
 
 ### Versions
 
-`gradle/libs.versions.toml` holds every version, library and plugin. Keep the versions in line with the LiquidBounce build the add-on compiles against. A mismatch in `minecraft`, `fabric-loom` or `kotlin` is the usual cause of an add-on that compiles and then crashes at runtime. The catalog for LiquidBounce on Minecraft 26.3:
+`gradle/libs.versions.toml` holds the versions, libraries and plugins. Keep `minecraft`, `fabric-loom` and `kotlin` in line with the LiquidBounce build the add-on compiles against; a mismatch there is the usual cause of an add-on that compiles and then crashes at runtime. The template's catalog for LiquidBounce on Minecraft 26.3:
 
 ```toml
 [versions]
 jdk = "25"
 
 minecraft = "26.3"
-fabric-loom = "1.18-SNAPSHOT"
-fabric-loader = "0.19.5"
-fabric-api = "0.160.5+26.3"
+fabric-loom = "1.19-SNAPSHOT"
 
 kotlin = "2.4.20"
-fabric-kotlin = "1.14.1+kotlin.2.4.20"
 
 liquidbounce = "0.42.0+26.3"
 
 [libraries]
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
-fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
-fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
-fabric-kotlin = { group = "net.fabricmc", name = "fabric-language-kotlin", version.ref = "fabric-kotlin" }
 liquidbounce = { group = "net.ccbluex", name = "liquidbounce", version.ref = "liquidbounce" }
 
 [plugins]
@@ -60,7 +54,7 @@ fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "fabric-loom" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ```
 
-LiquidBounce's own [`gradle/libs.versions.toml`](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/gradle/libs.versions.toml) is the reference for these.
+Fabric Loader, Fabric API and Fabric Language Kotlin are not in the catalog. They come with the LiquidBounce dependency, in the versions the client was built with. LiquidBounce's own [`gradle/libs.versions.toml`](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/gradle/libs.versions.toml) lists them.
 
 The `liquidbounce` version takes one of three forms:
 
@@ -129,15 +123,11 @@ repositories {
 dependencies {
     minecraft(libs.minecraft)
 
-    implementation(libs.fabric.loader)
-    implementation(libs.fabric.api)
-    implementation(libs.fabric.kotlin)
-
     implementation(libs.liquidbounce)
 }
 ```
 
-- The dependency is the client itself, `net.ccbluex:liquidbounce`. There is no separate API artifact. Its POM lists the libraries the client depends on, so they reach the add-on's compile classpath, but not Minecraft. The add-on declares Minecraft itself, along with Fabric Loader, Fabric API and Fabric Language Kotlin.
+- The dependency is the client itself, `net.ccbluex:liquidbounce`. There is no separate API artifact. Its POM lists the libraries the client depends on, Fabric Loader, Fabric API and Fabric Language Kotlin included, so they reach the add-on's compile classpath. Minecraft is not among them, so the add-on declares it itself.
 - Use `implementation`, not `modImplementation`. For these Minecraft versions Loom has no remapping step, development and production both use Mojang's names, and the `mod*` configurations do not exist.
 - Do not add a `mappings(...)` line. LiquidBounce declares none, and Loom defaults to Mojang's official names. A different mapping set produces an add-on that compiles and then fails on every Minecraft call.
 
@@ -175,25 +165,29 @@ base {
 
 `processResources` fills these placeholders in `fabric.mod.json`:
 
-| Placeholder                | Value                                                   |
-|----------------------------|---------------------------------------------------------|
-| `${version}`               | `<mod_version>+<minecraft>`, for example `1.0.0+26.3`   |
-| `${minecraft_version}`     | `minecraft` from the catalog                            |
-| `${loader_version}`        | `fabric-loader` from the catalog                        |
-| `${fabric_kotlin_version}` | `fabric-kotlin` from the catalog                        |
+| Placeholder                | Value                                                                 |
+|----------------------------|-----------------------------------------------------------------------|
+| `${version}`               | `<mod_version>+<minecraft>`, for example `1.0.0+26.3`                 |
+| `${minecraft_version}`     | `minecraft` from the catalog                                          |
+| `${loader_version}`        | the Fabric Loader version on the compile classpath, from LiquidBounce |
+| `${fabric_kotlin_version}` | the Fabric Language Kotlin version on the compile classpath           |
 
 ### Building against a local client
 
 To compile against changes that are not published yet, publish a LiquidBounce checkout to the local Maven repository under a version of your own. The checkout needs everything LiquidBounce's own build needs, Node.js included (see its [README](https://github.com/CCBlueX/LiquidBounce#readme)).
 
 ```sh
-./gradlew publishToMavenLocal -Ppublish.version=0.41.1+26.3-local-SNAPSHOT
+./gradlew publishToMavenLocal -Ppublish.version=0.42.1+26.3-local-SNAPSHOT
 ```
 
 Then point the add-on at it. `mavenLocal()` is already among the template's repositories.
 
 ```toml
-liquidbounce = "0.41.1+26.3-local-SNAPSHOT"
+liquidbounce = "0.42.1+26.3-local-SNAPSHOT"
 ```
 
 Without `-Ppublish.version`, the checkout publishes `<mod_version>+<mc>-SNAPSHOT`, the same version as the moving development build. Since `mavenLocal()` comes before the CCBlueX repositories, the add-on then keeps resolving the local build until it is removed from `~/.m2/repository/net/ccbluex/liquidbounce/`.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/gradle/libs.versions.toml)*

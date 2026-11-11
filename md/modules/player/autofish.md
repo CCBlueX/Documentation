@@ -1,24 +1,26 @@
 ## AutoFish
 
-AutoFish takes care of fishing for you. While you hold a fishing rod, it listens for the splash that means a fish is biting and automatically reels in your line, so you can AFK-fish without watching the screen. After a catch it can recast the rod for you, keeping the cycle going indefinitely.
+AutoFish fishes for you. Hold a fishing rod and cast it: when a fish bites, AutoFish reels it in and throws the line out again. You can leave it running while you are away, together with [AntiAFK](/docs/modules/player/antiafk).
 
-By default it triggers on the vanilla bobber-splash sound. On servers that use custom fishing setups you can add their sounds in the **Sounds** list, and the **SoundDistance** check helps avoid false catches by ignoring splash sounds that come from somewhere other than your own bobber. Enable **AutoCastRod** if you want it to throw the line out the first time as well, not just recast after a catch. Pairs well with [AntiAFK](/docs/modules/player/antiafk) for long unattended sessions.
+It listens for the splash sound of your bobber. If a server uses its own sound for a bite, add it to **Sounds**.
 
 **Category:** Player
 **Enabled by default:** No
 
 ### Settings
 
+Delays are in ticks (20 per second).
+
 | Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| ReelDelay | Integer Range | 5..8 | 0..20 | How long (in ticks) to wait after a bite before reeling in, picked randomly within this range to look more natural. |
-| Sounds | Registry List | — | — | The sound events that count as a fish biting and trigger a reel-in. Add custom server sounds here if the default splash isn't detected. |
-| SoundDistance | Toggleable Group | on | — | When on, only reels in if the triggering sound comes from close to your bobber, preventing false catches from other players' fishing. |
-| SoundDistance → MaxDistance | Decimal | 1.0 | 0.0..10.0 | Maximum distance (in blocks) between your bobber and the sound for it to count as your catch. |
-| RecastRod | Toggleable Group | on | — | When on, automatically throws the rod back out after reeling in a fish. |
-| RecastRod → Delay | Integer Range | 15..20 | 10..30 | How long (in ticks) to wait before recasting, picked randomly within this range. |
-| AutoCastRod | Toggleable Group | off | — | When on, automatically casts the rod when no line is in the water, so fishing starts without a manual throw. |
-| AutoCastRod → Delay | Integer Range | 15..20 | 0..30 | How long (in ticks) to wait before auto-casting, picked randomly within this range. |
+| --- | --- | --- | --- | --- |
+| ReelDelay | Integer Range | 5..8 | 0..20 ticks | Wait after a bite before reeling in. |
+| Sounds | Registry List | Fishing Bobber Splash | | Sounds that mean a fish is biting. |
+| SoundDistance | Toggleable Group | On | | Only reacts to sounds close to your own bobber, so other players' fishing doesn't trigger it. |
+| SoundDistance → MaxDistance | Decimal | 1.0 blocks | 0.0..10.0 | How close to your bobber the sound must be. |
+| RecastRod | Toggleable Group | On | | Throws the line out again after a catch. |
+| RecastRod → Delay | Integer Range | 15..20 | 10..30 ticks | Wait before throwing the line out again. |
+| AutoCastRod | Toggleable Group | Off | | Throws the line out whenever it isn't in the water, so you don't have to cast the first time. |
+| AutoCastRod → Delay | Integer Range | 15..20 | 0..30 ticks | Wait before casting. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoFish.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoFish.kt)*

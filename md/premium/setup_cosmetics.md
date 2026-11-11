@@ -1,42 +1,40 @@
 ## Setting up premium cosmetics
 
-The following tutorial will guide you through the process of setting up your premium cosmetics. If you have not purchased premium yet, you can do so [here](https://liquidbounce.net/premium).
+This guide shows you how to turn on your premium cosmetics in the client. If you have not bought premium yet, you can get it [here](https://liquidbounce.net/premium).
 
 ### Instructions for LiquidBounce Nextgen (recommended)
 
-1. Link your premium purchase to a [LiquidBounce account](https://liquidbounce.net/premium). See [here](/docs/premium/launcher-setup) for more information. You can also customize your cosmetics in the user panel.
-2. Launch LiquidBounce.
+1. Link your premium purchase to a [LiquidBounce account](https://liquidbounce.net/premium). See [here](/docs/premium/launcher-setup) for more information. You can also change your cosmetics in the user panel.
+2. Start LiquidBounce.
 3. Join a server or a singleplayer world.
-4. Send `.client account login` into the chat.
-5. A browser window should open. Login to your LiquidBounce account. Finish the login within five minutes, otherwise it times out and you have to send the command again. Sending the command again while a login is still pending simply opens the same page once more instead of starting a second login.
-6. If everything went accordingly, you should now be logged in and your cosmetics should be enabled. Make sure it says `Premium Features: Yes` in the chat message.
+4. Type `.client account login` in the chat.
+5. A browser window opens. Log in to your LiquidBounce account there. You have five minutes; after that, send the command again.
+6. Your cosmetics should now be on. Check that the chat message says `Premium Features: Yes`.
 
-> **Note:** LiquidBounce and LiquidLauncher share the same LiquidBounce account login. If you already signed in with your LiquidBounce account in the launcher, the client picks that login up and you can skip the steps above; likewise, signing in with `.client account login` also signs you in in the launcher.
+If you already logged in to your LiquidBounce account in LiquidLauncher, the client uses that login and you can skip the steps above. Logging in with `.client account login` also logs you in to the launcher.
 
 ![premium_login_command](/images/user_login_command.png)
 
-Deadmau5 ears use their own texture instead of your skin. In the user panel you can let them match your cape (the default), pick a style, upload a texture or choose a colour. You can also pick or upload a custom elytra, which replaces your cape texture on the elytra.
-
 ### Instructions for LiquidBounce Legacy
 
-**Note:** LiquidBounce Legacy only supports capes. Other premium cosmetics like Deadmau5 ears are only available in LiquidBounce Nextgen.
+LiquidBounce Legacy only shows capes. Other cosmetics only work in LiquidBounce Nextgen.
 
-1. Launch LiquidBounce.
-2. In the main menu, press the button labeled `Alt Manager`.
-3. To the right, press the button labeled `Cape`.
-4. Enter your transfer code in the field called `Token` and press `Login`. You can find this token either on the website you were redirected to after your payment or in the confirmation email we sent you.
-5. Login to an account using the alt manager.
-6. Join a server and your cape should be visible.
+1. Start LiquidBounce.
+2. In the main menu, click `Alt Manager`.
+3. On the right, click `Cape`.
+4. Put your transfer code in the `Token` field and click `Login`. You can find the code on the page you saw after paying, or in the email we sent you.
+5. Log in to a Minecraft account in the alt manager.
+6. Join a server. Your cape should now show.
 
 ### I can't see my cosmetics!
 
-There are many reasons why your cosmetics might not be visible. Confirm the following:
+Check these first:
 
-1. Open Minecraft's skin settings and make sure `Cape` is enabled (main menu -> Options -> Skin Customization...).
-2. Make sure you are logged into a premium Minecraft account. Cosmetics will not work with offline accounts.
+1. Open Minecraft's skin settings and make sure `Cape` is on (main menu -> Options -> Skin Customization...).
+2. Make sure you are logged in to a premium (paid) Minecraft account. Cosmetics do not work with offline accounts.
 
-If neither of these solved your problem try the following:
+If that did not help:
 
-1. Login to your account again using the account manager.
-2. Send `.client cosmetics refresh` into the chat to fetch the cosmetics again. If the cosmetics could not be fetched, for example because the API is unreachable, the chat message tells you why.
-3. Contact us via our [contact page](https://ccbluex.net/contact) or [Discord](https://liquidbounce.net/discord).
+1. Log in to your account again in the account manager.
+2. Type `.client cosmetics refresh` in the chat to load your cosmetics again. If it fails, the chat message tells you why.
+3. Contact us on our [contact page](https://ccbluex.net/contact) or on [Discord](https://liquidbounce.net/discord).

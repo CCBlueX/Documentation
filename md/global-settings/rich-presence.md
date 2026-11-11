@@ -1,70 +1,43 @@
 ## RichPresence
 
-Displays customizable LiquidBounce information on your Discord profile through Discord Rich Presence.
+Shows on your Discord profile that you are playing LiquidBounce, with the details you pick. Discord has to be open on the same computer. If the client cannot find Discord, it shows a message and stops trying until you turn this off and on again.
 
 **Aliases:** DiscordPresence  
-**Toggleable:** Yes  
 **Enabled by default:** Yes
 
 ### Settings
 
-```
-├── Enabled (Toggle | default: true)
-├── ActivityType (Choice | default: Competing | options: Playing, Listening, Watching, Competing)
-├── StatusDisplayType (Choice | default: Name | options: Name, State, Details)
-├── Separator (Text | default: " - ")
-├── DetailsParts (Multi-Select | default: [ClientName, ClientVersion, ClientAuthor] | options: ClientName, ClientVersion, ClientAuthor, Modules, Protocol, Server, Branch, Commit)
-├── StateParts (Multi-Select | default: [Modules, Protocol] | options: ClientName, ClientVersion, ClientAuthor, Modules, Protocol, Server, Branch, Commit)
-├── LargeImage (Toggleable Group | default: on)
-│   ├── Enabled (Toggle | default: true)
-│   ├── Asset (Choice | default: Logo | options: Logo)
-│   └── Parts (Multi-Select | default: [Protocol] | options: ClientName, ClientVersion, ClientAuthor, Modules, Protocol, Server, Branch, Commit)
-└── SmallImage (Toggleable Group | default: off)
-    ├── Enabled (Toggle | default: false)
-    ├── Asset (Choice | default: Logo | options: Logo)
-    └── Parts (Multi-Select | default: [Branch, Commit] | options: ClientName, ClientVersion, ClientAuthor, Modules, Protocol, Server, Branch, Commit)
-```
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Enabled | Toggle | On | | Shows LiquidBounce on your Discord profile. |
+| ActivityType | Choice | Competing | Playing, Listening, Watching, Competing | The word Discord puts before the name, like "Playing" or "Competing in". |
+| StatusDisplayType | Choice | Name | Name, State, Details | Which text Discord shows next to your name in the member list. |
+| Separator | Text | ` - ` | | Text put between two parts. |
+| DetailsParts | Multi-Select | ClientName, ClientVersion | see the parts below | What the first line shows. |
+| StateParts | Multi-Select | Modules, ClientCommit | see the parts below | What the second line shows. |
+| LargeImage | Toggleable Group | On | | Shows the big picture. |
+| LargeImage → Asset | Choice | Logo | Logo | The picture. |
+| LargeImage → Parts | Multi-Select | ProtocolVersion | see the parts below | Text shown when someone hovers over the big picture. |
+| SmallImage | Toggleable Group | Off | | Shows the small picture in the corner of the big one. |
+| SmallImage → Asset | Choice | Logo | Logo | The picture. |
+| SmallImage → Parts | Multi-Select | ClientBranch, ClientCommit | see the parts below | Text shown when someone hovers over the small picture. |
 
-### Settings Details
+### Parts
 
-- **Enabled** (Toggle) — default: `true` — Enables or disables Discord Rich Presence.
-- **ActivityType** (Choice) — default: `Competing`; options: `Playing`, `Listening`, `Watching`, `Competing` — The type of activity shown on your Discord profile.
-- **StatusDisplayType** (Choice) — default: `Name`; options: `Name`, `State`, `Details` — Controls how the status is displayed on Discord.
-- **Separator** (Text) — default: `" - "` — The text used to separate multiple parts in the presence display.
-- **DetailsParts** (Multi-Select) — default: `ClientName`, `ClientVersion`, `ClientAuthor`; options: `ClientName`, `ClientVersion`, `ClientAuthor`, `Modules`, `Protocol`, `Server`, `Branch`, `Commit` — Information shown in the Details line of the Rich Presence.
-- **StateParts** (Multi-Select) — default: `Modules`, `Protocol`; options: `ClientName`, `ClientVersion`, `ClientAuthor`, `Modules`, `Protocol`, `Server`, `Branch`, `Commit` — Information shown in the State line of the Rich Presence.
-
-#### LargeImage
-
-A toggleable group of settings (default: enabled).
-
-- **Enabled** (Toggle) — default: `true`
-- **Asset** (Choice) — default: `Logo`; options: `Logo` — The image displayed as the large icon.
-- **Parts** (Multi-Select) — default: `Protocol`; options: `ClientName`, `ClientVersion`, `ClientAuthor`, `Modules`, `Protocol`, `Server`, `Branch`, `Commit` — Tooltip text for the large image.
-
-#### SmallImage
-
-A toggleable group of settings (default: disabled).
-
-- **Enabled** (Toggle) — default: `false`
-- **Asset** (Choice) — default: `Logo`; options: `Logo` — The image displayed as the small icon.
-- **Parts** (Multi-Select) — default: `Branch`, `Commit`; options: `ClientName`, `ClientVersion`, `ClientAuthor`, `Modules`, `Protocol`, `Server`, `Branch`, `Commit` — Tooltip text for the small image.
-
-### Rich Presence Parts
-
-| Part | Description |
+| Part | Shows |
 |---|---|
-| ClientName | The client name (LiquidBounce) |
-| ClientVersion | The current version of the client |
-| ClientAuthor | The client author (CCBlueX) |
-| Modules | Active module count (e.g. "12/226 modules") |
-| Protocol | The Minecraft protocol version (e.g. "1.21.4 (769)") |
-| Server | The current server address (sensitive addresses are hidden) |
-| Branch | The client build branch |
-| Commit | The client build commit hash |
+| ClientName | LiquidBounce |
+| ClientVersion | The client version |
+| ClientAuthor | CCBlueX |
+| ClientBranch | The branch the client was built from |
+| ClientCommit | The commit the client was built from |
+| Modules | How many modules are on out of all modules |
+| MinecraftVersion | The Minecraft version you play |
+| ProtocolVersion | The Minecraft version you joined the server with |
+| Server | The server you are on. Addresses that should stay private are hidden. |
 
-### Notes
+Your profile also gets two buttons: Website (liquidbounce.net) and LiquidProxy (liquidproxy.net).
 
-- Discord must be running for Rich Presence to work. If Discord is not detected, a notification is shown.
-- The presence updates every second (20 ticks).
-- Two buttons are always shown: **Website** (liquidbounce.net) and **LiquidProxy** (liquidproxy.net).
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/global/GlobalSettingsRichPresence.kt)*

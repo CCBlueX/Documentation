@@ -13,7 +13,7 @@ Makes your character follow a specific player.
 ```
 #follow players
 ```
-Follows any players in range (useful combined with combat modules).
+Follows any player in range. This works well together with combat modules.
 
 ### Following Other Entities
 ```
@@ -22,6 +22,6 @@ Follows any players in range (useful combined with combat modules).
 Follows entities of a specific type.
 
 ## Combat Settings
-- Use `followRadius` to adjust how close Baritone stays to targets
-- Combine with LiquidBounce's KillAura or other combat modules to attack players.
+- `followRadius` sets how close Baritone stays to the target
+- Turn on LiquidBounce's KillAura or another combat module to attack the player you follow
 

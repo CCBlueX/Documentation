@@ -143,3 +143,7 @@ class SystemBrowser(
 `BrowserTexture` wraps Minecraft's `TextureSetup` with the texture's size, whether its pixels are BGRA instead of RGBA, and `u1`, `v1`, `u2`, `v2` for the part of the texture that holds the page.
 
 The client does not pass input to pages. A backend whose pages take input listens for it itself, for example with a handler for `MouseButtonEvent` and `KeyboardKeyEvent`, and only acts while the `inputAcceptor` accepts it.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/integration/backend)*

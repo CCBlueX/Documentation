@@ -1,10 +1,10 @@
 ## AutoWindCharge
 
-AutoWindCharge automatically detonates a wind charge beneath you to launch you into the air every time you land, as long as you're holding the jump key. It's a movement aid for the 1.21+ wind charge item: instead of manually timing throws, the module throws the charge and times your jump for you so you keep bouncing high off the ground, using one charge per bounce.
+AutoWindCharge throws a wind charge at your feet every time you land while you hold the jump key, and jumps at the same moment. The blast and the jump together launch you high into the air, so you keep bouncing. It uses one wind charge per bounce and takes it from your hotbar or offhand, so you don't need to hold it.
 
-Each tick the module checks that you're holding jump and aren't flying, swimming, or in liquid. While you're on the ground and the wind charge isn't on cooldown, it throws the charge at your feet and holds back your jump for one tick, so you jump right as the charge bursts below you and the jump and the knockback add up. It looks for a wind charge in your hotbar or offhand and uses it from there, so the item never has to be in your main hand.
+It does nothing while you swim, glide with an elytra, or are in water or lava.
 
-By default the boost aims straight down (pitch 90) to throw you upward. Holding the **HorizontalBoost** key instead aims at a pitch picked from the configured **Pitch** range and points opposite your movement input, giving you a flatter, more horizontal launch for covering distance. When **Rotate** is on, the module already starts turning toward the aim point while you fall, shortly before landing, and only fires once your rotation is close enough (within 1°). If the turn isn't finished after 10 ticks on the ground, you jump without a charge.
+Normally it throws straight down to launch you up. Hold the **HorizontalBoost** key (Left Control) to throw at an angle instead, which launches you forward, in the direction you are walking, to cover more distance.
 
 **Category:** Player
 **Enabled by default:** No
@@ -12,14 +12,14 @@ By default the boost aims straight down (pitch 90) to throw you upward. Holding 
 ### Settings
 
 | Setting | Type | Default | Range | Description |
-|---|---|---|---|---|
-| HorizontalBoost | Toggleable Group | on | — | When its key is held, aims the wind charge at the set pitch (opposite your input direction) for a flatter, horizontal launch instead of a straight-up boost. |
-| HorizontalBoost → Pitch | Decimal Range | 70.0..70.0 | 0.0..90.0 | Aim pitch used while horizontal boosting, picked at random from this range. Lower values launch you more horizontally; higher values closer to vertical. |
-| HorizontalBoost → Key | Key | — | — | Hold this key to trigger a horizontal boost. Bound to Left Control by default. |
-| Rotate | Toggleable Group | on | — | Turns toward the boost direction before firing and only uses the charge once aim is within 1° of the target. |
-| Rotate → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
-| CombatPauseTime | Integer | 0 | 0..40 | Ticks to pause combat-related actions while rotating to boost. 0 disables the pause. |
-| SlotResetDelay | Integer Range | 0..0 | 0..40 | Random delay (in ticks, picked from this range) before switching back from the wind charge slot after using it. |
+| --- | --- | --- | --- | --- |
+| HorizontalBoost | Toggleable Group | On | | Lets you hold a key to launch forward instead of straight up. |
+| HorizontalBoost → Pitch | Decimal Range | 70.0..70.0 | 0.0..90.0 | How far down you look for the forward throw. Lower launches you flatter, 90 is straight down. |
+| HorizontalBoost → Key | Key | Left Control | | Hold this key for a forward launch. |
+| Rotate | Toggleable Group | On | | Turns your view to the throw direction before landing and only throws once you are aimed right. |
+| Rotate → Rotations | Setting Group | | | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
+| CombatPauseTime | Integer | 0 | 0..40 ticks | How long to pause attacking while it aims, in ticks (20 per second). |
+| SlotResetDelay | Integer Range | 0..0 | 0..40 ticks | Wait before switching back from the wind charge slot. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWindCharge.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleAutoWindCharge.kt)*

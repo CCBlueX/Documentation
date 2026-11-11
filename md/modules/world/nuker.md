@@ -1,10 +1,8 @@
 ## Nuker
 
-Nuker automatically breaks blocks in your surrounding area without any manual clicking. When enabled, it continuously scans for valid blocks within range and destroys them one after another — useful for clearing terrain, farming resources, or demolishing structures rapidly. While target rendering is on, the highlight around the current block reflects how close it is to breaking. It pairs well with [AutoTool](/docs/modules/world/autotool) to always use the most efficient tool for whatever it is breaking.
+Nuker breaks the blocks around you by itself, one after another. Use it to clear land or dig out an area fast. Turn on [AutoTool](/docs/modules/world/autotool) too, so it always uses the right tool.
 
-There are two breaking modes to choose from. **Legit** mode mimics how a real player mines: it faces the target block, respects normal break timing and reach limits, and can optionally reach through walls via `WallRange`. This is the safer option on servers with anti-cheat. **Instant** mode bypasses break animations entirely and can destroy many blocks per second using raw packets — far faster, but much more detectable. Note that [Blink](/docs/modules/player/blink) will pause Nuker in either mode while it is active.
-
-You can control *which* blocks get broken using the **Filter** and **Blocks** settings. Switch Filter to **Whitelist** and add specific blocks to only break those; leave it on **Blacklist** to break everything *except* the listed blocks. The **AreaMode** setting lets you switch between a **Sphere** (breaks blocks in all directions around you) and a **Floor** region (breaks a flat rectangular area you define by coordinates, useful for clearing a specific plot layer by layer).
+Legit mode looks at each block and mines it at normal speed, like a player would. Instant mode breaks many blocks every second, but servers notice that much more easily.
 
 **Category:** World
 **Enabled by default:** No
@@ -13,25 +11,30 @@ You can control *which* blocks get broken using the **Filter** and **Blocks** se
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Legit | — | Selects the breaking method: **Legit** uses realistic rotation-based mining; **Instant** uses packets to destroy blocks without going through normal break animations. |
-| Mode → \[Legit\] → Range | Decimal | 4.0 | 1.0–6.0 | Maximum reach distance when targeting blocks in Legit mode. |
-| Mode → \[Legit\] → WallRange | Decimal | 0.0 | 0.0–6.0 | Reach distance for blocks behind walls. Set to `0` to disable through-wall targeting. Cannot exceed Range. |
-| Mode → \[Legit\] → ForceImmediateBreak | Toggle | false | — | When enabled, attempts to break the target block immediately on the first tick rather than waiting through the normal mining progress. |
-| Mode → \[Legit\] → Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
-| Mode → \[Legit\] → SwitchDelay | Integer | 0 | 0–20 | How many ticks to wait before switching focus to a new target block after the previous one is broken. |
-| Mode → \[Instant\] → Range | Decimal | 5.0 | 1.0–50.0 | Maximum reach distance when targeting blocks in Instant mode. |
-| Mode → \[Instant\] → BPS | Integer Range | 40..50 | 1–200 | Number of blocks broken per second. A random value is chosen from this range each tick for more natural variance. |
-| Mode → \[Instant\] → DoNotStop | Toggle | false | — | When enabled, skips sending the stop-breaking packet. May increase throughput on some servers but can cause visual desync. |
-| AreaMode | Mode Selector | Sphere | — | Shape of the mining area: **Sphere** scans all blocks around you within the configured radius; **Floor** targets a defined rectangular region. |
-| AreaMode → \[Floor\] → RelativeToPlayer | Toggle | true | — | When enabled, `StartPosition` and `EndPosition` are treated as offsets from your current position so the area moves with you. |
-| AreaMode → \[Floor\] → StartPosition | Vector3_i | — | — | One corner of the rectangular floor area (X, Y, Z). |
-| AreaMode → \[Floor\] → EndPosition | Vector3_i | — | — | Opposite corner of the rectangular floor area (X, Y, Z). |
-| AreaMode → \[Floor\] → TopToBottom | Toggle | true | — | When enabled, Nuker clears the highest layer of the defined region first, then works downward. |
-| Filter | Choice | Whitelist | — | How the Blocks list is applied: **Whitelist** only breaks blocks on the list; **Blacklist** breaks everything *except* blocks on the list. |
-| Blocks | Registry List | — | — | The set of blocks used by the Filter. Add blocks here to whitelist or blacklist them. |
-| Swing | Choice | DoNotHide | — | Controls the hand-swing animation visibility: **DoNotHide** shows it normally; **HideForBoth** hides it for you and other players; **HideForClient** hides it only on your screen; **HideForServer** hides it only from the server. |
-| IgnoreOpenInventory | Toggle | false | — | When enabled, Nuker keeps breaking blocks even while a container or inventory screen is open. |
-| TargetRendering | Toggleable Group | on | — | See [Shared: Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
+| Mode | Mode Selector | Legit | Legit, Instant | How blocks are broken. |
+| Mode → [Legit] → Range | Decimal | 5.0 | 1.0..6.0 blocks | How far away blocks can be. |
+| Mode → [Legit] → WallRange | Decimal | 0.0 | 0.0..6.0 blocks | How far it reaches through walls. 0 turns this off. It can't be more than Range. |
+| Mode → [Legit] → ForceImmediateBreak | Toggle | false | | Tries to break each block at once instead of mining it slowly. |
+| Mode → [Legit] → Rotations | Setting Group | | | See [Rotations](/docs/modules/shared-settings/rotations). |
+| Mode → [Legit] → SwitchDelay | Integer | 0 | 0..20 ticks | How long to wait before moving to the next block, in ticks (20 per second). |
+| Mode → [Instant] → Range | Decimal | 5.0 | 1.0..50.0 blocks | How far away blocks can be. |
+| Mode → [Instant] → BPS | Integer Range | 40..50 | 1..200 | How many blocks it breaks per second. |
+| Mode → [Instant] → DoNotStop | Toggle | false | | Doesn't tell the server that a block is done. Some servers break blocks faster this way. |
+| AreaMode | Mode Selector | Sphere | Sphere, Floor | Sphere: breaks blocks all around you. Floor: breaks a box you set with two corners. |
+| AreaMode → [Floor] → RelativeToPlayer | Toggle | true | | The corners move with you instead of staying at fixed coordinates. |
+| AreaMode → [Floor] → StartPosition | Vector3_i | 0, 0, 0 | | One corner of the box (X, Y, Z). |
+| AreaMode → [Floor] → EndPosition | Vector3_i | 0, 0, 0 | | The other corner of the box (X, Y, Z). |
+| AreaMode → [Floor] → TopToBottom | Toggle | true | | Clears the top layer first and works down. |
+| Filter | Choice | Blacklist | Whitelist, Blacklist | Whitelist: only break the listed blocks. Blacklist: break everything except the listed blocks. |
+| Blocks | Registry List | | | The blocks the filter uses. |
+| Swing | Choice | DoNotHide | DoNotHide, HideForBoth, HideForClient, HideForServer | Who sees your arm swing: everyone, nobody, only others, or only you. |
+| IgnoreOpenInventory | Toggle | true | | Keeps breaking while a chest or your inventory is open. |
+| TargetRendering | Toggleable Group | On | | Highlights the block being broken. See [Placement Rendering](/docs/modules/shared-settings/placement-rendering). |
+| TargetRendering → ProgressText | Toggleable Group | On | | Shows how far the block is broken as text. |
+| TargetRendering → ProgressText → Height | Decimal | 0.5 | -4.0..4.0 | How high above the block the text is. |
+| TargetRendering → ProgressText → Scale | Decimal | 1.0 | 0.25..4.0 | Size of the text. |
+| TargetRendering → ProgressText → Color | Color | White | | Color of the text. |
+| TargetRendering → ProgressText → Shadow | Toggle | true | | Draws a shadow behind the text. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/nuker/ModuleNuker.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/nuker/ModuleNuker.kt)*

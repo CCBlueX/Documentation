@@ -1,12 +1,6 @@
 ## TickBase
 
-TickBase is a combat module that simulates your future player positions tick-by-tick and, when an enemy enters the configured range, fires a burst of extra ticks to effectively move your client forward in time. The result is that your character reaches an optimal attack position earlier than normal, landing hits sooner than the server would otherwise allow. It works best alongside [KillAura](/docs/modules/combat/killaura), which is why **RequiresKillAura** is on by default — TickBase will only activate when KillAura is running and ready to strike at the predicted tick.
-
-With the `Timer` mode, TickBase speeds up the game timer instead of bursting ticks while you are near an enemy.
-
-TickBase spends the client's shared timer balance: the number of ticks your client is behind the time the server saw pass. Held back ticks and a timer below 1× build it up, extra ticks and a timer above 1× spend it, no matter which module caused them (for example [Timer](/docs/modules/world/timer)). The **Balance** group sets the range within which TickBase may spend it, and the balance is cleared when the server sends a position correction (commonly called a flag) unless you turn off **ResetBalanceOnFlag**. You can further throttle activations with the **Cooldown** setting and limit how many ticks fire at once with **MaxTicksAtATime**.
-
-TickBase automatically disables itself while you are riding a vehicle or while [Blink](/docs/modules/player/blink) is active to avoid conflicts. If you set the **Line** colour with a visible alpha, an in-world line traces the simulated tick path so you can see exactly where the module is projecting your position.
+TickBase lets you reach an enemy a little earlier than they expect, so you get the first hit. While an enemy is near but not yet in reach, it slows your game down a tiny bit to save up time. When a hit becomes possible, it spends that saved time to get there faster. It works best together with [KillAura](/docs/modules/combat/killaura).
 
 **Category:** Combat
 **Enabled by default:** No
@@ -15,18 +9,29 @@ TickBase automatically disables itself while you are riding a vehicle or while [
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Choice | HoldFirst | HoldFirst \| BurstFirst \| Timer | How TickBase spends the balance. `HoldFirst` (formerly `Past`) fires all buffered ticks at once and then pauses normal ticking to compensate. `BurstFirst` (formerly `Future`) fires ticks one at a time, stopping early if [KillAura](/docs/modules/combat/killaura) is no longer ready to hit. `Timer` speeds up the game timer near an enemy. Configs using the old names keep working. |
-| Call | Choice | Game | — | Scope of each extra tick. `Game` runs a full game tick; `Player` runs only the player tick (lighter, and the legacy default behaviour). |
-| Range | Decimal Range | 3.0..5.0 | 0.0..8.0 | Distance window that triggers TickBase. The lower bound is the minimum distance to a target before activation begins; the upper bound is the maximum distance at which it will trigger at all. |
-| Balance | Setting Group | — | — | Limits how TickBase spends the shared timer balance. |
-| Balance → Range | Integer Range | — | — | Range of the timer balance (in ticks) within which TickBase may spend it. |
-| Balance → ResetBalanceOnFlag | Toggle | true | — | Clears the timer balance when the server sends a position correction (flag) while TickBase is running. |
-| MaxTicksAtATime | Integer | 2 | 1..20 | Maximum number of extra ticks that can be fired in a single activation. |
-| Pause | Integer | 2 | 0..20 | Additional ticks to wait after an activation before normal ticking resumes, giving the server time to process the burst. |
-| Cooldown | Integer | 0 | 0..100 | Minimum number of ticks to wait between TickBase activations. |
-| ForceGround | Toggle | false | — | When enabled, TickBase only considers tick snapshots where the player is on the ground, which can help ensure critical hits land. |
-| Line | Color | — | — | Colour of the in-world line that visualises the simulated tick path. Set alpha to 0 to hide the line entirely. |
-| RequiresKillAura | Toggle | true | — | When enabled, TickBase only activates if [KillAura](/docs/modules/combat/killaura) is running and its clicker is predicted to fire at the selected tick. |
+| Mode | Choice | Timer | Timer, HoldFirst, BurstFirst | How the saved time is spent. Timer speeds up your game until the hit lands. HoldFirst freezes you for a moment and then jumps ahead all at once. BurstFirst jumps ahead right away and freezes afterwards. |
+| Mode → [Timer] → BoostSpeed | Decimal | 5.0 | 1.0..10.0 | How much faster the game runs while speeding up. |
+| Mode → [HoldFirst/BurstFirst] → MaxTicks | Integer | 4 | 1..20 ticks | How far you can jump ahead at once, in ticks (20 per second). |
+| Mode → [HoldFirst/BurstFirst] → Delay | Integer Range | 0..0 | 0..20 ticks | How long the game runs normally between freezing and jumping ahead. |
+| Requires | Multi-Select | KillAura | KillAura, LookingAt, Click, OnGround | Only spends saved time when all picked conditions are true. KillAura: KillAura is on and has a target. LookingAt: your crosshair is on the enemy. Click: you are holding attack. OnGround: you stand on the ground. |
+| Chance | Decimal | 100.0 | 0.0..100.0 % | How often TickBase uses a chance to hit early. |
+| Cooldown | Integer Range | 0..0 | 0..100 ticks | How long to wait after speeding up before doing it again. |
+| AttackCooldown | Decimal | 1.0 | 0.0..1.0 | How charged your attack has to be when the hit lands. 1.0 is fully charged. Only matters on servers with an attack cooldown (1.9 and newer). |
+| MaxBalance | Integer | 3 | 0..40 ticks | How much time TickBase saves up at most. |
+| ChargeRange | Decimal | 50.0 | 0.0..500.0 | How close an enemy has to be, in blocks, before TickBase starts saving up time. |
+| ChargeSpeed | Decimal | 0.9 | 0.1..1.0 | How fast the game runs while saving up. 1.0 is normal speed and saves nothing. |
+| ChargeWhileUsingItem | Toggle | false | | Also saves up time while you eat, drink or block. |
+| ResetBalanceOnFlag | Toggle | true | | Throws away the saved time when the server pulls you back. |
+| Advantage | Toggleable Group | On | | Only hits early when the enemy cannot hit you right back. |
+| Advantage → EnemyRange | Decimal | 3.0 | 0.0..8.0 blocks | How far away the enemy has to be pushed by your hit to be out of their reach. |
+| Advantage → KnockbackTicks | Integer | 2 | 0..10 ticks | How long after your hit the enemy must not be able to hit back. |
+| Advantage → KnockbackMultiplier | Decimal | 1.0 | 0.0..3.0 | How strong knockback is on this server compared to normal Minecraft. |
+| Advantage → SkipInvulnerable | Toggle | true | | Does not hit early while the enemy still can't take damage from the last hit. |
+| Advantage → EnemyCooldown | Toggle | true | | Also hits early when the enemy's attack is not charged yet. |
+| Advantage → Criticals | Toggle | true | | Also hits early when your hit will be a critical hit. |
+| Visuals | Toggleable Group | On | | Shows where you will be when the hit lands. |
+| Visuals → Color | Color | | | Color of the path and the outline. |
+| Visuals → BalanceRing | Toggle | true | | Shows a ring around your feet that fills up with saved time. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleTickBase.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleTickBase.kt)*

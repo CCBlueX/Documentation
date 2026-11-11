@@ -8,7 +8,7 @@
 #mine diamond_ore iron_ore
 ```
 
-This instructs Baritone to search for and mine diamond ore or iron ore.
+Baritone looks for diamond ore and iron ore and mines them.
 
 You can specify an amount:
 ```

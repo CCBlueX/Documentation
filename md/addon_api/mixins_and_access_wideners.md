@@ -93,3 +93,7 @@ accessible field net/minecraft/client/gui/screens/inventory/AbstractSignEditScre
 The header is separated by tabs and uses the `official` namespace, Mojang's names. `./gradlew build` checks every entry against Minecraft and fails on members that do not exist.
 
 LiquidBounce's own access widener does not carry over. Its entries are plain `accessible` and `mutable`, not `transitive-`, so Loom does not apply them when the add-on compiles. Widen everything the add-on uses in its own file, even members LiquidBounce has widened already.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/resources/liquidbounce.mixins.json)*

@@ -1,34 +1,34 @@
 ## Targets
 
-Defines which entity types are considered targets across the entire client. These settings are shared by all combat modules (e.g. KillAura, Aimbot) and visual modules (e.g. ESP, Nametags).
+Chooses which players and mobs count as targets. Combat modules like KillAura only attack targets from the Combat list, and visual modules like ESP only show targets from the Visual list.
 
-**Aliases:** Enemies
+You can also switch a target on or off with the [`.targets`](/docs/commands/client) command, for example `.targets combat Passive`.
 
 ### Settings
 
-```
-├── Combat (Multi-Select | default: [Players, Hostile, Angerable, WaterCreature, Invisible] | options: Players, Hostile, Angerable, WaterCreature, Passive, Invisible, Dead, Sleeping, Friends)
-└── Visual (Multi-Select | default: [Players, Hostile, Angerable, WaterCreature, Invisible] | options: Self, Players, Hostile, Angerable, WaterCreature, Passive, Invisible, Dead, Sleeping, Friends)
-```
+| Setting | Type | Default | Range | Description |
+|---|---|---|---|---|
+| Combat | Multi-Select | Players, Hostile, Angerable, WaterCreature, Invisible | Players, Hostile, Angerable, WaterCreature, Passive, ArmorStand, Invisible, Dead, Sleeping, Friends | What combat modules attack. |
+| Visual | Multi-Select | Players, Hostile, Angerable, WaterCreature, Invisible | Self, Players, Hostile, Angerable, WaterCreature, Passive, ArmorStand, Invisible, Dead, Sleeping, Friends | What visual modules show. |
 
-### Settings Details
+### What each target means
 
-- **Combat** (Multi-Select) — default: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Invisible`; options: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Passive`, `Invisible`, `Dead`, `Sleeping`, `Friends` — Determines which entity types combat modules will attack. The `Self` option is excluded from combat targeting. Regardless of this setting, entities outside the world border are never attacked, because the server rejects such attacks.
-- **Visual** (Multi-Select) — default: `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Invisible`; options: `Self`, `Players`, `Hostile`, `Angerable`, `WaterCreature`, `Passive`, `Invisible`, `Dead`, `Sleeping`, `Friends` — Determines which entity types visual modules will highlight or display. Includes the `Self` option for rendering your own player in third-person or FreeCam.
-
-### Target Types
-
-| Target | Description |
+| Target | Meaning |
 |---|---|
-| Self | Your own player (visual only, shown in third-person/FreeCam) |
-| Players | Other player entities |
-| Hostile | Hostile mobs (zombies, skeletons, etc.) |
-| Angerable | Neutral mobs that can become hostile (wolves, endermen, etc.) |
-| WaterCreature | Aquatic mobs (dolphins, fish, etc.) |
-| Passive | Passive mobs (cows, pigs, sheep, etc.) |
-| Invisible | Entities with the invisibility effect |
-| Dead | Entities that are currently dead |
-| Sleeping | Players that are sleeping in a bed |
-| Friends | Players on your friend list |
+| Self | You. Only shown when you look at yourself in third person, FreeCam or FreeLook. Visual only. |
+| Players | Other players. |
+| Hostile | Mobs that attack you, like zombies and skeletons. |
+| Angerable | Mobs that only attack when you make them angry, like wolves and endermen. |
+| WaterCreature | Water animals, like fish, squids and dolphins. |
+| Passive | Friendly animals and villagers, like cows, pigs and sheep. |
+| ArmorStand | Armor stands. |
+| Invisible | Lets players and mobs count even while they are invisible. |
+| Dead | Lets players and mobs count while they are dying. |
+| Sleeping | Lets players count while they sleep in a bed. |
+| Friends | Lets players on your friend list count. Without it, your friends are always left alone. |
 
-> **Tip:** You can also configure targets using the `.targets` command. For example: `.targets combat Players` toggles the Players target for combat.
+Combat modules never attack anything outside the world border, because the server would not allow it.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/global/GlobalSettingsTarget.kt)*

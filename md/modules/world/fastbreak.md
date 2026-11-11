@@ -1,8 +1,8 @@
 ## FastBreak
 
-FastBreak lets you mine and break blocks faster than vanilla normally allows. While it's enabled, the time it takes for a block to break is shortened, so you can clear terrain, harvest, or dig through obstacles much more quickly.
+FastBreak lets you break blocks faster. When a block is almost broken, it breaks it right away, and there is no pause before you start on the next block.
 
-You can fine-tune how aggressive the speed-up is with **BreakDamage**, and restrict it to only kick in while you're holding a proper mining tool with **OnlyTool** — handy if you don't want it interfering when you punch blocks by hand. The **Mode** option chooses how FastBreak behaves on the network side, which can help it stay under the radar on servers running certain anti-cheats. If you want to keep digging speed up while moving or jumping, pair it with [NoSlowBreak](/docs/modules/world/noslowbreak), and let [AutoTool](/docs/modules/world/autotool) handle swapping to the best tool automatically.
+Use [AutoTool](/docs/modules/world/autotool) to always hold the best tool, and [NoSlowBreak](/docs/modules/world/noslowbreak) to mine fast in water or in the air.
 
 **Category:** World
 **Enabled by default:** No
@@ -11,9 +11,9 @@ You can fine-tune how aggressive the speed-up is with **BreakDamage**, and restr
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| BreakDamage | Decimal | 0.308 | 0.1..1.0 | How far a block's break progress must reach before FastBreak finishes it instantly. Lower values break blocks sooner (more aggressive); higher values wait until the block is nearly broken on its own. |
-| OnlyTool | Toggle | false | — | When enabled, FastBreak only works while you're holding an appropriate mining tool, leaving bare-hand and other items at normal speed. |
-| Mode | Mode Selector | AbortAnother | None, AbortAnother | Chooses how FastBreak operates. **None** simply applies the faster breaking. **AbortAnother** adds extra block-action packets designed to slip past certain anti-cheats while still breaking quickly. |
+| BreakDamage | Decimal | 0.8 | 0.1..1.0 | How far the block must be broken before it breaks right away. Lower is faster. |
+| OnlyTool | Toggle | false | | Only works while you hold a mining tool. |
+| Mode | Mode Selector | None | None, Grim-2.3.48 | Grim-2.3.48 helps against the Grim anticheat. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleFastBreak.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleFastBreak.kt)*

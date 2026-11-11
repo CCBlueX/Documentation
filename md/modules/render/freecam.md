@@ -1,10 +1,10 @@
 ## FreeCam
 
-FreeCam detaches the camera from your character and lets you fly it freely through the world while your player stays exactly where it is. Use it to scout around corners, peek over walls, check what's behind you, or line up a view that your body can't physically reach — all without moving in-game. Steering uses your normal movement keys, with jump and sneak raising and lowering the camera, and the **Speed** setting controls how fast the camera glides.
+FreeCam lets your camera leave your body and fly around on its own. Your player stays where it is. Steer the camera with your movement keys, use jump to go up and sneak to go down.
 
-Because your real position never changes, FreeCam is great for situational awareness, but it can leave you exposed if something happens while you're "away." The **CancelOn** options let it switch itself off automatically when you take damage, get teleported, actually move, or enter liquid, so you snap back to your body when it matters. It also disables itself on world changes so you never get stuck.
+Use it to look around corners or over walls without moving. FreeCam turns off when you change worlds or leave the server. With **CancelOn** you can also make it turn off when you take damage, get teleported, move, or touch water or lava.
 
-With **AllowCameraInteract** turned on you can interact with blocks and entities from the camera's viewpoint — handy for reaching things behind cover, similar to a ghost-hand style reach. **MidClickCameraTeleport** lets you middle-click to jump the camera to whatever it's looking at, and while the **Navigation** group's key (Left Ctrl by default) is held, your body walks to where the camera looks. For finer control over how aiming behaves while interacting, see the shared [Rotations](/docs/modules/shared-settings/rotations) settings. If you only want to look around without detaching the camera, try [FreeLook](/docs/modules/render/freelook) instead.
+With **AllowCameraInteract** on, you can use and hit blocks and entities from where the camera is. **MidClickCameraTeleport** moves the camera to the spot you are looking at when you middle-click. If **Navigation** is on, holding its key (Left Ctrl) makes your player walk to the spot the camera looks at. If you only want to turn the camera around your player, use [FreeLook](/docs/modules/render/freelook).
 
 <video src="/images/modules/freecam/freecam-navigation.mp4" controls width="600">Your browser does not support the video tag.</video>
 
@@ -15,14 +15,15 @@ With **AllowCameraInteract** turned on you can interact with blocks and entities
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Speed | Decimal | 1.0 | 0.1–2.0 | How fast the camera moves when you steer it with your movement keys. |
-| CancelOn | Multi-Select | [] | Damage, Teleport, Move, Liquid | Automatically turns FreeCam off when any of the selected events happen, snapping the camera back to your body. |
-| MidClickCameraTeleport | Toggle | false | — | Middle-click to teleport the camera to the point it is currently looking at. |
-| KeepSneaking | Toggle | false | — | Keeps your character sneaking while the camera is detached. |
-| Rotations | Setting Group | — | — | See [Shared: Rotations](/docs/modules/shared-settings/rotations). |
-| AllowCameraInteract | Toggleable Group | On | — | Lets you interact with blocks and entities from the camera's perspective, useful for reaching things behind walls or your back. |
-| AllowCameraInteract → LookAt | Toggle | true | — | Aims your character at whatever the camera's crosshair is pointing at while interacting. |
-| Navigation | Toggleable Group | Off | — | See [Shared: AutoWalk](/docs/modules/shared-settings/autowalk). |
+| Speed | Decimal | 1.0 | 0.1 to 2.0 | How fast the camera flies. |
+| CancelOn | Multi-Select | None | Damage, Teleport, Move, Liquid | Turns FreeCam off when one of the picked things happens. |
+| AllowCameraInteract | Toggleable Group | On | | Lets you interact with blocks and entities from the camera. |
+| AllowCameraInteract → LookAt | Toggle | true | | Turns your player toward what the camera is aiming at when you interact. |
+| Navigation | Toggleable Group | Off | | Walks your player to where the camera looks while you hold the key. See [AutoWalk](/docs/modules/shared-settings/autowalk). |
+| Navigation → Key | Key | Left Ctrl | | The key to hold so your player walks to the camera's target. |
+| MidClickCameraTeleport | Toggle | false | | Middle-click to move the camera to the spot you are looking at. |
+| KeepSneaking | Toggle | false | | Keeps your player sneaking while the camera is away. |
+| Rotations | Setting Group | | | See [Rotations](/docs/modules/shared-settings/rotations). |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleFreeCam.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleFreeCam.kt)*

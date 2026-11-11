@@ -1,89 +1,67 @@
 # Using the ClickGUI
 
-The **ClickGUI** is LiquidBounce's main interface for enabling, disabling and configuring modules. You can use it both from the main menu and while you are in a world.
+The ClickGUI is where you turn modules on and off and change their settings. You can open it from the main menu and while you play.
 
 ## Opening the ClickGUI
 
-You can open the ClickGUI in two ways:
+- In a world: press **Right Shift** (you can change this key).
+- On the title screen: click **LiquidBounce → ClickGUI**.
 
-- **In‑game**: Press **RIGHT SHIFT** (default keybind).
-- **From the Title screen**: Click **LiquidBounce → ClickGUI**.
-
-Once opened, the game world is blurred in the background and the ClickGUI panels appear on top.
+The game is blurred in the background and the ClickGUI panels show on top.
 
 ![ClickGUI Overview](/images/get-started/clickgui/clickgui.png)
 
-## Layout and Categories
+## Categories
 
-The ClickGUI is organized into **categories**, each containing a list of modules:
+Modules are sorted into categories. Each category is its own panel:
 
-- **Combat** – Combat hacks (for example Kill Aura).
-- **Movement** – Movement hacks (for example Fly, Speed).
-- **Player** – Player cheats and utilities (for example Chest Stealer, Eagle).
-- **Render** – Visual hacks (for example ESPs and other overlays).
-- **World** – World interaction and automation hacks (for example Auto Farm).
-- **Client** – Client‑side hacks and utilities that affect the client itself.
-- **Misc** – Miscellaneous hacks and features that don’t fit other categories.
-- **Exploit** – Exploit‑focused hacks that abuse server or protocol behavior.
+- **Combat**: fighting, for example KillAura.
+- **Player**: things that help your player, for example ChestStealer or Eagle.
+- **Movement**: moving faster or differently, for example Fly or Speed.
+- **Render**: things you see, for example ESP.
+- **World**: building, mining and farming, for example AutoFarm.
+- **Misc**: modules that fit nowhere else.
+- **Exploit**: tricks that use mistakes in how servers work.
+- **Fun**: modules just for fun.
 
-Each category appears as its own panel. You can scroll inside panels to see more modules and drag panels to reposition them.
+You can scroll inside a panel to see more modules, and drag a panel to move it.
 
 ## Searching for Modules
 
 ![ClickGUI Search and Panels](/images/get-started/clickgui/clickgui-search.png)
 
-When using the search bar:
+Type part of a module name in the search bar (for example `Kill Aura`). Then:
 
-- Type the name of a module (for example `Kill Aura`).
-- Optionally use the **arrow keys** to move through the results; press **ENTER** to toggle the selected module.
-- **Left‑click** on a search result toggles the module.
-- **Right‑click** on a search result opens the **corresponding category panel** and scrolls it so the module is visible.
+- Left-click a result, or pick it with the arrow keys and press **Enter**, to turn it on or off.
+- Right-click a result to open its category panel with the module in view.
 
-## Toggling Modules
+## Turning Modules On and Off
 
-There are two common ways to toggle modules:
+Left-click a module in its panel or in the search results. Modules that are on are highlighted.
 
-1. **From the category panel**
-   - Locate a module in its category panel.
-   - **Left‑click** the module entry to **enable/disable** it.
+## Module Settings
 
-2. **From the search bar results**
-   - Type part of the module name.
-   - **Left‑click** the matching entry to toggle it directly.
+Most modules have settings, such as modes, ranges or a key. To open them, right-click the module in its panel (you can search for it and right-click the result to jump there).
 
-Enabled modules are highlighted so you can see which hacks are currently active.
+In the settings you can:
 
-## Opening Module Settings
-
-Most modules have additional settings such as modes, ranges or keybinds. To open these settings:
-
-1. Find the module in its **category panel** (you can use the search bar and then right‑click the result to jump to it).
-2. **Right‑click** the module entry.
-3. A detailed **settings view** for that module opens.
-
-In the settings view you can typically:
-
-- Change the **bind** (key used to toggle the module without opening ClickGUI).
-- Enable **Hidden** if you want the module not to show in the HUD Array List.
-- Adjust **sliders** (for example range, speed, delay).
-- Toggle additional **options** and **sub‑features**.
+- Change the **bind**, the key that turns the module on and off without opening the ClickGUI.
+- Turn on **Hidden** so the module does not show in the Array List on your HUD.
+- Move sliders, for example range, speed or delay.
+- Turn other options on or off.
 
 ![Module Settings Panels](/images/get-started/clickgui/clickgui-settings.png)
 
-When you are done configuring, you can simply close the settings view by right clicking the module again; your changes are saved automatically.
+Right-click the module again to close its settings. Your changes are saved by themselves.
 
 ## Tabs
 
 The bar at the top switches between tabs. The ClickGUI opens on the tab you used last.
 
 - **ClickGUI**: the module panels described on this page.
-- **HUD Editor**: arrange the components of your HUD, see [HUD Customization](/docs/theme-system/hud-customization).
+- **HUD Editor**: move the parts of your HUD around, see [HUD Customization](/docs/theme-system/hud-customization).
 - **Settings**: settings for the whole client, such as the language and the command prefix.
 
 ## Closing the ClickGUI
 
-To close the ClickGUI:
-
-- Press **ESC**.
-
-Once closed, you are back in the game or main menu with your configured hacks.
+Press **Esc**.

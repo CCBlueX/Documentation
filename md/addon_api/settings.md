@@ -366,21 +366,6 @@ private val hotbar by itemList("Hotbar", mutableListOf(Items.DIAMOND_SWORD, Item
 
 <hr>
 
-#### `item(name, default)`
-Creates a setting holding a single item. <br>
-
-| Property | Description                                | Required | Type     | Default |
-|----------|--------------------------------------------|----------|----------|---------|
-| name     | Name under which the setting is displayed. | Yes      | `String` |         |
-| default  | Initial value.                             | Yes      | `Item`   |         |
-
-**Example:**
-```kotlin
-private val weapon by item("Weapon", Items.DIAMOND_SWORD)
-```
-
-<hr>
-
 #### `vec2f(name, default)`, `vec3i(name, default, useLocateButton, aliases)` and `vec3d(...)`
 Create a vector setting. With `useLocateButton`, the ClickGUI shows a button that sets a 3D vector to the block the player looks at, or to the player's position. <br>
 
@@ -487,6 +472,10 @@ private val secret by text("Secret", "")
     .doNotIncludeAlways()
 ```
 
-Several `onChange` listeners on the same setting are chained in the order they were registered: each one receives the value returned by the previous one, and the value returned by the last one is applied.
+When several `onChange` listeners are registered on one setting, they run in order. Each one receives the value the previous one returned, and the last one's result is applied.
 
 `get()`, `set(value)` and `restore()` read, change and reset a `Value` directly. `asStateFlow()` exposes it as a Kotlin `StateFlow`.
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/config/types/group/ValueGroup.kt)*

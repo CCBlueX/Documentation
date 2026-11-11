@@ -1,6 +1,6 @@
 # How to install LiquidBounce
 
-This guide will walk you through the process of installing LiquidBounce using LiquidLauncher, the recommended and easiest way to get started.
+This guide shows you how to install LiquidBounce with LiquidLauncher. It is the easiest way to get started.
 
 ## System Requirements
 
@@ -55,11 +55,9 @@ Follow the installation wizard that appears:
    
    ![LiquidLauncher First Launch](/images/get-started/installation/9-launcher-sign-in.png)
 
-2. Choose your login method:
-   - **Microsoft Login**: For players with purchased Minecraft accounts (recommended)
-   - **Offline Mode**: For players without a purchased account (limited server access)
-
-   > **Note**: Offline mode will only allow you to join servers that have online-mode disabled.
+2. Choose how to log in:
+   - *Microsoft Login* is for players who bought Minecraft. Use this if you can.
+   - *Offline Mode* is for players without a bought account. You can only join servers that do not check accounts (servers with online mode turned off).
 
 3. If you selected Microsoft Login:
    - Click "Microsoft login" and sign in in the window that opens, or click "Microsoft device login" to sign in on another device
@@ -78,9 +76,9 @@ Follow the installation wizard that appears:
    
    ![Accept Microsoft Terms](/images/get-started/installation/12-launcher-sign-in-on-microsoft-accept-terms.png)
 
-   > **Security Note**: LiquidBounce NEVER gets full access to your Microsoft account. The access is limited to Xbox Live profile information required for Minecraft authentication. Your account credentials are only stored locally on your device.
+   > LiquidBounce never gets full access to your Microsoft account. It only sees your Xbox Live profile, which Minecraft needs to log you in. Your login is only saved on your own computer.
    >
-   > Check our [Trustpilot reviews](https://www.trustpilot.com/review/liquidbounce.net) to see what other users think about our client.
+   > You can read what other players think about us on [Trustpilot](https://www.trustpilot.com/review/liquidbounce.net).
 
 ### 4. Launch LiquidBounce
 
@@ -88,7 +86,7 @@ Follow the installation wizard that appears:
    
    ![Launcher Main Screen](/images/get-started/installation/13-launch-liquidbounce.png)
 
-2. On first launch, you'll see an advertisement page. This helps support LiquidBounce development.
+2. The first time, you see an advertisement page. Ads help pay for LiquidBounce.
    
    ![Advertisement Page](/images/get-started/installation/14-launch-liquidbounce-first-download-on-skip-page.png)
    
@@ -98,27 +96,27 @@ Follow the installation wizard that appears:
    
 4. Click "Download" to begin downloading LiquidBounce
    
-5. The launcher will download all necessary Minecraft assets, dependencies, and set up LiquidBounce
+5. The launcher downloads Minecraft and everything LiquidBounce needs
    
    ![Download Progress](/images/get-started/installation/16-launch-liquidbounce-wait-for-installation.png)
 
 ### 5. First Launch
 
-1. LiquidBounce will start and download additional dependencies:
-   - Chromium for the GUI
-   - Deep Learning resources for AI-assisted modules
+1. LiquidBounce starts and downloads a few more things:
+   - Chromium, which draws the menus
+   - Deep Learning files for modules that use AI
    
    ![Initial Setup](/images/get-started/installation/17-launch-liquidbounce-wait-for-installation-of-dependencies.png)
    
-   > **Note**: The Deep Learning system might not be supported on every system and may skip installation on unsupported hardware.
+   > Deep Learning does not work on every computer. If yours is not supported, this step is skipped.
 
-2. Once complete, you'll see the LiquidBounce main menu!
+2. When it is done, you see the LiquidBounce main menu.
    
    ![Main Menu](/images/get-started/installation/18-lauch-liquidbounce-complete.png)
 
 ## Next Steps
 
-Congratulations! You've successfully installed LiquidBounce. To learn how to use the client, start with the introduction and then read the following guides:
+LiquidBounce is now installed. To learn how to use it, start with the introduction and then read these guides:
 
 - [Introduction](/docs/usage/introduction)
 - [Using the Account Manager](/docs/usage/account-manager)
@@ -126,7 +124,7 @@ Congratulations! You've successfully installed LiquidBounce. To learn how to use
 
 ## Manual Installation
 
-If you prefer not to use LiquidLauncher, you can manually install LiquidBounce. See our [Manual Installation Guide](/docs/get-started/manual-installation) for detailed instructions.
+If you do not want to use LiquidLauncher, you can install LiquidBounce by hand. See the [Manual Installation Guide](/docs/get-started/manual-installation).
 
 ---
 

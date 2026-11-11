@@ -126,3 +126,7 @@ writes the add-on to `build/libs/`, as `example-addon-1.0.0+26.3.jar` next to a 
 - [LiquidBounce-Addon-Extras](https://github.com/CCBlueX/LiquidBounce-Addon-Extras): modules in Kotlin and Java side by side, each covered by a game test.
 - [LiquidBounce-Addon-ScriptAPI](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI): a larger add-on with Mixins into LiquidBounce.
 - [LiquidBounce-Addon-Wry](https://github.com/CCBlueX/LiquidBounce-Addon-Wry): a [browser backend](/docs/add-on-api/developers/browser-backends).
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/addon/LiquidBounceAddon.kt)*

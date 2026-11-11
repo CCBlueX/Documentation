@@ -1,45 +1,45 @@
 ## Commands Overview
 
-LiquidBounce provides a comprehensive set of **commands** that you can type in the Minecraft chat to control the client. All commands begin with the configured prefix (default: `.`).
+Commands are short messages you type into the Minecraft chat to control LiquidBounce. Every command starts with the prefix, which is a dot (`.`) unless you changed it.
 
-Commands are organized into the following categories:
+The commands are split into these pages:
 
-- [Client Commands](/docs/Commands/Client%20Commands) — Manage the client, modules, bindings, friends, and configurations.
-- [In-Game Commands](/docs/Commands/In-Game%20Commands) — Utilities for in-game information such as coordinates, ping, TPS, and server info.
-- [Creative Commands](/docs/Commands/Creative%20Commands) — Item manipulation commands for Creative mode.
-- [Module Commands](/docs/Commands/Module%20Commands) — Commands tied to specific modules (XRay, AutoDisable, InvSee, etc.).
-- [Translation Commands](/docs/Commands/Translation%20Commands) — Translate text and configure auto-translation.
-- [Marketplace Commands](/docs/Commands/Marketplace%20Commands) — Browse and manage marketplace items.
+- [Client](/docs/commands/client): modules, key binds, friends, configs and client settings.
+- [In-Game](/docs/commands/in-game): your position, ping, the server, teleporting and walking.
+- [Creative](/docs/commands/creative): give, rename and enchant items in Creative mode.
+- [Module](/docs/commands/module): extra controls for a few modules, like XRay and AutoDisable.
+- [Translate](/docs/commands/translate): translate chat text into another language.
+- [Marketplace](/docs/commands/marketplace): find and install themes, add-ons and scripts.
 
-### Quick Reference
+### Quick reference
 
-| Command | Description |
+| Command | What it does |
 |---|---|
-| `.help` | List all available commands |
-| `.toggle <module>` | Enable or disable a module |
-| `.bind <module> <key>` | Bind a module to a key |
-| `.friend add <name>` | Add a player to your friend list |
-| `.config load <config>` | Load a config from the marketplace |
-| `.panic` | Disable all active modules |
-| `.client prefix <prefix>` | Change the command prefix |
-| `.ping` | Show your current ping |
-| `.coordinates` | Show your current position |
+| `.help` | Lists all commands |
+| `.toggle <module>` | Turns a module on or off |
+| `.bind <module> <key>` | Puts a module on a key |
+| `.friend add <name>` | Adds a player to your friends |
+| `.config load <config>` | Loads a config from the marketplace |
+| `.panic` | Turns off every module except Render modules |
+| `.client prefix <prefix>` | Changes the command prefix |
+| `.ping` | Shows your ping |
+| `.coordinates info` | Shows where you are |
 
-### Usage
+### How to type commands
 
-Type commands in the Minecraft chat window. The command prefix (default: `.`) must be the first character. Arguments in `<angle brackets>` are required, and arguments in `[square brackets]` are optional.
+Open the chat and start your message with the prefix. Words in `<angle brackets>` must be filled in. Words in `[square brackets]` are optional and can be left out. Press Tab while typing to see suggestions.
 
 ```
 .toggle KillAura
 .bind Speed left.alt
 .friend add SenkJu
-.friend add SenkJu "Senk Ju"
+.friend add SenkJu Senk
 .value set modules.killaura.range 4.5
 .value set settings.commands.prefix !
 ```
 
-> **Note:** Use double quotes around arguments that contain spaces, for example `.friend add SenkJu "Senk Ju"`.
+If a value has spaces in it, put it in double quotes, for example `.config load "Author/My Config"`.
 
-> Minecraft usernames cannot contain spaces — the example `.friend add "Senk Ju"` as a username is invalid. Quotes are useful for aliases or display names when the command supports them.
+---
 
-**Total: 40 commands**
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/command/CommandManager.kt)*

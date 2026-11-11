@@ -1,10 +1,8 @@
 ## NoEntityInteract
 
-NoEntityInteract prevents your client from registering right-click interactions with entities when your crosshair is aimed at them. This is useful in situations where you want to avoid accidentally opening a villager's trade menu, mounting a horse, or triggering other entity interactions while performing other actions — for example, when placing blocks, mining, or fighting near entities you don't intend to engage with.
+NoEntityInteract stops right-clicks on mobs and other entities, so you don't open a villager's trades or touch an armor stand by accident while you build, mine or fight.
 
-The module provides two independent filters that both must pass for an interaction to be blocked. The **entity type filter** controls which entity types are affected, defaulting to a blacklist covering villagers and armor stands. The **holding item filter** controls which items in your main hand trigger the block, defaulting to a whitelist that includes empty hand, shears, TNT, buckets, cobweb, and all mining tools — so the module only activates when holding those items, leaving normal interaction intact when you're holding a sword or other gear.
-
-You can freely adjust both filters to match your play style: switch either to the opposite mode, or add and remove entries to target exactly the entities and held items you care about. For a similar module that suppresses block interactions instead of entity interactions, see [NoBlockInteract](/docs/modules/player/noblockinteract).
+Both filters have to match for a click to be blocked. By default that means right-clicking a villager or armor stand does nothing while your hand is empty or you hold shears, TNT, a water or lava bucket, cobweb or a mining tool. Holding anything else, like a sword, works as normal.
 
 **Category:** Player
 **Enabled by default:** No
@@ -13,10 +11,10 @@ You can freely adjust both filters to match your play style: switch either to th
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| EntityTypeFilter | Choice | Blacklist | — | Determines how the EntityTypes list is applied. `Blacklist` blocks interaction with the listed entity types; `Whitelist` allows interaction only with the listed entity types. |
-| EntityTypes | Registry List | — | — | The entity types checked by EntityTypeFilter. Defaults to Villager and Armor Stand. |
-| HoldingItemFilter | Choice | Whitelist | — | Determines how the HoldingItems list is applied. `Whitelist` blocks interaction only when holding a listed item; `Blacklist` blocks interaction when holding any item not in the list. |
-| HoldingItems | Registry List | — | — | The items checked by HoldingItemFilter. Defaults to empty hand, Shears, TNT, Water Bucket, Lava Bucket, Cobweb, and all mining tools. |
+| EntityTypeFilter | Choice | Blacklist | Blacklist, Whitelist | Blacklist blocks the listed entities. Whitelist blocks every entity except the listed ones. |
+| EntityTypes | Registry List | Villager, Armor Stand | | Entities used by EntityTypeFilter. |
+| HoldingItemFilter | Choice | Whitelist | Blacklist, Whitelist | Whitelist blocks clicks only while you hold a listed item. Blacklist blocks clicks while you hold anything not listed. |
+| HoldingItems | Registry List | Air, Shears, TNT, Water Bucket, Lava Bucket, Cobweb, mining tools | | Items used by HoldingItemFilter. Air means an empty hand. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleNoEntityInteract.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/ModuleNoEntityInteract.kt)*

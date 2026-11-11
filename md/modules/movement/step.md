@@ -1,28 +1,28 @@
 ## Step
 
-Step lets you walk up full blocks — and taller obstacles, depending on the mode — without needing to jump manually. Whenever you walk into a ledge, the module handles the upward movement for you automatically, keeping your traversal fluid and uninterrupted.
+Step lets you walk up full blocks without jumping. Some modes can step up even taller walls.
 
-**Legit** works with vanilla auto-jump and looks the most natural of the available options. **Instant** overrides your step height directly and can optionally send a series of jump-arc packets afterward to mask the movement from anticheats. **Vulcan286** is tuned for the Vulcan anticheat around version 2.8.6, **BlocksMC** targets the BlocksMC network using a timer-based approach, and **Hypixel** uses a jump-velocity sequence designed for Hypixel's anticheat with optional ground-state spoofing.
-
-If you also want to descend ledges more quickly rather than drifting down naturally, take a look at [ReverseStep](/docs/modules/movement/reversestep).
+Instant lets you pick how tall a step can be. Legit uses the game's own auto-jump and looks the most normal. Vulcan-2.8.6, BlocksMC and Hypixel-2025-03-11 are made for those anti-cheats and servers. To go down ledges faster, use [ReverseStep](/docs/modules/movement/reversestep).
 
 **Category:** Movement
 **Enabled by default:** No
 
 ### Settings
 
+Ticks are game steps, 20 per second.
+
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Legit | — | Stepping implementation to use. Options: Instant, Legit, Vulcan286, BlocksMC, Hypixel. Pick the one that matches your server's anticheat. |
-| Mode → [Instant] → Height | Decimal | 1.0 | 0.6..5.0 | Maximum block height that can be stepped up in a single movement. |
-| Mode → [Instant] → Trim | Toggle | false | — | Caps the simulated jump Y position to the actual step destination, preventing the player from visibly overshooting the block. |
-| Mode → [Instant] → SimulateJumpOrder | Integer Range | 8..8 | 0..8 | Range of jump-arc packets sent after each step to mimic natural jump motion and reduce anticheat flags. Set to 0..0 to skip packet simulation entirely. |
-| Mode → [Instant] → Wait | Integer Range | 5..5 | 0..60 | Cooldown between consecutive step operations, in ticks. |
-| Mode → [Instant] → PacketType | Choice | Full | — | Format of the movement packets sent during jump simulation. Options: PositionAndOnGround, Full. |
-| Mode → [BlocksMC] → BaseTimer | Decimal | 4.0 | 0.1..5.0 | Timer speed multiplier applied at the start of the step sequence. |
-| Mode → [BlocksMC] → RecoveryTimer | Decimal | 0.8 | 0.1..5.0 | Timer speed multiplier applied during the recovery phase after the step completes. |
-| Mode → [Hypixel] → AlternateBypass | Toggle | true | — | Uses an alternate bypass strategy for taller steps (above 1.25 blocks) when the standard jump sequence is not sufficient. |
-| Mode → [Hypixel] → Spoof | Toggle | true | — | Spoofs the ground-state flag in movement packets to assist with bypassing Hypixel's anticheat detection. |
+| Mode | Mode Selector | Instant | Instant, Legit, Vulcan-2.8.6, BlocksMC, Hypixel-2025-03-11 | How you step up. Pick the one that fits the server. |
+| Mode → [Instant] → Height | Decimal | 1.0 | 0.6..5.0 | Tallest step you can walk up, in blocks. |
+| Mode → [Instant] → Trim | Toggle | false | | Stops the fake jump from going higher than the block you step on. |
+| Mode → [Instant] → SimulateJumpOrder | Integer Range | 0..2 | 0..8 | Which parts of a normal jump are sent to the server after a step, so it looks like you jumped. 0..0 sends none. |
+| Mode → [Instant] → Wait | Integer Range | 0..0 | 0..60 ticks | How long to wait before the next step. |
+| Mode → [Instant] → PacketType | Choice | Full | Full, PositionAndOnGround | What kind of movement messages the fake jump sends. |
+| Mode → [BlocksMC] → BaseTimer | Decimal | 3.0 | 0.1..5.0 | Game speed while stepping up. |
+| Mode → [BlocksMC] → RecoveryTimer | Decimal | 0.6 | 0.1..5.0 | Game speed right after the step, to even things out. |
+| Mode → [Hypixel-2025-03-11] → AlternateBypass | Toggle | false | | Uses another trick for steps taller than 1.25 blocks. |
+| Mode → [Hypixel-2025-03-11] → Spoof | Toggle | false | | Tells the server you are on the ground during the step. |
 
 ---
-*Last updated: 2026-06-08 — Based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/2b0edfcf2/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/step/ModuleStep.kt)*
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/step/ModuleStep.kt)*

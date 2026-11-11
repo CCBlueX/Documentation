@@ -2,15 +2,15 @@
 
 ## About the "App is damaged" Warning
 
-When downloading and running LiquidLauncher on macOS (especially on Apple Silicon Macs like M1/M2/M3), you may encounter an error message that says:
+On macOS (especially on Apple Silicon Macs like M1, M2 or M3), you may see this message when you open LiquidLauncher:
 
 > "LiquidLauncher" is damaged and can't be opened. You should move it to the trash.
 
-This message appears because LiquidLauncher is not signed with an Apple Developer certificate. Apple requires applications to be signed with a paid developer certificate ($99/year) to run without warnings, which is something we currently don't provide.
+The app is not broken. macOS shows this because LiquidLauncher is not signed with an Apple developer certificate, which costs $99 a year and which we do not have.
 
 ## How to Fix the Issue
 
-To fix this issue, you'll need to remove the quarantine attribute that macOS adds to downloaded applications. This can be done with a simple Terminal command.
+macOS marks every app you download from the internet as "quarantined". You can remove that mark with one Terminal command.
 
 ### Method 1: Using Terminal Command
 
@@ -27,14 +27,14 @@ xattr -d com.apple.quarantine /Applications/LiquidLauncher.app
 
 ### What Does This Command Do?
 
-The `xattr -d com.apple.quarantine` command removes the quarantine attribute that macOS automatically adds to applications downloaded from the internet. This attribute is what causes macOS to display the warning message.
+It removes the quarantine mark from LiquidLauncher, so macOS stops showing the warning.
 
-- `xattr`: This command is used to display and manipulate extended attributes of files
-- `-d`: This flag tells xattr to delete an attribute
-- `com.apple.quarantine`: This is the specific attribute that marks the file as downloaded from the internet
-- `/Applications/LiquidLauncher.app`: This is the path to the LiquidLauncher application
+- `xattr` shows and changes extra information stored on files
+- `-d` deletes one piece of that information
+- `com.apple.quarantine` is the mark that says the file came from the internet
+- `/Applications/LiquidLauncher.app` is where LiquidLauncher is installed
 
-### Method 2: System Preferences (Less Recommended)
+### Method 2: System Preferences
 
 You can also try allowing the app through System Preferences:
 
@@ -42,10 +42,8 @@ You can also try allowing the app through System Preferences:
 2. On the General tab, you might see a message about LiquidLauncher being blocked
 3. Click "Open Anyway" to override the security check
 
-**Note:** This method may not always work for unsigned applications, which is why the Terminal command is the recommended solution.
+This does not always work for unsigned apps, so try the Terminal command first.
 
 ## Is This Safe?
 
-Yes, this is safe as long as you've downloaded LiquidLauncher from our official website or GitHub repository. The quarantine attribute is a security feature designed to prevent unknown applications from running, but since you've intentionally downloaded our application, it's safe to bypass in this case.
-
-We're working on improving our macOS support, but until then, this workaround will let you use LiquidLauncher on all macOS systems including Apple Silicon Macs.
+Yes, as long as you downloaded LiquidLauncher from our website or our GitHub page. The quarantine mark is there to stop apps you did not mean to open. You downloaded LiquidLauncher on purpose, so removing it is fine.

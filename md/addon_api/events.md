@@ -15,7 +15,7 @@ A handler runs only while its listener's `running` is true:
 | `LiquidBounceAddon`        | the add-on's state is `LOADED`                                        |
 | any other `EventListener`  | always, unless `running` is overridden                                |
 
-Handlers are registered once and stay registered. They are skipped while their listener is not running, they are not added and removed on every toggle.
+Handlers are registered once and stay registered. While their listener is not running, the client skips them.
 
 ### Handlers
 
@@ -107,7 +107,7 @@ Handling the event itself is over once the sequence first waits, so cancelling o
 
 `waitTicks`, `waitSeconds` and `tickUntil` resume on the render thread, `waitMatches` on the thread that raised the matching event. When the listener stops running, for example because the module was disabled, its sequences are cancelled at their next wait.
 
-If the condition passed to `tickUntil` throws, the sequence resumes with that exception instead of staying suspended, so it can be caught around the wait and `finally` blocks run as usual.
+If the condition passed to `tickUntil` throws, the exception is thrown from `tickUntil`, so you can catch it around the wait.
 
 ### Without Kotlin
 
@@ -187,3 +187,7 @@ These events are part of the [stable API](/docs/add-on-api/developers/stable-api
 | `RefreshArrayListEvent`          | Raise it to make the HUD's module list read names and tags again.                                       |
 | `FriendChangeEvent`              | When a friend is added or removed.                                                                      |
 | `NotificationEvent`              | When a notification is shown.                                                                           |
+
+---
+
+*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/event)*
