@@ -38,4 +38,5 @@ There are many reasons why your cosmetics might not be visible. Confirm the foll
 If neither of these solved your problem try the following:
 
 1. Login to your account again using the account manager.
-2. Contact us via our [contact page](https://ccbluex.net/contact) or [Discord](https://liquidbounce.net/discord).
+2. Send `.client cosmetics refresh` into the chat to fetch the cosmetics again. If the cosmetics could not be fetched, for example because the API is unreachable, the chat message tells you why.
+3. Contact us via our [contact page](https://ccbluex.net/contact) or [Discord](https://liquidbounce.net/discord).
