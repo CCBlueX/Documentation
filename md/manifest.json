@@ -39,6 +39,8 @@
         "Blink Manager": "global-settings/blink-manager.md",
         "Client Chat": "global-settings/client-chat.md",
         "Commands": "global-settings/commands.md",
+        "Gui Renderer": "global-settings/gui-renderer.md",
+        "Language": "global-settings/language.md",
         "Rich Presence": "global-settings/rich-presence.md",
         "Rotation Manager": "modules/render/rotations.md",
         "Targets": "global-settings/targets.md",
@@ -232,6 +234,7 @@
             "Trajectories": "modules/render/trajectories.md",
             "TrueSight": "modules/render/truesight.md",
             "VoidESP": "modules/render/voidesp.md",
+            "Wings": "modules/render/wings.md",
             "XRay": "modules/render/xray.md",
             "Zoom": "modules/render/zoom.md"
         },

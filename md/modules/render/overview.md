@@ -2,7 +2,7 @@
 
 Render modules change what you see on your screen. They can show players and blocks through walls, add effects, change the camera or tweak the HUD. Other players never see these changes.
 
-There are **59** modules in this category:
+There are **60** modules in this category:
 
 - [AntiBlind](/docs/modules/render/antiblind): hides screen effects that block your view, like blindness or pumpkin overlays.
 - [Aspect](/docs/modules/render/aspect): stretches or squeezes the picture sideways.
@@ -61,6 +61,7 @@ There are **59** modules in this category:
 - [Trajectories](/docs/modules/render/trajectories): shows where arrows and other thrown things will land.
 - [TrueSight](/docs/modules/render/truesight): shows invisible players, mobs and blocks.
 - [VoidESP](/docs/modules/render/voidesp): marks places where you could fall into the void.
+- [Wings](/docs/modules/render/wings): draws wings on your back and on your friends.
 - [XRay](/docs/modules/render/xray): shows only the blocks you pick, like ores.
 - [Zoom](/docs/modules/render/zoom): zooms your view in.
 
