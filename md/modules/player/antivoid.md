@@ -2,7 +2,7 @@
 
 AntiVoid saves you when you are about to fall into the void. It looks a short moment ahead, and if there is nothing under you all the way down, it catches you and shows a notification. Turn it on for maps with void edges, like Bedwars or Skywars, where a knockback hit can throw you off.
 
-It does nothing while [Fly](/docs/modules/movement/fly) is on. Blink mode also waits while [Scaffold](/docs/modules/world/scaffold) is on.
+It does nothing while [Fly](/docs/modules/movement/fly) is on or while [Clutch](/docs/modules/world/clutch) is catching a fall. Blink mode also waits while [Scaffold](/docs/modules/world/scaffold) is on.
 
 **Mode** picks how it saves you:
 

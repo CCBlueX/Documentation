@@ -250,6 +250,7 @@
             "BedDefender": "modules/world/beddefender.md",
             "BlockIn": "modules/world/blockin.md",
             "BlockTrap": "modules/world/blocktrap.md",
+            "Clutch": "modules/world/clutch.md",
             "Extinguish": "modules/world/extinguish.md",
             "FastBreak": "modules/world/fastbreak.md",
             "FastPlace": "modules/world/fastplace.md",

@@ -12,6 +12,7 @@ World modules help you build, mine, farm and change the world around you.
 - [BedDefender](/docs/modules/world/beddefender): covers your bed with blocks in BedWars.
 - [BlockIn](/docs/modules/world/blockin): builds blocks all around you.
 - [BlockTrap](/docs/modules/world/blocktrap): traps enemies in blocks.
+- [Clutch](/docs/modules/world/clutch): places blocks under you when you get knocked into the void.
 - [Extinguish](/docs/modules/world/extinguish): puts out fire on you with water.
 - [FastBreak](/docs/modules/world/fastbreak): break blocks faster.
 - [FastPlace](/docs/modules/world/fastplace): place blocks faster.
