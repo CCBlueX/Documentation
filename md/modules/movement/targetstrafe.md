@@ -15,8 +15,9 @@ The Planner checks each next spot before you move there, so you do not run into 
 |---|---|---|---|---|
 | Mode | Mode Selector | Motion | Motion, Input | Motion changes your movement directly. Input presses the movement keys for you. |
 | Mode → [Motion] → Hypixel | Toggle | false | | Matches the circling to [Speed](/docs/modules/movement/speed)'s Hypixel hops so you keep your speed. |
-| Range | Decimal | 2.95 | 0.0..8.0 | How far from the target you circle. |
-| FollowRange | Decimal | 4.0 | 0.0..10.0 | Only circles when the target is closer than this. It is never smaller than Range. |
+| Range | Decimal | 2.95 | 0.0..8.0 | How far from the target you circle. Height counts too, so when you are above or below the target the circle gets smaller. |
+| FollowRange | Decimal | 4.0 | 0.0..10.0 | Only circles when the target is closer than this, counting height too. It is never smaller than Range. |
+| VerticalRange | Decimal | 2.0 | 0.0..8.0 | Does not circle targets that are more than this many blocks above or below you. |
 | Requirements | Multi-Select | none | Space, Speed, KillAura, Ground | Everything picked here must be true: Space (jump key held), Speed (Speed is on), KillAura (KillAura is on), Ground (you stand on the ground). |
 | Planner | Toggleable Group | on | | Checks each next spot before moving there. |
 | Planner → ControlDirection | Toggle | true | | Pressing left or right picks which way you circle. |
@@ -28,6 +29,7 @@ The Planner checks each next spot before you move there, so you do not run into 
 | Planner → AdaptiveRange | Toggleable Group | off | | When a spot is blocked, tries other distances before turning around. |
 | Planner → AdaptiveRange → MaxRange | Decimal | 4.0 | 1.0..5.0 | Largest distance it tries. |
 | Planner → AdaptiveRange → RangeStep | Decimal | 0.5 | 0.1..1.0 | How much the distance changes with each try. |
+| Planner → Visibility | Toggleable Group | on | | When a wall is between you and the target, circles toward the side where you see the target sooner. If neither side shows the target within SearchDistance, it stops circling. |
 | Visuals | Toggleable Group | on | | Draws the ring and the next-spot dot. |
 | Visuals → Width | Decimal | 0.12 | 0.01..1.0 | How thick the ring is. |
 | Visuals → HeightOffset | Decimal | 0.05 | -1.0..1.0 | Moves the ring and dot up or down. |
