@@ -92,7 +92,7 @@ private fun <T> ClientGameTestContext.client(block: (Minecraft) -> T): T =
 
 ### Tests on the game test server
 
-A server game test plays on a real Paper server with an anticheat watching. The test joins under a bot name of its own and gets worlds of its own, from any seed, where it runs commands such as `summon` or `fill`. It fails when the server objects to what the client did: a flag or a setback from the anticheat, a movement Paper corrected, or a kick. The server and the harness are [CCBlueX Gametest](https://github.com/CCBlueX/gametest). Its [protocol](https://github.com/CCBlueX/gametest/blob/main/docs/protocol.md) is documented, so a test that does not use the harness can play there too.
+A server game test plays on a real Paper server with an anticheat watching. The test joins under a bot name of its own and gets worlds of its own, from any seed, where it runs commands such as `summon` or `fill`. An attempt fails when the server objects to what the client did more than 5 times (flags from the anticheat, movements Paper corrected or client errors; a setback after a flag does not count) and fails at once on a kick, a refused command or a lost connection. A failed test runs again up to 2 times under a new name. A test can change both limits. The server and the harness are [CCBlueX Gametest](https://github.com/CCBlueX/gametest). Its [protocol](https://github.com/CCBlueX/gametest/blob/main/docs/protocol.md) is documented, so a test that does not use the harness can play there too.
 
 LiquidBounce publishes `net.ccbluex:liquidbounce-gametest` in the same versions as the client. It brings the harness with it:
 
