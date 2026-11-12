@@ -14,6 +14,7 @@ Some modules, like [Blink](/docs/modules/player/blink) and [FakeLag](/docs/modul
 | Esp → [Wireframe] → Color | Color | `#242093`, 34% opacity | | Fill color of the wireframe player. |
 | Esp → [Wireframe] → OutlineColor | Color | `#242093` | | Line color of the wireframe player. |
 | Line | Color | `#4677FF` | | Color of the line along the path you moved while held back. |
+| Render | Choice | Plain | Plain, Shader | **Plain** draws the line normally. **Shader** draws it with a shader effect, and its **Style** setting picks how that looks. |
 
 Your held-back movement is sent all at once when the module lets go. It is also sent when the server teleports you and when you die or respawn. Chat messages are never held back.
 

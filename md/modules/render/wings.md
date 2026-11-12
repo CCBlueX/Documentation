@@ -23,6 +23,7 @@ Draws glowing wings on your back. Your friends can get wings too. Only you see t
 | Mode → [Lines] → LinesCount | Integer | 4 | 1..12 | How many lines each wing has. |
 | Mode → [Lines] → Angles | Integer Range | 10..37 | 1..90 | The angles, in degrees, the lines spread between. |
 | Mode → [Lines] → Color | Color | LiquidBounce blue | | The color of the wings. |
+| Mode → [Lines] → Render | Choice | Plain | Plain, Shader | **Plain** draws the wings normally. **Shader** draws them with a shader effect, and its **Style** setting picks how that looks. |
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/613dfacc9/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/wings)*

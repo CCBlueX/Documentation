@@ -21,6 +21,7 @@ Use **Filter** and **Items** to choose which items show. With **Blacklist** ever
 | ShowArrows → ArrowsWithEffects | Toggle | true | | Tipped arrows with potion effects. |
 | ShowTridents | Toggle | true | | Highlights thrown tridents. |
 | Mode | Mode Selector | Glow | Glow, Box, Legacy2D | How items are highlighted: a glow, a 3D box, or a flat marker. |
+| Mode → Glow → Style | Mode Selector | Smooth | Vanilla, Smooth, Outline, Neon, Rainbow, Ripple, Hologram, Halftone, Chromatic, Aura | How the glow looks. The styles and their settings are the same as in [ESP](/docs/modules/render/esp). |
 | Mode → Box → MergeIntersecting | Toggle | false | | Joins boxes that overlap into one shape. |
 | Mode → Legacy2D → Scale | Decimal | 0.1 | 0.02 to 0.3 | Size of the marker. |
 | Mode → Legacy2D → YOffset | Decimal | 0.0 | -1.0 to 1.0 | Moves the marker up or down. |

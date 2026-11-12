@@ -25,16 +25,16 @@ The hat can also show above your friends. It turns red for a moment when the pla
 | Mode → Cone → HatSettings → Peak | Decimal | 0.3 | 0.01 to 2.0 | How tall the cone is. |
 | Mode → Cone → RadiusSettings → OuterRadius | Decimal | 0.6 | 0.1 to 2.0 | How wide the cone is. |
 | Mode → Cone → Colors → SyncColors | Toggle | true | | Uses only the first color instead of mixing both. |
-| Mode → Cone → Colors → FirstColor | Color | LiquidBounce blue | | The main color. |
-| Mode → Cone → Colors → SecondColor | Color | Light LiquidBounce blue | | The second color, used when SyncColors is off. |
+| Mode → Cone → Colors → FirstColor | Color | LiquidBounce blue, alpha 125 | | The main color. |
+| Mode → Cone → Colors → SecondColor | Color | Light LiquidBounce blue, alpha 125 | | The second color, used when SyncColors is off. |
 | Mode → Cone → Colors → SpinSpeed | Decimal | 1.0 | 0.0 to 10.0 | How fast the colors move around the hat. |
 | Mode → Halo → HatSettings → Radius | Decimal | 0.3 | 0.1 to 2.0 | Size of the ring. |
 | Mode → Halo → HatSettings → Thickness | Decimal | 0.05 | 0.01 to 1.0 | How thick the ring is. |
 | Mode → Halo → Colors → SyncColors | Toggle | true | | Uses only the first color instead of mixing both. |
-| Mode → Halo → Colors → FirstColor | Color | LiquidBounce blue | | The main color. |
-| Mode → Halo → Colors → SecondColor | Color | Light LiquidBounce blue | | The second color, used when SyncColors is off. |
+| Mode → Halo → Colors → FirstColor | Color | LiquidBounce blue, alpha 125 | | The main color. |
+| Mode → Halo → Colors → SecondColor | Color | Light LiquidBounce blue, alpha 125 | | The second color, used when SyncColors is off. |
 | Mode → Halo → Colors → SpinSpeed | Decimal | 1.0 | 0.0 to 10.0 | How fast the colors move around the hat. |
-| Mode → Orbs → color | Color | LiquidBounce blue | | Color of the orbs. |
+| Mode → Orbs → color | Color | LiquidBounce blue, alpha 125 | | Color of the orbs. |
 | Mode → Orbs → HatSettings → Radius | Decimal | 0.5 | 0.0 to 2.0 | How far the orbs fly from your head. |
 | Mode → Orbs → HatSettings → Speed | Decimal | 0.5 | 0.1 to 10.0 | How fast the orbs fly around. |
 | Mode → Orbs → HatSettings → OrbsSize | Decimal | 0.1 | 0.01 to 0.5 | Size of each orb. |
@@ -49,8 +49,8 @@ The hat can also show above your friends. It turns red for a moment when the pla
 | Mode → Flower → HatSettings → PetalCount | Integer | 5 | 5 to 15 | How many petals there are. |
 | Mode → Flower → HatSettings → SpinSpeed | Decimal | 1.0 | -10.0 to 10.0 | How fast the flower spins. Below 0 it spins the other way. |
 | Mode → Flower → Colors → SyncColors | Toggle | true | | Uses only the first color instead of mixing both. |
-| Mode → Flower → Colors → FirstColor | Color | LiquidBounce blue | | The main color. |
-| Mode → Flower → Colors → SecondColor | Color | Light LiquidBounce blue | | The second color, used when SyncColors is off. |
+| Mode → Flower → Colors → FirstColor | Color | LiquidBounce blue, alpha 125 | | The main color. |
+| Mode → Flower → Colors → SecondColor | Color | Light LiquidBounce blue, alpha 125 | | The second color, used when SyncColors is off. |
 | Mode → Flower → Colors → SpinSpeed | Decimal | 1.0 | 0.0 to 10.0 | How fast the colors move around the hat. |
 | Mode → Star → HatSettings → Radius | Decimal | 0.3 | 0.1 to 2.0 | Size of the star. |
 | Mode → Star → HatSettings → Thickness | Decimal | 0.05 | 0.01 to 1.0 | How thick the star's line is. |
@@ -58,13 +58,14 @@ The hat can also show above your friends. It turns red for a moment when the pla
 | Mode → Star → HatSettings → PointsCount | Integer | 5 | 5 to 15 | How many points the star has. |
 | Mode → Star → HatSettings → SpinSpeed | Decimal | 1.0 | -10.0 to 10.0 | How fast the star spins. Below 0 it spins the other way. |
 | Mode → Star → Colors → SyncColors | Toggle | true | | Uses only the first color instead of mixing both. |
-| Mode → Star → Colors → FirstColor | Color | LiquidBounce blue | | The main color. |
-| Mode → Star → Colors → SecondColor | Color | Light LiquidBounce blue | | The second color, used when SyncColors is off. |
+| Mode → Star → Colors → FirstColor | Color | LiquidBounce blue, alpha 125 | | The main color. |
+| Mode → Star → Colors → SecondColor | Color | Light LiquidBounce blue, alpha 125 | | The second color, used when SyncColors is off. |
 | Mode → Star → Colors → SpinSpeed | Decimal | 1.0 | 0.0 to 10.0 | How fast the colors move around the hat. |
 | Mode → Image → Image | File | | PNG, JPG | The picture to use as your hat. |
 | Mode → Image → ColorModulator | Color | White | | Tints the picture. White keeps its own colors. |
 | Mode → Image → Scale | Vector | 1, 1 | | Width and height of the picture. |
 | Mode → Image → SpinSpeed | Decimal | 1.0 | -10.0 to 10.0 | How fast the picture spins. Below 0 it spins the other way. |
+| Render | Choice | Plain | Plain, Shader | **Plain** draws the hat normally. **Shader** draws it with a shader effect, and its **Style** setting picks how that looks. The Image hat is always drawn plain. |
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/hats/ModuleHats.kt)*

@@ -18,6 +18,7 @@ TotemEffect draws an effect on a player whenever their Totem of Undying saves th
 | Mode → Shockwave → Colors → SyncColors | Toggle | false | | Uses the inner color for the outer part as well. |
 | Mode → Shockwave → Colors → InnerColor | Color | | | Color of the inside of the ring. |
 | Mode → Shockwave → Colors → OuterColor | Color | | | Color of the outside of the ring. |
+| Mode → Shockwave → Render | Choice | Plain | Plain, Shader | **Plain** draws the ring normally. **Shader** draws it with a shader effect, and its **Style** setting picks how that looks. |
 | Mode → Soul → Halo | Toggle | false | | Adds a halo above the ghost's head. |
 | Mode → Soul → YMotion | Toggleable Group | on | | Makes the ghost float upward. |
 | Mode → Soul → YMotion → SoulYMotion | Decimal | 0.75 | 0.1 to 10.0 | How fast the ghost rises. |

@@ -10,6 +10,7 @@ StorageESP highlights chests, barrels, shulker boxes and other containers throug
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
 | Mode | Mode Selector | Glow | Box, Glow | **Box** draws a colored box over each container. **Glow** draws a glowing outline like the Glowing effect. |
+| Mode → Glow → Style | Mode Selector | Smooth | Vanilla, Smooth, Outline, Neon, Rainbow, Ripple, Hologram, Halftone, Chromatic, Aura | How the glow looks. The styles and their settings are the same as in [ESP](/docs/modules/render/esp). |
 | Mode → Box → Outline | Toggle | true | | Adds a border around each box. |
 | Chest | Toggleable Group | on | | Highlights chests, chest minecarts, chest boats and animals carrying a chest. |
 | Chest → Color | Color | | | Highlight color. |

@@ -18,6 +18,7 @@ Tracers draws a line from the middle of your screen to every entity near you, so
 | ColorMode → Static → Color | Color | | | One color for every line. |
 | LineWidth | Decimal | 1.0 | 1.0 to 16.0 | How thick the lines are. |
 | MaximumDistance | Decimal | 128.0 | 1.0 to 512.0 | Entities farther away than this get no line. |
+| Render | Choice | Plain | Plain, Shader | **Plain** draws the lines normally. **Shader** draws them with a shader effect, and its **Style** setting picks how that looks. |
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleTracers.kt)*

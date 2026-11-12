@@ -10,6 +10,7 @@ BlockESP shows chosen blocks through walls, so you can find them from far away. 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
 | Mode | Mode Selector | Box | Box, Glow | Box draws a see-through box, Glow makes the block glow. |
+| Mode → [Glow] → Style | Mode Selector | Smooth | Vanilla, Smooth, Outline, Neon, Rainbow, Ripple, Hologram, Halftone, Chromatic, Aura | How the glow looks. The styles and their settings are the same as in [ESP](/docs/modules/render/esp). |
 | Mode → [Box] → Outline | Toggle | true | | Adds a border around each box. |
 | Targets | Registry List | All beds, Dragon Egg | | The blocks to show. |
 | ColorMode | Mode Selector | MapColor | MapColor, Static, Rainbow | MapColor uses the block's own color, Static one color, Rainbow changing colors. |
