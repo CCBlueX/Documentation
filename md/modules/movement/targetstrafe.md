@@ -33,10 +33,13 @@ The Planner checks each next spot before you move there, so you do not run into 
 | Visuals → HeightOffset | Decimal | 0.05 | -1.0..1.0 | Moves the ring and dot up or down. |
 | Visuals → OuterColor | Color | | | Color of the outer edge of the ring. |
 | Visuals → InnerColor | Color | | | Color of the inner edge of the ring. |
+| Visuals → OutlineColor | Color | | | Color of the line around the ring. |
 | Visuals → ShowNextPoint | Toggle | true | | Shows a dot where you move next. |
 | Visuals → PointRadius | Decimal | 0.18 | 0.05..1.0 | Size of the dot. |
 | Visuals → PointColor | Color | | | Dot color when the spot is safe. |
+| Visuals → PointOutlineColor | Color | | | Color of the line around the dot when the spot is safe. |
 | Visuals → InvalidPointColor | Color | | | Dot color when the spot is not safe. |
+| Visuals → InvalidPointOutlineColor | Color | | | Color of the line around the dot when the spot is not safe. |
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/movement/ModuleTargetStrafe.kt)*

@@ -69,6 +69,8 @@ KillAura attacks enemies near you by itself. It picks a target in range, turns y
 | RangeIndicator → ColorMode | Choice | Static | Static, Rainbow, Distance | How the circle is colored. Static uses IdleColor and ActiveColor. Rainbow goes through all colors. Distance changes color by how close the target is. |
 | RangeIndicator → IdleColor | Color | | | Color when there is no target. |
 | RangeIndicator → ActiveColor | Color | | | Color when there is a target. |
+| RangeIndicator → Outline | Toggle | true | | Draws a line around the edge of the circle. |
+| RangeIndicator → OutlineColor | Color | | | Color of the line around the edge. |
 | RangeIndicator → PulseAnimation | Toggle | false | | Makes the circle grow and shrink a little. |
 | RangeIndicator → PulseSpeed | Decimal | 2.0 | 0.5..5.0 | How fast it grows and shrinks. |
 | RangeIndicator → PulseIntensity | Decimal | 0.15 | 0.05..0.5 | How much it grows and shrinks. |
