@@ -13,7 +13,9 @@ You can join without a Minecraft account. The server then puts you in a sign-in 
 | `test.ccbluex.net` | Detects whether your Minecraft session is online or offline. Offline sessions go to the sign-in lobby. If you joined with a premium Minecraft account and want to use your LiquidBounce account, type `/sign-in`. |
 | `test-offline.ccbluex.net` | Treats every connection as offline and sends it through LiquidBounce account sign-in. |
 
-After joining, use **`/server latest`** for the 1.21.11 server or **`/server legacy`** for the 1.8.8 server. Both servers share one chat. Each message starts with the server the sender is on, and on Minecraft 1.21.9 and newer you also see the sender's head.
+After joining, use **`/server latest`** for the 26.3 server or **`/server legacy`** for the 1.8.8 server. You can join with any Minecraft version from 1.7.2 to 26.3. All servers share one chat. Each message starts with the server the sender is on, and on Minecraft 1.21.9 and newer you also see the sender's head.
+
+If you play from Asia, join **`as.test.ccbluex.net`**. It has the same servers, closer to you.
 
 ### Selecting anti-cheats
 
@@ -23,7 +25,7 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu, then click an anti
 
 ### Anti-cheats available
 
-**Latest** is the 1.21.11 server (`/server latest`) and **Legacy** is the 1.8.8 server (`/server legacy`). The Server column shows where you can pick each anti-cheat. Open `/ac` after joining to see which ones are turned on right now.
+**Latest** is the 26.3 server (`/server latest`) and **Legacy** is the 1.8.8 server (`/server legacy`). The Server column shows where you can pick each anti-cheat. The practice server has the same anti-cheats as Latest. Open `/ac` after joining to see which ones are turned on right now.
 
 | Anti-cheat | Server | Author(s) | Description |
 |---|---|---|---|
@@ -38,8 +40,9 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu, then click an anti
 | AIAC3 | Latest, Legacy | huzpsb | |
 | [AntiCheatAddition](https://github.com/Photon-GitHub/AntiCheatAddition) | Latest, Legacy | Photon | Extra checks for cheats other anti-cheats may miss. |
 | Axiom | Legacy | dw1e | Private anti-cheat. |
-| CoffeeProtect | Legacy | Nik | |
+| CoffeeProtect | Latest, Legacy | Nik | |
 | FairFight | Legacy | dw1e | Lightweight anti-cheat for 1.8 arenas. |
+| [FairPlay](https://builtbybit.com/resources/fairplay-combat-anticheat-local-ai.111265/) | Latest, Legacy | ArkFlame | Anti-cheat with a neural network. |
 | Frequency | Legacy | Elevated, Gson | |
 | Gurei | Latest, Legacy | Gurei | Machine learning anti-cheat. |
 | [Hawk](https://github.com/HawkAnticheat/Hawk) | Legacy | Islandscout | |
@@ -48,7 +51,6 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu, then click an anti
 | [Reflex](https://g.reflex.rip/spigot) | Legacy | DarksideCode, sinnlosername | |
 | [TakaAntiCheat](https://www.spigotmc.org/resources/45167/) | Legacy | dani02 | |
 | Themis | Latest | Olexorus | |
-| [TotemGuard](https://github.com/Bram1903/TotemGuard) | Latest | Bram, OutDev | Detects AutoTotem. |
 | Verus | Legacy | | |
 | [Vulcan](https://vulcanac.net/wiki) | Latest, Legacy | frep, GladUrBad, Joshb_, Elevated, retrooper | |
 
@@ -83,7 +85,7 @@ Type **`/ac`** (or `/anticheat`) to open the anti-cheat menu, then click an anti
 | `/discord` | Shows the server's Discord link. |
 | `/help [page]` | Shows the commands available to you on that server. |
 | `/practice` | On Latest and Legacy, takes you to the practice server. On the practice server, opens the kits so you can queue for a duel. |
-| `/botduel <kit> [easy\|normal\|hard]` | On the practice server, duels a bot with a practice kit. The **Play against a bot** item does the same. |
+| `/botduel <kit> [beginner\|easy\|normal\|hard\|adaptive]` | On the practice server, duels a bot with a practice kit. The **Play** item does the same. |
 
 You can use every command above on Latest and Legacy, except `/botduel`. The practice server has no test tools. There you can use `/menu`, `/ac`, `/settings`, `/language`, `/ping`, `/gameprotocol`, `/client`, `/msg`, `/reply`, `/ignore`, `/discord`, `/help`, `/spawn`, `/practice` and the duel commands.
 
@@ -95,13 +97,24 @@ All commands on this page that start with `/` are **server commands**, not Liqui
 
 The bots around spawn look like real players to your client and to every anti-cheat. Standing and walking bots never die and never get knocked back, so you can hit them as often as you like to test reach, aim and hitboxes. Some show your reach above the hotbar or tell you how much damage you did. Others hit back with a knockback stick so you can test Velocity. Fighter bots attack you with crits, sprint resets and strafing.
 
+### Practice server
+
+Type **`/practice`** to go to the practice server. Your hotbar there has these items:
+
+- **Play** (iron sword): Bed Wars and Sky Wars with bots, and duels against a bot in any kit.
+- **Pick a map or opponent** (map): challenge a player, pick a Bed Wars or Sky Wars map, or queue for a duel with a kit.
+- **Anticheats**, **Settings** and **Language**.
+- **Leave the server** (red bed): back to the latest server.
+
 ### Bot duels
 
-On the practice server, type **`/botduel <kit>`** or use the **Play against a bot** item in the practice lobby to fight a bot that has the same kit as you. **Pick a player** is for duels against real players.
+Open **Play**, pick a kit, then pick how hard the bot fights: beginner, easy, normal or hard. **Adaptive** starts easy, gets harder every time you win and easier every time you lose. You can also type **`/botduel <kit> [difficulty]`**. The bot has the same kit as you. Type `/leave` to give up.
 
-Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo, boxing, pot, soup, classic, uhc, vanilla, spear_mace and cart. Difficulties: easy, normal and hard. The mace bot launches itself with wind charges and smashes down on you, the diamond SMP bot traps you in cobwebs and walls you off, and the axe bot breaks your shield. Type `/leave` to give up.
+Kits: sword, axe, mace, spear, crystal, elytra, diamond_smp, sumo, boxing, pot, soup, classic, uhc, vanilla, spear_mace and cart. The mace bot launches itself with wind charges and smashes down on you, the diamond SMP bot traps you in cobwebs and walls you off, and the axe bot breaks your shield.
 
-The **No Cooldown** switch in the practice menus turns the sword, pot, soup, classic, uhc, sumo and boxing kits into 1.8-style kits without the attack cooldown. It works for queues, duels against players and bot duels. Against a bot you can also type `/botduel <kit>_nocd`, for example `/botduel sword_nocd`.
+The **Bot personality** switch in the menu changes how the bot plays: aggressive, defensive, kiter, trader, trickster or none. Until you switch it, every duel gets a random one.
+
+The **1.8 Combat** switch turns the sword, pot, soup, classic, uhc, sumo and boxing kits into 1.8 kits: sword blocking, no attack cooldown, and 1.8 damage, knockback and regeneration. It works for queues, duels against players and bot duels. Against a bot you can also type `/botduel <kit>_nocd`, for example `/botduel sword_nocd`.
 
 There are also five minigame kits. You can play them in queues, against players and against bots:
 
@@ -112,3 +125,18 @@ There are also five minigame kits. You can play them in queues, against players 
 - **tnt_tag**: hit someone to pass on the TNT before it explodes after 30 seconds.
 
 After a duel, `/duelrematch` challenges the same opponent again, and `/duelrequeue` turns automatic requeueing on or off.
+
+### Bed Wars and Sky Wars
+
+Open **Play** and pick **Bed Wars**, **Sky Wars** or **Sky Wars Teams** to join a game right away. To pick the map yourself or play with friends, use **Pick a map or opponent**, then **Pick a map**. Both games use 1.8 combat.
+
+As soon as you wait in a game, bots fill it up to one place short of full, so one more player can always join. The bots have names like real players and play a little differently every game: some rush beds or hunt players, some collect diamonds and emeralds, some stay home and defend. The text under a bot's name shows what it is doing.
+
+- In Bed Wars, bots bridge, buy gear and team upgrades, cover their bed with blocks, put spare items into the team chest and tell their team in chat what they are doing.
+- In Sky Wars, bots loot their island and the middle, leave you the first pick of a chest you opened, and shoot or throw at you while you cross a bridge.
+
+Bed Wars maps: Airshow, Amazon, Darkened, Speedway and Waterfall for eight teams of two, and Quartet for four teams of two. Sky Wars maps: Aquarius, Elven, Frostbite, Ring, Sanctum and Tiki, and team versions of all of them except Ring.
+
+### Automated tests
+
+Developers can let automated tests of their client or add-on play on the test server, with an anti-cheat of their choice watching. See [Testing](/docs/add-on-api/developers/testing).
