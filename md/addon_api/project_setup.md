@@ -54,14 +54,14 @@ fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "fabric-loom" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ```
 
-Fabric Loader, Fabric API and Fabric Language Kotlin are not in the catalog. They come with the LiquidBounce dependency, in the versions the client was built with. LiquidBounce's own [`gradle/libs.versions.toml`](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/gradle/libs.versions.toml) lists them.
+Fabric Loader, Fabric API and Fabric Language Kotlin are not in the catalog. They come with the LiquidBounce dependency, in the versions the client was built with. LiquidBounce's own [`gradle/libs.versions.toml`](https://github.com/CCBlueX/LiquidBounce/blob/main/gradle/libs.versions.toml) lists them.
 
 The `liquidbounce` version takes one of three forms:
 
 | Form                            | Example                        | Repository  | Resolves to                                                  |
 |---------------------------------|--------------------------------|-------------|--------------------------------------------------------------|
 | `<version>+<mc>`                | `0.42.0+26.3`                  | `releases`  | a release                                                    |
-| `<version>+<mc>-SNAPSHOT`       | `0.42.1+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `nextgen` |
+| `<version>+<mc>-SNAPSHOT`       | `0.42.1+26.3-SNAPSHOT`         | `snapshots` | the newest development build, moves with every push to `main` |
 | `<version>+<mc>-<sha>-SNAPSHOT` | `0.42.1+26.3-cadfef0-SNAPSHOT` | `snapshots` | the development build of one commit                          |
 
 Gradle keeps a resolved snapshot for a day. The template turns that off so `-SNAPSHOT` always means the newest build:

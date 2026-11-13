@@ -12,17 +12,17 @@ List of parameters:
 ### Field summary
 
 ### `Client.eventManager`
-Manages game events. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/EventManager.kt) for more information.
+Manages game events. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/event/EventManager.kt) for more information.
 
 <hr>
 
 ### `Client.configSystem`
-Manages client configurations. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/config/ConfigSystem.kt) for more information.
+Manages client configurations. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/config/ConfigSystem.kt) for more information.
 
 <hr>
 
 ### `Client.moduleManager`
-Manages modules (cheats). See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ModuleManager.kt) for more information.
+Manages modules (cheats). See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/features/module/ModuleManager.kt) for more information.
 
 **Example:**
 
@@ -34,7 +34,7 @@ const killAura = Client.moduleManager.get("KillAura");
 <hr>
 
 ### `Client.commandManager`
-Manages client commands. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/command/CommandManager.kt) for more information.
+Manages client commands. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/features/command/CommandManager.kt) for more information.
 
 <hr>
 
@@ -44,7 +44,7 @@ Manages installed scripts. See [GitHub](https://github.com/CCBlueX/LiquidBounce-
 <hr>
 
 ### `Client.combatManager`
-Tracks combat state, such as whether the player is fighting. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/utils/combat/CombatManager.kt) for more information.
+Tracks combat state, such as whether the player is fighting. See [GitHub](https://github.com/CCBlueX/LiquidBounce/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/utils/combat/CombatManager.kt) for more information.
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/api/ScriptClient.kt)*

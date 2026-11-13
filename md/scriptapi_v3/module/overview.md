@@ -77,7 +77,7 @@ script.registerModule({
 });
 ```
 
-For a full list of supported events and their attributes, see the [event classes](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
+For a full list of supported events and their attributes, see the [event classes](https://github.com/CCBlueX/LiquidBounce/tree/main/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce-Addon-ScriptAPI/blob/143f553/src/main/kotlin/net/ccbluex/liquidbounce/script/bindings/features/ScriptModule.kt)*

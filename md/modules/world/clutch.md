@@ -14,4 +14,4 @@ Scaffold does the placing, so its block, rotation and swing settings are used. C
 | MinFallDistance | Decimal | 5.0 | 2.0..50.0 blocks | How deep a fall has to be before Clutch catches it. Shorter falls are left alone. A fall into the void always counts. |
 
 ---
-*Last updated: 2026-11-12, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleClutch.kt)*
+*Last updated: 2026-11-12, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/main/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/world/ModuleClutch.kt)*

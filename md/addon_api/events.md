@@ -154,7 +154,7 @@ fun greet(name: String) {
 
 ### Stable events
 
-These events are part of the [stable API](/docs/add-on-api/developers/stable-api). The client raises many more, see the [event classes](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events), but those may change between releases.
+These events are part of the [stable API](/docs/add-on-api/developers/stable-api). The client raises many more, see the [event classes](https://github.com/CCBlueX/LiquidBounce/tree/main/src/main/kotlin/net/ccbluex/liquidbounce/event/events), but those may change between releases.
 
 | Event                            | Raised                                                                                                  |
 |----------------------------------|---------------------------------------------------------------------------------------------------------|

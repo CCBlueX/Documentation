@@ -20,7 +20,7 @@ public/
     └── splash-hit.ogg
 ```
 
-The included theme's splash in the [LiquidBounce repository](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src-theme/public/splash) is a complete example.
+The included theme's splash in the [LiquidBounce repository](https://github.com/CCBlueX/LiquidBounce/tree/main/src-theme/public/splash) is a complete example.
 
 Add a `splash` section to `metadata.json`:
 

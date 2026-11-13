@@ -4,7 +4,7 @@ Add-ons compile against the whole client, there is no separate API artifact. Wha
 
 ### What stable means
 
-The marked declarations are recorded in [`api/LiquidBounce.api`](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/api/LiquidBounce.api) in the LiquidBounce repository, and the client's build compares its code against that file. A marked declaration therefore cannot change or disappear by accident. When it changes on purpose, the file changes with it, visible in the commit.
+The marked declarations are recorded in [`api/LiquidBounce.api`](https://github.com/CCBlueX/LiquidBounce/blob/main/api/LiquidBounce.api) in the LiquidBounce repository, and the client's build compares its code against that file. A marked declaration therefore cannot change or disappear by accident. When it changes on purpose, the file changes with it, visible in the commit.
 
 Stable does not cover Minecraft. An add-on is built for one Minecraft version and is rebuilt for the next, see [Publishing](/docs/add-on-api/developers/publishing#compatibility).
 

@@ -55,7 +55,7 @@ The API supports many more events. The most commonly used events are:
 - `disable`: Called whenever the module is disabled.
 - `playerTick`: Called once every game tick while you are in a world (~20 times per second).
 
-The full list of supported events can be found [here](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
+The full list of supported events can be found [here](https://github.com/CCBlueX/LiquidBounce/tree/main/src/main/kotlin/net/ccbluex/liquidbounce/event/events).
 
 All event handlers can be `async` functions (including `enable` and `disable`), see [AsyncUtil](/docs/script-api/global-classes/asyncutil).
 A `Promise` in JavaScript cannot be cancelled (unlike Kotlin's `Job` or Java's `Future`), so check whether your module is still enabled after each `await`.
