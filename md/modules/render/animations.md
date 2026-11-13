@@ -2,7 +2,7 @@
 
 ViewModel changes how the item in your hand looks on your own screen. You can move, resize and turn the item in each hand, change how fast your arm swings, and pick a different look for swinging and sword blocking. Other players do not see any of this.
 
-BlockingAnimation is only used while [SwordBlock](/docs/modules/combat/swordblock) is on. While a blocking animation is showing, it is used instead of SwingAnimation.
+BlockingAnimation is used whenever your sword is shown blocking, for example with [SwordBlock](/docs/modules/combat/swordblock) or on a 1.8 server. While a blocking animation is showing, it is used instead of SwingAnimation.
 
 ### Settings
 
@@ -28,7 +28,7 @@ BlockingAnimation is only used while [SwordBlock](/docs/modules/combat/swordbloc
 | SwingDuration → Multiplier | Decimal | 1.0 | 0.1..3.0x | Lower numbers make the swing faster, higher numbers slower. |
 | SwingDuration → Ignore | Multi-Select | | Item, Haste, MiningFatigue | These no longer change your swing speed: the held item, Haste, or Mining Fatigue. |
 | SwingAnimation | Mode Selector | None | None, Swipe, Spin, Hook, Dash, Tap, Inject, Slap, Akrien, Smooth, Power, Feast | The arm swing you see when you hit. None keeps the normal swing. |
-| BlockingAnimation | Mode Selector | 1.7 | 1.7, Pushdown, Sigma, Exhibition, Avatar, Dortware | How your sword looks while blocking. |
+| BlockingAnimation | Mode Selector | 1.7 | None, 1.7, Pushdown, Sigma, Exhibition, Avatar, Dortware | How your sword looks while blocking. None keeps the normal blocking look of the game. |
 | BlockingAnimation → [1.7] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
 | BlockingAnimation → [1.7] → SwingScale | Decimal | 0.9 | 0.1..1.0 | How much the sword moves when you swing while blocking. |
 | BlockingAnimation → [Sigma] → Y | Decimal | 0.1 | 0.05..0.3 | Moves the sword up or down while blocking. |
