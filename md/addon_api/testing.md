@@ -102,7 +102,7 @@ dependencies {
 }
 ```
 
-In `fabric.mod.json`, depend on `liquidbounce-gametest-harness` and list `net.ccbluex.gametest.harness.ResultsGameTest` after every test. It fails the run when a server test failed:
+In `fabric.mod.json`, depend on `liquidbounce-gametest-harness` and list `net.ccbluex.gametest.harness.ResultsGameTest` after every test. It fails the run when a test failed:
 
 ```json
 "entrypoints": {
@@ -131,10 +131,27 @@ class AutoShearerGameTest : ServerGameTest({
 
 - The class a test extends says where it plays. `ServerGameTest` plays on the game test server with the chosen anticheat watching. `SingleplayerGameTest` plays on the client's integrated server with the same scope and commands. `ClientGameTest` plays without a world.
 - Every test waits until the client has started, runs with every module but the HUD turned off and turns the modules that ran before back on afterwards.
+- An add-on that keeps state of its own between tests puts it back in a `GameTestSetup`. The harness runs every registered setup around every test: `awaitClient` until the client may play, `beforeTest` before the test joins, `afterTest` once it is back on the title screen.
 - The bot starts at `origin` on a superflat world, looking south. `ServerGameTest(TestWorld.generated(seed)) { ... }` plays on real terrain from a seed.
 - `give`, `summon`, `setBlock`, `fill` and `run(command)` run as the server console and reach only the test's own worlds and bot. `awaitServer` waits until an `execute if` condition holds, `query` reads the answer of a command. Check on the server what the client did, not only on the client.
 - `enable(module)` and `disable(module)` switch a module, `command(line)` runs a client command (it never reaches the server) and `module.setting<T>(name)` finds a setting by name. `configure(module, "Name" to value)` sets settings by name. A text sets a setting that holds something else the way a config does, such as a mode by its name.
 - A test that only checks what the client receives and does extends `SingleplayerGameTest`, or `ClientGameTest` when it needs no world.
+
+```kotlin
+object ExampleSetup : GameTestSetup {
+    override fun beforeTest(context: ClientGameTestContext) = context.runOnClient<RuntimeException> {
+        ExampleWaypoints.clear()
+    }
+}
+```
+
+Register it in the `entrypoints` of `fabric.mod.json` with the Kotlin adapter, and add `"fabric-language-kotlin": "*"` to `depends`:
+
+```json
+"gametest-setup": [
+  { "adapter": "kotlin", "value": "com.example.addon.gametest.ExampleSetup" }
+]
+```
 
 The [gametest-harness skill](https://github.com/CCBlueX/gametest/blob/main/skills/gametest-harness/SKILL.md) teaches a coding agent the harness API and the rules a test follows.
 
@@ -143,10 +160,10 @@ The [gametest-harness skill](https://github.com/CCBlueX/gametest/blob/main/skill
 | Variable | Meaning |
 |---|---|
 | `GAMETEST_API_TOKEN` | The API token from your [account page](https://liquidbounce.net/account). Needed for the public server `test.ccbluex.net`. |
-| `GAMETEST_SERVER_ANTICHEAT` | Which anticheat watches the bot. `grim` when it is not set. |
+| `GAMETEST_SERVER_ANTICHEAT` | Which anticheat watches the bot. When it is not set, only `SingleplayerGameTest` and `ClientGameTest` run. |
 | `GAMETEST_SERVER_ADDRESS` | A server of your own, such as `localhost:25565`. It needs no token. |
 
-Without a token or an address, the server tests are skipped. When the bot logs in to `test.ccbluex.net`, the harness gets a one-time ticket for it from the LiquidBounce API with your token, and the bot joins with that ticket. Every bot is logged with the account behind its token, so please use the public server fairly.
+The server tests run when an anticheat is set and there is a token or an address. When the bot logs in to `test.ccbluex.net`, the harness gets a one-time ticket for it from the LiquidBounce API with your token, and the bot joins with that ticket. Every bot is logged with the account behind its token, so please use the public server fairly.
 
 | `GAMETEST_SERVER_ANTICHEAT` | What watches the bot |
 |---|---|
@@ -176,9 +193,9 @@ The game needs a display. Without one, for example in CI, run it under Xvfb. Min
 SDL_VIDEO_FORCE_EGL=1 xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClientGameTest
 ```
 
-Screenshots land in `build/run/clientGameTest/screenshots/`.
+Screenshots land in `build/run/clientGameTest/screenshots/`. The console shows one line per test. On GitHub Actions the rest of the client log stays out of it, failures show up as annotations and the job summary gets a table of every test; `logs/latest.log` keeps everything.
 
-In GitHub Actions, give the job your API token as a secret and run the tests once per anticheat. Give the job a `timeout-minutes` and `runClientGameTest` a Gradle `timeout`, so a game that hangs does not hold the runner:
+In GitHub Actions, give the job your API token as a secret and run the tests once without an anticheat, for the singleplayer and client tests, and once per anticheat. Give the job a `timeout-minutes` and `runClientGameTest` a Gradle `timeout`, so a game that hangs does not hold the runner:
 
 ```yaml
 gametest:
@@ -187,17 +204,17 @@ gametest:
   strategy:
     fail-fast: false
     matrix:
-      anticheat: [vanilla, grim, intave]
+      run: [local, vanilla, grim, intave]
   steps:
     # checkout, Java and Gradle as in the build job
     - run: sudo apt-get update && sudo apt-get install -y libegl1 libegl-mesa0
     - run: xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClientGameTest
       env:
         SDL_VIDEO_FORCE_EGL: 1
-        GAMETEST_API_TOKEN: ${{ secrets.LIQUIDBOUNCE_API_TOKEN }}
-        GAMETEST_SERVER_ANTICHEAT: ${{ matrix.anticheat }}
+        GAMETEST_API_TOKEN: ${{ matrix.run != 'local' && secrets.LIQUIDBOUNCE_API_TOKEN || '' }}
+        GAMETEST_SERVER_ANTICHEAT: ${{ matrix.run != 'local' && matrix.run || '' }}
 ```
 
 ---
 
-*Last updated: 2026-11-12, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/b7185570b/build.gradle.kts)*
+*Last updated: 2026-11-13, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/48667584a/build.gradle.kts)*
