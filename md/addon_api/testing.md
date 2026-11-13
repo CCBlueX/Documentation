@@ -119,7 +119,7 @@ In `fabric.mod.json`, depend on `liquidbounce-gametest-harness` and list `net.cc
 ```
 
 ```kotlin
-class AutoShearerGameTest : LiquidBounceGameTest({
+class AutoShearerGameTest : ServerGameTest({
     val module = requireNotNull(ModuleManager["AutoShearer"]) { "AutoShearer is not registered" }
     give("minecraft:shears")
     summon("minecraft:sheep", origin.south(2), "{NoAI:1b}")
@@ -129,11 +129,12 @@ class AutoShearerGameTest : LiquidBounceGameTest({
 })
 ```
 
-- A test that extends `LiquidBounceGameTest` waits until the client has started, runs with every module but the HUD turned off and turns the modules that ran before back on afterwards.
-- The bot starts at `origin` on a superflat world, looking south. `LiquidBounceGameTest(TestWorld.generated(seed)) { ... }` plays on real terrain from a seed.
+- The class a test extends says where it plays. `ServerGameTest` plays on the game test server with the chosen anticheat watching. `SingleplayerGameTest` plays on the client's integrated server with the same scope and commands. `ClientGameTest` plays without a world.
+- Every test waits until the client has started, runs with every module but the HUD turned off and turns the modules that ran before back on afterwards.
+- The bot starts at `origin` on a superflat world, looking south. `ServerGameTest(TestWorld.generated(seed)) { ... }` plays on real terrain from a seed.
 - `give`, `summon`, `setBlock`, `fill` and `run(command)` run as the server console and reach only the test's own worlds and bot. `awaitServer` waits until an `execute if` condition holds, `query` reads the answer of a command. Check on the server what the client did, not only on the client.
 - `enable(module)` and `disable(module)` switch a module, `command(line)` runs a client command (it never reaches the server) and `module.setting<T>(name)` finds a setting by name. `configure(module, "Name" to value)` sets settings by name. A text sets a setting that holds something else the way a config does, such as a mode by its name.
-- A test of the client alone (commands, configs, registries) extends `LocalGameTest` and implements `test(context)`. It runs only when no anticheat is picked.
+- A test that only checks what the client receives and does extends `SingleplayerGameTest`, or `ClientGameTest` when it needs no world.
 
 The [gametest-harness skill](https://github.com/CCBlueX/gametest/blob/main/skills/gametest-harness/SKILL.md) teaches a coding agent the harness API and the rules a test follows.
 
