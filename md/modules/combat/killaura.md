@@ -26,7 +26,7 @@ KillAura attacks enemies near you by itself. It picks a target in range, turns y
 | Rotations → ThroughWalls | Toggle | false | | Also turns toward enemies behind blocks. |
 | Rotations → LazyRotation | Toggle | false | | Does not turn if you are already looking at the enemy. |
 | AimPoint | Setting Group | | | See [Shared: AimPoint](/docs/modules/shared-settings/aimpoint). |
-| Requires | Multi-Select | | Click, Weapon, EmptyHand, VanillaName, NotBreaking | Only attacks when all picked conditions are true. Click: you are holding attack. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
+| Requires | Multi-Select | | Click, MouseMovement, Weapon, EmptyHand, VanillaName, NotBreaking | Only attacks when all picked conditions are true. Click: you are holding attack. MouseMovement: you moved your mouse in the last moment. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
 | Raycast | Choice | All | None, Enemy, All | What happens when something stands between you and your target. All hits whatever is in the way. Enemy only hits it if it is an enemy too. None always hits your target. |
 | Criticals | Choice | Smart | Smart, Ignore, Always | When to wait for a critical hit. Smart waits when a critical hit is possible soon. Ignore never waits. Always only hits when it is a critical hit. |
 | KeepSprint | Toggle | true | | Keeps you sprinting when you hit. |

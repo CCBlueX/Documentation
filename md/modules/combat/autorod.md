@@ -15,7 +15,7 @@ AutoRod throws a fishing rod at enemies close to you and pulls it back in. The h
 | MaxEnemiesNearby | Integer | 1 | 0..10 | Only throws when there are at most this many enemies around. 0 means any number. |
 | MinHealth | Decimal | 10.0 | 1.0..20.0 | Only throws while your health is above this. |
 | MinTargetHealth | Decimal | 4.0 | 1.0..20.0 | Only throws at enemies whose health is above this. |
-| Requires | Multi-Select | Click, Weapon, VanillaName, NotBreaking | Click, Weapon, EmptyHand, VanillaName, NotBreaking | Only throws when all picked conditions are true. Click: you are holding attack. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
+| Requires | Multi-Select | Click, Weapon, VanillaName, NotBreaking | Click, MouseMovement, Weapon, EmptyHand, VanillaName, NotBreaking | Only throws when all picked conditions are true. Click: you are holding attack. MouseMovement: you moved your mouse in the last moment. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
 | Ignore | Multi-Select | | OpenInventory, UsingItem, HoldingConsumable | Does not throw while any picked thing is true: your inventory is open, you are using an item, or you hold food or a potion. |
 | HoldingItemsForIgnore | Registry List | Bow, Crossbow, Trident, Fire Charge, Ender Pearl | | Does not throw while you hold one of these items. |
 | Target | Setting Group |  | | See [Shared: Target](/docs/modules/shared-settings/target). |

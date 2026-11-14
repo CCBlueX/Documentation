@@ -17,7 +17,7 @@ Aimbot turns your view toward the closest enemy in front of you, so your crossha
 | Crystals | Toggleable Group | Off | | Aims at end crystals in range before enemies. It picks the crystal closest to your crosshair. |
 | Crystals → Only | Toggle | false | | Aims only at end crystals and ignores enemies. |
 | Crystals → OnlyWhileUsing | Toggle | false | | Only aims at end crystals while you hold the use key (right click). |
-| Requires | Multi-Select | | Click, Weapon, EmptyHand, VanillaName, NotBreaking | Only aims when all picked conditions are true. Click: you are holding attack. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
+| Requires | Multi-Select | | Click, MouseMovement, Weapon, EmptyHand, VanillaName, NotBreaking | Only aims when all picked conditions are true. Click: you are holding attack. MouseMovement: you moved your mouse in the last moment. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
 | AngleSmooth | Choice | Interpolation | Interpolation, Sigmoid, Linear | How your view turns toward the enemy. Slower, smoother turns look more like a real player. |
 | AngleSmooth → [Interpolation] → HorizontalSpeed | Integer Range | 80..85 | 1..100 % | How fast you turn left and right. |
 | AngleSmooth → [Interpolation] → VerticalSpeed | Integer Range | 20..25 | 1..100 % | How fast you turn up and down. |
