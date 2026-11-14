@@ -19,6 +19,7 @@ Pick an item type for each hotbar slot with the SlotItem settings. The Maximum s
 | MaximumWaterBuckets | Integer | 2 | 0..16 | Most water buckets to keep. |
 | MaximumLavaBuckets | Integer | 2 | 0..16 | Most lava buckets to keep. |
 | MaximumMilkBuckets | Integer | 2 | 0..16 | Most milk buckets to keep. |
+| MaximumTotems | Integer | 37 | 0..37 | Most totems of undying to keep. |
 | ItemsBlacklist | Registry List | None | | Items that are always thrown out. |
 | Greedy | Toggle | On | | Swaps an item in a slot for a better one of the same type from your inventory. |
 | OffHandItem | Choice | Shield | | Item type for your offhand. |
