@@ -17,6 +17,7 @@ AutoArmor puts on the best armor in your inventory by itself. When you pick up a
 | SaveArmor | Toggleable Group | On | | Swaps out armor that is about to break for a fresh piece. |
 | SaveArmor → DurabilityThreshold | Integer | 24 | 0..100 | When a piece has this much durability left (in percent) or less, it gets swapped. |
 | SaveArmor → AutoOpenInventory | Toggle | true | | Opens your inventory by itself to swap the armor, if it needs to. |
+| SkipCursed | Multi-Select | | | Armor with one of the chosen curses is never put on. Armor you are already wearing is not affected. |
 
 ---
 *Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/autoarmor/ModuleAutoArmor.kt)*
