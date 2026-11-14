@@ -2,7 +2,7 @@
 
 Offhand puts the right item in your offhand for you: a totem of undying, end crystal, golden apple, strength potion or block. It picks whichever one fits the moment. Each item can also have its own key to force it into your offhand, and the Cycle key steps through them.
 
-The totem has the most checks. It goes in when your health (with absorption) gets low, when an explosion or a fall would hurt you a lot, or when a piece of armor is missing. When you are safe again, Offhand can put your old item back.
+The totem has the most checks. It goes in when your health (with absorption) gets low, when an explosion or a fall would hurt you a lot, or when a piece of armor is missing. It can also go in when an enemy with a mace dives at you from above. When you are safe again, Offhand can put your old item back.
 
 **Category:** Player
 **Enabled by default:** No
@@ -29,6 +29,9 @@ The totem has the most checks. It goes in when your health (with absorption) get
 | Totem → Health → PredictFallDamage | Toggleable Group | On | | Holds a totem if your fall would take you below the health limit. |
 | Totem → Health → PredictFallDamage → IgnoreElytra | Toggle | Off | | Skips the fall check while you fly with an elytra. |
 | Totem → Health → SwitchBack | Toggle | On | | Puts your old item back once you no longer need the totem. |
+| Totem → MaceDive | Toggleable Group | Off | | Holds a totem while an enemy with a mace falls down toward you. |
+| Totem → MaceDive → HorizontalRange | Decimal | 4.0 | 1.0..10.0 blocks | How far to the side the falling enemy can be. |
+| Totem → MaceDive → MinFallSpeed | Decimal | 0.3 | 0.1..2.0 b/t | How fast the enemy has to fall, in blocks per tick. |
 | Totem → SendDirectly | Toggle | Off | | Swaps in the totem right away and ignores the inventory constraints. Strict servers may notice this. |
 | Crystal | Toggleable Group | On | | Keeps an end crystal in your offhand. |
 | Crystal → OnlyWhileCrystalAura | Toggle | Off | | Only while [CrystalAura](/docs/modules/combat/crystalaura) is on. |
