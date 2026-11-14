@@ -10,6 +10,7 @@ Aimbot turns your view toward the closest enemy in front of you, so your crossha
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
 | Range | Decimal | 4.2 | 1.0..8.0 | How close an enemy has to be, in blocks. |
+| WallRange | Decimal | 0.0 | 0.0..8.0 | How close an enemy behind a wall has to be, in blocks. At 0, Aimbot does not aim through walls. It cannot be higher than Range. |
 | Target | Setting Group |  | | See [Shared: Target](/docs/modules/shared-settings/target). |
 | TargetRendering | Toggleable Group | On | | See [Shared: TargetRendering](/docs/modules/shared-settings/targetrendering). |
 | AimPoint | Setting Group |  | | See [Shared: AimPoint](/docs/modules/shared-settings/aimpoint). |
@@ -33,4 +34,4 @@ Aimbot turns your view toward the closest enemy in front of you, so your crossha
 | Ignore | Multi-Select | | Screen, Container | Keeps aiming while a screen (Screen) or a chest or your inventory (Container) is open. |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleAimbot.kt)*
+*Last updated: 2026-11-14, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/ModuleAimbot.kt)*
