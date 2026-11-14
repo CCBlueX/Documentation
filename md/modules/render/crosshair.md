@@ -28,6 +28,16 @@ After you attack, the crosshair grows for a moment and shrinks back once your we
 | Mode → [CS2] → Color → FirstColor | Color | Light blue | | Main color. |
 | Mode → [CS2] → Color → SecondColor | Color | Pale blue | | Second color, used when Sync is off. |
 | Mode → [CS2] → Color → SpinSpeed | Decimal | 4.0 | -10.0..10.0 | How fast the colors move around. Negative goes the other way, 0 stops it. |
+| CooldownBar | Toggleable Group | false | | Shows a bar under the crosshair that fills up while a bow, crossbow or trident charges, while an item cools down or while your weapon gets ready to attack. |
+| CooldownBar → Sources | Multi-Select | All | | What the bar shows: item charge, item cooldowns or the attack cooldown. |
+| CooldownBar → Width | Decimal | 20.0 | 4.0..80.0 | Width of the bar. |
+| CooldownBar → Height | Decimal | 2.0 | 0.5..8.0 | Height of the bar. |
+| CooldownBar → Offset | Decimal | 8.0 | 0.0..40.0 | Space between the crosshair and the bar. |
+| CooldownBar → Color | Color | White | | Color of the filled part. |
+| CooldownBar → Background | Color | See-through black | | Color of the empty part. |
+| CooldownBar → ReadyFlash | Toggleable Group | true | | Makes the bar flash once it is full. |
+| CooldownBar → ReadyFlash → Color | Color | Blue | | Color of the flash. |
+| CooldownBar → ReadyFlash → Duration | Integer | 250 | 50..1000 ms | How long the flash lasts. |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/ModuleCrosshair.kt)*
+*Last updated: 2026-11-14, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/ModuleCrosshair.kt)*
