@@ -11,7 +11,7 @@ Above the tag you can see the armor and items each player has, with short names 
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Text → Parts | Multi-Select | Distance, Ping, Name, Health, GameMode, BotMark | Distance, Ping, Name, Health, GameMode, BotMark | What the tag shows. At least one must be picked. |
+| Text → Parts | Multi-Select | Distance, Ping, Name, Health, GameMode, BotMark | Distance, Ping, Name, Health, GameMode, BotMark, TotemPops | What the tag shows. TotemPops shows how many Totems of Undying a player used up since they last died or came into view. At least one must be picked. |
 | Equipment → Slots | Multi-Select | Mainhand, Head, Chest, Legs, Feet, Offhand | Mainhand, Offhand, Feet, Legs, Chest, Head, Body, Saddle | Which items and armor are shown above the tag. |
 | Equipment → SkipEmptySlot | Toggle | true | | Leaves out empty slots instead of showing a gap. |
 | Equipment → ShowInfo | Toggle | true | | Shows the stack count and durability on each item. |
