@@ -14,6 +14,7 @@ Backtrack shows you enemies where they were a moment ago, a little behind where 
 | NextBacktrackDelay | Integer Range | 0..10 | 0..2000 ms | How long to wait before Backtrack works again. |
 | TrackingBuffer | Integer | 500 | 0..2000 ms | How long to keep going after the enemy leaves Range. |
 | Chance | Decimal | 50.0 | 0.0..100.0 % | How often Backtrack works when you hit. |
+| Requires | Multi-Select | | Click, MouseMovement, Weapon, EmptyHand, VanillaName, NotBreaking | Only works when all picked conditions are true. Click: you are holding attack. MouseMovement: you moved your mouse in the last moment. Weapon: you hold a weapon. EmptyHand: your hand is empty. VanillaName: your item has no custom name. NotBreaking: you are not mining a block. |
 | PauseOnHurtTime | Toggleable Group | Off | | Pauses while the enemy was just hurt. |
 | PauseOnHurtTime → HurtTime | Integer | 3 | 0..10 | How recently the enemy has to have been hurt for the pause, in ticks (20 per second). |
 | TargetMode | Choice | Attack | Attack, Range | Who to use it on. Attack uses the enemy you hit. Range uses the closest enemy in Range. |
@@ -27,4 +28,4 @@ Backtrack shows you enemies where they were a moment ago, a little behind where 
 | Esp → [Wireframe] → OutlineColor | Color | | | Color of the wireframe's edges. |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/backtrack/ModuleBacktrack.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/combat/backtrack/ModuleBacktrack.kt)*
