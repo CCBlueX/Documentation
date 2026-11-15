@@ -11,7 +11,7 @@ OnlyInCombat and OnlyOnPotionEffect each have their own mode. When OnlyInCombat 
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | LegitHop | LegitHop, Custom, YPort, PiercingAttack, Verus-b3882, HypixelBHop, HypixelLowHop, Spartan-4.0.4.3, Spartan-4.0.4.3-FastFall, CubeCraft-2024-06-30, Vulcan-2.8.6, Vulcan-2.8.8, Vulcan-2.8.6-Ground, Grim-2.3.73, NCP-2024-08-31, Intave-14, Intave-14-Fast, HylexLowHop, HylexGround, BlocksMC, Matrix-7 | How you go faster. Modes not listed below have no settings. |
+| Mode | Mode Selector | LegitHop | LegitHop, Custom, YPort, PiercingAttack, Verus-b3882, HypixelBHop, HypixelLowHop, Spartan-4.0.4.3, Spartan-4.0.4.3-FastFall, CubeCraft-2024-06-30, Vulcan-2.8.6, Vulcan-2.8.8, Vulcan-2.8.6-Ground, Grim-2.3.73, NCP-2024-08-31, Intave-14, Intave-14-Fast, HylexLowHop, HylexGround, BlocksMC, Matrix-7, Rewound | How you go faster. Modes not listed below have no settings. |
 | Mode → [Custom] → HorizontalModification | Toggleable Group | On |  | Change your speed on the ground and when you jump. |
 | Mode → [Custom] → HorizontalModification → HorizontalAcceleration | Decimal | 0.0 | -0.1..0.2 | Extra speed added all the time while you move. |
 | Mode → [Custom] → HorizontalModification → HorizontalJumpOff | Decimal | 0.0 | -0.5..1.0 | Extra speed added when you jump. |
@@ -55,6 +55,7 @@ OnlyInCombat and OnlyOnPotionEffect each have their own mode. When OnlyInCombat 
 | Mode → [Intave-14] → AirBoost | Toggleable Group | On |  | Gain a bit of speed while you go up. |
 | Mode → [Intave-14-Fast] → Timer | Toggle | true |  | Run the game a tiny bit faster for you. |
 | Mode → [BlocksMC] → RoundStrafeYaw | Toggle | false |  | Only steer in 8 directions. |
+| Mode → [Rewound] → Timer | Toggle | true |  | Run the game faster for you. |
 | Not | Multi-Select | [DuringScaffold] | WhileUsingItem, DuringScaffold, WhileSneaking, IsFallFlying, IsInLiquid | Pause Speed while one of these is true. DuringScaffold also covers [Fly](/docs/modules/movement/fly). |
 | AvoidEdgeBump | Toggle | true |  | Wait with a jump if you would bump into the corner of a block. |
 | OnlyInCombat | Toggleable Group | Off |  | Use a different mode while you fight. |

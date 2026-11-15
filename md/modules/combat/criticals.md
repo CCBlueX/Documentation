@@ -9,7 +9,7 @@ A critical hit does extra damage, but normally only when you are falling while y
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Choice | Packet | None, Packet, NoGround, Jump, Blink, Timer | How critical hits are made. Packet and NoGround make the server think you are in the air. Jump does a small jump before you hit. Blink holds back your movement until a critical hit is possible. Timer slows the game down near enemies so you fall longer. |
+| Mode | Choice | Packet | None, Packet, NoGround, Jump, Blink, Timer, Rewound | How critical hits are made. Packet and NoGround make the server think you are in the air. Jump does a small jump before you hit. Blink holds back your movement until a critical hit is possible. Timer slows the game down near enemies so you fall longer. |
 | Mode → [Packet] → Mode | Choice | NCP-2024-01-25 | Vanilla, NCP-2024-01-25, Falling, Low, Down, Grim-2.3.59, BlocksMC | Which anticheat to work against. Pick the one the server uses. |
 | Mode → [Packet] → PacketType | Choice | Full | OnGroundOnly, PositionAndOnGround, LookAndOnGround, Full | What kind of movement message is sent. |
 | Mode → [Jump] → Height | Decimal | 0.42 | 0.1..0.42 | How high the small jump is. |

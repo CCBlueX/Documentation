@@ -11,7 +11,7 @@ Many modes only fly for a short time or distance and then stop. With DisableOnSe
 
 | Setting | Type | Default | Range | Description |
 |---|---|---|---|---|
-| Mode | Mode Selector | Vanilla | Vanilla, Creative, Jetpack, Enderpearl, AirWalk, Explosion, Fireball, Vulcan-2.7.7, Vulcan-2.8.6-MC1.13, Vulcan-2.8.6-MC1.8, Vulcan-2.8.6-Teleport-MC1.8, Grim-2.3.59, Grim-2.3.73, Spartan-Phase524, CubeCraft-2024-04-20, CubeCraft-2024-01-27, CubeCraft-2024-03-10, CubeCraft-2025-12-26, Verus-b3896-Damage, Verus-b3896-Flat, NcpClip, Hypixel, HypixelFlat, HycraftDamage | How you fly. Modes not listed below have no settings. |
+| Mode | Mode Selector | Vanilla | Vanilla, Creative, Jetpack, Enderpearl, AirWalk, Explosion, Fireball, Vulcan-2.7.7, Vulcan-2.8.6-MC1.13, Vulcan-2.8.6-MC1.8, Vulcan-2.8.6-Teleport-MC1.8, Grim-2.3.59, Grim-2.3.73, Spartan-Phase524, CubeCraft-2024-04-20, CubeCraft-2024-01-27, CubeCraft-2024-03-10, CubeCraft-2025-12-26, Verus-b3896-Damage, Verus-b3896-Flat, NcpClip, Hypixel, HypixelFlat, HycraftDamage, Rewound, RewoundSetback | How you fly. Modes not listed below have no settings. |
 | Mode → [Vanilla] → Glide | Decimal | 0.0 | -1.0..1.0 | How fast you move up or down when you don't press jump or sneak. Negative sinks, positive rises. |
 | Mode → [Vanilla] → BypassVanillaCheck | Toggle | true |  | Moves you down a little now and then so the server doesn't kick you for flying. |
 | Mode → [Vanilla] → BaseSpeed | Setting Group |  |  | Normal flying speed. |
@@ -87,6 +87,11 @@ Many modes only fly for a short time or distance and then stop. With DisableOnSe
 | Mode → [Hypixel] → Timer | Decimal | 1.0 | 0.1..1.0 | How fast the game runs for you. Below 1 is slower. |
 | Mode → [HypixelFlat] → Timer | Decimal | 1.0 | 0.1..1.0 | How fast the game runs for you. Below 1 is slower. |
 | Mode → [HypixelFlat] → Speed | Decimal | 1.66 | 0.8..2.0 | Speed forward. |
+| Mode → [Rewound] → Speed | Decimal | 4.2 | 3.5..5.5 | How fast you fly. |
+| Mode → [Rewound] → Decay | Decimal | 159.0 | 159.0..600.0 | How quickly your speed drops while you fly. |
+| Mode → [RewoundSetback] → Speed | Decimal | 1.0 | 0.1..5.0 | How fast you fly. |
+| Mode → [RewoundSetback] → Duration | Integer | 3000 | 500..10000 ms | How long you can fly after the server pulls you back. |
+| Mode → [RewoundSetback] → Timer | Decimal | 2.0 | 1.0..5.0 | How fast the game runs for you while you fly. Above 1 is faster. |
 | Visuals | Toggleable Group | On |  | Changes how your flying looks. |
 | Visuals → Stride | Toggle | true |  | Keep the walking animation small while you fly. |
 | DisableOnSetback | Toggle | false |  | Turn Fly off when the server pulls you back. |
