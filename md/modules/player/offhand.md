@@ -13,10 +13,10 @@ The totem has the most checks. It goes in when your health (with absorption) get
 |---|---|---|---|---|
 | Constraints | Setting Group | | | See [Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
 | SwitchMode | Choice | Switch | Smart, Switch, PickUp, Automatic | How items are moved into your offhand. Switch works best on 1.16 and newer servers. PickUp works on every version. Smart sends fewer clicks but some servers kick for it. Automatic picks Switch or PickUp from the server version and is the default when ViaFabricPlus is installed. |
-| SwitchDelay | Integer | 0 | 0..500 ms | Time to wait between offhand swaps. |
+| SwitchDelay | Integer Range | 0..0 | 0..500 ms | Time to wait between offhand swaps. Each wait is a random time inside this range. |
 | Cycle | Key | H | | Steps through the offhand items. |
 | Totem | Toggleable Group | On | | Puts a totem in your offhand when you are in danger. |
-| Totem → SwitchDelay | Integer | 0 | 0..500 ms | Time to wait before switching to a totem. |
+| Totem → SwitchDelay | Integer Range | 0..0 | 0..500 ms | Time to wait before switching to a totem. Each wait is a random time inside this range, and it gets shorter the more danger you are in. |
 | Totem → SwitchBackDelay | Integer | 40 | 0..500 ms | Time to wait before putting the old item back. |
 | Totem → Health | Toggleable Group | On | | Uses a totem when your health is low. |
 | Totem → Health → HealthThreshold | Integer | 14 | 0..20 | Health in half hearts, with absorption, at which the totem goes in. |
