@@ -15,6 +15,9 @@ StorageESP highlights chests, barrels, shulker boxes and other containers throug
 | Chest | Toggleable Group | on | | Highlights chests, chest minecarts, chest boats and animals carrying a chest. |
 | Chest → Color | Color | | | Highlight color. |
 | Chest → Tracers | Toggle | false | | Draws a line to each one. |
+| TrappedChest | Toggleable Group | on | | Highlights trapped chests. |
+| TrappedChest → Color | Color | | | Highlight color. |
+| TrappedChest → Tracers | Toggle | false | | Draws a line to each one. |
 | Barrel | Toggleable Group | on | | Highlights barrels. |
 | Barrel → Color | Color | | | Highlight color. |
 | Barrel → Tracers | Toggle | false | | Draws a line to each one. |
@@ -27,9 +30,12 @@ StorageESP highlights chests, barrels, shulker boxes and other containers throug
 | BrewingStand | Toggleable Group | on | | Highlights brewing stands. |
 | BrewingStand → Color | Color | | | Highlight color. |
 | BrewingStand → Tracers | Toggle | false | | Draws a line to each one. |
-| Dispenser | Toggleable Group | on | | Highlights dispensers, droppers and crafters. |
+| Dispenser | Toggleable Group | on | | Highlights dispensers and crafters. |
 | Dispenser → Color | Color | | | Highlight color. |
 | Dispenser → Tracers | Toggle | false | | Draws a line to each one. |
+| Dropper | Toggleable Group | on | | Highlights droppers. |
+| Dropper → Color | Color | | | Highlight color. |
+| Dropper → Tracers | Toggle | false | | Draws a line to each one. |
 | Hopper | Toggleable Group | on | | Highlights hoppers and hopper minecarts. |
 | Hopper → Color | Color | | | Highlight color. |
 | Hopper → Tracers | Toggle | false | | Draws a line to each one. |
@@ -50,4 +56,4 @@ StorageESP highlights chests, barrels, shulker boxes and other containers throug
 | DistanceFade | Setting Group | | | Fades highlights by distance. See [Shared: DistanceFade](/docs/modules/shared-settings/distancefade). |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleStorageESP.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleStorageESP.kt)*
