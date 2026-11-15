@@ -1,6 +1,6 @@
 ## ESP
 
-ESP highlights players and mobs so you can see them through walls and from far away.
+ESP highlights players and mobs so you can see them through walls and from far away. With **Objects** it can also highlight end crystals, projectiles and vehicles.
 
 **Mode** picks how they are drawn: **Box** puts a 3D box around them, **2D** a flat box with a health bar, **Legacy2D** an older marker, and **Glow** draws a glow around their outline. Glow also shows invisible players and mobs. In Glow mode, **Style** picks how the glow looks. **Vanilla** is the normal Minecraft glow, the other styles are effects with their own settings.
 
@@ -100,6 +100,8 @@ ESP highlights players and mobs so you can see them through walls and from far a
 | Invisible | Color | Orange | | Color of invisible entities. |
 | Friends | Color | Green | | Color of your friends. |
 | MaximumDistance | Decimal | 128.0 | 1.0 to 512.0 | How far away entities are still highlighted, in blocks. |
+| Objects | Multi-Select | | | Other things to highlight as well: end crystals, projectiles (like arrows) and vehicles (like boats and minecarts). The vehicle you are riding is never highlighted. |
+| ObjectColor | Color | White, alpha 100 | | Color of the objects picked in Objects. |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/esp/ModuleESP.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/esp/ModuleESP.kt)*
