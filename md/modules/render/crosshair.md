@@ -38,6 +38,9 @@ After you attack, the crosshair grows for a moment and shrinks back once your we
 | CooldownBar → ReadyFlash | Toggleable Group | true | | Makes the bar flash once it is full. |
 | CooldownBar → ReadyFlash → Color | Color | Blue | | Color of the flash. |
 | CooldownBar → ReadyFlash → Duration | Integer | 250 | 50..1000 ms | How long the flash lasts. |
+| HitFlash | Toggleable Group | false | | Turns the crosshair another color for a moment when the mob or player under it gets hurt. |
+| HitFlash → Color | Color | Red | | Color of the flash. |
+| HitFlash → Duration | Integer | 300 | 50..1000 ms | How long the flash lasts. |
 
 ---
-*Last updated: 2026-11-14, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/ModuleCrosshair.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/ModuleCrosshair.kt)*
