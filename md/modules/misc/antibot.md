@@ -28,7 +28,8 @@ Pick the mode that fits your server. The Matrix, Intave and Horizon modes are ma
 | Mode → [Custom] → Name → Length | Integer Range | 3..16 | 1..32 | How long a real name can be. |
 | Mode → [Custom] → Name → ValidateChars | Multi-Select | Vanilla | Vanilla, Cyrillic, CJKUnifiedIdeographs | Letters a real name may use. |
 | LiteralNPC | Toggle | false | | Treats players who are missing from the server's player list as bots. Works in every mode. |
-| NotInTabList | Toggle | false | | Treats players who are missing from the tab list as bots. Works in every mode. |
+| NotInTabList | Toggleable Group | Off | | Treats players who are missing from the tab list as bots. Works in every mode. |
+| NotInTabList → Grace | Integer | 0 | 0..200 ticks | How long a new player may be missing from the tab list before they count as a bot, in ticks (20 per second). |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/antibot/ModuleAntiBot.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/misc/antibot/ModuleAntiBot.kt)*
