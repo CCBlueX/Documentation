@@ -45,8 +45,11 @@ You can use it to clear fog, lock a time of day you like, or add floating partic
 | WorldParticles → [Simple] → YMotion | Toggleable Group | Off | | Makes particles drift up or down. |
 | WorldParticles → [Simple] → YMotion → Motion | Decimal | 2.0 | -10.0..10.0 | How far they drift. Negative goes down. |
 | WorldParticles → [Simple] → YMotion → AnimBy | Choice | Progress | Progress, Age | What the drift follows. |
+| WorldParticles → [Simple] → Wander | Toggleable Group | Off | | Makes each particle float around its spot. |
+| WorldParticles → [Simple] → Wander → Distance | Decimal | 0.5 | 0.05..4.0 | How far particles float from their spot, in blocks. |
+| WorldParticles → [Simple] → Wander → Speed | Decimal | 1.0 | 0.1..5.0 | How fast particles float around. |
 | WorldParticles → [Simple] → Particle | Choice | Spark | Orbiz, Star, Dollar, Crown, Heart, Lightning, Line, Point, Rhombus, Snowflake, Spark | Particle picture. |
 | WorldParticles → [Simple] → Color → Color | Color | Light blue | | Particle color. |
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/customambience/ModuleCustomAmbience.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/customambience/ModuleCustomAmbience.kt)*
