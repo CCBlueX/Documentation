@@ -14,6 +14,7 @@ DoRender is a list of things that stay visible. Anything you take off the list g
 | DoRender | Multi-Select | Armor, MobInSpawner, EnchantTableBook, EatParticles, BlockBreakParticles, BlockBreakOverlay, Title, MapContents, MapMarkers, FallingBlocks, BeaconBeams, SkylightUpdates, GuiBackground, SpyglassOverlay, SignText, InvisibleEntities, BossBars, ExplosionParticles, WorldBorder, FallingLeaves | Blinding, Darkness, Nausea, Armor, MobInSpawner, EnchantTableBook, EatParticles, BlockBreakParticles, BlockBreakOverlay, Title, PumpkinBlur, LiquidsFog, PowderSnowFog, FloatingItems, MapContents, MapMarkers, PortalOverlay, WallOverlay, FallingBlocks, BeaconBeams, SkylightUpdates, GuiBackground, SpyglassOverlay, SignText, InvisibleEntities, BossBars, ExplosionParticles, WorldBorder, FallingLeaves | Things that are still drawn. Remove an entry to hide it. |
 | FireOpacity | Integer | 100% | 0..100% | How visible the fire overlay is when you burn. Lower it to see more of the screen. |
 | NoParticles | Toggle | false | | Hides all particles, like smoke, splashes and potion swirls. |
+| SkipTerrainLoading | Toggle | false | | Closes the loading screen as soon as the server sends the world, without waiting for the chunks around you to be built. |
 
 ---
-*Last updated: 2026-11-14, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAntiBlind.kt)*
+*Last updated: 2026-11-15, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/master/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleAntiBlind.kt)*
