@@ -61,7 +61,7 @@ Command names are unique regardless of case, and registering a taken one fails t
 | `argument(name, type, suggests) { arg -> ... }` | A required argument of a Brigadier `ArgumentType`. The block continues the chain after it.           |
 | `optional(name, type, default, suggests) { arg -> ... }` | An optional argument. `default` is used when it is left out, `null` if none is given. Every argument after it must be optional too. |
 | `exec { ctx -> result }`                        | What runs when the input ends here. Returns an `Int`, 1 for success.                                 |
-| `execSuspend { ctx -> }`                        | The same as a `suspend` function. The client shows a progress message and, unless `allowParallel` is set, refuses to start the command again before it finished. |
+| `execSuspend { ctx -> }`                        | The same as a `suspend` function. The client shows a progress message with a button that cancels the handler and, unless `allowParallel` is set, refuses to start the command again before it finished. |
 | `requires { source -> allowed }`                | Hides and blocks the literal while the condition is false, for example `it.isIngame`.                |
 | `ctx.get(arg)`                                  | Reads the value of an argument, typed.                                                               |
 | `t(key, args)`                                  | The translation of `liquidbounce.command.<command>.<key>`.                                          |
