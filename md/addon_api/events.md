@@ -105,7 +105,7 @@ Handling the event itself is over once the sequence first waits, so cancelling o
 | `tickUntil { ticks -> done }` | until the condition is true, checked once per tick; returns the ticks waited |
 | `waitMatches<T> { event -> matches }` | until an event of type `T` matches, and returns it                  |
 
-`waitTicks`, `waitSeconds` and `tickUntil` resume on the render thread, `waitMatches` on the thread that raised the matching event. When the listener stops running, for example because the module was disabled, its sequences are cancelled at their next wait.
+`waitTicks`, `waitSeconds` and `tickUntil` resume on the render thread, `waitMatches` on the thread that raised the matching event. When the listener stops running, for example because the module was disabled, its sequences are cancelled at their next wait. Sequences of a mode are cancelled right away when the mode is disabled or another mode is selected.
 
 If the condition passed to `tickUntil` throws, the exception is thrown from `tickUntil`, so you can catch it around the wait.
 
