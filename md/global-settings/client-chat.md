@@ -1,6 +1,6 @@
 ## ClientChat
 
-Connects you to LiquidChat, a chat for LiquidBounce users. You can talk to other users even when you play on different servers. LiquidChat messages show up in your normal chat with the sender's player head in front.
+Connects you to LiquidChat, a chat for LiquidBounce users. You can talk to other users even when you play on different servers. LiquidChat messages show up in your normal chat with the sender's player head in front. If someone writes from another client, the name of that client stands in front of their message. That client picks the name itself, so nobody checks it.
 
 **Aliases:** GlobalChat, IRC  
 **Enabled by default:** Yes
