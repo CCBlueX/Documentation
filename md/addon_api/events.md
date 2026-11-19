@@ -101,13 +101,34 @@ Handling the event itself is over once the sequence first waits, so cancelling o
 | Function               | Waits                                                                            |
 |------------------------|----------------------------------------------------------------------------------|
 | `waitTicks(ticks)`     | the given number of ticks                                                        |
-| `waitSeconds(seconds)` | `seconds * 20` ticks                                                             |
+| `waitMillis(millis)`   | the given real time in milliseconds, then continues on the next tick             |
 | `tickUntil { ticks -> done }` | until the condition is true, checked once per tick; returns the ticks waited |
 | `waitMatches<T> { event -> matches }` | until an event of type `T` matches, and returns it                  |
 
-`waitTicks`, `waitSeconds` and `tickUntil` resume on the render thread, `waitMatches` on the thread that raised the matching event. When the listener stops running, for example because the module was disabled, its sequences are cancelled at their next wait. Sequences of a mode are cancelled right away when the mode is disabled or another mode is selected.
+`waitTicks`, `waitMillis` and `tickUntil` resume on the render thread, `waitMatches` on the thread that raised the matching event. When the listener stops running, for example because the module was disabled, its sequences are cancelled at their next wait. Sequences of a mode are cancelled right away when the mode is disabled or another mode is selected.
 
 If the condition passed to `tickUntil` throws, the exception is thrown from `tickUntil`, so you can catch it around the wait.
+
+A sequence can state what its work depends on, so it does not act on something that changed while it waited. Every wait after the statement checks it again, and once it fails the run ends quietly:
+
+```kotlin
+@Suppress("unused")
+private val tickHandler = tickHandler {
+    requires { !InventoryManager.isHandledScreenOpen }
+    val pearl by requires { Slots.OffhandWithHotbar.findSlot(Items.ENDER_PEARL) }
+
+    waitTicks(20) // ends here once the pearls are gone or a menu opens
+    interaction.useItem(player, pearl.useHand) // the slot the pearl is in now
+}
+```
+
+| Function                  | Holds while                                                                     |
+|---------------------------|---------------------------------------------------------------------------------|
+| `requires { condition }`  | the condition is true                                                           |
+| `requires { value }`      | the value is not null; read it with `by`, so you always get the current value   |
+| `unchanged { value }`     | the block returns the same instance, for example the open menu                  |
+
+Waits in a sequence without these checks behave as described above. `finally` blocks still run when a check ends the run.
 
 ### Without Kotlin
 
