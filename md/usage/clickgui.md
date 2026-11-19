@@ -24,6 +24,8 @@ Modules are sorted into categories. Each category is its own panel:
 - **Exploit**: tricks that use mistakes in how servers work.
 - **Fun**: modules just for fun.
 
+After the categories there is a **Settings** panel. It holds the settings for the whole client, such as the language and the command prefix.
+
 You can scroll inside a panel to see more modules, and drag a panel to move it.
 
 ## Searching for Modules
@@ -60,7 +62,6 @@ The bar at the top switches between tabs. The ClickGUI opens on the tab you used
 
 - **ClickGUI**: the module panels described on this page.
 - **HUD Editor**: move the parts of your HUD around, see [HUD Customization](/docs/theme-system/hud-customization).
-- **Settings**: settings for the whole client, such as the language and the command prefix.
 
 ## Closing the ClickGUI
 

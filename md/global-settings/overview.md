@@ -1,6 +1,6 @@
 ## Global Settings Overview
 
-Global settings belong to the whole client, not to one module. You find them in the ClickGUI (opened with Right Shift) under Settings. You can also change them with the [`.value`](/docs/commands/client) command, using paths that start with `settings.`, like `settings.commands.prefix`.
+Global settings belong to the whole client, not to one module. You find them in the ClickGUI (opened with Right Shift) in the Settings panel. You can also change them with the [`.value`](/docs/commands/client) command, using paths that start with `settings.`, like `settings.commands.prefix`.
 
 - [Targets](/docs/global-settings/targets): which players and mobs combat and visual modules care about.
 - [Teleport](/docs/global-settings/teleport): how the `.teleport`, `.playerteleport` and `.vclip` commands move you.
