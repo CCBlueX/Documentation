@@ -77,10 +77,11 @@ Themes are web pages built with [Svelte](https://svelte.dev/). Start from the de
      "authors": ["CCBlueX"]
    }
    ```
-   Three fields are optional:
+   Four fields are optional:
    - `nativeFont` names one of the theme's loaded font faces, for example `"nativeFont": "Inter Medium"`. The client draws its own text with it. Without it, the client uses the font of the LiquidBounce theme, or a system font if that is missing.
    - `sounds` lists sounds the theme ships as `public/sounds/<name>.ogg`, for example `"sounds": ["click"]`. Names must be valid Minecraft identifier paths without `/`. See [Playing sounds](#playing-sounds).
    - `splash` gives the theme its own loading screen, a [Lottie](https://airbnb.io/lottie/) animation with background, text and accent colors. See [Splash Screen](/docs/theme-system/splash-screen).
+   - `screenTweaks` hides parts of the Minecraft screens the theme draws over, for example `"screenTweaks": ["DISABLE_LOGO", "DISABLE_SPLASH"]`. `DISABLE_LOGO` hides the Minecraft logo and `DISABLE_SPLASH` the yellow splash text on the title screen. A tweak only applies while the theme draws over that screen.
 
 3. **Start LiquidBounce, then install the dependencies and start the development server**:
    ```bash
