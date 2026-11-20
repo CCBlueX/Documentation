@@ -40,6 +40,7 @@
         "Client Chat": "global-settings/client-chat.md",
         "Commands": "global-settings/commands.md",
         "Gui Renderer": "global-settings/gui-renderer.md",
+        "Inventory": "global-settings/inventory.md",
         "Language": "global-settings/language.md",
         "Rich Presence": "global-settings/rich-presence.md",
         "Rotation Manager": "modules/render/rotations.md",

@@ -11,6 +11,7 @@ Global settings belong to the whole client, not to one module. You find them in 
 - [Commands](/docs/global-settings/commands): the command prefix and suggestions for mistyped commands.
 - [Language](/docs/global-settings/language): the language of the client's menus and messages.
 - [Gui Renderer](/docs/global-settings/gui-renderer): how sharp the menus are and which browser draws them.
+- [Inventory](/docs/global-settings/inventory): how modules that move items handle a slow server or items the server puts back.
 - [View Model](/docs/global-settings/view-model): how items in your hand look and swing.
 - [Rotation Manager](/docs/global-settings/rotation-manager): shows on your character where modules make you look.
 

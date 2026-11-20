@@ -15,7 +15,7 @@ Some settings are in ticks (20 per second).
 | --- | --- | --- | --- | --- |
 | Constraints | Setting Group | | | See [Shared: Inventory Constraints](/docs/modules/shared-settings/inventory-constraints). |
 | AutoClose | Toggle | true | | Closes the container when it has taken everything. |
-| SelectionMode | Mode Selector | Distance | Distance, Index, Random | The order items are taken in. Distance goes to the nearest slot next, Index goes slot by slot, Random picks any. |
+| SelectionMode | Mode Selector | Value | Value, Distance, Index, Random | The order items are taken in. Value takes the best items first, like armor and swords. Distance goes to the nearest slot next, Index goes slot by slot, Random picks any. |
 | SelectionMode → [Distance] → StartItem | Choice | Default | Default, Random, MaxSlot, MinSlot | Which item to start with. |
 | SelectionMode → [Distance] → RandomFactor | Decimal Range | 1.0..1.0 | 0.25..2.0 | Mixes up the order a bit. 1.0..1.0 means no change. |
 | SelectionMode → [Index] → Order | Choice | Ascending | Ascending, Descending | Start from the first slot or the last one. |
