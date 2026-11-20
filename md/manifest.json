@@ -9,6 +9,7 @@
         "Introduction": "usage/introduction.md",
         "Account Manager": "usage/account-manager.md",
         "ClickGUI": "usage/clickgui.md",
+        "Building Schematics": "usage/schematics.md",
         "Configs": "usage/configs.md",
         "Proxy Manager": "usage/proxy-manager.md",
         "Changing Version": "usage/change_version.md"

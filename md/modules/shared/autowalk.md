@@ -2,7 +2,7 @@
 
 These settings control how a module walks you somewhere by itself. It finds a way to the goal and walks, jumps, swims or even flies there for you. When there is no goal, you stop.
 
-Used by: [KillAura](/docs/modules/combat/killaura) (FightBot), [FreeCam](/docs/modules/render/freecam) (Navigation), [AutoFarm](/docs/modules/world/autofarm), [Fucker](/docs/modules/world/fucker).
+Used by: [KillAura](/docs/modules/combat/killaura) (FightBot), [FreeCam](/docs/modules/render/freecam) (Navigation), [AutoBuild](/docs/modules/world/autobuild) (Schematic), [AutoFarm](/docs/modules/world/autofarm), [Fucker](/docs/modules/world/fucker).
 
 ### Settings
 
@@ -17,6 +17,8 @@ Used by: [KillAura](/docs/modules/combat/killaura) (FightBot), [FreeCam](/docs/m
 | AllowFly | Toggle | true | | May fly when you are able to, for example in creative mode. |
 | AllowElytra | Toggle | true | | May glide with an elytra you are wearing. |
 | ElytraRockets | Toggle | true | | May use firework rockets while gliding. |
+| AllowBoat | Toggle | false | | May cross water in a boat from your inventory. |
+| AllowEat | Toggle | false | | Eats food from your inventory on the way when you get hungry. |
 | Render | Toggleable Group | depends on the module | | Draws the way it is walking. Off for KillAura's FightBot, on for the others. |
 | Render → CanBeCovered | Toggle | false | | Lets blocks hide the drawing. |
 | Render → Route | Color | | | Color of the way. |
@@ -32,4 +34,4 @@ Used by: [KillAura](/docs/modules/combat/killaura) (FightBot), [FreeCam](/docs/m
 The modules add their own settings to this group, for example AutoFarm's ToPlant and ToItems. Those are explained on the module's page.
 
 ---
-*Last updated: 2026-11-11, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/d0486b17c/src/main/kotlin/net/ccbluex/liquidbounce/utils/navigation/walk/WalkSettings.kt)*
+*Last updated: 2026-11-20, based on [source code](https://github.com/CCBlueX/LiquidBounce/blob/1dcb525db/src/main/kotlin/net/ccbluex/liquidbounce/utils/navigation/Settings.kt)*
