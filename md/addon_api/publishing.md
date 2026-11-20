@@ -1,10 +1,10 @@
 ## Publishing
 
-Add-ons reach players through the Marketplace, where they are installed with `.marketplace subscribe <id>` (see [Add-ons](/docs/add-on-api/using-add-ons)). The template's build workflow uploads a new revision whenever a GitHub release is published.
+Add-ons reach players through the Marketplace, where they are installed with `.marketplace subscribe <author>/<name>` (see [Add-ons](/docs/add-on-api/using-add-ons)). The template's build workflow uploads a new revision whenever a GitHub release is published.
 
 ### Creating the add-on
 
-1. Open **Resources** from the account menu on [liquidbounce.net](https://liquidbounce.net/account/resources) and create a **New resource** of type **Add-on**. It then appears under **Your resources** with its ID.
+1. Open **Resources** from the account menu on [liquidbounce.net](https://liquidbounce.net/account/resources) and create a **New resource** of type **Add-on**. It then appears under **Your resources**, and its page shows you its ID.
 
    ![New Add-on](/images/addons/new-addon.png)
 

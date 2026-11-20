@@ -18,7 +18,7 @@ To make a theme yourself, see [Creating Your Own Theme](#creating-your-own-theme
 
 1. **See which themes there are**: `.marketplace list theme`
 
-2. **Install one**: click the theme in the list, or type `.marketplace subscribe <id>`. The theme is downloaded for you.
+2. **Install one**: click the theme in the list, or type `.marketplace subscribe <author>/<name>`. The theme is downloaded for you.
 
 3. **Use it**: type `.client theme` to see your installed themes, then click the new one. That runs `.client theme set <id>`.
 
@@ -31,14 +31,14 @@ To make a theme yourself, see [Creating Your Own Theme](#creating-your-own-theme
 ![JelloBounce ClickGUI](/images/theme/jellobounce/clickgui.png)
 ![JelloBounce Main Menu](/images/theme/jellobounce/mainmenu.png)
 
-Install with: `.marketplace subscribe 265`  
+Install with: `.marketplace subscribe Izuna/JelloBounce`  
 [Repository](https://github.com/CCBlueX/LiquidBounce-Theme-JelloBounce)
 
 #### BeautifyV2 Theme
 ![BeautifyV2 HUD](/images/theme/beautifyv2/ingame-hud.png)
 ![BeautifyV2 ClickGUI](/images/theme/beautifyv2/ingame-clickgui.png)
 
-Install with: `.marketplace subscribe 581`  
+Install with: `.marketplace subscribe Izuna/BeautifyV2`  
 [Repository](https://github.com/CCBlueX/LiquidBounce-Theme-BeautifyV2)
 
 #### Wurst Theme
@@ -46,7 +46,7 @@ Install with: `.marketplace subscribe 581`
 ![Wurst ClickGUI](/images/theme/wurst/clickgui.png)
 ![Wurst Main Menu](/images/theme/wurst/title.png)
 
-Install with: `.marketplace subscribe 561`  
+Install with: `.marketplace subscribe Izuna/Wurst`  
 [Repository](https://github.com/CCBlueX/LiquidBounce-Theme-Wurst)
 
 ### Creating Your Own Theme

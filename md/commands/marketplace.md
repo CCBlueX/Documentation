@@ -2,7 +2,7 @@
 
 The `.marketplace` command finds themes, add-ons and scripts on the LiquidBounce marketplace and installs them for you. To find configs, use [`.config`](/docs/commands/client) instead.
 
-Items are named as `author/name`. You can also use just the name or the item's ID. Put names with spaces in double quotes, like `"Author/Item Name"`.
+Items are named as `author/name`. You can also use just the name. Put names with spaces in double quotes, like `"Author/Item Name"`.
 
 ---
 
